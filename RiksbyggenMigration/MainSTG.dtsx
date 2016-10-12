@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="MainSTG"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{97DAE11A-2E74-4CF3-A552-EDC8A63D14B2}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{9B13CB54-B7D3-4452-9177-455310985767}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -248,6 +248,7 @@
           DTS:refId="Package\Ladda alla STG tabeller\STGAccount"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
+          DTS:Disabled="True"
           DTS:DTSID="{d5d944ab-c72e-4713-abae-a55a7024fb2f}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
@@ -323,6 +324,7 @@
           DTS:refId="Package\Ladda alla STG tabeller\STGContact"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
+          DTS:Disabled="True"
           DTS:DTSID="{12e67bab-c3cb-42fd-9a6b-1870d8fa5e63}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
@@ -604,6 +606,30 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 6"
           DTS:To="Package\Ladda alla STG tabeller\STGSystemUser" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Ladda alla STG tabeller.PrecedenceConstraints[Constraint 7]"
+          DTS:CreationName=""
+          DTS:DTSID="{EB2D1193-D848-449D-B8FA-802535693AB4}"
+          DTS:From="Package\Ladda alla STG tabeller\STGSubject"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 7"
+          DTS:To="Package\Ladda alla STG tabeller\STGIncident" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Ladda alla STG tabeller.PrecedenceConstraints[Constraint 8]"
+          DTS:CreationName=""
+          DTS:DTSID="{71684C88-0B01-4BE7-87D4-8EAE7909A841}"
+          DTS:From="Package\Ladda alla STG tabeller\STGSystemUser"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 8"
+          DTS:To="Package\Ladda alla STG tabeller\STGAccount" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Ladda alla STG tabeller.PrecedenceConstraints[Constraint 9]"
+          DTS:CreationName=""
+          DTS:DTSID="{5A13A766-3DD6-4B5F-817E-3E3FB4B32139}"
+          DTS:From="Package\Ladda alla STG tabeller\STGAccount"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 9"
+          DTS:To="Package\Ladda alla STG tabeller\STGContact" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -1322,6 +1348,34 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="135.2,41.6"
+          Id="Package\Ladda alla STG tabeller\STGAccount"
+          TopLeft="533.506136589008,13.8773140697741" />
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\Ladda alla STG tabeller\STGArendetyp"
+          TopLeft="267.485723895443,13.5294109110191" />
+        <NodeLayout
+          Size="177.6,41.6"
+          Id="Package\Ladda alla STG tabeller\STGArendeundertyp"
+          TopLeft="266.057152442543,79.4235334764305" />
+        <NodeLayout
+          Size="133.6,41.6"
+          Id="Package\Ladda alla STG tabeller\STGContact"
+          TopLeft="540.751034671572,93.5159706488616" />
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\Ladda alla STG tabeller\STGDelsegment"
+          TopLeft="50.342863054665,220.870591714391" />
+        <NodeLayout
+          Size="136,41.6"
+          Id="Package\Ladda alla STG tabeller\STGIncident"
+          TopLeft="283.608173149599,221.221854792829" />
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\Ladda alla STG tabeller\STGKundsegment"
+          TopLeft="51.7714345075648,147.564709758264" />
+        <NodeLayout
           Size="165.6,41.6"
           Id="Package\Ladda alla STG tabeller\STGMangdenhet"
           TopLeft="48.914291601765,10.0235327836139" />
@@ -1329,6 +1383,18 @@
           Size="165.6,41.6"
           Id="Package\Ladda alla STG tabeller\STGMangdtyp"
           TopLeft="52.4857202340149,78.8470631606027" />
+        <NodeLayout
+          Size="128.8,41.6"
+          Id="Package\Ladda alla STG tabeller\STGOwner"
+          TopLeft="294.424499864411,288.667233946084" />
+        <NodeLayout
+          Size="132.8,41.6"
+          Id="Package\Ladda alla STG tabeller\STGSubject"
+          TopLeft="289.628581415391,149.129416891118" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Ladda alla STG tabeller\STGSystemUser"
+          TopLeft="279.628581245093,362.532781186483" />
         <EdgeLayout
           Id="Package\Ladda alla STG tabeller.PrecedenceConstraints[Constraint]"
           TopLeft="133.50000591789,51.6235327836139">
@@ -1351,10 +1417,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="165.6,41.6"
-          Id="Package\Ladda alla STG tabeller\STGKundsegment"
-          TopLeft="51.7714345075648,147.564709758264" />
         <EdgeLayout
           Id="Package\Ladda alla STG tabeller.PrecedenceConstraints[Constraint 1]"
           TopLeft="134.92857737079,120.447063160603">
@@ -1377,10 +1439,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="165.6,41.6"
-          Id="Package\Ladda alla STG tabeller\STGDelsegment"
-          TopLeft="50.342863054665,220.870591714391" />
         <EdgeLayout
           Id="Package\Ladda alla STG tabeller.PrecedenceConstraints[Constraint 2]"
           TopLeft="133.857148781115,189.164709758264">
@@ -1403,14 +1461,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="165.6,41.6"
-          Id="Package\Ladda alla STG tabeller\STGArendetyp"
-          TopLeft="267.485723895443,13.5294109110191" />
-        <NodeLayout
-          Size="177.6,41.6"
-          Id="Package\Ladda alla STG tabeller\STGArendeundertyp"
-          TopLeft="266.057152442543,79.4235334764305" />
         <EdgeLayout
           Id="Package\Ladda alla STG tabeller.PrecedenceConstraints[Constraint 3]"
           TopLeft="352.571438168993,55.1294109110191">
@@ -1433,10 +1483,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="132.8,41.6"
-          Id="Package\Ladda alla STG tabeller\STGSubject"
-          TopLeft="289.628581415391,149.129416891118" />
         <EdgeLayout
           Id="Package\Ladda alla STG tabeller.PrecedenceConstraints[Constraint 4]"
           TopLeft="355.442866928967,121.02353347643">
@@ -1459,28 +1505,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="136,41.6"
-          Id="Package\Ladda alla STG tabeller\STGIncident"
-          TopLeft="486.057156189122,16.7176502440629" />
-        <NodeLayout
-          Size="128.8,41.6"
-          Id="Package\Ladda alla STG tabeller\STGOwner"
-          TopLeft="490.34287054782,81.5411806210516" />
         <EdgeLayout
           Id="Package\Ladda alla STG tabeller.PrecedenceConstraints[Constraint 5]"
-          TopLeft="554.400013368471,58.3176502440629">
+          TopLeft="355.216336507005,262.821854792829">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,23.2235303769887"
+              EndConnector="0,25.8453791532548"
               Start="0,0"
-              End="0,15.7235303769887">
+              End="0,18.3453791532548">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.7235303769887" />
+                    End="0,18.3453791532548" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1489,24 +1527,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Ladda alla STG tabeller\STGSystemUser"
-          TopLeft="479.628584651072,153.658828677273" />
         <EdgeLayout
           Id="Package\Ladda alla STG tabeller.PrecedenceConstraints[Constraint 6]"
-          TopLeft="555.385727599446,123.141180621052">
+          TopLeft="357.426540554752,330.267233946084">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,30.5176480562217"
+              EndConnector="0,32.2655472403987"
               Start="0,0"
-              End="0,23.0176480562217">
+              End="0,24.7655472403987">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.0176480562217" />
+                    End="0,24.7655472403987" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1515,19 +1549,101 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="135.2,41.6"
-          Id="Package\Ladda alla STG tabeller\STGAccount"
-          TopLeft="62.4857204043136,299.658830682794" />
-        <NodeLayout
-          Size="133.6,41.6"
-          Id="Package\Ladda alla STG tabeller\STGContact"
-          TopLeft="297.48572440634,298.894124789717" />
+        <EdgeLayout
+          Id="Package\Ladda alla STG tabeller.PrecedenceConstraints[Constraint 7]"
+          TopLeft="353.818377282495,190.729416891118">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.4924379017114"
+              Start="0,0"
+              End="0,22.9924379017114">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.9924379017114" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Ladda alla STG tabeller.PrecedenceConstraints[Constraint 8]"
+          TopLeft="380.161914578426,362.532781186483">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="220.944222010583,-307.055467116709"
+              Start="0,0"
+              End="220.944222010583,-299.555467116709">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-120.731340010104" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-120.731340010104"
+                    Point2="0,-124.731340010104"
+                    Point3="4,-124.731340010104" />
+                  <mssgle:LineSegment
+                    End="216.944222010583,-124.731340010104" />
+                  <mssgle:CubicBezierSegment
+                    Point1="216.944222010583,-124.731340010104"
+                    Point2="220.944222010583,-124.731340010104"
+                    Point3="220.944222010583,-128.731340010104" />
+                  <mssgle:LineSegment
+                    End="220.944222010583,-299.555467116709" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Ladda alla STG tabeller.PrecedenceConstraints[Constraint 9]"
+          TopLeft="622.306136589008,55.4773140697741">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.7551019174362,38.0386565790876"
+              Start="0,0"
+              End="-14.7551019174362,30.5386565790876">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.4824005725409" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.4824005725409"
+                    Point2="0,15.4824005725409"
+                    Point3="-4,15.4824005725409" />
+                  <mssgle:LineSegment
+                    End="-10.7551019174362,15.4824005725409" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.7551019174362,15.4824005725409"
+                    Point2="-14.7551019174362,15.4824005725409"
+                    Point3="-14.7551019174362,19.4824005725409" />
+                  <mssgle:LineSegment
+                    End="-14.7551019174362,30.5386565790876" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="698.4,419.2"
-          Size="698.4,462.4"
+          PanelSize="698.4,459.2"
+          Size="698.4,502.4"
           Id="Package\Ladda alla STG tabeller"
           TopLeft="297.14286220317,187.200002625409" />
         <NodeLayout
@@ -1600,13 +1716,13 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="297.14286220317,418.400002625409">
+          TopLeft="297.14286220317,438.400002625409">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-97.5714328556644,133.894120960995"
+              EndConnector="-97.5714328556643,113.894120960996"
               Start="0,0"
-              End="-90.0714328556644,133.894120960995">
+              End="-90.0714328556643,113.894120960996">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -1617,13 +1733,13 @@
                     Point2="-48.7857164278322,0"
                     Point3="-48.7857164278322,4" />
                   <mssgle:LineSegment
-                    End="-48.7857164278322,129.894120960995" />
+                    End="-48.7857164278322,109.894120960996" />
                   <mssgle:CubicBezierSegment
-                    Point1="-48.7857164278322,129.894120960995"
-                    Point2="-48.7857164278322,133.894120960995"
-                    Point3="-52.7857164278322,133.894120960995" />
+                    Point1="-48.7857164278322,109.894120960996"
+                    Point2="-48.7857164278322,113.894120960996"
+                    Point3="-52.7857164278322,113.894120960996" />
                   <mssgle:LineSegment
-                    End="-90.0714328556644,133.894120960995" />
+                    End="-90.0714328556643,113.894120960996" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
