@@ -1,0 +1,3445 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/28/2016 3:43:43 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WIN-MDNURGQAKC3"
+  DTS:CreatorName="CORP\Administrator"
+  DTS:DTSID="{C2EE64F8-A53B-4C35-8B08-B8285BA33E10}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2150.2"
+  DTS:LocaleID="1053"
+  DTS:ObjectName="Owner_CREATE"
+  DTS:PackageType="5"
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{7B268A25-9F7B-421E-94D4-35C3596DBC0A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="LogOLEDB"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{413F3A0E-33BA-4BD4-B529-E55867AF47DE}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{69C6D9B4-ACF3-4D9F-86AC-E6CBD6EB9AD2}"
+      DTS:ObjectName="ParentPackageExecutionID">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">{A82E5FBD-6395-4935-AB2F-C6EC847EC672}</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{AA4CAD71-A6CD-4853-BD0A-9D24C3741752}"
+      DTS:ObjectName="Parentpackagename">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Saknas</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C81C7E31-13C3-41EE-9B12-12421F04839F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Event">
+      <DTS:VariableValue
+        DTS:DataType="8">Start</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DD2B9D5E-1F2E-4A2D-8470-C4B9EA40C1E8}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::ParentPackageExecutionID]== &quot;156C50F0-51B8-4EF2-BD8C-61FF52F5E722&quot; ? @[System::ExecutionInstanceGUID]  : @[$Package::ParentPackageExecutionID]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ParentPackageExecutionID">
+      <DTS:VariableValue
+        DTS:DataType="8">{A82E5FBD-6395-4935-AB2F-C6EC847EC672}</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CA14B018-E245-48A5-AB2B-DF7210FFC786}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::Parentpackagename]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ParentPackageName">
+      <DTS:VariableValue
+        DTS:DataType="8">Saknas</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0D19EE94-BDFA-4F3C-AE0A-D01E799C084D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsDeleted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{77A1A6AF-62EC-4EE2-8524-45177D9824A6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsInserted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{60D4B80D-970F-4ADA-90A8-AD124FB455D5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsUpdated">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5DC2E784-BEBE-4CDF-B72C-48968D404027}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsUpdated2">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6ABE0325-E62F-4C68-B2FC-5D5AC5847309}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Senastladdatum">
+      <DTS:VariableValue
+        DTS:DataType="7">10/2/2016 1:00:35 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BA658018-676F-40E2-986F-5C0980EACA25}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceSystemID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7F420C54-2123-449F-9C59-F89C61338935}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Sourcetable">
+      <DTS:VariableValue
+        DTS:DataType="8">Account</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B1A2FB2D-B494-4981-9670-C72D3C1889C7}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQL_source_query">
+      <DTS:VariableValue
+        DTS:DataType="8">select * from dbo.Test</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{62298C34-3228-46CF-B719-D6AAD893C31D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Dim.&quot;+@[System::PackageName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Target">
+      <DTS:VariableValue
+        DTS:DataType="8">Dim.Owner_CREATE</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{413F3A0E-33BA-4BD4-B529-E55867AF47DE}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load KbArticle"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0C30010B-8F64-4C05-9F94-E85E50412F51}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load KbArticle"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load KbArticle\Dynamics CRM Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Populate data into Microsoft Dynamics CRM."
+              name="Dynamics CRM Destination"
+              usesDispositions="true"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Destination entity to write data."
+                  expressionType="Notify"
+                  name="DestinationEntity">kbarticle</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to CRM server."
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
+                  expressionType="Notify"
+                  name="RemoveUnresolvableReferences">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether duplicate detection should be enabled when creating or updating CRM records. Duplicate records are determined by the duplicate detection rules and settings defined in Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="EnableDuplicateDetection">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the matching criteria to be used when Upsert action is chosen."
+                  expressionType="Notify"
+                  name="UpsertMatchingCriteria"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
+                  expressionType="Notify"
+                  name="UpsertMatchingFields"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those fields that have no value changes in the target system. "
+                  expressionType="Notify"
+                  name="IgnoreUnchangedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to CRM."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the flag field(s) that are used to track the source of changes. The field(s) will not posted to CRM server unless there are changes to other fields if specified. &quot;Ignore Unchange Fields&quot; option is required in order for the specified flag field(s) to work. "
+                  expressionType="Notify"
+                  name="ChangeFlagFields"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify what action will be taken when multiple matches are found with Upsert action."
+                  expressionType="Notify"
+                  name="HandlingOfMultipleMatches"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
+                <property
+                  dataType="System.String"
+                  description="Workflow to be executed."
+                  expressionType="Notify"
+                  name="Workflow"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of records to be sent to Microsoft Dynamics CRM in each batch (CRM 2011 Update Rollup 12 or later is required if batch size is greater than 1)."
+                  expressionType="Notify"
+                  name="BatchSize">100</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether datetime values should be sent to CRM server in UTC format."
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load KbArticle\Dynamics CRM Destination.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].Columns[Comments]"
+                      cachedDataType="nText"
+                      cachedName="Comments"
+                      externalMetadataColumnId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[comments]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[Comments]" />
+                    <inputColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].Columns[Description]"
+                      cachedDataType="nText"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[description]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].Columns[KeyWords]"
+                      cachedDataType="nText"
+                      cachedName="KeyWords"
+                      externalMetadataColumnId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[keywords]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[KeyWords]" />
+                    <inputColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].Columns[LanguageCode]"
+                      cachedDataType="i4"
+                      cachedName="LanguageCode"
+                      externalMetadataColumnId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[languagecode]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[LanguageCode]" />
+                    <inputColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="Title"
+                      externalMetadataColumnId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[title]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].Columns[VersionNumber]"
+                      cachedDataType="bytes"
+                      cachedLength="8"
+                      cachedName="VersionNumber"
+                      externalMetadataColumnId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[statecode]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[VersionNumber]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[articlexml]"
+                      dataType="nText"
+                      name="articlexml">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[comments]"
+                      dataType="nText"
+                      name="comments">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[createdby]"
+                      dataType="guid"
+                      name="createdby">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[entityimage]"
+                      dataType="image"
+                      name="entityimage">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Virtual</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[importsequencenumber]"
+                      dataType="i4"
+                      name="importsequencenumber">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[kbarticleid]"
+                      dataType="guid"
+                      name="kbarticleid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[kbarticletemplateid]"
+                      dataType="guid"
+                      name="kbarticletemplateid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">kbarticletemplate</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[keywords]"
+                      dataType="nText"
+                      name="keywords">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[languagecode]"
+                      dataType="i4"
+                      name="languagecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                      dataType="dbTimeStamp"
+                      name="overriddencreatedon">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">DateTime</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">State</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[subjectid]"
+                      dataType="guid"
+                      name="subjectid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">subject</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="500"
+                      name="title">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[transactioncurrencyid]"
+                      dataType="guid"
+                      name="transactioncurrencyid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">transactioncurrency</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load KbArticle\Dynamics CRM Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load KbArticle\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load KbArticle\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Load KbArticle\Dynamics CRM Destination.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      name="CrmErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load KbArticle\Dynamics CRM Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load KbArticle\Row Inserted"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Inserted">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RowsInserted</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load KbArticle\Row Inserted.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load KbArticle\Row Inserted.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Load KbArticle\Row Inserted.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load KbArticle\STG_KbArticle"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="STG_KbArticle"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[KbArticle]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load KbArticle\STG_KbArticle.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[KbArticleTemplateIdTitle]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[KbArticleTemplateIdTitle]"
+                      length="500"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[KbArticleTemplateIdTitle]"
+                      name="KbArticleTemplateIdTitle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[EntityImage_URL]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[EntityImage_URL]"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[EntityImage_URL]"
+                      name="EntityImage_URL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[EntityImage]"
+                      dataType="image"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[EntityImage]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[EntityImage]"
+                      name="EntityImage"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[EntityImage_Timestamp]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[EntityImage_Timestamp]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[EntityImage_Timestamp]"
+                      name="EntityImage_Timestamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ModifiedByYomiName]"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ModifiedByYomiName]"
+                      name="ModifiedByYomiName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[CreatedByName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[CreatedByName]"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[CreatedByName]"
+                      name="CreatedByName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfByYomiName]"
+                      name="CreatedOnBehalfByYomiName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfByName]"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfByName]"
+                      name="CreatedOnBehalfByName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[CreatedByYomiName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[CreatedByYomiName]"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[CreatedByYomiName]"
+                      name="CreatedByYomiName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ModifiedByName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ModifiedByName]"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ModifiedByName]"
+                      name="ModifiedByName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfByYomiName]"
+                      name="ModifiedOnBehalfByYomiName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfByName]"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfByName]"
+                      name="ModifiedOnBehalfByName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[OrganizationIdName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[OrganizationIdName]"
+                      length="160"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[OrganizationIdName]"
+                      name="OrganizationIdName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[TransactionCurrencyIdName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[TransactionCurrencyIdName]"
+                      length="100"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[TransactionCurrencyIdName]"
+                      name="TransactionCurrencyIdName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[SubjectIdName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[SubjectIdName]"
+                      length="500"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[SubjectIdName]"
+                      name="SubjectIdName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[KbArticleId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[KbArticleId]"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[KbArticleId]"
+                      name="KbArticleId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[KbArticleTemplateId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[KbArticleTemplateId]"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[KbArticleTemplateId]"
+                      name="KbArticleTemplateId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[OrganizationId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[OrganizationId]"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[OrganizationId]"
+                      name="OrganizationId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[SubjectId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[SubjectId]"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[SubjectId]"
+                      name="SubjectId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ArticleXml]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ArticleXml]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ArticleXml]"
+                      name="ArticleXml"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[Title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      length="500"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[Number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[Number]"
+                      length="100"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[Number]"
+                      name="Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[Content]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[Content]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[Content]"
+                      name="Content"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[Description]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[Comments]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[Comments]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[Comments]"
+                      name="Comments"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[CreatedOn]"
+                      name="CreatedOn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[CreatedBy]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[CreatedBy]"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[CreatedBy]"
+                      name="CreatedBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ModifiedBy]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ModifiedBy]"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ModifiedBy]"
+                      name="ModifiedBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOn]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ModifiedOn]"
+                      name="ModifiedOn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[StateCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[StateCode]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[StateCode]"
+                      name="StateCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[StatusCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[StatusCode]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[StatusCode]"
+                      name="StatusCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[VersionNumber]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[VersionNumber]"
+                      length="8"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[VersionNumber]"
+                      name="VersionNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[KeyWords]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[KeyWords]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[KeyWords]"
+                      name="KeyWords"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ImportSequenceNumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ImportSequenceNumber]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ImportSequenceNumber]"
+                      name="ImportSequenceNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[OverriddenCreatedOn]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[OverriddenCreatedOn]"
+                      name="OverriddenCreatedOn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfBy]"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfBy]"
+                      name="CreatedOnBehalfBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfBy]"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfBy]"
+                      name="ModifiedOnBehalfBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[LanguageCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[LanguageCode]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[LanguageCode]"
+                      name="LanguageCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ExchangeRate]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ExchangeRate]"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[ExchangeRate]"
+                      name="ExchangeRate"
+                      precision="23"
+                      scale="10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[TransactionCurrencyId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[TransactionCurrencyId]"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[TransactionCurrencyId]"
+                      name="TransactionCurrencyId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[EntityImageId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[EntityImageId]"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].Columns[EntityImageId]"
+                      name="EntityImageId"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[KbArticleTemplateIdTitle]"
+                      dataType="wstr"
+                      length="500"
+                      name="KbArticleTemplateIdTitle" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[EntityImage_URL]"
+                      dataType="wstr"
+                      length="200"
+                      name="EntityImage_URL" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[EntityImage]"
+                      dataType="image"
+                      name="EntityImage" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[EntityImage_Timestamp]"
+                      dataType="i8"
+                      name="EntityImage_Timestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[CreatedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ModifiedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[OrganizationIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OrganizationIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[TransactionCurrencyIdName]"
+                      dataType="wstr"
+                      length="100"
+                      name="TransactionCurrencyIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[SubjectIdName]"
+                      dataType="wstr"
+                      length="500"
+                      name="SubjectIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[KbArticleId]"
+                      dataType="wstr"
+                      length="255"
+                      name="KbArticleId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[KbArticleTemplateId]"
+                      dataType="wstr"
+                      length="255"
+                      name="KbArticleTemplateId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[OrganizationId]"
+                      dataType="wstr"
+                      length="255"
+                      name="OrganizationId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[SubjectId]"
+                      dataType="wstr"
+                      length="255"
+                      name="SubjectId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ArticleXml]"
+                      dataType="nText"
+                      name="ArticleXml" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="500"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[Number]"
+                      dataType="wstr"
+                      length="100"
+                      name="Number" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[Content]"
+                      dataType="nText"
+                      name="Content" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      dataType="nText"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[Comments]"
+                      dataType="nText"
+                      name="Comments" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="CreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[CreatedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ModifiedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[StateCode]"
+                      dataType="i4"
+                      name="StateCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[StatusCode]"
+                      dataType="i4"
+                      name="StatusCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[KeyWords]"
+                      dataType="nText"
+                      name="KeyWords" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ImportSequenceNumber]"
+                      dataType="i4"
+                      name="ImportSequenceNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="OverriddenCreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[LanguageCode]"
+                      dataType="i4"
+                      name="LanguageCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[ExchangeRate]"
+                      dataType="numeric"
+                      name="ExchangeRate"
+                      precision="23"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[TransactionCurrencyId]"
+                      dataType="wstr"
+                      length="255"
+                      name="TransactionCurrencyId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output].ExternalColumns[EntityImageId]"
+                      dataType="wstr"
+                      length="255"
+                      name="EntityImageId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[KbArticleTemplateIdTitle]"
+                      dataType="wstr"
+                      length="500"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[KbArticleTemplateIdTitle]"
+                      name="KbArticleTemplateIdTitle" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[EntityImage_URL]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[EntityImage_URL]"
+                      name="EntityImage_URL" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[EntityImage]"
+                      dataType="image"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[EntityImage]"
+                      name="EntityImage" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[EntityImage_Timestamp]"
+                      dataType="i8"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[EntityImage_Timestamp]"
+                      name="EntityImage_Timestamp" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ModifiedByYomiName]"
+                      name="ModifiedByYomiName" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[CreatedByName]"
+                      name="CreatedByName" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfByYomiName]"
+                      name="CreatedOnBehalfByYomiName" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfByName]"
+                      name="CreatedOnBehalfByName" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[CreatedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[CreatedByYomiName]"
+                      name="CreatedByYomiName" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ModifiedByName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ModifiedByName]"
+                      name="ModifiedByName" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfByYomiName]"
+                      name="ModifiedOnBehalfByYomiName" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfByName]"
+                      name="ModifiedOnBehalfByName" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[OrganizationIdName]"
+                      dataType="wstr"
+                      length="160"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[OrganizationIdName]"
+                      name="OrganizationIdName" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[TransactionCurrencyIdName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[TransactionCurrencyIdName]"
+                      name="TransactionCurrencyIdName" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[SubjectIdName]"
+                      dataType="wstr"
+                      length="500"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[SubjectIdName]"
+                      name="SubjectIdName" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[KbArticleId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[KbArticleId]"
+                      name="KbArticleId" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[KbArticleTemplateId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[KbArticleTemplateId]"
+                      name="KbArticleTemplateId" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[OrganizationId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[OrganizationId]"
+                      name="OrganizationId" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[SubjectId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[SubjectId]"
+                      name="SubjectId" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ArticleXml]"
+                      dataType="nText"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ArticleXml]"
+                      name="ArticleXml" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      dataType="wstr"
+                      length="500"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[Number]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[Number]"
+                      name="Number" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[Content]"
+                      dataType="nText"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[Content]"
+                      name="Content" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      dataType="nText"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[Comments]"
+                      dataType="nText"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[Comments]"
+                      name="Comments" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
+                      name="CreatedOn" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[CreatedBy]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[CreatedBy]"
+                      name="CreatedBy" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ModifiedBy]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ModifiedBy]"
+                      name="ModifiedBy" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ModifiedOn]"
+                      name="ModifiedOn" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[StateCode]"
+                      dataType="i4"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[StateCode]"
+                      name="StateCode" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[StatusCode]"
+                      dataType="i4"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[StatusCode]"
+                      name="StatusCode" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[VersionNumber]"
+                      name="VersionNumber" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[KeyWords]"
+                      dataType="nText"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[KeyWords]"
+                      name="KeyWords" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ImportSequenceNumber]"
+                      dataType="i4"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ImportSequenceNumber]"
+                      name="ImportSequenceNumber" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[OverriddenCreatedOn]"
+                      name="OverriddenCreatedOn" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfBy]"
+                      name="CreatedOnBehalfBy" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfBy]"
+                      name="ModifiedOnBehalfBy" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[LanguageCode]"
+                      dataType="i4"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[LanguageCode]"
+                      name="LanguageCode" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ExchangeRate]"
+                      dataType="numeric"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ExchangeRate]"
+                      name="ExchangeRate"
+                      precision="23"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[TransactionCurrencyId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[TransactionCurrencyId]"
+                      name="TransactionCurrencyId" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[EntityImageId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[EntityImageId]"
+                      name="EntityImageId" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load KbArticle\SystemUser_Error"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SystemUser_Error"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SystemUser_Error]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load KbArticle\SystemUser_Error.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Load KbArticle\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Load KbArticle\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorColumn]" />
+                    <inputColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].Columns[CrmErrorMessage]"
+                      cachedDataType="wstr"
+                      cachedLength="2048"
+                      cachedName="CrmErrorMessage"
+                      externalMetadataColumnId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      lineageId="Package\Load KbArticle\Dynamics CRM Destination.Outputs[Error Output].Columns[CrmErrorMessage]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryId]"
+                      dataType="wstr"
+                      length="255"
+                      name="TerritoryId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="CreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeRate]"
+                      dataType="numeric"
+                      name="ExchangeRate"
+                      precision="23"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[UTCConversionTimeZoneCode]"
+                      dataType="i4"
+                      name="UTCConversionTimeZoneCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="OverriddenCreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[TimeZoneRuleVersionNumber]"
+                      dataType="i4"
+                      name="TimeZoneRuleVersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
+                      dataType="i4"
+                      name="ImportSequenceNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[TransactionCurrencyId]"
+                      dataType="wstr"
+                      length="255"
+                      name="TransactionCurrencyId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[StageId]"
+                      dataType="wstr"
+                      length="255"
+                      name="StageId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ProcessId]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProcessId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[EntityImageId]"
+                      dataType="wstr"
+                      length="255"
+                      name="EntityImageId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[TraversedPath]"
+                      dataType="wstr"
+                      length="1250"
+                      name="TraversedPath" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="4000"
+                      name="CrmErrorMessage" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryIdName]"
+                      dataType="wstr"
+                      length="200"
+                      name="TerritoryIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[EntityImage_Timestamp]"
+                      dataType="i8"
+                      name="EntityImage_Timestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[TransactionCurrencyIdName]"
+                      dataType="wstr"
+                      length="100"
+                      name="TransactionCurrencyIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[EntityImage_URL]"
+                      dataType="wstr"
+                      length="200"
+                      name="EntityImage_URL" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[EntityImage]"
+                      dataType="image"
+                      name="EntityImage" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_AddressTypeCode]"
+                      dataType="i4"
+                      name="Address1_AddressTypeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_City]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address1_City" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_Composite]"
+                      dataType="nText"
+                      name="Address1_Composite" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_Country]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address1_Country" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_County]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address1_County" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_AddressId]"
+                      dataType="wstr"
+                      length="255"
+                      name="Address1_AddressId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_Fax]"
+                      dataType="wstr"
+                      length="64"
+                      name="Address1_Fax" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_Latitude]"
+                      dataType="r8"
+                      name="Address1_Latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_Line1]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address1_Line1" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_Line2]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address1_Line2" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_Line3]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address1_Line3" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_Longitude]"
+                      dataType="r8"
+                      name="Address1_Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_Name]"
+                      dataType="wstr"
+                      length="200"
+                      name="Address1_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_PostalCode]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address1_PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_PostOfficeBox]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address1_PostOfficeBox" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_ShippingMethodCode]"
+                      dataType="i4"
+                      name="Address1_ShippingMethodCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_StateOrProvince]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address1_StateOrProvince" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_Telephone1]"
+                      dataType="wstr"
+                      length="64"
+                      name="Address1_Telephone1" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_Telephone2]"
+                      dataType="wstr"
+                      length="50"
+                      name="Address1_Telephone2" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_Telephone3]"
+                      dataType="wstr"
+                      length="50"
+                      name="Address1_Telephone3" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_UPSZone]"
+                      dataType="wstr"
+                      length="4"
+                      name="Address1_UPSZone" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address1_UTCOffset]"
+                      dataType="i4"
+                      name="Address1_UTCOffset" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_AddressTypeCode]"
+                      dataType="i4"
+                      name="Address2_AddressTypeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_City]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address2_City" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_Composite]"
+                      dataType="nText"
+                      name="Address2_Composite" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_Country]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address2_Country" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_County]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address2_County" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_AddressId]"
+                      dataType="wstr"
+                      length="255"
+                      name="Address2_AddressId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_Fax]"
+                      dataType="wstr"
+                      length="64"
+                      name="Address2_Fax" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_Latitude]"
+                      dataType="r8"
+                      name="Address2_Latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_Line1]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address2_Line1" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_Line2]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address2_Line2" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_Line3]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address2_Line3" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_Longitude]"
+                      dataType="r8"
+                      name="Address2_Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_Name]"
+                      dataType="wstr"
+                      length="200"
+                      name="Address2_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_PostalCode]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address2_PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_PostOfficeBox]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address2_PostOfficeBox" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_ShippingMethodCode]"
+                      dataType="i4"
+                      name="Address2_ShippingMethodCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_StateOrProvince]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Address2_StateOrProvince" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_Telephone1]"
+                      dataType="wstr"
+                      length="64"
+                      name="Address2_Telephone1" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_Telephone2]"
+                      dataType="wstr"
+                      length="50"
+                      name="Address2_Telephone2" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_Telephone3]"
+                      dataType="wstr"
+                      length="50"
+                      name="Address2_Telephone3" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_UPSZone]"
+                      dataType="wstr"
+                      length="4"
+                      name="Address2_UPSZone" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Address2_UTCOffset]"
+                      dataType="i4"
+                      name="Address2_UTCOffset" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[BusinessUnitIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="BusinessUnitIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ParentSystemUserIdName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ParentSystemUserIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[DefaultMailboxName]"
+                      dataType="wstr"
+                      length="200"
+                      name="DefaultMailboxName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[SiteIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="SiteIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OrganizationIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[QueueIdName]"
+                      dataType="wstr"
+                      length="200"
+                      name="QueueIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ParentSystemUserIdYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ParentSystemUserIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[PositionIdName]"
+                      dataType="wstr"
+                      length="100"
+                      name="PositionIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[SystemUserId]"
+                      dataType="wstr"
+                      length="255"
+                      name="SystemUserId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationId]"
+                      dataType="wstr"
+                      length="255"
+                      name="OrganizationId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[BusinessUnitId]"
+                      dataType="wstr"
+                      length="255"
+                      name="BusinessUnitId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ParentSystemUserId]"
+                      dataType="wstr"
+                      length="255"
+                      name="ParentSystemUserId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="64"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Salutation]"
+                      dataType="wstr"
+                      length="20"
+                      name="Salutation" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[MiddleName]"
+                      dataType="wstr"
+                      length="50"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="64"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[PersonalEMailAddress]"
+                      dataType="wstr"
+                      length="100"
+                      name="PersonalEMailAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="200"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[NickName]"
+                      dataType="wstr"
+                      length="50"
+                      name="NickName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="128"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[InternalEMailAddress]"
+                      dataType="wstr"
+                      length="100"
+                      name="InternalEMailAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[JobTitle]"
+                      dataType="wstr"
+                      length="100"
+                      name="JobTitle" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[MobileAlertEMail]"
+                      dataType="wstr"
+                      length="100"
+                      name="MobileAlertEMail" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[PreferredEmailCode]"
+                      dataType="i4"
+                      name="PreferredEmailCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[HomePhone]"
+                      dataType="wstr"
+                      length="50"
+                      name="HomePhone" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[MobilePhone]"
+                      dataType="wstr"
+                      length="64"
+                      name="MobilePhone" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[PreferredPhoneCode]"
+                      dataType="i4"
+                      name="PreferredPhoneCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[PreferredAddressCode]"
+                      dataType="i4"
+                      name="PreferredAddressCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[PhotoUrl]"
+                      dataType="wstr"
+                      length="200"
+                      name="PhotoUrl" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[DomainName]"
+                      dataType="wstr"
+                      length="1024"
+                      name="DomainName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[PassportLo]"
+                      dataType="i4"
+                      name="PassportLo" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[PassportHi]"
+                      dataType="i4"
+                      name="PassportHi" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[DisabledReason]"
+                      dataType="wstr"
+                      length="500"
+                      name="DisabledReason" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeId]"
+                      dataType="wstr"
+                      length="100"
+                      name="EmployeeId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[IsDisabled]"
+                      dataType="bool"
+                      name="IsDisabled" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[GovernmentId]"
+                      dataType="wstr"
+                      length="100"
+                      name="GovernmentId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[Skills]"
+                      dataType="wstr"
+                      length="100"
+                      name="Skills" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[DisplayInServiceViews]"
+                      dataType="bool"
+                      name="DisplayInServiceViews" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[CalendarId]"
+                      dataType="wstr"
+                      length="255"
+                      name="CalendarId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ActiveDirectoryGuid]"
+                      dataType="wstr"
+                      length="255"
+                      name="ActiveDirectoryGuid" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[SetupUser]"
+                      dataType="bool"
+                      name="SetupUser" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[SiteId]"
+                      dataType="wstr"
+                      length="255"
+                      name="SiteId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[WindowsLiveID]"
+                      dataType="wstr"
+                      length="1024"
+                      name="WindowsLiveID" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[IncomingEmailDeliveryMethod]"
+                      dataType="i4"
+                      name="IncomingEmailDeliveryMethod" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[OutgoingEmailDeliveryMethod]"
+                      dataType="i4"
+                      name="OutgoingEmailDeliveryMethod" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[AccessMode]"
+                      dataType="i4"
+                      name="AccessMode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[InviteStatusCode]"
+                      dataType="i4"
+                      name="InviteStatusCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[IsActiveDirectoryUser]"
+                      dataType="bool"
+                      name="IsActiveDirectoryUser" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[YomiFullName]"
+                      dataType="wstr"
+                      length="200"
+                      name="YomiFullName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[YomiLastName]"
+                      dataType="wstr"
+                      length="64"
+                      name="YomiLastName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[YomiMiddleName]"
+                      dataType="wstr"
+                      length="50"
+                      name="YomiMiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[YomiFirstName]"
+                      dataType="wstr"
+                      length="64"
+                      name="YomiFirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[IsIntegrationUser]"
+                      dataType="bool"
+                      name="IsIntegrationUser" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[DefaultFiltersPopulated]"
+                      dataType="bool"
+                      name="DefaultFiltersPopulated" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[QueueId]"
+                      dataType="wstr"
+                      length="255"
+                      name="QueueId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[EmailRouterAccessApproval]"
+                      dataType="i4"
+                      name="EmailRouterAccessApproval" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[CALType]"
+                      dataType="i4"
+                      name="CALType" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[IsLicensed]"
+                      dataType="bool"
+                      name="IsLicensed" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[IsSyncWithDirectory]"
+                      dataType="bool"
+                      name="IsSyncWithDirectory" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[YammerEmailAddress]"
+                      dataType="wstr"
+                      length="100"
+                      name="YammerEmailAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[YammerUserId]"
+                      dataType="wstr"
+                      length="64"
+                      name="YammerUserId" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[DefaultMailbox]"
+                      dataType="wstr"
+                      length="255"
+                      name="DefaultMailbox" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[UserLicenseType]"
+                      dataType="i4"
+                      name="UserLicenseType" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[IsEmailAddressApprovedByO365Admin]"
+                      dataType="bool"
+                      name="IsEmailAddressApprovedByO365Admin" />
+                    <externalMetadataColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[PositionId]"
+                      dataType="wstr"
+                      length="255"
+                      name="PositionId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load KbArticle\SystemUser_Error.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load KbArticle\SystemUser_Error.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load KbArticle\SystemUser_Error.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load KbArticle\SystemUser_Error.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load KbArticle.Paths[Error Output]"
+              endId="Package\Load KbArticle\SystemUser_Error.Inputs[OLE DB Destination Input]"
+              name="Error Output"
+              startId="Package\Load KbArticle\Dynamics CRM Destination.Outputs[Error Output]" />
+            <path
+              refId="Package\Load KbArticle.Paths[OLE DB Source Output]"
+              endId="Package\Load KbArticle\Row Inserted.Inputs[Row Count Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\Load KbArticle\STG_KbArticle.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load KbArticle.Paths[Row Count Output 1]"
+              endId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input]"
+              name="Row Count Output 1"
+              startId="Package\Load KbArticle\Row Inserted.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LogPackageEnd"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{ECDB3786-B713-465C-AA5E-2378078E4A7D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LogPackageEnd"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="ExecuteSQLExecutingQuery"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnExecStatusChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnProgress"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnQueryCancel"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnTaskFailed"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnWarning"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A3324C0F-E9EB-404C-85EA-9F2680BB5C0A}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="InsertLogPackage" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Eventname"
+            SQLTask:DtsVariableName="User::Event"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packagename"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packageid"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Loggingtime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="135"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Mainpackagename"
+            SQLTask:DtsVariableName="User::ParentPackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsinserted"
+            SQLTask:DtsVariableName="User::RowsInserted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsupdated"
+            SQLTask:DtsVariableName="User::RowsUpdated"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsdeleted"
+            SQLTask:DtsVariableName="User::RowsDeleted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Username"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Executionid"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="User::ParentPackageExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LogPackageStart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{732A0F73-74E5-4331-975F-4F2F21151187}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LogPackageStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="ExecuteSQLExecutingQuery"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnExecStatusChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnProgress"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnQueryCancel"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnTaskFailed"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnWarning"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A3324C0F-E9EB-404C-85EA-9F2680BB5C0A}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="InsertLogPackage" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Eventname"
+            SQLTask:DtsVariableName="User::Event"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packagename"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packageid"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Loggingtime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="135"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Mainpackagename"
+            SQLTask:DtsVariableName="User::ParentPackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsinserted"
+            SQLTask:DtsVariableName="User::RowsInserted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsupdated"
+            SQLTask:DtsVariableName="User::RowsUpdated"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsdeleted"
+            SQLTask:DtsVariableName="User::RowsDeleted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Username"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Executionid"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="User::ParentPackageExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\New LoggStatus"
+      DTS:CreationName="Microsoft.ExpressionTask"
+      DTS:Description="Expression Task"
+      DTS:DTSID="{158E394D-D15A-488C-AF8A-B2ED631C47FB}"
+      DTS:ExecutableType="Microsoft.ExpressionTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="New LoggStatus"
+      DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExpressionTask
+          Expression="@[User::Event] = &quot;End&quot;" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate rows in ERROR table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{AEA30355-7080-42E4-9A60-0841CCE1DE68}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate rows in ERROR table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Owner_Error" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{31A42638-12C5-4F5B-AA7E-D1C378D21826}"
+      DTS:From="Package\LogPackageStart"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\New LoggStatus" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D89A5EA6-F752-4A79-B151-EE46B656F48D}"
+      DTS:From="Package\Load KbArticle"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{0CCB148B-ABAD-4387-8EC8-0F4CC39A588D}"
+      DTS:From="Package\New LoggStatus"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Truncate rows in ERROR table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{CFE73EA4-6784-49F0-9D74-0B4D15E5262A}"
+      DTS:From="Package\New LoggStatus"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{6FFB77BF-CBFF-418A-A4F7-90D2C18B5207}"
+      DTS:From="Package\Truncate rows in ERROR table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Load KbArticle" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{3503AFE8-F3D3-4C82-AB72-EEC30CF6565C}"
+      DTS:From="Package\Truncate rows in ERROR table"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="145.6,41.6"
+          Id="Package\Load KbArticle"
+          TopLeft="342.857148695965,231.858826781144" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\LogPackageEnd"
+          TopLeft="69.4285725768733,297.035296768796" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\LogPackageStart"
+          TopLeft="58.6428580478746,36.0882357231061" />
+        <NodeLayout
+          Size="143.2,41.6"
+          Id="Package\New LoggStatus"
+          TopLeft="64.0000010899137,119.905884034576" />
+        <NodeLayout
+          Size="239.2,41.6"
+          Id="Package\Truncate rows in ERROR table"
+          TopLeft="287.428576323451,121.1294134635" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="137.721429568894,77.6882357231061">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.21764831147"
+              Start="0,0"
+              End="0,34.71764831147">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.71764831147" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="415.657148695965,273.458826781144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-234.228576119092,23.5764699876523"
+              Start="0,0"
+              End="-234.228576119092,16.0764699876523">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.4466527505308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.4466527505308"
+                    Point2="0,15.4466527505308"
+                    Point3="-4,15.4466527505308" />
+                  <mssgle:LineSegment
+                    End="-230.228576119092,15.4466527505308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-230.228576119092,15.4466527505308"
+                    Point2="-234.228576119092,15.4466527505308"
+                    Point3="-234.228576119092,19.4466527505308" />
+                  <mssgle:LineSegment
+                    End="-234.228576119092,16.0764699876523" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-142.418741184546,20.4466527505308,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="207.200001089914,141.317648749038">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="80.2285752335373,0"
+              Start="0,0"
+              End="72.7285752335373,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="72.7285752335373,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="135.600001089914,161.505884034576">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.1714285130404,135.52941273422"
+              Start="0,0"
+              End="-14.1714285130404,128.02941273422">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.4705888109431" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,76.4705888109431"
+                    Point2="0,80.4705888109431"
+                    Point3="-4,80.4705888109431" />
+                  <mssgle:LineSegment
+                    End="-10.1714285130404,80.4705888109431" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.1714285130404,80.4705888109431"
+                    Point2="-14.1714285130404,80.4705888109431"
+                    Point3="-14.1714285130404,84.4705888109431" />
+                  <mssgle:LineSegment
+                    End="-14.1714285130404,128.02941273422" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-22.3270619127702,85.4705888109431,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="445.561909656784,162.7294134635">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-29.9047609608192,69.1294133176436"
+              Start="0,0"
+              End="-29.9047609608192,61.6294133176436">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.9273643170281" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.9273643170281"
+                    Point2="0,27.9273643170281"
+                    Point3="-4,27.9273643170281" />
+                  <mssgle:LineSegment
+                    End="-25.9047609608192,27.9273643170281" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-25.9047609608192,27.9273643170281"
+                    Point2="-29.9047609608192,27.9273643170281"
+                    Point3="-29.9047609608192,31.9273643170281" />
+                  <mssgle:LineSegment
+                    End="-29.9047609608192,61.6294133176436" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="368.495242990118,162.7294134635">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-223.066670413244,134.305883305296"
+              Start="0,0"
+              End="-223.066670413244,126.805883305296">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.2577920595481" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,50.2577920595481"
+                    Point2="0,54.2577920595481"
+                    Point3="-4,54.2577920595481" />
+                  <mssgle:LineSegment
+                    End="-219.066670413244,54.2577920595481" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-219.066670413244,54.2577920595481"
+                    Point2="-223.066670413244,54.2577920595481"
+                    Point3="-223.066670413244,58.2577920595481" />
+                  <mssgle:LineSegment
+                    End="-223.066670413244,126.805883305296" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-126.774682862872,59.2577920595481,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load KbArticle">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="204,41.6"
+          Id="Package\Load KbArticle\Dynamics CRM Destination"
+          TopLeft="240.571432804575,204.941179344811" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Load KbArticle\Row Inserted"
+          TopLeft="267.428575846613,118.682354605651" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Load KbArticle\SystemUser_Error"
+          TopLeft="265.714290239374,311.10588534728" />
+        <EdgeLayout
+          Id="Package\Load KbArticle.Paths[Row Count Output 1]"
+          TopLeft="340.400004325594,160.282354605651">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.65882473916"
+              Start="0,0"
+              End="0,37.15882473916">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.15882473916" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\Load KbArticle\STG_KbArticle"
+          TopLeft="269.714290307493,42.0705884326288" />
+        <EdgeLayout
+          Id="Package\Load KbArticle.Paths[Error Output]"
+          TopLeft="344.942861521974,246.541179344811">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.564706002469"
+              Start="0,0"
+              End="0,57.064706002469">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.064706002469" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.33638671875,22.8155561262345,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load KbArticle.Paths[OLE DB Source Output]"
+          TopLeft="340.171433077053,83.6705884326288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.0117661730226"
+              Start="0,0"
+              End="0,27.5117661730226">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5117661730226" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load KbArticle\STG_KbArticle">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load KbArticle\SystemUser_Error">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
