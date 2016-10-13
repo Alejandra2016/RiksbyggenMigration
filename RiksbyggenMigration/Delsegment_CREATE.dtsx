@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Delsegment_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{073F5112-6CE0-49A6-83E4-4BD3106DABE8}">
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{AE10DB79-9EAF-4B52-BFB7-F47E24F8567F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -1504,20 +1504,20 @@
           </components>
           <paths>
             <path
+              refId="Package\Load Delsegment.Paths[Default Output]"
+              endId="Package\Load Delsegment\Row Inserted.Inputs[Row Count Input 1]"
+              name="Default Output"
+              startId="Package\Load Delsegment\Dynamics CRM Destination.Outputs[Default Output]" />
+            <path
               refId="Package\Load Delsegment.Paths[Error Output]"
               endId="Package\Load Delsegment\Delsegment_Error.Inputs[OLE DB Destination Input]"
               name="Error Output"
               startId="Package\Load Delsegment\Dynamics CRM Destination.Outputs[Error Output]" />
             <path
               refId="Package\Load Delsegment.Paths[OLE DB Source Output]"
-              endId="Package\Load Delsegment\Row Inserted.Inputs[Row Count Input 1]"
+              endId="Package\Load Delsegment\Dynamics CRM Destination.Inputs[Input]"
               name="OLE DB Source Output"
               startId="Package\Load Delsegment\STG_Delsegment.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Load Delsegment.Paths[Row Count Output 1]"
-              endId="Package\Load Delsegment\Dynamics CRM Destination.Inputs[Input]"
-              name="Row Count Output 1"
-              startId="Package\Load Delsegment\Row Inserted.Outputs[Row Count Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2485,99 +2485,111 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="141.6,41.6"
-          Id="Package\Load Delsegment\Row Inserted"
-          TopLeft="269.714290171253,124.188237035811" />
-        <NodeLayout
           Size="159.2,41.6"
           Id="Package\Load Delsegment\STG_Delsegment"
           TopLeft="260.857147265454,30.0941181532652" />
         <NodeLayout
           Size="204,41.6"
           Id="Package\Load Delsegment\Dynamics CRM Destination"
-          TopLeft="248.571432940815,224.517650207599" />
+          TopLeft="233.142861249497,139.482354897364" />
         <NodeLayout
           Size="163.2,41.6"
           Id="Package\Load Delsegment\Delsegment_Error"
-          TopLeft="271.428576050972,330.964710524009" />
-        <EdgeLayout
-          Id="Package\Load Delsegment.Paths[Row Count Output 1]"
-          TopLeft="340.514290171253,165.788237035811">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="10.0571427695615,58.7294131717887"
-              Start="0,0"
-              End="10.0571427695615,51.2294131717887">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.3647065858943" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.3647065858943"
-                    Point2="0,29.3647065858943"
-                    Point3="4,29.3647065858943" />
-                  <mssgle:LineSegment
-                    End="6.05714276956149,29.3647065858943" />
-                  <mssgle:CubicBezierSegment
-                    Point1="6.05714276956149,29.3647065858943"
-                    Point2="10.0571427695615,29.3647065858943"
-                    Point3="10.0571427695615,33.3647065858943" />
-                  <mssgle:LineSegment
-                    End="10.0571427695615,51.2294131717887" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Delsegment.Paths[OLE DB Source Output]"
-          TopLeft="340.485718718354,71.6941181532652">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,52.4941188825458"
-              Start="0,0"
-              End="0,44.9941188825458">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.9941188825458" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="350.857148832204,258.776474217479" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Load Delsegment\Row Inserted"
+          TopLeft="178.857145766822,260.000003646402" />
         <EdgeLayout
           Id="Package\Load Delsegment.Paths[Error Output]"
-          TopLeft="351.800004495894,266.117650207599">
+          TopLeft="367.809527916163,181.082354897364">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,64.8470603164095"
+              EndConnector="64.6476209160408,77.6941193201146"
               Start="0,0"
-              End="0,57.3470603164095">
+              End="64.6476209160408,70.1941193201146">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.3470603164095" />
+                    End="0,27.4404218260386" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.4404218260386"
+                    Point2="0,31.4404218260386"
+                    Point3="4,31.4404218260386" />
+                  <mssgle:LineSegment
+                    End="60.6476209160408,31.4404218260386" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60.6476209160408,31.4404218260386"
+                    Point2="64.6476209160408,31.4404218260386"
+                    Point3="64.6476209160408,35.4404218260386" />
+                  <mssgle:LineSegment
+                    End="64.6476209160408,70.1941193201146" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-28.33638671875,22.9567332832048,56.6727734375,11.43359375"
+              BoundingBox="3.98742373927037,36.4404218260386,56.6727734375,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Delsegment.Paths[OLE DB Source Output]"
+          TopLeft="337.800004257475,71.6941181532652">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67.7882367440988"
+              Start="0,0"
+              End="0,60.2882367440988">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.2882367440988" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Delsegment.Paths[Default Output]"
+          TopLeft="302.47619458283,181.082354897364">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-52.8190488160076,78.9176487490381"
+              Start="0,0"
+              End="-52.8190488160076,71.4176487490381">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.9355465754862" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.9355465754862"
+                    Point2="0,31.9355465754862"
+                    Point3="-4,31.9355465754862" />
+                  <mssgle:LineSegment
+                    End="-48.8190488160076,31.9355465754862" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-48.8190488160076,31.9355465754862"
+                    Point2="-52.8190488160076,31.9355465754862"
+                    Point3="-52.8190488160076,35.9355465754862" />
+                  <mssgle:LineSegment
+                    End="-52.8190488160076,71.4176487490381" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

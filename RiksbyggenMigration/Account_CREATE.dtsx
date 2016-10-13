@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Account_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="37"
-  DTS:VersionGUID="{9EBC263C-0091-4ACD-9095-5F7B8B8BF2A3}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{D32EE32D-75F3-4130-BE08-8853E4F3DDD6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -8274,20 +8274,20 @@
           </components>
           <paths>
             <path
+              refId="Package\Load Account.Paths[Default Output]"
+              endId="Package\Load Account\Row Inserted.Inputs[Row Count Input 1]"
+              name="Default Output"
+              startId="Package\Load Account\Dynamics CRM Destination.Outputs[Default Output]" />
+            <path
               refId="Package\Load Account.Paths[Error Output]"
               endId="Package\Load Account\Account.Inputs[OLE DB Destination Input]"
               name="Error Output"
               startId="Package\Load Account\Dynamics CRM Destination.Outputs[Error Output]" />
             <path
               refId="Package\Load Account.Paths[OLE DB Source Output]"
-              endId="Package\Load Account\Row Inserted.Inputs[Row Count Input 1]"
+              endId="Package\Load Account\Dynamics CRM Destination.Inputs[Input]"
               name="OLE DB Source Output"
               startId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Load Account.Paths[Row Count Output 1]"
-              endId="Package\Load Account\Dynamics CRM Destination.Inputs[Input]"
-              name="Row Count Output 1"
-              startId="Package\Load Account\Row Inserted.Outputs[Row Count Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -9321,101 +9321,125 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="140.8,41.6"
-          Id="Package\Load Account\STG_Account"
-          TopLeft="270.571433145173,30.0941181532652" />
-        <NodeLayout
           Size="141.6,41.6"
           Id="Package\Load Account\Row Inserted"
-          TopLeft="276.571433145172,133.976472467204" />
+          TopLeft="201.142859274027,320.564710378151" />
         <NodeLayout
           Size="116,41.6"
           Id="Package\Load Account\Account"
-          TopLeft="287.428576323451,324.847063379387" />
+          TopLeft="356.000004904611,320.564710378152" />
         <NodeLayout
           Size="204,41.6"
           Id="Package\Load Account\Dynamics CRM Destination"
-          TopLeft="248.000004359654,221.458826635289" />
-        <EdgeLayout
-          Id="Package\Load Account.Paths[Row Count Output 1]"
-          TopLeft="348.685718752413,175.576472467204">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45.8823541680844"
-              Start="0,0"
-              End="0,38.3823541680844">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.3823541680844" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Account.Paths[OLE DB Source Output]"
-          TopLeft="344.171433145173,71.6941181532652">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,62.2823543139388"
-              Start="0,0"
-              End="0,54.7823543139388">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.7823543139388" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="241.714289966895,167.01176704816" />
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\Load Account\STG_Account"
+          TopLeft="270.571433145173,30.0941181532652" />
         <EdgeLayout
           Id="Package\Load Account.Paths[Error Output]"
-          TopLeft="347.714290341553,263.058826635289">
+          TopLeft="376.380956633561,208.61176704816">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,61.788236744098"
+              EndConnector="37.6190482710497,111.952943329992"
               Start="0,0"
-              End="0,54.288236744098">
+              End="37.6190482710497,104.452943329992">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,54.288236744098" />
+                    End="0,41.3039148105805" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.3039148105805"
+                    Point2="0,45.3039148105805"
+                    Point3="4,45.3039148105805" />
+                  <mssgle:LineSegment
+                    End="33.6190482710497,45.3039148105805" />
+                  <mssgle:CubicBezierSegment
+                    Point1="33.6190482710497,45.3039148105805"
+                    Point2="37.6190482710497,45.3039148105805"
+                    Point3="37.6190482710497,49.3039148105805" />
+                  <mssgle:LineSegment
+                    End="37.6190482710497,104.452943329992" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-28.33638671875,21.427321497049,56.6727734375,11.43359375"
+              BoundingBox="-9.52686258322516,50.3039148105805,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
-          Text="OBS!! MigrationId --&gt; rik_Idnummer&#xD;&#xA;måste vara char (18)"
+          Text="OBS!! MigrationId --&gt; rik_Idnummer&#xA;måste vara char (18)"
           ParentId="Package\Load Account"
           FontInfo="{assembly:Null}"
-          Size="220.8,60"
+          Size="220.8,56"
           Id="73cc113c-045d-4732-a456-2d74fe2116ee"
-          TopLeft="465.142865064193,219.01176777744" />
+          TopLeft="457.142864927954,163.341178761387" />
+        <EdgeLayout
+          Id="Package\Load Account.Paths[OLE DB Source Output]"
+          TopLeft="342.342861556034,71.6941181532652">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,95.3176488948949"
+              Start="0,0"
+              End="0,87.8176488948949">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.8176488948949" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Account.Paths[Default Output]"
+          TopLeft="311.047623300228,208.61176704816">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-39.1047640262014,111.952943329991"
+              Start="0,0"
+              End="-39.1047640262014,104.452943329991">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.3039148105801" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.3039148105801"
+                    Point2="0,45.3039148105801"
+                    Point3="-4,45.3039148105801" />
+                  <mssgle:LineSegment
+                    End="-35.1047640262014,45.3039148105801" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-35.1047640262014,45.3039148105801"
+                    Point2="-39.1047640262014,45.3039148105801"
+                    Point3="-39.1047640262014,49.3039148105801" />
+                  <mssgle:LineSegment
+                    End="-39.1047640262014,104.452943329991" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Account\STG_Account">
+    design-time-name="Package\Load Account\Account">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9428,7 +9452,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Account\Account">
+    design-time-name="Package\Load Account\STG_Account">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

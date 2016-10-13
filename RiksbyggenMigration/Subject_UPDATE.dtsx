@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Subject_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{ABEE949B-0CA8-494F-BC07-7944AC98E9BD}">
+  DTS:VersionBuild="54"
+  DTS:VersionGUID="{012F3F9D-BF92-46E4-8F9C-730BD1B0F079}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -238,7 +238,8 @@
               contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
               description="Populate data into Microsoft Dynamics CRM."
               name="Dynamics CRM Destination"
-              usesDispositions="true">
+              usesDispositions="true"
+              version="3">
               <properties>
                 <property
                   dataType="System.String"
@@ -486,7 +487,8 @@
               contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
               description="Extract data from Microsoft Dynamics CRM."
               name="Dynamics CRM Source"
-              usesDispositions="true">
+              usesDispositions="true"
+              version="2">
               <properties>
                 <property
                   dataType="System.Int32"
@@ -518,7 +520,8 @@
                   dataType="System.Null"
                   description="Specifies the output timezone for CRM datetime fields."
                   expressionType="Notify"
-                  name="OutputTimezone" />
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceOutputTimezone" />
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
@@ -1152,20 +1155,20 @@ where [refTable].[MigrationId] = ?</property>
               name="CRM Primary Output"
               startId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output]" />
             <path
+              refId="Package\Load Subject.Paths[Default Output]"
+              endId="Package\Load Subject\Rows updated.Inputs[Row Count Input 1]"
+              name="Default Output"
+              startId="Package\Load Subject\Dynamics CRM Destination.Outputs[Default Output]" />
+            <path
               refId="Package\Load Subject.Paths[Error Output]"
               endId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input]"
               name="Error Output"
               startId="Package\Load Subject\Dynamics CRM Destination.Outputs[Error Output]" />
             <path
               refId="Package\Load Subject.Paths[Lookup Match Output]"
-              endId="Package\Load Subject\Rows updated.Inputs[Row Count Input 1]"
+              endId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input]"
               name="Lookup Match Output"
               startId="Package\Load Subject\Lookup.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Load Subject.Paths[Row Count Output 1]"
-              endId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input]"
-              name="Row Count Output 1"
-              startId="Package\Load Subject\Rows updated.Outputs[Row Count Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2133,13 +2136,61 @@ where [refTable].[MigrationId] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\Load Subject\Lookup"
+          TopLeft="321.142862611887,124.188237035811" />
+        <NodeLayout
           Size="183.2,41.6"
           Id="Package\Load Subject\Dynamics CRM Source"
           TopLeft="284.571433417651,32.4235298664925" />
         <NodeLayout
-          Size="112.8,41.6"
-          Id="Package\Load Subject\Lookup"
-          TopLeft="321.142862611887,124.188237035811" />
+          Size="152.8,41.6"
+          Id="Package\Load Subject\Subject_ERROR"
+          TopLeft="403.42857829892,380.51765239544" />
+        <NodeLayout
+          Size="145.6,41.6"
+          Id="Package\Load Subject\Rows updated"
+          TopLeft="204.000003474099,380.51765239544" />
+        <NodeLayout
+          Size="204,41.6"
+          Id="Package\Load Subject\Dynamics CRM Destination"
+          TopLeft="282.857147674171,257.552944788553" />
+        <EdgeLayout
+          Id="Package\Load Subject.Paths[Error Output]"
+          TopLeft="417.523814340838,299.152944788553">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="62.3047639580819,81.3647076068863"
+              Start="0,0"
+              End="62.3047639580819,73.8647076068863">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.925796074382" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.925796074382"
+                    Point2="0,32.925796074382"
+                    Point3="4,32.925796074382" />
+                  <mssgle:LineSegment
+                    End="58.3047639580819,32.925796074382" />
+                  <mssgle:CubicBezierSegment
+                    Point1="58.3047639580819,32.925796074382"
+                    Point2="62.3047639580819,32.925796074382"
+                    Point3="62.3047639580819,36.925796074382" />
+                  <mssgle:LineSegment
+                    End="62.3047639580819,73.8647076068863" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="2.81599526029096,37.925796074382,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Subject.Paths[CRM Primary Output]"
           TopLeft="376.857148014769,74.0235298664925">
@@ -2162,86 +2213,62 @@ where [refTable].[MigrationId] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="145.6,41.6"
-          Id="Package\Load Subject\Rows updated"
-          TopLeft="301.714290852449,211.058826489432" />
         <EdgeLayout
           Id="Package\Load Subject.Paths[Lookup Match Output]"
-          TopLeft="376.028576732168,165.788237035811">
+          TopLeft="381.200005143029,165.788237035811">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,45.2705894536213"
+              EndConnector="0,91.7647077527424"
               Start="0,0"
-              End="0,37.7705894536213">
+              End="0,84.2647077527424">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.7705894536213" />
+                    End="0,84.2647077527424" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,13.0806072268107,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,36.3276663763712,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="204,41.6"
-          Id="Package\Load Subject\Dynamics CRM Destination"
-          TopLeft="274.857147537932,290.588239369508" />
         <EdgeLayout
-          Id="Package\Load Subject.Paths[Row Count Output 1]"
-          TopLeft="375.685719195191,252.658826489432">
+          Id="Package\Load Subject.Paths[Default Output]"
+          TopLeft="352.190481007504,299.152944788553">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,37.9294128800759"
+              EndConnector="-75.3904775334055,81.3647076068863"
               Start="0,0"
-              End="0,30.4294128800759">
+              End="-75.3904775334055,73.8647076068863">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.4294128800759" />
+                    End="0,28.925796074382" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.925796074382"
+                    Point2="0,32.925796074382"
+                    Point3="-4,32.925796074382" />
+                  <mssgle:LineSegment
+                    End="-71.3904775334055,32.925796074382" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-71.3904775334055,32.925796074382"
+                    Point2="-75.3904775334055,32.925796074382"
+                    Point3="-75.3904775334055,36.925796074382" />
+                  <mssgle:LineSegment
+                    End="-75.3904775334055,73.8647076068863" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Load Subject\Subject_ERROR"
-          TopLeft="299.42857652781,387.247064254523" />
-        <EdgeLayout
-          Id="Package\Load Subject.Paths[Error Output]"
-          TopLeft="376.342862032871,332.188239369508">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55.0588248850153"
-              Start="0,0"
-              End="0,47.5588248850153">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.5588248850153" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-28.33638671875,18.0626155675076,56.6727734375,11.43359375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2253,7 +2280,7 @@ where [refTable].[MigrationId] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2263,7 +2290,7 @@ where [refTable].[MigrationId] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

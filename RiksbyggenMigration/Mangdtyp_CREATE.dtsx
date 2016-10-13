@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Mangdtyp_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{EDF88789-7B04-4B09-862E-58AC5453B4AE}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{08605182-456A-4D7F-93C2-ACBF2E55E962}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -1710,20 +1710,20 @@
           </components>
           <paths>
             <path
+              refId="Package\Load Mangdtyp.Paths[Default Output]"
+              endId="Package\Load Mangdtyp\Row Inserted.Inputs[Row Count Input 1]"
+              name="Default Output"
+              startId="Package\Load Mangdtyp\Dynamics CRM Destination.Outputs[Default Output]" />
+            <path
               refId="Package\Load Mangdtyp.Paths[Error Output]"
               endId="Package\Load Mangdtyp\Mangdtyp_Error.Inputs[OLE DB Destination Input]"
               name="Error Output"
               startId="Package\Load Mangdtyp\Dynamics CRM Destination.Outputs[Error Output]" />
             <path
               refId="Package\Load Mangdtyp.Paths[OLE DB Source Output]"
-              endId="Package\Load Mangdtyp\Row Inserted.Inputs[Row Count Input 1]"
+              endId="Package\Load Mangdtyp\Dynamics CRM Destination.Inputs[Input]"
               name="OLE DB Source Output"
               startId="Package\Load Mangdtyp\STG_Mangdtyp.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Load Mangdtyp.Paths[Row Count Output 1]"
-              endId="Package\Load Mangdtyp\Dynamics CRM Destination.Inputs[Input]"
-              name="Row Count Output 1"
-              startId="Package\Load Mangdtyp\Row Inserted.Outputs[Row Count Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2691,94 +2691,118 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="149.6,41.6"
-          Id="Package\Load Mangdtyp\STG_Mangdtyp"
-          TopLeft="260.857147265454,30.7058828677273" />
-        <NodeLayout
           Size="153.6,41.6"
           Id="Package\Load Mangdtyp\Mangdtyp_Error"
-          TopLeft="272.571433213292,322.400004521538" />
-        <NodeLayout
-          Size="204,41.6"
-          Id="Package\Load Mangdtyp\Dynamics CRM Destination"
-          TopLeft="241.142861385736,215.341179490667" />
+          TopLeft="346.857148764085,258.776474217477" />
         <NodeLayout
           Size="141.6,41.6"
           Id="Package\Load Mangdtyp\Row Inserted"
-          TopLeft="269.714290171253,124.188237035811" />
-        <EdgeLayout
-          Id="Package\Load Mangdtyp.Paths[Row Count Output 1]"
-          TopLeft="341.828575778494,165.788237035811">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,49.5529424548562"
-              Start="0,0"
-              End="0,42.0529424548562">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.0529424548562" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Mangdtyp.Paths[OLE DB Source Output]"
-          TopLeft="338.085718718354,72.3058828677273">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51.8823541680837"
-              Start="0,0"
-              End="0,44.3823541680837">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.3823541680837" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="189.714288808861,259.38823893194" />
+        <NodeLayout
+          Size="204,41.6"
+          Id="Package\Load Mangdtyp\Dynamics CRM Destination"
+          TopLeft="239.428575642256,138.25882546844" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Load Mangdtyp\STG_Mangdtyp"
+          TopLeft="260.857147265454,30.7058828677273" />
         <EdgeLayout
           Id="Package\Load Mangdtyp.Paths[Error Output]"
-          TopLeft="346.257147299514,256.941179490667">
+          TopLeft="374.095242308923,179.85882546844">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,65.4588250308713"
+              EndConnector="49.5619064551616,78.9176487490377"
               Start="0,0"
-              End="0,57.9588250308713">
+              End="49.5619064551616,71.4176487490377">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.9588250308713" />
+                    End="0,27.935546575486" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.935546575486"
+                    Point2="0,31.935546575486"
+                    Point3="4,31.935546575486" />
+                  <mssgle:LineSegment
+                    End="45.5619064551616,31.935546575486" />
+                  <mssgle:CubicBezierSegment
+                    Point1="45.5619064551616,31.935546575486"
+                    Point2="49.5619064551616,31.935546575486"
+                    Point3="49.5619064551616,35.935546575486" />
+                  <mssgle:LineSegment
+                    End="49.5619064551616,71.4176487490377" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-28.33638671875,23.2626156404356,56.6727734375,11.43359375"
+              BoundingBox="-3.55543349116921,36.935546575486,56.6727734375,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Mangdtyp.Paths[OLE DB Source Output]"
+          TopLeft="338.542861453855,72.3058828677273">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.9529426007123"
+              Start="0,0"
+              End="0,58.4529426007123">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.4529426007123" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Mangdtyp.Paths[Default Output]"
+          TopLeft="308.76190897559,179.85882546844">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-48.2476201667284,79.5294134635003"
+              Start="0,0"
+              End="-48.2476201667284,72.0294134635003">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.1831089502102" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.1831089502102"
+                    Point2="0,32.1831089502102"
+                    Point3="-4,32.1831089502102" />
+                  <mssgle:LineSegment
+                    End="-44.2476201667284,32.1831089502102" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-44.2476201667284,32.1831089502102"
+                    Point2="-48.2476201667284,32.1831089502102"
+                    Point3="-48.2476201667284,36.1831089502102" />
+                  <mssgle:LineSegment
+                    End="-48.2476201667284,72.0294134635003" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Mangdtyp\STG_Mangdtyp">
+    design-time-name="Package\Load Mangdtyp\Mangdtyp_Error">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2791,7 +2815,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Mangdtyp\Mangdtyp_Error">
+    design-time-name="Package\Load Mangdtyp\STG_Mangdtyp">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

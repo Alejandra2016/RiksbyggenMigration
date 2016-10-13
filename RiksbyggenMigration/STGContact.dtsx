@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="STGContact"
   DTS:PackageType="5"
-  DTS:VersionBuild="78"
-  DTS:VersionGUID="{896D4EB7-EA99-4A6C-B67B-4E41557E9575}">
+  DTS:VersionBuild="87"
+  DTS:VersionGUID="{03369452-01BC-41AC-8EAC-CEA252954F79}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -193,6 +193,23 @@
     </DTS:SelectedLogProviders>
   </DTS:LoggingOptions>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ContactId"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{39E7F57C-8729-477F-B4A3-919B7D6C1BEF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ContactId"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="UPDATE Contact&#xA;SET ContactId = REPLACE(REPLACE(ContactId,'{',''),'}','')&#xA;&#xA;UPDATE c&#xA;SET gendercode = NULL &#xA;FROM Contact c&#xA;WHERE gendercode = 0&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Load Contact till STG"
       DTS:CreationName="Microsoft.Pipeline"
@@ -1216,7 +1233,7 @@
                     <inputColumn
                       refId="Package\Load Contact till STG\Contact.Inputs[OLE DB Destination Input].Columns[lastname]"
                       cachedDataType="wstr"
-                      cachedLength="45"
+                      cachedLength="50"
                       cachedName="lastname"
                       externalMetadataColumnId="Package\Load Contact till STG\Contact.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
                       lineageId="Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[lastname]" />
@@ -2856,7 +2873,7 @@
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="2"
+                      length="50"
                       lineageId="Package\Load Contact till STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of rb_otheruniqueidentifier]"
                       name="Copy of rb_otheruniqueidentifier"
                       truncationRowDisposition="FailComponent">
@@ -2927,13 +2944,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">#{Package\Load Contact till STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of cre_sekelsiffra]} + [REPLACE]([ISNULL](#{Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_personnummer]}) ? #{Package\Load Contact till STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of rb_otheruniqueidentifier]} : #{Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_personnummer]},"-","")</property>
+                          name="Expression">[ISNULL](#{Package\Load Contact till STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of cre_sekelsiffra]}) ? "" : #{Package\Load Contact till STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of cre_sekelsiffra]} + [REPLACE]([ISNULL](#{Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_personnummer]}) ? #{Package\Load Contact till STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of rb_otheruniqueidentifier]} : #{Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_personnummer]},"-","")</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">[Copy of cre_sekelsiffra] + REPLACE(ISNULL(cre_personnummer) ? [Copy of rb_otheruniqueidentifier] : cre_personnummer,"-","")</property>
+                          name="FriendlyExpression">ISNULL([Copy of cre_sekelsiffra]) ? "" : [Copy of cre_sekelsiffra] + REPLACE(ISNULL(cre_personnummer) ? [Copy of rb_otheruniqueidentifier] : cre_personnummer,"-","")</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -2947,9 +2964,99 @@
                       refId="Package\Load Contact till STG\Derived Column.Inputs[Derived Column Input].Columns[Copy of rb_otheruniqueidentifier]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="2"
+                      cachedLength="50"
                       cachedName="Copy of rb_otheruniqueidentifier"
                       lineageId="Package\Load Contact till STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of rb_otheruniqueidentifier]" />
+                    <inputColumn
+                      refId="Package\Load Contact till STG\Derived Column.Inputs[Derived Column Input].Columns[address1_telephone1]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="address1_telephone1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[address1_telephone1]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[address1_telephone1]}) ? #{Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_telephone1]} : #{Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[address1_telephone1]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(address1_telephone1) ? cre_telephone1 : address1_telephone1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Contact till STG\Derived Column.Inputs[Derived Column Input].Columns[address1_telephone2]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="address1_telephone2"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[address1_telephone2]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[address1_telephone2]}) ? #{Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_telephone2]} : #{Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[address1_telephone2]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(address1_telephone2) ? cre_telephone2 : address1_telephone2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Contact till STG\Derived Column.Inputs[Derived Column Input].Columns[address1_telephone3]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="address1_telephone3"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[address1_telephone3]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[address1_telephone3]}) ? #{Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_telephone3]} : #{Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[address1_telephone3]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(address1_telephone3) ? cre_telephone3 : address1_telephone3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Contact till STG\Derived Column.Inputs[Derived Column Input].Columns[cre_telephone1]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="cre_telephone1"
+                      lineageId="Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_telephone1]" />
+                    <inputColumn
+                      refId="Package\Load Contact till STG\Derived Column.Inputs[Derived Column Input].Columns[cre_telephone2]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="cre_telephone2"
+                      lineageId="Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_telephone2]" />
+                    <inputColumn
+                      refId="Package\Load Contact till STG\Derived Column.Inputs[Derived Column Input].Columns[cre_telephone3]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="cre_telephone3"
+                      lineageId="Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_telephone3]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4812,7 +4919,7 @@
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[lastname]"
-                      length="45"
+                      length="50"
                       lineageId="Package\Load Contact till STG\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[lastname]"
                       name="lastname"
                       truncationRowDisposition="FailComponent" />
@@ -8283,7 +8390,7 @@
       DTS:From="Package\Load Contact till STG"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\LogPackageEnd"
-      DTS:Value="2" />
+      DTS:Value="1" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -8316,6 +8423,22 @@
       DTS:ObjectName="Constraint 5"
       DTS:To="Package\LogPackageEnd"
       DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{6BC4A5A2-9512-4383-B333-A7E046F33251}"
+      DTS:From="Package\Load Contact till STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\ContactId" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{3378AC5E-99EC-40F7-951D-A3D73D8CC0AA}"
+      DTS:From="Package\ContactId"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="2" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -8330,13 +8453,17 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="124,41.6"
+          Id="Package\ContactId"
+          TopLeft="396.00000674384,357.270593245879" />
+        <NodeLayout
           Size="176.8,41.6"
           Id="Package\Load Contact till STG"
           TopLeft="364.571434780044,237.364709211304" />
         <NodeLayout
           Size="152,41.6"
           Id="Package\LogPackageEnd"
-          TopLeft="69.4285725768733,297.035296768796" />
+          TopLeft="52.285715142075,361.270591787319" />
         <NodeLayout
           Size="162.4,41.6"
           Id="Package\LogPackageStart"
@@ -8373,37 +8500,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="364.571434780044,258.164709211304">
+          TopLeft="424.838101446711,278.964709211304">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-143.142862203171,59.670587557492"
+              EndConnector="-260.552386304636,82.3058825760148"
               Start="0,0"
-              End="-135.642862203171,59.670587557492">
+              End="-260.552386304636,74.8058825760148">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-67.5714311015853,0" />
+                    End="0,42.4478196584844" />
                   <mssgle:CubicBezierSegment
-                    Point1="-67.5714311015853,0"
-                    Point2="-71.5714311015853,0"
-                    Point3="-71.5714311015853,4" />
+                    Point1="0,42.4478196584844"
+                    Point2="0,46.4478196584844"
+                    Point3="-4,46.4478196584844" />
                   <mssgle:LineSegment
-                    End="-71.5714311015853,55.670587557492" />
+                    End="-256.552386304636,46.4478196584844" />
                   <mssgle:CubicBezierSegment
-                    Point1="-71.5714311015853,55.670587557492"
-                    Point2="-71.5714311015853,59.670587557492"
-                    Point3="-75.5714311015853,59.670587557492" />
+                    Point1="-256.552386304636,46.4478196584844"
+                    Point2="-260.552386304636,46.4478196584844"
+                    Point3="-260.552386304636,50.4478196584844" />
                   <mssgle:LineSegment
-                    End="-135.642862203171,59.670587557492" />
+                    End="-260.552386304636,74.8058825760148" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-96.8758842265854,-17.609375,50.60890625,11.609375"
+              BoundingBox="-145.517540808568,51.4478196584844,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8435,33 +8562,33 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-14.7428570942003,136.141177448682"
+              EndConnector="-43.8857145289986,200.376472467205"
               Start="0,0"
-              End="-14.7428570942003,128.641177448682">
+              End="-43.8857145289986,192.876472467205">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,76.8338241101548" />
+                    End="0,127.281137133686" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,76.8338241101548"
-                    Point2="0,80.8338241101548"
-                    Point3="-4,80.8338241101548" />
+                    Point1="0,127.281137133686"
+                    Point2="0,131.281137133686"
+                    Point3="-4,131.281137133686" />
                   <mssgle:LineSegment
-                    End="-10.7428570942003,80.8338241101548" />
+                    End="-39.8857145289986,131.281137133686" />
                   <mssgle:CubicBezierSegment
-                    Point1="-10.7428570942003,80.8338241101548"
-                    Point2="-14.7428570942003,80.8338241101548"
-                    Point3="-14.7428570942003,84.8338241101548" />
+                    Point1="-39.8857145289986,131.281137133686"
+                    Point2="-43.8857145289986,131.281137133686"
+                    Point3="-43.8857145289986,135.281137133686" />
                   <mssgle:LineSegment
-                    End="-14.7428570942003,128.641177448682" />
+                    End="-43.8857145289986,192.876472467205" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-15.24134765625,59.4460770055909,30.4826953125,9.7490234375"
+              BoundingBox="-37.1842049207493,136.281137133686,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8505,33 +8632,91 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-196.666670685722,139.811765735455"
+              EndConnector="-237.809528120521,204.047060753978"
               Start="0,0"
-              End="-196.666670685722,132.311765735455">
+              End="-237.809528120521,196.547060753978">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,65.7496686043359" />
+                    End="0,78.6742401330772" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,65.7496686043359"
-                    Point2="0,69.7496686043359"
-                    Point3="-4,69.7496686043359" />
+                    Point1="0,78.6742401330772"
+                    Point2="0,82.6742401330772"
+                    Point3="-4,82.6742401330772" />
                   <mssgle:LineSegment
-                    End="-192.666670685722,69.7496686043359" />
+                    End="-233.809528120521,82.6742401330772" />
                   <mssgle:CubicBezierSegment
-                    Point1="-192.666670685722,69.7496686043359"
-                    Point2="-196.666670685722,69.7496686043359"
-                    Point3="-196.666670685722,73.7496686043359" />
+                    Point1="-233.809528120521,82.6742401330772"
+                    Point2="-237.809528120521,82.6742401330772"
+                    Point3="-237.809528120521,86.6742401330772" />
                   <mssgle:LineSegment
-                    End="-196.666670685722,132.311765735455" />
+                    End="-237.809528120521,196.547060753978" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-113.574682999111,74.7496686043359,30.4826953125,9.7490234375"
+              BoundingBox="-134.14611171651,87.6742401330772,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="481.104768113377,278.964709211304">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-23.1047613695374,78.3058840345752"
+              Start="0,0"
+              End="-23.1047613695374,70.8058840345752">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.7437305682762" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.7437305682762"
+                    Point2="0,31.7437305682762"
+                    Point3="-4,31.7437305682762" />
+                  <mssgle:LineSegment
+                    End="-19.1047613695374,31.7437305682762" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-19.1047613695374,31.7437305682762"
+                    Point2="-23.1047613695374,31.7437305682762"
+                    Point3="-23.1047613695374,35.7437305682762" />
+                  <mssgle:LineSegment
+                    End="-23.1047613695374,70.8058840345752" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="396.00000674384,380.070592516599">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-191.714291601765,0"
+              Start="0,0"
+              End="-184.214291601765,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-184.214291601765,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-117.411598925882,5,50.60890625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8544,31 +8729,39 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Load Contact till STG\Row Inserted"
+          TopLeft="255.714290511851,304.305887097552" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Load Contact till STG\Derived Column"
+          TopLeft="249.142861385735,217.176473634053" />
+        <NodeLayout
           Size="183.2,41.6"
           Id="Package\Load Contact till STG\Dynamics CRM Source"
           TopLeft="238.571433213292,29.0117655895985" />
         <NodeLayout
           Size="114.4,41.6"
           Id="Package\Load Contact till STG\Contact"
-          TopLeft="266.285718820533,403.764711545" />
+          TopLeft="271.428576050973,402.541182116076" />
         <NodeLayout
-          Size="141.6,41.6"
-          Id="Package\Load Contact till STG\Row Inserted"
-          TopLeft="255.714290511851,304.305887097552" />
+          Size="155.2,41.6"
+          Id="Package\Load Contact till STG\Data Conversion"
+          TopLeft="250.857147129215,124.800001750273" />
         <EdgeLayout
           Id="Package\Load Contact till STG.Paths[Row Count Output 1]"
-          TopLeft="325.000004666192,345.905887097552">
+          TopLeft="327.571433281412,345.905887097552">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57.8588244474474"
+              EndConnector="0,56.6352950185237"
               Start="0,0"
-              End="0,50.3588244474474">
+              End="0,49.1352950185237">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50.3588244474474" />
+                    End="0,49.1352950185237" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8577,10 +8770,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Load Contact till STG\Derived Column"
-          TopLeft="249.142861385735,217.176473634053" />
         <EdgeLayout
           Id="Package\Load Contact till STG.Paths[Derived Column Output]"
           TopLeft="326.028575948793,258.776473634053">
@@ -8603,32 +8792,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="155.2,41.6"
-          Id="Package\Load Contact till STG\Data Conversion"
-          TopLeft="250.857147129215,124.800001750273" />
-        <EdgeLayout
-          Id="Package\Load Contact till STG.Paths[CRM Primary Output]"
-          TopLeft="329.314290171253,70.6117655895985">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,54.1882361606743"
-              Start="0,0"
-              End="0,46.6882361606743">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.6882361606743" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Contact till STG.Paths[Data Conversion Output]"
           TopLeft="327.000004257475,166.400001750273">
@@ -8643,6 +8806,28 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,43.2764718837805" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Contact till STG.Paths[CRM Primary Output]"
+          TopLeft="329.314290171253,70.6117655895985">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.1882361606743"
+              Start="0,0"
+              End="0,46.6882361606743">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.6882361606743" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

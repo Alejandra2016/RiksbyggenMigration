@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Incident_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{499CFCDC-AE79-4F75-A77D-4CD09B62D325}">
+  DTS:VersionBuild="54"
+  DTS:VersionGUID="{46819F63-CE52-48C1-9748-FF72AFD954F4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -233,6 +233,153 @@
           version="1">
           <components>
             <component
+              refId="Package\Load Incident\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Incident\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Incident\Derived Column.Inputs[Derived Column Input].Columns[rik_ArendetypId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rik_ArendetypId"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_ArendetypId]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE]([REPLACE](#{Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_ArendetypId]},"{",""),"}","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(REPLACE(rik_ArendetypId,"{",""),"}","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Incident\Derived Column.Inputs[Derived Column Input].Columns[rik_FastighetsagareId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rik_FastighetsagareId"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_FastighetsagareId]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE]([REPLACE](#{Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_FastighetsagareId]},"{",""),"}","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(REPLACE(rik_FastighetsagareId,"{",""),"}","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Incident\Derived Column.Inputs[Derived Column Input].Columns[rik_ArendeundertypId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rik_ArendeundertypId"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_ArendeundertypId]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE]([REPLACE](#{Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_ArendeundertypId]},"{",""),"}","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(REPLACE(rik_ArendeundertypId,"{",""),"}","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Incident\Derived Column.Inputs[Derived Column Input].Columns[rik_AnmalareId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rik_AnmalareId"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_AnmalareId]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE]([REPLACE](#{Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_AnmalareId]},"{",""),"}","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(REPLACE(rik_AnmalareId,"{",""),"}","")</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Incident\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Incident\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Incident\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Incident\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Incident\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Incident\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Incident\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Incident\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Incident\Dynamics CRM Destination"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
@@ -382,13 +529,6 @@
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_arendeundertypid]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_ArendeundertypId]" />
                     <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[rik_Avslutskod]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="rik_Avslutskod"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_avslutskod]"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Avslutskod]" />
-                    <inputColumn
                       refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[rik_Epostskapades]"
                       cachedDataType="dbTimeStamp"
                       cachedName="rik_Epostskapades"
@@ -413,20 +553,6 @@
                       cachedName="rik_Lossenast"
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_lossenast]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Lossenast]" />
-                    <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[rik_Skickaepostvidoppning]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="rik_Skickaepostvidoppning"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_skickaepostvidoppning]"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Skickaepostvidoppning]" />
-                    <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[rik_Skickaepostvidstangning]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="rik_Skickaepostvidstangning"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_skickaepostvidstangning]"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Skickaepostvidstangning]" />
                     <inputColumn
                       refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[rik_Stangningsdatum]"
                       cachedDataType="dbTimeStamp"
@@ -648,6 +774,22 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">account;contact</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;ReportErrorOnDuplicates&gt;false&lt;/ReportErrorOnDuplicates&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;account&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1642,11 +1784,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load Incident\OLE DB Destination"
+              refId="Package\Load Incident\Incident_ERROR"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="OLE DB Destination"
+              name="Incident_ERROR"
               usesDispositions="true"
               version="4">
               <properties>
@@ -1699,7 +1841,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load Incident\OLE DB Destination.Connections[OleDbConnection]"
+                  refId="Package\Load Incident\Incident_ERROR.Connections[OleDbConnection]"
                   connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
                   connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1707,945 +1849,892 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_ArendetypId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_ArendetypId]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="rik_ArendetypId"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendetypId]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendetypId]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_ArendetypId]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SubjectIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[SubjectIdName]"
                       cachedDataType="wstr"
                       cachedLength="500"
                       cachedName="SubjectIdName"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubjectIdName]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SubjectIdName]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[SubjectIdName]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_ArendetypIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_ArendetypIdName]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="rik_ArendetypIdName"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendetypIdName]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendetypIdName]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_ArendetypIdName]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_AnmalareIdYomiName]"
-                      cachedDataType="wstr"
-                      cachedLength="450"
-                      cachedName="rik_AnmalareIdYomiName"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnmalareIdYomiName]"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_AnmalareIdYomiName]" />
-                    <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_FastighetsagareIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_FastighetsagareIdName]"
                       cachedDataType="wstr"
                       cachedLength="160"
                       cachedName="rik_FastighetsagareIdName"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_FastighetsagareIdName]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_FastighetsagareIdName]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_FastighetsagareIdName]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_ArendeundertypIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_ArendeundertypIdName]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="rik_ArendeundertypIdName"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendeundertypIdName]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendeundertypIdName]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_ArendeundertypIdName]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_ArendekategoriIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_ArendekategoriIdName]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="rik_ArendekategoriIdName"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendekategoriIdName]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendekategoriIdName]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_ArendekategoriIdName]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_FastighetsagareIdYomiName]"
-                      cachedDataType="wstr"
-                      cachedLength="160"
-                      cachedName="rik_FastighetsagareIdYomiName"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_FastighetsagareIdYomiName]"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_FastighetsagareIdYomiName]" />
-                    <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_AnmalareIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_AnmalareIdName]"
                       cachedDataType="wstr"
                       cachedLength="160"
                       cachedName="rik_AnmalareIdName"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnmalareIdName]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnmalareIdName]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_AnmalareIdName]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AccountId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[AccountId]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="AccountId"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountId]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[AccountId]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[AccountId]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AccountIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[AccountIdName]"
                       cachedDataType="wstr"
                       cachedLength="4000"
                       cachedName="AccountIdName"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountIdName]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[AccountIdName]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[AccountIdName]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AccountIdYomiName]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="AccountIdYomiName"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountIdYomiName]"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[AccountIdYomiName]" />
-                    <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ContactId]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="ContactId"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContactId]"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ContactId]" />
-                    <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ContactIdName]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="ContactIdName"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContactIdName]"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ContactIdName]" />
-                    <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ContactIdYomiName]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="ContactIdYomiName"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContactIdYomiName]"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ContactIdYomiName]" />
-                    <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SubjectId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[SubjectId]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="SubjectId"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubjectId]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SubjectId]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[SubjectId]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Title]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[Title]"
                       cachedDataType="wstr"
                       cachedLength="200"
                       cachedName="Title"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[Title]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Description]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[Description]"
                       cachedDataType="nText"
                       cachedName="Description"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[Description]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TicketNumber]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[TicketNumber]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="TicketNumber"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TicketNumber]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TicketNumber]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[TicketNumber]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StateCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[StateCode]"
                       cachedDataType="i4"
                       cachedName="StateCode"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateCode]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[StateCode]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[StateCode]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SeverityCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[SeverityCode]"
                       cachedDataType="i4"
                       cachedName="SeverityCode"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SeverityCode]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SeverityCode]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[SeverityCode]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StatusCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[StatusCode]"
                       cachedDataType="i4"
                       cachedName="StatusCode"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusCode]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[StatusCode]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[StatusCode]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[CustomerId]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="CustomerId"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerId]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CustomerId]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[CustomerId]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[CustomerIdName]"
                       cachedDataType="wstr"
                       cachedLength="4000"
                       cachedName="CustomerIdName"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIdName]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIdName]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[CustomerIdName]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerIdType]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[CustomerIdType]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="CustomerIdType"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIdType]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIdType]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[CustomerIdType]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerIdYomiName]"
-                      cachedDataType="wstr"
-                      cachedLength="4000"
-                      cachedName="CustomerIdYomiName"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIdYomiName]"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[CustomerIdYomiName]" />
-                    <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ActivitiesComplete]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[ActivitiesComplete]"
                       cachedDataType="bool"
                       cachedName="ActivitiesComplete"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActivitiesComplete]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ActivitiesComplete]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ActivitiesComplete]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_Avslutskod]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="rik_Avslutskod"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Avslutskod]"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Avslutskod]" />
-                    <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_Epostskapades]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_Epostskapades]"
                       cachedDataType="dbTimeStamp"
                       cachedName="rik_Epostskapades"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Epostskapades]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Epostskapades]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Epostskapades]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_Handelsedatum]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_Handelsedatum]"
                       cachedDataType="dbTimeStamp"
                       cachedName="rik_Handelsedatum"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Handelsedatum]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Handelsedatum]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Handelsedatum]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_Lossenast]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_Lossenast]"
                       cachedDataType="dbTimeStamp"
                       cachedName="rik_Lossenast"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Lossenast]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Lossenast]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Lossenast]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_Skickaepostvidoppning]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_Skickaepostvidoppning]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="rik_Skickaepostvidoppning"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Skickaepostvidoppning]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Skickaepostvidoppning]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Skickaepostvidoppning]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_Skickaepostvidstangning]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_Skickaepostvidstangning]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="rik_Skickaepostvidstangning"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Skickaepostvidstangning]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Skickaepostvidstangning]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Skickaepostvidstangning]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_Stangningsdatum]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_Stangningsdatum]"
                       cachedDataType="dbTimeStamp"
                       cachedName="rik_Stangningsdatum"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Stangningsdatum]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Stangningsdatum]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Stangningsdatum]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_Stangningsorsak]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_Stangningsorsak]"
                       cachedDataType="nText"
                       cachedName="rik_Stangningsorsak"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Stangningsorsak]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Stangningsorsak]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Stangningsorsak]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_FastighetsagareId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_FastighetsagareId]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="rik_FastighetsagareId"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_FastighetsagareId]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_FastighetsagareId]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_FastighetsagareId]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_ArendekategoriId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_ArendekategoriId]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="rik_ArendekategoriId"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendekategoriId]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendekategoriId]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_ArendekategoriId]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_ArendeundertypId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_ArendeundertypId]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="rik_ArendeundertypId"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendeundertypId]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendeundertypId]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_ArendeundertypId]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_AnmalareId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[rik_AnmalareId]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="rik_AnmalareId"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnmalareId]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnmalareId]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_AnmalareId]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
                       cachedDataType="i4"
                       cachedName="ErrorCode"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
                       lineageId="Package\Load Incident\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorCode]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
                       cachedDataType="i4"
                       cachedName="ErrorColumn"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
                       lineageId="Package\Load Incident\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorColumn]" />
                     <inputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CrmErrorMessage]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[CrmErrorMessage]"
                       cachedDataType="wstr"
                       cachedLength="2048"
                       cachedName="CrmErrorMessage"
-                      externalMetadataColumnId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
                       lineageId="Package\Load Incident\Dynamics CRM Destination.Outputs[Error Output].Columns[CrmErrorMessage]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstResponseByKPIIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[FirstResponseByKPIIdName]"
                       dataType="wstr"
                       length="160"
                       name="FirstResponseByKPIIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
                       dataType="wstr"
                       length="200"
                       name="ModifiedByYomiName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByYomiName]"
                       dataType="wstr"
                       length="200"
                       name="ModifiedOnBehalfByYomiName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ResponsibleContactIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ResponsibleContactIdName]"
                       dataType="wstr"
                       length="160"
                       name="ResponsibleContactIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EntityImage_URL]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[EntityImage_URL]"
                       dataType="wstr"
                       length="200"
                       name="EntityImage_URL" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PrimaryContactIdYomiName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[PrimaryContactIdYomiName]"
                       dataType="wstr"
                       length="450"
                       name="PrimaryContactIdYomiName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubjectIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SubjectIdName]"
                       dataType="wstr"
                       length="500"
                       name="SubjectIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendetypIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendetypIdName]"
                       dataType="wstr"
                       length="100"
                       name="rik_ArendetypIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByYomiName]"
                       dataType="wstr"
                       length="200"
                       name="CreatedOnBehalfByYomiName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PrimaryContactIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[PrimaryContactIdName]"
                       dataType="wstr"
                       length="160"
                       name="PrimaryContactIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContractIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ContractIdName]"
                       dataType="wstr"
                       length="100"
                       name="ContractIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
                       dataType="wstr"
                       length="200"
                       name="CreatedByName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EntityImage]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[EntityImage]"
                       dataType="image"
                       name="EntityImage" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KbArticleIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[KbArticleIdName]"
                       dataType="wstr"
                       length="500"
                       name="KbArticleIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
                       dataType="wstr"
                       length="200"
                       name="CreatedByYomiName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnmalareIdYomiName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnmalareIdYomiName]"
                       dataType="wstr"
                       length="450"
                       name="rik_AnmalareIdYomiName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MasterIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MasterIdName]"
                       dataType="wstr"
                       length="200"
                       name="MasterIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SLAInvokedIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SLAInvokedIdName]"
                       dataType="wstr"
                       length="160"
                       name="SLAInvokedIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_FastighetsagareIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_FastighetsagareIdName]"
                       dataType="wstr"
                       length="160"
                       name="rik_FastighetsagareIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SocialProfileIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SocialProfileIdName]"
                       dataType="wstr"
                       length="100"
                       name="SocialProfileIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendeundertypIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendeundertypIdName]"
                       dataType="wstr"
                       length="100"
                       name="rik_ArendeundertypIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberOfChildIncidents]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[NumberOfChildIncidents]"
                       dataType="i4"
                       name="NumberOfChildIncidents" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContractDetailIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ContractDetailIdName]"
                       dataType="wstr"
                       length="500"
                       name="ContractDetailIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendekategoriIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendekategoriIdName]"
                       dataType="wstr"
                       length="100"
                       name="rik_ArendekategoriIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
                       dataType="wstr"
                       length="200"
                       name="CreatedOnBehalfByName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
                       dataType="wstr"
                       length="200"
                       name="ModifiedByName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ResponsibleContactIdYomiName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ResponsibleContactIdYomiName]"
                       dataType="wstr"
                       length="450"
                       name="ResponsibleContactIdYomiName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EntityImage_Timestamp]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[EntityImage_Timestamp]"
                       dataType="i8"
                       name="EntityImage_Timestamp" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ResolveByKPIIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ResolveByKPIIdName]"
                       dataType="wstr"
                       length="160"
                       name="ResolveByKPIIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ParentCaseIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ParentCaseIdName]"
                       dataType="wstr"
                       length="200"
                       name="ParentCaseIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_FastighetsagareIdYomiName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_FastighetsagareIdYomiName]"
                       dataType="wstr"
                       length="160"
                       name="rik_FastighetsagareIdYomiName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TransactionCurrencyIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TransactionCurrencyIdName]"
                       dataType="wstr"
                       length="100"
                       name="TransactionCurrencyIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByName]"
                       dataType="wstr"
                       length="200"
                       name="ModifiedOnBehalfByName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ProductIdName]"
                       dataType="wstr"
                       length="100"
                       name="ProductIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnmalareIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnmalareIdName]"
                       dataType="wstr"
                       length="160"
                       name="rik_AnmalareIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EntitlementIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[EntitlementIdName]"
                       dataType="wstr"
                       length="160"
                       name="EntitlementIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
                       dataType="wstr"
                       length="255"
                       name="OwnerId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
                       dataType="wstr"
                       length="160"
                       name="OwnerIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdYomiName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdYomiName]"
                       dataType="wstr"
                       length="160"
                       name="OwnerIdYomiName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdDsc]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdDsc]"
                       dataType="i4"
                       name="OwnerIdDsc" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
                       dataType="i4"
                       name="OwnerIdType" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
                       dataType="wstr"
                       length="255"
                       name="OwningUser" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwningTeam]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningTeam]"
                       dataType="wstr"
                       length="255"
                       name="OwningTeam" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[AccountId]"
                       dataType="wstr"
                       length="255"
                       name="AccountId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[AccountIdName]"
                       dataType="wstr"
                       length="4000"
                       name="AccountIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AccountIdYomiName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[AccountIdYomiName]"
                       dataType="wstr"
                       length="4000"
                       name="AccountIdYomiName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContactId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ContactId]"
                       dataType="wstr"
                       length="255"
                       name="ContactId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContactIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ContactIdName]"
                       dataType="wstr"
                       length="4000"
                       name="ContactIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContactIdYomiName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ContactIdYomiName]"
                       dataType="wstr"
                       length="4000"
                       name="ContactIdYomiName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IncidentId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[IncidentId]"
                       dataType="wstr"
                       length="255"
                       name="IncidentId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
                       dataType="wstr"
                       length="255"
                       name="OwningBusinessUnit" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContractDetailId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ContractDetailId]"
                       dataType="wstr"
                       length="255"
                       name="ContractDetailId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SubjectId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SubjectId]"
                       dataType="wstr"
                       length="255"
                       name="SubjectId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContractId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ContractId]"
                       dataType="wstr"
                       length="255"
                       name="ContractId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActualServiceUnits]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ActualServiceUnits]"
                       dataType="i4"
                       name="ActualServiceUnits" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CaseOriginCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CaseOriginCode]"
                       dataType="i4"
                       name="CaseOriginCode" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BilledServiceUnits]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[BilledServiceUnits]"
                       dataType="i4"
                       name="BilledServiceUnits" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CaseTypeCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CaseTypeCode]"
                       dataType="i4"
                       name="CaseTypeCode" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductSerialNumber]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ProductSerialNumber]"
                       dataType="wstr"
                       length="100"
                       name="ProductSerialNumber" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
                       dataType="wstr"
                       length="200"
                       name="Title" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ProductId]"
                       dataType="wstr"
                       length="255"
                       name="ProductId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ContractServiceLevelCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ContractServiceLevelCode]"
                       dataType="i4"
                       name="ContractServiceLevelCode" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
                       dataType="nText"
                       name="Description" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsDecrementing]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[IsDecrementing]"
                       dataType="bool"
                       name="IsDecrementing" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
                       dataType="dbTimeStamp"
                       name="CreatedOn" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TicketNumber]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TicketNumber]"
                       dataType="wstr"
                       length="100"
                       name="TicketNumber" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PriorityCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[PriorityCode]"
                       dataType="i4"
                       name="PriorityCode" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerSatisfactionCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CustomerSatisfactionCode]"
                       dataType="i4"
                       name="CustomerSatisfactionCode" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IncidentStageCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[IncidentStageCode]"
                       dataType="i4"
                       name="IncidentStageCode" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
                       dataType="dbTimeStamp"
                       name="ModifiedOn" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
                       dataType="wstr"
                       length="255"
                       name="CreatedBy" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FollowupBy]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[FollowupBy]"
                       dataType="dbTimeStamp"
                       name="FollowupBy" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
                       dataType="wstr"
                       length="255"
                       name="ModifiedBy" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
                       dataType="bytes"
                       length="8"
                       name="VersionNumber" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[StateCode]"
                       dataType="i4"
                       name="StateCode" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SeverityCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SeverityCode]"
                       dataType="i4"
                       name="SeverityCode" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[StatusCode]"
                       dataType="i4"
                       name="StatusCode" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ResponsibleContactId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ResponsibleContactId]"
                       dataType="wstr"
                       length="255"
                       name="ResponsibleContactId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CustomerId]"
                       dataType="wstr"
                       length="255"
                       name="CustomerId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIdName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIdName]"
                       dataType="wstr"
                       length="4000"
                       name="CustomerIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIdType]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIdType]"
                       dataType="i4"
                       name="CustomerIdType" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KbArticleId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[KbArticleId]"
                       dataType="wstr"
                       length="255"
                       name="KbArticleId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TimeZoneRuleVersionNumber]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TimeZoneRuleVersionNumber]"
                       dataType="i4"
                       name="TimeZoneRuleVersionNumber" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
                       dataType="i4"
                       name="ImportSequenceNumber" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UTCConversionTimeZoneCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[UTCConversionTimeZoneCode]"
                       dataType="i4"
                       name="UTCConversionTimeZoneCode" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
                       dataType="dbTimeStamp"
                       name="OverriddenCreatedOn" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIdYomiName]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIdYomiName]"
                       dataType="wstr"
                       length="4000"
                       name="CustomerIdYomiName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
                       dataType="wstr"
                       length="255"
                       name="CreatedOnBehalfBy" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
                       dataType="wstr"
                       length="255"
                       name="ModifiedOnBehalfBy" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TransactionCurrencyId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TransactionCurrencyId]"
                       dataType="wstr"
                       length="255"
                       name="TransactionCurrencyId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeRate]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeRate]"
                       dataType="numeric"
                       name="ExchangeRate"
                       precision="23"
                       scale="10" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ServiceStage]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ServiceStage]"
                       dataType="i4"
                       name="ServiceStage" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExistingCase]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ExistingCase]"
                       dataType="wstr"
                       length="255"
                       name="ExistingCase" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StageId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[StageId]"
                       dataType="wstr"
                       length="255"
                       name="StageId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProcessId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ProcessId]"
                       dataType="wstr"
                       length="255"
                       name="ProcessId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EntityImageId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[EntityImageId]"
                       dataType="wstr"
                       length="255"
                       name="EntityImageId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CheckEmail]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CheckEmail]"
                       dataType="bool"
                       name="CheckEmail" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActivitiesComplete]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ActivitiesComplete]"
                       dataType="bool"
                       name="ActivitiesComplete" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FollowUpTaskCreated]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[FollowUpTaskCreated]"
                       dataType="bool"
                       name="FollowUpTaskCreated" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SocialProfileId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SocialProfileId]"
                       dataType="wstr"
                       length="255"
                       name="SocialProfileId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SLAInvokedId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SLAInvokedId]"
                       dataType="wstr"
                       length="255"
                       name="SLAInvokedId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MessageTypeCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MessageTypeCode]"
                       dataType="i4"
                       name="MessageTypeCode" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BlockedProfile]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[BlockedProfile]"
                       dataType="bool"
                       name="BlockedProfile" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EntitlementId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[EntitlementId]"
                       dataType="wstr"
                       length="255"
                       name="EntitlementId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MasterId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MasterId]"
                       dataType="wstr"
                       length="255"
                       name="MasterId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TraversedPath]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TraversedPath]"
                       dataType="wstr"
                       length="1250"
                       name="TraversedPath" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ParentCaseId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ParentCaseId]"
                       dataType="wstr"
                       length="255"
                       name="ParentCaseId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SentimentValue]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SentimentValue]"
                       dataType="r8"
                       name="SentimentValue" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InfluenceScore]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[InfluenceScore]"
                       dataType="r8"
                       name="InfluenceScore" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Merged]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[Merged]"
                       dataType="bool"
                       name="Merged" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RouteCase]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[RouteCase]"
                       dataType="bool"
                       name="RouteCase" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ResolveBy]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ResolveBy]"
                       dataType="dbTimeStamp"
                       name="ResolveBy" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ResponseBy]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ResponseBy]"
                       dataType="dbTimeStamp"
                       name="ResponseBy" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerContacted]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CustomerContacted]"
                       dataType="bool"
                       name="CustomerContacted" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsEscalated]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[IsEscalated]"
                       dataType="bool"
                       name="IsEscalated" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EscalatedOn]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[EscalatedOn]"
                       dataType="dbTimeStamp"
                       name="EscalatedOn" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PrimaryContactId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[PrimaryContactId]"
                       dataType="wstr"
                       length="255"
                       name="PrimaryContactId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstResponseSent]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[FirstResponseSent]"
                       dataType="bool"
                       name="FirstResponseSent" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstResponseSLAStatus]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[FirstResponseSLAStatus]"
                       dataType="i4"
                       name="FirstResponseSLAStatus" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ResolveBySLAStatus]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ResolveBySLAStatus]"
                       dataType="i4"
                       name="ResolveBySLAStatus" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OnHoldTime]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OnHoldTime]"
                       dataType="i4"
                       name="OnHoldTime" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastOnHoldTime]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[LastOnHoldTime]"
                       dataType="dbTimeStamp"
                       name="LastOnHoldTime" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ResolveByKPIId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ResolveByKPIId]"
                       dataType="wstr"
                       length="255"
                       name="ResolveByKPIId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstResponseByKPIId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[FirstResponseByKPIId]"
                       dataType="wstr"
                       length="255"
                       name="FirstResponseByKPIId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Avslutskod]"
-                      dataType="i4"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Avslutskod]"
+                      dataType="wstr"
+                      length="255"
                       name="rik_Avslutskod" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Epostskapades]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Epostskapades]"
                       dataType="dbTimeStamp"
                       name="rik_Epostskapades" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Handelsedatum]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Handelsedatum]"
                       dataType="dbTimeStamp"
                       name="rik_Handelsedatum" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Lossenast]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Lossenast]"
                       dataType="dbTimeStamp"
                       name="rik_Lossenast" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Skickaepostvidoppning]"
-                      dataType="bool"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Skickaepostvidoppning]"
+                      dataType="wstr"
+                      length="255"
                       name="rik_Skickaepostvidoppning" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Skickaepostvidstangning]"
-                      dataType="bool"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Skickaepostvidstangning]"
+                      dataType="wstr"
+                      length="255"
                       name="rik_Skickaepostvidstangning" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Stangningsdatum]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Stangningsdatum]"
                       dataType="dbTimeStamp"
                       name="rik_Stangningsdatum" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Stangningsorsak]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Stangningsorsak]"
                       dataType="nText"
                       name="rik_Stangningsorsak" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_FastighetsagareId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_FastighetsagareId]"
                       dataType="wstr"
                       length="255"
                       name="rik_FastighetsagareId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendekategoriId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendekategoriId]"
                       dataType="wstr"
                       length="255"
                       name="rik_ArendekategoriId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendetypId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendetypId]"
                       dataType="wstr"
                       length="255"
                       name="rik_ArendetypId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendeundertypId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendeundertypId]"
                       dataType="wstr"
                       length="255"
                       name="rik_ArendeundertypId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnmalareId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnmalareId]"
                       dataType="wstr"
                       length="255"
                       name="rik_AnmalareId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
                       dataType="wstr"
                       length="255"
                       name="MigrationId" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
                       dataType="wstr"
                       length="4000"
                       name="CrmErrorMessage" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
                       dataType="i4"
                       name="ErrorCode" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
                       dataType="i4"
                       name="ErrorColumn" />
                   </externalMetadataColumns>
@@ -2653,22 +2742,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Incident\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Load Incident\Incident_ERROR.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Incident\Incident_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Incident\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Incident\Incident_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Incident\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Incident\Incident_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Incident\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Incident\Incident_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2731,148 +2820,53 @@
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT     
-CASE WHEN CustomerIdType = 'account' THEN CustomerId ELSE AccountId END AS AccountId
-,CASE WHEN CustomerIdType = 'account' THEN CustomerIdName ELSE AccountIdName END AS AccountIdName
-,CASE WHEN CustomerIdType = 'account' THEN CustomerIdYomiName ELSE AccountIdYomiName END AS AccountIdYomiName
+ CASE WHEN CustomerIdType = 'account' THEN a.name ELSE CustomerIdName END AS AccountId
+,CASE WHEN CustomerIdType = 'account' THEN a.name ELSE CustomerIdName END AS AccountIdName
 ,ActivitiesComplete
---,ActualServiceUnits
---,BilledServiceUnits
---,BlockedProfile
---,CaseOriginCode
---,CaseTypeCode
---,CheckEmail
-,CASE WHEN CustomerIdType = 'contact' THEN CustomerId ELSE ContactId END AS ContactId
-,CASE WHEN CustomerIdType = 'contact' THEN CustomerIdName ELSE ContactIdName END AS ContactIdName
-,CASE WHEN CustomerIdType = 'contact' THEN CustomerIdYomiName ELSE ContactIdYomiName END AS ContactIdYomiName
---,ContractDetailId
---,ContractDetailIdName
---,ContractId
---,ContractIdName
---,ContractServiceLevelCode
---,CreatedBy
---,CreatedByName
---,CreatedByYomiName
---,CreatedOn
---,CreatedOnBehalfBy
---,CreatedOnBehalfByName
---,CreatedOnBehalfByYomiName
---,CustomerContacted
-,CustomerId
+,CASE WHEN CustomerIdType = 'contact' THEN c.fullname  ELSE CustomerIdName END AS ContactId
+,CASE WHEN CustomerIdType = 'contact' THEN c.fullname ELSE CustomerIdName END AS ContactIdName
+,CustomerIdName AS CustomerId
 ,CustomerIdName
 ,CASE WHEN CustomerIdType = 'account' THEN 1 ELSE 2 END AS CustomerIdType 
-,CustomerIdYomiName
---,CustomerSatisfactionCode
-,Description
---,EntitlementId
---,EntitlementIdName
---,EntityImage
---,EntityImage_Timestamp
---,EntityImage_URL
---,EntityImageId
---,EscalatedOn
---,ExchangeRate
---,ExistingCase
---,FirstResponseByKPIId
---,FirstResponseSent
---,FirstResponseSLAStatus
---,FollowupBy
---,FollowUpTaskCreated
---,ImportSequenceNumber
---,IncidentId
---,IncidentStageCode
---,InfluenceScore
---,IsDecrementing
---,IsEscalated
---,KbArticleId
---,KbArticleIdName
---,LastOnHoldTime
---,MasterId
---,MasterIdName
---,Merged
---,MessageTypeCode
---,MigrationId
---,ModifiedBy
---,ModifiedByName
---,ModifiedByYomiName
---,ModifiedOn
---,ModifiedOnBehalfBy
---,ModifiedOnBehalfByName
---,ModifiedOnBehalfByYomiName
---,NumberOfChildIncidents
---,OnHoldTime
---,OverriddenCreatedOn
---,OwnerId
---,OwnerIdDsc
---,OwnerIdName
---,OwnerIdType
---,OwnerIdYomiName
---,OwningBusinessUnit
---,OwningTeam
---,OwningUser
---,ParentCaseId
---,ParentCaseIdName
---,PrimaryContactId
---,PrimaryContactIdName
---,PrimaryContactIdYomiName
---,PriorityCode
---,ProcessId
---,ProductId
---,ProductIdName
---,ProductSerialNumber
---,ResolveBy
---,ResolveByKPIId
---,ResolveByKPIIdName
---,ResolveBySLAStatus
---,ResponseBy
---,ResponsibleContactId
---,ResponsibleContactIdName
---,ResponsibleContactIdYomiName
-,rik_FastighetsagareIdName AS rik_FastighetsagareId 
-,rik_AnmalareIdName AS rik_AnmalareId 
+,i.Description
+,fas.name AS rik_FastighetsagareId		-- cre_owner_account_id
+,anm.fullname AS rik_AnmalareId			-- cre_kontaktid
 ,rik_ArendetypIdName AS rik_ArendetypId
 ,rik_ArendeundertypIdName AS rik_ArendeundertypId
-,rik_AnmalareIdName
-,rik_AnmalareIdYomiName
+,anm.fullname AS rik_AnmalareIdName
 ,rik_ArendekategoriIdName AS rik_ArendekategoriId
 ,rik_ArendekategoriIdName
 ,rik_ArendetypIdName
 ,rik_ArendeundertypIdName
-,CASE WHEN rik_Avslutskod = 'Löst' THEN '908 400 000'
-	WHEN rik_Avslutskod = 'Felupplagt' THEN '908 400 001'
-	WHEN rik_Avslutskod = 'Ej löst - Uppgifter saknas' THEN '908 400 002'
-	ELSE rik_Avslutskod END AS rik_Avslutskod 
+--,rik_Avslutskod
+--,CASE WHEN rik_Avslutskod = 'Löst' THEN '908 400 000'
+--	WHEN rik_Avslutskod = 'Felupplagt' THEN '908 400 001'
+--	WHEN rik_Avslutskod = 'Ej löst - Uppgifter saknas' THEN '908 400 002'
+--	ELSE rik_Avslutskod END AS rik_Avslutskod 
 ,rik_Epostskapades
-,rik_FastighetsagareIdName
-,rik_FastighetsagareIdYomiName
+,fas.name AS rik_FastighetsagareIdName
 ,rik_Handelsedatum
 ,rik_Lossenast
-,rik_Skickaepostvidoppning
-,rik_Skickaepostvidstangning
+,CASE WHEN rik_Skickaepostvidoppning = 'Nej' THEN NULL ELSE 1 END rik_Skickaepostvidoppning
+,CASE WHEN rik_Skickaepostvidstangning = 'Nej' THEN NULL ELSE 1 END rik_Skickaepostvidstangning
 ,rik_Stangningsdatum
 ,rik_Stangningsorsak
---,RouteCase
---,SentimentValue
---,ServiceStage
 ,SeverityCode
---,SLAInvokedId
---,SLAInvokedIdName
---,SocialProfileId
---,SocialProfileIdName
---,StageId
-,StateCode
-,StatusCode
+,i.StateCode
+,i.StatusCode
 ,SubjectIdName AS SubjectId
 ,SubjectIdName
 ,TicketNumber
---,TimeZoneRuleVersionNumber
 ,Title
---,TransactionCurrencyId
---,TransactionCurrencyIdName
---,TraversedPath
---,UTCConversionTimeZoneCode
---,VersionNumber
---,FirstResponseByKPIIdName
-FROM STG.dbo.Incident rik_ArendetypIdName</property>
+FROM STG.dbo.Incident i
+LEFT JOIN STG.dbo.Account a
+	ON (CustomerIdType = 'account' AND CustomerId = a.Accountid)
+LEFT JOIN STG.dbo.Contact c 
+	ON (CustomerIdType = 'contact' AND CustomerId = c.Contactid)
+LEFT JOIN STG.dbo.Account fas
+	ON rik_FastighetsagareId = fas.Accountid
+LEFT JOIN STG.dbo.Contact anm
+	ON anm.Contactid = rik_AnmalareId</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -2939,16 +2933,6 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       name="rik_ArendetypIdName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_AnmalareIdYomiName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[rik_AnmalareIdYomiName]"
-                      length="450"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_AnmalareIdYomiName]"
-                      name="rik_AnmalareIdYomiName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_FastighetsagareIdName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
@@ -2979,16 +2963,6 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       name="rik_ArendekategoriIdName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_FastighetsagareIdYomiName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[rik_FastighetsagareIdYomiName]"
-                      length="160"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_FastighetsagareIdYomiName]"
-                      name="rik_FastighetsagareIdYomiName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_AnmalareIdName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
@@ -3017,46 +2991,6 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       length="4000"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[AccountIdName]"
                       name="AccountIdName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[AccountIdYomiName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[AccountIdYomiName]"
-                      length="4000"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[AccountIdYomiName]"
-                      name="AccountIdYomiName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ContactId]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[ContactId]"
-                      length="255"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ContactId]"
-                      name="ContactId"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ContactIdName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[ContactIdName]"
-                      length="4000"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ContactIdName]"
-                      name="ContactIdName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ContactIdYomiName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[ContactIdYomiName]"
-                      length="4000"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ContactIdYomiName]"
-                      name="ContactIdYomiName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[SubjectId]"
@@ -3155,16 +3089,6 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       name="CustomerIdType"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[CustomerIdYomiName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[CustomerIdYomiName]"
-                      length="4000"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[CustomerIdYomiName]"
-                      name="CustomerIdYomiName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ActivitiesComplete]"
                       dataType="bool"
                       errorOrTruncationOperation="Conversion"
@@ -3172,16 +3096,6 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       externalMetadataColumnId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[ActivitiesComplete]"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ActivitiesComplete]"
                       name="ActivitiesComplete"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Avslutskod]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[rik_Avslutskod]"
-                      length="255"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Avslutskod]"
-                      name="rik_Avslutskod"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_Epostskapades]"
@@ -3288,6 +3202,26 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[rik_AnmalareId]"
                       name="rik_AnmalareId"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ContactId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[ContactId]"
+                      length="4000"
+                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ContactId]"
+                      name="ContactId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ContactIdName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[ContactIdName]"
+                      length="4000"
+                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].Columns[ContactIdName]"
+                      name="ContactIdName"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3307,11 +3241,6 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       length="100"
                       name="rik_ArendetypIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[rik_AnmalareIdYomiName]"
-                      dataType="wstr"
-                      length="450"
-                      name="rik_AnmalareIdYomiName" />
-                    <externalMetadataColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[rik_FastighetsagareIdName]"
                       dataType="wstr"
                       length="160"
@@ -3327,11 +3256,6 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       length="100"
                       name="rik_ArendekategoriIdName" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[rik_FastighetsagareIdYomiName]"
-                      dataType="wstr"
-                      length="160"
-                      name="rik_FastighetsagareIdYomiName" />
-                    <externalMetadataColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[rik_AnmalareIdName]"
                       dataType="wstr"
                       length="160"
@@ -3339,33 +3263,13 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                     <externalMetadataColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[AccountId]"
                       dataType="wstr"
-                      length="255"
+                      length="4000"
                       name="AccountId" />
                     <externalMetadataColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[AccountIdName]"
                       dataType="wstr"
                       length="4000"
                       name="AccountIdName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[AccountIdYomiName]"
-                      dataType="wstr"
-                      length="4000"
-                      name="AccountIdYomiName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[ContactId]"
-                      dataType="wstr"
-                      length="255"
-                      name="ContactId" />
-                    <externalMetadataColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[ContactIdName]"
-                      dataType="wstr"
-                      length="4000"
-                      name="ContactIdName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[ContactIdYomiName]"
-                      dataType="wstr"
-                      length="4000"
-                      name="ContactIdYomiName" />
                     <externalMetadataColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[SubjectId]"
                       dataType="wstr"
@@ -3400,7 +3304,7 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                     <externalMetadataColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
                       dataType="wstr"
-                      length="255"
+                      length="4000"
                       name="CustomerId" />
                     <externalMetadataColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[CustomerIdName]"
@@ -3412,19 +3316,9 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       dataType="i4"
                       name="CustomerIdType" />
                     <externalMetadataColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[CustomerIdYomiName]"
-                      dataType="wstr"
-                      length="4000"
-                      name="CustomerIdYomiName" />
-                    <externalMetadataColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[ActivitiesComplete]"
                       dataType="bool"
                       name="ActivitiesComplete" />
-                    <externalMetadataColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[rik_Avslutskod]"
-                      dataType="wstr"
-                      length="255"
-                      name="rik_Avslutskod" />
                     <externalMetadataColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[rik_Epostskapades]"
                       dataType="dbTimeStamp"
@@ -3439,13 +3333,11 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       name="rik_Lossenast" />
                     <externalMetadataColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[rik_Skickaepostvidoppning]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="i4"
                       name="rik_Skickaepostvidoppning" />
                     <externalMetadataColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[rik_Skickaepostvidstangning]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="i4"
                       name="rik_Skickaepostvidstangning" />
                     <externalMetadataColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[rik_Stangningsdatum]"
@@ -3475,6 +3367,16 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       dataType="wstr"
                       length="160"
                       name="rik_AnmalareId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[ContactId]"
+                      dataType="wstr"
+                      length="4000"
+                      name="ContactId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output].ExternalColumns[ContactIdName]"
+                      dataType="wstr"
+                      length="4000"
+                      name="ContactIdName" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3495,11 +3397,17 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_ArendetypIdName]"
                       name="rik_ArendetypIdName" />
                     <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_AnmalareIdYomiName]"
+                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[ContactId]"
                       dataType="wstr"
-                      length="450"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_AnmalareIdYomiName]"
-                      name="rik_AnmalareIdYomiName" />
+                      length="4000"
+                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[ContactId]"
+                      name="ContactId" />
+                    <outputColumn
+                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[ContactIdName]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[ContactIdName]"
+                      name="ContactIdName" />
                     <outputColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_FastighetsagareIdName]"
                       dataType="wstr"
@@ -3519,12 +3427,6 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_ArendekategoriIdName]"
                       name="rik_ArendekategoriIdName" />
                     <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_FastighetsagareIdYomiName]"
-                      dataType="wstr"
-                      length="160"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_FastighetsagareIdYomiName]"
-                      name="rik_FastighetsagareIdYomiName" />
-                    <outputColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_AnmalareIdName]"
                       dataType="wstr"
                       length="160"
@@ -3533,7 +3435,7 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                     <outputColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[AccountId]"
                       dataType="wstr"
-                      length="255"
+                      length="4000"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[AccountId]"
                       name="AccountId" />
                     <outputColumn
@@ -3542,30 +3444,6 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       length="4000"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[AccountIdName]"
                       name="AccountIdName" />
-                    <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[AccountIdYomiName]"
-                      dataType="wstr"
-                      length="4000"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[AccountIdYomiName]"
-                      name="AccountIdYomiName" />
-                    <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[ContactId]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[ContactId]"
-                      name="ContactId" />
-                    <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[ContactIdName]"
-                      dataType="wstr"
-                      length="4000"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[ContactIdName]"
-                      name="ContactIdName" />
-                    <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[ContactIdYomiName]"
-                      dataType="wstr"
-                      length="4000"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[ContactIdYomiName]"
-                      name="ContactIdYomiName" />
                     <outputColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_ArendetypId]"
                       dataType="wstr"
@@ -3613,7 +3491,7 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                     <outputColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
                       dataType="wstr"
-                      length="255"
+                      length="4000"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
                       name="CustomerId" />
                     <outputColumn
@@ -3628,22 +3506,10 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[CustomerIdType]"
                       name="CustomerIdType" />
                     <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[CustomerIdYomiName]"
-                      dataType="wstr"
-                      length="4000"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[CustomerIdYomiName]"
-                      name="CustomerIdYomiName" />
-                    <outputColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[ActivitiesComplete]"
                       dataType="bool"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[ActivitiesComplete]"
                       name="ActivitiesComplete" />
-                    <outputColumn
-                      refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_Avslutskod]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_Avslutskod]"
-                      name="rik_Avslutskod" />
                     <outputColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_Epostskapades]"
                       dataType="dbTimeStamp"
@@ -3661,14 +3527,12 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
                       name="rik_Lossenast" />
                     <outputColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_Skickaepostvidoppning]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="i4"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_Skickaepostvidoppning]"
                       name="rik_Skickaepostvidoppning" />
                     <outputColumn
                       refId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_Skickaepostvidstangning]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="i4"
                       lineageId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Error Output].Columns[rik_Skickaepostvidstangning]"
                       name="rik_Skickaepostvidstangning" />
                     <outputColumn
@@ -3725,20 +3589,25 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
           </components>
           <paths>
             <path
+              refId="Package\Load Incident.Paths[Default Output]"
+              endId="Package\Load Incident\Row Inserted.Inputs[Row Count Input 1]"
+              name="Default Output"
+              startId="Package\Load Incident\Dynamics CRM Destination.Outputs[Default Output]" />
+            <path
+              refId="Package\Load Incident.Paths[Derived Column Output]"
+              endId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input]"
+              name="Derived Column Output"
+              startId="Package\Load Incident\Derived Column.Outputs[Derived Column Output]" />
+            <path
               refId="Package\Load Incident.Paths[Error Output]"
-              endId="Package\Load Incident\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              endId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input]"
               name="Error Output"
               startId="Package\Load Incident\Dynamics CRM Destination.Outputs[Error Output]" />
             <path
               refId="Package\Load Incident.Paths[OLE DB Source Output]"
-              endId="Package\Load Incident\Row Inserted.Inputs[Row Count Input 1]"
+              endId="Package\Load Incident\Derived Column.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
               startId="Package\Load Incident\STG_Incident.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Load Incident.Paths[Row Count Output 1]"
-              endId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input]"
-              name="Row Count Output 1"
-              startId="Package\Load Incident\Row Inserted.Outputs[Row Count Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -4412,23 +4281,6 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Städning"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{86B303E2-FB45-475D-A7E0-E96A678DF3A3}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Städning"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
-          SQLTask:SqlStatementSource="&#xA;&#xA;UPDATE Incident&#xA;&#x9;SET rik_FastighetsagareId = REPLACE(REPLACE(rik_FastighetsagareId,'{',''),'}','')&#xA;&#x9;,rik_AnmalareId = REPLACE(REPLACE(rik_AnmalareId,'{',''),'}','')&#xA;&#x9;,rik_ArendetypId = REPLACE(REPLACE(rik_ArendetypId,'{',''),'}','')&#xA;&#x9;,rik_ArendeundertypId = REPLACE(REPLACE(rik_ArendeundertypId,'{',''),'}','')&#xA;&#x9;&#xA;&#xA;UPDATE Incident &#xA;SET rik_Avslutskod = CASE WHEN rik_Avslutskod = 'Löst' THEN '908 400 000'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN rik_Avslutskod = 'Felupplagt' THEN '908 400 001'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN rik_Avslutskod = 'Ej löst - Uppgifter saknas' THEN '908 400 002'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;ELSE rik_Avslutskod END&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
       DTS:refId="Package\Truncate rows in ERROR table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -4442,7 +4294,7 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE rik_Incident_ERROR" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Incident_ERROR" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -4482,33 +4334,17 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
-      DTS:DTSID="{E5C1409F-B064-4931-AFEF-C35ED24B66DC}"
+      DTS:DTSID="{AA3215BA-1C7A-47F7-8679-4D10E854C913}"
       DTS:From="Package\Truncate rows in ERROR table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
-      DTS:To="Package\Städning" />
+      DTS:To="Package\Load Incident" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
       DTS:DTSID="{DA3967F0-C7AE-4440-9B8B-79674974EBEA}"
       DTS:From="Package\Truncate rows in ERROR table"
       DTS:ObjectName="Constraint 5"
-      DTS:To="Package\LogPackageEnd"
-      DTS:Value="1" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
-      DTS:CreationName=""
-      DTS:DTSID="{E3E80DB3-5665-4CB5-A352-8F65C53E0797}"
-      DTS:From="Package\Städning"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 6"
-      DTS:To="Package\Load Incident" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
-      DTS:CreationName=""
-      DTS:DTSID="{374E5694-5815-4C34-9CD2-659F54E214C1}"
-      DTS:From="Package\Städning"
-      DTS:ObjectName="Constraint 7"
       DTS:To="Package\LogPackageEnd"
       DTS:Value="1" />
   </DTS:PrecedenceConstraints>
@@ -4525,13 +4361,9 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="120,41.6"
-          Id="Package\Städning"
-          TopLeft="380.476197239494,254.494121216243" />
-        <NodeLayout
           Size="142.4,41.6"
           Id="Package\Load Incident"
-          TopLeft="390.476197239494,383.576475967751" />
+          TopLeft="336.190482029299,307.717651374448" />
         <NodeLayout
           Size="152,41.6"
           Id="Package\LogPackageEnd"
@@ -4572,37 +4404,37 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="461.676197239494,425.176475967751">
+          TopLeft="407.390482029299,349.317651374448">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-260.247624117663,28.4705877033486"
+              EndConnector="-193.961908907469,104.329412296651"
               Start="0,0"
-              End="-260.247624117663,20.9705877033486">
+              End="-193.961908907469,96.8294122966511">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.9044114488632" />
+                    End="0,64.3537528840128" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.9044114488632"
-                    Point2="0,16.9044114488632"
-                    Point3="-4,16.9044114488632" />
+                    Point1="0,64.3537528840128"
+                    Point2="0,68.3537528840128"
+                    Point3="-4,68.3537528840128" />
                   <mssgle:LineSegment
-                    End="-256.247624117663,16.9044114488632" />
+                    End="-189.961908907469,68.3537528840128" />
                   <mssgle:CubicBezierSegment
-                    Point1="-256.247624117663,16.9044114488632"
-                    Point2="-260.247624117663,16.9044114488632"
-                    Point3="-260.247624117663,20.9044114488632" />
+                    Point1="-189.961908907469,68.3537528840128"
+                    Point2="-193.961908907469,68.3537528840128"
+                    Point3="-193.961908907469,72.3537528840128" />
                   <mssgle:LineSegment
-                    End="-260.247624117663,20.9705877033486" />
+                    End="-193.961908907469,96.8294122966511" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-155.428265183832,21.9044114488632,50.60890625,11.609375"
+              BoundingBox="-122.285407578735,73.3537528840128,50.60890625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4653,40 +4485,6 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="399.409529074195,159.670589891189">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="41.0666681652987,94.823531325054"
-              Start="0,0"
-              End="41.0666681652987,87.323531325054">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.4844771036317" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,34.4844771036317"
-                    Point2="0,38.4844771036317"
-                    Point3="4,38.4844771036317" />
-                  <mssgle:LineSegment
-                    End="37.0666681652987,38.4844771036317" />
-                  <mssgle:CubicBezierSegment
-                    Point1="37.0666681652987,38.4844771036317"
-                    Point2="41.0666681652987,38.4844771036317"
-                    Point3="41.0666681652987,42.4844771036317" />
-                  <mssgle:LineSegment
-                    End="41.0666681652987,87.323531325054" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="347.942862407529,159.67058989119">
           <EdgeLayout.Curve>
@@ -4723,61 +4521,25 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="460.409530572827,296.094121216243">
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="403.400005551747,159.670589891189">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,87.482354751508"
+              EndConnector="0,148.047061483259"
               Start="0,0"
-              End="0,79.982354751508">
+              End="0,140.547061483259">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,79.982354751508" />
+                    End="0,140.547061483259" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="421.809530572827,296.094121216243">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-229.980957450997,157.552942454856"
-              Start="0,0"
-              End="-229.980957450997,150.052942454856">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,68.3858682573402" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,68.3858682573402"
-                    Point2="0,72.3858682573402"
-                    Point3="-4,72.3858682573402" />
-                  <mssgle:LineSegment
-                    End="-225.980957450997,72.3858682573402" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-225.980957450997,72.3858682573402"
-                    Point2="-229.980957450997,72.3858682573402"
-                    Point3="-229.980957450997,76.3858682573402" />
-                  <mssgle:LineSegment
-                    End="-229.980957450997,150.052942454856" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-130.231826381749,77.3858682573402,30.4826953125,9.7490234375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4787,89 +4549,139 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
     design-time-name="Package\Load Incident">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="141.6,41.6"
-          Id="Package\Load Incident\STG_Incident"
-          TopLeft="260.857147265454,30.0941181532652" />
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="141.6,41.6"
           Id="Package\Load Incident\Row Inserted"
-          TopLeft="261.142861453854,124.800001750273" />
+          TopLeft="153.142858933429,304.047063087675" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Load Incident\STG_Incident"
+          TopLeft="268.857147401694,23.976471008644" />
         <NodeLayout
           Size="204,41.6"
           Id="Package\Load Incident\Dynamics CRM Destination"
-          TopLeft="236.571432736456,225.129414922061" />
-        <EdgeLayout
-          Id="Package\Load Incident.Paths[Row Count Output 1]"
-          TopLeft="335.257147095155,166.400001750273">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58.729413171788"
-              Start="0,0"
-              End="0,51.229413171788">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.229413171788" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Incident.Paths[OLE DB Source Output]"
-          TopLeft="331.800004359654,71.6941181532652">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,53.1058835970079"
-              Start="0,0"
-              End="0,45.6058835970079">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45.6058835970079" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="237.714289898776,195.152943913417" />
         <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Load Incident\OLE DB Destination"
-          TopLeft="251.428575710375,338.917651812016" />
+          Size="156,41.6"
+          Id="Package\Load Incident\Incident_ERROR"
+          TopLeft="363.428576936528,305.270592516599" />
         <EdgeLayout
           Id="Package\Load Incident.Paths[Error Output]"
-          TopLeft="337.600004223415,266.729414922061">
+          TopLeft="372.380956565443,236.752943913417">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,72.1882368899546"
+              EndConnector="69.0476203710852,68.5176486031822"
               Start="0,0"
-              End="0,64.6882368899546">
+              End="69.0476203710852,61.0176486031822">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,64.6882368899546" />
+                    End="0,23.7269862051788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.7269862051788"
+                    Point2="0,27.7269862051788"
+                    Point3="4,27.7269862051788" />
+                  <mssgle:LineSegment
+                    End="65.0476203710852,27.7269862051788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="65.0476203710852,27.7269862051788"
+                    Point2="69.0476203710852,27.7269862051788"
+                    Point3="69.0476203710852,31.7269862051788" />
+                  <mssgle:LineSegment
+                    End="69.0476203710852,61.0176486031822" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-28.33638671875,26.6273215699773,56.6727734375,11.43359375"
+              BoundingBox="6.1874234667926,32.7269862051788,56.6727734375,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Incident.Paths[Default Output]"
+          TopLeft="307.047623232109,236.752943913417">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-83.1047642986803,67.2941191742577"
+              Start="0,0"
+              End="-83.1047642986803,59.7941191742577">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.2318614557308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.2318614557308"
+                    Point2="0,27.2318614557308"
+                    Point3="-4,27.2318614557308" />
+                  <mssgle:LineSegment
+                    End="-79.1047642986803,27.2318614557308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-79.1047642986803,27.2318614557308"
+                    Point2="-83.1047642986803,27.2318614557308"
+                    Point3="-83.1047642986803,31.2318614557308" />
+                  <mssgle:LineSegment
+                    End="-83.1047642986803,59.7941191742577" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Load Incident\Derived Column"
+          TopLeft="260.571433008934,106.447060316409" />
+        <EdgeLayout
+          Id="Package\Load Incident.Paths[OLE DB Source Output]"
+          TopLeft="338.314290205314,65.576471008644">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.8705893077653"
+              Start="0,0"
+              End="0,33.3705893077653">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.3705893077653" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Incident.Paths[Derived Column Output]"
+          TopLeft="338.342861453855,148.047060316409">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.1058835970078"
+              Start="0,0"
+              End="0,39.6058835970078">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.6058835970078" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4889,7 +4701,7 @@ FROM STG.dbo.Incident rik_ArendetypIdName</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Incident\OLE DB Destination">
+    design-time-name="Package\Load Incident\Incident_ERROR">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
