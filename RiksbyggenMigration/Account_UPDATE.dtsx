@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Account_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{5A4F5736-122D-477E-935E-14629EC88EA0}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{43E70ADB-5E6C-4713-9D98-41BB1BDDF943}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -749,7 +749,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Account\Account_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Idnummer]"
                       dataType="wstr"
-                      length="30"
+                      length="18"
                       name="rik_Idnummer" />
                     <externalMetadataColumn
                       refId="Package\Load Account\Account_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Organisationsnummer]"
@@ -10333,6 +10333,14 @@ where [refTable].[rik_Idnummer] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\Load Account\Dynamics CRM Source"
+          TopLeft="294.85714787853,14.1647061483257" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Load Account\Dynamics CRM Destination"
+          TopLeft="75.4285728493519,287.882356647636" />
+        <NodeLayout
           Size="121.6,41.6"
           Id="Package\Load Account\Lookup 2"
           TopLeft="548.000009468624,207.600002187841" />
@@ -10359,27 +10367,91 @@ where [refTable].[rik_Idnummer] = ?</property>
         <NodeLayout
           Size="121.6,41.6"
           Id="Package\Load Account\Lookup"
-          TopLeft="85.7142871739913,207.600002187841" />
+          TopLeft="86.2857157551512,207.600002187841" />
         <NodeLayout
           Size="169.6,41.6"
           Id="Package\Load Account\Union All to ERROR"
           TopLeft="429.142864451117,419.247064400379" />
         <NodeLayout
-          Size="121.6,41.6"
-          Id="Package\Load Account\Lookup 1"
-          TopLeft="306.857148219128,207.600002187841" />
-        <NodeLayout
           Size="155.2,41.6"
           Id="Package\Load Account\Account_ERROR"
           TopLeft="431.142863156844,500.800007001092" />
         <NodeLayout
-          Size="183.2,41.6"
-          Id="Package\Load Account\Dynamics CRM Source"
-          TopLeft="294.85714787853,14.1647061483257" />
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Load Account\Dynamics CRM Destination"
-          TopLeft="75.4285728493519,287.882356647636" />
+          Size="121.6,41.6"
+          Id="Package\Load Account\Lookup 1"
+          TopLeft="306.857148219128,207.600002187841" />
+        <EdgeLayout
+          Id="Package\Load Account.Paths[Balanced Data Distributor Output 2]"
+          TopLeft="390.457146311779,159.435295747803">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-22.7999980926509,48.164706440038"
+              Start="0,0"
+              End="-22.7999980926509,40.664706440038">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.082353220019" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.082353220019"
+                    Point2="0,24.082353220019"
+                    Point3="-4,24.082353220019" />
+                  <mssgle:LineSegment
+                    End="-18.7999980926509,24.082353220019" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.7999980926509,24.082353220019"
+                    Point2="-22.7999980926509,24.082353220019"
+                    Point3="-22.7999980926509,28.082353220019" />
+                  <mssgle:LineSegment
+                    End="-22.7999980926509,40.664706440038" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-89.2861123275755,29.082353220019,155.7722265625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Account.Paths[Balanced Data Distributor Output 1]"
+          TopLeft="298.657146311779,159.435295747803">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-151.571430556628,48.164706440038"
+              Start="0,0"
+              End="-151.571430556628,40.664706440038">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.2815062701328" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.2815062701328"
+                    Point2="0,16.2815062701328"
+                    Point3="-4,16.2815062701328" />
+                  <mssgle:LineSegment
+                    End="-147.571430556628,16.2815062701328" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-147.571430556628,16.2815062701328"
+                    Point2="-151.571430556628,16.2815062701328"
+                    Point3="-151.571430556628,20.2815062701328" />
+                  <mssgle:LineSegment
+                    End="-151.571430556628,40.664706440038" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-153.486281684564,21.2815062701328,155.4011328125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Account.Paths[Union All Output 11]"
           TopLeft="511.34286380398,460.847064400379">
@@ -10498,25 +10570,25 @@ where [refTable].[rik_Idnummer] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Account.Paths[Lookup Match Output]"
-          TopLeft="149.171430011672,249.200002187841">
+          TopLeft="149.457144302252,249.200002187841">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38.6823544597949"
+              EndConnector="0,38.682354459795"
               Start="0,0"
-              End="0,31.1823544597949">
+              End="0,31.182354459795">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.1823544597949" />
+                    End="0,31.182354459795" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,9.78648972989743,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,9.78648972989751,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10788,81 +10860,22 @@ where [refTable].[rik_Idnummer] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Account.Paths[Balanced Data Distributor Output 2]"
-          TopLeft="390.457146311779,159.435295747803">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-22.7999980926509,48.164706440038"
-              Start="0,0"
-              End="-22.7999980926509,40.664706440038">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.082353220019" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.082353220019"
-                    Point2="0,24.082353220019"
-                    Point3="-4,24.082353220019" />
-                  <mssgle:LineSegment
-                    End="-18.7999980926509,24.082353220019" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-18.7999980926509,24.082353220019"
-                    Point2="-22.7999980926509,24.082353220019"
-                    Point3="-22.7999980926509,28.082353220019" />
-                  <mssgle:LineSegment
-                    End="-22.7999980926509,40.664706440038" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-89.2861123275755,29.082353220019,155.7722265625,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Account.Paths[Balanced Data Distributor Output 1]"
-          TopLeft="298.657146311779,159.435295747803">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-152.142859137788,48.164706440038"
-              Start="0,0"
-              End="-152.142859137788,40.664706440038">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.2815062701328" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.2815062701328"
-                    Point2="0,16.2815062701328"
-                    Point3="-4,16.2815062701328" />
-                  <mssgle:LineSegment
-                    End="-148.142859137788,16.2815062701328" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-148.142859137788,16.2815062701328"
-                    Point2="-152.142859137788,16.2815062701328"
-                    Point3="-152.142859137788,20.2815062701328" />
-                  <mssgle:LineSegment
-                    End="-152.142859137788,40.664706440038" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-153.771995975144,21.2815062701328,155.4011328125,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Account\Account_ERROR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Account\Lookup">
     <Properties>
@@ -10883,19 +10896,6 @@ where [refTable].[rik_Idnummer] = ?</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Account\Account_ERROR">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
