@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="WIN-MDNURGQAKC3"
   DTS:CreatorName="CORP\Administrator"
-  DTS:DTSID="{B64845AC-84B0-4DDA-BEB1-09E5739451C1}"
+  DTS:DTSID="{187474C2-9A27-43E2-B3AD-BA200B158E8F}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="13.0.2150.2"
   DTS:LocaleID="1053"
   DTS:ObjectName="Account_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="57"
-  DTS:VersionGUID="{30D8A077-19A5-4235-8935-38FF46E2091E}">
+  DTS:VersionBuild="59"
+  DTS:VersionGUID="{02716A8D-C1B7-4C35-A737-314407DAE69A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -207,7 +207,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
-          SQLTask:SqlStatementSource="UPDATE a&#xA;SET rik_DelsegmentId = '2001'&#xA;&#x9;,rik_MarknadsomradeId = 'SBOHU'&#xA;FROM Account a&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="-- Här översätter det gamla värde med det nya&#xA;UPDATE a&#xA;SET rik_DelsegmentId = rik_kod&#xA;FROM Account a&#xA;LEFT JOIN ovDelsegment o&#xA;ON o.sourceCRM = a.rik_DelsegmentIdName&#xA;&#xA;&#xA;-- Detta måste ses över, nu endast för att kunna migrera&#xA;UPDATE a&#xA;SET rik_MarknadsomradeId = 'SBOHU'&#xA;FROM Account a" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -25763,7 +25763,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Account\STG_Account">
+    design-time-name="Package\Load Account\Account_ERROR">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -25776,7 +25776,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Account\Account_ERROR">
+    design-time-name="Package\Load Account\STG_Account">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
