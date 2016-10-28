@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="STGContact"
   DTS:PackageType="5"
-  DTS:VersionBuild="102"
-  DTS:VersionGUID="{BBF2E273-BADA-47EB-89C8-BED0F218E3EA}">
+  DTS:VersionBuild="105"
+  DTS:VersionGUID="{E03FDE3C-17BD-45CB-BC48-B893C61CFDBC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -891,6 +891,12 @@
                       cachedName="rb_pnumber"
                       externalMetadataColumnId="Package\Load Contact till STG\Contact.Inputs[OLE DB Destination Input].ExternalColumns[rik_Idnummer]"
                       lineageId="Package\Load Contact till STG\CRM_Contact.Outputs[OLE DB Source Output].Columns[rb_pnumber]" />
+                    <inputColumn
+                      refId="Package\Load Contact till STG\Contact.Inputs[OLE DB Destination Input].Columns[rb_resource_status]"
+                      cachedDataType="i4"
+                      cachedName="rb_resource_status"
+                      externalMetadataColumnId="Package\Load Contact till STG\Contact.Inputs[OLE DB Destination Input].ExternalColumns[rik_Typ]"
+                      lineageId="Package\Load Contact till STG\CRM_Contact.Outputs[OLE DB Source Output].Columns[rb_resource_status]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1911,14 +1917,6 @@
                       dataType="bool"
                       name="rik_Avliden" />
                     <externalMetadataColumn
-                      refId="Package\Load Contact till STG\Contact.Inputs[OLE DB Destination Input].ExternalColumns[rik_FullstandigaUppgifter]"
-                      dataType="bool"
-                      name="rik_FullstandigaUppgifter" />
-                    <externalMetadataColumn
-                      refId="Package\Load Contact till STG\Contact.Inputs[OLE DB Destination Input].ExternalColumns[rik_Hyresintressent]"
-                      dataType="bool"
-                      name="rik_Hyresintressent" />
-                    <externalMetadataColumn
                       refId="Package\Load Contact till STG\Contact.Inputs[OLE DB Destination Input].ExternalColumns[rik_Idnummer]"
                       dataType="wstr"
                       length="30"
@@ -1928,10 +1926,6 @@
                       dataType="wstr"
                       length="256"
                       name="rik_IMSId" />
-                    <externalMetadataColumn
-                      refId="Package\Load Contact till STG\Contact.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kvalificerad]"
-                      dataType="bool"
-                      name="rik_Kvalificerad" />
                     <externalMetadataColumn
                       refId="Package\Load Contact till STG\Contact.Inputs[OLE DB Destination Input].ExternalColumns[rik_Personnummer]"
                       dataType="wstr"
@@ -1956,6 +1950,18 @@
                       dataType="wstr"
                       length="100"
                       name="rik_MarknadsomradeIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact till STG\Contact.Inputs[OLE DB Destination Input].ExternalColumns[rik_Slutdatum]"
+                      dataType="dbTimeStamp"
+                      name="rik_Slutdatum" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact till STG\Contact.Inputs[OLE DB Destination Input].ExternalColumns[rik_Startdatum]"
+                      dataType="dbTimeStamp"
+                      name="rik_Startdatum" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact till STG\Contact.Inputs[OLE DB Destination Input].ExternalColumns[rik_Typ]"
+                      dataType="i4"
+                      name="rik_Typ" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2104,6 +2110,7 @@
       ,[rb_otheruniqueidentifier]
       ,[rb_pnumber]
       ,[rb_cre_org_enhet_id]
+      ,[rb_resource_status]
   FROM [Contact]</property>
                 <property
                   dataType="System.String"
@@ -3063,6 +3070,15 @@
                       lineageId="Package\Load Contact till STG\CRM_Contact.Outputs[OLE DB Source Output].Columns[rb_cre_org_enhet_id]"
                       name="rb_cre_org_enhet_id"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Contact till STG\CRM_Contact.Outputs[OLE DB Source Output].Columns[rb_resource_status]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Contact till STG\CRM_Contact.Outputs[OLE DB Source Output].ExternalColumns[rb_resource_status]"
+                      lineageId="Package\Load Contact till STG\CRM_Contact.Outputs[OLE DB Source Output].Columns[rb_resource_status]"
+                      name="rb_resource_status"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3514,6 +3530,10 @@
                       refId="Package\Load Contact till STG\CRM_Contact.Outputs[OLE DB Source Output].ExternalColumns[rb_cre_org_enhet_id]"
                       dataType="guid"
                       name="rb_cre_org_enhet_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact till STG\CRM_Contact.Outputs[OLE DB Source Output].ExternalColumns[rb_resource_status]"
+                      dataType="i4"
+                      name="rb_resource_status" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -4064,6 +4084,11 @@
                       dataType="guid"
                       lineageId="Package\Load Contact till STG\CRM_Contact.Outputs[OLE DB Source Error Output].Columns[rb_cre_org_enhet_id]"
                       name="rb_cre_org_enhet_id" />
+                    <outputColumn
+                      refId="Package\Load Contact till STG\CRM_Contact.Outputs[OLE DB Source Error Output].Columns[rb_resource_status]"
+                      dataType="i4"
+                      lineageId="Package\Load Contact till STG\CRM_Contact.Outputs[OLE DB Source Error Output].Columns[rb_resource_status]"
+                      name="rb_resource_status" />
                     <outputColumn
                       refId="Package\Load Contact till STG\CRM_Contact.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -5239,27 +5264,27 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="162.4,41.6"
+          Size="162.666666666667,41.3333333333334"
           Id="Package\Execute SQL Task"
           TopLeft="367.428577685843,368.282358106197" />
         <NodeLayout
-          Size="176.8,41.6"
+          Size="176.666666666667,41.3333333333334"
           Id="Package\Load Contact till STG"
           TopLeft="329.142862748127,271.011768506721" />
         <NodeLayout
-          Size="152,41.6"
+          Size="152,41.3333333333334"
           Id="Package\LogPackageEnd"
           TopLeft="52.285715142075,361.270591787319" />
         <NodeLayout
-          Size="162.4,41.6"
+          Size="162.666666666667,41.3333333333334"
           Id="Package\LogPackageStart"
           TopLeft="58.6428580478746,36.0882357231061" />
         <NodeLayout
-          Size="143.2,41.6"
+          Size="143.333333333334,41.3333333333334"
           Id="Package\New LoggStatus"
           TopLeft="64.5714296710736,119.294119320114" />
         <NodeLayout
-          Size="184,41.6"
+          Size="184,41.3333333333334"
           Id="Package\Truncate rows in table"
           TopLeft="303.428576595929,115.623531033341" />
         <EdgeLayout
@@ -5491,39 +5516,39 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="141.6,41.6"
+          Size="141.333333333334,41.3333333333334"
           Id="Package\Load Contact till STG\Row Inserted"
           TopLeft="255.714290511851,304.305887097552" />
         <NodeLayout
-          Size="141.6,41.6"
+          Size="154.666666666667,41.3333333333334"
           Id="Package\Load Contact till STG\CRM_Contact"
-          TopLeft="256.000004359654,29.3647062941818" />
+          TopLeft="256.520837685226,27.7397063232391" />
         <NodeLayout
-          Size="155.2,41.6"
+          Size="155.333333333334,41.3333333333334"
           Id="Package\Load Contact till STG\Data Conversion"
           TopLeft="250.857147129215,124.800001750273" />
         <NodeLayout
-          Size="114.4,41.6"
+          Size="116,42.6666666666667"
           Id="Package\Load Contact till STG\Contact"
-          TopLeft="271.428576050973,402.541182116076" />
+          TopLeft="271.428576050973,402.107848790491" />
         <NodeLayout
-          Size="152.8,41.6"
+          Size="152.666666666667,41.3333333333334"
           Id="Package\Load Contact till STG\Derived Column"
           TopLeft="249.142861385735,217.176473634053" />
         <EdgeLayout
           Id="Package\Load Contact till STG.Paths[Row Count Output 1]"
-          TopLeft="327.571433281412,345.905887097552">
+          TopLeft="327.904766614745,345.639220430885">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56.6352950185237"
+              EndConnector="0,56.4686283596059"
               Start="0,0"
-              End="0,49.1352950185237">
+              End="0,48.9686283596059">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.1352950185237" />
+                    End="0,48.9686283596059" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5534,18 +5559,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Contact till STG.Paths[OLE DB Source Output]"
-          TopLeft="327.628575744435,70.9647062941819">
+          TopLeft="331.188992407221,69.0730396565724">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,53.8352954560912"
+              EndConnector="0,55.7269620937006"
               Start="0,0"
-              End="0,46.3352954560912">
+              End="0,48.2269620937006">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,46.3352954560912" />
+                    End="0,48.2269620937006" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

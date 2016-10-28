@@ -1,0 +1,2334 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/28/2016 3:43:43 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WIN-MDNURGQAKC3"
+  DTS:CreatorName="CORP\Administrator"
+  DTS:DTSID="{4FD34409-72ED-4FCB-9708-5CE1102CF01A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2150.2"
+  DTS:LocaleID="1053"
+  DTS:ObjectName="STGActivityParty"
+  DTS:PackageType="5"
+  DTS:VersionBuild="104"
+  DTS:VersionGUID="{12F3EBA8-6200-455C-8994-AB8D18847CBD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="LogOLEDB"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{2E9651FA-0D31-4C05-81DE-B66B6710DF75}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{BC8F065E-26F2-4B92-A59A-B0C19AA6CA89}"
+      DTS:ObjectName="ParentPackageExecutionID">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">{4952BEC8-2B03-4BD3-AF79-1EDE35C4D73C}</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{B4AE66D5-053D-48FB-96E9-ECE3BC24E991}"
+      DTS:ObjectName="Parentpackagename">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Saknas</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{566EE5C5-4466-4857-BE08-07AD401220DD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Event">
+      <DTS:VariableValue
+        DTS:DataType="8">Start</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4CAB9E30-9EDD-4416-86FA-77656B21B28D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::ParentPackageExecutionID]== &quot;156C50F0-51B8-4EF2-BD8C-61FF52F5E722&quot; ? @[System::ExecutionInstanceGUID]  : @[$Package::ParentPackageExecutionID]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ParentPackageExecutionID">
+      <DTS:VariableValue
+        DTS:DataType="8">{4952BEC8-2B03-4BD3-AF79-1EDE35C4D73C}</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{33C958E7-F659-4B15-BD51-22CB5DF03E56}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::Parentpackagename]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ParentPackageName">
+      <DTS:VariableValue
+        DTS:DataType="8">Saknas</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D8BC9379-48E0-49A6-9F0B-1F9A2AF99F8A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsDeleted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5959EDA5-4503-4784-990E-14B824B89004}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsInserted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1EFAE799-6839-450D-813E-F1550785F0AB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsUpdated">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{71F0F747-D77D-4B94-82D9-A4E88C7B6AE9}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsUpdated2">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A7941D85-46A0-478D-9A46-43034A630BF5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Senastladdatum">
+      <DTS:VariableValue
+        DTS:DataType="7">10/2/2016 1:00:35 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{46F39F1F-1257-4DFE-AD95-BE1AEDB515CD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceSystemID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DB178ADC-AE58-42AB-923E-90E14D9F6133}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Sourcetable">
+      <DTS:VariableValue
+        DTS:DataType="8">Account</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D205BB42-3ACD-4FA3-8505-602766E24532}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQL_source_query">
+      <DTS:VariableValue
+        DTS:DataType="8">select * from dbo.Test</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6111AC39-441D-4BB7-9612-D5E72CB32AED}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Dim.&quot;+@[System::PackageName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Target">
+      <DTS:VariableValue
+        DTS:DataType="8">Dim.STGActivityParty</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{2E9651FA-0D31-4C05-81DE-B66B6710DF75}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load ActivityParty till STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5F501E69-E9F6-4A94-BF87-3645C1B0C1E0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load ActivityParty till STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load ActivityParty till STG\ActivityParty"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ActivityParty"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ActivityParty]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load ActivityParty till STG\ActivityParty.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[OwnerIdType]"
+                      cachedDataType="i4"
+                      cachedName="OwnerIdType"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[OwnerIdType]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[OwningUser]"
+                      cachedDataType="guid"
+                      cachedName="OwningUser"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[OwningUser]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[OwningBusinessUnit]"
+                      cachedDataType="guid"
+                      cachedName="OwningBusinessUnit"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[OwningBusinessUnit]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[DoNotPhone]"
+                      cachedDataType="bool"
+                      cachedName="DoNotPhone"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[DoNotPhone]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[DoNotPhone]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[DoNotFax]"
+                      cachedDataType="bool"
+                      cachedName="DoNotFax"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[DoNotFax]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[DoNotFax]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[DoNotPostalMail]"
+                      cachedDataType="bool"
+                      cachedName="DoNotPostalMail"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[DoNotPostalMail]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[DoNotPostalMail]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[OwnerId]"
+                      cachedDataType="guid"
+                      cachedName="OwnerId"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[OwnerId]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[ActivityPartyId]"
+                      cachedDataType="guid"
+                      cachedName="ActivityPartyId"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ActivityPartyId]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ActivityPartyId]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[ActivityId]"
+                      cachedDataType="guid"
+                      cachedName="ActivityId"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ActivityId]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ActivityId]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[PartyId]"
+                      cachedDataType="guid"
+                      cachedName="PartyId"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[PartyId]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[PartyId]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[PartyObjectTypeCode]"
+                      cachedDataType="i4"
+                      cachedName="PartyObjectTypeCode"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[PartyObjectTypeCode]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[PartyObjectTypeCode]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[ParticipationTypeMask]"
+                      cachedDataType="i4"
+                      cachedName="ParticipationTypeMask"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ParticipationTypeMask]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ParticipationTypeMask]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[AddressUsed]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="AddressUsed"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[AddressUsed]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[AddressUsed]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[AddressUsedEmailColumnNumber]"
+                      cachedDataType="i4"
+                      cachedName="AddressUsedEmailColumnNumber"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[AddressUsedEmailColumnNumber]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[AddressUsedEmailColumnNumber]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[DoNotEmail]"
+                      cachedDataType="bool"
+                      cachedName="DoNotEmail"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[DoNotEmail]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[DoNotEmail]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[PartyIdDsc]"
+                      cachedDataType="i4"
+                      cachedName="PartyIdDsc"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[PartyIdDsc]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[PartyIdDsc]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[PartyIdName]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="PartyIdName"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[PartyIdName]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[PartyIdName]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[IsPartyDeleted]"
+                      cachedDataType="bool"
+                      cachedName="IsPartyDeleted"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[IsPartyDeleted]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[IsPartyDeleted]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[ExchangeEntryId]"
+                      cachedDataType="wstr"
+                      cachedLength="1024"
+                      cachedName="ExchangeEntryId"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeEntryId]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ExchangeEntryId]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[Effort]"
+                      cachedDataType="r8"
+                      cachedName="Effort"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[Effort]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[Effort]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[InstanceTypeCode]"
+                      cachedDataType="i4"
+                      cachedName="InstanceTypeCode"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[InstanceTypeCode]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[InstanceTypeCode]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[ResourceSpecId]"
+                      cachedDataType="guid"
+                      cachedName="ResourceSpecId"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ResourceSpecId]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ResourceSpecId]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[ResourceSpecIdName]"
+                      cachedDataType="wstr"
+                      cachedLength="160"
+                      cachedName="ResourceSpecIdName"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ResourceSpecIdName]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ResourceSpecIdName]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[ResourceSpecIdDsc]"
+                      cachedDataType="i4"
+                      cachedName="ResourceSpecIdDsc"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ResourceSpecIdDsc]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ResourceSpecIdDsc]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[ScheduledStart]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ScheduledStart"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ScheduledStart]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ScheduledStart]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[ScheduledEnd]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ScheduledEnd"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ScheduledEnd]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ScheduledEnd]" />
+                    <inputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].Columns[ActivityTypeCode]"
+                      cachedDataType="i4"
+                      cachedName="ActivityTypeCode"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ActivityTypeCode]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ActivityTypeCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ActivityPartyId]"
+                      dataType="wstr"
+                      length="255"
+                      name="ActivityPartyId" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ActivityId]"
+                      dataType="wstr"
+                      length="255"
+                      name="ActivityId" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[PartyId]"
+                      dataType="wstr"
+                      length="255"
+                      name="PartyId" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[PartyObjectTypeCode]"
+                      dataType="i4"
+                      name="PartyObjectTypeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ParticipationTypeMask]"
+                      dataType="i4"
+                      name="ParticipationTypeMask" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[AddressUsed]"
+                      dataType="wstr"
+                      length="200"
+                      name="AddressUsed" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[AddressUsedEmailColumnNumber]"
+                      dataType="i4"
+                      name="AddressUsedEmailColumnNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[DoNotEmail]"
+                      dataType="bool"
+                      name="DoNotEmail" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[DoNotFax]"
+                      dataType="bool"
+                      name="DoNotFax" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[DoNotPostalMail]"
+                      dataType="bool"
+                      name="DoNotPostalMail" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[DoNotPhone]"
+                      dataType="bool"
+                      name="DoNotPhone" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[PartyIdDsc]"
+                      dataType="i4"
+                      name="PartyIdDsc" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[PartyIdName]"
+                      dataType="wstr"
+                      length="4000"
+                      name="PartyIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[IsPartyDeleted]"
+                      dataType="bool"
+                      name="IsPartyDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeEntryId]"
+                      dataType="wstr"
+                      length="1024"
+                      name="ExchangeEntryId" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[Effort]"
+                      dataType="r8"
+                      name="Effort" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[InstanceTypeCode]"
+                      dataType="i4"
+                      name="InstanceTypeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ResourceSpecId]"
+                      dataType="wstr"
+                      length="255"
+                      name="ResourceSpecId" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ResourceSpecIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="ResourceSpecIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ResourceSpecIdDsc]"
+                      dataType="i4"
+                      name="ResourceSpecIdDsc" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ScheduledStart]"
+                      dataType="dbTimeStamp"
+                      name="ScheduledStart" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ScheduledEnd]"
+                      dataType="dbTimeStamp"
+                      name="ScheduledEnd" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningUser" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
+                      dataType="i4"
+                      name="OwnerIdType" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningBusinessUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[ActivityTypeCode]"
+                      dataType="i4"
+                      name="ActivityTypeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      dataType="wstr"
+                      length="255"
+                      name="MigrationId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ActivityParty till STG\ActivityParty.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ActivityParty till STG\ActivityParty.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\ActivityParty.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load ActivityParty till STG\ActivityParty.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load ActivityParty till STG\CRM_ActivityParty"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="CRM_ActivityParty"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ActivityParty]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT * FROM ActivityParty
+WHERE ActivityTypeCode != 10036</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Connections[OleDbConnection]"
+                  connectionManagerID="{84FBED31-0522-4DEE-8966-D4A7A9F0C530}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[old_DB_CRM]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[OwnerIdType]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdType]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[OwnerIdType]"
+                      name="OwnerIdType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[OwningUser]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[OwningUser]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[OwningUser]"
+                      name="OwningUser"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[OwningBusinessUnit]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[OwningBusinessUnit]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[OwningBusinessUnit]"
+                      name="OwningBusinessUnit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[DoNotPhone]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[DoNotPhone]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[DoNotPhone]"
+                      name="DoNotPhone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[DoNotFax]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[DoNotFax]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[DoNotFax]"
+                      name="DoNotFax"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[DoNotPostalMail]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[DoNotPostalMail]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[DoNotPostalMail]"
+                      name="DoNotPostalMail"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[OwnerId]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[OwnerId]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[OwnerId]"
+                      name="OwnerId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[VersionNumber]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[VersionNumber]"
+                      length="8"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[VersionNumber]"
+                      name="VersionNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ActivityPartyId]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ActivityPartyId]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ActivityPartyId]"
+                      name="ActivityPartyId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ActivityId]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ActivityId]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ActivityId]"
+                      name="ActivityId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[PartyId]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[PartyId]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[PartyId]"
+                      name="PartyId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[PartyObjectTypeCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[PartyObjectTypeCode]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[PartyObjectTypeCode]"
+                      name="PartyObjectTypeCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ParticipationTypeMask]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ParticipationTypeMask]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ParticipationTypeMask]"
+                      name="ParticipationTypeMask"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[AddressUsed]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[AddressUsed]"
+                      length="200"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[AddressUsed]"
+                      name="AddressUsed"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[AddressUsedEmailColumnNumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[AddressUsedEmailColumnNumber]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[AddressUsedEmailColumnNumber]"
+                      name="AddressUsedEmailColumnNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[DoNotEmail]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[DoNotEmail]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[DoNotEmail]"
+                      name="DoNotEmail"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[PartyIdDsc]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[PartyIdDsc]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[PartyIdDsc]"
+                      name="PartyIdDsc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[PartyIdName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[PartyIdName]"
+                      length="4000"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[PartyIdName]"
+                      name="PartyIdName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[IsPartyDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[IsPartyDeleted]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[IsPartyDeleted]"
+                      name="IsPartyDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ExchangeEntryId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ExchangeEntryId]"
+                      length="1024"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ExchangeEntryId]"
+                      name="ExchangeEntryId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[Effort]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[Effort]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[Effort]"
+                      name="Effort"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[InstanceTypeCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[InstanceTypeCode]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[InstanceTypeCode]"
+                      name="InstanceTypeCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ResourceSpecId]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ResourceSpecId]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ResourceSpecId]"
+                      name="ResourceSpecId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ResourceSpecIdName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ResourceSpecIdName]"
+                      length="160"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ResourceSpecIdName]"
+                      name="ResourceSpecIdName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ResourceSpecIdDsc]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ResourceSpecIdDsc]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ResourceSpecIdDsc]"
+                      name="ResourceSpecIdDsc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ScheduledStart]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ScheduledStart]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ScheduledStart]"
+                      name="ScheduledStart"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ScheduledEnd]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ScheduledEnd]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ScheduledEnd]"
+                      name="ScheduledEnd"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ActivityTypeCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ActivityTypeCode]"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].Columns[ActivityTypeCode]"
+                      name="ActivityTypeCode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdType]"
+                      dataType="i4"
+                      name="OwnerIdType" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[OwningUser]"
+                      dataType="guid"
+                      name="OwningUser" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[OwningBusinessUnit]"
+                      dataType="guid"
+                      name="OwningBusinessUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[DoNotPhone]"
+                      dataType="bool"
+                      name="DoNotPhone" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[DoNotFax]"
+                      dataType="bool"
+                      name="DoNotFax" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[DoNotPostalMail]"
+                      dataType="bool"
+                      name="DoNotPostalMail" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[OwnerId]"
+                      dataType="guid"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ActivityPartyId]"
+                      dataType="guid"
+                      name="ActivityPartyId" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ActivityId]"
+                      dataType="guid"
+                      name="ActivityId" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[PartyId]"
+                      dataType="guid"
+                      name="PartyId" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[PartyObjectTypeCode]"
+                      dataType="i4"
+                      name="PartyObjectTypeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ParticipationTypeMask]"
+                      dataType="i4"
+                      name="ParticipationTypeMask" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[AddressUsed]"
+                      dataType="wstr"
+                      length="200"
+                      name="AddressUsed" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[AddressUsedEmailColumnNumber]"
+                      dataType="i4"
+                      name="AddressUsedEmailColumnNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[DoNotEmail]"
+                      dataType="bool"
+                      name="DoNotEmail" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[PartyIdDsc]"
+                      dataType="i4"
+                      name="PartyIdDsc" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[PartyIdName]"
+                      dataType="wstr"
+                      length="4000"
+                      name="PartyIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[IsPartyDeleted]"
+                      dataType="bool"
+                      name="IsPartyDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ExchangeEntryId]"
+                      dataType="wstr"
+                      length="1024"
+                      name="ExchangeEntryId" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[Effort]"
+                      dataType="r8"
+                      name="Effort" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[InstanceTypeCode]"
+                      dataType="i4"
+                      name="InstanceTypeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ResourceSpecId]"
+                      dataType="guid"
+                      name="ResourceSpecId" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ResourceSpecIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="ResourceSpecIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ResourceSpecIdDsc]"
+                      dataType="i4"
+                      name="ResourceSpecIdDsc" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ScheduledStart]"
+                      dataType="dbTimeStamp"
+                      name="ScheduledStart" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ScheduledEnd]"
+                      dataType="dbTimeStamp"
+                      name="ScheduledEnd" />
+                    <externalMetadataColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output].ExternalColumns[ActivityTypeCode]"
+                      dataType="i4"
+                      name="ActivityTypeCode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ActivityPartyId]"
+                      dataType="guid"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ActivityPartyId]"
+                      name="ActivityPartyId" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ActivityId]"
+                      dataType="guid"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ActivityId]"
+                      name="ActivityId" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[PartyId]"
+                      dataType="guid"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[PartyId]"
+                      name="PartyId" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[PartyObjectTypeCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[PartyObjectTypeCode]"
+                      name="PartyObjectTypeCode" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ParticipationTypeMask]"
+                      dataType="i4"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ParticipationTypeMask]"
+                      name="ParticipationTypeMask" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[AddressUsed]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[AddressUsed]"
+                      name="AddressUsed" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[AddressUsedEmailColumnNumber]"
+                      dataType="i4"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[AddressUsedEmailColumnNumber]"
+                      name="AddressUsedEmailColumnNumber" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[DoNotEmail]"
+                      dataType="bool"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[DoNotEmail]"
+                      name="DoNotEmail" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[OwnerId]"
+                      dataType="guid"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[OwnerId]"
+                      name="OwnerId" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[OwnerIdType]"
+                      dataType="i4"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[OwnerIdType]"
+                      name="OwnerIdType" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[OwningUser]"
+                      dataType="guid"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[OwningUser]"
+                      name="OwningUser" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[PartyIdDsc]"
+                      dataType="i4"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[PartyIdDsc]"
+                      name="PartyIdDsc" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[PartyIdName]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[PartyIdName]"
+                      name="PartyIdName" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[IsPartyDeleted]"
+                      dataType="bool"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[IsPartyDeleted]"
+                      name="IsPartyDeleted" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ExchangeEntryId]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ExchangeEntryId]"
+                      name="ExchangeEntryId" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[Effort]"
+                      dataType="r8"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[Effort]"
+                      name="Effort" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[InstanceTypeCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[InstanceTypeCode]"
+                      name="InstanceTypeCode" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ResourceSpecId]"
+                      dataType="guid"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ResourceSpecId]"
+                      name="ResourceSpecId" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ResourceSpecIdName]"
+                      dataType="wstr"
+                      length="160"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ResourceSpecIdName]"
+                      name="ResourceSpecIdName" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ResourceSpecIdDsc]"
+                      dataType="i4"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ResourceSpecIdDsc]"
+                      name="ResourceSpecIdDsc" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ScheduledStart]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ScheduledStart]"
+                      name="ScheduledStart" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ScheduledEnd]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ScheduledEnd]"
+                      name="ScheduledEnd" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[OwningBusinessUnit]"
+                      dataType="guid"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[OwningBusinessUnit]"
+                      name="OwningBusinessUnit" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[DoNotPhone]"
+                      dataType="bool"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[DoNotPhone]"
+                      name="DoNotPhone" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[DoNotFax]"
+                      dataType="bool"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[DoNotFax]"
+                      name="DoNotFax" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[DoNotPostalMail]"
+                      dataType="bool"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[DoNotPostalMail]"
+                      name="DoNotPostalMail" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ActivityTypeCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ActivityTypeCode]"
+                      name="ActivityTypeCode" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[VersionNumber]"
+                      name="VersionNumber" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load ActivityParty till STG\Row Inserted"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Inserted">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RowsInserted</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load ActivityParty till STG\Row Inserted.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load ActivityParty till STG\Row Inserted.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Load ActivityParty till STG\Row Inserted.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load ActivityParty till STG.Paths[OLE DB Source Output]"
+              endId="Package\Load ActivityParty till STG\Row Inserted.Inputs[Row Count Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\Load ActivityParty till STG\CRM_ActivityParty.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load ActivityParty till STG.Paths[Row Count Output 1]"
+              endId="Package\Load ActivityParty till STG\ActivityParty.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\Load ActivityParty till STG\Row Inserted.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LogPackageEnd"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B0E3A95B-0241-47A4-B98E-397699C71ADD}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LogPackageEnd"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="ExecuteSQLExecutingQuery"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnExecStatusChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnProgress"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnQueryCancel"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnTaskFailed"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnWarning"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A3324C0F-E9EB-404C-85EA-9F2680BB5C0A}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="InsertLogPackage" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Eventname"
+            SQLTask:DtsVariableName="User::Event"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packagename"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packageid"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Loggingtime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="135"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Mainpackagename"
+            SQLTask:DtsVariableName="User::ParentPackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsinserted"
+            SQLTask:DtsVariableName="User::RowsInserted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsupdated"
+            SQLTask:DtsVariableName="User::RowsUpdated"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsdeleted"
+            SQLTask:DtsVariableName="User::RowsDeleted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Username"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Executionid"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="User::ParentPackageExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LogPackageStart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{82CEC222-C773-4142-BE25-5AAA5264F045}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LogPackageStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="ExecuteSQLExecutingQuery"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnExecStatusChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnProgress"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnQueryCancel"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnTaskFailed"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnWarning"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A3324C0F-E9EB-404C-85EA-9F2680BB5C0A}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="InsertLogPackage" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Eventname"
+            SQLTask:DtsVariableName="User::Event"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packagename"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packageid"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Loggingtime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="135"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Mainpackagename"
+            SQLTask:DtsVariableName="User::ParentPackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsinserted"
+            SQLTask:DtsVariableName="User::RowsInserted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsupdated"
+            SQLTask:DtsVariableName="User::RowsUpdated"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsdeleted"
+            SQLTask:DtsVariableName="User::RowsDeleted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Username"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Executionid"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="User::ParentPackageExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\New LoggStatus"
+      DTS:CreationName="Microsoft.ExpressionTask"
+      DTS:Description="Expression Task"
+      DTS:DTSID="{87B015C1-33E6-4779-9D9D-780A8AE7B413}"
+      DTS:ExecutableType="Microsoft.ExpressionTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="New LoggStatus"
+      DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExpressionTask
+          Expression="@[User::Event] = &quot;End&quot;" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate rows in table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{55A8C0CB-36D7-4E67-B3CB-FC03294F429A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate rows in table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [STG].[dbo].[ActivityParty]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{0E449054-6B27-44F4-99F2-206EAF701362}"
+      DTS:From="Package\LogPackageStart"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\New LoggStatus" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{2C84A4A9-B9E5-482C-8CB2-539C3495D936}"
+      DTS:From="Package\Load ActivityParty till STG"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{D4169C2B-E016-4376-9CA8-6F422444F2CA}"
+      DTS:From="Package\New LoggStatus"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Truncate rows in table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{6AB379BD-9A36-453D-9942-A8D8853D6A40}"
+      DTS:From="Package\New LoggStatus"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{72BF9FBE-9866-407D-9B2A-43C6F3498A17}"
+      DTS:From="Package\Truncate rows in table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Load ActivityParty till STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{7F397687-6A1A-4DEE-9912-EF04119A58C3}"
+      DTS:From="Package\Truncate rows in table"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="200.666666666667,42.6666666666667"
+          Id="Package\Load ActivityParty till STG"
+          TopLeft="343.273815356424,261.835297789789" />
+        <NodeLayout
+          Size="152,41.3333333333334"
+          Id="Package\LogPackageEnd"
+          TopLeft="57.4285723725145,341.694120924531" />
+        <NodeLayout
+          Size="162.666666666667,41.3333333333334"
+          Id="Package\LogPackageStart"
+          TopLeft="58.6428580478746,36.0882357231061" />
+        <NodeLayout
+          Size="143.333333333334,41.3333333333334"
+          Id="Package\New LoggStatus"
+          TopLeft="64.5714296710736,119.294119320114" />
+        <NodeLayout
+          Size="184,41.3333333333334"
+          Id="Package\Truncate rows in table"
+          TopLeft="303.845243256387,114.323531056587" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="138.007143859474,77.6882357231061">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.6058835970077"
+              Start="0,0"
+              End="0,34.1058835970077">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.1058835970077" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="411.496037578646,304.501964456456">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-242.067465206132,37.1921564680753"
+              Start="0,0"
+              End="-242.067465206132,29.6921564680753">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.9646162232589" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.9646162232589"
+                    Point2="0,20.9646162232589"
+                    Point3="-4,20.9646162232589" />
+                  <mssgle:LineSegment
+                    End="-238.067465206132,20.9646162232589" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-238.067465206132,20.9646162232589"
+                    Point2="-242.067465206132,20.9646162232589"
+                    Point3="-242.067465206132,24.9646162232589" />
+                  <mssgle:LineSegment
+                    End="-242.067465206132,29.6921564680753" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-146.338185728066,25.9646162232589,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="207.904763004407,137.475491855017">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="95.9404802519798,0"
+              Start="0,0"
+              End="88.4404802519798,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="88.4404802519798,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="136.171429671074,160.894119320114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-38.7428572985591,180.800001604417"
+              Start="0,0"
+              End="-38.7428572985591,173.300001604417">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,114.455173464963" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,114.455173464963"
+                    Point2="0,118.455173464963"
+                    Point3="-4,118.455173464963" />
+                  <mssgle:LineSegment
+                    End="-34.7428572985591,118.455173464963" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-34.7428572985591,118.455173464963"
+                    Point2="-38.7428572985591,118.455173464963"
+                    Point3="-38.7428572985591,122.455173464963" />
+                  <mssgle:LineSegment
+                    End="-38.7428572985591,173.300001604417" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.6127763055296,123.455173464963,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="425.17857658972,155.65686438992">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.4285721000371,106.178433399869"
+              Start="0,0"
+              End="18.4285721000371,98.6784333998689">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.0205721533952" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.0205721533952"
+                    Point2="0,43.0205721533952"
+                    Point3="4,43.0205721533952" />
+                  <mssgle:LineSegment
+                    End="14.4285721000371,43.0205721533952" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.4285721000371,43.0205721533952"
+                    Point2="18.4285721000371,43.0205721533952"
+                    Point3="18.4285721000371,47.0205721533952" />
+                  <mssgle:LineSegment
+                    End="18.4285721000371,98.6784333998689" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="366.511909923053,155.65686438992">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-233.083337550539,186.037256534611"
+              Start="0,0"
+              End="-233.083337550539,178.537256534611">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.3771642855751" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,71.3771642855751"
+                    Point2="0,75.3771642855751"
+                    Point3="-4,75.3771642855751" />
+                  <mssgle:LineSegment
+                    End="-229.083337550539,75.3771642855751" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-229.083337550539,75.3771642855751"
+                    Point2="-233.083337550539,75.3771642855751"
+                    Point3="-233.083337550539,79.3771642855751" />
+                  <mssgle:LineSegment
+                    End="-233.083337550539,178.537256534611" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-131.783016431519,80.3771642855751,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load ActivityParty till STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="165.333333333334,43.3333333333334"
+          Id="Package\Load ActivityParty till STG\CRM_ActivityParty"
+          TopLeft="239.226195122287,10.4254904390736" />
+        <NodeLayout
+          Size="141.333333333334,41.3333333333334"
+          Id="Package\Load ActivityParty till STG\Row Inserted"
+          TopLeft="255.238100133987,100.435301063344" />
+        <EdgeLayout
+          Id="Package\Load ActivityParty till STG.Paths[OLE DB Source Output]"
+          TopLeft="323.898814294804,53.7588237724069">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.676477290937"
+              Start="0,0"
+              End="0,39.176477290937">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.176477290937" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="137.333333333334,42.6666666666667"
+          Id="Package\Load ActivityParty till STG\ActivityParty"
+          TopLeft="255.83332952112,196.299996489883" />
+        <EdgeLayout
+          Id="Package\Load ActivityParty till STG.Paths[Row Count Output 1]"
+          TopLeft="325.20238149422,141.768634396677">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.5313620932053"
+              Start="0,0"
+              End="0,47.0313620932053">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.0313620932053" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load ActivityParty till STG\CRM_ActivityParty">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load ActivityParty till STG\ActivityParty">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
