@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Activities_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="84"
-  DTS:VersionGUID="{E6004813-B702-4F03-81AA-43F7AD9F9F7F}">
+  DTS:VersionBuild="106"
+  DTS:VersionGUID="{A963DCD1-9689-4C05-8312-DB32C6E56587}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -207,7 +207,6 @@
           DTS:refId="Package\Core activities entities\Migrate Email"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:Disabled="True"
           DTS:DTSID="{3611fcc9-b330-4ae1-bbad-94fc7f8970b6}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
@@ -921,7 +920,7 @@
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ParentActivityIdName]"
                           dataType="wstr"
-                          length="200"
+                          length="400"
                           name="ParentActivityIdName" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ArendekategoriIdName]"
@@ -941,12 +940,12 @@
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
                           dataType="wstr"
-                          length="160"
+                          length="200"
                           name="OwnerIdName" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdYomiName]"
                           dataType="wstr"
-                          length="160"
+                          length="200"
                           name="OwnerIdYomiName" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdDsc]"
@@ -954,7 +953,8 @@
                           name="OwnerIdDsc" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="100"
                           name="OwnerIdType" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
@@ -1116,7 +1116,8 @@
                           name="MessageId" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[RegardingObjectTypeCode]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="200"
                           name="RegardingObjectTypeCode" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[RegardingObjectIdName]"
@@ -1173,7 +1174,8 @@
                           name="ModifiedOnBehalfBy" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ActivityTypeCode]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="100"
                           name="ActivityTypeCode" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[IsRegularActivity]"
@@ -1202,7 +1204,8 @@
                           name="EmailSenderName" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[EmailSenderObjectTypeCode]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="64"
                           name="EmailSenderObjectTypeCode" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SendersAccount]"
@@ -1211,7 +1214,8 @@
                           name="SendersAccount" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SendersAccountObjectTypeCode]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="64"
                           name="SendersAccountObjectTypeCode" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[AttachmentCount]"
@@ -1379,7 +1383,7 @@
                       dataType="System.Int32"
                       description="Specifies how data is written to CRM server."
                       name="ActionType"
-                      typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">5</property>
+                      typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">1</property>
                     <property
                       dataType="System.Boolean"
                       description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
@@ -1395,7 +1399,7 @@
                       description="Specify the matching criteria to be used when Upsert action is chosen."
                       expressionType="Notify"
                       name="UpsertMatchingCriteria"
-                      typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">1</property>
+                      typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">0</property>
                     <property
                       dataType="System.String"
                       description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
@@ -1410,7 +1414,7 @@
                       dataType="System.Boolean"
                       description="Specifies whether to ignore those fields that have no value changes in the target system. "
                       expressionType="Notify"
-                      name="IgnoreUnchangedFields">true</property>
+                      name="IgnoreUnchangedFields">false</property>
                     <property
                       dataType="System.Boolean"
                       description="Specify whether to remove those invalid characters before writing to CRM."
@@ -1600,35 +1604,17 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[owneridtype]"
                           lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[owneridtype]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[parentactivityid]"
-                          cachedDataType="guid"
-                          cachedName="parentactivityid"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[parentactivityid]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[parentactivityid]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[prioritycode]"
                           cachedDataType="i4"
                           cachedName="prioritycode"
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[prioritycode]"
                           lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[prioritycode]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[processid]"
-                          cachedDataType="guid"
-                          cachedName="processid"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[processid]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[processid]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[readreceiptrequested]"
                           cachedDataType="bool"
                           cachedName="readreceiptrequested"
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[readreceiptrequested]"
                           lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[readreceiptrequested]" />
-                        <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[regardingobjectid]"
-                          cachedDataType="guid"
-                          cachedName="regardingobjectid"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[regardingobjectid]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[regardingobjectid]" />
                         <inputColumn
                           refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[regardingobjecttypecode]"
                           cachedDataType="wstr"
@@ -1649,31 +1635,12 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[scheduledstart]"
                           lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[scheduledstart]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[sender]"
-                          cachedDataType="wstr"
-                          cachedLength="250"
-                          cachedName="sender"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[sender]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[sender]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[sendersaccountname]"
                           cachedDataType="wstr"
                           cachedLength="400"
                           cachedName="sendersaccountname"
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[sendersaccountname]"
                           lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[sendersaccountname]" />
-                        <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[serviceid]"
-                          cachedDataType="guid"
-                          cachedName="serviceid"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[serviceid]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[serviceid]" />
-                        <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[stageid]"
-                          cachedDataType="guid"
-                          cachedName="stageid"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[stageid]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[stageid]" />
                         <inputColumn
                           refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[subcategory]"
                           cachedDataType="wstr"
@@ -1688,13 +1655,6 @@
                           cachedName="subject"
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[subject]"
                           lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[subject]" />
-                        <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[submittedby]"
-                          cachedDataType="wstr"
-                          cachedLength="250"
-                          cachedName="submittedby"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[submittedby]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[submittedby]" />
                         <inputColumn
                           refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[timezoneruleversionnumber]"
                           cachedDataType="i4"
@@ -1715,6 +1675,33 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[torecipients]"
                           lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[torecipients]" />
                         <inputColumn
+                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[rb_epostbesvarat]"
+                          cachedDataType="bool"
+                          cachedName="rb_epostbesvarat"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[rik_epostbesvarat]"
+                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[rb_epostbesvarat]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[parentactivityidname]"
+                          cachedDataType="wstr"
+                          cachedLength="400"
+                          cachedName="parentactivityidname"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[parentactivityid]"
+                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[parentactivityidname]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[regardingobjectidname]"
+                          cachedDataType="wstr"
+                          cachedLength="300"
+                          cachedName="regardingobjectidname"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[regardingobjectid]"
+                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[regardingobjectidname]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[rb_relateratepostmeddelandename]"
+                          cachedDataType="wstr"
+                          cachedLength="200"
+                          cachedName="rb_relateratepostmeddelandename"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[rik_eelateratepost]"
+                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[rb_relateratepostmeddelandename]" />
+                        <inputColumn
                           refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[trackingtoken]"
                           cachedDataType="wstr"
                           cachedLength="50"
@@ -1722,44 +1709,12 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[trackingtoken]"
                           lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[trackingtoken]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[traversedpath]"
+                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[sender]"
                           cachedDataType="wstr"
-                          cachedLength="1250"
-                          cachedName="traversedpath"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[traversedpath]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[traversedpath]" />
-                        <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[utcconversiontimezonecode]"
-                          cachedDataType="i4"
-                          cachedName="utcconversiontimezonecode"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[utcconversiontimezonecode]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[utcconversiontimezonecode]" />
-                        <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[rb_relateratepostmeddelande]"
-                          cachedDataType="guid"
-                          cachedName="rb_relateratepostmeddelande"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[rik_eelateratepost]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[rb_relateratepostmeddelande]" />
-                        <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[rb_epostbesvarat]"
-                          cachedDataType="bool"
-                          cachedName="rb_epostbesvarat"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[rik_epostbesvarat]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[rb_epostbesvarat]" />
-                        <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[createdbyname]"
-                          cachedDataType="wstr"
-                          cachedLength="200"
-                          cachedName="createdbyname"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[createdby]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[createdbyname]" />
-                        <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[owneridname]"
-                          cachedDataType="wstr"
-                          cachedLength="200"
-                          cachedName="owneridname"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[ownerid]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[owneridname]" />
+                          cachedLength="250"
+                          cachedName="sender"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[sender]"
+                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[sender]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1774,12 +1729,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -1793,12 +1742,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -1812,12 +1755,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -1831,12 +1768,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -1850,12 +1781,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes">account;contact;lead;queue;systemuser</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                             <property
                               dataType="System.String"
                               name="TextLookup">&lt;TextLookupSetting&gt;
@@ -1875,7 +1800,7 @@
     &lt;/LookupTarget&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;queue&lt;/TargetEntity&gt;
-      &lt;OptOut&gt;true&lt;/OptOut&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
     &lt;/LookupTarget&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
@@ -1897,12 +1822,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -1916,12 +1835,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes">account;contact;lead;queue;systemuser</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                             <property
                               dataType="System.String"
                               name="TextLookup">&lt;TextLookupSetting&gt;
@@ -1941,7 +1854,7 @@
     &lt;/LookupTarget&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;queue&lt;/TargetEntity&gt;
-      &lt;OptOut&gt;true&lt;/OptOut&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
     &lt;/LookupTarget&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
@@ -1963,17 +1876,8 @@
                               dataType="System.String"
                               name="LookupTypes">systemuser</property>
                             <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">false</property>
-                            <property
                               dataType="System.String"
-                              name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;AllUsePrimaryField&gt;true&lt;/AllUsePrimaryField&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-&lt;/TextLookupSetting&gt;</property>
+                              name="TextLookup"></property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -1987,12 +1891,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2006,12 +1904,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">false</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2025,12 +1917,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2044,12 +1930,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2063,12 +1943,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2083,12 +1957,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">false</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2102,12 +1970,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes">account;contact;lead;queue;systemuser</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                             <property
                               dataType="System.String"
                               name="TextLookup">&lt;TextLookupSetting&gt;
@@ -2127,7 +1989,7 @@
     &lt;/LookupTarget&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;queue&lt;/TargetEntity&gt;
-      &lt;OptOut&gt;true&lt;/OptOut&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
     &lt;/LookupTarget&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
@@ -2148,12 +2010,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">false</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2167,12 +2023,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2186,12 +2036,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2206,12 +2050,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2225,12 +2063,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2245,12 +2077,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2264,12 +2090,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2283,12 +2103,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">false</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2303,17 +2117,8 @@
                               dataType="System.String"
                               name="LookupTypes">systemuser;team</property>
                             <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
-                            <property
                               dataType="System.String"
-                              name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;AllUsePrimaryField&gt;true&lt;/AllUsePrimaryField&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-&lt;/TextLookupSetting&gt;</property>
+                              name="TextLookup"></property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2328,12 +2133,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2348,11 +2147,16 @@
                               dataType="System.String"
                               name="LookupTypes">email</property>
                             <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">false</property>
+                              dataType="System.String"
+                              name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;email&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2366,12 +2170,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2385,12 +2183,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2404,12 +2196,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2424,11 +2210,84 @@
                               dataType="System.String"
                               name="LookupTypes">account;asyncoperation;bulkoperation;campaign;campaignactivity;contact;contract;entitlement;entitlementtemplate;incident;invoice;lead;msdyn_postalbum;opportunity;quote;rik_anbud;rik_driftslarm;salesorder</property>
                             <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
+                              dataType="System.String"
+                              name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;account&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;asyncoperation&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;bulkoperation&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;campaign&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;campaignactivity&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;contract&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;entitlement&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;entitlementtemplate&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;incident&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;invoice&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;lead&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyn_postalbum&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;opportunity&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;quote&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_anbud&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_driftslarm&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;salesorder&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2443,12 +2302,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2462,12 +2315,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes">rik_arendekategori</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2481,12 +2328,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes">rik_arendetyp</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2500,12 +2341,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes">rik_arendeundertyp</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2520,11 +2355,16 @@
                               dataType="System.String"
                               name="LookupTypes">email</property>
                             <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
+                              dataType="System.String"
+                              name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;email&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2538,12 +2378,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2557,12 +2391,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2576,12 +2404,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2595,12 +2417,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2615,12 +2431,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2635,12 +2445,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">false</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2654,12 +2458,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes">service</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2673,12 +2471,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2692,12 +2484,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2711,12 +2497,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2731,12 +2511,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2751,12 +2525,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2771,12 +2539,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2790,12 +2552,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2809,12 +2565,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes">account;contact;lead;queue;systemuser</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                             <property
                               dataType="System.String"
                               name="TextLookup">&lt;TextLookupSetting&gt;
@@ -2834,7 +2584,7 @@
     &lt;/LookupTarget&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;queue&lt;/TargetEntity&gt;
-      &lt;OptOut&gt;true&lt;/OptOut&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
     &lt;/LookupTarget&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
@@ -2856,12 +2606,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2876,12 +2620,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2895,12 +2633,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes">transactioncurrency</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2915,12 +2647,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -2934,12 +2660,6 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Createable">true</property>
-                            <property
-                              dataType="System.Boolean"
-                              name="Updateable">true</property>
                           </properties>
                         </externalMetadataColumn>
                       </externalMetadataColumns>
@@ -4755,7 +4475,6 @@
           DTS:refId="Package\Core activities entities\Migrate phonecalls"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:Disabled="True"
           DTS:DTSID="{414D0982-73F4-4406-8C3A-5FFC8F330638}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
@@ -4941,12 +4660,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[overriddencreatedon]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[overriddencreatedon]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[ownerid]"
-                          cachedDataType="guid"
-                          cachedName="ownerid"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[ownerid]"
-                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[ownerid]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[owneridtype]"
                           cachedDataType="wstr"
                           cachedLength="64"
@@ -4973,12 +4686,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[processid]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[processid]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[regardingobjectid]"
-                          cachedDataType="guid"
-                          cachedName="regardingobjectid"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[regardingobjectid]"
-                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[regardingobjectid]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[regardingobjecttypecode]"
                           cachedDataType="wstr"
                           cachedLength="64"
@@ -4997,18 +4704,6 @@
                           cachedName="scheduledstart"
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[scheduledstart]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[scheduledstart]" />
-                        <inputColumn
-                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[serviceid]"
-                          cachedDataType="guid"
-                          cachedName="serviceid"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[serviceid]"
-                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[serviceid]" />
-                        <inputColumn
-                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[stageid]"
-                          cachedDataType="guid"
-                          cachedName="stageid"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[stageid]"
-                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[stageid]" />
                         <inputColumn
                           refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[subcategory]"
                           cachedDataType="wstr"
@@ -5043,13 +4738,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[utcconversiontimezonecode]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[utcconversiontimezonecode]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[createdonbehalfbyname]"
-                          cachedDataType="wstr"
-                          cachedLength="200"
-                          cachedName="createdonbehalfbyname"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[createdby]"
-                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[createdonbehalfbyname]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[from]"
                           cachedDataType="nText"
                           cachedName="from"
@@ -5061,6 +4749,13 @@
                           cachedName="to"
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[to]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[to]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[regardingobjectidname]"
+                          cachedDataType="wstr"
+                          cachedLength="300"
+                          cachedName="regardingobjectidname"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[regardingobjectid]"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[regardingobjectidname]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -5179,10 +4874,7 @@
                               name="Updateable">false</property>
                             <property
                               dataType="System.String"
-                              name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;AllUsePrimaryField&gt;true&lt;/AllUsePrimaryField&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-&lt;/TextLookupSetting&gt;</property>
+                              name="TextLookup"></property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -5379,10 +5071,7 @@
                               name="Updateable">true</property>
                             <property
                               dataType="System.String"
-                              name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;AllUsePrimaryField&gt;true&lt;/AllUsePrimaryField&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-&lt;/TextLookupSetting&gt;</property>
+                              name="TextLookup"></property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -5480,6 +5169,81 @@
                             <property
                               dataType="System.Boolean"
                               name="Updateable">true</property>
+                            <property
+                              dataType="System.String"
+                              name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;account&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;bulkoperation&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;campaign&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;campaignactivity&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;contract&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;entitlement&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;entitlementtemplate&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;incident&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;invoice&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;lead&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyn_postalbum&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;opportunity&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;quote&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_anbud&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_driftslarm&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;salesorder&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -6345,12 +6109,12 @@
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
                           dataType="wstr"
-                          length="160"
+                          length="200"
                           name="OwnerIdName" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdYomiName]"
                           dataType="wstr"
-                          length="160"
+                          length="200"
                           name="OwnerIdYomiName" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdDsc]"
@@ -6358,7 +6122,8 @@
                           name="OwnerIdDsc" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="100"
                           name="OwnerIdType" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
@@ -6532,7 +6297,8 @@
                           name="ModifiedOnBehalfBy" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ActivityTypeCode]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="100"
                           name="ActivityTypeCode" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[IsRegularActivity]"
@@ -7921,12 +7687,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[prioritycode]"
                           lineageId="Package\Core activities entities\Migrate Task\Read task records.Outputs[CRM Primary Output].Columns[prioritycode]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].Columns[regardingobjectid]"
-                          cachedDataType="guid"
-                          cachedName="regardingobjectid"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[regardingobjectid]"
-                          lineageId="Package\Core activities entities\Migrate Task\Read task records.Outputs[CRM Primary Output].Columns[regardingobjectid]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].Columns[regardingobjecttypecode]"
                           cachedDataType="wstr"
                           cachedLength="64"
@@ -7985,19 +7745,12 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[utcconversiontimezonecode]"
                           lineageId="Package\Core activities entities\Migrate Task\Read task records.Outputs[CRM Primary Output].Columns[utcconversiontimezonecode]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].Columns[createdbyname]"
+                          refId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].Columns[regardingobjectidname]"
                           cachedDataType="wstr"
-                          cachedLength="200"
-                          cachedName="createdbyname"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[createdby]"
-                          lineageId="Package\Core activities entities\Migrate Task\Read task records.Outputs[CRM Primary Output].Columns[createdbyname]" />
-                        <inputColumn
-                          refId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].Columns[owneridname]"
-                          cachedDataType="wstr"
-                          cachedLength="200"
-                          cachedName="owneridname"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[ownerid]"
-                          lineageId="Package\Core activities entities\Migrate Task\Read task records.Outputs[CRM Primary Output].Columns[owneridname]" />
+                          cachedLength="300"
+                          cachedName="regardingobjectidname"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[regardingobjectid]"
+                          lineageId="Package\Core activities entities\Migrate Task\Read task records.Outputs[CRM Primary Output].Columns[regardingobjectidname]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -8116,10 +7869,7 @@
                               name="Updateable">false</property>
                             <property
                               dataType="System.String"
-                              name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;AllUsePrimaryField&gt;true&lt;/AllUsePrimaryField&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-&lt;/TextLookupSetting&gt;</property>
+                              name="TextLookup"></property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -8255,10 +8005,7 @@
                               name="Updateable">true</property>
                             <property
                               dataType="System.String"
-                              name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;AllUsePrimaryField&gt;true&lt;/AllUsePrimaryField&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-&lt;/TextLookupSetting&gt;</property>
+                              name="TextLookup"></property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -8355,6 +8102,77 @@
                             <property
                               dataType="System.Boolean"
                               name="Updateable">true</property>
+                            <property
+                              dataType="System.String"
+                              name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;account&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;campaign&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;campaignactivity&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;contract&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;entitlement&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;entitlementtemplate&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;incident&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;invoice&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;lead&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyn_postalbum&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;opportunity&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;quote&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_anbud&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_driftslarm&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;salesorder&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -10156,12 +9974,12 @@
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Task\Task_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
                           dataType="wstr"
-                          length="160"
+                          length="200"
                           name="OwnerIdName" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Task\Task_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdYomiName]"
                           dataType="wstr"
-                          length="160"
+                          length="200"
                           name="OwnerIdYomiName" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Task\Task_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdDsc]"
@@ -10169,7 +9987,8 @@
                           name="OwnerIdDsc" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Task\Task_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="100"
                           name="OwnerIdType" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Task\Task_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
@@ -10303,7 +10122,8 @@
                           name="RegardingObjectIdName" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Task\Task_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[RegardingObjectTypeCode]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="200"
                           name="RegardingObjectTypeCode" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate Task\Task_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
@@ -10460,6 +10280,429 @@
           version="1">
           <components>
             <component
+              refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ActivityPointer_ERROR"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ActivityPointer_ERROR]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].Columns[activitytypecode]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="activitytypecode"
+                      externalMetadataColumnId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ActivityTypeCode]"
+                      lineageId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer.Outputs[CRM Primary Output].Columns[activitytypecode]" />
+                    <inputColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].Columns[statecode]"
+                      cachedDataType="i4"
+                      cachedName="statecode"
+                      externalMetadataColumnId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[StateCode]"
+                      lineageId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer.Outputs[CRM Primary Output].Columns[statecode]" />
+                    <inputColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].Columns[statuscode]"
+                      cachedDataType="i4"
+                      cachedName="statuscode"
+                      externalMetadataColumnId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[StatusCode]"
+                      lineageId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer.Outputs[CRM Primary Output].Columns[statuscode]" />
+                    <inputColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].Columns[subject]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="subject"
+                      externalMetadataColumnId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[Subject]"
+                      lineageId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer.Outputs[CRM Primary Output].Columns[subject]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SenderMailboxIdName]"
+                      dataType="wstr"
+                      length="200"
+                      name="SenderMailboxIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ServiceIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="ServiceIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TransactionCurrencyIdName]"
+                      dataType="wstr"
+                      length="100"
+                      name="TransactionCurrencyIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
+                      dataType="wstr"
+                      length="200"
+                      name="OwnerIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="OwnerIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdDsc]"
+                      dataType="i4"
+                      name="OwnerIdDsc" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
+                      dataType="i4"
+                      name="OwnerIdType" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningUser" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningTeam]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningTeam" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningBusinessUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ActualEnd]"
+                      dataType="dbTimeStamp"
+                      name="ActualEnd" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ActivityId]"
+                      dataType="wstr"
+                      length="255"
+                      name="ActivityId" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[IsBilled]"
+                      dataType="bool"
+                      name="IsBilled" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      dataType="nText"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ServiceId]"
+                      dataType="wstr"
+                      length="255"
+                      name="ServiceId" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ActivityTypeCode]"
+                      dataType="wstr"
+                      length="64"
+                      name="ActivityTypeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[StateCode]"
+                      dataType="i4"
+                      name="StateCode" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ScheduledEnd]"
+                      dataType="dbTimeStamp"
+                      name="ScheduledEnd" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ScheduledDurationMinutes]"
+                      dataType="i4"
+                      name="ScheduledDurationMinutes" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ActualDurationMinutes]"
+                      dataType="i4"
+                      name="ActualDurationMinutes" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[StatusCode]"
+                      dataType="i4"
+                      name="StatusCode" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ActualStart]"
+                      dataType="dbTimeStamp"
+                      name="ActualStart" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="CreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[PriorityCode]"
+                      dataType="i4"
+                      name="PriorityCode" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[RegardingObjectId]"
+                      dataType="wstr"
+                      length="255"
+                      name="RegardingObjectId" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[Subject]"
+                      dataType="wstr"
+                      length="200"
+                      name="Subject" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[IsWorkflowCreated]"
+                      dataType="bool"
+                      name="IsWorkflowCreated" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ScheduledStart]"
+                      dataType="dbTimeStamp"
+                      name="ScheduledStart" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[RegardingObjectTypeCode]"
+                      dataType="wstr"
+                      length="255"
+                      name="RegardingObjectTypeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[RegardingObjectIdName]"
+                      dataType="wstr"
+                      length="4000"
+                      name="RegardingObjectIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TimeZoneRuleVersionNumber]"
+                      dataType="i4"
+                      name="TimeZoneRuleVersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[UTCConversionTimeZoneCode]"
+                      dataType="i4"
+                      name="UTCConversionTimeZoneCode" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[RegardingObjectIdYomiName]"
+                      dataType="wstr"
+                      length="4000"
+                      name="RegardingObjectIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[InstanceTypeCode]"
+                      dataType="i4"
+                      name="InstanceTypeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SeriesId]"
+                      dataType="wstr"
+                      length="255"
+                      name="SeriesId" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[IsRegularActivity]"
+                      dataType="bool"
+                      name="IsRegularActivity" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TransactionCurrencyId]"
+                      dataType="wstr"
+                      length="255"
+                      name="TransactionCurrencyId" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeRate]"
+                      dataType="numeric"
+                      name="ExchangeRate"
+                      precision="23"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[LeftVoiceMail]"
+                      dataType="bool"
+                      name="LeftVoiceMail" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[Community]"
+                      dataType="i4"
+                      name="Community" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TraversedPath]"
+                      dataType="wstr"
+                      length="1250"
+                      name="TraversedPath" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[IsMapiPrivate]"
+                      dataType="bool"
+                      name="IsMapiPrivate" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[DeliveryPriorityCode]"
+                      dataType="i4"
+                      name="DeliveryPriorityCode" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SentOn]"
+                      dataType="dbTimeStamp"
+                      name="SentOn" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[DeliveryLastAttemptedOn]"
+                      dataType="dbTimeStamp"
+                      name="DeliveryLastAttemptedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SenderMailboxId]"
+                      dataType="wstr"
+                      length="255"
+                      name="SenderMailboxId" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[PostponeActivityProcessingUntil]"
+                      dataType="dbTimeStamp"
+                      name="PostponeActivityProcessingUntil" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ProcessId]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProcessId" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[StageId]"
+                      dataType="wstr"
+                      length="255"
+                      name="StageId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
@@ -10486,6 +10729,7 @@
                   name="FetchXML">&lt;fetch mapping='logical'&gt;
     &lt;entity name='activitypointer'&gt;
         &lt;attribute name='activityid'/&gt;
+        &lt;attribute name='subject'/&gt;
         &lt;attribute name='activitytypecode'/&gt;
         &lt;attribute name='statecode'/&gt;
         &lt;attribute name='statuscode'/&gt;
@@ -10520,8 +10764,8 @@
               <connections>
                 <connection
                   refId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[oldCRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -10597,6 +10841,16 @@
                       lineageId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer.Outputs[CRM Primary Output].Columns[statuscodename]"
                       name="statuscodename"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer.Outputs[CRM Primary Output].Columns[subject]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer.Outputs[CRM Primary Output].ExternalColumns[subject]"
+                      length="200"
+                      lineageId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer.Outputs[CRM Primary Output].Columns[subject]"
+                      name="subject"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -10632,7 +10886,41 @@
                       dataType="wstr"
                       length="255"
                       name="statuscodename" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer.Outputs[CRM Primary Output].ExternalColumns[subject]"
+                      dataType="wstr"
+                      length="200"
+                      name="subject" />
                   </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Final touch of activity records to update the status (activitypointer)\Row Updated"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Updated">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RowsUpdated</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Final touch of activity records to update the status (activitypointer)\Row Updated.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Final touch of activity records to update the status (activitypointer)\Row Updated.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Final touch of activity records to update the status (activitypointer)\Row Updated.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
                 </output>
               </outputs>
             </component>
@@ -10733,16 +11021,10 @@
                 <input
                   refId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Inputs[Input]"
                   errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
+                  errorRowDisposition="RedirectRow"
                   hasSideEffects="true"
                   name="Input">
                   <inputColumns>
-                    <inputColumn
-                      refId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Inputs[Input].Columns[activityid]"
-                      cachedDataType="guid"
-                      cachedName="activityid"
-                      externalMetadataColumnId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Inputs[Input].ExternalColumns[activityid]"
-                      lineageId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer.Outputs[CRM Primary Output].Columns[activityid]" />
                     <inputColumn
                       refId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Inputs[Input].Columns[activitytypecode]"
                       cachedDataType="wstr"
@@ -10762,6 +11044,12 @@
                       cachedName="statuscode"
                       externalMetadataColumnId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Inputs[Input].ExternalColumns[statuscode]"
                       lineageId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer.Outputs[CRM Primary Output].Columns[statuscode]" />
+                    <inputColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Inputs[Input].Columns[activityid]"
+                      cachedDataType="guid"
+                      cachedName="activityid"
+                      externalMetadataColumnId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Inputs[Input].ExternalColumns[activityid]"
+                      lineageId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer.Outputs[CRM Primary Output].Columns[activityid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -10776,6 +11064,9 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">activitypointer</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup"></property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -11091,18 +11382,6 @@
                   exclusionGroup="1"
                   name="Default Output"
                   synchronousInputId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Inputs[Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Outputs[Default Output].Columns[CrmRecordId]"
-                      dataType="guid"
-                      lineageId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Outputs[Default Output].Columns[CrmRecordId]"
-                      name="CrmRecordId" />
-                    <outputColumn
-                      refId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Outputs[Default Output].Columns[IsNew]"
-                      dataType="bool"
-                      lineageId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Outputs[Default Output].Columns[IsNew]"
-                      name="IsNew" />
-                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
               </outputs>
@@ -11114,6 +11393,16 @@
               endId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Inputs[Input]"
               name="CRM Primary Output"
               startId="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer.Outputs[CRM Primary Output]" />
+            <path
+              refId="Package\Final touch of activity records to update the status (activitypointer).Paths[Default Output]"
+              endId="Package\Final touch of activity records to update the status (activitypointer)\Row Updated.Inputs[Row Count Input 1]"
+              name="Default Output"
+              startId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Outputs[Default Output]" />
+            <path
+              refId="Package\Final touch of activity records to update the status (activitypointer).Paths[Error Output]"
+              endId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input]"
+              name="Error Output"
+              startId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Outputs[Error Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -11800,7 +12089,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE KbArticle_ERROR" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Task_ERROR;&#xA;TRUNCATE TABLE PhoneCall_ERROR;&#xA;TRUNCATE TABLE Email_ERROR;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -11882,42 +12171,42 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="168,42.6666666666667"
+          Size="168,43"
           Id="Package\Core activities entities\Migrate Email"
           TopLeft="34.4999938036005,97.7777705457476" />
         <NodeLayout
-          Size="168,42.6666666666667"
+          Size="168,43"
           Id="Package\Core activities entities\Migrate phonecalls"
           TopLeft="34.4999938036005,24.9166607970993" />
         <NodeLayout
-          Size="140,42.6666666666667"
+          Size="140,43"
           Id="Package\Core activities entities\Migrate Task"
           TopLeft="218.562491060856,26.5416607680419" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="418,195.333333333334"
-          Size="418,238.666666666667"
+          PanelSize="418,196"
+          Size="418,239"
           Id="Package\Core activities entities"
-          TopLeft="439.305549009393,301.311105723249" />
+          TopLeft="398.305549009393,240.311105723249" />
         <NodeLayout
-          Size="394.666666666667,42.6666666666667"
+          Size="395,43"
           Id="Package\Final touch of activity records to update the status (activitypointer)"
-          TopLeft="476.249992903322,636.283322062989" />
+          TopLeft="441.249992903322,589.283322062989" />
         <NodeLayout
-          Size="176,41.3333333333334"
+          Size="176,41"
           Id="Package\LogPackageEnd"
-          TopLeft="59.7777788326856,697.216992676769" />
+          TopLeft="53.7777788326856,602.216992676769" />
         <NodeLayout
-          Size="162.666666666667,41.3333333333334"
+          Size="163,41"
           Id="Package\LogPackageStart"
           TopLeft="58.6428580478746,36.0882357231061" />
         <NodeLayout
-          Size="143.333333333334,41.3333333333334"
+          Size="143,41"
           Id="Package\New LoggStatus"
           TopLeft="64.5714296710736,119.294119320114" />
         <NodeLayout
-          Size="162.666666666667,41.3333333333334"
+          Size="163,41"
           Id="Package\Truncate rows in ERROR table"
           TopLeft="311.845243392626,116.847060462265" />
         <EdgeLayout
@@ -11944,30 +12233,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="418.956354503737,158.180393795598">
+          TopLeft="419.178576725959,157.847060462265">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="229.349194505656,143.130711927651"
+              EndConnector="188.126972283434,82.464045260984"
               Start="0,0"
-              End="229.349194505656,135.630711927651">
+              End="188.126972283434,74.964045260984">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,54.0887629576504" />
+                    End="0,29.4665748689777" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,54.0887629576504"
-                    Point2="0,58.0887629576504"
-                    Point3="4,58.0887629576504" />
+                    Point1="0,29.4665748689777"
+                    Point2="0,33.4665748689777"
+                    Point3="4,33.4665748689777" />
                   <mssgle:LineSegment
-                    End="225.349194505656,58.0887629576504" />
+                    End="184.126972283434,33.4665748689777" />
                   <mssgle:CubicBezierSegment
-                    Point1="225.349194505656,58.0887629576504"
-                    Point2="229.349194505656,58.0887629576504"
-                    Point3="229.349194505656,62.0887629576504" />
+                    Point1="184.126972283434,33.4665748689777"
+                    Point2="188.126972283434,33.4665748689777"
+                    Point3="188.126972283434,37.4665748689777" />
                   <mssgle:LineSegment
-                    End="229.349194505656,135.630711927651" />
+                    End="188.126972283434,74.964045260984" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12000,138 +12289,138 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="136.23809633774,160.627452653447">
+          TopLeft="136.071429671074,160.294119320114">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-30.4603175050547,536.589540023322"
+              EndConnector="-36.293650838388,441.922873356655"
               Start="0,0"
-              End="-30.4603175050547,529.089540023322">
+              End="-36.293650838388,434.422873356655">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,348.387160612331" />
+                    End="0,286.218006383475" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,348.387160612331"
-                    Point2="0,352.387160612331"
-                    Point3="-4,352.387160612331" />
+                    Point1="0,286.218006383475"
+                    Point2="0,290.218006383475"
+                    Point3="-4,290.218006383475" />
                   <mssgle:LineSegment
-                    End="-26.4603175050547,352.387160612331" />
+                    End="-32.293650838388,290.218006383475" />
                   <mssgle:CubicBezierSegment
-                    Point1="-26.4603175050547,352.387160612331"
-                    Point2="-30.4603175050547,352.387160612331"
-                    Point3="-30.4603175050547,356.387160612331" />
+                    Point1="-32.293650838388,290.218006383475"
+                    Point2="-36.293650838388,290.218006383475"
+                    Point3="-36.293650838388,294.218006383475" />
                   <mssgle:LineSegment
-                    End="-30.4603175050547,529.089540023322" />
+                    End="-36.293650838388,434.422873356655" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-30.4715064087773,357.387160612331,30.4826953125,9.7490234375"
+              BoundingBox="-33.388173075444,295.218006383475,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="579.97221567606,539.977772389916">
+          TopLeft="538.97221567606,479.311105723249">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-390.194436843374,157.239220286853"
+              EndConnector="-355.194436843374,122.90588695352"
               Start="0,0"
-              End="-390.194436843374,149.739220286853">
+              End="-355.194436843374,115.40588695352">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,84.5027688710265" />
+                    End="0,65.178105094212" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,84.5027688710265"
-                    Point2="0,88.5027688710265"
-                    Point3="-4,88.5027688710265" />
+                    Point1="0,65.178105094212"
+                    Point2="0,69.178105094212"
+                    Point3="-4,69.178105094212" />
                   <mssgle:LineSegment
-                    End="-386.194436843374,88.5027688710265" />
+                    End="-351.194436843374,69.178105094212" />
                   <mssgle:CubicBezierSegment
-                    Point1="-386.194436843374,88.5027688710265"
-                    Point2="-390.194436843374,88.5027688710265"
-                    Point3="-390.194436843374,92.5027688710265" />
+                    Point1="-351.194436843374,69.178105094212"
+                    Point2="-355.194436843374,69.178105094212"
+                    Point3="-355.194436843374,73.178105094212" />
                   <mssgle:LineSegment
-                    End="-390.194436843374,149.739220286853" />
+                    End="-355.194436843374,115.40588695352" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-210.338566077937,93.5027688710265,30.4826953125,9.7490234375"
+              BoundingBox="-192.838566077937,74.178105094212,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="367.400798948182,158.180393795598">
+          TopLeft="367.511910059293,157.847060462265">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-219.623020115496,539.036598881171"
+              EndConnector="-225.734131226607,444.369932214504"
               Start="0,0"
-              End="-219.623020115496,531.536598881171">
+              End="-225.734131226607,436.869932214504">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,214.764853442034" />
+                    End="0,176.339680874416" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,214.764853442034"
-                    Point2="0,218.764853442034"
-                    Point3="-4,218.764853442034" />
+                    Point1="0,176.339680874416"
+                    Point2="0,180.339680874416"
+                    Point3="-4,180.339680874416" />
                   <mssgle:LineSegment
-                    End="-215.623020115496,218.764853442034" />
+                    End="-221.734131226607,180.339680874416" />
                   <mssgle:CubicBezierSegment
-                    Point1="-215.623020115496,218.764853442034"
-                    Point2="-219.623020115496,218.764853442034"
-                    Point3="-219.623020115496,222.764853442034" />
+                    Point1="-221.734131226607,180.339680874416"
+                    Point2="-225.734131226607,180.339680874416"
+                    Point3="-225.734131226607,184.339680874416" />
                   <mssgle:LineSegment
-                    End="-219.623020115496,531.536598881171" />
+                    End="-225.734131226607,436.869932214504" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-125.052857713998,223.764853442034,30.4826953125,9.7490234375"
+              BoundingBox="-128.108413269554,185.339680874416,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="716.638882342726,539.977772389916">
+          TopLeft="675.638882342726,479.311105723249">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-43.0555561060709,96.3055496730733"
+              EndConnector="-36.8888894394042,109.97221633974"
               Start="0,0"
-              End="-43.0555561060709,88.8055496730733">
+              End="-36.8888894394042,102.47221633974">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.7425566844966" />
+                    End="0,40.2404912253292" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,34.7425566844966"
-                    Point2="0,38.7425566844966"
-                    Point3="-4,38.7425566844966" />
+                    Point1="0,40.2404912253292"
+                    Point2="0,44.2404912253292"
+                    Point3="-4,44.2404912253292" />
                   <mssgle:LineSegment
-                    End="-39.0555561060709,38.7425566844966" />
+                    End="-32.8888894394042,44.2404912253292" />
                   <mssgle:CubicBezierSegment
-                    Point1="-39.0555561060709,38.7425566844966"
-                    Point2="-43.0555561060709,38.7425566844966"
-                    Point3="-43.0555561060709,42.7425566844966" />
+                    Point1="-32.8888894394042,44.2404912253292"
+                    Point2="-36.8888894394042,44.2404912253292"
+                    Point3="-36.8888894394042,48.2404912253292" />
                   <mssgle:LineSegment
-                    End="-43.0555561060709,88.8055496730733" />
+                    End="-36.8888894394042,102.47221633974" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12142,30 +12431,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="476.249992903322,657.616655396322">
+          TopLeft="441.249992903322,610.783322062989">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-240.472214070636,60.2670039471134"
+              EndConnector="-211.472214070636,11.93367061378"
               Start="0,0"
-              End="-232.972214070636,60.2670039471134">
+              End="-203.972214070636,11.93367061378">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-116.236107035318,0" />
+                    End="-101.736107035318,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-116.236107035318,0"
-                    Point2="-120.236107035318,0"
-                    Point3="-120.236107035318,4" />
+                    Point1="-101.736107035318,0"
+                    Point2="-105.736107035318,0"
+                    Point3="-105.736107035318,4" />
                   <mssgle:LineSegment
-                    End="-120.236107035318,56.2670039471134" />
+                    End="-105.736107035318,7.93367061378001" />
                   <mssgle:CubicBezierSegment
-                    Point1="-120.236107035318,56.2670039471134"
-                    Point2="-120.236107035318,60.2670039471134"
-                    Point3="-124.236107035318,60.2670039471134" />
+                    Point1="-105.736107035318,7.93367061378001"
+                    Point2="-105.736107035318,11.93367061378"
+                    Point3="-109.736107035318,11.93367061378" />
                   <mssgle:LineSegment
-                    End="-232.972214070636,60.2670039471134" />
+                    End="-203.972214070636,11.93367061378" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12183,115 +12472,111 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="146.666666666667,42.6666666666667"
+          Size="147,43"
           Id="Package\Core activities entities\Migrate Email\Rows Inserted"
           TopLeft="188.333330526948,225.333329304059" />
         <NodeLayout
-          Size="144,42.6666666666667"
+          Size="144,43"
           Id="Package\Core activities entities\Migrate Email\Email_ERROR"
-          TopLeft="448.666666666667,226" />
+          TopLeft="448.666666666667,225" />
         <NodeLayout
-          Size="170.666666666667,42.6666666666667"
+          Size="169,42"
           Id="Package\Core activities entities\Migrate Email\Read Email records"
           TopLeft="264.015147581019,14.9696967020179" />
         <NodeLayout
-          Size="181.333333333334,42.6666666666667"
+          Size="181,42"
           Id="Package\Core activities entities\Migrate Email\Migrate Email records"
           TopLeft="260.583329440405,120.433331155976" />
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[CRM Primary Output]"
-          TopLeft="350.299238510712,57.6363633686846">
+          TopLeft="349.799238510712,56.9696967020179">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,62.7969677872911"
+              EndConnector="0,63.4636344539581"
               Start="0,0"
-              End="0,55.2969677872911">
+              End="0,55.9636344539581">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55.2969677872911" />
+                    End="0,55.9636344539581" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[Error Output]"
-          TopLeft="380.138884995961,163.099997822642">
+          TopLeft="379.916662773738,162.433331155976">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="140.527781670706,62.9000021773576"
+              EndConnector="140.750003892929,62.566668844024"
               Start="0,0"
-              End="140.527781670706,55.4000021773576">
+              End="140.750003892929,55.066668844024">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.4900883459263" />
+                    End="0,21.3556051175125" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.4900883459263"
-                    Point2="0,25.4900883459263"
-                    Point3="4,25.4900883459263" />
+                    Point1="0,21.3556051175125"
+                    Point2="0,25.3556051175125"
+                    Point3="4,25.3556051175125" />
                   <mssgle:LineSegment
-                    End="136.527781670706,25.4900883459263" />
+                    End="136.750003892929,25.3556051175125" />
                   <mssgle:CubicBezierSegment
-                    Point1="136.527781670706,25.4900883459263"
-                    Point2="140.527781670706,25.4900883459263"
-                    Point3="140.527781670706,29.4900883459263" />
+                    Point1="136.750003892929,25.3556051175125"
+                    Point2="140.750003892929,25.3556051175125"
+                    Point3="140.750003892929,29.3556051175125" />
                   <mssgle:LineSegment
-                    End="140.527781670706,55.4000021773576" />
+                    End="140.750003892929,55.066668844024" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="41.9275041166029,30.4900883459263,56.6727734375,11.43359375"
+              BoundingBox="42.0386152277143,30.3556051175125,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[Default Output]"
-          TopLeft="351.249996107072,163.099997822642">
+          TopLeft="322.249996107072,162.433331155976">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-89.5833322467906,62.2333314814166"
+              EndConnector="-60.4166655801237,62.899998148083"
               Start="0,0"
-              End="-89.5833322467906,54.7333314814166">
+              End="-60.4166655801237,55.399998148083">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.1166657407083" />
+                    End="0,21.4906892823556" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,27.1166657407083"
-                    Point2="0,31.1166657407083"
-                    Point3="-4,31.1166657407083" />
+                    Point1="0,21.4906892823556"
+                    Point2="0,25.4906892823556"
+                    Point3="-4,25.4906892823556" />
                   <mssgle:LineSegment
-                    End="-85.5833322467906,31.1166657407083" />
+                    End="-56.4166655801237,25.4906892823556" />
                   <mssgle:CubicBezierSegment
-                    Point1="-85.5833322467906,31.1166657407083"
-                    Point2="-89.5833322467906,31.1166657407083"
-                    Point3="-89.5833322467906,35.1166657407083" />
+                    Point1="-56.4166655801237,25.4906892823556"
+                    Point2="-60.4166655801237,25.4906892823556"
+                    Point3="-60.4166655801237,29.4906892823556" />
                   <mssgle:LineSegment
-                    End="-89.5833322467906,54.7333314814166" />
+                    End="-60.4166655801237,55.399998148083" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -12316,54 +12601,54 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="189.333333333334,42.6666666666667"
+          Size="189,43"
           Id="Package\Core activities entities\Migrate phonecalls\Read phonecall records"
           TopLeft="264.015147581019,14.9696967020179" />
         <NodeLayout
-          Size="164,42.6666666666667"
+          Size="163,42"
           Id="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR"
           TopLeft="396.590903181244,230.060601946802" />
         <NodeLayout
-          Size="146.666666666667,42.6666666666667"
+          Size="147,43"
           Id="Package\Core activities entities\Migrate phonecalls\Rows Inserted"
           TopLeft="188.333330526948,225.333329304059" />
         <NodeLayout
-          Size="200.666666666667,42.6666666666667"
+          Size="201,43"
           Id="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records"
           TopLeft="261.249996107072,121.766664489309" />
         <EdgeLayout
           Id="Package\Core activities entities\Migrate phonecalls.Paths[Error Output]"
-          TopLeft="393.694440551516,164.433331155976">
+          TopLeft="393.916662773739,164.766664489309">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="84.8964626297279,65.6272707908262"
+              EndConnector="84.1742404075054,65.293937457493"
               Start="0,0"
-              End="84.8964626297279,58.1272707908262">
+              End="84.1742404075054,57.793937457493">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.5623891005717" />
+                    End="0,22.4269638278106" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.5623891005717"
-                    Point2="0,26.5623891005717"
-                    Point3="4,26.5623891005717" />
+                    Point1="0,22.4269638278106"
+                    Point2="0,26.4269638278106"
+                    Point3="4,26.4269638278106" />
                   <mssgle:LineSegment
-                    End="80.8964626297279,26.5623891005717" />
+                    End="80.1742404075054,26.4269638278106" />
                   <mssgle:CubicBezierSegment
-                    Point1="80.8964626297279,26.5623891005717"
-                    Point2="84.8964626297279,26.5623891005717"
-                    Point3="84.8964626297279,30.5623891005717" />
+                    Point1="80.1742404075054,26.4269638278106"
+                    Point2="84.1742404075054,26.4269638278106"
+                    Point3="84.1742404075054,30.4269638278106" />
                   <mssgle:LineSegment
-                    End="84.8964626297279,58.1272707908262" />
+                    End="84.1742404075054,57.793937457493" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="14.111844596114,31.5623891005717,56.6727734375,11.43359375"
+              BoundingBox="13.7507334850027,31.4269638278106,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -12445,21 +12730,21 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="164,42.6666666666667"
+          Size="141,43"
+          Id="Package\Core activities entities\Migrate Task\Task_ERROR"
+          TopLeft="384.666666666667,268.666666666667" />
+        <NodeLayout
+          Size="164,43"
           Id="Package\Core activities entities\Migrate Task\Read task records"
           TopLeft="264.666666666667,23.3333333333333" />
         <NodeLayout
-          Size="146.666666666667,42.6666666666667"
-          Id="Package\Core activities entities\Migrate Task\Rows Inserted"
-          TopLeft="188.333330526948,269.333329304059" />
-        <NodeLayout
-          Size="176,42.6666666666667"
+          Size="176,43"
           Id="Package\Core activities entities\Migrate Task\Migrate task records"
           TopLeft="260.583329440405,134.433331155976" />
         <NodeLayout
-          Size="141.333333333334,42.6666666666667"
-          Id="Package\Core activities entities\Migrate Task\Task_ERROR"
-          TopLeft="384.666666666667,268.666666666667" />
+          Size="147,43"
+          Id="Package\Core activities entities\Migrate Task\Rows Inserted"
+          TopLeft="188.333330526948,269.333329304059" />
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Task.Paths[Error Output]"
           TopLeft="376.583329440405,177.099997822643">
@@ -12492,7 +12777,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="2.16996288396435,42.1216225043342,74.410078125,16"
+              BoundingBox="11.0386152277143,42.1216225043342,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -12572,41 +12857,130 @@
     design-time-name="Package\Final touch of activity records to update the status (activitypointer)">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="184,42.6666666666667"
+          Size="183,42"
           Id="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer"
-          TopLeft="180.916664239019,177.666663489739" />
+          TopLeft="257.916664239019,131.666663489739" />
         <NodeLayout
-          Size="253.333333333334,68.6666666666667"
+          Size="523,42"
           Id="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer"
-          TopLeft="140.833331234753,26.8666661862532" />
+          TopLeft="88.833331234753,12.8666661862532" />
         <EdgeLayout
           Id="Package\Final touch of activity records to update the status (activitypointer).Paths[CRM Primary Output]"
-          TopLeft="270.208331070219,95.5333328529199">
+          TopLeft="349.874997736886,54.8666661862532">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,82.1333306368192"
+              EndConnector="0,76.7999973034858"
               Start="0,0"
-              End="0,74.6333306368192">
+              End="0,69.2999973034858">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,74.6333306368192" />
+                    End="0,69.2999973034858" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR"
+          TopLeft="395,253" />
+        <EdgeLayout
+          Id="Package\Final touch of activity records to update the status (activitypointer).Paths[Error Output]"
+          TopLeft="378.583330905686,173.666663489739">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="108.916669094314,79.333336510261"
+              Start="0,0"
+              End="108.916669094314,71.833336510261">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.145902334602" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.145902334602"
+                    Point2="0,32.145902334602"
+                    Point3="4,32.145902334602" />
+                  <mssgle:LineSegment
+                    End="104.916669094314,32.145902334602" />
+                  <mssgle:CubicBezierSegment
+                    Point1="104.916669094314,32.145902334602"
+                    Point2="108.916669094314,32.145902334602"
+                    Point3="108.916669094314,36.145902334602" />
+                  <mssgle:LineSegment
+                    End="108.916669094314,71.833336510261" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="26.1219478284072,37.145902334602,56.6727734375,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Final touch of activity records to update the status (activitypointer)\Row Updated"
+          TopLeft="187,249" />
+        <EdgeLayout
+          Id="Package\Final touch of activity records to update the status (activitypointer).Paths[Default Output]"
+          TopLeft="320.249997572352,173.666663489739">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-62.2499975723524,75.333336510261"
+              Start="0,0"
+              End="-62.2499975723524,67.833336510261">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5251006011242" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5251006011242"
+                    Point2="0,30.5251006011242"
+                    Point3="-4,30.5251006011242" />
+                  <mssgle:LineSegment
+                    End="-58.2499975723524,30.5251006011242" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-58.2499975723524,30.5251006011242"
+                    Point2="-62.2499975723524,30.5251006011242"
+                    Point3="-62.2499975723524,34.5251006011242" />
+                  <mssgle:LineSegment
+                    End="-62.2499975723524,67.833336510261" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
