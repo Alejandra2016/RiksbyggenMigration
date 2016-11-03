@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="SystemUser_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="48"
-  DTS:VersionGUID="{E916DF26-DEC7-43A7-8258-E0792D0F40AD}">
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{40906BE7-875A-4CF2-A44A-F9622291A209}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -245,30 +245,6 @@
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <inputColumns>
-                    <inputColumn
-                      refId="Package\Load SystemUser\Domain Name &amp; annat.Inputs[Derived Column Input].Columns[DomainName]"
-                      cachedDataType="wstr"
-                      cachedLength="1024"
-                      cachedName="DomainName"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load SystemUser\STG_SystemUser.Outputs[OLE DB Source Output].Columns[DomainName]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">"CORP\\won"</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">"CORP\\won"</property>
-                      </properties>
-                    </inputColumn>
                     <inputColumn
                       refId="Package\Load SystemUser\Domain Name &amp; annat.Inputs[Derived Column Input].Columns[BusinessUnitIdName]"
                       cachedDataType="wstr"
@@ -6442,23 +6418,23 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="160,41.6"
+          Size="160,42"
           Id="Package\Load SystemUser"
           TopLeft="344.000005858285,218.400003062977" />
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\LogPackageEnd"
           TopLeft="69.4285725768733,297.035296768796" />
         <NodeLayout
-          Size="162.4,41.6"
+          Size="162,42"
           Id="Package\LogPackageStart"
           TopLeft="58.6428580478746,36.0882357231061" />
         <NodeLayout
-          Size="143.2,41.6"
+          Size="143,42"
           Id="Package\New LoggStatus"
           TopLeft="64.0000010899137,119.905884034576" />
         <NodeLayout
-          Size="162.4,41.6"
+          Size="162,42"
           Id="Package\Truncate rows in ERROR table"
           TopLeft="287.428576323451,121.1294134635" />
         <EdgeLayout
@@ -6656,54 +6632,25 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="159.2,41.6"
+          Size="142,42"
+          Id="Package\Load SystemUser\Row Inserted"
+          TopLeft="111.571430420389,360.482358397909" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Load SystemUser\Domain Name &amp; annat"
+          TopLeft="248.571432804574,147.71764904075" />
+        <NodeLayout
+          Size="159,42"
           Id="Package\Load SystemUser\STG_SystemUser"
           TopLeft="261.142861590094,49.082353147091" />
         <NodeLayout
-          Size="141.6,41.6"
-          Id="Package\Load SystemUser\Row Inserted"
-          TopLeft="116.571430420389,395.482358397909" />
+          Size="163,42"
+          Id="Package\Load SystemUser\SystemUser_Error"
+          TopLeft="464.428576800289,362.588239369507" />
         <NodeLayout
-          Size="204,41.6"
+          Size="204,42"
           Id="Package\Load SystemUser\Dynamics CRM Destination"
           TopLeft="242.857147129215,246.823532783614" />
-        <NodeLayout
-          Size="163.2,41.6"
-          Id="Package\Load SystemUser\SystemUser_Error"
-          TopLeft="315.428576800289,394.588239369507" />
-        <NodeLayout
-          Size="185.6,41.6"
-          Id="Package\Load SystemUser\Domain Name &amp; annat"
-          TopLeft="248.571432804574,147.71764904075" />
-        <EdgeLayout
-          Id="Package\Load SystemUser.Paths[Derived Column Output]"
-          TopLeft="343.114289966895,189.31764904075">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,57.5058837428645"
-              Start="0,0"
-              End="0,50.0058837428645">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.0058837428645" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <AnnotationLayout
-          Text="Användarna måste finnas i AD"
-          ParentId="Package\Load SystemUser"
-          FontInfo="{assembly:Null}"
-          Size="188,40"
-          Id="828528d9-1296-4b4f-bb01-1c29d37c1aeb"
-          TopLeft="455.428579320713,48.3764696959391" />
         <EdgeLayout
           Id="Package\Load SystemUser.Paths[OLE DB Source Output]"
           TopLeft="341.057147197334,90.682353147091">
@@ -6727,31 +6674,55 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load SystemUser.Paths[Default Output]"
-          TopLeft="312.190480462548,288.423532783614">
+          Id="Package\Load SystemUser.Paths[Error Output]"
+          TopLeft="377.523813795882,288.823532783614">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-124.81905004216,107.058825614295"
+              EndConnector="168.404763004407,73.764706585893"
               Start="0,0"
-              End="-124.81905004216,99.5588256142948">
+              End="168.404763004407,66.264706585893">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.3234158127885" />
+                    End="0,25.8503092798944" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,39.3234158127885"
-                    Point2="0,43.3234158127885"
-                    Point3="-4,43.3234158127885" />
+                    Point1="0,25.8503092798944"
+                    Point2="0,29.8503092798944"
+                    Point3="4,29.8503092798944" />
                   <mssgle:LineSegment
-                    End="-120.81905004216,43.3234158127885" />
+                    End="164.404763004407,29.8503092798944" />
                   <mssgle:CubicBezierSegment
-                    Point1="-120.81905004216,43.3234158127885"
-                    Point2="-124.81905004216,43.3234158127885"
-                    Point3="-124.81905004216,47.3234158127885" />
+                    Point1="164.404763004407,29.8503092798944"
+                    Point2="168.404763004407,29.8503092798944"
+                    Point3="168.404763004407,33.8503092798944" />
                   <mssgle:LineSegment
-                    End="-124.81905004216,99.5588256142948" />
+                    End="168.404763004407,66.264706585893" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="55.8659947834536,34.8503092798944,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load SystemUser.Paths[Derived Column Output]"
+          TopLeft="343.114289966895,189.31764904075">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.5058837428645"
+              Start="0,0"
+              End="0,50.0058837428645">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.0058837428645" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6761,41 +6732,46 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load SystemUser.Paths[Error Output]"
-          TopLeft="377.523813795882,288.423532783614">
+          Id="Package\Load SystemUser.Paths[Default Output]"
+          TopLeft="312.190480462548,288.823532783614">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="19.504763004407,106.164706585893"
+              EndConnector="-129.619050042159,71.658825614295"
               Start="0,0"
-              End="19.504763004407,98.6647065858933">
+              End="-129.619050042159,64.158825614295">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.9615933265872" />
+                    End="0,24.9981239839949" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,38.9615933265872"
-                    Point2="0,42.9615933265872"
-                    Point3="4,42.9615933265872" />
+                    Point1="0,24.9981239839949"
+                    Point2="0,28.9981239839949"
+                    Point3="-4,28.9981239839949" />
                   <mssgle:LineSegment
-                    End="15.504763004407,42.9615933265872" />
+                    End="-125.619050042159,28.9981239839949" />
                   <mssgle:CubicBezierSegment
-                    Point1="15.504763004407,42.9615933265872"
-                    Point2="19.504763004407,42.9615933265872"
-                    Point3="19.504763004407,46.9615933265872" />
+                    Point1="-125.619050042159,28.9981239839949"
+                    Point2="-129.619050042159,28.9981239839949"
+                    Point3="-129.619050042159,32.9981239839949" />
                   <mssgle:LineSegment
-                    End="19.504763004407,98.6647065858933" />
+                    End="-129.619050042159,64.158825614295" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-18.5840052165465,47.9615933265872,56.6727734375,11.43359375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="Användarna måste finnas i AD"
+          ParentId="Package\Load SystemUser"
+          FontInfo="{assembly:Null}"
+          Size="188,40"
+          Id="828528d9-1296-4b4f-bb01-1c29d37c1aeb"
+          TopLeft="455.428579320713,48.3764696959391" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>

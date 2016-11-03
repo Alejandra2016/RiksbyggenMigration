@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Subject_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="42"
-  DTS:VersionGUID="{2BF3AEB0-43C2-4EE9-8EF5-8B656FEAED1A}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{EB825197-1B90-456D-B47B-7FCD8FB9572F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -334,18 +334,18 @@
                   name="Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].Columns[Description]"
+                      refId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].Columns[description]"
                       cachedDataType="nText"
-                      cachedName="Description"
+                      cachedName="description"
                       externalMetadataColumnId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].ExternalColumns[description]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[Description]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[description]" />
                     <inputColumn
-                      refId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].Columns[Title]"
+                      refId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].Columns[title]"
                       cachedDataType="wstr"
                       cachedLength="500"
-                      cachedName="Title"
+                      cachedName="title"
                       externalMetadataColumnId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].ExternalColumns[title]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[Title]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[title]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -496,6 +496,418 @@
               </outputs>
             </component>
             <component
+              refId="Package\Load Subject\Dynamics CRM Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Extract data from Microsoft Dynamics CRM."
+              name="Dynamics CRM Source"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">0</property>
+                <property
+                  dataType="System.String"
+                  description="Dynamics CRM entity to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceEntity">subject</property>
+                <property
+                  dataType="System.String"
+                  description="FetchXML statement."
+                  expressionType="Notify"
+                  name="FetchXML"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">4000</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="ImpersonateAs" />
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for CRM datetime fields."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Subject\Dynamics CRM Source.Connections[DynamicsCRM]"
+                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[oldCRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output]"
+                  name="CRM Primary Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdby]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdby]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdby]"
+                      name="createdby"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdbyname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdbyname]"
+                      length="200"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdbyname]"
+                      name="createdbyname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdbyyominame]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdbyyominame]"
+                      length="200"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdbyyominame]"
+                      name="createdbyyominame"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdon]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdon]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdon]"
+                      name="createdon"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdonbehalfby]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdonbehalfby]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdonbehalfby]"
+                      name="createdonbehalfby"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdonbehalfbyname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdonbehalfbyname]"
+                      length="200"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdonbehalfbyname]"
+                      name="createdonbehalfbyname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdonbehalfbyyominame]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdonbehalfbyyominame]"
+                      length="200"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdonbehalfbyyominame]"
+                      name="createdonbehalfbyyominame"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[description]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[description]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[description]"
+                      name="description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[featuremask]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[featuremask]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[featuremask]"
+                      name="featuremask"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[importsequencenumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[importsequencenumber]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[importsequencenumber]"
+                      name="importsequencenumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedby]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedby]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedby]"
+                      name="modifiedby"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedbyname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedbyname]"
+                      length="200"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedbyname]"
+                      name="modifiedbyname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedbyyominame]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedbyyominame]"
+                      length="200"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedbyyominame]"
+                      name="modifiedbyyominame"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedon]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedon]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedon]"
+                      name="modifiedon"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedonbehalfby]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedonbehalfby]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedonbehalfby]"
+                      name="modifiedonbehalfby"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedonbehalfbyname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedonbehalfbyname]"
+                      length="200"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedonbehalfbyname]"
+                      name="modifiedonbehalfbyname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedonbehalfbyyominame]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedonbehalfbyyominame]"
+                      length="200"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedonbehalfbyyominame]"
+                      name="modifiedonbehalfbyyominame"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[organizationid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[organizationid]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[organizationid]"
+                      name="organizationid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[organizationidname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[organizationidname]"
+                      length="160"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[organizationidname]"
+                      name="organizationidname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[overriddencreatedon]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[overriddencreatedon]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[overriddencreatedon]"
+                      name="overriddencreatedon"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[parentsubject]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[parentsubject]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[parentsubject]"
+                      name="parentsubject"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[parentsubjectname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[parentsubjectname]"
+                      length="500"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[parentsubjectname]"
+                      name="parentsubjectname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[subjectid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[subjectid]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[subjectid]"
+                      name="subjectid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[title]"
+                      length="500"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[title]"
+                      name="title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[versionnumber]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[versionnumber]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[versionnumber]"
+                      name="versionnumber"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdby]"
+                      dataType="guid"
+                      name="createdby" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdbyname]"
+                      dataType="wstr"
+                      length="200"
+                      name="createdbyname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdbyyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="createdbyyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdon]"
+                      dataType="dbTimeStamp"
+                      name="createdon" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdonbehalfby]"
+                      dataType="guid"
+                      name="createdonbehalfby" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdonbehalfbyname]"
+                      dataType="wstr"
+                      length="200"
+                      name="createdonbehalfbyname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdonbehalfbyyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="createdonbehalfbyyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[featuremask]"
+                      dataType="i4"
+                      name="featuremask" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[importsequencenumber]"
+                      dataType="i4"
+                      name="importsequencenumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedby]"
+                      dataType="guid"
+                      name="modifiedby" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedbyname]"
+                      dataType="wstr"
+                      length="200"
+                      name="modifiedbyname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedbyyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="modifiedbyyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedon]"
+                      dataType="dbTimeStamp"
+                      name="modifiedon" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedonbehalfby]"
+                      dataType="guid"
+                      name="modifiedonbehalfby" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedonbehalfbyname]"
+                      dataType="wstr"
+                      length="200"
+                      name="modifiedonbehalfbyname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedonbehalfbyyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="modifiedonbehalfbyyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[organizationid]"
+                      dataType="guid"
+                      name="organizationid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[organizationidname]"
+                      dataType="wstr"
+                      length="160"
+                      name="organizationidname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[overriddencreatedon]"
+                      dataType="dbTimeStamp"
+                      name="overriddencreatedon" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[parentsubject]"
+                      dataType="guid"
+                      name="parentsubject" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[parentsubjectname]"
+                      dataType="wstr"
+                      length="500"
+                      name="parentsubjectname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[subjectid]"
+                      dataType="guid"
+                      name="subjectid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="500"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[versionnumber]"
+                      dataType="i8"
+                      name="versionnumber" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Subject\Row Inserted"
               componentClassID="Microsoft.RowCount"
               contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -520,622 +932,6 @@
                   refId="Package\Load Subject\Row Inserted.Outputs[Row Count Output 1]"
                   name="Row Count Output 1"
                   synchronousInputId="Package\Load Subject\Row Inserted.Inputs[Row Count Input 1]">
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Load Subject\STG_Subject"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="STG_Subject"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[Subject]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Load Subject\STG_Subject.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[STG]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfByName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfByName]"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfByName]"
-                      name="ModifiedOnBehalfByName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedByName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ModifiedByName]"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedByName]"
-                      name="ModifiedByName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfByYomiName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfByYomiName]"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfByYomiName]"
-                      name="CreatedOnBehalfByYomiName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfByYomiName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfByYomiName]"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfByYomiName]"
-                      name="ModifiedOnBehalfByYomiName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[OrganizationIdName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[OrganizationIdName]"
-                      length="160"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[OrganizationIdName]"
-                      name="OrganizationIdName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfByName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfByName]"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfByName]"
-                      name="CreatedOnBehalfByName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedByYomiName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[CreatedByYomiName]"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedByYomiName]"
-                      name="CreatedByYomiName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedByYomiName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ModifiedByYomiName]"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedByYomiName]"
-                      name="ModifiedByYomiName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedByName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[CreatedByName]"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedByName]"
-                      name="CreatedByName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ParentSubjectName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ParentSubjectName]"
-                      length="500"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ParentSubjectName]"
-                      name="ParentSubjectName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[SubjectId]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[SubjectId]"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[SubjectId]"
-                      name="SubjectId"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[Title]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[Title]"
-                      length="500"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[Title]"
-                      name="Title"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[OrganizationId]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[OrganizationId]"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[OrganizationId]"
-                      name="OrganizationId"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[Description]"
-                      dataType="nText"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[Description]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[Description]"
-                      name="Description"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ParentSubject]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ParentSubject]"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ParentSubject]"
-                      name="ParentSubject"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[FeatureMask]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[FeatureMask]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[FeatureMask]"
-                      name="FeatureMask"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedBy]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[CreatedBy]"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedBy]"
-                      name="CreatedBy"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedOn]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedOn]"
-                      name="CreatedOn"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedBy]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ModifiedBy]"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedBy]"
-                      name="ModifiedBy"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedOn]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOn]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedOn]"
-                      name="ModifiedOn"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[VersionNumber]"
-                      dataType="bytes"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[VersionNumber]"
-                      length="8"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[VersionNumber]"
-                      name="VersionNumber"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ImportSequenceNumber]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ImportSequenceNumber]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ImportSequenceNumber]"
-                      name="ImportSequenceNumber"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[OverriddenCreatedOn]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[OverriddenCreatedOn]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[OverriddenCreatedOn]"
-                      name="OverriddenCreatedOn"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfBy]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfBy]"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfBy]"
-                      name="CreatedOnBehalfBy"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfBy]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfBy]"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfBy]"
-                      name="ModifiedOnBehalfBy"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[MigrationId]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[MigrationId]"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[MigrationId]"
-                      name="MigrationId"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfByName]"
-                      dataType="wstr"
-                      length="200"
-                      name="ModifiedOnBehalfByName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ModifiedByName]"
-                      dataType="wstr"
-                      length="200"
-                      name="ModifiedByName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfByYomiName]"
-                      dataType="wstr"
-                      length="200"
-                      name="CreatedOnBehalfByYomiName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfByYomiName]"
-                      dataType="wstr"
-                      length="200"
-                      name="ModifiedOnBehalfByYomiName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[OrganizationIdName]"
-                      dataType="wstr"
-                      length="160"
-                      name="OrganizationIdName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfByName]"
-                      dataType="wstr"
-                      length="200"
-                      name="CreatedOnBehalfByName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[CreatedByYomiName]"
-                      dataType="wstr"
-                      length="200"
-                      name="CreatedByYomiName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ModifiedByYomiName]"
-                      dataType="wstr"
-                      length="200"
-                      name="ModifiedByYomiName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[CreatedByName]"
-                      dataType="wstr"
-                      length="200"
-                      name="CreatedByName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ParentSubjectName]"
-                      dataType="wstr"
-                      length="500"
-                      name="ParentSubjectName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[SubjectId]"
-                      dataType="wstr"
-                      length="255"
-                      name="SubjectId" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[Title]"
-                      dataType="wstr"
-                      length="500"
-                      name="Title" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[OrganizationId]"
-                      dataType="wstr"
-                      length="255"
-                      name="OrganizationId" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[Description]"
-                      dataType="nText"
-                      name="Description" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ParentSubject]"
-                      dataType="wstr"
-                      length="255"
-                      name="ParentSubject" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[FeatureMask]"
-                      dataType="i4"
-                      name="FeatureMask" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[CreatedBy]"
-                      dataType="wstr"
-                      length="255"
-                      name="CreatedBy" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
-                      dataType="dbTimeStamp"
-                      name="CreatedOn" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ModifiedBy]"
-                      dataType="wstr"
-                      length="255"
-                      name="ModifiedBy" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOn]"
-                      dataType="dbTimeStamp"
-                      name="ModifiedOn" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[VersionNumber]"
-                      dataType="bytes"
-                      length="8"
-                      name="VersionNumber" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ImportSequenceNumber]"
-                      dataType="i4"
-                      name="ImportSequenceNumber" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[OverriddenCreatedOn]"
-                      dataType="dbTimeStamp"
-                      name="OverriddenCreatedOn" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfBy]"
-                      dataType="wstr"
-                      length="255"
-                      name="CreatedOnBehalfBy" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfBy]"
-                      dataType="wstr"
-                      length="255"
-                      name="ModifiedOnBehalfBy" />
-                    <externalMetadataColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].ExternalColumns[MigrationId]"
-                      dataType="wstr"
-                      length="255"
-                      name="MigrationId" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfByName]"
-                      dataType="wstr"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfByName]"
-                      name="ModifiedOnBehalfByName" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ModifiedByName]"
-                      dataType="wstr"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ModifiedByName]"
-                      name="ModifiedByName" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfByYomiName]"
-                      dataType="wstr"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfByYomiName]"
-                      name="CreatedOnBehalfByYomiName" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfByYomiName]"
-                      dataType="wstr"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfByYomiName]"
-                      name="ModifiedOnBehalfByYomiName" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[OrganizationIdName]"
-                      dataType="wstr"
-                      length="160"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[OrganizationIdName]"
-                      name="OrganizationIdName" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfByName]"
-                      dataType="wstr"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfByName]"
-                      name="CreatedOnBehalfByName" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[CreatedByYomiName]"
-                      dataType="wstr"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[CreatedByYomiName]"
-                      name="CreatedByYomiName" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ModifiedByYomiName]"
-                      dataType="wstr"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ModifiedByYomiName]"
-                      name="ModifiedByYomiName" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[CreatedByName]"
-                      dataType="wstr"
-                      length="200"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[CreatedByName]"
-                      name="CreatedByName" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ParentSubjectName]"
-                      dataType="wstr"
-                      length="500"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ParentSubjectName]"
-                      name="ParentSubjectName" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[SubjectId]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[SubjectId]"
-                      name="SubjectId" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[Title]"
-                      dataType="wstr"
-                      length="500"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[Title]"
-                      name="Title" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[OrganizationId]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[OrganizationId]"
-                      name="OrganizationId" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[Description]"
-                      dataType="nText"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[Description]"
-                      name="Description" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ParentSubject]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ParentSubject]"
-                      name="ParentSubject" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[FeatureMask]"
-                      dataType="i4"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[FeatureMask]"
-                      name="FeatureMask" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[CreatedBy]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[CreatedBy]"
-                      name="CreatedBy" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
-                      name="CreatedOn" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ModifiedBy]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ModifiedBy]"
-                      name="ModifiedBy" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ModifiedOn]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ModifiedOn]"
-                      name="ModifiedOn" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[VersionNumber]"
-                      dataType="bytes"
-                      length="8"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[VersionNumber]"
-                      name="VersionNumber" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ImportSequenceNumber]"
-                      dataType="i4"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ImportSequenceNumber]"
-                      name="ImportSequenceNumber" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[OverriddenCreatedOn]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[OverriddenCreatedOn]"
-                      name="OverriddenCreatedOn" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfBy]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfBy]"
-                      name="CreatedOnBehalfBy" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfBy]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfBy]"
-                      name="ModifiedOnBehalfBy" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[MigrationId]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[MigrationId]"
-                      name="MigrationId" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
               </outputs>
@@ -1213,174 +1009,160 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[ModifiedOnBehalfByName]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[modifiedonbehalfbyname]"
                       cachedDataType="wstr"
                       cachedLength="200"
-                      cachedName="ModifiedOnBehalfByName"
+                      cachedName="modifiedonbehalfbyname"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByName]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfByName]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedonbehalfbyname]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[ModifiedByName]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[modifiedbyname]"
                       cachedDataType="wstr"
                       cachedLength="200"
-                      cachedName="ModifiedByName"
+                      cachedName="modifiedbyname"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedByName]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedbyname]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[CreatedOnBehalfByYomiName]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[createdonbehalfbyyominame]"
                       cachedDataType="wstr"
                       cachedLength="200"
-                      cachedName="CreatedOnBehalfByYomiName"
+                      cachedName="createdonbehalfbyyominame"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByYomiName]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfByYomiName]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdonbehalfbyyominame]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[ModifiedOnBehalfByYomiName]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[modifiedonbehalfbyyominame]"
                       cachedDataType="wstr"
                       cachedLength="200"
-                      cachedName="ModifiedOnBehalfByYomiName"
+                      cachedName="modifiedonbehalfbyyominame"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByYomiName]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfByYomiName]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedonbehalfbyyominame]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[OrganizationIdName]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[organizationidname]"
                       cachedDataType="wstr"
                       cachedLength="160"
-                      cachedName="OrganizationIdName"
+                      cachedName="organizationidname"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationIdName]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[OrganizationIdName]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[organizationidname]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[CreatedOnBehalfByName]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[createdonbehalfbyname]"
                       cachedDataType="wstr"
                       cachedLength="200"
-                      cachedName="CreatedOnBehalfByName"
+                      cachedName="createdonbehalfbyname"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfByName]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdonbehalfbyname]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[CreatedByYomiName]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[createdbyyominame]"
                       cachedDataType="wstr"
                       cachedLength="200"
-                      cachedName="CreatedByYomiName"
+                      cachedName="createdbyyominame"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedByYomiName]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdbyyominame]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[ModifiedByYomiName]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[modifiedbyyominame]"
                       cachedDataType="wstr"
                       cachedLength="200"
-                      cachedName="ModifiedByYomiName"
+                      cachedName="modifiedbyyominame"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedByYomiName]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedbyyominame]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[CreatedByName]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[createdbyname]"
                       cachedDataType="wstr"
                       cachedLength="200"
-                      cachedName="CreatedByName"
+                      cachedName="createdbyname"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedByName]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdbyname]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[ParentSubjectName]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[parentsubjectname]"
                       cachedDataType="wstr"
                       cachedLength="500"
-                      cachedName="ParentSubjectName"
+                      cachedName="parentsubjectname"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ParentSubjectName]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ParentSubjectName]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[parentsubjectname]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[SubjectId]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="SubjectId"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[subjectid]"
+                      cachedDataType="guid"
+                      cachedName="subjectid"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[SubjectId]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[SubjectId]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[subjectid]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[Title]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[title]"
                       cachedDataType="wstr"
                       cachedLength="500"
-                      cachedName="Title"
+                      cachedName="title"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[Title]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[title]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[OrganizationId]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="OrganizationId"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[organizationid]"
+                      cachedDataType="guid"
+                      cachedName="organizationid"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OrganizationId]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[OrganizationId]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[organizationid]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[Description]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[description]"
                       cachedDataType="nText"
-                      cachedName="Description"
+                      cachedName="description"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[Description]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[description]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[ParentSubject]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="ParentSubject"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[parentsubject]"
+                      cachedDataType="guid"
+                      cachedName="parentsubject"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ParentSubject]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ParentSubject]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[parentsubject]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[FeatureMask]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[featuremask]"
                       cachedDataType="i4"
-                      cachedName="FeatureMask"
+                      cachedName="featuremask"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[FeatureMask]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[FeatureMask]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[featuremask]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[CreatedBy]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="CreatedBy"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[createdby]"
+                      cachedDataType="guid"
+                      cachedName="createdby"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedBy]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdby]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[CreatedOn]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[createdon]"
                       cachedDataType="dbTimeStamp"
-                      cachedName="CreatedOn"
+                      cachedName="createdon"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedOn]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdon]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[ModifiedBy]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="ModifiedBy"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[modifiedby]"
+                      cachedDataType="guid"
+                      cachedName="modifiedby"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedBy]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedby]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[ModifiedOn]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[modifiedon]"
                       cachedDataType="dbTimeStamp"
-                      cachedName="ModifiedOn"
+                      cachedName="modifiedon"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedOn]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedon]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[ImportSequenceNumber]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[importsequencenumber]"
                       cachedDataType="i4"
-                      cachedName="ImportSequenceNumber"
+                      cachedName="importsequencenumber"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ImportSequenceNumber]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[importsequencenumber]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[OverriddenCreatedOn]"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[overriddencreatedon]"
                       cachedDataType="dbTimeStamp"
-                      cachedName="OverriddenCreatedOn"
+                      cachedName="overriddencreatedon"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[OverriddenCreatedOn]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[overriddencreatedon]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[CreatedOnBehalfBy]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="CreatedOnBehalfBy"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[createdonbehalfby]"
+                      cachedDataType="guid"
+                      cachedName="createdonbehalfby"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfBy]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdonbehalfby]" />
                     <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[ModifiedOnBehalfBy]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="ModifiedOnBehalfBy"
+                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[modifiedonbehalfby]"
+                      cachedDataType="guid"
+                      cachedName="modifiedonbehalfby"
                       externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfBy]" />
-                    <inputColumn
-                      refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[MigrationId]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="MigrationId"
-                      externalMetadataColumnId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
-                      lineageId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output].Columns[MigrationId]" />
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedonbehalfby]" />
                     <inputColumn
                       refId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
                       cachedDataType="i4"
@@ -1571,6 +1353,11 @@
           </components>
           <paths>
             <path
+              refId="Package\Load Subject.Paths[CRM Primary Output]"
+              endId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input]"
+              name="CRM Primary Output"
+              startId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output]" />
+            <path
               refId="Package\Load Subject.Paths[Default Output]"
               endId="Package\Load Subject\Row Inserted.Inputs[Row Count Input 1]"
               name="Default Output"
@@ -1580,11 +1367,6 @@
               endId="Package\Load Subject\Subject_ERROR.Inputs[OLE DB Destination Input]"
               name="Error Output"
               startId="Package\Load Subject\Dynamics CRM Destination.Outputs[Error Output]" />
-            <path
-              refId="Package\Load Subject.Paths[OLE DB Source Output]"
-              endId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input]"
-              name="OLE DB Source Output"
-              startId="Package\Load Subject\STG_Subject.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2338,23 +2120,23 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="139.2,41.6"
+          Size="139,42"
           Id="Package\Load Subject"
           TopLeft="344.000005858285,218.400003062977" />
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\LogPackageEnd"
           TopLeft="69.4285725768733,297.035296768796" />
         <NodeLayout
-          Size="162.4,41.6"
+          Size="162,42"
           Id="Package\LogPackageStart"
           TopLeft="58.6428580478746,36.0882357231061" />
         <NodeLayout
-          Size="143.2,41.6"
+          Size="143,42"
           Id="Package\New LoggStatus"
           TopLeft="64.0000010899137,119.905884034576" />
         <NodeLayout
-          Size="162.4,41.6"
+          Size="162,42"
           Id="Package\Truncate rows in ERROR table"
           TopLeft="287.428576323451,121.1294134635" />
         <EdgeLayout
@@ -2552,79 +2334,17 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="138.4,41.6"
-          Id="Package\Load Subject\STG_Subject"
-          TopLeft="268.000004564013,34.8705887243409" />
-        <NodeLayout
-          Size="141.6,41.6"
+          Size="142,42"
           Id="Package\Load Subject\Row Inserted"
           TopLeft="185.142860159581,261.835297789787" />
         <NodeLayout
-          Size="152.8,41.6"
+          Size="153,42"
           Id="Package\Load Subject\Subject_ERROR"
           TopLeft="341.714291533646,260.000003646401" />
         <NodeLayout
-          Size="204,41.6"
+          Size="204,42"
           Id="Package\Load Subject\Dynamics CRM Destination"
           TopLeft="241.142861385735,135.811766610591" />
-        <EdgeLayout
-          Id="Package\Load Subject.Paths[Error Output]"
-          TopLeft="375.809528052402,177.411766610591">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="42.3047634812441,82.5882370358103"
-              Start="0,0"
-              End="42.3047634812441,75.0882370358103">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.4209208238299" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.4209208238299"
-                    Point2="0,33.4209208238299"
-                    Point3="4,33.4209208238299" />
-                  <mssgle:LineSegment
-                    End="38.3047634812441,33.4209208238299" />
-                  <mssgle:CubicBezierSegment
-                    Point1="38.3047634812441,33.4209208238299"
-                    Point2="42.3047634812441,33.4209208238299"
-                    Point3="42.3047634812441,37.4209208238299" />
-                  <mssgle:LineSegment
-                    End="42.3047634812441,75.0882370358103" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-7.18400497812796,38.4209208238299,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Subject.Paths[OLE DB Source Output]"
-          TopLeft="340.171432974874,76.4705887243409">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59.3411778862503"
-              Start="0,0"
-              End="0,51.8411778862503">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.8411778862503" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Subject.Paths[Default Output]"
           TopLeft="310.476194719068,177.411766610591">
@@ -2659,22 +2379,71 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Load Subject\Dynamics CRM Source"
+          TopLeft="248.142860159581,21.835297789787" />
+        <EdgeLayout
+          Id="Package\Load Subject.Paths[CRM Primary Output]"
+          TopLeft="341.642860772658,63.835297789787">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.976468820804"
+              Start="0,0"
+              End="0,64.476468820804">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.476468820804" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Subject.Paths[Error Output]"
+          TopLeft="375.809528052402,177.811766610591">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42.4047634812443,82.18823703581"
+              Start="0,0"
+              End="42.4047634812443,74.68823703581">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.2590531195496" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.2590531195496"
+                    Point2="0,33.2590531195496"
+                    Point3="4,33.2590531195496" />
+                  <mssgle:LineSegment
+                    End="38.4047634812443,33.2590531195496" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.4047634812443,33.2590531195496"
+                    Point2="42.4047634812443,33.2590531195496"
+                    Point3="42.4047634812443,37.2590531195496" />
+                  <mssgle:LineSegment
+                    End="42.4047634812443,74.68823703581" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-7.13400497812783,38.2590531195496,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Subject\STG_Subject">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Subject\Subject_ERROR">
     <Properties>

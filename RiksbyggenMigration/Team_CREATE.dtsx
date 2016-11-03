@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Team_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="68"
-  DTS:VersionGUID="{E06C6BD6-4815-4CF4-944B-AD7A166E022C}">
+  DTS:VersionBuild="69"
+  DTS:VersionGUID="{E0ADB4B1-23DA-4159-ADF5-33F6D89AA9A8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -1876,7 +1876,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Team\Team_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[QueueIdName]"
                       dataType="wstr"
-                      length="200"
+                      length="400"
                       name="QueueIdName" />
                     <externalMetadataColumn
                       refId="Package\Load Team\Team_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
@@ -2769,7 +2769,8 @@
               contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
               description="Populate data into Microsoft Dynamics CRM."
               name="Migrate teamroles"
-              usesDispositions="true">
+              usesDispositions="true"
+              version="3">
               <properties>
                 <property
                   dataType="System.String"
@@ -2963,7 +2964,8 @@
               contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
               description="Extract data from Microsoft Dynamics CRM."
               name="Read role Systemadminstrator"
-              usesDispositions="true">
+              usesDispositions="true"
+              version="2">
               <properties>
                 <property
                   dataType="System.Int32"
@@ -3006,7 +3008,8 @@
                   dataType="System.Null"
                   description="Specifies the output timezone for CRM datetime fields."
                   expressionType="Notify"
-                  name="OutputTimezone" />
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceOutputTimezone" />
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
@@ -3181,23 +3184,27 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="132,42.6666666666667"
+          Size="132,43"
           Id="Package\Load Team"
           TopLeft="332.738101093695,316.715690702503" />
         <NodeLayout
-          Size="152,41.3333333333334"
+          Size="152,41"
           Id="Package\LogPackageEnd"
           TopLeft="72.3571444544562,399.335949217453" />
         <NodeLayout
-          Size="162.666666666667,41.3333333333334"
+          Size="163,41"
           Id="Package\LogPackageStart"
           TopLeft="58.6428580478746,36.0882357231061" />
         <NodeLayout
-          Size="143.333333333334,41.3333333333334"
+          Size="167,43"
+          Id="Package\Migrate Teamroles"
+          TopLeft="331.851846906874,404.492585359701" />
+        <NodeLayout
+          Size="143,41"
           Id="Package\New LoggStatus"
           TopLeft="64.5714296710736,119.294119320114" />
         <NodeLayout
-          Size="162.666666666667,41.3333333333334"
+          Size="163,41"
           Id="Package\Truncate rows in ERROR table"
           TopLeft="292.476195740862,118.070589891189" />
         <EdgeLayout
@@ -3374,10 +3381,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="166.666666666667,42.6666666666667"
-          Id="Package\Migrate Teamroles"
-          TopLeft="331.851846906874,404.492585359701" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
           TopLeft="417.294974000284,359.382357369169">
@@ -3433,19 +3436,19 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="152.666666666667,41.3333333333334"
+          Size="153,41"
           Id="Package\Load Team\Team_ERROR"
           TopLeft="415.428578503278,225.741179636523" />
         <NodeLayout
-          Size="170.666666666667,42.6666666666667"
+          Size="171,43"
           Id="Package\Load Team\Read Team records"
           TopLeft="258.916662599892,20.799999628067" />
         <NodeLayout
-          Size="182.666666666667,42.6666666666667"
+          Size="183,43"
           Id="Package\Load Team\Migrate Team records"
           TopLeft="250.857147265455,118.117647290477" />
         <NodeLayout
-          Size="141.333333333334,41.3333333333334"
+          Size="141,41"
           Id="Package\Load Team\Row Inserted"
           TopLeft="120.857143246397,229.505888993683" />
         <EdgeLayout
