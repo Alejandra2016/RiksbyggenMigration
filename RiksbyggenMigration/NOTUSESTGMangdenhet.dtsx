@@ -5,22 +5,22 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="WIN-MDNURGQAKC3"
   DTS:CreatorName="CORP\Administrator"
-  DTS:DTSID="{C37A1AC8-6BBF-4B93-8849-1031707A6644}"
+  DTS:DTSID="{4BD9EAB5-06CC-46ED-8F2F-19069D1A5E13}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="13.0.2150.2"
   DTS:LocaleID="1053"
-  DTS:ObjectName="STGDelsegment"
+  DTS:ObjectName="NOTUSESTGMangdenhet"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{8986335F-C2E2-4655-B29F-0200F81B7963}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{731B64B9-00EF-49EC-8833-FE22842C9E4F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
       DTS:CreationName="FLATFILE"
-      DTS:Description="Delsegment"
-      DTS:DTSID="{97F04C58-E676-432A-9116-53E08B21B973}"
+      DTS:Description="Mangdtyp"
+      DTS:DTSID="{BC155F6D-B8D3-456E-8D1E-F7597634132D}"
       DTS:ObjectName="Flat File Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -31,7 +31,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Tmp\rik_Delsegment.txt">
+          DTS:ConnectionString="C:\Tmp\rik_Mangdenhet.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -39,8 +39,8 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="rik_Namn"
-              DTS:DTSID="{D53F96E9-CBB1-4A92-B2CD-0D4D6D409675}"
+              DTS:ObjectName="rik_MangdtypId"
+              DTS:DTSID="{C3BF1205-B53D-4254-8850-2D0A021BCC1A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -48,8 +48,8 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="rik_Kod"
-              DTS:DTSID="{91541A77-EC82-458A-B519-36F033F49F33}"
+              DTS:ObjectName="rik_Namn"
+              DTS:DTSID="{47623E78-417F-40FB-9AE7-5B008CF418E7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -57,8 +57,8 @@
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Kundsegment_Kod"
-              DTS:DTSID="{C0FD6FE8-1734-4E89-8091-E97E5757642E}"
+              DTS:ObjectName="rik_Kod"
+              DTS:DTSID="{4C956E48-5422-415E-B4C6-A0034EC9BFF0}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -70,7 +70,7 @@
       DTS:ConfigString="LogOLEDB"
       DTS:CreationName="Microsoft.LogProviderSQLServer"
       DTS:Description="Writes log entries for events to a SQL Server database"
-      DTS:DTSID="{D7CF8367-96F9-4C40-9A32-06F3FA2F51E6}"
+      DTS:DTSID="{2C4CBA0B-DEBE-4BBF-993A-6E025151D24E}"
       DTS:ObjectName="SSIS log provider for SQL Server">
       <DTS:ObjectData>
         <InnerObject />
@@ -81,7 +81,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{0FDF333E-F888-49B7-B539-C5A7DA51C44C}"
+      DTS:DTSID="{E6845A3B-7139-424D-A9F3-159387A52809}"
       DTS:ObjectName="ParentPackageExecutionID">
       <DTS:Property
         DTS:DataType="8"
@@ -90,7 +90,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
-      DTS:DTSID="{48CC5232-95A6-43A4-83F6-8BC8D6295579}"
+      DTS:DTSID="{EEFA094B-CE47-4EC8-AEE0-60A56FE7B799}"
       DTS:ObjectName="Parentpackagename">
       <DTS:Property
         DTS:DataType="8"
@@ -100,7 +100,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{7CFE7353-C923-4036-B8A3-DB0E8D04B42D}"
+      DTS:DTSID="{B9D03DD1-0DCE-48FC-B36D-BA2576548DBD}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Event">
@@ -109,7 +109,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{65E10D25-1A43-4388-BE47-8E92A6C24A3D}"
+      DTS:DTSID="{49623556-BA8C-4061-BEFE-DCD8B041EA01}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[$Package::ParentPackageExecutionID]== &quot;156C50F0-51B8-4EF2-BD8C-61FF52F5E722&quot; ? @[System::ExecutionInstanceGUID]  : @[$Package::ParentPackageExecutionID]"
       DTS:IncludeInDebugDump="2345"
@@ -120,7 +120,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{177C3B50-337F-4253-82E8-80A4776215D1}"
+      DTS:DTSID="{FC19B2D3-66FE-4B31-B020-9B34FB4DB39C}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="@[$Package::Parentpackagename]"
       DTS:IncludeInDebugDump="2345"
@@ -131,7 +131,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{CA007F65-26A0-4348-9FC6-D6186441D7DD}"
+      DTS:DTSID="{1D2DE723-30E9-4AF4-BB9D-79728E3A2758}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="RowsDeleted">
@@ -140,7 +140,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{BC77BC24-AB5E-414D-AB8F-85B8C049979D}"
+      DTS:DTSID="{45CBA8AB-5F31-46B5-BF0E-342E318759D3}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="RowsInserted">
@@ -149,7 +149,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{B7945A66-7FEA-4BBC-8E9C-DDBA16DDC8AB}"
+      DTS:DTSID="{4D8E00B3-3DAE-4979-8E2D-0DC315DDA775}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="RowsUpdated">
@@ -158,7 +158,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{C37D201C-F6C5-42A3-9FA8-2062B08C396B}"
+      DTS:DTSID="{9984A946-2371-4E48-9B1E-5630AF1BDEDF}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="RowsUpdated2">
@@ -167,7 +167,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{EB7932C2-441D-4F4B-A7C4-216F73D1ABAA}"
+      DTS:DTSID="{50B73C1B-B388-48EE-A80F-A0FF5B5B6667}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="Senastladdatum">
@@ -176,7 +176,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{4748148D-24B4-4971-BA86-818C07FF98B9}"
+      DTS:DTSID="{5C4D9E0C-5039-45A7-B8B6-7D3CA873E136}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="SourceSystemID">
@@ -185,7 +185,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{8B228586-4C66-49E5-8C55-CE576927204B}"
+      DTS:DTSID="{19DA4EB9-6198-4753-8EEB-C07C5A1365B1}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Sourcetable">
@@ -194,7 +194,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{DCB3E003-842D-423E-8EB7-C907A919394D}"
+      DTS:DTSID="{9E162A2D-3AD2-4C01-A8C5-2CB99B29E256}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SQL_source_query">
@@ -203,14 +203,14 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{77EF39C6-6E59-4A05-B007-48316F029D5E}"
+      DTS:DTSID="{6B240C67-6BA5-4248-8606-E5A732290383}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;Dim.&quot;+@[System::PackageName]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Target">
       <DTS:VariableValue
-        DTS:DataType="8">Dim.STGDelsegment</DTS:VariableValue>
+        DTS:DataType="8">Dim.NOTUSESTGMangdenhet</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:LoggingOptions
@@ -239,18 +239,18 @@
     </DTS:Property>
     <DTS:SelectedLogProviders>
       <DTS:SelectedLogProvider
-        DTS:InstanceID="{D7CF8367-96F9-4C40-9A32-06F3FA2F51E6}" />
+        DTS:InstanceID="{2C4CBA0B-DEBE-4BBF-993A-6E025151D24E}" />
     </DTS:SelectedLogProviders>
   </DTS:LoggingOptions>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Load Delsegment till STG"
+      DTS:refId="Package\Load Mangdenhet till STG"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{E8A9F8AA-EA0D-40C4-A67B-3540087D453C}"
+      DTS:DTSID="{627E74C8-0E9F-425E-B1AC-C10ADA28834B}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Load Delsegment till STG"
+      DTS:ObjectName="Load Mangdenhet till STG"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:LoggingOptions
@@ -283,94 +283,12 @@
           version="1">
           <components>
             <component
-              refId="Package\Load Delsegment till STG\Derived Column"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Load Delsegment till STG\Derived Column.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Delsegment till STG\Derived Column.Inputs[Derived Column Input].Columns[Kundsegment_Kod]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Kundsegment_Kod"
-                      lineageId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].Columns[Kundsegment_Kod]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Load Delsegment till STG\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Load Delsegment till STG\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Delsegment till STG\Derived Column.Outputs[Derived Column Output].Columns[rik_KundsegmentIdName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Load Delsegment till STG\Derived Column.Outputs[Derived Column Output].Columns[rik_KundsegmentIdName]"
-                      name="rik_KundsegmentIdName"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].Columns[Kundsegment_Kod]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">Kundsegment_Kod</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Load Delsegment till STG\Derived Column.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Load Delsegment till STG\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Delsegment till STG\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Delsegment till STG\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Delsegment till STG\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Delsegment till STG\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Load Delsegment till STG\Flat File Delsegment"
+              refId="Package\Load Mangdenhet till STG\Flat File Mängdenhet"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
               localeId="1053"
-              name="Flat File Delsegment"
+              name="Flat File Mängdenhet"
               usesDispositions="true"
               version="1">
               <properties>
@@ -385,24 +303,46 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load Delsegment till STG\Flat File Delsegment.Connections[FlatFileConnection]"
+                  refId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Connections[FlatFileConnection]"
                   connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
                   connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output]"
+                  refId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output]"
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].Columns[rik_Namn]"
+                      refId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output].Columns[rik_MangdtypId]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output].ExternalColumns[rik_MangdtypId]"
+                      length="50"
+                      lineageId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output].Columns[rik_MangdtypId]"
+                      name="rik_MangdtypId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output].Columns[rik_Namn]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].ExternalColumns[rik_Namn]"
+                      externalMetadataColumnId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output].ExternalColumns[rik_Namn]"
                       length="50"
-                      lineageId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].Columns[rik_Namn]"
+                      lineageId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output].Columns[rik_Namn]"
                       name="rik_Namn"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -417,35 +357,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].Columns[rik_Kod]"
+                      refId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output].Columns[rik_Kod]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].ExternalColumns[rik_Kod]"
+                      externalMetadataColumnId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output].ExternalColumns[rik_Kod]"
                       length="10"
-                      lineageId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].Columns[rik_Kod]"
+                      lineageId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output].Columns[rik_Kod]"
                       name="rik_Kod"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].Columns[Kundsegment_Kod]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].ExternalColumns[Kundsegment_Kod]"
-                      length="50"
-                      lineageId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].Columns[Kundsegment_Kod]"
-                      name="Kundsegment_Kod"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -462,47 +381,47 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].ExternalColumns[rik_Namn]"
+                      refId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output].ExternalColumns[rik_MangdtypId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="rik_MangdtypId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output].ExternalColumns[rik_Namn]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="rik_Namn" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].ExternalColumns[rik_Kod]"
+                      refId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output].ExternalColumns[rik_Kod]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="rik_Kod" />
-                    <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].ExternalColumns[Kundsegment_Kod]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="Kundsegment_Kod" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Error Output]"
+                  refId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
                   name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      refId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       codePage="1252"
                       dataType="text"
                       description="Flat File Source Error Output Column"
-                      lineageId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      lineageId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -511,11 +430,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load Delsegment till STG\rik_Delsegment"
+              refId="Package\Load Mangdenhet till STG\rik_Mangdenhet"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="rik_Delsegment"
+              name="rik_Mangdenhet"
               usesDispositions="true"
               version="4">
               <properties>
@@ -526,7 +445,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[rik_Delsegment]</property>
+                  name="OpenRowset">[dbo].[rik_Mangdenhet]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -568,7 +487,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Load Delsegment till STG\rik_Delsegment.Connections[OleDbConnection]"
+                  refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Connections[OleDbConnection]"
                   connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
                   connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
@@ -576,141 +495,110 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input]"
+                  refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].Columns[rik_Namn]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].Columns[rik_Namn]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="rik_Namn"
-                      externalMetadataColumnId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
-                      lineageId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].Columns[rik_Namn]" />
+                      externalMetadataColumnId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
+                      lineageId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output].Columns[rik_Namn]" />
                     <inputColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].Columns[rik_Kod]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].Columns[rik_Kod]"
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="rik_Kod"
-                      externalMetadataColumnId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kod]"
-                      lineageId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].Columns[rik_Kod]" />
-                    <inputColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].Columns[Kundsegment_Kod]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Kundsegment_Kod"
-                      externalMetadataColumnId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[rik_KundsegmentId]"
-                      lineageId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output].Columns[Kundsegment_Kod]" />
-                    <inputColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].Columns[rik_KundsegmentIdName]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="rik_KundsegmentIdName"
-                      externalMetadataColumnId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[rik_KundsegmentIdName]"
-                      lineageId="Package\Load Delsegment till STG\Derived Column.Outputs[Derived Column Output].Columns[rik_KundsegmentIdName]" />
+                      externalMetadataColumnId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kod]"
+                      lineageId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output].Columns[rik_Kod]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
-                      dataType="wstr"
-                      length="255"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
+                      dataType="guid"
                       name="OwnerId" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
                       dataType="i4"
                       name="OwnerIdType" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
                       dataType="dbTimeStamp"
                       name="CreatedOn" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
-                      dataType="wstr"
-                      length="255"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      dataType="guid"
                       name="CreatedBy" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
                       dataType="dbTimeStamp"
                       name="ModifiedOn" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
-                      dataType="wstr"
-                      length="255"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
+                      dataType="guid"
                       name="ModifiedBy" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
-                      dataType="wstr"
-                      length="255"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
+                      dataType="guid"
                       name="CreatedOnBehalfBy" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
-                      dataType="wstr"
-                      length="255"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
+                      dataType="guid"
                       name="ModifiedOnBehalfBy" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
-                      dataType="wstr"
-                      length="255"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
+                      dataType="guid"
                       name="OwningBusinessUnit" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[statecode]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[statecode]"
                       dataType="i4"
                       name="statecode" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[statuscode]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[statuscode]"
                       dataType="i4"
                       name="statuscode" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
                       dataType="bytes"
                       length="8"
                       name="VersionNumber" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
                       dataType="i4"
                       name="ImportSequenceNumber" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
                       dataType="dbTimeStamp"
                       name="OverriddenCreatedOn" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[TimeZoneRuleVersionNumber]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[TimeZoneRuleVersionNumber]"
                       dataType="i4"
                       name="TimeZoneRuleVersionNumber" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[UTCConversionTimeZoneCode]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[UTCConversionTimeZoneCode]"
                       dataType="i4"
                       name="UTCConversionTimeZoneCode" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
                       dataType="wstr"
                       length="100"
                       name="rik_Namn" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kod]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kod]"
                       dataType="wstr"
                       length="10"
                       name="rik_Kod" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[rik_KundsegmentId]"
-                      dataType="wstr"
-                      length="255"
-                      name="rik_KundsegmentId" />
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[rik_MangdenhetId]"
+                      dataType="guid"
+                      name="rik_MangdenhetId" />
                     <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[rik_DelsegmentId]"
-                      dataType="wstr"
-                      length="255"
-                      name="rik_DelsegmentId" />
-                    <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[rik_KundsegmentIdName]"
-                      dataType="wstr"
-                      length="100"
-                      name="rik_KundsegmentIdName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
                       dataType="wstr"
                       length="255"
                       name="MigrationId" />
@@ -719,22 +607,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Delsegment till STG\rik_Delsegment.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Load Delsegment till STG\rik_Delsegment.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Load Delsegment till STG\rik_Delsegment.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Load Delsegment till STG\rik_Delsegment.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -743,7 +631,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Load Delsegment till STG\Row Inserted"
+              refId="Package\Load Mangdenhet till STG\Row Inserted"
               componentClassID="Microsoft.RowCount"
               contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
@@ -756,7 +644,7 @@
               </properties>
               <inputs>
                 <input
-                  refId="Package\Load Delsegment till STG\Row Inserted.Inputs[Row Count Input 1]"
+                  refId="Package\Load Mangdenhet till STG\Row Inserted.Inputs[Row Count Input 1]"
                   hasSideEffects="true"
                   name="Row Count Input 1">
                   <externalMetadataColumns />
@@ -764,9 +652,9 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Load Delsegment till STG\Row Inserted.Outputs[Row Count Output 1]"
+                  refId="Package\Load Mangdenhet till STG\Row Inserted.Outputs[Row Count Output 1]"
                   name="Row Count Output 1"
-                  synchronousInputId="Package\Load Delsegment till STG\Row Inserted.Inputs[Row Count Input 1]">
+                  synchronousInputId="Package\Load Mangdenhet till STG\Row Inserted.Inputs[Row Count Input 1]">
                   <externalMetadataColumns />
                 </output>
               </outputs>
@@ -774,20 +662,15 @@
           </components>
           <paths>
             <path
-              refId="Package\Load Delsegment till STG.Paths[Derived Column Output]"
-              endId="Package\Load Delsegment till STG\rik_Delsegment.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\Load Delsegment till STG\Derived Column.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Load Delsegment till STG.Paths[Flat File Source Output]"
-              endId="Package\Load Delsegment till STG\Row Inserted.Inputs[Row Count Input 1]"
+              refId="Package\Load Mangdenhet till STG.Paths[Flat File Source Output]"
+              endId="Package\Load Mangdenhet till STG\Row Inserted.Inputs[Row Count Input 1]"
               name="Flat File Source Output"
-              startId="Package\Load Delsegment till STG\Flat File Delsegment.Outputs[Flat File Source Output]" />
+              startId="Package\Load Mangdenhet till STG\Flat File Mängdenhet.Outputs[Flat File Source Output]" />
             <path
-              refId="Package\Load Delsegment till STG.Paths[Row Count Output 1]"
-              endId="Package\Load Delsegment till STG\Derived Column.Inputs[Derived Column Input]"
+              refId="Package\Load Mangdenhet till STG.Paths[Row Count Output 1]"
+              endId="Package\Load Mangdenhet till STG\rik_Mangdenhet.Inputs[OLE DB Destination Input]"
               name="Row Count Output 1"
-              startId="Package\Load Delsegment till STG\Row Inserted.Outputs[Row Count Output 1]" />
+              startId="Package\Load Mangdenhet till STG\Row Inserted.Outputs[Row Count Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -796,7 +679,7 @@
       DTS:refId="Package\LogPackageEnd"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{472E0F38-C991-45BE-8BB2-97B11EA92828}"
+      DTS:DTSID="{9FD7B547-2711-4E1D-A562-EF3E658C468C}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="LogPackageEnd"
@@ -1122,7 +1005,7 @@
       DTS:refId="Package\LogPackageStart"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{ED54A30F-4F15-44D2-8275-A2BC426F4F11}"
+      DTS:DTSID="{ACBDE8C3-496B-43D4-BB6A-890439377621}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="LogPackageStart"
@@ -1448,7 +1331,7 @@
       DTS:refId="Package\New LoggStatus"
       DTS:CreationName="Microsoft.ExpressionTask"
       DTS:Description="Expression Task"
-      DTS:DTSID="{752CDE37-60E7-4045-91D4-E589BD62CA21}"
+      DTS:DTSID="{15A4E0EB-A4C9-4C7D-8AF1-DD043AC205EF}"
       DTS:ExecutableType="Microsoft.ExpressionTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="New LoggStatus"
@@ -1464,7 +1347,7 @@
       DTS:refId="Package\Truncate rows in table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{F85DA88F-D2D6-469B-A307-9DFCF68EAE46}"
+      DTS:DTSID="{b1e6a6b5-48b1-4501-8f5c-d73ed2025d77}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate rows in table"
@@ -1474,7 +1357,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE [STG].[dbo].[rik_Delsegment]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [STG].[dbo].[rik_Mangdenhet]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -1482,7 +1365,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{613B12D1-0440-4D21-B563-C379B7894477}"
+      DTS:DTSID="{B6789AE3-1E69-4CEF-AF2D-8F72E4BDDA56}"
       DTS:From="Package\LogPackageStart"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -1490,15 +1373,15 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{A3E7908C-36D6-4EF7-9225-E3074162BC82}"
-      DTS:From="Package\Load Delsegment till STG"
+      DTS:DTSID="{4C521BEE-04B7-40F2-B055-6FC4CD6C26D6}"
+      DTS:From="Package\Load Mangdenhet till STG"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\LogPackageEnd"
       DTS:Value="2" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{D90CE61D-CEF6-4CF6-A868-B6B4941BA8D1}"
+      DTS:DTSID="{3A37B86F-D267-4B7F-9AFE-94306424CAD9}"
       DTS:From="Package\New LoggStatus"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
@@ -1506,7 +1389,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{B301A3B5-B1E3-40E7-9B77-9343A9AC3E8E}"
+      DTS:DTSID="{BB831FBF-F76B-4496-A60A-4E8EAF95E025}"
       DTS:From="Package\New LoggStatus"
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\LogPackageEnd"
@@ -1514,15 +1397,15 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
-      DTS:DTSID="{63E636D0-BA2F-4FF7-8B32-A4B2603BEEDB}"
+      DTS:DTSID="{A07BD6D7-D775-48BA-9788-7902623ADB18}"
       DTS:From="Package\Truncate rows in table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
-      DTS:To="Package\Load Delsegment till STG" />
+      DTS:To="Package\Load Mangdenhet till STG" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
-      DTS:DTSID="{498FFD6E-6401-4086-91DD-128C9918686C}"
+      DTS:DTSID="{058D5BAF-48DF-403D-B96C-8AB1609D07E4}"
       DTS:From="Package\Truncate rows in table"
       DTS:ObjectName="Constraint 5"
       DTS:To="Package\LogPackageEnd"
@@ -1541,23 +1424,23 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="196.8,41.6"
-          Id="Package\Load Delsegment till STG"
-          TopLeft="349.142863088725,260.611768360864" />
+          Size="199,42"
+          Id="Package\Load Mangdenhet till STG"
+          TopLeft="347.428577345245,297.317651228591" />
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\LogPackageEnd"
-          TopLeft="69.4285725768733,297.035296768796" />
+          TopLeft="68.2857154145534,377.788239077796" />
         <NodeLayout
-          Size="162.4,41.6"
+          Size="162,42"
           Id="Package\LogPackageStart"
           TopLeft="58.6428580478746,36.0882357231061" />
         <NodeLayout
-          Size="143.2,41.6"
+          Size="143,42"
           Id="Package\New LoggStatus"
           TopLeft="64.5714296710736,119.294119320114" />
         <NodeLayout
-          Size="184,41.6"
+          Size="184,42"
           Id="Package\Truncate rows in table"
           TopLeft="344.000005858285,115.623531033341" />
         <EdgeLayout
@@ -1584,37 +1467,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="349.142863088725,281.411768360864">
+          TopLeft="447.028577345245,338.917651228591">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-127.714290511851,36.4235284079319"
+              EndConnector="-266.742861930692,38.8705878492046"
               Start="0,0"
-              End="-120.214290511851,36.4235284079319">
+              End="-266.742861930692,31.3705878492046">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-59.8571452559257,0" />
+                    End="0,21.4669368667203" />
                   <mssgle:CubicBezierSegment
-                    Point1="-59.8571452559257,0"
-                    Point2="-63.8571452559257,0"
-                    Point3="-63.8571452559257,4" />
+                    Point1="0,21.4669368667203"
+                    Point2="0,25.4669368667203"
+                    Point3="-4,25.4669368667203" />
                   <mssgle:LineSegment
-                    End="-63.8571452559257,32.4235284079319" />
+                    End="-262.742861930692,25.4669368667203" />
                   <mssgle:CubicBezierSegment
-                    Point1="-63.8571452559257,32.4235284079319"
-                    Point2="-63.8571452559257,36.4235284079319"
-                    Point3="-67.8571452559257,36.4235284079319" />
+                    Point1="-262.742861930692,25.4669368667203"
+                    Point2="-266.742861930692,25.4669368667203"
+                    Point3="-266.742861930692,29.4669368667203" />
                   <mssgle:LineSegment
-                    End="-120.214290511851,36.4235284079319" />
+                    End="-266.742861930692,31.3705878492046" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-89.1615983809257,-17.609375,50.60890625,11.609375"
+              BoundingBox="-158.675884090346,30.4669368667203,50.60890625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1646,33 +1529,33 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-14.7428570942003,136.141177448682"
+              EndConnector="-27.8857142565202,216.894119757682"
               Start="0,0"
-              End="-14.7428570942003,128.641177448682">
+              End="-27.8857142565202,209.394119757682">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,76.8338241101548" />
+                    End="0,138.103043979171" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,76.8338241101548"
-                    Point2="0,80.8338241101548"
-                    Point3="-4,80.8338241101548" />
+                    Point1="0,138.103043979171"
+                    Point2="0,142.103043979171"
+                    Point3="-4,142.103043979171" />
                   <mssgle:LineSegment
-                    End="-10.7428570942003,80.8338241101548" />
+                    End="-23.8857142565202,142.103043979171" />
                   <mssgle:CubicBezierSegment
-                    Point1="-10.7428570942003,80.8338241101548"
-                    Point2="-14.7428570942003,80.8338241101548"
-                    Point3="-14.7428570942003,84.8338241101548" />
+                    Point1="-23.8857142565202,142.103043979171"
+                    Point2="-27.8857142565202,142.103043979171"
+                    Point3="-27.8857142565202,146.103043979171" />
                   <mssgle:LineSegment
-                    End="-14.7428570942003,128.641177448682" />
+                    End="-27.8857142565202,209.394119757682" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-15.24134765625,59.4460770055909,30.4826953125,9.7490234375"
+              BoundingBox="-29.1842047845101,147.103043979171,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1682,26 +1565,26 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-17.7904761028937,103.388237327523"
+              EndConnector="-18.3047618463734,140.09412019525"
               Start="0,0"
-              End="-17.7904761028937,95.8882373275231">
+              End="-18.3047618463734,132.59412019525">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.8900616758068" />
+                    End="0,52.7622728377308" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,37.8900616758068"
-                    Point2="0,41.8900616758068"
-                    Point3="-4,41.8900616758068" />
+                    Point1="0,52.7622728377308"
+                    Point2="0,56.7622728377308"
+                    Point3="-4,56.7622728377308" />
                   <mssgle:LineSegment
-                    End="-13.7904761028937,41.8900616758068" />
+                    End="-14.3047618463734,56.7622728377308" />
                   <mssgle:CubicBezierSegment
-                    Point1="-13.7904761028937,41.8900616758068"
-                    Point2="-17.7904761028937,41.8900616758068"
-                    Point3="-17.7904761028937,45.8900616758068" />
+                    Point1="-14.3047618463734,56.7622728377308"
+                    Point2="-18.3047618463734,56.7622728377308"
+                    Point3="-18.3047618463734,60.7622728377308" />
                   <mssgle:LineSegment
-                    End="-17.7904761028937,95.8882373275231" />
+                    End="-18.3047618463734,132.59412019525" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1716,33 +1599,33 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-225.238099948079,139.811765735455"
+              EndConnector="-226.380957110398,220.564708044455"
               Start="0,0"
-              End="-225.238099948079,132.311765735455">
+              End="-226.380957110398,213.064708044455">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,74.870440177992" />
+                    End="0,120.424690008653" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,74.870440177992"
-                    Point2="0,78.870440177992"
-                    Point3="-4,78.870440177992" />
+                    Point1="0,120.424690008653"
+                    Point2="0,124.424690008653"
+                    Point3="-4,124.424690008653" />
                   <mssgle:LineSegment
-                    End="-221.238099948079,78.870440177992" />
+                    End="-222.380957110398,124.424690008653" />
                   <mssgle:CubicBezierSegment
-                    Point1="-221.238099948079,78.870440177992"
-                    Point2="-225.238099948079,78.870440177992"
-                    Point3="-225.238099948079,82.870440177992" />
+                    Point1="-222.380957110398,124.424690008653"
+                    Point2="-226.380957110398,124.424690008653"
+                    Point3="-226.380957110398,128.424690008653" />
                   <mssgle:LineSegment
-                    End="-225.238099948079,132.311765735455" />
+                    End="-226.380957110398,213.064708044455" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-127.860397630289,83.870440177992,30.4826953125,9.7490234375"
+              BoundingBox="-128.431826211449,129.424690008653,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1750,40 +1633,36 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Load Delsegment till STG">
+    design-time-name="Package\Load Mangdenhet till STG">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="151.2,41.6"
-          Id="Package\Load Delsegment till STG\rik_Delsegment"
-          TopLeft="256.000004359654,289.976474655046" />
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\Load Delsegment till STG\Flat File Delsegment"
-          TopLeft="248.571432804575,32.4235298664925" />
-        <NodeLayout
           Size="141.6,41.6"
-          Id="Package\Load Delsegment till STG\Row Inserted"
+          Id="Package\Load Mangdenhet till STG\Row Inserted"
           TopLeft="267.428575846613,126.635295893659" />
         <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Load Delsegment till STG\Derived Column"
-          TopLeft="261.142861590094,212.894120632818" />
+          Size="154.4,41.6"
+          Id="Package\Load Mangdenhet till STG\rik_Mangdenhet"
+          TopLeft="264.000004495893,226.352944350985" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Load Mangdenhet till STG\Flat File Mängdenhet"
+          TopLeft="248.571432804575,32.4235298664925" />
         <EdgeLayout
-          Id="Package\Load Delsegment till STG.Paths[Row Count Output 1]"
-          TopLeft="337.885718718353,168.235295893659">
+          Id="Package\Load Mangdenhet till STG.Paths[Row Count Output 1]"
+          TopLeft="339.714290171253,168.235295893659">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44.6588247391594"
+              EndConnector="0,58.117648457326"
               Start="0,0"
-              End="0,37.1588247391594">
+              End="0,50.617648457326">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.1588247391594" />
+                    End="0,50.617648457326" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1793,41 +1672,19 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Delsegment till STG.Paths[Flat File Source Output]"
-          TopLeft="336.800004325594,74.0235298664925">
+          Id="Package\Load Mangdenhet till STG.Paths[Flat File Source Output]"
+          TopLeft="337.600004325594,74.0235298664925">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,52.6117660271665"
+              EndConnector="0,52.6117660271666"
               Start="0,0"
-              End="0,45.1117660271665">
+              End="0,45.1117660271666">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.1117660271665" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Delsegment till STG.Paths[Derived Column Output]"
-          TopLeft="334.571432974874,254.494120632818">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,35.4823540222275"
-              Start="0,0"
-              End="0,27.9823540222275">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.9823540222275" />
+                    End="0,45.1117660271666" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1840,7 +1697,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Delsegment till STG\rik_Delsegment">
+    design-time-name="Package\Load Mangdenhet till STG\rik_Mangdenhet">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Activities_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="106"
-  DTS:VersionGUID="{A963DCD1-9689-4C05-8312-DB32C6E56587}">
+  DTS:VersionBuild="109"
+  DTS:VersionGUID="{EB1C73C6-BC68-4FE6-B679-60AA34A46344}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -4486,6 +4486,86 @@
               version="1">
               <components>
                 <component
+                  refId="Package\Core activities entities\Migrate phonecalls\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Core activities entities\Migrate phonecalls\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Derived Column.Inputs[Derived Column Input].Columns[activityid]"
+                          cachedDataType="guid"
+                          cachedName="activityid"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[activityid]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Core activities entities\Migrate phonecalls\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Output].Columns[rik_MigrationId]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Output].Columns[rik_MigrationId]"
+                          name="rik_MigrationId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">#{Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[activityid]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">activityid</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Core activities entities\Migrate phonecalls\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records"
                   componentClassID="Microsoft.ManagedComponentHost"
                   contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
@@ -4756,6 +4836,12 @@
                           cachedName="regardingobjectidname"
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[regardingobjectid]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[regardingobjectidname]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[rik_MigrationId]"
+                          cachedDataType="guid"
+                          cachedName="rik_MigrationId"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[rik_migreringid]"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Output].Columns[rik_MigrationId]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -5162,7 +5248,7 @@
                               name="CrmFieldType">Lookup</property>
                             <property
                               dataType="System.String"
-                              name="LookupTypes">account;bulkoperation;campaign;campaignactivity;contact;contract;entitlement;entitlementtemplate;incident;invoice;lead;msdyn_postalbum;opportunity;quote;rik_anbud;rik_driftslarm;salesorder</property>
+                              name="LookupTypes">account;bulkoperation;campaign;campaignactivity;contact;contract;entitlement;entitlementtemplate;incident;invoice;lead;msdyn_postalbum;opportunity;quote;rik_anbud;rik_driftslarm;salesorder;uii_action;uii_hostedapplication;uii_nonhostedapplication;uii_option;uii_savedsession;uii_workflow;uii_workflowstep;uii_workflow_workflowstep_mapping</property>
                             <property
                               dataType="System.Boolean"
                               name="Createable">true</property>
@@ -5547,6 +5633,26 @@
                             <property
                               dataType="System.String"
                               name="CrmFieldType">Integer</property>
+                            <property
+                              dataType="System.String"
+                              name="LookupTypes"></property>
+                            <property
+                              dataType="System.Boolean"
+                              name="Createable">true</property>
+                            <property
+                              dataType="System.Boolean"
+                              name="Updateable">true</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[rik_migreringid]"
+                          dataType="wstr"
+                          length="255"
+                          name="rik_migreringid">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CrmFieldType">String</property>
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
@@ -6053,6 +6159,12 @@
                           cachedName="CrmErrorMessage"
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Outputs[Error Output].Columns[CrmErrorMessage]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].Columns[rik_MigrationId]"
+                          cachedDataType="guid"
+                          cachedName="rik_MigrationId"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Output].Columns[rik_MigrationId]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -6257,7 +6369,8 @@
                           name="RegardingObjectIdName" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[RegardingObjectTypeCode]"
-                          dataType="i4"
+                          dataType="wstr"
+                          length="200"
                           name="RegardingObjectTypeCode" />
                         <externalMetadataColumn
                           refId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
@@ -7468,7 +7581,7 @@
               <paths>
                 <path
                   refId="Package\Core activities entities\Migrate phonecalls.Paths[CRM Primary Output]"
-                  endId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input]"
+                  endId="Package\Core activities entities\Migrate phonecalls\Derived Column.Inputs[Derived Column Input]"
                   name="CRM Primary Output"
                   startId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output]" />
                 <path
@@ -7476,6 +7589,11 @@
                   endId="Package\Core activities entities\Migrate phonecalls\Rows Inserted.Inputs[Row Count Input 1]"
                   name="Default Output"
                   startId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Outputs[Default Output]" />
+                <path
+                  refId="Package\Core activities entities\Migrate phonecalls.Paths[Derived Column Output]"
+                  endId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input]"
+                  name="Derived Column Output"
+                  startId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Output]" />
                 <path
                   refId="Package\Core activities entities\Migrate phonecalls.Paths[Error Output]"
                   endId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input]"
@@ -10674,6 +10792,24 @@
                       dataType="wstr"
                       length="255"
                       name="StageId" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      dataType="wstr"
+                      length="255"
+                      name="MigrationId" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="4000"
+                      name="CrmErrorMessage" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -11403,6 +11539,1114 @@
               endId="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR.Inputs[OLE DB Destination Input]"
               name="Error Output"
               startId="Package\Final touch of activity records to update the status (activitypointer)\Update ActivityPointer.Outputs[Error Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Mail attachments"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{02F8027E-AA14-4B90-9507-E7FEF4ED90A3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Mail attachments"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Mail attachments\Derived Column - Generate owner's name"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Updates column values using expressions"
+              name="Derived Column - Generate owner's name"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Mail attachments\Derived Column - Generate owner's name.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Derived Column - Generate owner's name.Inputs[Derived Column Input].Columns[owneridtype]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="owneridtype"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[owneridtype]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Derived Column - Generate owner's name.Inputs[Derived Column Input].Columns[s.fullname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="s.fullname"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[s.fullname]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Derived Column - Generate owner's name.Inputs[Derived Column Input].Columns[t.name]"
+                      cachedDataType="wstr"
+                      cachedLength="160"
+                      cachedName="t.name"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[t.name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Mail attachments\Derived Column - Generate owner's name.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Mail attachments\Derived Column - Generate owner's name.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Derived Column - Generate owner's name.Outputs[Derived Column Output].Columns[ownername]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\Load Mail attachments\Derived Column - Generate owner's name.Outputs[Derived Column Output].Columns[ownername]"
+                      name="ownername"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[owneridtype]} == "team" ? #{Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[t.name]} : #{Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[s.fullname]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">owneridtype == "team" ? [t.name] : [s.fullname]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Mail attachments\Derived Column - Generate owner's name.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Mail attachments\Derived Column - Generate owner's name.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Derived Column - Generate owner's name.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Mail attachments\Derived Column - Generate owner's name.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Derived Column - Generate owner's name.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Mail attachments\Derived Column - Generate owner's name.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Mail attachments\Migrate activitymimeattachment records"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Populate data into Microsoft Dynamics CRM."
+              name="Migrate activitymimeattachment records"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Destination entity to write data."
+                  expressionType="Notify"
+                  name="DestinationEntity">activitymimeattachment</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to CRM server."
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">5</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
+                  expressionType="Notify"
+                  name="RemoveUnresolvableReferences">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether duplicate detection should be enabled when creating or updating CRM records. Duplicate records are determined by the duplicate detection rules and settings defined in Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="EnableDuplicateDetection">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the matching criteria to be used when Upsert action is chosen."
+                  expressionType="Notify"
+                  name="UpsertMatchingCriteria"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">1</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
+                  expressionType="Notify"
+                  name="UpsertMatchingFields"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those fields that have no value changes in the target system. "
+                  expressionType="Notify"
+                  name="IgnoreUnchangedFields">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to CRM."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the flag field(s) that are used to track the source of changes. The field(s) will not posted to CRM server unless there are changes to other fields if specified. &quot;Ignore Unchange Fields&quot; option is required in order for the specified flag field(s) to work. "
+                  expressionType="Notify"
+                  name="ChangeFlagFields"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify what action will be taken when multiple matches are found with Upsert action."
+                  expressionType="Notify"
+                  name="HandlingOfMultipleMatches"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
+                <property
+                  dataType="System.String"
+                  description="Workflow to be executed."
+                  expressionType="Notify"
+                  name="Workflow"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of records to be sent to Microsoft Dynamics CRM in each batch (CRM 2011 Update Rollup 12 or later is required if batch size is greater than 1)."
+                  expressionType="Notify"
+                  name="BatchSize">10</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether datetime values should be sent to CRM server in UTC format."
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[activitymimeattachmentid]"
+                      cachedDataType="guid"
+                      cachedName="activitymimeattachmentid"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[activitymimeattachmentid]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[activitymimeattachmentid]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[activitymimeattachmentidunique]"
+                      cachedDataType="guid"
+                      cachedName="activitymimeattachmentidunique"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[activitymimeattachmentidunique]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[activitymimeattachmentidunique]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[attachmentcontentid]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="attachmentcontentid"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[attachmentcontentid]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[attachmentcontentid]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[attachmentnumber]"
+                      cachedDataType="i4"
+                      cachedName="attachmentnumber"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[attachmentnumber]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[attachmentnumber]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[body]"
+                      cachedDataType="nText"
+                      cachedName="body"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[body]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[body]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[filename]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="filename"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[filename]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[filename]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[mimetype]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="mimetype"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[mimetype]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[mimetype]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[objectid]"
+                      cachedDataType="guid"
+                      cachedName="objectid"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[objectid]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[objectid]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[objecttypecode]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="objecttypecode"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[objecttypecode]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[objecttypecode]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[owneridtype]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="owneridtype"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[owneridtype]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[owneridtype]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[solutionid]"
+                      cachedDataType="guid"
+                      cachedName="solutionid"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[solutionid]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[solutionid]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[subject]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="subject"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[subject]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[subject]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[ownername]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="ownername"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[ownerid]"
+                      lineageId="Package\Load Mail attachments\Derived Column - Generate owner's name.Outputs[Derived Column Output].Columns[ownername]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[activityid]"
+                      dataType="guid"
+                      name="activityid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">activitypointer</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[activitymimeattachmentid]"
+                      dataType="guid"
+                      name="activitymimeattachmentid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[activitymimeattachmentidunique]"
+                      dataType="guid"
+                      name="activitymimeattachmentidunique">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[attachmentcontentid]"
+                      dataType="wstr"
+                      length="250"
+                      name="attachmentcontentid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[attachmentid]"
+                      dataType="guid"
+                      name="attachmentid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">attachment</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[attachmentnumber]"
+                      dataType="i4"
+                      name="attachmentnumber">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[body]"
+                      dataType="nText"
+                      name="body">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[filename]"
+                      dataType="wstr"
+                      length="255"
+                      name="filename">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[mimetype]"
+                      dataType="wstr"
+                      length="256"
+                      name="mimetype">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[objectid]"
+                      dataType="guid"
+                      name="objectid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">activitypointer;template</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[objecttypecode]"
+                      dataType="wstr"
+                      length="64"
+                      name="objecttypecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">EntityName</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[ownerid]"
+                      dataType="guid"
+                      name="ownerid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Owner</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser;team</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[owneridtype]"
+                      dataType="wstr"
+                      length="64"
+                      name="owneridtype">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">EntityName</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[solutionid]"
+                      dataType="guid"
+                      name="solutionid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[subject]"
+                      dataType="wstr"
+                      length="2000"
+                      name="subject">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[supportingsolutionid]"
+                      dataType="guid"
+                      name="supportingsolutionid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Mail attachments\Migrate activitymimeattachment records.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Mail attachments\Migrate activitymimeattachment records.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Load Mail attachments\Migrate activitymimeattachment records.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      name="CrmErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Outputs[Default Output].Columns[CrmRecordId]"
+                      dataType="guid"
+                      lineageId="Package\Load Mail attachments\Migrate activitymimeattachment records.Outputs[Default Output].Columns[CrmRecordId]"
+                      name="CrmRecordId" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Outputs[Default Output].Columns[IsNew]"
+                      dataType="bool"
+                      lineageId="Package\Load Mail attachments\Migrate activitymimeattachment records.Outputs[Default Output].Columns[IsNew]"
+                      name="IsNew" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Mail attachments\Read activitymimeattachment records"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Extract data from Microsoft Dynamics CRM."
+              name="Read activitymimeattachment records"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">1</property>
+                <property
+                  dataType="System.String"
+                  description="Dynamics CRM entity to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceEntity"></property>
+                <property
+                  dataType="System.String"
+                  description="FetchXML statement."
+                  expressionType="Notify"
+                  name="FetchXML">&lt;fetch mapping='logical'&gt;
+    &lt;entity name='activitymimeattachment'&gt;
+        &lt;all-attributes /&gt; 
+        &lt;!-- Left join with systemuser entity to bring in user's full name in order to perform Text Lookup--&gt;
+        &lt;link-entity name="systemuser" from="systemuserid" to="ownerid" alias='s' link-type="outer"&gt;
+            &lt;attribute name="fullname" /&gt;
+        &lt;/link-entity&gt;
+        &lt;!-- Left join with team entity to bring in team's name in order to perform Text Lookup--&gt;
+        &lt;link-entity name="team" from="teamid" to="ownerid" alias='t' link-type="outer"&gt;
+            &lt;attribute name="name" /&gt;
+        &lt;/link-entity&gt;
+    &lt;/entity&gt;
+&lt;/fetch&gt;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">2000</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="ImpersonateAs" />
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for CRM datetime fields."
+                  expressionType="Notify"
+                  name="OutputTimezone" />
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Mail attachments\Read activitymimeattachment records.Connections[DynamicsCRM]"
+                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[oldCRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output]"
+                  name="CRM Primary Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[activityid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[activityid]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[activityid]"
+                      name="activityid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[activitymimeattachmentid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[activitymimeattachmentid]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[activitymimeattachmentid]"
+                      name="activitymimeattachmentid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[activitymimeattachmentidunique]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[activitymimeattachmentidunique]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[activitymimeattachmentidunique]"
+                      name="activitymimeattachmentidunique"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[attachmentcontentid]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[attachmentcontentid]"
+                      length="250"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[attachmentcontentid]"
+                      name="attachmentcontentid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[attachmentid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[attachmentid]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[attachmentid]"
+                      name="attachmentid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[attachmentnumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[attachmentnumber]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[attachmentnumber]"
+                      name="attachmentnumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[body]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[body]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[body]"
+                      name="body"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[componentstate]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[componentstate]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[componentstate]"
+                      name="componentstate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[filename]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[filename]"
+                      length="255"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[filename]"
+                      name="filename"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[filesize]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[filesize]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[filesize]"
+                      name="filesize"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[ismanaged]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[ismanaged]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[ismanaged]"
+                      name="ismanaged"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[ismanagedname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[ismanagedname]"
+                      length="255"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[ismanagedname]"
+                      name="ismanagedname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[mimetype]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[mimetype]"
+                      length="256"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[mimetype]"
+                      name="mimetype"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[objectid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[objectid]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[objectid]"
+                      name="objectid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[objecttypecode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[objecttypecode]"
+                      length="64"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[objecttypecode]"
+                      name="objecttypecode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[overwritetime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[overwritetime]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[overwritetime]"
+                      name="overwritetime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[ownerid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[ownerid]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[ownerid]"
+                      name="ownerid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[owneridtype]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[owneridtype]"
+                      length="64"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[owneridtype]"
+                      name="owneridtype"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[owningbusinessunit]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[owningbusinessunit]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[owningbusinessunit]"
+                      name="owningbusinessunit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[owninguser]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[owninguser]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[owninguser]"
+                      name="owninguser"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[s.fullname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[s.fullname]"
+                      length="200"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[s.fullname]"
+                      name="s.fullname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[solutionid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[solutionid]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[solutionid]"
+                      name="solutionid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[subject]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[subject]"
+                      length="2000"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[subject]"
+                      name="subject"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[t.name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[t.name]"
+                      length="160"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[t.name]"
+                      name="t.name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[versionnumber]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[versionnumber]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[versionnumber]"
+                      name="versionnumber"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[activityid]"
+                      dataType="guid"
+                      name="activityid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[activitymimeattachmentid]"
+                      dataType="guid"
+                      name="activitymimeattachmentid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[activitymimeattachmentidunique]"
+                      dataType="guid"
+                      name="activitymimeattachmentidunique" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[attachmentcontentid]"
+                      dataType="wstr"
+                      length="250"
+                      name="attachmentcontentid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[attachmentid]"
+                      dataType="guid"
+                      name="attachmentid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[attachmentnumber]"
+                      dataType="i4"
+                      name="attachmentnumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[body]"
+                      dataType="nText"
+                      name="body" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[componentstate]"
+                      dataType="i4"
+                      name="componentstate" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[filename]"
+                      dataType="wstr"
+                      length="255"
+                      name="filename" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[filesize]"
+                      dataType="i4"
+                      name="filesize" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[ismanaged]"
+                      dataType="bool"
+                      name="ismanaged" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[ismanagedname]"
+                      dataType="wstr"
+                      length="255"
+                      name="ismanagedname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[mimetype]"
+                      dataType="wstr"
+                      length="256"
+                      name="mimetype" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[objectid]"
+                      dataType="guid"
+                      name="objectid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[objecttypecode]"
+                      dataType="wstr"
+                      length="64"
+                      name="objecttypecode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[overwritetime]"
+                      dataType="dbTimeStamp"
+                      name="overwritetime" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[ownerid]"
+                      dataType="guid"
+                      name="ownerid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[owneridtype]"
+                      dataType="wstr"
+                      length="64"
+                      name="owneridtype" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[owningbusinessunit]"
+                      dataType="guid"
+                      name="owningbusinessunit" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[owninguser]"
+                      dataType="guid"
+                      name="owninguser" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[s.fullname]"
+                      dataType="wstr"
+                      length="200"
+                      name="s.fullname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[solutionid]"
+                      dataType="guid"
+                      name="solutionid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[subject]"
+                      dataType="wstr"
+                      length="2000"
+                      name="subject" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[t.name]"
+                      dataType="wstr"
+                      length="160"
+                      name="t.name" />
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].ExternalColumns[versionnumber]"
+                      dataType="i8"
+                      name="versionnumber" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Mail attachments.Paths[CRM Primary Output]"
+              endId="Package\Load Mail attachments\Derived Column - Generate owner's name.Inputs[Derived Column Input]"
+              name="CRM Primary Output"
+              startId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output]" />
+            <path
+              refId="Package\Load Mail attachments.Paths[Derived Column Output]"
+              endId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input]"
+              name="Derived Column Output"
+              startId="Package\Load Mail attachments\Derived Column - Generate owner's name.Outputs[Derived Column Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -12145,11 +13389,11 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
       DTS:CreationName=""
-      DTS:DTSID="{7CE759F5-05F9-483C-A06C-13F7B615C715}"
+      DTS:DTSID="{0A6BAC20-6F1C-4E81-8DDF-A67CA4BB9CED}"
       DTS:From="Package\Core activities entities"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 6"
-      DTS:To="Package\Final touch of activity records to update the status (activitypointer)" />
+      DTS:To="Package\Load Mail attachments" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
       DTS:CreationName=""
@@ -12157,6 +13401,22 @@
       DTS:From="Package\Final touch of activity records to update the status (activitypointer)"
       DTS:ObjectName="Constraint 7"
       DTS:To="Package\LogPackageEnd" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{B22C9903-041C-492D-AFB6-A6A9C912611B}"
+      DTS:From="Package\Load Mail attachments"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Final touch of activity records to update the status (activitypointer)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{F73CA448-75B8-434E-9CA3-DAF75ED6D815}"
+      DTS:From="Package\Load Mail attachments"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -12190,9 +13450,9 @@
           Id="Package\Core activities entities"
           TopLeft="398.305549009393,240.311105723249" />
         <NodeLayout
-          Size="395,43"
+          Size="394,42"
           Id="Package\Final touch of activity records to update the status (activitypointer)"
-          TopLeft="441.249992903322,589.283322062989" />
+          TopLeft="509.249992903322,598.283322062989" />
         <NodeLayout
           Size="176,41"
           Id="Package\LogPackageEnd"
@@ -12396,31 +13656,45 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="675.638882342726,479.311105723249">
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="509.249992903322,621.000157369879">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-36.8888894394042,109.97221633974"
+              EndConnector="-279.472214070636,0"
               Start="0,0"
-              End="-36.8888894394042,102.47221633974">
+              End="-271.972214070636,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,40.2404912253292" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,40.2404912253292"
-                    Point2="0,44.2404912253292"
-                    Point3="-4,44.2404912253292" />
+                    End="-271.972214070636,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Load Mail attachments"
+          TopLeft="589,517" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="678.569441171363,479.311105723249">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.688894276751"
+              Start="0,0"
+              End="0,30.188894276751">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-32.8888894394042,44.2404912253292" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-32.8888894394042,44.2404912253292"
-                    Point2="-36.8888894394042,44.2404912253292"
-                    Point3="-36.8888894394042,48.2404912253292" />
-                  <mssgle:LineSegment
-                    End="-36.8888894394042,102.47221633974" />
+                    End="0,30.188894276751" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12430,37 +13704,61 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="441.249992903322,610.783322062989">
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="708.624996451661,559">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-211.472214070636,11.93367061378"
+              EndConnector="0,39.283322062989"
               Start="0,0"
-              End="-203.972214070636,11.93367061378">
+              End="0,31.783322062989">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-101.736107035318,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-101.736107035318,0"
-                    Point2="-105.736107035318,0"
-                    Point3="-105.736107035318,4" />
-                  <mssgle:LineSegment
-                    End="-105.736107035318,7.93367061378001" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-105.736107035318,7.93367061378001"
-                    Point2="-105.736107035318,11.93367061378"
-                    Point3="-109.736107035318,11.93367061378" />
-                  <mssgle:LineSegment
-                    End="-203.972214070636,11.93367061378" />
+                    End="0,31.783322062989" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="652,559">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-459.822221167314,43.216992676769"
+              Start="0,0"
+              End="-459.822221167314,35.716992676769">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5567509864783" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5567509864783"
+                    Point2="0,26.5567509864783"
+                    Point3="-4,26.5567509864783" />
+                  <mssgle:LineSegment
+                    End="-455.822221167314,26.5567509864783" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-455.822221167314,26.5567509864783"
+                    Point2="-459.822221167314,26.5567509864783"
+                    Point3="-459.822221167314,30.5567509864783" />
+                  <mssgle:LineSegment
+                    End="-459.822221167314,35.716992676769" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-245.152458239907,31.5567509864783,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -12599,85 +13897,111 @@
     design-time-name="Package\Core activities entities\Migrate phonecalls">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="147,43"
+          Id="Package\Core activities entities\Migrate phonecalls\Rows Inserted"
+          TopLeft="188.333330526948,297.333329304059" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records"
+          TopLeft="261.249996107072,193.766664489309" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR"
+          TopLeft="396.590903181244,302.060601946802" />
         <NodeLayout
           Size="189,43"
           Id="Package\Core activities entities\Migrate phonecalls\Read phonecall records"
           TopLeft="264.015147581019,14.9696967020179" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR"
-          TopLeft="396.590903181244,230.060601946802" />
-        <NodeLayout
-          Size="147,43"
-          Id="Package\Core activities entities\Migrate phonecalls\Rows Inserted"
-          TopLeft="188.333330526948,225.333329304059" />
-        <NodeLayout
-          Size="201,43"
-          Id="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records"
-          TopLeft="261.249996107072,121.766664489309" />
         <EdgeLayout
           Id="Package\Core activities entities\Migrate phonecalls.Paths[Error Output]"
-          TopLeft="393.916662773739,164.766664489309">
+          TopLeft="393.249996107072,235.766664489309">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="84.1742404075054,65.293937457493"
+              EndConnector="84.840907074172,66.293937457493"
               Start="0,0"
-              End="84.1742404075054,57.793937457493">
+              End="84.840907074172,58.793937457493">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.4269638278106" />
+                    End="0,22.8332603994614" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.4269638278106"
-                    Point2="0,26.4269638278106"
-                    Point3="4,26.4269638278106" />
+                    Point1="0,22.8332603994614"
+                    Point2="0,26.8332603994614"
+                    Point3="4,26.8332603994614" />
                   <mssgle:LineSegment
-                    End="80.1742404075054,26.4269638278106" />
+                    End="80.840907074172,26.8332603994614" />
                   <mssgle:CubicBezierSegment
-                    Point1="80.1742404075054,26.4269638278106"
-                    Point2="84.1742404075054,26.4269638278106"
-                    Point3="84.1742404075054,30.4269638278106" />
+                    Point1="80.840907074172,26.8332603994614"
+                    Point2="84.840907074172,26.8332603994614"
+                    Point3="84.840907074172,30.8332603994614" />
                   <mssgle:LineSegment
-                    End="84.1742404075054,57.793937457493" />
+                    End="84.840907074172,58.793937457493" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="13.7507334850027,31.4269638278106,56.6727734375,11.43359375"
+              BoundingBox="14.084066818336,31.8332603994614,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate phonecalls.Paths[Default Output]"
-          TopLeft="361.583329440405,164.433331155976">
+          TopLeft="329.249996107072,235.766664489309">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-99.9166655801237,60.8999981480837"
+              EndConnector="-67.416665580124,61.56666481475"
               Start="0,0"
-              End="-99.9166655801237,53.3999981480837">
+              End="-67.416665580124,54.06666481475">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.4499990740419" />
+                    End="0,20.919840520256" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.4499990740419"
-                    Point2="0,30.4499990740419"
-                    Point3="-4,30.4499990740419" />
+                    Point1="0,20.919840520256"
+                    Point2="0,24.919840520256"
+                    Point3="-4,24.919840520256" />
                   <mssgle:LineSegment
-                    End="-95.9166655801237,30.4499990740419" />
+                    End="-63.416665580124,24.919840520256" />
                   <mssgle:CubicBezierSegment
-                    Point1="-95.9166655801237,30.4499990740419"
-                    Point2="-99.9166655801237,30.4499990740419"
-                    Point3="-99.9166655801237,34.4499990740419" />
+                    Point1="-63.416665580124,24.919840520256"
+                    Point2="-67.416665580124,24.919840520256"
+                    Point3="-67.416665580124,28.919840520256" />
                   <mssgle:LineSegment
-                    End="-99.9166655801237,53.3999981480837" />
+                    End="-67.416665580124,54.06666481475" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Core activities entities\Migrate phonecalls\Derived Column"
+          TopLeft="278,107" />
+        <EdgeLayout
+          Id="Package\Core activities entities\Migrate phonecalls.Paths[CRM Primary Output]"
+          TopLeft="356.757573790509,57.9696967020179">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.0303032979821"
+              Start="0,0"
+              End="0,41.5303032979821">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5303032979821" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12687,19 +14011,19 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Core activities entities\Migrate phonecalls.Paths[CRM Primary Output]"
-          TopLeft="360.132571844045,57.6363633686846">
+          Id="Package\Core activities entities\Migrate phonecalls.Paths[Derived Column Output]"
+          TopLeft="358.124998053536,149">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,64.1303011206244"
+              EndConnector="0,44.766664489309"
               Start="0,0"
-              End="0,56.6303011206244">
+              End="0,37.266664489309">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56.6303011206244" />
+                    End="0,37.266664489309" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12866,32 +14190,14 @@
           Size="523,42"
           Id="Package\Final touch of activity records to update the status (activitypointer)\Read the statecode and statuscode of Task, Email and Phonecall activities from ActivityPointer"
           TopLeft="88.833331234753,12.8666661862532" />
-        <EdgeLayout
-          Id="Package\Final touch of activity records to update the status (activitypointer).Paths[CRM Primary Output]"
-          TopLeft="349.874997736886,54.8666661862532">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,76.7999973034858"
-              Start="0,0"
-              End="0,69.2999973034858">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,69.2999973034858" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="185,42"
           Id="Package\Final touch of activity records to update the status (activitypointer)\ActivityPointer_ERROR"
           TopLeft="395,253" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Final touch of activity records to update the status (activitypointer)\Row Updated"
+          TopLeft="187,249" />
         <EdgeLayout
           Id="Package\Final touch of activity records to update the status (activitypointer).Paths[Error Output]"
           TopLeft="378.583330905686,173.666663489739">
@@ -12928,10 +14234,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Final touch of activity records to update the status (activitypointer)\Row Updated"
-          TopLeft="187,249" />
         <EdgeLayout
           Id="Package\Final touch of activity records to update the status (activitypointer).Paths[Default Output]"
           TopLeft="320.249997572352,173.666663489739">
@@ -12966,6 +14268,28 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Final touch of activity records to update the status (activitypointer).Paths[CRM Primary Output]"
+          TopLeft="349.874997736886,54.8666661862532">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.7999973034858"
+              Start="0,0"
+              End="0,69.2999973034858">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.2999973034858" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -12982,5 +14306,71 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Mail attachments">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="256,42"
+          Id="Package\Load Mail attachments\Read activitymimeattachment records"
+          TopLeft="190,31" />
+        <NodeLayout
+          Size="276,42"
+          Id="Package\Load Mail attachments\Derived Column - Generate owner's name"
+          TopLeft="184,131" />
+        <EdgeLayout
+          Id="Package\Load Mail attachments.Paths[CRM Primary Output]"
+          TopLeft="320,73">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,17.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="268,42"
+          Id="Package\Load Mail attachments\Migrate activitymimeattachment records"
+          TopLeft="194,228" />
+        <EdgeLayout
+          Id="Package\Load Mail attachments.Paths[Derived Column Output]"
+          TopLeft="325,173">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

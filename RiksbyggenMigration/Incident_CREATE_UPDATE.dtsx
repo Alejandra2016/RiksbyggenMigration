@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Incident_CREATE_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="69"
-  DTS:VersionGUID="{3BCAD107-8356-4397-BCC1-BDBBE9659F08}">
+  DTS:VersionBuild="72"
+  DTS:VersionGUID="{58FC19A3-3C29-49E7-AE4C-CE291D4685D7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -666,6 +666,20 @@
                       cachedName="rb_closingreason"
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_stangningsorsak]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_closingreason]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[owneridname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="owneridname"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[ownerid]"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[owneridname]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[createdbyname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="createdbyname"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[createdby]"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[createdbyname]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -812,7 +826,15 @@
                           name="LookupTypes">systemuser</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup"></property>
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1212,7 +1234,19 @@
                           name="LookupTypes">systemuser;team</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup"></property>
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2129,6 +2163,20 @@
                       cachedName="rb_closingreason"
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_stangningsorsak]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_closingreason]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[owneridname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="owneridname"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[ownerid]"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[owneridname]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[createdbyname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="createdbyname"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[createdby]"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[createdbyname]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2275,7 +2323,15 @@
                           name="LookupTypes">systemuser</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup"></property>
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2675,7 +2731,19 @@
                           name="LookupTypes">systemuser;team</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup"></property>
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -3592,6 +3660,20 @@
                       cachedName="rb_closingreason"
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_stangningsorsak]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_closingreason]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[createdbyname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="createdbyname"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[createdby]"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[createdbyname]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[owneridname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="owneridname"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[ownerid]"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[owneridname]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3738,7 +3820,15 @@
                           name="LookupTypes">systemuser</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup"></property>
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -4138,7 +4228,19 @@
                           name="LookupTypes">systemuser;team</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup"></property>
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -5583,6 +5685,66 @@
                       refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
                       dataType="i4"
                       name="ErrorColumn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Beslutfranstyrelsen]"
+                      dataType="i4"
+                      name="rik_Beslutfranstyrelsen" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Fastighetsobjektid]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_Fastighetsobjektid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_FastighetsobjektidName]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_FastighetsobjektidName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Finnsskulder]"
+                      dataType="bool"
+                      name="rik_Finnsskulder" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Foretagsinformationid]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_Foretagsinformationid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ForetagsinformationidName]"
+                      dataType="wstr"
+                      length="200"
+                      name="rik_ForetagsinformationidName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Komplettahandlingar]"
+                      dataType="bool"
+                      name="rik_Komplettahandlingar" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kreditupplysning]"
+                      dataType="bool"
+                      name="rik_Kreditupplysning" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Ledtid]"
+                      dataType="i4"
+                      name="rik_Ledtid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Meddelatbeslut]"
+                      dataType="bool"
+                      name="rik_Meddelatbeslut" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Redanmedlem]"
+                      dataType="bool"
+                      name="rik_Redanmedlem" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Skuldbelopp]"
+                      dataType="cy"
+                      name="rik_Skuldbelopp" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_skuldbelopp_Base]"
+                      dataType="cy"
+                      name="rik_skuldbelopp_Base" />
+                    <externalMetadataColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Tilltradesdatum]"
+                      dataType="dbTimeStamp"
+                      name="rik_Tilltradesdatum" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -32870,6 +33032,66 @@
                       refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
                       dataType="i4"
                       name="ErrorColumn" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Beslutfranstyrelsen]"
+                      dataType="i4"
+                      name="rik_Beslutfranstyrelsen" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Fastighetsobjektid]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_Fastighetsobjektid" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_FastighetsobjektidName]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_FastighetsobjektidName" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Finnsskulder]"
+                      dataType="bool"
+                      name="rik_Finnsskulder" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Foretagsinformationid]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_Foretagsinformationid" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ForetagsinformationidName]"
+                      dataType="wstr"
+                      length="200"
+                      name="rik_ForetagsinformationidName" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Komplettahandlingar]"
+                      dataType="bool"
+                      name="rik_Komplettahandlingar" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kreditupplysning]"
+                      dataType="bool"
+                      name="rik_Kreditupplysning" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Ledtid]"
+                      dataType="i4"
+                      name="rik_Ledtid" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Meddelatbeslut]"
+                      dataType="bool"
+                      name="rik_Meddelatbeslut" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Redanmedlem]"
+                      dataType="bool"
+                      name="rik_Redanmedlem" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Skuldbelopp]"
+                      dataType="cy"
+                      name="rik_Skuldbelopp" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_skuldbelopp_Base]"
+                      dataType="cy"
+                      name="rik_skuldbelopp_Base" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Tilltradesdatum]"
+                      dataType="dbTimeStamp"
+                      name="rik_Tilltradesdatum" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -34696,7 +34918,7 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="215,43"
+          Size="214,42"
           Id="Package\Load Incident\Dynamics CRM Destination 1"
           TopLeft="307.870365782744,248.148144755982" />
         <NodeLayout
@@ -34829,37 +35051,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Incident.Paths[Error Output1]"
-          TopLeft="449.648143560522,290.814811422648">
+          TopLeft="449.203699116077,290.148144755982">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="102.081016066898,124.19907115651"
+              EndConnector="102.69212717801,124.865737823176"
               Start="0,0"
-              End="102.081016066898,116.69907115651">
+              End="102.69212717801,117.365737823176">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,46.2309436983171" />
+                    End="0,46.5022835722679" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,46.2309436983171"
-                    Point2="0,50.2309436983171"
-                    Point3="4,50.2309436983171" />
+                    Point1="0,46.5022835722679"
+                    Point2="0,50.5022835722679"
+                    Point3="4,50.5022835722679" />
                   <mssgle:LineSegment
-                    End="98.0810160668982,50.2309436983171" />
+                    End="98.6921271780097,50.5022835722679" />
                   <mssgle:CubicBezierSegment
-                    Point1="98.0810160668982,50.2309436983171"
-                    Point2="102.081016066898,50.2309436983171"
-                    Point3="102.081016066898,54.2309436983171" />
+                    Point1="98.6921271780097,50.5022835722679"
+                    Point2="102.69212717801,50.5022835722679"
+                    Point3="102.69212717801,54.5022835722679" />
                   <mssgle:LineSegment
-                    End="102.081016066898,116.69907115651" />
+                    End="102.69212717801,117.365737823176" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="22.7041213146991,55.2309436983171,56.6727734375,11.43359375"
+              BoundingBox="23.0096768702548,55.5022835722679,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -34957,30 +35179,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Incident.Paths[Default Output1]"
-          TopLeft="380.759254671633,290.814811422648">
+          TopLeft="380.537032449411,290.148144755982">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-229.314811261992,87.1851829294806"
+              EndConnector="-229.092589039769,87.851849596147"
               Start="0,0"
-              End="-229.314811261992,79.6851829294806">
+              End="-229.092589039769,80.351849596147">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.2610850812202" />
+                    End="0,31.5319169053062" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.2610850812202"
-                    Point2="0,35.2610850812202"
-                    Point3="-4,35.2610850812202" />
+                    Point1="0,31.5319169053062"
+                    Point2="0,35.5319169053062"
+                    Point3="-4,35.5319169053062" />
                   <mssgle:LineSegment
-                    End="-225.314811261992,35.2610850812202" />
+                    End="-225.092589039769,35.5319169053062" />
                   <mssgle:CubicBezierSegment
-                    Point1="-225.314811261992,35.2610850812202"
-                    Point2="-229.314811261992,35.2610850812202"
-                    Point3="-229.314811261992,39.2610850812202" />
+                    Point1="-225.092589039769,35.5319169053062"
+                    Point2="-229.092589039769,35.5319169053062"
+                    Point3="-229.092589039769,39.5319169053062" />
                   <mssgle:LineSegment
-                    End="-229.314811261992,79.6851829294806" />
+                    End="-229.092589039769,80.351849596147" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -35047,37 +35269,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Incident.Paths[Balanced Data Distributor Output 4]"
-          TopLeft="367.523813046566,206.133335812886">
+          TopLeft="367.357146379899,205.800002479553">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="47.679886069512,42.0148089430952"
+              EndConnector="47.513219402845,42.348142276429"
               Start="0,0"
-              End="47.679886069512,34.5148089430952">
+              End="47.513219402845,34.848142276429">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.0074044715476" />
+                    End="0,17.1740711382145" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.0074044715476"
-                    Point2="0,21.0074044715476"
-                    Point3="4,21.0074044715476" />
+                    Point1="0,17.1740711382145"
+                    Point2="0,21.1740711382145"
+                    Point3="4,21.1740711382145" />
                   <mssgle:LineSegment
-                    End="43.679886069512,21.0074044715476" />
+                    End="43.513219402845,21.1740711382145" />
                   <mssgle:CubicBezierSegment
-                    Point1="43.679886069512,21.0074044715476"
-                    Point2="47.679886069512,21.0074044715476"
-                    Point3="47.679886069512,25.0074044715476" />
+                    Point1="43.513219402845,21.1740711382145"
+                    Point2="47.513219402845,21.1740711382145"
+                    Point3="47.513219402845,25.1740711382145" />
                   <mssgle:LineSegment
-                    End="47.679886069512,34.5148089430952" />
+                    End="47.513219402845,34.848142276429" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-54.141385090244,26.0074044715476,155.96265625,11.609375"
+              BoundingBox="-54.2247184235775,26.1740711382145,155.96265625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -35156,6 +35378,19 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Incident\Incident_ERROR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Update Incident">
     <LayoutInfo>
