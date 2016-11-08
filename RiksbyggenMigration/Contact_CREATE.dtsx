@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Contact_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{F7D49133-2BB6-4889-9AE0-819FB549C665}">
+  DTS:VersionBuild="53"
+  DTS:VersionGUID="{357BDE04-02B4-4520-9678-8B514F945454}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -11023,12 +11023,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                       lineageId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address1_City]"
                       name="Address1_City" />
                     <outputColumn
-                      refId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address1_Country]"
-                      dataType="wstr"
-                      length="4000"
-                      lineageId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address1_Country]"
-                      name="Address1_Country" />
-                    <outputColumn
                       refId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address1_Line1]"
                       dataType="wstr"
                       length="4000"
@@ -11046,48 +11040,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                       length="4000"
                       lineageId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address1_PostalCode]"
                       name="Address1_PostalCode" />
-                    <outputColumn
-                      refId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address1_Telephone1]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address1_Telephone1]"
-                      name="Address1_Telephone1" />
-                    <outputColumn
-                      refId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address1_Telephone2]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address1_Telephone2]"
-                      name="Address1_Telephone2" />
-                    <outputColumn
-                      refId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address1_Telephone3]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address1_Telephone3]"
-                      name="Address1_Telephone3" />
-                    <outputColumn
-                      refId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address2_City]"
-                      dataType="wstr"
-                      length="4000"
-                      lineageId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address2_City]"
-                      name="Address2_City" />
-                    <outputColumn
-                      refId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address2_Country]"
-                      dataType="wstr"
-                      length="4000"
-                      lineageId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address2_Country]"
-                      name="Address2_Country" />
-                    <outputColumn
-                      refId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address2_Line1]"
-                      dataType="wstr"
-                      length="4000"
-                      lineageId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address2_Line1]"
-                      name="Address2_Line1" />
-                    <outputColumn
-                      refId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address2_PostalCode]"
-                      dataType="wstr"
-                      length="4000"
-                      lineageId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[Address2_PostalCode]"
-                      name="Address2_PostalCode" />
                     <outputColumn
                       refId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[FirstName]"
                       dataType="wstr"
@@ -11130,13 +11082,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                       dataType="bool"
                       lineageId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[rik_SkyddadIdentiet]"
                       name="rik_SkyddadIdentiet" />
-                    <outputColumn
-                      refId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[EmailAddress2]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[EmailAddress2]"
-                      name="EmailAddress2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -12152,9 +12097,9 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="205,42"
-          Id="Package\Load Contact\Dynamics CRM Destination 1"
-          TopLeft="392,175" />
+          Size="156,42"
+          Id="Package\Load Contact\Data Conversion"
+          TopLeft="582,451" />
         <NodeLayout
           Size="140,42"
           Id="Package\Load Contact\STG_Contact"
@@ -12164,29 +12109,55 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
           Id="Package\Load Contact\Dynamics CRM Destination"
           TopLeft="115.428573530547,174.964708336168" />
         <NodeLayout
-          Size="156,42"
-          Id="Package\Load Contact\Data Conversion"
-          TopLeft="582,451" />
+          Size="157,42"
+          Id="Package\Load Contact\Union All ERROR"
+          TopLeft="586,364" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Load Contact\Dynamics CRM Destination 1"
+          TopLeft="392,175" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Load Contact\Contact_ERROR"
+          TopLeft="580,545" />
         <NodeLayout
           Size="214,42"
           Id="Package\Load Contact\Dynamics CRM Destination 2"
           TopLeft="730.857144268192,174.847064837949" />
         <NodeLayout
-          Size="142,42"
-          Id="Package\Load Contact\Row Inserted"
-          TopLeft="105.285715618911,428.717652833009" />
-        <NodeLayout
           Size="311,42"
           Id="Package\Load Contact\Balanced Data Distributor"
           TopLeft="260.000004427774,85.6470600246971" />
         <NodeLayout
+          Size="142,42"
+          Id="Package\Load Contact\Row Inserted"
+          TopLeft="105.285715618911,428.717652833009" />
+        <NodeLayout
           Size="163,42"
           Id="Package\Load Contact\Union All Inserted"
           TopLeft="95.285715618911,349.847064837949" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Load Contact\Contact_ERROR"
-          TopLeft="580,545" />
+        <EdgeLayout
+          Id="Package\Load Contact.Paths[Union All Output 11]"
+          TopLeft="662.25,406">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Contact.Paths[Union All Output 1]"
           TopLeft="176.535715618911,391.847064837949">
@@ -12229,6 +12200,114 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Contact.Paths[Error Output2]"
+          TopLeft="872.190477601525,216.847064837949">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-170.440477601525,147.152935162051"
+              Start="0,0"
+              End="-170.440477601525,139.652935162051">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.9613045760702" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,78.9613045760702"
+                    Point2="0,82.9613045760702"
+                    Point3="-4,82.9613045760702" />
+                  <mssgle:LineSegment
+                    End="-166.440477601525,82.9613045760702" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-166.440477601525,82.9613045760702"
+                    Point2="-170.440477601525,82.9613045760702"
+                    Point3="-170.440477601525,86.9613045760702" />
+                  <mssgle:LineSegment
+                    End="-170.440477601525,139.652935162051" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-113.556625519513,87.9613045760702,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Contact.Paths[Error Output1]"
+          TopLeft="527.333333333333,217">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="137.166666666667,147"
+              Start="0,0"
+              End="137.166666666667,139.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.4830590513069" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55.4830590513069"
+                    Point2="0,59.4830590513069"
+                    Point3="4,59.4830590513069" />
+                  <mssgle:LineSegment
+                    End="133.166666666667,59.4830590513069" />
+                  <mssgle:CubicBezierSegment
+                    Point1="133.166666666667,59.4830590513069"
+                    Point2="137.166666666667,59.4830590513069"
+                    Point3="137.166666666667,63.4830590513069" />
+                  <mssgle:LineSegment
+                    End="137.166666666667,139.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="40.2469466145835,64.4830590513069,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Contact.Paths[Error Output]"
+          TopLeft="250.76190686388,216.964708336168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="376.48809313612,147.035291663832"
+              Start="0,0"
+              End="376.48809313612,139.535291663832">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.9240960501415" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,78.9240960501415"
+                    Point2="0,82.9240960501415"
+                    Point3="4,82.9240960501415" />
+                  <mssgle:LineSegment
+                    End="372.48809313612,82.9240960501415" />
+                  <mssgle:CubicBezierSegment
+                    Point1="372.48809313612,82.9240960501415"
+                    Point2="376.48809313612,82.9240960501415"
+                    Point3="376.48809313612,86.9240960501415" />
+                  <mssgle:LineSegment
+                    End="376.48809313612,139.535291663832" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="159.90765984931,87.9240960501415,56.6727734375,11.43359375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12461,140 +12540,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
             <mssgm:EdgeLabel
               BoundingBox="-138.611281854864,21.0407330620183,155.4011328125,11.609375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Load Contact\Union All ERROR"
-          TopLeft="586,364" />
-        <EdgeLayout
-          Id="Package\Load Contact.Paths[Error Output]"
-          TopLeft="250.76190686388,216.964708336168">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="376.48809313612,147.035291663832"
-              Start="0,0"
-              End="376.48809313612,139.535291663832">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,78.9240960501415" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,78.9240960501415"
-                    Point2="0,82.9240960501415"
-                    Point3="4,82.9240960501415" />
-                  <mssgle:LineSegment
-                    End="372.48809313612,82.9240960501415" />
-                  <mssgle:CubicBezierSegment
-                    Point1="372.48809313612,82.9240960501415"
-                    Point2="376.48809313612,82.9240960501415"
-                    Point3="376.48809313612,86.9240960501415" />
-                  <mssgle:LineSegment
-                    End="376.48809313612,139.535291663832" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="159.90765984931,87.9240960501415,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Contact.Paths[Error Output1]"
-          TopLeft="527.333333333333,217">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="137.166666666667,147"
-              Start="0,0"
-              End="137.166666666667,139.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,55.4830590513069" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,55.4830590513069"
-                    Point2="0,59.4830590513069"
-                    Point3="4,59.4830590513069" />
-                  <mssgle:LineSegment
-                    End="133.166666666667,59.4830590513069" />
-                  <mssgle:CubicBezierSegment
-                    Point1="133.166666666667,59.4830590513069"
-                    Point2="137.166666666667,59.4830590513069"
-                    Point3="137.166666666667,63.4830590513069" />
-                  <mssgle:LineSegment
-                    End="137.166666666667,139.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="40.2469466145834,64.4830590513069,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Contact.Paths[Error Output2]"
-          TopLeft="872.190477601525,216.847064837949">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-170.440477601525,147.152935162051"
-              Start="0,0"
-              End="-170.440477601525,139.652935162051">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,78.9613045760702" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,78.9613045760702"
-                    Point2="0,82.9613045760702"
-                    Point3="-4,82.9613045760702" />
-                  <mssgle:LineSegment
-                    End="-166.440477601525,82.9613045760702" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-166.440477601525,82.9613045760702"
-                    Point2="-170.440477601525,82.9613045760702"
-                    Point3="-170.440477601525,86.9613045760702" />
-                  <mssgle:LineSegment
-                    End="-170.440477601525,139.652935162051" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-113.556625519513,87.9613045760702,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Contact.Paths[Union All Output 11]"
-          TopLeft="662.25,406">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45"
-              Start="0,0"
-              End="0,37.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

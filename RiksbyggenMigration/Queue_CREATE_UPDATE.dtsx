@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Queue_CREATE_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="113"
-  DTS:VersionGUID="{FE979A12-5C51-4E39-B864-9263B27505B9}">
+  DTS:VersionBuild="118"
+  DTS:VersionGUID="{9EBE7D52-B50E-43B5-87D9-BF09FCF42980}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -353,12 +353,6 @@
                       externalMetadataColumnId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].ExternalColumns[ignoreunsolicitedemail]"
                       lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[ignoreunsolicitedemail]" />
                     <inputColumn
-                      refId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].Columns[importsequencenumber]"
-                      cachedDataType="i4"
-                      cachedName="importsequencenumber"
-                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].ExternalColumns[importsequencenumber]"
-                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[importsequencenumber]" />
-                    <inputColumn
                       refId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].Columns[incomingemaildeliverymethod]"
                       cachedDataType="i4"
                       cachedName="incomingemaildeliverymethod"
@@ -408,11 +402,33 @@
                       externalMetadataColumnId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].ExternalColumns[statuscode]"
                       lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[statuscode]" />
                     <inputColumn
-                      refId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].Columns[transactioncurrencyid]"
-                      cachedDataType="guid"
-                      cachedName="transactioncurrencyid"
-                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].ExternalColumns[transactioncurrencyid]"
-                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[transactioncurrencyid]" />
+                      refId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].Columns[businessunitidname]"
+                      cachedDataType="wstr"
+                      cachedLength="160"
+                      cachedName="businessunitidname"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].ExternalColumns[businessunitid]"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[businessunitidname]" />
+                    <inputColumn
+                      refId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].Columns[createdbyname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="createdbyname"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].ExternalColumns[createdby]"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdbyname]" />
+                    <inputColumn
+                      refId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].Columns[owneridname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="owneridname"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].ExternalColumns[ownerid]"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[owneridname]" />
+                    <inputColumn
+                      refId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].Columns[owneridtype]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="owneridtype"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Destination.Inputs[Input].ExternalColumns[owneridtype]"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[owneridtype]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -427,6 +443,17 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">businessunit</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;businessunit&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -440,6 +467,17 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">systemuser</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -585,6 +623,21 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">systemuser;team</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -734,17 +787,27 @@
                   description="Specifies the type of source data from Microsoft Dynamics CRM."
                   expressionType="Notify"
                   name="SourceType"
-                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">0</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">1</property>
                 <property
                   dataType="System.String"
                   description="Dynamics CRM entity to retrieve data from."
                   expressionType="Notify"
-                  name="SourceEntity">queue</property>
+                  name="SourceEntity"></property>
                 <property
                   dataType="System.String"
                   description="FetchXML statement."
                   expressionType="Notify"
-                  name="FetchXML"></property>
+                  name="FetchXML">&lt;fetch mapping='logical' version='1.0'&gt;
+    &lt;entity name='queue'&gt;
+        &lt;all-attributes /&gt;
+    &lt;order attribute='name' descending='false' /&gt;
+    &lt;filter type='and'&gt;
+      &lt;condition attribute='emailaddress' operator='not-null' /&gt;
+      &lt;condition attribute='statecode' operator='eq' value='0' /&gt;
+    &lt;/filter&gt;
+    &lt;/entity&gt;
+&lt;/fetch&gt;
+</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the batch size of the query."
@@ -1450,6 +1513,159 @@
                       lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[versionnumber]"
                       name="versionnumber"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto]"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto]"
+                      name="cre_assignincidentto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_queue_id]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_queue_id]"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_queue_id]"
+                      name="cre_assignincidentto_queue_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_queue_idname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_queue_idname]"
+                      length="200"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_queue_idname]"
+                      name="cre_assignincidentto_queue_idname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_systemuser_id]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_systemuser_id]"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_systemuser_id]"
+                      name="cre_assignincidentto_systemuser_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_systemuser_idname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_systemuser_idname]"
+                      length="200"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_systemuser_idname]"
+                      name="cre_assignincidentto_systemuser_idname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_systemuser_idyominame]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_systemuser_idyominame]"
+                      length="200"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_systemuser_idyominame]"
+                      name="cre_assignincidentto_systemuser_idyominame"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_team_id]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_team_id]"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_team_id]"
+                      name="cre_assignincidentto_team_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_team_idname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_team_idname]"
+                      length="160"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_team_idname]"
+                      name="cre_assignincidentto_team_idname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_team_idyominame]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_team_idyominame]"
+                      length="160"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidentto_team_idyominame]"
+                      name="cre_assignincidentto_team_idyominame"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidenttoname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidenttoname]"
+                      length="255"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_assignincidenttoname]"
+                      name="cre_assignincidenttoname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_copydescriptiontocase]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_copydescriptiontocase]"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_copydescriptiontocase]"
+                      name="cre_copydescriptiontocase"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_copydescriptiontocasename]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_copydescriptiontocasename]"
+                      length="255"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_copydescriptiontocasename]"
+                      name="cre_copydescriptiontocasename"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_incidentsubtype_id]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_incidentsubtype_id]"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_incidentsubtype_id]"
+                      name="cre_incidentsubtype_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_incidentsubtype_idname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_incidentsubtype_idname]"
+                      length="100"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_incidentsubtype_idname]"
+                      name="cre_incidentsubtype_idname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_incidenttyp_id]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_incidenttyp_id]"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_incidenttyp_id]"
+                      name="cre_incidenttyp_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_incidenttyp_idname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_incidenttyp_idname]"
+                      length="100"
+                      lineageId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[cre_incidenttyp_idname]"
+                      name="cre_incidenttyp_idname"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1471,79 +1687,6 @@
                       dataType="wstr"
                       length="160"
                       name="businessunitidname" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto]"
-                      dataType="i4"
-                      name="cre_assignincidentto" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_queue_id]"
-                      dataType="guid"
-                      name="cre_assignincidentto_queue_id" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_queue_idname]"
-                      dataType="wstr"
-                      length="200"
-                      name="cre_assignincidentto_queue_idname" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_systemuser_id]"
-                      dataType="guid"
-                      name="cre_assignincidentto_systemuser_id" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_systemuser_idname]"
-                      dataType="wstr"
-                      length="200"
-                      name="cre_assignincidentto_systemuser_idname" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_systemuser_idyominame]"
-                      dataType="wstr"
-                      length="200"
-                      name="cre_assignincidentto_systemuser_idyominame" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_team_id]"
-                      dataType="guid"
-                      name="cre_assignincidentto_team_id" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_team_idname]"
-                      dataType="wstr"
-                      length="160"
-                      name="cre_assignincidentto_team_idname" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_team_idyominame]"
-                      dataType="wstr"
-                      length="160"
-                      name="cre_assignincidentto_team_idyominame" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidenttoname]"
-                      dataType="wstr"
-                      length="255"
-                      name="cre_assignincidenttoname" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_copydescriptiontocase]"
-                      dataType="bool"
-                      name="cre_copydescriptiontocase" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_copydescriptiontocasename]"
-                      dataType="wstr"
-                      length="255"
-                      name="cre_copydescriptiontocasename" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_incidentsubtype_id]"
-                      dataType="guid"
-                      name="cre_incidentsubtype_id" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_incidentsubtype_idname]"
-                      dataType="wstr"
-                      length="100"
-                      name="cre_incidentsubtype_idname" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_incidenttyp_id]"
-                      dataType="guid"
-                      name="cre_incidenttyp_id" />
-                    <externalMetadataColumn
-                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_incidenttyp_idname]"
-                      dataType="wstr"
-                      length="100"
-                      name="cre_incidenttyp_idname" />
                     <externalMetadataColumn
                       refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdby]"
                       dataType="guid"
@@ -1843,6 +1986,79 @@
                       refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[versionnumber]"
                       dataType="i8"
                       name="versionnumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto]"
+                      dataType="i4"
+                      name="cre_assignincidentto" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_queue_id]"
+                      dataType="guid"
+                      name="cre_assignincidentto_queue_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_queue_idname]"
+                      dataType="wstr"
+                      length="200"
+                      name="cre_assignincidentto_queue_idname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_systemuser_id]"
+                      dataType="guid"
+                      name="cre_assignincidentto_systemuser_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_systemuser_idname]"
+                      dataType="wstr"
+                      length="200"
+                      name="cre_assignincidentto_systemuser_idname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_systemuser_idyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="cre_assignincidentto_systemuser_idyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_team_id]"
+                      dataType="guid"
+                      name="cre_assignincidentto_team_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_team_idname]"
+                      dataType="wstr"
+                      length="160"
+                      name="cre_assignincidentto_team_idname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidentto_team_idyominame]"
+                      dataType="wstr"
+                      length="160"
+                      name="cre_assignincidentto_team_idyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_assignincidenttoname]"
+                      dataType="wstr"
+                      length="255"
+                      name="cre_assignincidenttoname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_copydescriptiontocase]"
+                      dataType="bool"
+                      name="cre_copydescriptiontocase" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_copydescriptiontocasename]"
+                      dataType="wstr"
+                      length="255"
+                      name="cre_copydescriptiontocasename" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_incidentsubtype_id]"
+                      dataType="guid"
+                      name="cre_incidentsubtype_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_incidentsubtype_idname]"
+                      dataType="wstr"
+                      length="100"
+                      name="cre_incidentsubtype_idname" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_incidenttyp_id]"
+                      dataType="guid"
+                      name="cre_incidenttyp_id" />
+                    <externalMetadataColumn
+                      refId="Package\Load Queue\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[cre_incidenttyp_idname]"
+                      dataType="wstr"
+                      length="100"
+                      name="cre_incidenttyp_idname" />
                   </externalMetadataColumns>
                 </output>
               </outputs>
@@ -3438,8 +3654,13 @@
     &lt;attribute name="statuscode" /&gt;
     &lt;attribute name="statecode" /&gt;
     &lt;order attribute="name" descending="false" /&gt;
+    &lt;filter type="and"&gt;
+      &lt;condition attribute="emailaddress" operator="not-null" /&gt;
+      &lt;condition attribute="statecode" operator="eq" value="0" /&gt;
+    &lt;/filter&gt;
   &lt;/entity&gt;
-&lt;/fetch&gt;</property>
+&lt;/fetch&gt;
+</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the batch size of the query."
@@ -4996,50 +5217,20 @@
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="147,42"
-          Id="Package\Update Queue\Update Queue"
-          TopLeft="269,137" />
-        <NodeLayout
-          Size="147,42"
           Id="Package\Update Queue\Rows Updated"
           TopLeft="173.71429057997,233.129414192779" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Update Queue\Queue_ERROR"
+          TopLeft="394,238" />
         <NodeLayout
           Size="184,42"
           Id="Package\Update Queue\Dynamics CRM Source"
           TopLeft="243,34" />
-        <EdgeLayout
-          Id="Package\Update Queue.Paths[Default Output]"
-          TopLeft="319.333333333333,179">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-72.1190427533633,54.129414192779"
-              Start="0,0"
-              End="-72.1190427533633,46.629414192779">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.0014577203489" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.0014577203489"
-                    Point2="0,22.0014577203489"
-                    Point3="-4,22.0014577203489" />
-                  <mssgle:LineSegment
-                    End="-68.1190427533633,22.0014577203489" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-68.1190427533633,22.0014577203489"
-                    Point2="-72.1190427533633,22.0014577203489"
-                    Point3="-72.1190427533633,26.0014577203489" />
-                  <mssgle:LineSegment
-                    End="-72.1190427533633,46.629414192779" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Update Queue\Update Queue"
+          TopLeft="269,137" />
         <EdgeLayout
           Id="Package\Update Queue.Paths[CRM Primary Output]"
           TopLeft="338.75,76">
@@ -5062,10 +5253,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="149,42"
-          Id="Package\Update Queue\Queue_ERROR"
-          TopLeft="394,238" />
         <EdgeLayout
           Id="Package\Update Queue.Paths[Error Output]"
           TopLeft="365.666666666667,179">
@@ -5100,6 +5287,40 @@
             <mssgm:EdgeLabel
               BoundingBox="23.0802799479167,28.9811574697174,56.6727734375,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Update Queue.Paths[Default Output]"
+          TopLeft="319.333333333333,179">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-72.1190427533633,54.129414192779"
+              Start="0,0"
+              End="-72.1190427533633,46.629414192779">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.0014577203489" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.0014577203489"
+                    Point2="0,22.0014577203489"
+                    Point3="-4,22.0014577203489" />
+                  <mssgle:LineSegment
+                    End="-68.1190427533633,22.0014577203489" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-68.1190427533633,22.0014577203489"
+                    Point2="-72.1190427533633,22.0014577203489"
+                    Point3="-72.1190427533633,26.0014577203489" />
+                  <mssgle:LineSegment
+                    End="-72.1190427533633,46.629414192779" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
