@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Foretagsinformation_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="67"
-  DTS:VersionGUID="{4F675CBA-4C9F-4FE6-83E1-DFB42CD47258}">
+  DTS:VersionBuild="76"
+  DTS:VersionGUID="{CAE4BB36-C491-4328-AEF8-42A5342DAF18}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -479,6 +479,30 @@
                       cachedDataType="dbTimeStamp"
                       cachedName="rb_observandum_todate"
                       lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_observandum_todate]" />
+                    <inputColumn
+                      refId="Package\Load Foretagsinformation\Derived Column.Inputs[Derived Column Input].Columns[owneridtype]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="owneridtype"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[owneridtype]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[owneridtype]} == "team" ? 9 : 8</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">owneridtype == "team" ? 9 : 8</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1867,13 +1891,6 @@
                       externalMetadataColumnId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].ExternalColumns[statuscode]"
                       lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[statuscode]" />
                     <inputColumn
-                      refId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].Columns[rik_AccountNamn]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="rik_AccountNamn"
-                      externalMetadataColumnId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_accountid]"
-                      lineageId="Package\Load Foretagsinformation\Derived Column.Outputs[Derived Column Output].Columns[rik_AccountNamn]" />
-                    <inputColumn
                       refId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].Columns[rik_bilplatstypplatsmedel]"
                       cachedDataType="bool"
                       cachedName="rik_bilplatstypplatsmedel"
@@ -1929,6 +1946,26 @@
                       cachedName="createdbyname"
                       externalMetadataColumnId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].ExternalColumns[createdby]"
                       lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdbyname]" />
+                    <inputColumn
+                      refId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].Columns[owneridname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="owneridname"
+                      externalMetadataColumnId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].ExternalColumns[ownerid]"
+                      lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[owneridname]" />
+                    <inputColumn
+                      refId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].Columns[rb_account_id]"
+                      cachedDataType="guid"
+                      cachedName="rb_account_id"
+                      externalMetadataColumnId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_accountid]"
+                      lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_account_id]" />
+                    <inputColumn
+                      refId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].Columns[owneridtype]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="owneridtype"
+                      externalMetadataColumnId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].ExternalColumns[owneridtype]"
+                      lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[owneridtype]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1993,6 +2030,21 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">systemuser;team</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2027,7 +2079,7 @@
   &lt;LookupTargets&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;account&lt;/TargetEntity&gt;
-      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+      &lt;TargetTextField&gt;rik_migreringid&lt;/TargetTextField&gt;
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
@@ -4282,13 +4334,6 @@
                       externalMetadataColumnId="Package\Load Foretagsinformation\Foretagsinformation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
                       lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdonbehalfby]" />
                     <inputColumn
-                      refId="Package\Load Foretagsinformation\Foretagsinformation_ERROR.Inputs[OLE DB Destination Input].Columns[owneridtype]"
-                      cachedDataType="wstr"
-                      cachedLength="64"
-                      cachedName="owneridtype"
-                      externalMetadataColumnId="Package\Load Foretagsinformation\Foretagsinformation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
-                      lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[owneridtype]" />
-                    <inputColumn
                       refId="Package\Load Foretagsinformation\Foretagsinformation_ERROR.Inputs[OLE DB Destination Input].Columns[modifiedonbehalfbyyominame]"
                       cachedDataType="wstr"
                       cachedLength="200"
@@ -4625,6 +4670,13 @@
                       cachedName="CrmErrorMessage"
                       externalMetadataColumnId="Package\Load Foretagsinformation\Foretagsinformation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
                       lineageId="Package\Load Foretagsinformation\Dynamics CRM Destination.Outputs[Error Output].Columns[CrmErrorMessage]" />
+                    <inputColumn
+                      refId="Package\Load Foretagsinformation\Foretagsinformation_ERROR.Inputs[OLE DB Destination Input].Columns[owneridtype]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="owneridtype"
+                      externalMetadataColumnId="Package\Load Foretagsinformation\Foretagsinformation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
+                      lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[owneridtype]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -6027,21 +6079,77 @@
           Id="Package\Load Foretagsinformation\Foretagsinformation_ERROR"
           TopLeft="486.571436278674,406.400003792258" />
         <NodeLayout
-          Size="184,42"
-          Id="Package\Load Foretagsinformation\Dynamics CRM Source"
-          TopLeft="347,31" />
-        <NodeLayout
           Size="142,42"
           Id="Package\Load Foretagsinformation\Row Inserted"
           TopLeft="254.571431033466,406.400003792257" />
         <NodeLayout
           Size="205,42"
           Id="Package\Load Foretagsinformation\Dynamics CRM Destination"
-          TopLeft="336.857148559727,271.811766610592" />
+          TopLeft="335.857148559727,255.811766610592" />
         <NodeLayout
           Size="154,42"
           Id="Package\Load Foretagsinformation\Derived Column"
           TopLeft="366,149" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Load Foretagsinformation\Dynamics CRM Source"
+          TopLeft="347,31" />
+        <EdgeLayout
+          Id="Package\Load Foretagsinformation.Paths[Derived Column Output]"
+          TopLeft="440.678574279863,191">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.811766610592"
+              Start="0,0"
+              End="0,57.311766610592">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.311766610592" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Foretagsinformation.Paths[Default Output]"
+          TopLeft="405.523815226394,297.811766610592">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-79.9523841929277,108.588237181665"
+              Start="0,0"
+              End="-79.9523841929277,101.088237181665">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.9398675139748" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.9398675139748"
+                    Point2="0,43.9398675139748"
+                    Point3="-4,43.9398675139748" />
+                  <mssgle:LineSegment
+                    End="-75.9523841929277,43.9398675139748" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-75.9523841929277,43.9398675139748"
+                    Point2="-79.9523841929277,43.9398675139748"
+                    Point3="-79.9523841929277,47.9398675139748" />
+                  <mssgle:LineSegment
+                    End="-79.9523841929277,101.088237181665" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Foretagsinformation.Paths[CRM Primary Output]"
           TopLeft="441,73">
@@ -6066,94 +6174,38 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Foretagsinformation.Paths[Error Output]"
-          TopLeft="472.19048189306,313.811766610592">
+          TopLeft="471.19048189306,297.811766610592">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="120.880954385614,92.588237181666"
+              EndConnector="121.880954385614,108.588237181666"
               Start="0,0"
-              End="120.880954385614,85.088237181666">
+              End="121.880954385614,101.088237181666">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.4655209505677" />
+                    End="0,39.9398675139752" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,33.4655209505677"
-                    Point2="0,37.4655209505677"
-                    Point3="4,37.4655209505677" />
+                    Point1="0,39.9398675139752"
+                    Point2="0,43.9398675139752"
+                    Point3="4,43.9398675139752" />
                   <mssgle:LineSegment
-                    End="116.880954385614,37.4655209505677" />
+                    End="117.880954385614,43.9398675139752" />
                   <mssgle:CubicBezierSegment
-                    Point1="116.880954385614,37.4655209505677"
-                    Point2="120.880954385614,37.4655209505677"
-                    Point3="120.880954385614,41.4655209505677" />
+                    Point1="117.880954385614,43.9398675139752"
+                    Point2="121.880954385614,43.9398675139752"
+                    Point3="121.880954385614,47.9398675139752" />
                   <mssgle:LineSegment
-                    End="120.880954385614,85.088237181666" />
+                    End="121.880954385614,101.088237181666" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="32.1040904740568,42.4655209505677,56.6727734375,11.43359375"
+              BoundingBox="32.6040904740568,48.9398675139752,56.6727734375,11.43359375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Foretagsinformation.Paths[Derived Column Output]"
-          TopLeft="441.178574279863,191">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,80.811766610592"
-              Start="0,0"
-              End="0,73.311766610592">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,73.311766610592" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Foretagsinformation.Paths[Default Output]"
-          TopLeft="406.523815226394,313.811766610592">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-80.9523841929277,92.588237181665"
-              Start="0,0"
-              End="-80.9523841929277,85.088237181665">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.4655209505673" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.4655209505673"
-                    Point2="0,37.4655209505673"
-                    Point3="-4,37.4655209505673" />
-                  <mssgle:LineSegment
-                    End="-76.9523841929277,37.4655209505673" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-76.9523841929277,37.4655209505673"
-                    Point2="-80.9523841929277,37.4655209505673"
-                    Point3="-80.9523841929277,41.4655209505673" />
-                  <mssgle:LineSegment
-                    End="-80.9523841929277,85.088237181665" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

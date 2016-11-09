@@ -26,15 +26,12 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">WIN-MDNURGQAKC3</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAYDsu/du7wkCzw6SMdKaBVAAAAAACAAAAAAADZgAAwAAAABAAAABdQBMmWZjE7Xupm2l45eW5AAAAAASAAACgAAAAEAAAADjg83NqqH6LPGVu/EcuqIiIAAAAn7u1ihdZvTk1mts+mesS/s5K6/eTj0bp3oZDSSyUxCW2zqn2iKpAUY1+SfgZde8taLs4ouzyVTgv11cs2UG5dWWh5G7fweth2YOHrjZwyoBZzJQgP28DJU/PODBeQYdmIO9RqQuShKFG/DWgTNIsaNoYshUl7nxc3RDNYKtBHgqJ/wxDz5R1zhQAAAAM+QVK1zoWZRAiREUeDOeagCvfpA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAYDsu/du7wkCzw6SMdKaBVAAAAAACAAAAAAADZgAAwAAAABAAAACjTaG6p3KycxpXjlJSG+kwAAAAAASAAACgAAAAEAAAAMbWSgDHoghNfDPBjZIYbpKIAAAAa031uwXumw+HCuxDh2vEzwIQW8BUhCk3bQ5HTmAYWToflHXctKfWFTeB4h9/UX+L/56AlY1Urf6z29z/B/9rFWrPS9oKpYXXzVgZrn4ORy330nY4PO83xN/DviTw6txcJ9FfySO8F883Y5KO4wBkEbspGEuN183FXCO+gUPcG2/YbsoUrxhgeBQAAACYsmmlPawWYyw2J2b94TIxaPDIbg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="Account_CREATE.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="Mangdenhet_CREATE.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="Mangdtyp_CREATE.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="SystemUser_CREATE.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="STGAccount.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="MainSTG.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="MainCRM.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Contact_CREATE.dtsx" SSIS:EntryPoint="1" />
@@ -79,6 +76,9 @@
           <SSIS:Package SSIS:Name="Subject_CREATE_UPDATE.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="KBArticle_CREATE_UPDATE.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="NOTUSESTGContact.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="NOTUSEMangdenhet_CREATE.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="NOTUSEMangdtyp_CREATE.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="NOTUSESTGAccount.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="Logging.conmgr" />
@@ -381,7 +381,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">AuthenticationType=ActiveDirectory;ServiceEndpoint=Soap2011;DiscoveryServerUrl=http://uapp03-crm;UserName=RB99ALO;Domain=RIKSBYGGEN;OrganizationName=Riksbyggen;CrmServerUrl=http://uapp03-crm/Riksbyggen;ProxyUsername=;ProxyServer=;ProxyServerPort=0;HomeRealmUri=;ApiVersion=;ServiceTimeout=120;RetryOnIntermittentErrors=True;IgnoreCertificateErrors=False</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">AuthenticationType=ActiveDirectory;ServiceEndpoint=Soap2011;DiscoveryServerUrl=http://uapp03-crm;UserName=RB99ALO;Domain=RIKSBYGGEN;OrganizationName=Riksbyggen;CrmServerUrl=http://uapp03-crm/Riksbyggen;ProxyUsername=;ProxyServer=;ProxyServerPort=0;HomeRealmUri=;ApiVersion=;ServiceTimeout=180;RetryOnIntermittentErrors=True;IgnoreCertificateErrors=False</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -607,7 +607,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">120</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">180</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">10</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -1024,10 +1024,10 @@
                 <SSIS:Property SSIS:Name="Name">Account_CREATE</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">64</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">74</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{FEC15BDC-D865-4503-B331-1CCDC4500A7D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A975C6FD-95D2-4A5E-B6E8-1E57ABF47073}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1051,98 +1051,6 @@
                 <SSIS:Parameter SSIS:Name="Parentpackagename">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">{9998ABC3-69BD-4B0F-AF8E-3357420A88B8}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Saknas</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="Mangdenhet_CREATE.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{994D0F51-ED56-4FF5-A8BF-02A2043AA74B}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Mangdenhet_CREATE</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">33</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{3A77FAD2-8876-4CF6-9A9E-B269AACC7EBB}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="ParentPackageExecutionID">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{0C370815-8A43-4595-B27F-59A8A75B3E21}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">{A82E5FBD-6395-4935-AB2F-C6EC847EC672}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="Parentpackagename">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{A5014E35-5CA7-4E7D-BECB-AC6925C9102D}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Saknas</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="Mangdtyp_CREATE.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{1DC8C4BB-D31D-4DF9-A0CD-D94F262D6CDF}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Mangdtyp_CREATE</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">37</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6CA1130E-D288-4CC5-BEE1-CFCE8593344B}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="ParentPackageExecutionID">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{5C2616CB-3F64-4082-8465-F35426B8CD3E}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">{A82E5FBD-6395-4935-AB2F-C6EC847EC672}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="Parentpackagename">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{51073899-03E4-4612-B5B0-63AAA8928B5E}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1189,52 +1097,6 @@
                 <SSIS:Parameter SSIS:Name="Parentpackagename">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">{B170C560-9038-474C-8960-192906840BC0}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Saknas</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="STGAccount.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{86DB3851-DDE7-4451-AF2B-372C64D72F87}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">STGAccount</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">103</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E11FF919-0D6A-4479-B6C6-C57A6400B1C0}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="ParentPackageExecutionID">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{1BAE8F48-FBB9-44CA-AF84-10B8E707F074}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">{4952BEC8-2B03-4BD3-AF79-1EDE35C4D73C}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="Parentpackagename">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{915444D1-7533-400C-AC7D-138BF8E2CC75}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
@@ -1752,10 +1614,10 @@
                 <SSIS:Property SSIS:Name="Name">Foretagsinformation_CREATE</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">67</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">76</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{4F675CBA-4C9F-4FE6-83E1-DFB42CD47258}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{CAE4BB36-C491-4328-AEF8-42A5342DAF18}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -2028,10 +1890,10 @@
                 <SSIS:Property SSIS:Name="Name">Activities_CREATE</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">107</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">115</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C4568981-CE30-434A-BC19-E6D435FF44D4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{09560080-16C7-4FCB-BFC0-370D67A297EF}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -2074,10 +1936,10 @@
                 <SSIS:Property SSIS:Name="Name">Incident_CREATE_UPDATE</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">73</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">79</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{80663732-F386-4C0E-9F6D-B506E4CAF97E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D64ADC90-F8AA-4572-BFCD-B21B4A40B2AE}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -4519,6 +4381,144 @@
                 <SSIS:Parameter SSIS:Name="Parentpackagename">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">{707782D7-361B-43E1-9CB7-64422B916506}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Saknas</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="NOTUSEMangdenhet_CREATE.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{760D017A-D05D-4C95-A484-93F96BF906FE}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">NOTUSEMangdenhet_CREATE</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">34</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{15549B06-D369-4C03-96F4-BEADD93C1BEB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="ParentPackageExecutionID">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{0C370815-8A43-4595-B27F-59A8A75B3E21}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">{A82E5FBD-6395-4935-AB2F-C6EC847EC672}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="Parentpackagename">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{A5014E35-5CA7-4E7D-BECB-AC6925C9102D}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Saknas</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="NOTUSEMangdtyp_CREATE.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{B5D2D008-6BBA-4C71-9490-77968C3D84EF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">NOTUSEMangdtyp_CREATE</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">38</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{573F54CF-9B13-42C4-BF2F-8B8BA2ED77BA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="ParentPackageExecutionID">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{5C2616CB-3F64-4082-8465-F35426B8CD3E}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">{A82E5FBD-6395-4935-AB2F-C6EC847EC672}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="Parentpackagename">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{51073899-03E4-4612-B5B0-63AAA8928B5E}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Saknas</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="NOTUSESTGAccount.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{EF1A0FE2-090D-43C1-BFCA-CE35CD453F1A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">NOTUSESTGAccount</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">104</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D098AFD6-00C2-43C7-9700-5690C327E914}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="ParentPackageExecutionID">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{1BAE8F48-FBB9-44CA-AF84-10B8E707F074}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">{4952BEC8-2B03-4BD3-AF79-1EDE35C4D73C}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="Parentpackagename">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{915444D1-7533-400C-AC7D-138BF8E2CC75}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">
