@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Contact_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{357BDE04-02B4-4520-9678-8B514F945454}">
+  DTS:VersionBuild="57"
+  DTS:VersionGUID="{56EFA85B-8797-4C28-AD60-AC4FD3BDED77}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -1530,6 +1530,18 @@
                       dataType="wstr"
                       length="18"
                       name="rik_ResursId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Contact_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Epost1Hemlig]"
+                      dataType="bool"
+                      name="rik_Epost1Hemlig" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Contact_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Telefonnummer2Hemlig]"
+                      dataType="bool"
+                      name="rik_Telefonnummer2Hemlig" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Contact_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Telefonnummer1Hemlig]"
+                      dataType="bool"
+                      name="rik_Telefonnummer1Hemlig" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1850,6 +1862,31 @@
                       cachedName="rik_MigreringId"
                       externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_migreringid]"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_MigreringId]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].Columns[rik_Epost1Hemlig]"
+                      cachedDataType="i4"
+                      cachedName="rik_Epost1Hemlig"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_epost1hemlig]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Epost1Hemlig]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].Columns[rik_Telefonnummer1Hemlig]"
+                      cachedDataType="bool"
+                      cachedName="rik_Telefonnummer1Hemlig"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_telefonnummer1hemlig]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Telefonnummer1Hemlig]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].Columns[rik_Telefonnummer2Hemlig]"
+                      cachedDataType="bool"
+                      cachedName="rik_Telefonnummer2Hemlig"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_telefonnummer2hemlig]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Telefonnummer2Hemlig]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].Columns[rik_Address1_Land]"
+                      cachedDataType="wstr"
+                      cachedLength="400"
+                      cachedName="rik_Address1_Land"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_address1_land]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Address1_Land]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4109,6 +4146,17 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">rik_land</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_land&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -4134,6 +4182,45 @@
                         <property
                           dataType="System.String"
                           name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_epost1hemlig]"
+                      dataType="bool"
+                      name="rik_epost1hemlig">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_telefonnummer1hemlig]"
+                      dataType="bool"
+                      name="rik_telefonnummer1hemlig">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_telefonnummer2hemlig]"
+                      dataType="bool"
+                      name="rik_telefonnummer2hemlig">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -4366,6 +4453,31 @@
                       cachedName="rik_MigreringId"
                       externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_migreringid]"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_MigreringId]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_Epost1Hemlig]"
+                      cachedDataType="i4"
+                      cachedName="rik_Epost1Hemlig"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_epost1hemlig]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Epost1Hemlig]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_Telefonnummer1Hemlig]"
+                      cachedDataType="bool"
+                      cachedName="rik_Telefonnummer1Hemlig"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_telefonnummer1hemlig]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Telefonnummer1Hemlig]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_Telefonnummer2Hemlig]"
+                      cachedDataType="bool"
+                      cachedName="rik_Telefonnummer2Hemlig"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_telefonnummer2hemlig]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Telefonnummer2Hemlig]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_Address1_Land]"
+                      cachedDataType="wstr"
+                      cachedLength="400"
+                      cachedName="rik_Address1_Land"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_address1_land]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Address1_Land]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -6625,6 +6737,17 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">rik_land</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_land&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -6650,6 +6773,45 @@
                         <property
                           dataType="System.String"
                           name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_epost1hemlig]"
+                      dataType="bool"
+                      name="rik_epost1hemlig">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_telefonnummer1hemlig]"
+                      dataType="bool"
+                      name="rik_telefonnummer1hemlig">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_telefonnummer2hemlig]"
+                      dataType="bool"
+                      name="rik_telefonnummer2hemlig">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -6882,6 +7044,31 @@
                       cachedName="rik_MigreringId"
                       externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_migreringid]"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_MigreringId]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_Epost1Hemlig]"
+                      cachedDataType="i4"
+                      cachedName="rik_Epost1Hemlig"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_epost1hemlig]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Epost1Hemlig]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_Telefonnummer1Hemlig]"
+                      cachedDataType="bool"
+                      cachedName="rik_Telefonnummer1Hemlig"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_telefonnummer1hemlig]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Telefonnummer1Hemlig]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_Telefonnummer2Hemlig]"
+                      cachedDataType="bool"
+                      cachedName="rik_Telefonnummer2Hemlig"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_telefonnummer2hemlig]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Telefonnummer2Hemlig]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_Address1_Land]"
+                      cachedDataType="wstr"
+                      cachedLength="400"
+                      cachedName="rik_Address1_Land"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_address1_land]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Address1_Land]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -9171,6 +9358,45 @@
                           name="LookupTypes"></property>
                       </properties>
                     </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_epost1hemlig]"
+                      dataType="bool"
+                      name="rik_epost1hemlig">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_telefonnummer1hemlig]"
+                      dataType="bool"
+                      name="rik_telefonnummer1hemlig">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_telefonnummer2hemlig]"
+                      dataType="bool"
+                      name="rik_telefonnummer2hemlig">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -9287,6 +9513,14 @@
 --,CAST(AltOrt AS NVARCHAR(400))AS Address2_City
 --,CAST(AltLandskod2 AS NVARCHAR(400))AS Address2_Country
 ,CASE WHEN avliden IS NOT NULL THEN 1 ELSE 0 END AS rik_Avliden
+,NULL AS rik_Epost1Hemlig
+,Telefon1Hemlig AS rik_Telefonnummer1Hemlig
+,Telefon2Hemlig AS rik_Telefonnummer2Hemlig
+,CASE WHEN Resurs = 1 THEN 908400002		-- Anställd
+				--	908400000	Kontakt
+				--  908400001   Konsult
+	  END AS rik_Typ
+-- 908400001 AS statuscode = Kvalificerad OM kontakten finns med i Agresso och rik_typ ska sättas till  908400000	-- Kontakt
 ,CRMguid AS rik_MigreringId
 FROM [STG].[dbo].[CRM_KONTAKT]</property>
                 <property
@@ -9465,6 +9699,42 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Address1_Land]"
                       name="rik_Address1_Land"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Telefonnummer1Hemlig]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Telefonnummer1Hemlig]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Telefonnummer1Hemlig]"
+                      name="rik_Telefonnummer1Hemlig"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Telefonnummer2Hemlig]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Telefonnummer2Hemlig]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Telefonnummer2Hemlig]"
+                      name="rik_Telefonnummer2Hemlig"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Epost1Hemlig]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Epost1Hemlig]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Epost1Hemlig]"
+                      name="rik_Epost1Hemlig"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Typ]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Typ]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Typ]"
+                      name="rik_Typ"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -9539,6 +9809,22 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                       dataType="wstr"
                       length="400"
                       name="rik_Address1_Land" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Telefonnummer1Hemlig]"
+                      dataType="bool"
+                      name="rik_Telefonnummer1Hemlig" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Telefonnummer2Hemlig]"
+                      dataType="bool"
+                      name="rik_Telefonnummer2Hemlig" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Epost1Hemlig]"
+                      dataType="i4"
+                      name="rik_Epost1Hemlig" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Typ]"
+                      dataType="i4"
+                      name="rik_Typ" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -9624,6 +9910,26 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                       length="20"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Personnummer]"
                       name="rik_Personnummer" />
+                    <outputColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Epost1Hemlig]"
+                      dataType="i4"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Epost1Hemlig]"
+                      name="rik_Epost1Hemlig" />
+                    <outputColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Telefonnummer1Hemlig]"
+                      dataType="bool"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Telefonnummer1Hemlig]"
+                      name="rik_Telefonnummer1Hemlig" />
+                    <outputColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Telefonnummer2Hemlig]"
+                      dataType="bool"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Telefonnummer2Hemlig]"
+                      name="rik_Telefonnummer2Hemlig" />
+                    <outputColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Typ]"
+                      dataType="i4"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Typ]"
+                      name="rik_Typ" />
                     <outputColumn
                       refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_MigreringId]"
                       codePage="1252"
@@ -12097,21 +12403,25 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="156,42"
-          Id="Package\Load Contact\Data Conversion"
-          TopLeft="582,451" />
+          Size="205,42"
+          Id="Package\Load Contact\Dynamics CRM Destination"
+          TopLeft="115.428573530547,174.964708336168" />
         <NodeLayout
           Size="140,42"
           Id="Package\Load Contact\STG_Contact"
           TopLeft="347.142863020605,14.8000002917121" />
         <NodeLayout
-          Size="205,42"
-          Id="Package\Load Contact\Dynamics CRM Destination"
-          TopLeft="115.428573530547,174.964708336168" />
+          Size="156,42"
+          Id="Package\Load Contact\Data Conversion"
+          TopLeft="582,451" />
         <NodeLayout
           Size="157,42"
           Id="Package\Load Contact\Union All ERROR"
           TopLeft="586,364" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Load Contact\Row Inserted"
+          TopLeft="105.285715618911,428.717652833009" />
         <NodeLayout
           Size="205,42"
           Id="Package\Load Contact\Dynamics CRM Destination 1"
@@ -12125,17 +12435,13 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
           Id="Package\Load Contact\Dynamics CRM Destination 2"
           TopLeft="730.857144268192,174.847064837949" />
         <NodeLayout
-          Size="311,42"
-          Id="Package\Load Contact\Balanced Data Distributor"
-          TopLeft="260.000004427774,85.6470600246971" />
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Load Contact\Row Inserted"
-          TopLeft="105.285715618911,428.717652833009" />
-        <NodeLayout
           Size="163,42"
           Id="Package\Load Contact\Union All Inserted"
           TopLeft="95.285715618911,349.847064837949" />
+        <NodeLayout
+          Size="311,42"
+          Id="Package\Load Contact\Balanced Data Distributor"
+          TopLeft="260.000004427774,85.6470600246971" />
         <EdgeLayout
           Id="Package\Load Contact.Paths[Union All Output 11]"
           TopLeft="662.25,406">
@@ -12312,13 +12618,13 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Contact.Paths[Default Output2]"
-          TopLeft="803.523810934858,216.847064837949">
+          TopLeft="803.523810934859,216.847064837949">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-587.988095315947,133"
+              EndConnector="-587.988095315948,133"
               Start="0,0"
-              End="-587.988095315947,125.5">
+              End="-587.988095315948,125.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -12329,13 +12635,13 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                     Point2="0,75.0406402083217"
                     Point3="-4,75.0406402083217" />
                   <mssgle:LineSegment
-                    End="-583.988095315947,75.0406402083217" />
+                    End="-583.988095315948,75.0406402083217" />
                   <mssgle:CubicBezierSegment
-                    Point1="-583.988095315947,75.0406402083217"
-                    Point2="-587.988095315947,75.0406402083217"
-                    Point3="-587.988095315947,79.0406402083217" />
+                    Point1="-583.988095315948,75.0406402083217"
+                    Point2="-587.988095315948,75.0406402083217"
+                    Point3="-587.988095315948,79.0406402083217" />
                   <mssgle:LineSegment
-                    End="-587.988095315947,125.5" />
+                    End="-587.988095315948,125.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

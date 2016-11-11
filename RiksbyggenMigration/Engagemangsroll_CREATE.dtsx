@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Engagemangsroll_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{FAAC42F9-6A7E-41B9-BC2B-8BED7907854D}">
+  DTS:VersionBuild="45"
+  DTS:VersionGUID="{3279042B-7F4F-4D6B-8A79-6807D257CAF3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -194,6 +194,23 @@
   </DTS:LoggingOptions>
   <DTS:Executables>
     <DTS:Executable
+      DTS:refId="Package\Insert into STG_engagemangsroll"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E2520CA5-BFA8-4034-9581-798F7EDE9E74}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Insert into STG_engagemangsroll"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG.dbo.rik_Engagemangsroll;&#xA;&#xA;INSERT INTO STG.dbo.rik_Engagemangsroll (rik_Namn,rik_Beskrivning, rik_kod,rik_typ)&#xA;VALUES&#xA;('Adjungerad','Utvald person av styrelsen som jobbar mot uppdraget.','432',908400002),&#xA;('Administrativ chef','Titel på person som arbetar på beställarsidan','113',908400000),&#xA;('Arbetsledare','Person som arbetar mot eller för uppdraget','??',908400002),&#xA;('Arbetsutskott','Tillhörighet för person på beställarsidan','615',908400000),&#xA;('Attesträtt','Titel som visar viss behöringhet','591',908400002),&#xA;('Auktoriserad revisor','Person/företag som arbetar mot uppdraget men inte för RB','372',908400000),&#xA;('Avd. chef','Titel på person som arbetar på beställarsidan','487',908400000),&#xA;('Bonumvärd','Person som arbetar mot eller för uppdraget','651',908400002),&#xA;('Brandskyddsansvarig','Arbetsroll för person i styrelse','601',908400000),&#xA;('Budget kontaktperson','Intern information för att RB vet vem vi ska kontakta','619',908400000),&#xA;('Controller','Titel på person som arbetar på beställarsidan','596',908400000),&#xA;('Driftchef','Titel på person som arbetar på beställarsidan','315',908400000),&#xA;('Driftingenjör','Person som arbetar mot eller för uppdraget','436',908400002),&#xA;('Drifttekniker','Person som arbetar mot eller för uppdraget','611',908400002),&#xA;('Ekonom','Person som arbetar mot eller för uppdraget','452',908400002),&#xA;('Ekonomichef','Titel på person som arbetar på beställarsidan','112',908400000),&#xA;('Ekonomisupport','Person som arbetar mot eller för uppdraget','627',908400002),&#xA;('Enhetschef','Titel på person som arbetar på beställarsidan','360',908400000),&#xA;('Fakturagodkännare','Titel som visar viss behöringhet','650',908400002),&#xA;('Fastighetsansvarig','Titel på person som arbetar på beställarsidan','128',908400000),&#xA;('Fastighetschef','Titel på person som arbetar på beställarsidan','126',908400000),&#xA;('Fastighetsingenjör','Person som arbetar mot eller för uppdraget','398',908400002),&#xA;('Fastighetsskötare','Person som arbetar mot eller för uppdraget','362',908400002),&#xA;('Fastighetsägare','Titel på person som arbetar på beställarsidan','535',908400000),&#xA;('Firmatecknare','Titel som visar viss behöringhet','406',908400002),&#xA;('Fritidskommitté','Arbetsroll för person i styrelse','352',908400000),&#xA;('Föreningsvärd','Person som arbetar mot eller för uppdraget','657',908400002),&#xA;('Förvaltare','Person som arbetar mot eller för uppdraget','129',908400002),&#xA;('Förvaltningschef','Titel på person som arbetar på beställarsidan','412',908400000),&#xA;('Godkänd Revisor','Person/företag som arbetar mot uppdraget men inte för RB','626',908400000),&#xA;('Husvärd','Arbetsroll för person i styrelse','510',908400000),&#xA;('Hyresadministratör','Person som arbetar mot eller för uppdraget','435',908400002),&#xA;('Individuell Mätning','Person som arbetar mot eller för uppdraget','618',908400002),&#xA;('Inkassokontakt 1','Intern information för att RB vet vem vi ska kontakta','607',908400000),&#xA;('Inkassokontakt 2','Intern information för att RB vet vem vi ska kontakta','608',908400000),&#xA;('Jouransvarig','Person som arbetar mot eller för uppdraget','617',908400002),&#xA;('Kassör','Titel på person som arbetar på beställarsidan','132',908400000),&#xA;('Kommunens rapportör','Titel på person som arbetar på beställarsidan','514',908400000),&#xA;('Konsult','Titel på person som arbetar på beställarsidan','125',908400000),&#xA;('Kundansvarig','Person som arbetar mot eller för uppdraget','541',908400002),&#xA;('Kv-värd','Arbetsroll för person i styrelse','320',908400000),&#xA;('Köansvarig bilplatser','Intern information för att RB vet vem vi ska kontakta eller namn på ansvarig person i uppdraget','613',908400002),&#xA;('Köansvarig lokaler','Intern information för att RB vet vem vi ska kontakta eller namn på ansvarig person i uppdraget','623',908400001),&#xA;('Ledamot','Styrelserepresentant, specifik utvald person','403',908400000),&#xA;('Ledamot kommunen','Styrelserepresentant, specifik utvald person','430',908400000),&#xA;('Ledamot Riksbyggen','Styrelserepresentant, specifik utvald person','311',908400001),&#xA;('Leveransansvarig','Person som arbetar mot eller för uppdraget','652',908400002),&#xA;('Lokaluthyrare','Arbetsroll för person i styrelse','392',908400000),&#xA;('Lokalvårdare','Person som arbetar mot eller för uppdraget','505',908400002),&#xA;('Marknadsansvarig','Titel på person som arbetar på beställarsidan','302',908400000),&#xA;('Miljö- och Energiansvarig','Titel på person som arbetar på beställarsidan','475',908400000),&#xA;('NKI-kontakt','Intern information för att RB vet vem vi ska kontakta','597',908400000),&#xA;('Nyckelansvarig','Person som arbetar mot eller för uppdraget','612',908400002),&#xA;('Ombud Intresseförening','Arbetsroll för person i styrelse','301',908400000),&#xA;('Ombudsman','Titel på person som arbetar på beställarsidan','400',908400000),&#xA;('Områdeschef','Titel på person som arbetar på beställarsidan','319',908400000),&#xA;('Ordförande','Styrelserepresentant, specifik utvald person','130',908400000),&#xA;('Platschef','Titel på person som arbetar på beställarsidan','411',908400000),&#xA;('Postmottagare','Intern information för att RB vet vem vi ska kontakta','603',908400000),&#xA;('Projektledare','Person som arbetar mot eller för uppdraget','417',908400002),&#xA;('Protokoll+Kallelse','Intern information för att RB vet vem vi ska kontakta','605',908400000),&#xA;('Regionchef','Person som arbetar mot eller för uppdraget','120',908400002),&#xA;('Revisor','Titel på person som arbetar på beställarsidan','310',908400000),&#xA;('Revisor kommunen','Titel på person som arbetar på beställarsidan','428',908400000),&#xA;('Revisorsuppleant','Titel på person som arbetar på beställarsidan','441',908400000),&#xA;('Sekreterare','Styrelserepresentant, specifik utvald person','123',908400000),&#xA;('Studieansvarig','Arbetsroll för person i styrelse','442',908400000),&#xA;('Studieorganisatör','Arbetsroll för person i styrelse','306',908400000),&#xA;('Suppleant','Styrelserepresentant, specifik utvald person','309',908400000),&#xA;('Suppleant intresseförening','','624',908400000),&#xA;('Suppleant kommunen','Styrelserepresentant, specifik utvald person','431',908400000),&#xA;('Suppleant ombud Intresseförening','','625',908400000),&#xA;('Suppleant Riksbyggen','Styrelserepresentant, specifik utvald person','313',908400001),&#xA;('Teknisk chef','Titel på person som arbetar på beställarsidan','127',908400000),&#xA;('Trädgårdsansvarig','Arbetsroll för person i styrelse','653',908400000),&#xA;('Underhållsplanerare','Intern information för att RB vet vem vi ska kontakta eller namn på ansvarig person i uppdraget','620',908400002),&#xA;('Underhållsplanering kontaktperson','','654',908400000),&#xA;('Valberedning','stämmovald representant, specifik utvald person','378',908400000),&#xA;('VD','Titel på person som arbetar på beställarsidan','106',908400000),&#xA;('Verksamhetsansvarig','Titel på person som arbetar på beställarsidan','365',908400000),&#xA;('Vice ordförande','Styrelserepresentant, specifik utvald person','402',908400000),&#xA;('Vice sekreterare','Styrelserepresentant, specifik utvald person','557',908400000),&#xA;('Vice värd','Arbetsroll för person i styrelse','559',908400000),&#xA;('Överlåtelsemottagare','Intern information för att RB vet vem vi ska kontakta','614',908400000),&#xA;--- PM&#xA;('Hyresgäst','','1001',908400003),&#xA;('Bostadsrättshavare','','1002',908400003),&#xA;('Avimottagare','','1003',908400003),&#xA;('Andrahandshyresgäst','','1004',908400003),&#xA;('Borgensman','','1005',908400003),&#xA;('Garantigivare','','1006',908400003),&#xA;('Deponent','','1007',908400003)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Load rik_Engagemangsroll"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -354,6 +371,12 @@
                       cachedName="rik_Namn"
                       externalMetadataColumnId="Package\Load rik_Engagemangsroll\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_namn]"
                       lineageId="Package\Load rik_Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Output].Columns[rik_Namn]" />
+                    <inputColumn
+                      refId="Package\Load rik_Engagemangsroll\Dynamics CRM Destination.Inputs[Input].Columns[rik_Typ]"
+                      cachedDataType="i4"
+                      cachedName="rik_Typ"
+                      externalMetadataColumnId="Package\Load rik_Engagemangsroll\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_typ]"
+                      lineageId="Package\Load rik_Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Output].Columns[rik_Typ]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -453,7 +476,7 @@
                     <externalMetadataColumn
                       refId="Package\Load rik_Engagemangsroll\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_kod]"
                       dataType="wstr"
-                      length="100"
+                      length="18"
                       name="rik_kod">
                       <properties>
                         <property
@@ -525,6 +548,19 @@
                         <property
                           dataType="System.String"
                           name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load rik_Engagemangsroll\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_typ]"
+                      dataType="i4"
+                      name="rik_typ">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Picklist</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -1511,6 +1547,15 @@
                       lineageId="Package\Load rik_Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Output].Columns[MigrationId]"
                       name="MigrationId"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load rik_Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Output].Columns[rik_Typ]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load rik_Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Output].ExternalColumns[rik_Typ]"
+                      lineageId="Package\Load rik_Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Output].Columns[rik_Typ]"
+                      name="rik_Typ"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1674,6 +1719,10 @@
                       dataType="wstr"
                       length="255"
                       name="MigrationId" />
+                    <externalMetadataColumn
+                      refId="Package\Load rik_Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Output].ExternalColumns[rik_Typ]"
+                      dataType="i4"
+                      name="rik_Typ" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1875,6 +1924,11 @@
                       length="255"
                       lineageId="Package\Load rik_Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Error Output].Columns[MigrationId]"
                       name="MigrationId" />
+                    <outputColumn
+                      refId="Package\Load rik_Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Error Output].Columns[rik_Typ]"
+                      dataType="i4"
+                      lineageId="Package\Load rik_Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Error Output].Columns[rik_Typ]"
+                      name="rik_Typ" />
                     <outputColumn
                       refId="Package\Load rik_Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -2635,17 +2689,33 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
-      DTS:DTSID="{793B0574-FF77-40FD-8DE9-ADA7D6831B50}"
+      DTS:DTSID="{D31EB6DF-EEEF-426F-B692-42ADC9D9F15C}"
       DTS:From="Package\Truncate rows in ERROR table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
-      DTS:To="Package\Load rik_Engagemangsroll" />
+      DTS:To="Package\Insert into STG_engagemangsroll" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
       DTS:DTSID="{4E3F6173-11D1-494D-A6F9-677CC59AE0FB}"
       DTS:From="Package\Truncate rows in ERROR table"
       DTS:ObjectName="Constraint 5"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{C74DD40E-39D2-4D39-ACB3-EE8EFED01F40}"
+      DTS:From="Package\Insert into STG_engagemangsroll"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Load rik_Engagemangsroll" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{21CA3248-AFAE-4C60-ABED-81C91E8AA6D1}"
+      DTS:From="Package\Insert into STG_engagemangsroll"
+      DTS:ObjectName="Constraint 7"
       DTS:To="Package\LogPackageEnd"
       DTS:Value="1" />
   </DTS:PrecedenceConstraints>
@@ -2664,11 +2734,11 @@
         <NodeLayout
           Size="202,42"
           Id="Package\Load rik_Engagemangsroll"
-          TopLeft="311.428576732169,262.44706250425" />
+          TopLeft="348.428576732169,357.44706250425" />
         <NodeLayout
           Size="152,42"
           Id="Package\LogPackageEnd"
-          TopLeft="70.0000011580333,341.082356210069" />
+          TopLeft="70.0000011580333,359.082356210069" />
         <NodeLayout
           Size="162,42"
           Id="Package\LogPackageStart"
@@ -2680,7 +2750,7 @@
         <NodeLayout
           Size="221,42"
           Id="Package\Truncate rows in ERROR table"
-          TopLeft="272.000004632132,115.623531033341" />
+          TopLeft="304.000004632132,120.623531033341" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="138.007143859474,77.6882357231061">
@@ -2705,54 +2775,42 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="412.628576732169,304.04706250425">
+          TopLeft="348.428576732169,379.26470935716">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-230.628575574136,37.0352937058186"
+              EndConnector="-126.428575574136,0"
               Start="0,0"
-              End="-230.628575574136,29.5352937058186">
+              End="-118.928575574136,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2645027727777" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2645027727777"
-                    Point2="0,24.2645027727777"
-                    Point3="-4,24.2645027727777" />
-                  <mssgle:LineSegment
-                    End="-226.628575574136,24.2645027727777" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-226.628575574136,24.2645027727777"
-                    Point2="-230.628575574136,24.2645027727777"
-                    Point3="-230.628575574136,28.2645027727777" />
-                  <mssgle:LineSegment
-                    End="-230.628575574136,29.5352937058186" />
+                    End="-118.928575574136,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-140.618740912068,29.2645027727777,50.60890625,11.609375"
+              BoundingBox="-84.7687409120679,5,50.60890625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="207.771429671074,138.258825176727">
+          TopLeft="207.571429671074,140.958825176728">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="64.2285749610584,0"
+              EndConnector="96.4285749610584,0"
               Start="0,0"
-              End="56.7285749610584,0">
+              End="88.9285749610584,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="56.7285749610584,0" />
+                    End="88.9285749610584,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2763,54 +2821,94 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="136.171429671074,160.894119320114">
+          TopLeft="136.071429671074,161.294119320114">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-26.1714285130404,180.188236889955"
+              EndConnector="-14.0714285130403,197.788236889955"
               Start="0,0"
-              End="-26.1714285130404,172.688236889955">
+              End="-14.0714285130403,190.288236889955">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,114.054362100315" />
+                    End="0,113.436765653411" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,114.054362100315"
-                    Point2="0,118.054362100315"
-                    Point3="-4,118.054362100315" />
+                    Point1="0,113.436765653411"
+                    Point2="0,117.436765653411"
+                    Point3="-4,117.436765653411" />
                   <mssgle:LineSegment
-                    End="-22.1714285130404,118.054362100315" />
+                    End="-10.0714285130403,117.436765653411" />
                   <mssgle:CubicBezierSegment
-                    Point1="-22.1714285130404,118.054362100315"
-                    Point2="-26.1714285130404,118.054362100315"
-                    Point3="-26.1714285130404,122.054362100315" />
+                    Point1="-10.0714285130403,117.436765653411"
+                    Point2="-14.0714285130403,117.436765653411"
+                    Point3="-14.0714285130403,121.436765653411" />
                   <mssgle:LineSegment
-                    End="-26.1714285130404,172.688236889955" />
+                    End="-14.0714285130403,190.288236889955" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-28.3270619127702,123.054362100315,30.4826953125,9.7490234375"
+              BoundingBox="-22.2770619127702,122.436765653411,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="415.247624015484,157.223531033341">
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="379.000004632132,162.623531033341">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,105.223531470909"
+              EndConnector="-209.000003474099,196.458825176728"
               Start="0,0"
-              End="0,97.7235314709094">
+              End="-209.000003474099,188.958825176728">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,97.7235314709094" />
+                    End="0,93.8346412290188" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,93.8346412290188"
+                    Point2="0,97.8346412290188"
+                    Point3="-4,97.8346412290188" />
+                  <mssgle:LineSegment
+                    End="-205.000003474099,97.8346412290188" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-205.000003474099,97.8346412290188"
+                    Point2="-209.000003474099,97.8346412290188"
+                    Point3="-209.000003474099,101.834641229019" />
+                  <mssgle:LineSegment
+                    End="-209.000003474099,188.958825176728" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-119.741349393299,102.834641229019,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="236,42"
+          Id="Package\Insert into STG_engagemangsroll"
+          TopLeft="339,270" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="453.500002316066,162.623531033341">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,107.376468966659"
+              Start="0,0"
+              End="0,99.876468966659">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,99.876468966659" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2820,38 +2918,60 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="346.933337965465,157.223531033341">
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="453.214288366084,312">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-200.933336807432,183.858825176728"
+              EndConnector="0,45.44706250425"
               Start="0,0"
-              End="-200.933336807432,176.358825176728">
+              End="0,37.94706250425">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,70.3371652872814" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,70.3371652872814"
-                    Point2="0,74.3371652872814"
-                    Point3="-4,74.3371652872814" />
+                    End="0,37.94706250425" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="419,312">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-236.999998841967,47.082356210069"
+              Start="0,0"
+              End="-236.999998841967,39.582356210069">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-196.933336807432,74.3371652872814" />
+                    End="0,22.5056227552981" />
                   <mssgle:CubicBezierSegment
-                    Point1="-196.933336807432,74.3371652872814"
-                    Point2="-200.933336807432,74.3371652872814"
-                    Point3="-200.933336807432,78.3371652872814" />
+                    Point1="0,22.5056227552981"
+                    Point2="0,26.5056227552981"
+                    Point3="-4,26.5056227552981" />
                   <mssgle:LineSegment
-                    End="-200.933336807432,176.358825176728" />
+                    End="-232.999998841967,26.5056227552981" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-232.999998841967,26.5056227552981"
+                    Point2="-236.999998841967,26.5056227552981"
+                    Point3="-236.999998841967,30.5056227552981" />
+                  <mssgle:LineSegment
+                    End="-236.999998841967,39.582356210069" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-115.708016059966,79.3371652872814,30.4826953125,9.7490234375"
+              BoundingBox="-133.741347077233,31.5056227552981,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2868,79 +2988,43 @@
           Id="Package\Load rik_Engagemangsroll\rik_Engagemangsroll_ERROR"
           TopLeft="380.571435052521,257.552944788553" />
         <NodeLayout
-          Size="142,42"
-          Id="Package\Load rik_Engagemangsroll\Row Inserted"
-          TopLeft="178.857145766822,260.000003646402" />
-        <NodeLayout
-          Size="204,42"
+          Size="205,42"
           Id="Package\Load rik_Engagemangsroll\Dynamics CRM Destination"
           TopLeft="233.142861249497,139.482354897364" />
         <NodeLayout
           Size="199,42"
           Id="Package\Load rik_Engagemangsroll\STG rik_Engagemangsroll"
           TopLeft="236.000004019056,18.3529414338637" />
-        <EdgeLayout
-          Id="Package\Load rik_Engagemangsroll.Paths[Error Output]"
-          TopLeft="367.809527916164,181.082354897364">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="120.761907136358,76.4705898911894"
-              Start="0,0"
-              End="120.761907136358,68.9705898911894">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.9452970765902" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.9452970765902"
-                    Point2="0,30.9452970765902"
-                    Point3="4,30.9452970765902" />
-                  <mssgle:LineSegment
-                    End="116.761907136358,30.9452970765902" />
-                  <mssgle:CubicBezierSegment
-                    Point1="116.761907136358,30.9452970765902"
-                    Point2="120.761907136358,30.9452970765902"
-                    Point3="120.761907136358,34.9452970765903" />
-                  <mssgle:LineSegment
-                    End="120.761907136358,68.9705898911894" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="32.0445668494289,35.9452970765903,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Load rik_Engagemangsroll\Row Inserted"
+          TopLeft="178.857145766822,260.000003646402" />
         <EdgeLayout
           Id="Package\Load rik_Engagemangsroll.Paths[Default Output]"
-          TopLeft="302.47619458283,181.082354897364">
+          TopLeft="302.809527916164,181.482354897364">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-52.8190488160083,78.917648749038"
+              EndConnector="-52.9523821493417,78.517648749038"
               Start="0,0"
-              End="-52.8190488160083,71.417648749038">
+              End="-52.9523821493417,71.017648749038">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.9355465754862" />
+                    End="0,27.7719043340735" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,27.9355465754862"
-                    Point2="0,31.9355465754862"
-                    Point3="-4,31.9355465754862" />
+                    Point1="0,27.7719043340735"
+                    Point2="0,31.7719043340735"
+                    Point3="-4,31.7719043340735" />
                   <mssgle:LineSegment
-                    End="-48.8190488160083,31.9355465754862" />
+                    End="-48.9523821493417,31.7719043340735" />
                   <mssgle:CubicBezierSegment
-                    Point1="-48.8190488160083,31.9355465754862"
-                    Point2="-52.8190488160083,31.9355465754862"
-                    Point3="-52.8190488160083,35.9355465754862" />
+                    Point1="-48.9523821493417,31.7719043340735"
+                    Point2="-52.9523821493417,31.7719043340735"
+                    Point3="-52.9523821493417,35.7719043340735" />
                   <mssgle:LineSegment
-                    End="-52.8190488160083,71.417648749038" />
+                    End="-52.9523821493417,71.017648749038" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2951,24 +3035,60 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load rik_Engagemangsroll.Paths[OLE DB Source Output]"
-          TopLeft="335.371432634277,59.9529414338637">
+          TopLeft="335.571432634277,60.3529414338637">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,79.5294134635003"
+              EndConnector="0,79.1294134635003"
               Start="0,0"
-              End="0,72.0294134635003">
+              End="0,71.6294134635003">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,72.0294134635003" />
+                    End="0,71.6294134635003" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load rik_Engagemangsroll.Paths[Error Output]"
+          TopLeft="368.47619458283,181.482354897364">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="120.095240469691,76.070589891189"
+              Start="0,0"
+              End="120.095240469691,68.570589891189">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.7817101399003" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.7817101399003"
+                    Point2="0,30.7817101399003"
+                    Point3="4,30.7817101399003" />
+                  <mssgle:LineSegment
+                    End="116.095240469691,30.7817101399003" />
+                  <mssgle:CubicBezierSegment
+                    Point1="116.095240469691,30.7817101399003"
+                    Point2="120.095240469691,30.7817101399003"
+                    Point3="120.095240469691,34.7817101399003" />
+                  <mssgle:LineSegment
+                    End="120.095240469691,68.570589891189" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="31.7112335160953,35.7817101399003,56.6727734375,11.43359375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

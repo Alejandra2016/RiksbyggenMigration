@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Activities_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="118"
-  DTS:VersionGUID="{5F10D9FD-2C26-4C63-8834-989FEEB16611}">
+  DTS:VersionBuild="122"
+  DTS:VersionGUID="{4E523225-562D-475E-9765-8C1BFC47C56A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -3254,6 +3254,19 @@
                           refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
                           dataType="i4"
                           name="ErrorColumn" />
+                        <externalMetadataColumn
+                          refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ValdEpost]"
+                          dataType="wstr"
+                          length="100"
+                          name="rik_ValdEpost" />
+                        <externalMetadataColumn
+                          refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ValjEpost1]"
+                          dataType="bool"
+                          name="rik_ValjEpost1" />
+                        <externalMetadataColumn
+                          refId="Package\Core activities entities\Migrate Email\Email_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ValjEpost2]"
+                          dataType="bool"
+                          name="rik_ValjEpost2" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -4219,11 +4232,11 @@
     &lt;/LookupTarget&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;rik_anbud&lt;/TargetEntity&gt;
-      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
     &lt;/LookupTarget&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;rik_driftslarm&lt;/TargetEntity&gt;
-      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
     &lt;/LookupTarget&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;salesorder&lt;/TargetEntity&gt;
@@ -4614,6 +4627,46 @@
                             <property
                               dataType="System.String"
                               name="CrmFieldType">String</property>
+                            <property
+                              dataType="System.String"
+                              name="LookupTypes"></property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[rik_valdepost]"
+                          dataType="wstr"
+                          length="100"
+                          name="rik_valdepost">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CrmFieldType">String</property>
+                            <property
+                              dataType="System.String"
+                              name="LookupTypes"></property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[rik_valjepost1]"
+                          dataType="bool"
+                          name="rik_valjepost1">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CrmFieldType">Boolean</property>
+                            <property
+                              dataType="System.String"
+                              name="LookupTypes"></property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[rik_valjepost2]"
+                          dataType="bool"
+                          name="rik_valjepost2">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CrmFieldType">Boolean</property>
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
@@ -15742,6 +15795,10 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="169,42"
+          Id="Package\Core activities entities\Migrate Annotation"
+          TopLeft="221,97" />
+        <NodeLayout
           Size="168,43"
           Id="Package\Core activities entities\Migrate Email"
           TopLeft="34.4999938036005,97.7777705457476" />
@@ -15753,10 +15810,6 @@
           Size="140,43"
           Id="Package\Core activities entities\Migrate Task"
           TopLeft="218.562491060856,26.5416607680419" />
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Core activities entities\Migrate Annotation"
-          TopLeft="221,97" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -16092,14 +16145,143 @@
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\Core activities entities\Migrate Annotation">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="206,42"
+          Id="Package\Core activities entities\Migrate Annotation\Migrate annotation records"
+          TopLeft="173.5,127.5" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Core activities entities\Migrate Annotation\Read annotation records"
+          TopLeft="179.5,25.5" />
+        <EdgeLayout
+          Id="Package\Core activities entities\Migrate Annotation.Paths[CRM Primary Output]"
+          TopLeft="276.5,67.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Core activities entities\Migrate Annotation\Annotation_ERROR"
+          TopLeft="302,244" />
+        <EdgeLayout
+          Id="Package\Core activities entities\Migrate Annotation.Paths[Error Output]"
+          TopLeft="309.5,169.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="77,74.5"
+              Start="0,0"
+              End="77,67">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.1445086705202" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.1445086705202"
+                    Point2="0,30.1445086705202"
+                    Point3="4,30.1445086705202" />
+                  <mssgle:LineSegment
+                    End="73,30.1445086705202" />
+                  <mssgle:CubicBezierSegment
+                    Point1="73,30.1445086705202"
+                    Point2="77,30.1445086705202"
+                    Point3="77,34.1445086705202" />
+                  <mssgle:LineSegment
+                    End="77,67" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="10.16361328125,35.1445086705202,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Core activities entities\Migrate Annotation\Rows Inserted"
+          TopLeft="127,243" />
+        <EdgeLayout
+          Id="Package\Core activities entities\Migrate Annotation.Paths[Default Output]"
+          TopLeft="243.5,169.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-43,73.5"
+              Start="0,0"
+              End="-43,66">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.7398843930636" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.7398843930636"
+                    Point2="0,29.7398843930636"
+                    Point3="-4,29.7398843930636" />
+                  <mssgle:LineSegment
+                    End="-39,29.7398843930636" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-39,29.7398843930636"
+                    Point2="-43,29.7398843930636"
+                    Point3="-43,33.7398843930636" />
+                  <mssgle:LineSegment
+                    End="-43,66" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Core activities entities\Migrate Annotation\Annotation_ERROR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Core activities entities\Migrate Email">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="147,43"
-          Id="Package\Core activities entities\Migrate Email\Rows Inserted"
-          TopLeft="186.333330526948,305.333329304059" />
+          Size="181,42"
+          Id="Package\Core activities entities\Migrate Email\Migrate Email records"
+          TopLeft="258.583329440405,200.433331155976" />
         <NodeLayout
           Size="169,42"
           Id="Package\Core activities entities\Migrate Email\Read Email records"
@@ -16109,9 +16291,13 @@
           Id="Package\Core activities entities\Migrate Email\Email_ERROR"
           TopLeft="446.666666666667,305" />
         <NodeLayout
-          Size="181,42"
-          Id="Package\Core activities entities\Migrate Email\Migrate Email records"
-          TopLeft="258.583329440405,200.433331155976" />
+          Size="147,43"
+          Id="Package\Core activities entities\Migrate Email\Rows Inserted"
+          TopLeft="186.333330526948,305.333329304059" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Core activities entities\Migrate Email\Derived Column"
+          TopLeft="275.333330526948,108.333329304059" />
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[Error Output]"
           TopLeft="377.916662773738,242.433331155976">
@@ -16149,6 +16335,28 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Core activities entities\Migrate Email.Paths[Derived Column Output]"
+          TopLeft="350.708329983676,150.333329304059">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.100001851917"
+              Start="0,0"
+              End="0,42.600001851917">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.600001851917" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[Default Output]"
           TopLeft="320.249996107072,242.433331155976">
           <EdgeLayout.Curve>
@@ -16182,10 +16390,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Core activities entities\Migrate Email\Derived Column"
-          TopLeft="275.333330526948,108.333329304059" />
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[CRM Primary Output]"
           TopLeft="350.424239053983,55.9696967020179">
@@ -16200,28 +16404,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,44.8636326020411" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Core activities entities\Migrate Email.Paths[Derived Column Output]"
-          TopLeft="350.708329983676,150.333329304059">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,50.100001851917"
-              Start="0,0"
-              End="0,42.600001851917">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.600001851917" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -16411,10 +16593,6 @@
           Id="Package\Core activities entities\Migrate Task\Rows Inserted"
           TopLeft="186.333330526948,304.333329304059" />
         <NodeLayout
-          Size="141,43"
-          Id="Package\Core activities entities\Migrate Task\Task_ERROR"
-          TopLeft="382.666666666667,303.666666666667" />
-        <NodeLayout
           Size="164,43"
           Id="Package\Core activities entities\Migrate Task\Read task records"
           TopLeft="262.666666666667,10.3333333333333" />
@@ -16422,6 +16600,14 @@
           Size="175,42"
           Id="Package\Core activities entities\Migrate Task\Migrate task records"
           TopLeft="258.583329440405,186.433331155976" />
+        <NodeLayout
+          Size="141,43"
+          Id="Package\Core activities entities\Migrate Task\Task_ERROR"
+          TopLeft="382.666666666667,303.666666666667" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Core activities entities\Migrate Task\Derived Column"
+          TopLeft="266.333330526948,105.333329304059" />
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Task.Paths[Error Output]"
           TopLeft="373.916662773738,228.433331155976">
@@ -16459,6 +16645,28 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Core activities entities\Migrate Task.Paths[Derived Column Output]"
+          TopLeft="344.708329983676,147.333329304059">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.100001851917"
+              Start="0,0"
+              End="0,31.600001851917">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.600001851917" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Core activities entities\Migrate Task.Paths[Default Output]"
           TopLeft="318.249996107072,228.433331155976">
           <EdgeLayout.Curve>
@@ -16492,10 +16700,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Core activities entities\Migrate Task\Derived Column"
-          TopLeft="266.333330526948,105.333329304059" />
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Task.Paths[CRM Primary Output]"
           TopLeft="343.999998596807,53.3333333333333">
@@ -16510,28 +16714,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,44.4999959707257" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Core activities entities\Migrate Task.Paths[Derived Column Output]"
-          TopLeft="344.708329983676,147.333329304059">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,39.100001851917"
-              Start="0,0"
-              End="0,31.600001851917">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.600001851917" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -16829,135 +17011,6 @@
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Load Mail attachments\activityMimeattachment_ERROR">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Core activities entities\Migrate Annotation">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="206,42"
-          Id="Package\Core activities entities\Migrate Annotation\Migrate annotation records"
-          TopLeft="173.5,127.5" />
-        <NodeLayout
-          Size="194,42"
-          Id="Package\Core activities entities\Migrate Annotation\Read annotation records"
-          TopLeft="179.5,25.5" />
-        <EdgeLayout
-          Id="Package\Core activities entities\Migrate Annotation.Paths[CRM Primary Output]"
-          TopLeft="276.5,67.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Core activities entities\Migrate Annotation\Annotation_ERROR"
-          TopLeft="302,244" />
-        <EdgeLayout
-          Id="Package\Core activities entities\Migrate Annotation.Paths[Error Output]"
-          TopLeft="309.5,169.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="77,74.5"
-              Start="0,0"
-              End="77,67">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.1445086705202" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.1445086705202"
-                    Point2="0,30.1445086705202"
-                    Point3="4,30.1445086705202" />
-                  <mssgle:LineSegment
-                    End="73,30.1445086705202" />
-                  <mssgle:CubicBezierSegment
-                    Point1="73,30.1445086705202"
-                    Point2="77,30.1445086705202"
-                    Point3="77,34.1445086705202" />
-                  <mssgle:LineSegment
-                    End="77,67" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="10.16361328125,35.1445086705202,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="147,42"
-          Id="Package\Core activities entities\Migrate Annotation\Rows Inserted"
-          TopLeft="127,243" />
-        <EdgeLayout
-          Id="Package\Core activities entities\Migrate Annotation.Paths[Default Output]"
-          TopLeft="243.5,169.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-43,73.5"
-              Start="0,0"
-              End="-43,66">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.7398843930636" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.7398843930636"
-                    Point2="0,29.7398843930636"
-                    Point3="-4,29.7398843930636" />
-                  <mssgle:LineSegment
-                    End="-39,29.7398843930636" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-39,29.7398843930636"
-                    Point2="-43,29.7398843930636"
-                    Point3="-43,33.7398843930636" />
-                  <mssgle:LineSegment
-                    End="-43,66" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Core activities entities\Migrate Annotation\Annotation_ERROR">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
