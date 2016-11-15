@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Foretagsinformation_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="76"
-  DTS:VersionGUID="{CAE4BB36-C491-4328-AEF8-42A5342DAF18}">
+  DTS:VersionBuild="80"
+  DTS:VersionGUID="{F20BFC56-0851-4191-AFCF-B875AE8B6702}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -233,6 +233,82 @@
           version="1">
           <components>
             <component
+              refId="Package\Load Foretagsinformation\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Foretagsinformation\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Foretagsinformation\Data Conversion.Inputs[Data Conversion Input].Columns[rb_account_id]"
+                      cachedDataType="guid"
+                      cachedName="rb_account_id"
+                      lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_account_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Foretagsinformation\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load Foretagsinformation\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Foretagsinformation\Data Conversion.Outputs[Data Conversion Output].Columns[STR_rb_account_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Foretagsinformation\Data Conversion.Outputs[Data Conversion Output].Columns[STR_rb_account_id]"
+                      name="STR_rb_account_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_account_id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Foretagsinformation\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load Foretagsinformation\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Foretagsinformation\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Foretagsinformation\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Foretagsinformation\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Foretagsinformation\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Foretagsinformation\Derived Column"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -282,11 +358,6 @@
                       cachedLength="200"
                       cachedName="rb_name"
                       lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_name]" />
-                    <inputColumn
-                      refId="Package\Load Foretagsinformation\Derived Column.Inputs[Derived Column Input].Columns[rb_account_id]"
-                      cachedDataType="guid"
-                      cachedName="rb_account_id"
-                      lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_account_id]" />
                     <inputColumn
                       refId="Package\Load Foretagsinformation\Derived Column.Inputs[Derived Column Input].Columns[rb_description]"
                       cachedDataType="nText"
@@ -501,6 +572,30 @@
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
                           name="FriendlyExpression">owneridtype == "team" ? 9 : 8</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Foretagsinformation\Derived Column.Inputs[Derived Column Input].Columns[STR_rb_account_id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_rb_account_id"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Foretagsinformation\Data Conversion.Outputs[Data Conversion Output].Columns[STR_rb_account_id]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE]([REPLACE](#{Package\Load Foretagsinformation\Data Conversion.Outputs[Data Conversion Output].Columns[STR_rb_account_id]},"{",""),"}","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(REPLACE(STR_rb_account_id,"{",""),"}","")</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -1377,28 +1472,6 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Load Foretagsinformation\Derived Column.Outputs[Derived Column Output].Columns[rik_Accountid]"
-                      dataType="guid"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Foretagsinformation\Derived Column.Outputs[Derived Column Output].Columns[rik_Accountid]"
-                      name="rik_Accountid"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_account_id]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">rb_account_id</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
                       refId="Package\Load Foretagsinformation\Derived Column.Outputs[Derived Column Output].Columns[rik_avvikelsekommentar]"
                       dataType="nText"
                       errorOrTruncationOperation="Computation"
@@ -1954,18 +2027,19 @@
                       externalMetadataColumnId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].ExternalColumns[ownerid]"
                       lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[owneridname]" />
                     <inputColumn
-                      refId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].Columns[rb_account_id]"
-                      cachedDataType="guid"
-                      cachedName="rb_account_id"
-                      externalMetadataColumnId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_accountid]"
-                      lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_account_id]" />
-                    <inputColumn
                       refId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].Columns[owneridtype]"
                       cachedDataType="wstr"
                       cachedLength="64"
                       cachedName="owneridtype"
                       externalMetadataColumnId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].ExternalColumns[owneridtype]"
                       lineageId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[owneridtype]" />
+                    <inputColumn
+                      refId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].Columns[STR_rb_account_id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_rb_account_id"
+                      externalMetadataColumnId="Package\Load Foretagsinformation\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_accountid]"
+                      lineageId="Package\Load Foretagsinformation\Data Conversion.Outputs[Data Conversion Output].Columns[STR_rb_account_id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4646,12 +4720,6 @@
                       externalMetadataColumnId="Package\Load Foretagsinformation\Foretagsinformation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_PantInfo]"
                       lineageId="Package\Load Foretagsinformation\Derived Column.Outputs[Derived Column Output].Columns[rik_pantinfo]" />
                     <inputColumn
-                      refId="Package\Load Foretagsinformation\Foretagsinformation_ERROR.Inputs[OLE DB Destination Input].Columns[rik_Accountid]"
-                      cachedDataType="guid"
-                      cachedName="rik_Accountid"
-                      externalMetadataColumnId="Package\Load Foretagsinformation\Foretagsinformation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AccountId]"
-                      lineageId="Package\Load Foretagsinformation\Derived Column.Outputs[Derived Column Output].Columns[rik_Accountid]" />
-                    <inputColumn
                       refId="Package\Load Foretagsinformation\Foretagsinformation_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
                       cachedDataType="i4"
                       cachedName="ErrorCode"
@@ -5102,9 +5170,14 @@
           <paths>
             <path
               refId="Package\Load Foretagsinformation.Paths[CRM Primary Output]"
-              endId="Package\Load Foretagsinformation\Derived Column.Inputs[Derived Column Input]"
+              endId="Package\Load Foretagsinformation\Data Conversion.Inputs[Data Conversion Input]"
               name="CRM Primary Output"
               startId="Package\Load Foretagsinformation\Dynamics CRM Source.Outputs[CRM Primary Output]" />
+            <path
+              refId="Package\Load Foretagsinformation.Paths[Data Conversion Output]"
+              endId="Package\Load Foretagsinformation\Derived Column.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\Load Foretagsinformation\Data Conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Load Foretagsinformation.Paths[Default Output]"
               endId="Package\Load Foretagsinformation\Row Inserted.Inputs[Row Count Input 1]"
@@ -6089,33 +6162,11 @@
         <NodeLayout
           Size="154,42"
           Id="Package\Load Foretagsinformation\Derived Column"
-          TopLeft="366,149" />
+          TopLeft="365,177" />
         <NodeLayout
           Size="184,42"
           Id="Package\Load Foretagsinformation\Dynamics CRM Source"
           TopLeft="347,31" />
-        <EdgeLayout
-          Id="Package\Load Foretagsinformation.Paths[Derived Column Output]"
-          TopLeft="440.678574279863,191">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,64.811766610592"
-              Start="0,0"
-              End="0,57.311766610592">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57.311766610592" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Foretagsinformation.Paths[Default Output]"
           TopLeft="405.523815226394,297.811766610592">
@@ -6151,19 +6202,67 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Foretagsinformation.Paths[CRM Primary Output]"
-          TopLeft="441,73">
+          Id="Package\Load Foretagsinformation.Paths[Derived Column Output]"
+          TopLeft="440.178574279863,219">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,76"
+              EndConnector="0,36.811766610592"
               Start="0,0"
-              End="0,68.5">
+              End="0,29.311766610592">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,68.5" />
+                    End="0,29.311766610592" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Load Foretagsinformation\Data Conversion"
+          TopLeft="367,100" />
+        <EdgeLayout
+          Id="Package\Load Foretagsinformation.Paths[CRM Primary Output]"
+          TopLeft="442,73">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Foretagsinformation.Paths[Data Conversion Output]"
+          TopLeft="443.5,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Incident_CREATE_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="81"
-  DTS:VersionGUID="{CE3B5B47-5A69-499B-8129-C352336ED060}">
+  DTS:VersionBuild="85"
+  DTS:VersionGUID="{8245D64B-95F3-4CAC-91DA-8E202962FA90}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -283,6 +283,134 @@
               </outputs>
             </component>
             <component
+              refId="Package\Load Incident\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Incident\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Incident\Data Conversion.Inputs[Data Conversion Input].Columns[cre_kontaktid]"
+                      cachedDataType="guid"
+                      cachedName="cre_kontaktid"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[cre_kontaktid]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Data Conversion.Inputs[Data Conversion Input].Columns[cre_owner_account_id]"
+                      cachedDataType="guid"
+                      cachedName="cre_owner_account_id"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[cre_owner_account_id]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Data Conversion.Inputs[Data Conversion Input].Columns[customerid]"
+                      cachedDataType="guid"
+                      cachedName="customerid"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[customerid]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load Incident\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_kontaktid]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_kontaktid]"
+                      name="STR_cre_kontaktid"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[cre_kontaktid]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_owner_account_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_owner_account_id]"
+                      name="STR_cre_owner_account_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[cre_owner_account_id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_customerid]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_customerid]"
+                      name="STR_customerid"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[customerid]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load Incident\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Incident\Derived Column"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -317,6 +445,78 @@
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
                           name="FriendlyExpression">customeridtype == "account" ? 1 : 2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Incident\Derived Column.Inputs[Derived Column Input].Columns[STR_cre_kontaktid]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_cre_kontaktid"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_kontaktid]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE]([REPLACE](#{Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_kontaktid]},"{",""),"}","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(REPLACE(STR_cre_kontaktid,"{",""),"}","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Incident\Derived Column.Inputs[Derived Column Input].Columns[STR_cre_owner_account_id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_cre_owner_account_id"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_owner_account_id]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE]([REPLACE](#{Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_owner_account_id]},"{",""),"}","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(REPLACE(STR_cre_owner_account_id,"{",""),"}","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Incident\Derived Column.Inputs[Derived Column Input].Columns[STR_customerid]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_customerid"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_customerid]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE]([REPLACE](#{Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_customerid]},"{",""),"}","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(REPLACE(STR_customerid,"{",""),"}","")</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -654,30 +854,12 @@
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[createdby]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[createdbyname]" />
                     <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[customerid]"
-                      cachedDataType="guid"
-                      cachedName="customerid"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[customerid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[customerid]" />
-                    <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[cre_kontaktid]"
-                      cachedDataType="guid"
-                      cachedName="cre_kontaktid"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_anmalareid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[cre_kontaktid]" />
-                    <inputColumn
                       refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[rb_followupcodename]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="rb_followupcodename"
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_arendekategoriid]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_followupcodename]" />
-                    <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[cre_owner_account_id]"
-                      cachedDataType="guid"
-                      cachedName="cre_owner_account_id"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_fastighetsagareid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[cre_owner_account_id]" />
                     <inputColumn
                       refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[rb_decision]"
                       cachedDataType="i4"
@@ -764,6 +946,27 @@
                       cachedName="rb_x_propertyobject_id"
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_fastighetsobjektid]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_x_propertyobject_id]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[STR_customerid]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_customerid"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[customerid]"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_customerid]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[STR_cre_kontaktid]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_cre_kontaktid"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_anmalareid]"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_kontaktid]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[STR_cre_owner_account_id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_cre_owner_account_id"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_fastighetsagareid]"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_owner_account_id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2425,30 +2628,12 @@
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[createdby]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[createdbyname]" />
                     <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[customerid]"
-                      cachedDataType="guid"
-                      cachedName="customerid"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[customerid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[customerid]" />
-                    <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[cre_kontaktid]"
-                      cachedDataType="guid"
-                      cachedName="cre_kontaktid"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_anmalareid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[cre_kontaktid]" />
-                    <inputColumn
                       refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[rb_followupcodename]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="rb_followupcodename"
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_arendekategoriid]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_followupcodename]" />
-                    <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[cre_owner_account_id]"
-                      cachedDataType="guid"
-                      cachedName="cre_owner_account_id"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_fastighetsagareid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[cre_owner_account_id]" />
                     <inputColumn
                       refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[rb_decision]"
                       cachedDataType="i4"
@@ -2535,6 +2720,27 @@
                       cachedName="rb_x_propertyobject_id"
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_fastighetsobjektid]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_x_propertyobject_id]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[STR_customerid]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_customerid"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[customerid]"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_customerid]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[STR_cre_kontaktid]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_cre_kontaktid"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_anmalareid]"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_kontaktid]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[STR_cre_owner_account_id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_cre_owner_account_id"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_fastighetsagareid]"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_owner_account_id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4196,30 +4402,12 @@
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[createdby]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[createdbyname]" />
                     <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[customerid]"
-                      cachedDataType="guid"
-                      cachedName="customerid"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[customerid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[customerid]" />
-                    <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[cre_kontaktid]"
-                      cachedDataType="guid"
-                      cachedName="cre_kontaktid"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_anmalareid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[cre_kontaktid]" />
-                    <inputColumn
                       refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[rb_followupcodename]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="rb_followupcodename"
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_arendekategoriid]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_followupcodename]" />
-                    <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[cre_owner_account_id]"
-                      cachedDataType="guid"
-                      cachedName="cre_owner_account_id"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_fastighetsagareid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[cre_owner_account_id]" />
                     <inputColumn
                       refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[rb_decision]"
                       cachedDataType="i4"
@@ -4306,6 +4494,27 @@
                       cachedName="rb_x_propertyobject_id"
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_fastighetsobjektid]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_x_propertyobject_id]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[STR_customerid]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_customerid"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[customerid]"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_customerid]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[STR_cre_kontaktid]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_cre_kontaktid"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_anmalareid]"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_kontaktid]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[STR_cre_owner_account_id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_cre_owner_account_id"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_fastighetsagareid]"
+                      lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_owner_account_id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -6625,6 +6834,12 @@
     &lt;order attribute="title" descending="false" /&gt;
     &lt;filter type="and"&gt;
      &lt;condition attribute="rb_followupcode" operator="in"&gt;
+        &lt;value&gt;{325504B5-D2B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{FF84CC0C-EFB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{5B532E16-EFB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{A522E22B-EFB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{A2731022-EFB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{0BC4D4D1-CBB2-E511-9438-005056940427}&lt;/value&gt;
         &lt;value&gt;{F07B09B4-C2E9-E511-943F-005056940427}&lt;/value&gt;
         &lt;value&gt;{8975AAD4-C2E9-E511-943F-005056940427}&lt;/value&gt;
         &lt;value&gt;{C60FEEE2-C2E9-E511-943F-005056940427}&lt;/value&gt;
@@ -6634,50 +6849,88 @@
         &lt;value&gt;{6D756C32-C3E9-E511-943F-005056940427}&lt;/value&gt;
         &lt;value&gt;{DF9FA741-C3E9-E511-943F-005056940427}&lt;/value&gt;
         &lt;value&gt;{A7A04D6B-C3E9-E511-943F-005056940427}&lt;/value&gt;
-        &lt;value&gt;{2B3B477B-C3E9-E511-943F-005056940427}&lt;/value&gt;
         &lt;value&gt;{60749C74-C3E9-E511-943F-005056940427}&lt;/value&gt;
-        &lt;value&gt;{2FBA5D05-C9B9-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{FF8E1E07-CBB9-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{BEA03E04-CEB9-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{008F1E07-CBB9-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{B6FCB4D1-C9B9-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{E9C78AE1-C9B9-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{4B3966C8-C9B9-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{3C51FBE1-CAB9-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{6991FE0C-CEB9-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{2D3036D2-CAB9-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{5C5E65CB-CAB9-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{AC2EE7DA-C9B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{2B3B477B-C3E9-E511-943F-005056940427}&lt;/value&gt;
+        &lt;value&gt;{248093FD-D0B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{756B6815-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{2A585A1E-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{30585A1E-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{9884F027-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{9984F027-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{63970E30-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{797BC66C-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{7DBC5D77-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{79FAD952-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{CEA5595B-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{65970E30-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{B6A80739-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{D5A0E742-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{ED216FEC-CEB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{850EE019-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{5E21FE21-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{8F0F1A12-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{900F1A12-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{49C65A03-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{4155180C-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{5F049485-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{EC6D157E-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{246FC040-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{236FC040-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{4D2DC230-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{4355605E-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{65D14968-CFB9-E511-9438-005056940427}&lt;/value&gt;
         &lt;value&gt;{E36EFCA5-C9B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{4B3966C8-C9B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{B6FCB4D1-C9B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{2FBA5D05-C9B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{AC2EE7DA-C9B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{E9C78AE1-C9B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{5C5E65CB-CAB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{2D3036D2-CAB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{FF8E1E07-CBB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{008F1E07-CBB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{3C51FBE1-CAB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{3F1C0BEA-CAB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{BEA03E04-CEB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{6991FE0C-CEB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{194C0765-EEB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{4E93D7F3-EEB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{3AE78556-EEB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{298C60FE-EEB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{ABF38351-C0DF-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{7E346BA7-63D5-E511-943D-005056940427}&lt;/value&gt;
+        &lt;value&gt;{D5D5E0CE-D3B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{911205B0-63D5-E511-943D-005056940427}&lt;/value&gt;
+        &lt;value&gt;{FEB27B49-6BE0-E511-943E-005056940427}&lt;/value&gt;
+        &lt;value&gt;{14512119-C2DF-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{E076DD20-C2DF-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{1A9BD825-EEB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{8CAC9736-EEB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{FF6B68BC-02E2-E511-943E-005056940427}&lt;/value&gt;
+        &lt;value&gt;{ABDB92D6-02E2-E511-943E-005056940427}&lt;/value&gt;
+        &lt;value&gt;{F544D4DF-D3B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{D918F15F-63D5-E511-943D-005056940427}&lt;/value&gt;
+        &lt;value&gt;{CA368673-63D5-E511-943D-005056940427}&lt;/value&gt;
+        &lt;value&gt;{5761467A-63D5-E511-943D-005056940427}&lt;/value&gt;
+        &lt;value&gt;{8C034474-D3B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{DB55B78B-D3B9-E511-9438-005056940427}&lt;/value&gt;
         &lt;value&gt;{6DE47938-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{B5A80739-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{1FB22C7D-DAEC-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{54D69896-DAEC-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{485FF2D5-DAEC-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{106EDE71-DAEC-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{E0D32386-DAEC-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{D31A41E0-DAEC-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{6C6849DC-EDB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{DC2709C6-EDB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{A8C6BAFA-EDB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{C42580E7-EDB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{7C9695D1-EDB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{D2D9B5BA-EDB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{746B6815-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{1262CB18-64D5-E511-943D-005056940427}&lt;/value&gt;
         &lt;value&gt;{DD7F81BE-C9B9-E511-9438-005056940427}&lt;/value&gt;
-      &lt;/condition&gt;
-      &lt;condition attribute="cre_incidenttypid" operator="in"&gt;
-        &lt;value&gt;{61C20EF2-11B9-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{F7BBB340-13A0-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{51E45E68-FC76-E511-9431-005056940427}&lt;/value&gt;
-        &lt;value&gt;{13D31295-3840-E511-9429-005056940427}&lt;/value&gt;
-        &lt;value&gt;{EFBBFEC6-5755-E511-942D-005056940427}&lt;/value&gt;
-      &lt;/condition&gt;
-      &lt;condition attribute="cre_incidentsubtype_id" operator="in"&gt;
-        &lt;value&gt;{CCA81CAE-18A0-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{3CBDC208-9B8E-E511-9436-005056940427}&lt;/value&gt;
-        &lt;value&gt;{41ABB291-B292-E511-9436-005056940427}&lt;/value&gt;
-        &lt;value&gt;{E9B82C77-39A2-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{E15C65B8-18A0-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{C36D0BF2-9A8E-E511-9436-005056940427}&lt;/value&gt;
-        &lt;value&gt;{93061D42-9B8E-E511-9436-005056940427}&lt;/value&gt;
-        &lt;value&gt;{E7FD52A3-9A8E-E511-9436-005056940427}&lt;/value&gt;
-        &lt;value&gt;{37EEF4A0-B292-E511-9436-005056940427}&lt;/value&gt;
-        &lt;value&gt;{671C3F7D-39A2-E511-9438-005056940427}&lt;/value&gt;
-        &lt;value&gt;{1473E7B0-9B8E-E511-9436-005056940427}&lt;/value&gt;
-        &lt;value&gt;{E016F654-9B8E-E511-9436-005056940427}&lt;/value&gt;
-        &lt;value&gt;{A6EE0A30-7A7D-E511-9431-005056940427}&lt;/value&gt;
-        &lt;value&gt;{2EA911DE-C4E6-E511-943F-005056940427}&lt;/value&gt;
-        &lt;value&gt;{514B1628-9B8E-E511-9436-005056940427}&lt;/value&gt;
-        &lt;value&gt;{449272FC-C4E6-E511-943F-005056940427}&lt;/value&gt;
-        &lt;value&gt;{D8B9D9BF-787D-E511-9431-005056940427}&lt;/value&gt;
-        &lt;value&gt;{682B1EE6-797D-E511-9431-005056940427}&lt;/value&gt;
       &lt;/condition&gt;
     &lt;/filter&gt;
     &lt;/entity&gt;
@@ -32374,9 +32627,14 @@
               startId="Package\Load Incident\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 3]" />
             <path
               refId="Package\Load Incident.Paths[CRM Primary Output]"
-              endId="Package\Load Incident\Derived Column.Inputs[Derived Column Input]"
+              endId="Package\Load Incident\Data Conversion.Inputs[Data Conversion Input]"
               name="CRM Primary Output"
               startId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output]" />
+            <path
+              refId="Package\Load Incident.Paths[Data Conversion Output]"
+              endId="Package\Load Incident\Derived Column.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Load Incident.Paths[Default Output]"
               endId="Package\Load Incident\Union All Inserted.Inputs[Union All Input 1]"
@@ -33125,6 +33383,157 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Update Incident\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Update Incident\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update Incident\Data Conversion.Inputs[Data Conversion Input].Columns[incidentid]"
+                      cachedDataType="guid"
+                      cachedName="incidentid"
+                      lineageId="Package\Update Incident\Read incident records.Outputs[CRM Primary Output].Columns[incidentid]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update Incident\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Update Incident\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_incidentid]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Update Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_incidentid]"
+                      name="STR_incidentid"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Update Incident\Read incident records.Outputs[CRM Primary Output].Columns[incidentid]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update Incident\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Update Incident\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Incident\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Incident\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Incident\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Incident\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update Incident\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Update Incident\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update Incident\Derived Column.Inputs[Derived Column Input].Columns[STR_incidentid]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_incidentid"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Update Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_incidentid]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE]([REPLACE](#{Package\Update Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_incidentid]},"{",""),"}","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(REPLACE(STR_incidentid,"{",""),"}","")</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update Incident\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Update Incident\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update Incident\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Update Incident\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Incident\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Incident\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Incident\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Incident\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Update Incident\Incident_ERROR"
               componentClassID="Microsoft.OLEDBDestination"
@@ -34043,8 +34452,110 @@
             &lt;attribute name="createdon" /&gt;
             &lt;order attribute="createdon"/&gt;
         &lt;/link-entity&gt;
+    &lt;filter type="and"&gt;
+     &lt;condition attribute="rb_followupcode" operator="in"&gt;
+        &lt;value&gt;{325504B5-D2B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{FF84CC0C-EFB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{5B532E16-EFB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{A522E22B-EFB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{A2731022-EFB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{0BC4D4D1-CBB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{F07B09B4-C2E9-E511-943F-005056940427}&lt;/value&gt;
+        &lt;value&gt;{8975AAD4-C2E9-E511-943F-005056940427}&lt;/value&gt;
+        &lt;value&gt;{C60FEEE2-C2E9-E511-943F-005056940427}&lt;/value&gt;
+        &lt;value&gt;{DD3EF1FD-C2E9-E511-943F-005056940427}&lt;/value&gt;
+        &lt;value&gt;{248DA61D-C3E9-E511-943F-005056940427}&lt;/value&gt;
+        &lt;value&gt;{8B6E8C28-C3E9-E511-943F-005056940427}&lt;/value&gt;
+        &lt;value&gt;{6D756C32-C3E9-E511-943F-005056940427}&lt;/value&gt;
+        &lt;value&gt;{DF9FA741-C3E9-E511-943F-005056940427}&lt;/value&gt;
+        &lt;value&gt;{A7A04D6B-C3E9-E511-943F-005056940427}&lt;/value&gt;
+        &lt;value&gt;{60749C74-C3E9-E511-943F-005056940427}&lt;/value&gt;
+        &lt;value&gt;{2B3B477B-C3E9-E511-943F-005056940427}&lt;/value&gt;
+        &lt;value&gt;{248093FD-D0B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{756B6815-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{2A585A1E-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{30585A1E-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{9884F027-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{9984F027-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{63970E30-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{797BC66C-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{7DBC5D77-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{79FAD952-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{CEA5595B-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{65970E30-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{B6A80739-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{D5A0E742-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{ED216FEC-CEB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{850EE019-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{5E21FE21-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{8F0F1A12-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{900F1A12-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{49C65A03-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{4155180C-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{5F049485-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{EC6D157E-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{246FC040-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{236FC040-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{4D2DC230-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{4355605E-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{65D14968-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{E36EFCA5-C9B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{4B3966C8-C9B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{B6FCB4D1-C9B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{2FBA5D05-C9B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{AC2EE7DA-C9B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{E9C78AE1-C9B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{5C5E65CB-CAB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{2D3036D2-CAB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{FF8E1E07-CBB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{008F1E07-CBB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{3C51FBE1-CAB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{3F1C0BEA-CAB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{BEA03E04-CEB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{6991FE0C-CEB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{194C0765-EEB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{4E93D7F3-EEB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{3AE78556-EEB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{298C60FE-EEB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{ABF38351-C0DF-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{7E346BA7-63D5-E511-943D-005056940427}&lt;/value&gt;
+        &lt;value&gt;{D5D5E0CE-D3B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{911205B0-63D5-E511-943D-005056940427}&lt;/value&gt;
+        &lt;value&gt;{FEB27B49-6BE0-E511-943E-005056940427}&lt;/value&gt;
+        &lt;value&gt;{14512119-C2DF-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{E076DD20-C2DF-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{1A9BD825-EEB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{8CAC9736-EEB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{FF6B68BC-02E2-E511-943E-005056940427}&lt;/value&gt;
+        &lt;value&gt;{ABDB92D6-02E2-E511-943E-005056940427}&lt;/value&gt;
+        &lt;value&gt;{F544D4DF-D3B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{D918F15F-63D5-E511-943D-005056940427}&lt;/value&gt;
+        &lt;value&gt;{CA368673-63D5-E511-943D-005056940427}&lt;/value&gt;
+        &lt;value&gt;{5761467A-63D5-E511-943D-005056940427}&lt;/value&gt;
+        &lt;value&gt;{8C034474-D3B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{DB55B78B-D3B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{6DE47938-CFB9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{B5A80739-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{1FB22C7D-DAEC-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{54D69896-DAEC-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{485FF2D5-DAEC-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{106EDE71-DAEC-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{E0D32386-DAEC-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{D31A41E0-DAEC-E511-80C4-005056945E2D}&lt;/value&gt;
+        &lt;value&gt;{6C6849DC-EDB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{DC2709C6-EDB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{A8C6BAFA-EDB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{C42580E7-EDB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{7C9695D1-EDB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{D2D9B5BA-EDB2-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{746B6815-D1B9-E511-9438-005056940427}&lt;/value&gt;
+        &lt;value&gt;{1262CB18-64D5-E511-943D-005056940427}&lt;/value&gt;
+        &lt;value&gt;{DD7F81BE-C9B9-E511-9438-005056940427}&lt;/value&gt;
+      &lt;/condition&gt;
+    &lt;/filter&gt;
     &lt;/entity&gt;
-&lt;/fetch&gt;</property>
+&lt;/fetch&gt;
+</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the batch size of the query."
@@ -34459,12 +34970,12 @@
                       externalMetadataColumnId="Package\Update Incident\Update Incident records.Inputs[Input].ExternalColumns[incidentresolution_timespent]"
                       lineageId="Package\Update Incident\Read incident records.Outputs[CRM Primary Output].Columns[i.timespent]" />
                     <inputColumn
-                      refId="Package\Update Incident\Update Incident records.Inputs[Input].Columns[title]"
+                      refId="Package\Update Incident\Update Incident records.Inputs[Input].Columns[STR_incidentid]"
                       cachedDataType="wstr"
-                      cachedLength="200"
-                      cachedName="title"
+                      cachedLength="255"
+                      cachedName="STR_incidentid"
                       externalMetadataColumnId="Package\Update Incident\Update Incident records.Inputs[Input].ExternalColumns[incidentid]"
-                      lineageId="Package\Update Incident\Read incident records.Outputs[CRM Primary Output].Columns[title]" />
+                      lineageId="Package\Update Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_incidentid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -34773,7 +35284,7 @@
   &lt;LookupTargets&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;incident&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;title&lt;/TargetTextField&gt;
+      &lt;TargetTextField&gt;rik_migreringid&lt;/TargetTextField&gt;
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
@@ -35453,14 +35964,24 @@
           <paths>
             <path
               refId="Package\Update Incident.Paths[CRM Primary Output]"
-              endId="Package\Update Incident\Update Incident records.Inputs[Input]"
+              endId="Package\Update Incident\Data Conversion.Inputs[Data Conversion Input]"
               name="CRM Primary Output"
               startId="Package\Update Incident\Read incident records.Outputs[CRM Primary Output]" />
+            <path
+              refId="Package\Update Incident.Paths[Data Conversion Output]"
+              endId="Package\Update Incident\Derived Column.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\Update Incident\Data Conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Update Incident.Paths[Default Output]"
               endId="Package\Update Incident\Rows Updated.Inputs[Row Count Input 1]"
               name="Default Output"
               startId="Package\Update Incident\Update Incident records.Outputs[Default Output]" />
+            <path
+              refId="Package\Update Incident.Paths[Derived Column Output]"
+              endId="Package\Update Incident\Update Incident records.Inputs[Input]"
+              name="Derived Column Output"
+              startId="Package\Update Incident\Derived Column.Outputs[Derived Column Output]" />
             <path
               refId="Package\Update Incident.Paths[Error Output]"
               endId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input]"
@@ -35810,9 +36331,9 @@
           Id="Package\Load Incident\Union All ERROR"
           TopLeft="485.395826294087,432.013882579158" />
         <NodeLayout
-          Size="181,42"
+          Size="180,42"
           Id="Package\Load Incident\Read incident records"
-          TopLeft="279.166662506759,13.7583330873152" />
+          TopLeft="279.166662506759,12.7583330873152" />
         <NodeLayout
           Size="141,41"
           Id="Package\Load Incident\Row Inserted"
@@ -35826,6 +36347,14 @@
           Id="Package\Load Incident\Derived Column"
           TopLeft="296.354162250646,86.9166655237476" />
         <NodeLayout
+          Size="205,42"
+          Id="Package\Load Incident\Dynamics CRM Destination 2"
+          TopLeft="696.354498420883,251.556814507426" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Load Incident\Dynamics CRM Destination 1"
+          TopLeft="370.354498420883,253.556814507426" />
+        <NodeLayout
           Size="321,41"
           Id="Package\Load Incident\Balanced Data Distributor"
           TopLeft="206.857146379899,162.800002479553" />
@@ -35833,6 +36362,76 @@
           Size="205,42"
           Id="Package\Load Incident\Dynamics CRM Destination"
           TopLeft="56.354498420883,246.562965133585" />
+        <EdgeLayout
+          Id="Package\Load Incident.Paths[Default Output2]"
+          TopLeft="766.02116508755,293.556814507426">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-541.576721677908,99.443179844703"
+              Start="0,0"
+              End="-541.576721677908,91.943179844703">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.1340299460984" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,52.1340299460984"
+                    Point2="0,56.1340299460984"
+                    Point3="-4,56.1340299460984" />
+                  <mssgle:LineSegment
+                    End="-537.576721677908,56.1340299460984" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-537.576721677908,56.1340299460984"
+                    Point2="-541.576721677908,56.1340299460984"
+                    Point3="-541.576721677908,60.1340299460984" />
+                  <mssgle:LineSegment
+                    End="-541.576721677908,91.943179844703" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-278.788360838954,61.1340299460984,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Incident.Paths[Default Output1]"
+          TopLeft="440.02116508755,295.556814507426">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-228.576721677908,97.443179844703"
+              Start="0,0"
+              End="-228.576721677908,89.943179844703">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.6053092781454" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.6053092781454"
+                    Point2="0,48.6053092781454"
+                    Point3="-4,48.6053092781454" />
+                  <mssgle:LineSegment
+                    End="-224.576721677908,48.6053092781454" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-224.576721677908,48.6053092781454"
+                    Point2="-228.576721677908,48.6053092781454"
+                    Point3="-228.576721677908,52.6053092781454" />
+                  <mssgle:LineSegment
+                    End="-228.576721677908,89.943179844703" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Incident.Paths[Default Output]"
           TopLeft="126.02116508755,288.562965133585">
@@ -35864,29 +36463,81 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="2.21163916104618,63.9529753049985,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Incident.Paths[CRM Primary Output]"
-          TopLeft="371.760412378703,55.7583330873152">
+          Id="Package\Load Incident.Paths[Balanced Data Distributor Output 3]"
+          TopLeft="419.523813046566,203.800002479553">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,31.1583324364324"
+              EndConnector="53.3306853743173,49.756812027873"
               Start="0,0"
-              End="0,23.6583324364324">
+              End="53.3306853743173,42.256812027873">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.6583324364324" />
+                    End="0,16.0507921997008" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.0507921997008"
+                    Point2="0,20.0507921997008"
+                    Point3="4,20.0507921997008" />
+                  <mssgle:LineSegment
+                    End="49.3306853743173,20.0507921997008" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49.3306853743173,20.0507921997008"
+                    Point2="53.3306853743173,20.0507921997008"
+                    Point3="53.3306853743173,24.0507921997008" />
+                  <mssgle:LineSegment
+                    End="53.3306853743173,42.256812027873" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-51.1572940315914,25.0507921997008,155.6452734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Incident.Paths[Balanced Data Distributor Output 2]"
+          TopLeft="445.607146379899,203.800002479553">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="353.247352040984,47.756812027873"
+              Start="0,0"
+              End="353.247352040984,40.256812027873">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.1812473297325" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.1812473297325"
+                    Point2="0,16.1812473297325"
+                    Point3="4,16.1812473297325" />
+                  <mssgle:LineSegment
+                    End="349.247352040984,16.1812473297325" />
+                  <mssgle:CubicBezierSegment
+                    Point1="349.247352040984,16.1812473297325"
+                    Point2="353.247352040984,16.1812473297325"
+                    Point3="353.247352040984,20.1812473297325" />
+                  <mssgle:LineSegment
+                    End="353.247352040984,40.256812027873" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="98.737562739242,21.1812473297325,155.7722265625,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -35970,6 +36621,78 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Load Incident.Paths[Error Output2]"
+          TopLeft="798.854498420883,293.556814507426">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-196.208672126796,138.457068071732"
+              Start="0,0"
+              End="-196.208672126796,130.957068071732">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,86.7821600965171" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,86.7821600965171"
+                    Point2="0,90.7821600965171"
+                    Point3="-4,90.7821600965171" />
+                  <mssgle:LineSegment
+                    End="-192.208672126796,90.7821600965171" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-192.208672126796,90.7821600965171"
+                    Point2="-196.208672126796,90.7821600965171"
+                    Point3="-196.208672126796,94.7821600965171" />
+                  <mssgle:LineSegment
+                    End="-196.208672126796,130.957068071732" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-126.440722782148,95.7821600965171,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Incident.Paths[Error Output1]"
+          TopLeft="472.854498420883,295.556814507426">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="117.207994539871,136.457068071732"
+              Start="0,0"
+              End="117.207994539871,128.957068071732">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.0585572480898" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,77.0585572480898"
+                    Point2="0,81.0585572480898"
+                    Point3="4,81.0585572480898" />
+                  <mssgle:LineSegment
+                    End="113.207994539871,81.0585572480898" />
+                  <mssgle:CubicBezierSegment
+                    Point1="113.207994539871,81.0585572480898"
+                    Point2="117.207994539871,81.0585572480898"
+                    Point3="117.207994539871,85.0585572480898" />
+                  <mssgle:LineSegment
+                    End="117.207994539871,128.957068071732" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="30.2676105511855,86.0585572480898,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Load Incident.Paths[Error Output]"
           TopLeft="191.687831754216,288.562965133585">
           <EdgeLayout.Curve>
@@ -36028,111 +36751,35 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="205,42"
-          Id="Package\Load Incident\Dynamics CRM Destination 1"
-          TopLeft="370.354498420883,253.556814507426" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Load Incident\Dynamics CRM Destination 2"
-          TopLeft="696.354498420883,251.556814507426" />
+          Size="156,42"
+          Id="Package\Load Incident\Data Conversion"
+          TopLeft="567,45" />
         <EdgeLayout
-          Id="Package\Load Incident.Paths[Balanced Data Distributor Output 3]"
-          TopLeft="419.523813046566,203.800002479553">
+          Id="Package\Load Incident.Paths[CRM Primary Output]"
+          TopLeft="459.166662506759,33.7583330873152">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="53.3306853743173,49.756812027873"
+              EndConnector="107.833337493241,26.5750002460181"
               Start="0,0"
-              End="53.3306853743173,42.256812027873">
+              End="100.333337493241,26.5750002460181">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.0507921997008" />
+                    End="58.3256904777448,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.0507921997008"
-                    Point2="0,20.0507921997008"
-                    Point3="4,20.0507921997008" />
+                    Point1="58.3256904777448,0"
+                    Point2="62.3256904777448,0"
+                    Point3="62.3256904777448,4" />
                   <mssgle:LineSegment
-                    End="49.3306853743173,20.0507921997008" />
+                    End="62.3256904777448,22.5750002460181" />
                   <mssgle:CubicBezierSegment
-                    Point1="49.3306853743173,20.0507921997008"
-                    Point2="53.3306853743173,20.0507921997008"
-                    Point3="53.3306853743173,24.0507921997008" />
+                    Point1="62.3256904777448,22.5750002460181"
+                    Point2="62.3256904777448,26.5750002460181"
+                    Point3="66.3256904777448,26.5750002460181" />
                   <mssgle:LineSegment
-                    End="53.3306853743173,42.256812027873" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-51.1572940315913,25.0507921997008,155.6452734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Incident.Paths[Error Output1]"
-          TopLeft="472.854498420883,295.556814507426">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="117.207994539871,136.457068071732"
-              Start="0,0"
-              End="117.207994539871,128.957068071732">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,77.0585572480898" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,77.0585572480898"
-                    Point2="0,81.0585572480898"
-                    Point3="4,81.0585572480898" />
-                  <mssgle:LineSegment
-                    End="113.207994539871,81.0585572480898" />
-                  <mssgle:CubicBezierSegment
-                    Point1="113.207994539871,81.0585572480898"
-                    Point2="117.207994539871,81.0585572480898"
-                    Point3="117.207994539871,85.0585572480898" />
-                  <mssgle:LineSegment
-                    End="117.207994539871,128.957068071732" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="30.2676105511853,86.0585572480898,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Incident.Paths[Default Output1]"
-          TopLeft="440.02116508755,295.556814507426">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-228.576721677908,97.443179844703"
-              Start="0,0"
-              End="-228.576721677908,89.943179844703">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.6053092781454" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,44.6053092781454"
-                    Point2="0,48.6053092781454"
-                    Point3="-4,48.6053092781454" />
-                  <mssgle:LineSegment
-                    End="-224.576721677908,48.6053092781454" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-224.576721677908,48.6053092781454"
-                    Point2="-228.576721677908,48.6053092781454"
-                    Point3="-228.576721677908,52.6053092781454" />
-                  <mssgle:LineSegment
-                    End="-228.576721677908,89.943179844703" />
+                    End="100.333337493241,26.5750002460181" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -36142,103 +36789,31 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Incident.Paths[Balanced Data Distributor Output 2]"
-          TopLeft="445.607146379899,203.800002479553">
+          Id="Package\Load Incident.Paths[Data Conversion Output]"
+          TopLeft="567,71.6666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="353.247352040984,47.756812027873"
+              EndConnector="-115.645837749354,36.7499988570809"
               Start="0,0"
-              End="353.247352040984,40.256812027873">
+              End="-108.145837749354,36.7499988570809">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.1812473297325" />
+                    End="-44.8046654722044,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.1812473297325"
-                    Point2="0,16.1812473297325"
-                    Point3="4,16.1812473297325" />
+                    Point1="-44.8046654722044,0"
+                    Point2="-48.8046654722044,0"
+                    Point3="-48.8046654722044,4" />
                   <mssgle:LineSegment
-                    End="349.247352040984,16.1812473297325" />
+                    End="-48.8046654722044,32.7499988570809" />
                   <mssgle:CubicBezierSegment
-                    Point1="349.247352040984,16.1812473297325"
-                    Point2="353.247352040984,16.1812473297325"
-                    Point3="353.247352040984,20.1812473297325" />
+                    Point1="-48.8046654722044,32.7499988570809"
+                    Point2="-48.8046654722044,36.7499988570809"
+                    Point3="-52.8046654722044,36.7499988570809" />
                   <mssgle:LineSegment
-                    End="353.247352040984,40.256812027873" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="98.737562739242,21.1812473297325,155.7722265625,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Incident.Paths[Error Output2]"
-          TopLeft="798.854498420883,293.556814507426">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-196.208672126796,138.457068071732"
-              Start="0,0"
-              End="-196.208672126796,130.957068071732">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,86.7821600965171" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,86.7821600965171"
-                    Point2="0,90.7821600965171"
-                    Point3="-4,90.7821600965171" />
-                  <mssgle:LineSegment
-                    End="-192.208672126796,90.7821600965171" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-192.208672126796,90.7821600965171"
-                    Point2="-196.208672126796,90.7821600965171"
-                    Point3="-196.208672126796,94.7821600965171" />
-                  <mssgle:LineSegment
-                    End="-196.208672126796,130.957068071732" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-126.440722782148,95.7821600965171,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Incident.Paths[Default Output2]"
-          TopLeft="766.02116508755,293.556814507426">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-541.576721677908,99.443179844703"
-              Start="0,0"
-              End="-541.576721677908,91.943179844703">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.1340299460984" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,52.1340299460984"
-                    Point2="0,56.1340299460984"
-                    Point3="-4,56.1340299460984" />
-                  <mssgle:LineSegment
-                    End="-537.576721677908,56.1340299460984" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-537.576721677908,56.1340299460984"
-                    Point2="-541.576721677908,56.1340299460984"
-                    Point3="-541.576721677908,60.1340299460984" />
-                  <mssgle:LineSegment
-                    End="-541.576721677908,91.943179844703" />
+                    End="-108.145837749354,36.7499988570809" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -36267,26 +36842,26 @@
     design-time-name="Package\Update Incident">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="148,43"
           Id="Package\Update Incident\Rows Updated"
-          TopLeft="90.6666666666666,272" />
+          TopLeft="90.6666666666666,350" />
         <NodeLayout
           Size="181,42"
           Id="Package\Update Incident\Read incident records"
-          TopLeft="141.333333333333,47.5333333178362" />
+          TopLeft="139.333333333333,17.5333333178362" />
         <NodeLayout
           Size="192,42"
           Id="Package\Update Incident\Update Incident records"
-          TopLeft="134,162.666666666667" />
+          TopLeft="134,240.666666666667" />
         <NodeLayout
           Size="157,43"
           Id="Package\Update Incident\Incident_ERROR"
-          TopLeft="321.333333333333,271.333333333333" />
+          TopLeft="321.333333333333,349.333333333333" />
         <EdgeLayout
           Id="Package\Update Incident.Paths[Error Output]"
-          TopLeft="260.666666666667,204.666666666667">
+          TopLeft="260.666666666667,282.666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -36322,7 +36897,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Update Incident.Paths[Default Output]"
-          TopLeft="199.333333333333,204.666666666667">
+          TopLeft="199.333333333333,282.666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -36351,33 +36926,81 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Update Incident\Data Conversion"
+          TopLeft="150,89" />
         <EdgeLayout
           Id="Package\Update Incident.Paths[CRM Primary Output]"
-          TopLeft="230.916666666667,89.5333333178362">
+          TopLeft="228.916666666667,59.5333333178362">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,73.1333333488308"
+              EndConnector="0,29.4666666821638"
               Start="0,0"
-              End="0,65.6333333488308">
+              End="0,21.9666666821638">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,65.6333333488308" />
+                    End="0,21.9666666821638" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Update Incident\Derived Column"
+          TopLeft="146,158" />
+        <EdgeLayout
+          Id="Package\Update Incident.Paths[Data Conversion Output]"
+          TopLeft="225.5,131">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Update Incident.Paths[Derived Column Output]"
+          TopLeft="226.5,200">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.666666666667"
+              Start="0,0"
+              End="0,33.166666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.166666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

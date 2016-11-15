@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Team_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="74"
-  DTS:VersionGUID="{99BD9016-A27F-4BE8-BB01-33FD4CA591AB}">
+  DTS:VersionBuild="79"
+  DTS:VersionGUID="{F1D54BEE-E7FF-41E3-B0B6-250F95612788}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -233,6 +233,81 @@
           version="1">
           <components>
             <component
+              refId="Package\Load Team\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Team\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Team\Derived Column.Inputs[Derived Column Input].Columns[administratoridname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="administratoridname"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Team\Read Team records.Outputs[CRM Primary Output].Columns[administratoridname]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"UTV_SVC_CRM_INSTALL Efternamn"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"UTV_SVC_CRM_INSTALL Efternamn"</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Team\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Team\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Team\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Team\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Team\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Team\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Team\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Team\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Team\Migrate Team records"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
@@ -373,6 +448,13 @@
                       cachedName="createdbyname"
                       externalMetadataColumnId="Package\Load Team\Migrate Team records.Inputs[Input].ExternalColumns[createdby]"
                       lineageId="Package\Load Team\Read Team records.Outputs[CRM Primary Output].Columns[createdbyname]" />
+                    <inputColumn
+                      refId="Package\Load Team\Migrate Team records.Inputs[Input].Columns[administratoridname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="administratoridname"
+                      externalMetadataColumnId="Package\Load Team\Migrate Team records.Inputs[Input].ExternalColumns[administratorid]"
+                      lineageId="Package\Load Team\Read Team records.Outputs[CRM Primary Output].Columns[administratoridname]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -387,6 +469,17 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">systemuser</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;fullname&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2098,7 +2191,7 @@
           <paths>
             <path
               refId="Package\Load Team.Paths[CRM Primary Output]"
-              endId="Package\Load Team\Migrate Team records.Inputs[Input]"
+              endId="Package\Load Team\Derived Column.Inputs[Derived Column Input]"
               name="CRM Primary Output"
               startId="Package\Load Team\Read Team records.Outputs[CRM Primary Output]" />
             <path
@@ -2106,6 +2199,11 @@
               endId="Package\Load Team\Row Inserted.Inputs[Row Count Input 1]"
               name="Default Output"
               startId="Package\Load Team\Migrate Team records.Outputs[Default Output]" />
+            <path
+              refId="Package\Load Team.Paths[Derived Column Output]"
+              endId="Package\Load Team\Migrate Team records.Inputs[Input]"
+              name="Derived Column Output"
+              startId="Package\Load Team\Derived Column.Outputs[Derived Column Output]" />
             <path
               refId="Package\Load Team.Paths[Error Output]"
               endId="Package\Load Team\Team_ERROR.Inputs[OLE DB Destination Input]"
@@ -3409,7 +3507,7 @@
         <NodeLayout
           Size="167,43"
           Id="Package\Migrate Teamroles"
-          TopLeft="331.851846906874,404.492585359701" />
+          TopLeft="332.851846906874,401.492585359701" />
         <NodeLayout
           Size="143,41"
           Id="Package\New LoggStatus"
@@ -3594,18 +3692,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="417.378307333618,324.715690702503">
+          TopLeft="417.878307333618,324.715690702503">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,79.776894657198"
+              EndConnector="0,76.776894657198"
               Start="0,0"
-              End="0,72.276894657198">
+              End="0,69.276894657198">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,72.276894657198" />
+                    End="0,69.276894657198" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3616,25 +3714,25 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="331.851846906874,422.914267288577">
+          TopLeft="332.851846906874,421.414267288577">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-107.494702452418,0"
+              EndConnector="-108.494702452418,0"
               Start="0,0"
-              End="-99.9947024524179,0">
+              End="-100.994702452418,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-99.9947024524179,0" />
+                    End="-100.994702452418,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-75.3018043512089,5,50.60890625,11.609375"
+              BoundingBox="-75.8018043512089,5,50.60890625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3645,7 +3743,7 @@
     design-time-name="Package\Load Team">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="170,42"
           Id="Package\Load Team\Read Team records"
@@ -3653,18 +3751,18 @@
         <NodeLayout
           Size="153,41"
           Id="Package\Load Team\Team_ERROR"
-          TopLeft="415.428578503278,225.741179636523" />
+          TopLeft="415.428578503278,287.741179636523" />
         <NodeLayout
           Size="141,41"
           Id="Package\Load Team\Row Inserted"
-          TopLeft="120.857143246397,229.505888993683" />
+          TopLeft="120.857143246397,291.505888993683" />
         <NodeLayout
           Size="182,42"
           Id="Package\Load Team\Migrate Team records"
-          TopLeft="250.857147265455,118.117647290477" />
+          TopLeft="250.857147265455,180.117647290477" />
         <EdgeLayout
           Id="Package\Load Team.Paths[Error Output]"
-          TopLeft="370.857147265455,160.117647290477">
+          TopLeft="370.857147265455,222.117647290477">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3700,7 +3798,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Team.Paths[Default Output]"
-          TopLeft="312.857147265455,160.117647290477">
+          TopLeft="312.857147265455,222.117647290477">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3732,20 +3830,24 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Load Team\Derived Column"
+          TopLeft="268,102" />
         <EdgeLayout
           Id="Package\Load Team.Paths[CRM Primary Output]"
-          TopLeft="342.886904932673,61.799999628067">
+          TopLeft="344.458331299946,61.799999628067">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56.31764766241"
+              EndConnector="0,40.200000371933"
               Start="0,0"
-              End="0,48.81764766241">
+              End="0,32.700000371933">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.81764766241" />
+                    End="0,32.700000371933" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3754,6 +3856,35 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Team.Paths[Derived Column Output]"
+          TopLeft="343.428573632728,144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.117647290477"
+              Start="0,0"
+              End="0,28.617647290477">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.617647290477" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Byt AdminstratorIdName to &quot;Migreringskonto&quot;"
+          ParentId="Package\Load Team"
+          FontInfo="{assembly:Null}"
+          Size="276,40"
+          Id="65410fa6-75f9-419d-92d5-69103221972c"
+          TopLeft="425.857143246397,103.505888993683" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -3776,39 +3907,21 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="164,42"
-          Id="Package\Migrate Teamroles\Migrate teamroles"
-          TopLeft="200.333333333333,116.666666666667" />
+          Size="167,42"
+          Id="Package\Migrate Teamroles\Teamroles_ERROR"
+          TopLeft="328,239" />
         <NodeLayout
           Size="221,43"
           Id="Package\Migrate Teamroles\Read role Systemadminstrator"
           TopLeft="172.666666666667,25.3333333333333" />
-        <EdgeLayout
-          Id="Package\Migrate Teamroles.Paths[CRM Primary Output]"
-          TopLeft="282.75,68.3333333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48.3333333333337"
-              Start="0,0"
-              End="0,40.8333333333337">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.8333333333337" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="167,42"
-          Id="Package\Migrate Teamroles\Teamroles_ERROR"
-          TopLeft="328,239" />
+          Size="164,42"
+          Id="Package\Migrate Teamroles\Migrate teamroles"
+          TopLeft="200.333333333333,116.666666666667" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Migrate Teamroles\Row Updated"
+          TopLeft="130,240" />
         <EdgeLayout
           Id="Package\Migrate Teamroles.Paths[Error Output]"
           TopLeft="308.333333333333,158.666666666667">
@@ -3845,10 +3958,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Migrate Teamroles\Row Updated"
-          TopLeft="130,240" />
         <EdgeLayout
           Id="Package\Migrate Teamroles.Paths[Default Output]"
           TopLeft="256.333333333333,158.666666666667">
@@ -3875,6 +3984,28 @@
                     Point3="-55.333333333333,37.0048309178743" />
                   <mssgle:LineSegment
                     End="-55.333333333333,73.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Migrate Teamroles.Paths[CRM Primary Output]"
+          TopLeft="282.75,68.3333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.3333333333337"
+              Start="0,0"
+              End="0,40.8333333333337">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.8333333333337" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
