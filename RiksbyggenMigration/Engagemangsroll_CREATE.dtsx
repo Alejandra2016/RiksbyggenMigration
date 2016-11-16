@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Engagemangsroll_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="46"
-  DTS:VersionGUID="{9C38AE8E-1E8D-402D-AF83-4FC69A125684}">
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{DC91C8E7-C7AC-4D55-8CBA-E21D650EE1ED}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -194,13 +194,13 @@
   </DTS:LoggingOptions>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Delete targe CRM table"
+      DTS:refId="Package\Delete target CRM table"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{347D5B68-FA4B-4142-937C-E233E97F4F13}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Delete targe CRM table"
+      DTS:ObjectName="Delete target CRM table"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -208,23 +208,24 @@
           version="1">
           <components>
             <component
-              refId="Package\Delete targe CRM table\Dynamics CRM Destination"
+              refId="Package\Delete target CRM table\Delete rows in Target CRM"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
               description="Populate data into Microsoft Dynamics CRM."
-              name="Dynamics CRM Destination"
-              usesDispositions="true">
+              name="Delete rows in Target CRM"
+              usesDispositions="true"
+              version="3">
               <properties>
                 <property
                   dataType="System.String"
                   description="Destination entity to write data."
                   expressionType="Notify"
-                  name="DestinationEntity"></property>
+                  name="DestinationEntity">rik_engagemangsroll</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies how data is written to CRM server."
                   name="ActionType"
-                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">1</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">4</property>
                 <property
                   dataType="System.Boolean"
                   description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
@@ -281,7 +282,7 @@
                   dataType="System.Int32"
                   description="Specifies the number of records to be sent to Microsoft Dynamics CRM in each batch (CRM 2011 Update Rollup 12 or later is required if batch size is greater than 1)."
                   expressionType="Notify"
-                  name="BatchSize">1</property>
+                  name="BatchSize">200</property>
                 <property
                   dataType="System.Boolean"
                   description="Specifies whether datetime values should be sent to CRM server in UTC format."
@@ -293,72 +294,509 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Delete targe CRM table\Dynamics CRM Destination.Connections[DynamicsCRM]"
+                  refId="Package\Delete target CRM table\Delete rows in Target CRM.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Delete targe CRM table\Dynamics CRM Destination.Inputs[Input]"
+                  refId="Package\Delete target CRM table\Delete rows in Target CRM.Inputs[Input]"
                   errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
+                  errorRowDisposition="RedirectRow"
                   hasSideEffects="true"
                   name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Delete target CRM table\Delete rows in Target CRM.Inputs[Input].Columns[rik_engagemangsrollid]"
+                      cachedDataType="guid"
+                      cachedName="rik_engagemangsrollid"
+                      externalMetadataColumnId="Package\Delete target CRM table\Delete rows in Target CRM.Inputs[Input].ExternalColumns[rik_engagemangsrollid]"
+                      lineageId="Package\Delete target CRM table\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_engagemangsrollid]" />
+                  </inputColumns>
                   <externalMetadataColumns
-                    isUsed="True" />
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Delete rows in Target CRM.Inputs[Input].ExternalColumns[rik_engagemangsrollid]"
+                      dataType="guid"
+                      name="rik_engagemangsrollid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">rik_engagemangsroll</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Delete targe CRM table\Dynamics CRM Destination.Outputs[Error Output]"
+                  refId="Package\Delete target CRM table\Delete rows in Target CRM.Outputs[Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Error Output"
-                  synchronousInputId="Package\Delete targe CRM table\Dynamics CRM Destination.Inputs[Input]">
+                  synchronousInputId="Package\Delete target CRM table\Delete rows in Target CRM.Inputs[Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Delete targe CRM table\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      refId="Package\Delete target CRM table\Delete rows in Target CRM.Outputs[Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Delete targe CRM table\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Delete target CRM table\Delete rows in Target CRM.Outputs[Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Delete targe CRM table\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      refId="Package\Delete target CRM table\Delete rows in Target CRM.Outputs[Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Delete targe CRM table\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Delete target CRM table\Delete rows in Target CRM.Outputs[Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                     <outputColumn
-                      refId="Package\Delete targe CRM table\Dynamics CRM Destination.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      refId="Package\Delete target CRM table\Delete rows in Target CRM.Outputs[Error Output].Columns[CrmErrorMessage]"
                       dataType="wstr"
                       length="2048"
-                      lineageId="Package\Delete targe CRM table\Dynamics CRM Destination.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      lineageId="Package\Delete target CRM table\Delete rows in Target CRM.Outputs[Error Output].Columns[CrmErrorMessage]"
                       name="CrmErrorMessage" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Delete targe CRM table\Dynamics CRM Destination.Outputs[Default Output]"
+                  refId="Package\Delete target CRM table\Delete rows in Target CRM.Outputs[Default Output]"
                   exclusionGroup="1"
                   name="Default Output"
-                  synchronousInputId="Package\Delete targe CRM table\Dynamics CRM Destination.Inputs[Input]">
+                  synchronousInputId="Package\Delete target CRM table\Delete rows in Target CRM.Inputs[Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Delete target CRM table\Dynamics CRM Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Extract data from Microsoft Dynamics CRM."
+              name="Dynamics CRM Source"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">1</property>
+                <property
+                  dataType="System.String"
+                  description="Dynamics CRM entity to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceEntity"></property>
+                <property
+                  dataType="System.String"
+                  description="FetchXML statement."
+                  expressionType="Notify"
+                  name="FetchXML">&lt;fetch mapping='logical'&gt;
+    &lt;entity name='rik_engagemangsroll'&gt;
+        &lt;attribute name='rik_engagemangsrollid'/&gt;
+    &lt;/entity&gt;
+&lt;/fetch&gt;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">2000</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="ImpersonateAs" />
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for CRM datetime fields."
+                  expressionType="Notify"
+                  name="OutputTimezone" />
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Delete target CRM table\Dynamics CRM Source.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Delete target CRM table\Dynamics CRM Source.Outputs[CRM Primary Output]"
+                  name="CRM Primary Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Delete targe CRM table\Dynamics CRM Destination.Outputs[Default Output].Columns[CrmRecordId]"
+                      refId="Package\Delete target CRM table\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_engagemangsrollid]"
                       dataType="guid"
-                      lineageId="Package\Delete targe CRM table\Dynamics CRM Destination.Outputs[Default Output].Columns[CrmRecordId]"
-                      name="CrmRecordId" />
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Delete target CRM table\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_engagemangsrollid]"
+                      lineageId="Package\Delete target CRM table\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_engagemangsrollid]"
+                      name="rik_engagemangsrollid"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_engagemangsrollid]"
+                      dataType="guid"
+                      name="rik_engagemangsrollid" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Delete target CRM table\Engagemangsroll_ERROR"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Engagemangsroll_ERROR"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[rik_Engagemangsroll_ERROR]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Delete target CRM table\Delete rows in Target CRM.Outputs[Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Delete target CRM table\Delete rows in Target CRM.Outputs[Error Output].Columns[ErrorColumn]" />
+                    <inputColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].Columns[CrmErrorMessage]"
+                      cachedDataType="wstr"
+                      cachedLength="2048"
+                      cachedName="CrmErrorMessage"
+                      externalMetadataColumnId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      lineageId="Package\Delete target CRM table\Delete rows in Target CRM.Outputs[Error Output].Columns[CrmErrorMessage]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdYomiName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdDsc]"
+                      dataType="i4"
+                      name="OwnerIdDsc" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
+                      dataType="i4"
+                      name="OwnerIdType" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningUser" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningTeam]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningTeam" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_EngagemangsrollId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_EngagemangsrollId" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="CreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningBusinessUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
+                      dataType="i4"
+                      name="ImportSequenceNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="OverriddenCreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TimeZoneRuleVersionNumber]"
+                      dataType="i4"
+                      name="TimeZoneRuleVersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[UTCConversionTimeZoneCode]"
+                      dataType="i4"
+                      name="UTCConversionTimeZoneCode" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_Namn" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Beskrivning]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_Beskrivning" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kod]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_Kod" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      dataType="wstr"
+                      length="255"
+                      name="MigrationId" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="4000"
+                      name="CrmErrorMessage" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Typ]"
+                      dataType="i4"
+                      name="rik_Typ" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
                     <outputColumn
-                      refId="Package\Delete targe CRM table\Dynamics CRM Destination.Outputs[Default Output].Columns[IsNew]"
-                      dataType="bool"
-                      lineageId="Package\Delete targe CRM table\Dynamics CRM Destination.Outputs[Default Output].Columns[IsNew]"
-                      name="IsNew" />
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Delete target CRM table\Engagemangsroll_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Delete target CRM table\Engagemangsroll_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Delete target CRM table\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RowsDeleted</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Delete target CRM table\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Delete target CRM table\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Delete target CRM table\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
+          <paths>
+            <path
+              refId="Package\Delete target CRM table.Paths[CRM Primary Output]"
+              endId="Package\Delete target CRM table\Delete rows in Target CRM.Inputs[Input]"
+              name="CRM Primary Output"
+              startId="Package\Delete target CRM table\Dynamics CRM Source.Outputs[CRM Primary Output]" />
+            <path
+              refId="Package\Delete target CRM table.Paths[Default Output]"
+              endId="Package\Delete target CRM table\Row Count.Inputs[Row Count Input 1]"
+              name="Default Output"
+              startId="Package\Delete target CRM table\Delete rows in Target CRM.Outputs[Default Output]" />
+            <path
+              refId="Package\Delete target CRM table.Paths[Error Output]"
+              endId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input]"
+              name="Error Output"
+              startId="Package\Delete target CRM table\Delete rows in Target CRM.Outputs[Error Output]" />
+          </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2862,7 +3300,7 @@
       DTS:From="Package\Truncate rows in ERROR table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
-      DTS:To="Package\Delete targe CRM table" />
+      DTS:To="Package\Delete target CRM table" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
@@ -2891,7 +3329,7 @@
       DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
       DTS:CreationName=""
       DTS:DTSID="{53AB972D-C2EF-4E68-9EBF-489BFABE75A7}"
-      DTS:From="Package\Delete targe CRM table"
+      DTS:From="Package\Delete target CRM table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 8"
       DTS:To="Package\Insert into STG_engagemangsroll" />
@@ -2899,7 +3337,7 @@
       DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
       DTS:CreationName=""
       DTS:DTSID="{C9EBFD1A-4542-4AFA-A587-6197CA055BF7}"
-      DTS:From="Package\Delete targe CRM table"
+      DTS:From="Package\Delete target CRM table"
       DTS:ObjectName="Constraint 9"
       DTS:To="Package\LogPackageEnd"
       DTS:Value="1" />
@@ -2916,6 +3354,10 @@
     <LayoutInfo>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Delete target CRM table"
+          TopLeft="452,200" />
         <NodeLayout
           Size="236,42"
           Id="Package\Insert into STG_engagemangsroll"
@@ -3045,6 +3487,40 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="450.000004632132,162.623531033341">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97.999995367868,37.376468966659"
+              Start="0,0"
+              End="97.999995367868,29.876468966659">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.1117799056573" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.1117799056573"
+                    Point2="0,15.1117799056573"
+                    Point3="4,15.1117799056573" />
+                  <mssgle:LineSegment
+                    End="93.999995367868,15.1117799056573" />
+                  <mssgle:CubicBezierSegment
+                    Point1="93.999995367868,15.1117799056573"
+                    Point2="97.999995367868,15.1117799056573"
+                    Point3="97.999995367868,19.1117799056573" />
+                  <mssgle:LineSegment
+                    End="97.999995367868,29.876468966659" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="379.000004632132,162.623531033341">
           <EdgeLayout.Curve>
@@ -3150,70 +3626,32 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="188,42"
-          Id="Package\Delete targe CRM table"
-          TopLeft="452,200" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="450.000004632132,162.623531033341">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="95.999995367868,37.376468966659"
-              Start="0,0"
-              End="95.999995367868,29.876468966659">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11.1117799056573" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.1117799056573"
-                    Point2="0,15.1117799056573"
-                    Point3="4,15.1117799056573" />
-                  <mssgle:LineSegment
-                    End="91.999995367868,15.1117799056573" />
-                  <mssgle:CubicBezierSegment
-                    Point1="91.999995367868,15.1117799056573"
-                    Point2="95.999995367868,15.1117799056573"
-                    Point3="95.999995367868,19.1117799056573" />
-                  <mssgle:LineSegment
-                    End="95.999995367868,29.876468966659" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 8]"
-          TopLeft="576,242">
+          TopLeft="578.666666666667,242">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="76,56"
+              EndConnector="73.3333333333334,56"
               Start="0,0"
-              End="76,48.5">
+              End="73.3333333333334,48.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.6835443037975" />
+                    End="0,18.6776859504132" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.6835443037975"
-                    Point2="0,22.6835443037975"
-                    Point3="4,22.6835443037975" />
+                    Point1="0,18.6776859504132"
+                    Point2="0,22.6776859504132"
+                    Point3="4,22.6776859504132" />
                   <mssgle:LineSegment
-                    End="72,22.6835443037975" />
+                    End="69.3333333333334,22.6776859504132" />
                   <mssgle:CubicBezierSegment
-                    Point1="72,22.6835443037975"
-                    Point2="76,22.6835443037975"
-                    Point3="76,26.6835443037975" />
+                    Point1="69.3333333333334,22.6776859504132"
+                    Point2="73.3333333333334,22.6776859504132"
+                    Point3="73.3333333333334,26.6776859504132" />
                   <mssgle:LineSegment
-                    End="76,48.5" />
+                    End="73.3333333333334,48.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3224,43 +3662,166 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 9]"
-          TopLeft="516,242">
+          TopLeft="517.333333333333,242">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-359.599998841967,169.082356210069"
+              EndConnector="-360.9333321753,169.082356210069"
               Start="0,0"
-              End="-359.599998841967,161.582356210069">
+              End="-360.9333321753,161.582356210069">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,73.1903233035906" />
+                    End="0,73.1721117911434" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,73.1903233035906"
-                    Point2="0,77.1903233035906"
-                    Point3="-4,77.1903233035906" />
+                    Point1="0,73.1721117911434"
+                    Point2="0,77.1721117911434"
+                    Point3="-4,77.1721117911434" />
                   <mssgle:LineSegment
-                    End="-355.599998841967,77.1903233035906" />
+                    End="-356.9333321753,77.1721117911434" />
                   <mssgle:CubicBezierSegment
-                    Point1="-355.599998841967,77.1903233035906"
-                    Point2="-359.599998841967,77.1903233035906"
-                    Point3="-359.599998841967,81.1903233035906" />
+                    Point1="-356.9333321753,77.1721117911434"
+                    Point2="-360.9333321753,77.1721117911434"
+                    Point3="-360.9333321753,81.1721117911434" />
                   <mssgle:LineSegment
-                    End="-359.599998841967,161.582356210069" />
+                    End="-360.9333321753,161.582356210069" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-195.041347077233,82.1903233035906,30.4826953125,9.7490234375"
+              BoundingBox="-195.7080137439,82.1721117911434,30.4826953125,9.7490234375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Rader som kommer med CRM installation tas bort för att undvika dubbletter"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="433,40"
+          Id="582a5fd2-600f-44f3-913e-9b51ec52bdff"
+          TopLeft="645.642858047875,203.082356210069" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Delete target CRM table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Delete target CRM table\Delete rows in Target CRM"
+          TopLeft="219.5,94.5" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Delete target CRM table\Row Count"
+          TopLeft="169,214" />
+        <EdgeLayout
+          Id="Package\Delete target CRM table.Paths[Default Output]"
+          TopLeft="289.166666666667,136.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-55.1666666666666,77.5"
+              Start="0,0"
+              End="-55.1666666666666,70">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.3601161665053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.3601161665053"
+                    Point2="0,31.3601161665053"
+                    Point3="-4,31.3601161665053" />
+                  <mssgle:LineSegment
+                    End="-51.1666666666666,31.3601161665053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-51.1666666666666,31.3601161665053"
+                    Point2="-55.1666666666666,31.3601161665053"
+                    Point3="-55.1666666666666,35.3601161665053" />
+                  <mssgle:LineSegment
+                    End="-55.1666666666666,70" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Delete target CRM table\Engagemangsroll_ERROR"
+          TopLeft="362,213" />
+        <EdgeLayout
+          Id="Package\Delete target CRM table.Paths[Error Output]"
+          TopLeft="354.833333333333,136.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="106.666666666667,76.5"
+              Start="0,0"
+              End="106.666666666667,69">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.9554695062924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.9554695062924"
+                    Point2="0,30.9554695062924"
+                    Point3="4,30.9554695062924" />
+                  <mssgle:LineSegment
+                    End="102.666666666667,30.9554695062924" />
+                  <mssgle:CubicBezierSegment
+                    Point1="102.666666666667,30.9554695062924"
+                    Point2="106.666666666667,30.9554695062924"
+                    Point3="106.666666666667,34.9554695062924" />
+                  <mssgle:LineSegment
+                    End="106.666666666667,69" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="24.9969466145833,35.9554695062924,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Delete target CRM table\Dynamics CRM Source"
+          TopLeft="229,12" />
+        <EdgeLayout
+          Id="Package\Delete target CRM table.Paths[CRM Primary Output]"
+          TopLeft="321.5,54">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.5"
+              Start="0,0"
+              End="0,33">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
-  </Package>
+  </TaskHost>
   <TaskHost
     design-time-name="Package\Load Engagemangsroll">
     <LayoutInfo>
@@ -3313,7 +3874,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3335,7 +3898,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3403,17 +3968,18 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Delete targe CRM table">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Delete targe CRM table\Dynamics CRM Destination"
-          TopLeft="219.5,48.5" />
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Delete target CRM table\Engagemangsroll_ERROR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

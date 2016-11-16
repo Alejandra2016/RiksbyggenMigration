@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Contact_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="57"
-  DTS:VersionGUID="{56EFA85B-8797-4C28-AD60-AC4FD3BDED77}">
+  DTS:VersionBuild="58"
+  DTS:VersionGUID="{8ED9EA59-84AD-4970-B1E5-7BEA312BF235}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -9492,7 +9492,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT top 100
  CAST(Fornamn AS NVARCHAR(50))AS FirstName
 ,CAST(Efternamn AS NVARCHAR(50))AS LastName
 ,CAST(CASE WHEN PersnrChk = 1 THEN CONCAT(CAST(Sekelsiffra AS CHAR(2)), REPLACE(Personnummer,'-','')) ELSE ISNULL(UtlandsPersnr,'') END AS NVARCHAR(20))AS rik_Personnummer
@@ -12411,13 +12411,13 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
           Id="Package\Load Contact\STG_Contact"
           TopLeft="347.142863020605,14.8000002917121" />
         <NodeLayout
-          Size="156,42"
-          Id="Package\Load Contact\Data Conversion"
-          TopLeft="582,451" />
-        <NodeLayout
           Size="157,42"
           Id="Package\Load Contact\Union All ERROR"
           TopLeft="586,364" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Load Contact\Data Conversion"
+          TopLeft="582,451" />
         <NodeLayout
           Size="142,42"
           Id="Package\Load Contact\Row Inserted"
