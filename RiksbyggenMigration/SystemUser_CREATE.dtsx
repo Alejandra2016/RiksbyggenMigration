@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="SystemUser_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="54"
-  DTS:VersionGUID="{8C8109AE-CFE0-4FA3-9197-45C6C733E869}">
+  DTS:VersionBuild="55"
+  DTS:VersionGUID="{2A20B606-360C-4BE3-9885-F514702555DB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -949,6 +949,19 @@
                       cachedName="yomimiddlename"
                       externalMetadataColumnId="Package\Load SystemUser\Dynamics CRM Destination.Inputs[Input].ExternalColumns[yomimiddlename]"
                       lineageId="Package\Load SystemUser\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[yomimiddlename]" />
+                    <inputColumn
+                      refId="Package\Load SystemUser\Dynamics CRM Destination.Inputs[Input].Columns[msdyusd_usdconfigurationid]"
+                      cachedDataType="guid"
+                      cachedName="msdyusd_usdconfigurationid"
+                      externalMetadataColumnId="Package\Load SystemUser\Dynamics CRM Destination.Inputs[Input].ExternalColumns[msdyusd_usdconfigurationid]"
+                      lineageId="Package\Load SystemUser\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[msdyusd_usdconfigurationid]" />
+                    <inputColumn
+                      refId="Package\Load SystemUser\Dynamics CRM Destination.Inputs[Input].Columns[rb_cre_org_enhet_idname]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rb_cre_org_enhet_idname"
+                      externalMetadataColumnId="Package\Load SystemUser\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_marknadsomradeid]"
+                      lineageId="Package\Load SystemUser\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_cre_org_enhet_idname]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2303,6 +2316,43 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load SystemUser\Dynamics CRM Destination.Inputs[Input].ExternalColumns[msdyusd_usdconfigurationid]"
+                      dataType="guid"
+                      name="msdyusd_usdconfigurationid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">msdyusd_configuration</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load SystemUser\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_marknadsomradeid]"
+                      dataType="guid"
+                      name="rik_marknadsomradeid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">rik_marknadsomrade</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_marknadsomrade&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_namn&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -5807,6 +5857,13 @@
                       cachedName="CrmErrorMessage"
                       externalMetadataColumnId="Package\Load SystemUser\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
                       lineageId="Package\Load SystemUser\Dynamics CRM Destination.Outputs[Error Output].Columns[CrmErrorMessage]" />
+                    <inputColumn
+                      refId="Package\Load SystemUser\SystemUser_Error.Inputs[OLE DB Destination Input].Columns[rb_cre_org_enhet_idname]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rb_cre_org_enhet_idname"
+                      externalMetadataColumnId="Package\Load SystemUser\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[rik_MarknadsomradeIdName]"
+                      lineageId="Package\Load SystemUser\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_cre_org_enhet_idname]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -6488,6 +6545,15 @@
                       dataType="wstr"
                       length="255"
                       name="MigrationId" />
+                    <externalMetadataColumn
+                      refId="Package\Load SystemUser\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[rik_MarknadsomradeId]"
+                      dataType="guid"
+                      name="rik_MarknadsomradeId" />
+                    <externalMetadataColumn
+                      refId="Package\Load SystemUser\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[rik_MarknadsomradeIdName]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_MarknadsomradeIdName" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -7485,77 +7551,21 @@
           Id="Package\Load SystemUser\Dynamics CRM Destination"
           TopLeft="242.857147129215,246.823532783614" />
         <NodeLayout
-          Size="184,42"
-          Id="Package\Load SystemUser\Dynamics CRM Source"
-          TopLeft="247,40" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Load SystemUser\SystemUser_Error"
-          TopLeft="464.428576800289,362.588239369507" />
-        <NodeLayout
           Size="142,42"
           Id="Package\Load SystemUser\Row Inserted"
           TopLeft="111.571430420389,360.482358397909" />
         <NodeLayout
+          Size="184,42"
+          Id="Package\Load SystemUser\Dynamics CRM Source"
+          TopLeft="247,40" />
+        <NodeLayout
           Size="186,42"
           Id="Package\Load SystemUser\Domain Name &amp; annat"
           TopLeft="248.571432804574,147.71764904075" />
-        <EdgeLayout
-          Id="Package\Load SystemUser.Paths[Derived Column Output]"
-          TopLeft="343.464289966895,189.71764904075">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,57.1058837428641"
-              Start="0,0"
-              End="0,49.6058837428641">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.6058837428641" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load SystemUser.Paths[Default Output]"
-          TopLeft="312.523813795882,288.823532783614">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-129.952383375493,71.658825614295"
-              Start="0,0"
-              End="-129.952383375493,64.158825614295">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.9965044596082" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.9965044596082"
-                    Point2="0,28.9965044596082"
-                    Point3="-4,28.9965044596082" />
-                  <mssgle:LineSegment
-                    End="-125.952383375493,28.9965044596082" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-125.952383375493,28.9965044596082"
-                    Point2="-129.952383375493,28.9965044596082"
-                    Point3="-129.952383375493,32.9965044596082" />
-                  <mssgle:LineSegment
-                    End="-129.952383375493,64.158825614295" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Load SystemUser\SystemUser_Error"
+          TopLeft="464.428576800289,362.588239369507" />
         <EdgeLayout
           Id="Package\Load SystemUser.Paths[CRM Primary Output]"
           TopLeft="340.285716402287,82">
@@ -7612,6 +7622,62 @@
             <mssgm:EdgeLabel
               BoundingBox="55.5326614501203,34.8486421615714,56.6727734375,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load SystemUser.Paths[Derived Column Output]"
+          TopLeft="343.464289966895,189.71764904075">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.1058837428641"
+              Start="0,0"
+              End="0,49.6058837428641">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.6058837428641" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load SystemUser.Paths[Default Output]"
+          TopLeft="312.523813795882,288.823532783614">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-129.952383375493,71.658825614295"
+              Start="0,0"
+              End="-129.952383375493,64.158825614295">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.9965044596082" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.9965044596082"
+                    Point2="0,28.9965044596082"
+                    Point3="-4,28.9965044596082" />
+                  <mssgle:LineSegment
+                    End="-125.952383375493,28.9965044596082" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-125.952383375493,28.9965044596082"
+                    Point2="-129.952383375493,28.9965044596082"
+                    Point3="-129.952383375493,32.9965044596082" />
+                  <mssgle:LineSegment
+                    End="-129.952383375493,64.158825614295" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout

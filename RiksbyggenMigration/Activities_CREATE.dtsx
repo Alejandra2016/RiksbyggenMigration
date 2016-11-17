@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Activities_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="141"
-  DTS:VersionGUID="{5869BCED-881C-44D7-858B-CBB935C77BD2}">
+  DTS:VersionBuild="148"
+  DTS:VersionGUID="{127D4D10-7147-46D9-82F3-0EAE16243F27}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -22342,6 +22342,20 @@
                           cachedName="STR_regardingobjectid"
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[regardingobjectid]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[createdbyname]"
+                          cachedDataType="wstr"
+                          cachedLength="200"
+                          cachedName="createdbyname"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[createdby]"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[createdbyname]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[owneridname]"
+                          cachedDataType="wstr"
+                          cachedLength="200"
+                          cachedName="owneridname"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[ownerid]"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[owneridname]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -22460,7 +22474,15 @@
                               name="Updateable">false</property>
                             <property
                               dataType="System.String"
-                              name="TextLookup"></property>
+                              name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -22657,7 +22679,19 @@
                               name="Updateable">true</property>
                             <property
                               dataType="System.String"
-                              name="TextLookup"></property>
+                              name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -23156,6 +23190,25 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
+                            <property
+                              dataType="System.Boolean"
+                              name="Createable">true</property>
+                            <property
+                              dataType="System.Boolean"
+                              name="Updateable">true</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[rik_anmalareid]"
+                          dataType="guid"
+                          name="rik_anmalareid">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CrmFieldType">Lookup</property>
+                            <property
+                              dataType="System.String"
+                              name="LookupTypes">contact</property>
                             <property
                               dataType="System.Boolean"
                               name="Createable">true</property>
@@ -23966,6 +24019,20 @@
                           refId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
                           dataType="i4"
                           name="ErrorColumn" />
+                        <externalMetadataColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnmalareId]"
+                          dataType="guid"
+                          name="rik_AnmalareId" />
+                        <externalMetadataColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnmalareIdName]"
+                          dataType="wstr"
+                          length="200"
+                          name="rik_AnmalareIdName" />
+                        <externalMetadataColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnmalareIdYomiName]"
+                          dataType="wstr"
+                          length="500"
+                          name="rik_AnmalareIdYomiName" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -24031,7 +24098,7 @@
                       dataType="System.Int32"
                       description="Specifies the batch size of the query."
                       expressionType="Notify"
-                      name="BatchSize">2000</property>
+                      name="BatchSize">100</property>
                     <property
                       dataType="System.Null"
                       description="Specifies the batch size of the query."
@@ -25568,6 +25635,20 @@
                           cachedName="rik_MigrationId"
                           externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[rik_migreringid]"
                           lineageId="Package\Core activities entities\Migrate Task\Derived Column.Outputs[Derived Column Output].Columns[rik_MigrationId]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].Columns[createdbyname]"
+                          cachedDataType="wstr"
+                          cachedLength="200"
+                          cachedName="createdbyname"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[createdby]"
+                          lineageId="Package\Core activities entities\Migrate Task\Read task records.Outputs[CRM Primary Output].Columns[createdbyname]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].Columns[owneridname]"
+                          cachedDataType="wstr"
+                          cachedLength="200"
+                          cachedName="owneridname"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[ownerid]"
+                          lineageId="Package\Core activities entities\Migrate Task\Read task records.Outputs[CRM Primary Output].Columns[owneridname]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -25686,7 +25767,15 @@
                               name="Updateable">false</property>
                             <property
                               dataType="System.String"
-                              name="TextLookup"></property>
+                              name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -25822,7 +25911,19 @@
                               name="Updateable">true</property>
                             <property
                               dataType="System.String"
-                              name="TextLookup"></property>
+                              name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                           </properties>
                         </externalMetadataColumn>
                         <externalMetadataColumn
@@ -26274,6 +26375,25 @@
                             <property
                               dataType="System.String"
                               name="LookupTypes"></property>
+                            <property
+                              dataType="System.Boolean"
+                              name="Createable">true</property>
+                            <property
+                              dataType="System.Boolean"
+                              name="Updateable">true</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[rik_uppgiftskategoriid]"
+                          dataType="guid"
+                          name="rik_uppgiftskategoriid">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              name="CrmFieldType">Lookup</property>
+                            <property
+                              dataType="System.String"
+                              name="LookupTypes">rik_uppgiftskategori</property>
                             <property
                               dataType="System.Boolean"
                               name="Createable">true</property>
@@ -28054,6 +28174,15 @@
                           refId="Package\Core activities entities\Migrate Task\Task_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
                           dataType="i4"
                           name="ErrorColumn" />
+                        <externalMetadataColumn
+                          refId="Package\Core activities entities\Migrate Task\Task_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_UppgiftskategoriId]"
+                          dataType="guid"
+                          name="rik_UppgiftskategoriId" />
+                        <externalMetadataColumn
+                          refId="Package\Core activities entities\Migrate Task\Task_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_UppgiftskategoriIdName]"
+                          dataType="wstr"
+                          length="100"
+                          name="rik_UppgiftskategoriIdName" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -31617,6 +31746,28 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="708.569441171363,445.311105723249">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,126.688894276751"
+              Start="0,0"
+              End="0,119.188894276751">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,119.188894276751" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
           TopLeft="510.249992903322,669.283322062989">
           <EdgeLayout.Curve>
@@ -31706,28 +31857,6 @@
             <mssgm:EdgeLabel
               BoundingBox="-238.271081006389,-15.7490234375,30.4826953125,9.7490234375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="708.569441171363,445.311105723249">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,126.688894276751"
-              Start="0,0"
-              End="0,119.188894276751">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,119.188894276751" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -31872,30 +32001,6 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="169,42"
-          Id="Package\Core activities entities\Migrate Email\Read Email records"
-          TopLeft="262.015147581019,13.9696967020179" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Core activities entities\Migrate Email\Union All Inserted"
-          TopLeft="148,502" />
-        <NodeLayout
-          Size="190,42"
-          Id="Package\Core activities entities\Migrate Email\Migrate Email records 1"
-          TopLeft="451,368" />
-        <NodeLayout
-          Size="144,43"
-          Id="Package\Core activities entities\Migrate Email\Email_ERROR"
-          TopLeft="602.666666666667,586" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Core activities entities\Migrate Email\Union All ERROR"
-          TopLeft="592,502" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Core activities entities\Migrate Email\Data Conversion"
-          TopLeft="272,97" />
-        <NodeLayout
           Size="147,43"
           Id="Package\Core activities entities\Migrate Email\Rows Inserted"
           TopLeft="148.333330526948,576.333329304059" />
@@ -31904,17 +32009,63 @@
           Id="Package\Core activities entities\Migrate Email\Migrate Email records 2"
           TopLeft="720.583329440405,368.333329304059" />
         <NodeLayout
+          Size="169,42"
+          Id="Package\Core activities entities\Migrate Email\Read Email records"
+          TopLeft="262.015147581019,13.9696967020179" />
+        <NodeLayout
           Size="181,42"
           Id="Package\Core activities entities\Migrate Email\Migrate Email records"
           TopLeft="172.583329440405,367.433331155976" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Core activities entities\Migrate Email\Data Conversion"
+          TopLeft="272,97" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Core activities entities\Migrate Email\Union All ERROR"
+          TopLeft="592,502" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Core activities entities\Migrate Email\Union All Inserted"
+          TopLeft="148,502" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Core activities entities\Migrate Email\Derived Column"
+          TopLeft="275.333330526948,190.333329304059" />
         <NodeLayout
           Size="199,42"
           Id="Package\Core activities entities\Migrate Email\Balanced Data Distributor"
           TopLeft="256,267" />
         <NodeLayout
-          Size="154,42"
-          Id="Package\Core activities entities\Migrate Email\Derived Column"
-          TopLeft="275.333330526948,190.333329304059" />
+          Size="144,43"
+          Id="Package\Core activities entities\Migrate Email\Email_ERROR"
+          TopLeft="602.666666666667,586" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Core activities entities\Migrate Email\Migrate Email records 1"
+          TopLeft="451,368" />
+        <EdgeLayout
+          Id="Package\Core activities entities\Migrate Email.Paths[Union All Output 11]"
+          TopLeft="672.583333333333,544">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[Union All Output 1]"
           TopLeft="225.666665263474,544">
@@ -32321,28 +32472,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Core activities entities\Migrate Email.Paths[Union All Output 11]"
-          TopLeft="672.583333333333,544">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42"
-              Start="0,0"
-              End="0,34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -32365,6 +32494,18 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="154,42"
+          Id="Package\Core activities entities\Migrate phonecalls\Derived Column"
+          TopLeft="290.333330526948,200.333329304059" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR"
+          TopLeft="396.590903181244,394.060601946802" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records"
+          TopLeft="261.249996107072,285.766664489309" />
+        <NodeLayout
           Size="189,42"
           Id="Package\Core activities entities\Migrate phonecalls\Read phonecall records"
           TopLeft="264.015147581019,12.9696967020179" />
@@ -32373,13 +32514,9 @@
           Id="Package\Core activities entities\Migrate phonecalls\Rows Inserted"
           TopLeft="188.333330526948,389.333329304059" />
         <NodeLayout
-          Size="200,42"
-          Id="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records"
-          TopLeft="261.249996107072,285.766664489309" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR"
-          TopLeft="396.590903181244,394.060601946802" />
+          Size="156,42"
+          Id="Package\Core activities entities\Migrate phonecalls\Data Conversion"
+          TopLeft="286,107" />
         <EdgeLayout
           Id="Package\Core activities entities\Migrate phonecalls.Paths[Error Output]"
           TopLeft="393.249996107072,327.766664489309">
@@ -32417,6 +32554,28 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Core activities entities\Migrate phonecalls.Paths[Derived Column Output]"
+          TopLeft="364.29166331701,242.333329304059">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.43333518525"
+              Start="0,0"
+              End="0,35.93333518525">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.93333518525" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Core activities entities\Migrate phonecalls.Paths[Default Output]"
           TopLeft="329.249996107072,327.766664489309">
           <EdgeLayout.Curve>
@@ -32450,36 +32609,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Core activities entities\Migrate phonecalls\Data Conversion"
-          TopLeft="286,107" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Core activities entities\Migrate phonecalls\Derived Column"
-          TopLeft="290.333330526948,200.333329304059" />
-        <EdgeLayout
-          Id="Package\Core activities entities\Migrate phonecalls.Paths[CRM Primary Output]"
-          TopLeft="361.257573790509,54.9696967020179">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,52.0303032979821"
-              Start="0,0"
-              End="0,44.5303032979821">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.5303032979821" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate phonecalls.Paths[Data Conversion Output]"
           TopLeft="365.666665263474,149">
@@ -32503,19 +32632,19 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Core activities entities\Migrate phonecalls.Paths[Derived Column Output]"
-          TopLeft="364.29166331701,242.333329304059">
+          Id="Package\Core activities entities\Migrate phonecalls.Paths[CRM Primary Output]"
+          TopLeft="361.257573790509,54.9696967020179">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43.43333518525"
+              EndConnector="0,52.0303032979821"
               Start="0,0"
-              End="0,35.93333518525">
+              End="0,44.5303032979821">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.93333518525" />
+                    End="0,44.5303032979821" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -32546,13 +32675,13 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="154,42"
+          Id="Package\Core activities entities\Migrate Task\Derived Column"
+          TopLeft="266.333330526948,202.333329304059" />
+        <NodeLayout
           Size="141,43"
           Id="Package\Core activities entities\Migrate Task\Task_ERROR"
           TopLeft="382.666666666667,409.666666666667" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Core activities entities\Migrate Task\Read task records"
-          TopLeft="262.666666666667,10.3333333333333" />
         <NodeLayout
           Size="175,42"
           Id="Package\Core activities entities\Migrate Task\Migrate task records"
@@ -32561,6 +32690,14 @@
           Size="147,43"
           Id="Package\Core activities entities\Migrate Task\Rows Inserted"
           TopLeft="186.333330526948,410.333329304059" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Core activities entities\Migrate Task\Read task records"
+          TopLeft="262.666666666667,10.3333333333333" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Core activities entities\Migrate Task\Data Conversion"
+          TopLeft="262,109" />
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Task.Paths[Error Output]"
           TopLeft="373.916662773738,334.433331155976">
@@ -32598,6 +32735,28 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Core activities entities\Migrate Task.Paths[Derived Column Output]"
+          TopLeft="344.708329983676,244.333329304059">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.100001851917"
+              Start="0,0"
+              End="0,40.600001851917">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.600001851917" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Core activities entities\Migrate Task.Paths[Default Output]"
           TopLeft="318.249996107072,334.433331155976">
           <EdgeLayout.Curve>
@@ -32631,14 +32790,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Core activities entities\Migrate Task\Data Conversion"
-          TopLeft="262,109" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Core activities entities\Migrate Task\Derived Column"
-          TopLeft="266.333330526948,202.333329304059" />
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Task.Paths[Data Conversion Output]"
           TopLeft="341.666665263474,151">
@@ -32675,30 +32826,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,49.1666666666667" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,16.5833333333334,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Core activities entities\Migrate Task.Paths[Derived Column Output]"
-          TopLeft="344.708329983676,244.333329304059">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48.100001851917"
-              Start="0,0"
-              End="0,40.600001851917">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.600001851917" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -32775,7 +32902,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32797,7 +32926,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32932,7 +33063,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32966,7 +33099,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32988,7 +33123,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

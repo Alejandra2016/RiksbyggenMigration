@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Engagemang_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="90"
-  DTS:VersionGUID="{59E54A42-A3FD-4B77-8DF1-9B87A76775AD}">
+  DTS:VersionBuild="93"
+  DTS:VersionGUID="{0BA531D7-3B1A-4DD2-946A-598A70B3FF7D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -782,20 +782,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_epost]"
-                      dataType="wstr"
-                      length="100"
-                      name="rik_epost">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">String</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_gallerfran]"
                       dataType="dbTimeStamp"
                       name="rik_gallerfran">
@@ -904,20 +890,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_telefonnummer]"
-                      dataType="wstr"
-                      length="50"
-                      name="rik_telefonnummer">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">String</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[statecode]"
                       dataType="i4"
                       name="statecode">
@@ -964,6 +936,19 @@
                         <property
                           dataType="System.String"
                           name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_typ]"
+                      dataType="i4"
+                      name="rik_typ">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Picklist</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -1040,6 +1025,7 @@
     &lt;order attribute="record2id" descending="false" /&gt;
     &lt;filter type="and"&gt;
       &lt;condition attribute="ismaster" operator="eq" value="1"/&gt;
+      &lt;condition attribute="record2roleid" operator="not-null"/&gt;
       &lt;condition attribute="record2roleid" operator="not-in"&gt;
         &lt;value&gt;{F9851FFE-5E84-E511-9431-005056940427}&lt;/value&gt;
         &lt;value&gt;{CC851FFE-5E84-E511-9431-005056940427}&lt;/value&gt;
@@ -2563,6 +2549,10 @@
                       dataType="wstr"
                       length="255"
                       name="rik_ObjektskontraktId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Typ]"
+                      dataType="i4"
+                      name="rik_Typ" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3636,7 +3626,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="20.3540904740568,31.9447077850304,56.6727734375,11.43359375"
+              BoundingBox="20.3540904740569,31.9447077850304,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
