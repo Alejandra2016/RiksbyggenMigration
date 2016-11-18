@@ -7,12 +7,12 @@
   DTS:CreatorName="CORP\Administrator"
   DTS:DTSID="{B01CBA1C-5D6E-4E40-A2EE-F82D1E7F580E}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.2150.2"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
   DTS:LocaleID="1053"
   DTS:ObjectName="Activities_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="148"
-  DTS:VersionGUID="{127D4D10-7147-46D9-82F3-0EAE16243F27}">
+  DTS:VersionBuild="152"
+  DTS:VersionGUID="{D8E47240-B048-47F2-A64D-55565A11D61A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -29512,31 +29512,6 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Mail attachments\activityMimeattachment_ERROR.Inputs[OLE DB Destination Input].Columns[activitymimeattachmentid]"
-                      cachedDataType="guid"
-                      cachedName="activitymimeattachmentid"
-                      externalMetadataColumnId="Package\Load Mail attachments\activityMimeattachment_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ActivityMimeAttachmentId]"
-                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[activitymimeattachmentid]" />
-                    <inputColumn
-                      refId="Package\Load Mail attachments\activityMimeattachment_ERROR.Inputs[OLE DB Destination Input].Columns[activitymimeattachmentidunique]"
-                      cachedDataType="guid"
-                      cachedName="activitymimeattachmentidunique"
-                      externalMetadataColumnId="Package\Load Mail attachments\activityMimeattachment_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ActivityMimeAttachmentIdUnique]"
-                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[activitymimeattachmentidunique]" />
-                    <inputColumn
-                      refId="Package\Load Mail attachments\activityMimeattachment_ERROR.Inputs[OLE DB Destination Input].Columns[attachmentcontentid]"
-                      cachedDataType="wstr"
-                      cachedLength="250"
-                      cachedName="attachmentcontentid"
-                      externalMetadataColumnId="Package\Load Mail attachments\activityMimeattachment_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[AttachmentContentId]"
-                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[attachmentcontentid]" />
-                    <inputColumn
-                      refId="Package\Load Mail attachments\activityMimeattachment_ERROR.Inputs[OLE DB Destination Input].Columns[attachmentid]"
-                      cachedDataType="guid"
-                      cachedName="attachmentid"
-                      externalMetadataColumnId="Package\Load Mail attachments\activityMimeattachment_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[AttachmentId]"
-                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[attachmentid]" />
-                    <inputColumn
                       refId="Package\Load Mail attachments\activityMimeattachment_ERROR.Inputs[OLE DB Destination Input].Columns[attachmentnumber]"
                       cachedDataType="i4"
                       cachedName="attachmentnumber"
@@ -29560,13 +29535,6 @@
                       cachedName="objectid"
                       externalMetadataColumnId="Package\Load Mail attachments\activityMimeattachment_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ObjectId]"
                       lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[objectid]" />
-                    <inputColumn
-                      refId="Package\Load Mail attachments\activityMimeattachment_ERROR.Inputs[OLE DB Destination Input].Columns[objecttypecode]"
-                      cachedDataType="wstr"
-                      cachedLength="64"
-                      cachedName="objecttypecode"
-                      externalMetadataColumnId="Package\Load Mail attachments\activityMimeattachment_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ObjectTypeCode]"
-                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[objecttypecode]" />
                     <inputColumn
                       refId="Package\Load Mail attachments\activityMimeattachment_ERROR.Inputs[OLE DB Destination Input].Columns[overwritetime]"
                       cachedDataType="dbTimeStamp"
@@ -29819,7 +29787,7 @@
                   dataType="System.Int32"
                   description="Specifies how data is written to CRM server."
                   name="ActionType"
-                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">1</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">5</property>
                 <property
                   dataType="System.Boolean"
                   description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
@@ -29835,7 +29803,7 @@
                   description="Specify the matching criteria to be used when Upsert action is chosen."
                   expressionType="Notify"
                   name="UpsertMatchingCriteria"
-                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">0</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">1</property>
                 <property
                   dataType="System.String"
                   description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
@@ -29850,7 +29818,7 @@
                   dataType="System.Boolean"
                   description="Specifies whether to ignore those fields that have no value changes in the target system. "
                   expressionType="Notify"
-                  name="IgnoreUnchangedFields">false</property>
+                  name="IgnoreUnchangedFields">true</property>
                 <property
                   dataType="System.Boolean"
                   description="Specify whether to remove those invalid characters before writing to CRM."
@@ -29955,17 +29923,38 @@
                       externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[subject]"
                       lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[subject]" />
                     <inputColumn
-                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[activityid]"
-                      cachedDataType="guid"
-                      cachedName="activityid"
-                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[activityid]"
-                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[activityid]" />
-                    <inputColumn
                       refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[activitymimeattachmentid]"
                       cachedDataType="guid"
                       cachedName="activitymimeattachmentid"
                       externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[activitymimeattachmentid]"
                       lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[activitymimeattachmentid]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[owneridtype]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="owneridtype"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[owneridtype]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[owneridtype]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[solutionid]"
+                      cachedDataType="guid"
+                      cachedName="solutionid"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[solutionid]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[solutionid]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[ownername]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="ownername"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[ownerid]"
+                      lineageId="Package\Load Mail attachments\Derived Column - Generate owner's name.Outputs[Derived Column Output].Columns[ownername]" />
+                    <inputColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].Columns[attachmentcontentid]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="attachmentcontentid"
+                      externalMetadataColumnId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[attachmentcontentid]"
+                      lineageId="Package\Load Mail attachments\Read activitymimeattachment records.Outputs[CRM Primary Output].Columns[attachmentcontentid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -29980,6 +29969,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">activitypointer</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -29993,6 +29988,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -30006,6 +30007,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -30020,6 +30027,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -30033,6 +30046,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">attachment</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -30046,6 +30065,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -30059,6 +30084,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -30073,6 +30104,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -30087,6 +30124,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -30102,19 +30145,13 @@
                           name="LookupTypes">activitypointer;template</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;activitypointer&lt;/TargetEntity&gt;
-      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
-    &lt;/LookupTarget&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;template&lt;/TargetEntity&gt;
-      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -30129,6 +30166,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -30143,6 +30186,104 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[ownerid]"
+                      dataType="guid"
+                      name="ownerid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Owner</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser;team</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[owneridtype]"
+                      dataType="wstr"
+                      length="64"
+                      name="owneridtype">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">EntityName</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[solutionid]"
+                      dataType="guid"
+                      name="solutionid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Mail attachments\Migrate activitymimeattachment records.Inputs[Input].ExternalColumns[supportingsolutionid]"
+                      dataType="guid"
+                      name="supportingsolutionid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -30221,17 +30362,13 @@
         &lt;link-entity name="team" from="teamid" to="ownerid" alias='t' link-type="outer"&gt;
             &lt;attribute name="name" /&gt;
         &lt;/link-entity&gt;
-    &lt;filter type="and"&gt;
-      &lt;condition attribute="regardingobjectid" operator="not-null" /&gt;
-    &lt;/filter&gt;
-
     &lt;/entity&gt;
 &lt;/fetch&gt;</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the batch size of the query."
                   expressionType="Notify"
-                  name="BatchSize">2000</property>
+                  name="BatchSize">200</property>
                 <property
                   dataType="System.Null"
                   description="Specifies the batch size of the query."
@@ -32063,7 +32200,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32085,7 +32224,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32215,7 +32356,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32249,7 +32392,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32283,7 +32428,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32317,7 +32464,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32339,7 +32488,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32361,7 +32512,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32498,10 +32651,6 @@
           Id="Package\Core activities entities\Migrate phonecalls\Derived Column"
           TopLeft="290.333330526948,200.333329304059" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR"
-          TopLeft="396.590903181244,394.060601946802" />
-        <NodeLayout
           Size="200,42"
           Id="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records"
           TopLeft="261.249996107072,285.766664489309" />
@@ -32517,6 +32666,10 @@
           Size="156,42"
           Id="Package\Core activities entities\Migrate phonecalls\Data Conversion"
           TopLeft="286,107" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Core activities entities\Migrate phonecalls\phonecall_ERROR"
+          TopLeft="396.590903181244,394.060601946802" />
         <EdgeLayout
           Id="Package\Core activities entities\Migrate phonecalls.Paths[Error Output]"
           TopLeft="393.249996107072,327.766664489309">
@@ -32572,7 +32725,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32606,7 +32761,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32628,7 +32785,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32650,7 +32809,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -32687,13 +32848,13 @@
           Id="Package\Core activities entities\Migrate Task\Migrate task records"
           TopLeft="258.583329440405,292.433331155976" />
         <NodeLayout
-          Size="147,43"
-          Id="Package\Core activities entities\Migrate Task\Rows Inserted"
-          TopLeft="186.333330526948,410.333329304059" />
-        <NodeLayout
           Size="163,42"
           Id="Package\Core activities entities\Migrate Task\Read task records"
           TopLeft="262.666666666667,10.3333333333333" />
+        <NodeLayout
+          Size="147,43"
+          Id="Package\Core activities entities\Migrate Task\Rows Inserted"
+          TopLeft="186.333330526948,410.333329304059" />
         <NodeLayout
           Size="156,42"
           Id="Package\Core activities entities\Migrate Task\Data Conversion"
@@ -32753,7 +32914,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32787,7 +32950,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32809,7 +32974,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32831,7 +32998,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -32902,9 +33071,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32926,9 +33093,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -33063,9 +33228,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -33099,9 +33262,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -33123,9 +33284,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

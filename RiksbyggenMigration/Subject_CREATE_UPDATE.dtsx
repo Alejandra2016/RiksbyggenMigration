@@ -7,12 +7,12 @@
   DTS:CreatorName="CORP\Administrator"
   DTS:DTSID="{F24D5CE9-4364-4465-990A-E8CD31DB2409}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.2150.2"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
   DTS:LocaleID="1053"
   DTS:ObjectName="Subject_CREATE_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="48"
-  DTS:VersionGUID="{71F98056-11A7-43E3-829C-291E7D8D2C39}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{6A23A2B6-51A0-42CB-A93A-BCD30E625819}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -250,7 +250,7 @@
                   dataType="System.Int32"
                   description="Specifies how data is written to CRM server."
                   name="ActionType"
-                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">1</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">5</property>
                 <property
                   dataType="System.Boolean"
                   description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
@@ -266,7 +266,7 @@
                   description="Specify the matching criteria to be used when Upsert action is chosen."
                   expressionType="Notify"
                   name="UpsertMatchingCriteria"
-                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">0</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">1</property>
                 <property
                   dataType="System.String"
                   description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
@@ -281,7 +281,7 @@
                   dataType="System.Boolean"
                   description="Specifies whether to ignore those fields that have no value changes in the target system. "
                   expressionType="Notify"
-                  name="IgnoreUnchangedFields">false</property>
+                  name="IgnoreUnchangedFields">true</property>
                 <property
                   dataType="System.Boolean"
                   description="Specify whether to remove those invalid characters before writing to CRM."
@@ -312,7 +312,7 @@
                   dataType="System.Boolean"
                   description="Specifies whether datetime values should be sent to CRM server in UTC format."
                   expressionType="Notify"
-                  name="SendDateTimeInUtcFormat">false</property>
+                  name="SendDateTimeInUtcFormat">true</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
@@ -353,6 +353,30 @@
                       cachedName="createdbyname"
                       externalMetadataColumnId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].ExternalColumns[createdby]"
                       lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdbyname]" />
+                    <inputColumn
+                      refId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].Columns[featuremask]"
+                      cachedDataType="i4"
+                      cachedName="featuremask"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].ExternalColumns[featuremask]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[featuremask]" />
+                    <inputColumn
+                      refId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].Columns[createdon]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="createdon"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdon]" />
+                    <inputColumn
+                      refId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].Columns[subjectid]"
+                      cachedDataType="guid"
+                      cachedName="subjectid"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].ExternalColumns[subjectid]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[subjectid]" />
+                    <inputColumn
+                      refId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].Columns[importsequencenumber]"
+                      cachedDataType="i4"
+                      cachedName="importsequencenumber"
+                      externalMetadataColumnId="Package\Load Subject\Dynamics CRM Destination.Inputs[Input].ExternalColumns[importsequencenumber]"
+                      lineageId="Package\Load Subject\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[importsequencenumber]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -378,6 +402,12 @@
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">false</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -391,6 +421,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -404,6 +440,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -417,6 +459,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">false</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -430,6 +478,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">false</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -443,6 +497,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">subject</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -456,6 +516,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -470,6 +536,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -527,17 +599,22 @@
                   description="Specifies the type of source data from Microsoft Dynamics CRM."
                   expressionType="Notify"
                   name="SourceType"
-                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">0</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">1</property>
                 <property
                   dataType="System.String"
                   description="Dynamics CRM entity to retrieve data from."
                   expressionType="Notify"
-                  name="SourceEntity">subject</property>
+                  name="SourceEntity"></property>
                 <property
                   dataType="System.String"
                   description="FetchXML statement."
                   expressionType="Notify"
-                  name="FetchXML"></property>
+                  name="FetchXML">&lt;fetch mapping='logical'&gt;
+    &lt;entity name='subject'&gt;
+        &lt;all-attributes /&gt; 
+        &lt;order attribute='createdon' /&gt; 
+    &lt;/entity&gt;
+&lt;/fetch&gt;</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the batch size of the query."
@@ -2903,7 +2980,7 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="139,42"
+          Size="140,42"
           Id="Package\Load Subject"
           TopLeft="350.000005858285,246.400003062977" />
         <NodeLayout
@@ -2950,37 +3027,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="397.666672524952,288.400003062977">
+          TopLeft="398.000005858285,288.400003062977">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-218.238099948078,60.635293705819"
+              EndConnector="-218.571433281412,60.635293705819"
               Start="0,0"
-              End="-218.238099948078,53.135293705819">
+              End="-218.571433281412,53.135293705819">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.3078077881529" />
+                    End="0,30.3048311784782" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,30.3078077881529"
-                    Point2="0,34.3078077881529"
-                    Point3="-4,34.3078077881529" />
+                    Point1="0,30.3048311784782"
+                    Point2="0,34.3048311784782"
+                    Point3="-4,34.3048311784782" />
                   <mssgle:LineSegment
-                    End="-214.238099948078,34.3078077881529" />
+                    End="-214.571433281412,34.3048311784782" />
                   <mssgle:CubicBezierSegment
-                    Point1="-214.238099948078,34.3078077881529"
-                    Point2="-218.238099948078,34.3078077881529"
-                    Point3="-218.238099948078,38.3078077881529" />
+                    Point1="-214.571433281412,34.3048311784782"
+                    Point2="-218.571433281412,34.3048311784782"
+                    Point3="-218.571433281412,38.3048311784782" />
                   <mssgle:LineSegment
-                    End="-218.238099948078,53.135293705819" />
+                    End="-218.571433281412,53.135293705819" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-124.360397630289,39.3078077881529,30.4826953125,9.7490234375"
+              BoundingBox="-124.527064296956,39.3048311784782,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3044,7 +3121,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="418.797624424201,166.1294134635">
+          TopLeft="419.047624424201,166.1294134635">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3102,30 +3179,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="441.333339191618,288.400003062977">
+          TopLeft="442.000005858285,288.400003062977">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-12.3333391916183,62.599996937023"
+              EndConnector="-13.000005858285,62.599996937023"
               Start="0,0"
-              End="-12.3333391916183,55.099996937023">
+              End="-13.000005858285,55.099996937023">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.4674240739525" />
+                    End="0,21.4644055337043" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.4674240739525"
-                    Point2="0,25.4674240739525"
-                    Point3="-4,25.4674240739525" />
+                    Point1="0,21.4644055337043"
+                    Point2="0,25.4644055337043"
+                    Point3="-4,25.4644055337043" />
                   <mssgle:LineSegment
-                    End="-8.33333919161834,25.4674240739525" />
+                    End="-9.00000585828502,25.4644055337043" />
                   <mssgle:CubicBezierSegment
-                    Point1="-8.33333919161834,25.4674240739525"
-                    Point2="-12.3333391916183,25.4674240739525"
-                    Point3="-12.3333391916183,29.4674240739525" />
+                    Point1="-9.00000585828502,25.4644055337043"
+                    Point2="-13.000005858285,25.4644055337043"
+                    Point3="-13.000005858285,29.4644055337043" />
                   <mssgle:LineSegment
-                    End="-12.3333391916183,55.099996937023" />
+                    End="-13.000005858285,55.099996937023" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3175,7 +3252,7 @@
           Id="Package\Load Subject\Dynamics CRM Source"
           TopLeft="248.142860159581,21.835297789787" />
         <NodeLayout
-          Size="204,42"
+          Size="205,42"
           Id="Package\Load Subject\Dynamics CRM Destination"
           TopLeft="241.142861385735,135.811766610591" />
         <NodeLayout
@@ -3184,66 +3261,66 @@
           TopLeft="185.142860159581,261.835297789787" />
         <EdgeLayout
           Id="Package\Load Subject.Paths[Error Output]"
-          TopLeft="375.809528052402,177.811766610591">
+          TopLeft="376.476194719068,177.811766610591">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="42.4047634812443,82.18823703581"
+              EndConnector="41.7380968145777,82.18823703581"
               Start="0,0"
-              End="42.4047634812443,74.68823703581">
+              End="41.7380968145777,74.68823703581">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.2590531195496" />
+                    End="0,29.2571956253326" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,29.2590531195496"
-                    Point2="0,33.2590531195496"
-                    Point3="4,33.2590531195496" />
+                    Point1="0,29.2571956253326"
+                    Point2="0,33.2571956253326"
+                    Point3="4,33.2571956253326" />
                   <mssgle:LineSegment
-                    End="38.4047634812443,33.2590531195496" />
+                    End="37.7380968145777,33.2571956253326" />
                   <mssgle:CubicBezierSegment
-                    Point1="38.4047634812443,33.2590531195496"
-                    Point2="42.4047634812443,33.2590531195496"
-                    Point3="42.4047634812443,37.2590531195496" />
+                    Point1="37.7380968145777,33.2571956253326"
+                    Point2="41.7380968145777,33.2571956253326"
+                    Point3="41.7380968145777,37.2571956253326" />
                   <mssgle:LineSegment
-                    End="42.4047634812443,74.68823703581" />
+                    End="41.7380968145777,74.68823703581" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-7.13400497812783,38.2590531195496,56.6727734375,11.43359375"
+              BoundingBox="-7.46733831146114,38.2571956253326,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Subject.Paths[Default Output]"
-          TopLeft="310.476194719068,177.411766610591">
+          TopLeft="310.809528052402,177.811766610591">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-54.5333345594872,84.4235311791963"
+              EndConnector="-54.6666678928207,84.023531179196"
               Start="0,0"
-              End="-54.5333345594872,76.9235311791963">
+              End="-54.6666678928207,76.523531179196">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.1636079480016" />
+                    End="0,29.9998412709622" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,30.1636079480016"
-                    Point2="0,34.1636079480016"
-                    Point3="-4,34.1636079480016" />
+                    Point1="0,29.9998412709622"
+                    Point2="0,33.9998412709622"
+                    Point3="-4,33.9998412709622" />
                   <mssgle:LineSegment
-                    End="-50.5333345594872,34.1636079480016" />
+                    End="-50.6666678928207,33.9998412709622" />
                   <mssgle:CubicBezierSegment
-                    Point1="-50.5333345594872,34.1636079480016"
-                    Point2="-54.5333345594872,34.1636079480016"
-                    Point3="-54.5333345594872,38.1636079480016" />
+                    Point1="-50.6666678928207,33.9998412709622"
+                    Point2="-54.6666678928207,33.9998412709622"
+                    Point3="-54.6666678928207,37.9998412709622" />
                   <mssgle:LineSegment
-                    End="-54.5333345594872,76.9235311791963" />
+                    End="-54.6666678928207,76.523531179196" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3254,7 +3331,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Subject.Paths[CRM Primary Output]"
-          TopLeft="341.642860772658,63.835297789787">
+          TopLeft="341.892860772658,63.835297789787">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3296,21 +3373,21 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="184,42"
-          Id="Package\Update Subject med parent\Dynamics CRM Source"
-          TopLeft="205.571433417651,32.4235298664925" />
-        <NodeLayout
           Size="153,42"
           Id="Package\Update Subject med parent\Subject_ERROR"
           TopLeft="323.42857829892,253.51765239544" />
         <NodeLayout
-          Size="205,42"
-          Id="Package\Update Subject med parent\Dynamics CRM Destination"
-          TopLeft="202.857147674171,130.552944788553" />
+          Size="184,42"
+          Id="Package\Update Subject med parent\Dynamics CRM Source"
+          TopLeft="205.571433417651,32.4235298664925" />
         <NodeLayout
           Size="146,42"
           Id="Package\Update Subject med parent\Rows updated"
           TopLeft="124.000003474099,253.51765239544" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Update Subject med parent\Dynamics CRM Destination"
+          TopLeft="202.857147674171,130.552944788553" />
         <EdgeLayout
           Id="Package\Update Subject med parent.Paths[Error Output]"
           TopLeft="338.190481007504,172.552944788553">
