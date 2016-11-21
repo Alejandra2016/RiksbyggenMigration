@@ -7,12 +7,12 @@
   DTS:CreatorName="CORP\Administrator"
   DTS:DTSID="{268090AC-3203-45D7-B78D-5635C20F952C}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="13.0.2150.2"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
   DTS:LocaleID="1053"
   DTS:ObjectName="Aff_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="58"
-  DTS:VersionGUID="{1B22C1AB-2F09-402E-AE6E-9D44B5AA4FFA}">
+  DTS:VersionBuild="78"
+  DTS:VersionGUID="{7B1DE95C-D00E-4E33-BF51-D62AFDCC45F1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -220,7 +220,7 @@
                   dataType="System.String"
                   description="Destination entity to write data."
                   expressionType="Notify"
-                  name="DestinationEntity">rik_atgard</property>
+                  name="DestinationEntity">rik_aff</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies how data is written to CRM server."
@@ -307,19 +307,27 @@
                   errorRowDisposition="RedirectRow"
                   hasSideEffects="true"
                   name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Delete target Aff koder table\Delete rows in Target CRM.Inputs[Input].Columns[rik_affid]"
+                      cachedDataType="guid"
+                      cachedName="rik_affid"
+                      externalMetadataColumnId="Package\Delete target Aff koder table\Delete rows in Target CRM.Inputs[Input].ExternalColumns[rik_affid]"
+                      lineageId="Package\Delete target Aff koder table\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_affid]" />
+                  </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Delete target Aff koder table\Delete rows in Target CRM.Inputs[Input].ExternalColumns[rik_atgardid]"
+                      refId="Package\Delete target Aff koder table\Delete rows in Target CRM.Inputs[Input].ExternalColumns[rik_affid]"
                       dataType="guid"
-                      name="rik_atgardid">
+                      name="rik_affid">
                       <properties>
                         <property
                           dataType="System.String"
                           name="CrmFieldType">Uniqueidentifier</property>
                         <property
                           dataType="System.String"
-                          name="LookupTypes">rik_atgard</property>
+                          name="LookupTypes">rik_aff</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -1954,7 +1962,7 @@
                   description="Specify what action will be taken when multiple matches are found with Upsert action."
                   expressionType="Notify"
                   name="HandlingOfMultipleMatches"
-                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
                 <property
                   dataType="System.String"
                   description="Workflow to be executed."
@@ -2028,13 +2036,6 @@
                       cachedName="rik_Sorteringsordning"
                       externalMetadataColumnId="Package\Load Aff\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_sorteringsordning]"
                       lineageId="Package\Load Aff\STG rik_Aff.Outputs[OLE DB Source Output].Columns[rik_Sorteringsordning]" />
-                    <inputColumn
-                      refId="Package\Load Aff\Dynamics CRM Destination.Inputs[Input].Columns[rik_ParentAffIdName]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="rik_ParentAffIdName"
-                      externalMetadataColumnId="Package\Load Aff\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_parentaffid]"
-                      lineageId="Package\Load Aff\STG rik_Aff.Outputs[OLE DB Source Output].Columns[rik_ParentAffIdName]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2184,15 +2185,7 @@
                           name="LookupTypes">rik_aff</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;rik_aff&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;rik_namn&lt;/TargetTextField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2375,7 +2368,8 @@
       ,[rik_Niva]
       ,[rik_Radstext]
       ,[rik_Sorteringsordning]
-FROM [STG].[dbo].[rik_Aff]</property>
+FROM [STG].[dbo].[rik_Aff]
+ORDER BY rik_Niva</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -3279,6 +3273,1249 @@ FROM [STG].[dbo].[rik_Aff]</property>
           SQLTask:SqlStatementSource="TRUNCATE TABLE rik_Atgard_ERROR;&#xA;TRUNCATE TABLE rik_Aff_ERROR;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update AFF with Parent"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3C6D22FF-D0A2-49D4-8E7B-143EFCA15EF1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update AFF with Parent"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Update AFF with Parent\Dynamics CRM Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Populate data into Microsoft Dynamics CRM."
+              name="Dynamics CRM Destination"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Destination entity to write data."
+                  expressionType="Notify"
+                  name="DestinationEntity">rik_aff</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to CRM server."
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
+                  expressionType="Notify"
+                  name="RemoveUnresolvableReferences">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether duplicate detection should be enabled when creating or updating CRM records. Duplicate records are determined by the duplicate detection rules and settings defined in Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="EnableDuplicateDetection">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the matching criteria to be used when Upsert action is chosen."
+                  expressionType="Notify"
+                  name="UpsertMatchingCriteria"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
+                  expressionType="Notify"
+                  name="UpsertMatchingFields"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those fields that have no value changes in the target system. "
+                  expressionType="Notify"
+                  name="IgnoreUnchangedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to CRM."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the flag field(s) that are used to track the source of changes. The field(s) will not posted to CRM server unless there are changes to other fields if specified. &quot;Ignore Unchange Fields&quot; option is required in order for the specified flag field(s) to work. "
+                  expressionType="Notify"
+                  name="ChangeFlagFields"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify what action will be taken when multiple matches are found with Upsert action."
+                  expressionType="Notify"
+                  name="HandlingOfMultipleMatches"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
+                <property
+                  dataType="System.String"
+                  description="Workflow to be executed."
+                  expressionType="Notify"
+                  name="Workflow"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of records to be sent to Microsoft Dynamics CRM in each batch (CRM 2011 Update Rollup 12 or later is required if batch size is greater than 1)."
+                  expressionType="Notify"
+                  name="BatchSize">200</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether datetime values should be sent to CRM server in UTC format."
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update AFF with Parent\Dynamics CRM Destination.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].Columns[rik_ParentAffIdName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_ParentAffIdName"
+                      externalMetadataColumnId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_parentaffid]"
+                      lineageId="Package\Update AFF with Parent\Lookup.Outputs[Lookup Match Output].Columns[rik_ParentAffIdName]" />
+                    <inputColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].Columns[rik_affid]"
+                      cachedDataType="guid"
+                      cachedName="rik_affid"
+                      externalMetadataColumnId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_affid]"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_affid]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[modifiedby]"
+                      dataType="guid"
+                      name="modifiedby">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[ownerid]"
+                      dataType="guid"
+                      name="ownerid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Owner</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser;team</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[owneridtype]"
+                      dataType="wstr"
+                      length="64"
+                      name="owneridtype">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">EntityName</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_affid]"
+                      dataType="guid"
+                      name="rik_affid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">rik_aff</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_kanhaatgarder]"
+                      dataType="bool"
+                      name="rik_kanhaatgarder">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_kod]"
+                      dataType="wstr"
+                      length="20"
+                      name="rik_kod">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_namn">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_niva]"
+                      dataType="i4"
+                      name="rik_niva">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Picklist</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_parentaffid]"
+                      dataType="guid"
+                      name="rik_parentaffid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">rik_aff</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_aff&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_namn&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_radstext]"
+                      dataType="nText"
+                      name="rik_radstext">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_sorteringsordning]"
+                      dataType="i4"
+                      name="rik_sorteringsordning">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">State</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Status</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[timezoneruleversionnumber]"
+                      dataType="i4"
+                      name="timezoneruleversionnumber">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input].ExternalColumns[utcconversiontimezonecode]"
+                      dataType="i4"
+                      name="utcconversiontimezonecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update AFF with Parent\Dynamics CRM Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Destination.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Destination.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      name="CrmErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update AFF with Parent\Dynamics CRM Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update AFF with Parent\Dynamics CRM Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Extract data from Microsoft Dynamics CRM."
+              name="Dynamics CRM Source"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">0</property>
+                <property
+                  dataType="System.String"
+                  description="Dynamics CRM entity to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceEntity">rik_aff</property>
+                <property
+                  dataType="System.String"
+                  description="FetchXML statement."
+                  expressionType="Notify"
+                  name="FetchXML"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">2000</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="ImpersonateAs" />
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for CRM datetime fields."
+                  expressionType="Notify"
+                  name="OutputTimezone" />
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update AFF with Parent\Dynamics CRM Source.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output]"
+                  name="CRM Primary Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_affid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_affid]"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_affid]"
+                      name="rik_affid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_kod]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_kod]"
+                      length="20"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_kod]"
+                      name="rik_kod"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_namn]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_namn]"
+                      length="100"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_namn]"
+                      name="rik_namn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_niva]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_niva]"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_niva]"
+                      name="rik_niva"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdby]"
+                      dataType="guid"
+                      name="createdby" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdbyname]"
+                      dataType="wstr"
+                      length="200"
+                      name="createdbyname" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdbyyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="createdbyyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdon]"
+                      dataType="dbTimeStamp"
+                      name="createdon" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdonbehalfby]"
+                      dataType="guid"
+                      name="createdonbehalfby" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdonbehalfbyname]"
+                      dataType="wstr"
+                      length="200"
+                      name="createdonbehalfbyname" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[createdonbehalfbyyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="createdonbehalfbyyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[importsequencenumber]"
+                      dataType="i4"
+                      name="importsequencenumber" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedby]"
+                      dataType="guid"
+                      name="modifiedby" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedbyname]"
+                      dataType="wstr"
+                      length="200"
+                      name="modifiedbyname" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedbyyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="modifiedbyyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedon]"
+                      dataType="dbTimeStamp"
+                      name="modifiedon" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedonbehalfby]"
+                      dataType="guid"
+                      name="modifiedonbehalfby" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedonbehalfbyname]"
+                      dataType="wstr"
+                      length="200"
+                      name="modifiedonbehalfbyname" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[modifiedonbehalfbyyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="modifiedonbehalfbyyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[overriddencreatedon]"
+                      dataType="dbTimeStamp"
+                      name="overriddencreatedon" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[ownerid]"
+                      dataType="guid"
+                      name="ownerid" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[owneridname]"
+                      dataType="wstr"
+                      length="200"
+                      name="owneridname" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[owneridtype]"
+                      dataType="wstr"
+                      length="64"
+                      name="owneridtype" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[owneridyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="owneridyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[owningbusinessunit]"
+                      dataType="guid"
+                      name="owningbusinessunit" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[owningteam]"
+                      dataType="guid"
+                      name="owningteam" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[owninguser]"
+                      dataType="guid"
+                      name="owninguser" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_affid]"
+                      dataType="guid"
+                      name="rik_affid" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_kanhaatgarder]"
+                      dataType="bool"
+                      name="rik_kanhaatgarder" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_kanhaatgardername]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_kanhaatgardername" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_kod]"
+                      dataType="wstr"
+                      length="20"
+                      name="rik_kod" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_namn" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_niva]"
+                      dataType="i4"
+                      name="rik_niva" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_nivaname]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_nivaname" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_parentaffid]"
+                      dataType="guid"
+                      name="rik_parentaffid" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_parentaffidname]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_parentaffidname" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_radstext]"
+                      dataType="nText"
+                      name="rik_radstext" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_sorteringsordning]"
+                      dataType="i4"
+                      name="rik_sorteringsordning" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[statecodename]"
+                      dataType="wstr"
+                      length="255"
+                      name="statecodename" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[statuscodename]"
+                      dataType="wstr"
+                      length="255"
+                      name="statuscodename" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[timezoneruleversionnumber]"
+                      dataType="i4"
+                      name="timezoneruleversionnumber" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[utcconversiontimezonecode]"
+                      dataType="i4"
+                      name="utcconversiontimezonecode" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[versionnumber]"
+                      dataType="i8"
+                      name="versionnumber" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update AFF with Parent\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[rik_Aff]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[rik_Aff]) [refTable]
+where [refTable].[rik_Kod] = ? and [refTable].[rik_Namn] = ? and [refTable].[rik_Niva] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CreatedByName" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CreatedByYomiName" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CreatedOnBehalfByName" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CreatedOnBehalfByYomiName" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ModifiedByName" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ModifiedByYomiName" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ModifiedOnBehalfByName" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ModifiedOnBehalfByYomiName" dataType="DT_WSTR" length="200" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="rik_ParentAffIdName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OwnerId" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OwnerIdName" dataType="DT_WSTR" length="160" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OwnerIdYomiName" dataType="DT_WSTR" length="160" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OwnerIdDsc" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OwnerIdType" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OwningUser" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OwningTeam" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="rik_AffId" dataType="DT_GUID" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CreatedOn" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CreatedBy" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ModifiedOn" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ModifiedBy" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CreatedOnBehalfBy" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ModifiedOnBehalfBy" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OwningBusinessUnit" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="statecode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="statuscode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VersionNumber" dataType="DT_BYTES" length="8" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ImportSequenceNumber" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OverriddenCreatedOn" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TimeZoneRuleVersionNumber" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UTCConversionTimeZoneCode" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="rik_Namn" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="rik_KanHaAtgarder" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="rik_Kod" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="rik_Niva" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="rik_Radstext" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="rik_Sorteringsordning" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="rik_ParentAffId" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MigrationId" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_kod]};#{Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_namn]};#{Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_niva]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update AFF with Parent\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update AFF with Parent\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update AFF with Parent\Lookup.Inputs[Lookup Input].Columns[rik_kod]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="rik_kod"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_kod]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">rik_Kod</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Update AFF with Parent\Lookup.Inputs[Lookup Input].Columns[rik_namn]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_namn"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_namn]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">rik_Namn</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Update AFF with Parent\Lookup.Inputs[Lookup Input].Columns[rik_niva]"
+                      cachedDataType="i4"
+                      cachedName="rik_niva"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_niva]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">rik_Niva</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update AFF with Parent\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Update AFF with Parent\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update AFF with Parent\Lookup.Outputs[Lookup Match Output].Columns[rik_ParentAffIdName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\Update AFF with Parent\Lookup.Outputs[Lookup Match Output].Columns[rik_ParentAffIdName]"
+                      name="rik_ParentAffIdName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">rik_ParentAffIdName</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update AFF with Parent\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Update AFF with Parent\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update AFF with Parent\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Update AFF with Parent\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update AFF with Parent\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update AFF with Parent\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update AFF with Parent\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update AFF with Parent\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update AFF with Parent\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[rik_Aff_ERROR]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update AFF with Parent\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_namn]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_namn"
+                      externalMetadataColumnId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_namn]" />
+                    <inputColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[rik_kod]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="rik_kod"
+                      externalMetadataColumnId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kod]"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_kod]" />
+                    <inputColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorColumn]" />
+                    <inputColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CrmErrorMessage]"
+                      cachedDataType="wstr"
+                      cachedLength="2048"
+                      cachedName="CrmErrorMessage"
+                      externalMetadataColumnId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      lineageId="Package\Update AFF with Parent\Dynamics CRM Destination.Outputs[Error Output].Columns[CrmErrorMessage]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_ParentAffIdName]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_ParentAffIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdYomiName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdDsc]"
+                      dataType="i4"
+                      name="OwnerIdDsc" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
+                      dataType="i4"
+                      name="OwnerIdType" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningUser" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwningTeam]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningTeam" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_AffId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_AffId" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="CreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningBusinessUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
+                      dataType="i4"
+                      name="ImportSequenceNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="OverriddenCreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TimeZoneRuleVersionNumber]"
+                      dataType="i4"
+                      name="TimeZoneRuleVersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UTCConversionTimeZoneCode]"
+                      dataType="i4"
+                      name="UTCConversionTimeZoneCode" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_Namn" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_KanHaAtgarder]"
+                      dataType="bool"
+                      name="rik_KanHaAtgarder" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kod]"
+                      dataType="wstr"
+                      length="20"
+                      name="rik_Kod" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Niva]"
+                      dataType="i4"
+                      name="rik_Niva" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Radstext]"
+                      dataType="nText"
+                      name="rik_Radstext" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_Sorteringsordning]"
+                      dataType="i4"
+                      name="rik_Sorteringsordning" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[rik_ParentAffId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_ParentAffId" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      dataType="wstr"
+                      length="255"
+                      name="MigrationId" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="4000"
+                      name="CrmErrorMessage" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update AFF with Parent\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update AFF with Parent\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update AFF with Parent\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update AFF with Parent\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update AFF with Parent\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RowsUpdated</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Update AFF with Parent\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update AFF with Parent\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Update AFF with Parent\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Update AFF with Parent.Paths[CRM Primary Output]"
+              endId="Package\Update AFF with Parent\Lookup.Inputs[Lookup Input]"
+              name="CRM Primary Output"
+              startId="Package\Update AFF with Parent\Dynamics CRM Source.Outputs[CRM Primary Output]" />
+            <path
+              refId="Package\Update AFF with Parent.Paths[Default Output]"
+              endId="Package\Update AFF with Parent\Row Count.Inputs[Row Count Input 1]"
+              name="Default Output"
+              startId="Package\Update AFF with Parent\Dynamics CRM Destination.Outputs[Default Output]" />
+            <path
+              refId="Package\Update AFF with Parent.Paths[Error Output]"
+              endId="Package\Update AFF with Parent\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Error Output"
+              startId="Package\Update AFF with Parent\Dynamics CRM Destination.Outputs[Error Output]" />
+            <path
+              refId="Package\Update AFF with Parent.Paths[Lookup Match Output]"
+              endId="Package\Update AFF with Parent\Dynamics CRM Destination.Inputs[Input]"
+              name="Lookup Match Output"
+              startId="Package\Update AFF with Parent\Lookup.Outputs[Lookup Match Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -3296,7 +4533,7 @@ FROM [STG].[dbo].[rik_Aff]</property>
       DTS:From="Package\Load Aff"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\LogPackageEnd"
-      DTS:Value="2" />
+      DTS:Value="1" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
       DTS:CreationName=""
@@ -3313,6 +4550,22 @@ FROM [STG].[dbo].[rik_Aff]</property>
       DTS:ObjectName="Constraint 11"
       DTS:To="Package\LogPackageEnd"
       DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 12]"
+      DTS:CreationName=""
+      DTS:DTSID="{F8AB202C-012B-4E3F-9BF6-689E57C82782}"
+      DTS:From="Package\Load Aff"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 12"
+      DTS:To="Package\Update AFF with Parent" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 13]"
+      DTS:CreationName=""
+      DTS:DTSID="{01CAE098-BBE6-495E-B493-4DC8CEBA1E3E}"
+      DTS:From="Package\Update AFF with Parent"
+      DTS:ObjectName="Constraint 13"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="2" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -3405,11 +4658,11 @@ FROM [STG].[dbo].[rik_Aff]</property>
         <NodeLayout
           Size="118,42"
           Id="Package\Load Aff"
-          TopLeft="746,521.44706250425" />
+          TopLeft="716,524.44706250425" />
         <NodeLayout
           Size="152,42"
           Id="Package\LogPackageEnd"
-          TopLeft="69.0000011580333,514.082356210069" />
+          TopLeft="69.0000011580333,640.082356210069" />
         <NodeLayout
           Size="162,42"
           Id="Package\LogPackageStart"
@@ -3446,25 +4699,37 @@ FROM [STG].[dbo].[rik_Aff]</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="746,538.76470935716">
+          TopLeft="756.666666666667,566.44706250425">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-524.999998841967,0"
+              EndConnector="-560.238094080062,73.635293705819"
               Start="0,0"
-              End="-517.499998841967,0">
+              End="-560.238094080062,66.135293705819">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-517.499998841967,0" />
+                    End="0,46.1240204585568" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46.1240204585568"
+                    Point2="0,50.1240204585568"
+                    Point3="-4,50.1240204585568" />
+                  <mssgle:LineSegment
+                    End="-556.238094080062,50.1240204585568" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-556.238094080062,50.1240204585568"
+                    Point2="-560.238094080062,50.1240204585568"
+                    Point3="-560.238094080062,54.1240204585568" />
+                  <mssgle:LineSegment
+                    End="-560.238094080062,66.135293705819" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-284.054452545983,5,50.60890625,11.609375"
+              BoundingBox="-295.360394696281,55.1240204585568,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3508,33 +4773,33 @@ FROM [STG].[dbo].[rik_Aff]</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-444.999998841967,153"
+              EndConnector="-458.714284556252,279"
               Start="0,0"
-              End="-444.999998841967,145.5">
+              End="-458.714284556252,271.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,72.1493123772102" />
+                    End="0,118.617100371747" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,72.1493123772102"
-                    Point2="0,76.1493123772102"
-                    Point3="-4,76.1493123772102" />
+                    Point1="0,118.617100371747"
+                    Point2="0,122.617100371747"
+                    Point3="-4,122.617100371747" />
                   <mssgle:LineSegment
-                    End="-440.999998841967,76.1493123772102" />
+                    End="-454.714284556252,122.617100371747" />
                   <mssgle:CubicBezierSegment
-                    Point1="-440.999998841967,76.1493123772102"
-                    Point2="-444.999998841967,76.1493123772102"
-                    Point3="-444.999998841967,80.1493123772102" />
+                    Point1="-454.714284556252,122.617100371747"
+                    Point2="-458.714284556252,122.617100371747"
+                    Point3="-458.714284556252,126.617100371747" />
                   <mssgle:LineSegment
-                    End="-444.999998841967,145.5" />
+                    End="-458.714284556252,271.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-237.741347077233,81.1493123772102,30.4826953125,9.7490234375"
+              BoundingBox="-244.598489934376,127.617100371747,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3566,33 +4831,33 @@ FROM [STG].[dbo].[rik_Aff]</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-39.0714285130403,335.788236889955"
+              EndConnector="-42.4999999416117,461.788236889955"
               Start="0,0"
-              End="-39.0714285130403,328.288236889955">
+              End="-42.4999999416117,454.288236889955">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,241.383711573429" />
+                    End="0,344.964974467977" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,241.383711573429"
-                    Point2="0,245.383711573429"
-                    Point3="-4,245.383711573429" />
+                    Point1="0,344.964974467977"
+                    Point2="0,348.964974467977"
+                    Point3="-4,348.964974467977" />
                   <mssgle:LineSegment
-                    End="-35.0714285130403,245.383711573429" />
+                    End="-38.4999999416117,348.964974467977" />
                   <mssgle:CubicBezierSegment
-                    Point1="-35.0714285130403,245.383711573429"
-                    Point2="-39.0714285130403,245.383711573429"
-                    Point3="-39.0714285130403,249.383711573429" />
+                    Point1="-38.4999999416117,348.964974467977"
+                    Point2="-42.4999999416117,348.964974467977"
+                    Point3="-42.4999999416117,352.964974467977" />
                   <mssgle:LineSegment
-                    End="-39.0714285130403,328.288236889955" />
+                    End="-42.4999999416117,454.288236889955" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-34.7770619127702,250.383711573429,30.4826953125,9.7490234375"
+              BoundingBox="-36.4913476270559,353.964974467977,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3636,33 +4901,33 @@ FROM [STG].[dbo].[rik_Aff]</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-258.000003474099,334.458825176728"
+              EndConnector="-264.857146331242,460.458825176728"
               Start="0,0"
-              End="-258.000003474099,326.958825176728">
+              End="-264.857146331242,452.958825176728">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,162.557339114743" />
+                    End="0,241.559987229697" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,162.557339114743"
-                    Point2="0,166.557339114743"
-                    Point3="-4,166.557339114743" />
+                    Point1="0,241.559987229697"
+                    Point2="0,245.559987229697"
+                    Point3="-4,245.559987229697" />
                   <mssgle:LineSegment
-                    End="-254.000003474099,166.557339114743" />
+                    End="-260.857146331242,245.559987229697" />
                   <mssgle:CubicBezierSegment
-                    Point1="-254.000003474099,166.557339114743"
-                    Point2="-258.000003474099,166.557339114743"
-                    Point3="-258.000003474099,170.557339114743" />
+                    Point1="-260.857146331242,245.559987229697"
+                    Point2="-264.857146331242,245.559987229697"
+                    Point3="-264.857146331242,249.559987229697" />
                   <mssgle:LineSegment
-                    End="-258.000003474099,326.958825176728" />
+                    End="-264.857146331242,452.958825176728" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-144.241349393299,171.557339114743,30.4826953125,9.7490234375"
+              BoundingBox="-147.669920821871,250.559987229697,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3672,26 +4937,26 @@ FROM [STG].[dbo].[rik_Aff]</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="65.6666666666666,48.44706250425"
+              EndConnector="35.6666666666666,51.44706250425"
               Start="0,0"
-              End="65.6666666666666,40.94706250425">
+              End="35.6666666666666,43.94706250425">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.6514462209502" />
+                    End="0,16.868327815323" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.6514462209502"
-                    Point2="0,19.6514462209502"
-                    Point3="4,19.6514462209502" />
+                    Point1="0,16.868327815323"
+                    Point2="0,20.868327815323"
+                    Point3="4,20.868327815323" />
                   <mssgle:LineSegment
-                    End="61.6666666666666,19.6514462209502" />
+                    End="31.6666666666666,20.868327815323" />
                   <mssgle:CubicBezierSegment
-                    Point1="61.6666666666666,19.6514462209502"
-                    Point2="65.6666666666666,19.6514462209502"
-                    Point3="65.6666666666666,23.6514462209502" />
+                    Point1="31.6666666666666,20.868327815323"
+                    Point2="35.6666666666666,20.868327815323"
+                    Point3="35.6666666666666,24.868327815323" />
                   <mssgle:LineSegment
-                    End="65.6666666666666,40.94706250425" />
+                    End="35.6666666666666,43.94706250425" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3706,33 +4971,33 @@ FROM [STG].[dbo].[rik_Aff]</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-492.666665508633,41.082356210069"
+              EndConnector="-509.809522651491,167.082356210069"
               Start="0,0"
-              End="-492.666665508633,33.582356210069">
+              End="-509.809522651491,159.582356210069">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.679384542625" />
+                    End="0,85.330853226696" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.679384542625"
-                    Point2="0,26.679384542625"
-                    Point3="-4,26.679384542625" />
+                    Point1="0,85.330853226696"
+                    Point2="0,89.330853226696"
+                    Point3="-4,89.330853226696" />
                   <mssgle:LineSegment
-                    End="-488.666665508633,26.679384542625" />
+                    End="-505.809522651491,89.330853226696" />
                   <mssgle:CubicBezierSegment
-                    Point1="-488.666665508633,26.679384542625"
-                    Point2="-492.666665508633,26.679384542625"
-                    Point3="-492.666665508633,30.679384542625" />
+                    Point1="-505.809522651491,89.330853226696"
+                    Point2="-509.809522651491,89.330853226696"
+                    Point3="-509.809522651491,93.330853226696" />
                   <mssgle:LineSegment
-                    End="-492.666665508633,33.582356210069" />
+                    End="-509.809522651491,159.582356210069" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-261.574680410567,31.679384542625,30.4826953125,9.7490234375"
+              BoundingBox="-270.146108981995,94.330853226696,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3776,33 +5041,33 @@ FROM [STG].[dbo].[rik_Aff]</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-378.999998841967,250.082356210069"
+              EndConnector="-389.285713127681,376.082356210069"
               Start="0,0"
-              End="-378.999998841967,242.582356210069">
+              End="-389.285713127681,368.582356210069">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,97.0433762464925" />
+                    End="0,161.283612972951" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,97.0433762464925"
-                    Point2="0,101.043376246493"
-                    Point3="-4,101.043376246493" />
+                    Point1="0,161.283612972951"
+                    Point2="0,165.283612972951"
+                    Point3="-4,165.283612972951" />
                   <mssgle:LineSegment
-                    End="-374.999998841967,101.043376246493" />
+                    End="-385.285713127681,165.283612972951" />
                   <mssgle:CubicBezierSegment
-                    Point1="-374.999998841967,101.043376246493"
-                    Point2="-378.999998841967,101.043376246493"
-                    Point3="-378.999998841967,105.043376246493" />
+                    Point1="-385.285713127681,165.283612972951"
+                    Point2="-389.285713127681,165.283612972951"
+                    Point3="-389.285713127681,169.283612972951" />
                   <mssgle:LineSegment
-                    End="-378.999998841967,242.582356210069" />
+                    End="-389.285713127681,368.582356210069" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-204.741347077233,106.043376246493,30.4826953125,9.7490234375"
+              BoundingBox="-209.884204220091,170.283612972951,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3820,6 +5085,56 @@ FROM [STG].[dbo].[rik_Aff]</property>
           Size="433,40"
           Id="e7532ab4-2ece-4b41-b47d-f17bddab92db"
           TopLeft="771,322" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Update AFF with Parent"
+          TopLeft="704,636" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 12]"
+          TopLeft="796.166666666667,566.44706250425">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69.55293749575"
+              Start="0,0"
+              End="0,62.05293749575">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.05293749575" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 13]"
+          TopLeft="704,659.041178105035">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-482.999998841967,0"
+              Start="0,0"
+              End="-475.499998841967,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-475.499998841967,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-263.054452545983,5,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -3882,38 +5197,36 @@ FROM [STG].[dbo].[rik_Aff]</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Delete target Aff koder table.Paths[Default Output]"
-          TopLeft="322,139.5">
+          TopLeft="289.166666666667,139.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-88,74.5"
+              EndConnector="-55.1666666666666,74.5"
               Start="0,0"
-              End="-88,67">
+              End="-55.1666666666666,67">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.25" />
+                    End="0,26.1461761858664" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,33.25"
-                    Point2="0,37.25"
-                    Point3="-4,37.25" />
+                    Point1="0,26.1461761858664"
+                    Point2="0,30.1461761858664"
+                    Point3="-4,30.1461761858664" />
                   <mssgle:LineSegment
-                    End="-84,37.25" />
+                    End="-51.1666666666666,30.1461761858664" />
                   <mssgle:CubicBezierSegment
-                    Point1="-84,37.25"
-                    Point2="-88,37.25"
-                    Point3="-88,41.25" />
+                    Point1="-51.1666666666666,30.1461761858664"
+                    Point2="-55.1666666666666,30.1461761858664"
+                    Point3="-55.1666666666666,34.1461761858664" />
                   <mssgle:LineSegment
-                    End="-88,67" />
+                    End="-55.1666666666666,67" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3935,9 +5248,7 @@ FROM [STG].[dbo].[rik_Aff]</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4009,7 +5320,7 @@ FROM [STG].[dbo].[rik_Aff]</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="28.9969466145833,33.9322362052275,56.6727734375,11.43359375"
+              BoundingBox="28.9969466145835,33.9322362052275,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4044,9 +5355,7 @@ FROM [STG].[dbo].[rik_Aff]</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -4068,9 +5377,7 @@ FROM [STG].[dbo].[rik_Aff]</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4109,21 +5416,21 @@ FROM [STG].[dbo].[rik_Aff]</property>
         <NodeLayout
           Size="205,42"
           Id="Package\Load Aff\Dynamics CRM Destination"
-          TopLeft="233.142861249497,139.482354897364" />
+          TopLeft="232.142861249497,142.482354897364" />
         <EdgeLayout
           Id="Package\Load Aff.Paths[OLE DB Source Output]"
-          TopLeft="334.821432634277,82.3529414338637">
+          TopLeft="334.321432634277,82.3529414338637">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57.1294134635003"
+              EndConnector="0,60.1294134635003"
               Start="0,0"
-              End="0,49.6294134635003">
+              End="0,52.6294134635003">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.6294134635003" />
+                    End="0,52.6294134635003" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4134,66 +5441,66 @@ FROM [STG].[dbo].[rik_Aff]</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Aff.Paths[Error Output]"
-          TopLeft="368.47619458283,181.482354897364">
+          TopLeft="367.47619458283,184.482354897364">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="80.0238054171697,79.517645102636"
+              EndConnector="81.0238054171697,76.517645102636"
               Start="0,0"
-              End="80.0238054171697,72.017645102636">
+              End="81.0238054171697,69.017645102636">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.176549518782" />
+                    End="0,26.9626095381431" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.176549518782"
-                    Point2="0,32.176549518782"
-                    Point3="4,32.176549518782" />
+                    Point1="0,26.9626095381431"
+                    Point2="0,30.9626095381431"
+                    Point3="4,30.9626095381431" />
                   <mssgle:LineSegment
-                    End="76.0238054171697,32.176549518782" />
+                    End="77.0238054171697,30.9626095381431" />
                   <mssgle:CubicBezierSegment
-                    Point1="76.0238054171697,32.176549518782"
-                    Point2="80.0238054171697,32.176549518782"
-                    Point3="80.0238054171697,36.176549518782" />
+                    Point1="77.0238054171697,30.9626095381431"
+                    Point2="81.0238054171697,30.9626095381431"
+                    Point3="81.0238054171697,34.9626095381431" />
                   <mssgle:LineSegment
-                    End="80.0238054171697,72.017645102636" />
+                    End="81.0238054171697,69.017645102636" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="11.6755159898348,37.176549518782,56.6727734375,11.43359375"
+              BoundingBox="12.1755159898348,35.9626095381431,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Aff.Paths[Default Output]"
-          TopLeft="335.642861249497,181.482354897364">
+          TopLeft="301.809527916164,184.482354897364">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-85.785715482675,78.517648749038"
+              EndConnector="-51.9523821493417,75.517648749038"
               Start="0,0"
-              End="-85.785715482675,71.017648749038">
+              End="-51.9523821493417,68.017648749038">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.258824374519" />
+                    End="0,26.5579643534345" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,35.258824374519"
-                    Point2="0,39.258824374519"
-                    Point3="-4,39.258824374519" />
+                    Point1="0,26.5579643534345"
+                    Point2="0,30.5579643534345"
+                    Point3="-4,30.5579643534345" />
                   <mssgle:LineSegment
-                    End="-81.785715482675,39.258824374519" />
+                    End="-47.9523821493417,30.5579643534345" />
                   <mssgle:CubicBezierSegment
-                    Point1="-81.785715482675,39.258824374519"
-                    Point2="-85.785715482675,39.258824374519"
-                    Point3="-85.785715482675,43.258824374519" />
+                    Point1="-47.9523821493417,30.5579643534345"
+                    Point2="-51.9523821493417,30.5579643534345"
+                    Point3="-51.9523821493417,34.5579643534345" />
                   <mssgle:LineSegment
-                    End="-85.785715482675,71.017648749038" />
+                    End="-51.9523821493417,68.017648749038" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4228,6 +5535,186 @@ FROM [STG].[dbo].[rik_Aff]</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Update AFF with Parent">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Update AFF with Parent\Dynamics CRM Destination"
+          TopLeft="265,187" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Update AFF with Parent\Row Count"
+          TopLeft="143,305" />
+        <EdgeLayout
+          Id="Package\Update AFF with Parent.Paths[Default Output]"
+          TopLeft="334.666666666667,229">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-126.666666666667,76"
+              Start="0,0"
+              End="-126.666666666667,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.7531461761859" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.7531461761859"
+                    Point2="0,30.7531461761859"
+                    Point3="-4,30.7531461761859" />
+                  <mssgle:LineSegment
+                    End="-122.666666666667,30.7531461761859" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-122.666666666667,30.7531461761859"
+                    Point2="-126.666666666667,30.7531461761859"
+                    Point3="-126.666666666667,34.7531461761859" />
+                  <mssgle:LineSegment
+                    End="-126.666666666667,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Update AFF with Parent\OLE DB Destination"
+          TopLeft="402,306" />
+        <EdgeLayout
+          Id="Package\Update AFF with Parent.Paths[Error Output]"
+          TopLeft="400.333333333333,229">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87.1666666666667,77"
+              Start="0,0"
+              End="87.1666666666667,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.1577928363988" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.1577928363988"
+                    Point2="0,31.1577928363988"
+                    Point3="4,31.1577928363988" />
+                  <mssgle:LineSegment
+                    End="83.1666666666667,31.1577928363988" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83.1666666666667,31.1577928363988"
+                    Point2="87.1666666666667,31.1577928363988"
+                    Point3="87.1666666666667,35.1577928363988" />
+                  <mssgle:LineSegment
+                    End="87.1666666666667,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="15.2469466145833,36.1577928363988,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Update AFF with Parent\Lookup"
+          TopLeft="306,106" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Update AFF with Parent\Dynamics CRM Source"
+          TopLeft="268,23" />
+        <EdgeLayout
+          Id="Package\Update AFF with Parent.Paths[CRM Primary Output]"
+          TopLeft="361.25,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Update AFF with Parent.Paths[Lookup Match Output]"
+          TopLeft="365,148">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,9.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Update AFF with Parent\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Update AFF with Parent\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[rik_Aff]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
