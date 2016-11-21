@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Aff_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="78"
-  DTS:VersionGUID="{7B1DE95C-D00E-4E33-BF51-D62AFDCC45F1}">
+  DTS:VersionBuild="79"
+  DTS:VersionGUID="{DD2B0C1C-9530-4C38-BB2D-A2158E970077}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -1962,7 +1962,7 @@
                   description="Specify what action will be taken when multiple matches are found with Upsert action."
                   expressionType="Notify"
                   name="HandlingOfMultipleMatches"
-                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
                 <property
                   dataType="System.String"
                   description="Workflow to be executed."
@@ -3293,7 +3293,8 @@ ORDER BY rik_Niva</property>
               contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
               description="Populate data into Microsoft Dynamics CRM."
               name="Dynamics CRM Destination"
-              usesDispositions="true">
+              usesDispositions="true"
+              version="3">
               <properties>
                 <property
                   dataType="System.String"
@@ -3662,7 +3663,8 @@ ORDER BY rik_Niva</property>
               contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
               description="Extract data from Microsoft Dynamics CRM."
               name="Dynamics CRM Source"
-              usesDispositions="true">
+              usesDispositions="true"
+              version="2">
               <properties>
                 <property
                   dataType="System.Int32"
@@ -3694,7 +3696,8 @@ ORDER BY rik_Niva</property>
                   dataType="System.Null"
                   description="Specifies the output timezone for CRM datetime fields."
                   expressionType="Notify"
-                  name="OutputTimezone" />
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceOutputTimezone" />
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
@@ -4675,6 +4678,10 @@ where [refTable].[rik_Kod] = ? and [refTable].[rik_Namn] = ? and [refTable].[rik
           Size="221,42"
           Id="Package\Truncate rows in ERROR table"
           TopLeft="304.000004632132,137.623531033341" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Update AFF with Parent"
+          TopLeft="704,636" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="138.007143859474,94.6882357231061">
@@ -4800,6 +4807,52 @@ where [refTable].[rik_Kod] = ? and [refTable].[rik_Namn] = ? and [refTable].[rik
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-244.598489934376,127.617100371747,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 12]"
+          TopLeft="796.166666666667,566.44706250425">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69.55293749575"
+              Start="0,0"
+              End="0,62.05293749575">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.05293749575" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 13]"
+          TopLeft="704,659.041178105035">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-482.999998841967,0"
+              Start="0,0"
+              End="-475.499998841967,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-475.499998841967,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-263.054452545983,5,50.60890625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5085,56 +5138,6 @@ where [refTable].[rik_Kod] = ? and [refTable].[rik_Namn] = ? and [refTable].[rik
           Size="433,40"
           Id="e7532ab4-2ece-4b41-b47d-f17bddab92db"
           TopLeft="771,322" />
-        <NodeLayout
-          Size="190,42"
-          Id="Package\Update AFF with Parent"
-          TopLeft="704,636" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 12]"
-          TopLeft="796.166666666667,566.44706250425">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,69.55293749575"
-              Start="0,0"
-              End="0,62.05293749575">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,62.05293749575" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 13]"
-          TopLeft="704,659.041178105035">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-482.999998841967,0"
-              Start="0,0"
-              End="-475.499998841967,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-475.499998841967,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-263.054452545983,5,50.60890625,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -5226,7 +5229,9 @@ where [refTable].[rik_Kod] = ? and [refTable].[rik_Namn] = ? and [refTable].[rik
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5248,7 +5253,9 @@ where [refTable].[rik_Kod] = ? and [refTable].[rik_Namn] = ? and [refTable].[rik
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5320,36 +5327,36 @@ where [refTable].[rik_Kod] = ? and [refTable].[rik_Namn] = ? and [refTable].[rik
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="28.9969466145835,33.9322362052275,56.6727734375,11.43359375"
+              BoundingBox="28.9969466145833,33.9322362052275,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Delete target Atgard table.Paths[Default Output]"
-          TopLeft="322,139.5">
+          TopLeft="289.166666666667,139.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-88,74.5"
+              EndConnector="-55.1666666666666,74.5"
               Start="0,0"
-              End="-88,67">
+              End="-55.1666666666666,67">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.25" />
+                    End="0,26.1461761858664" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,33.25"
-                    Point2="0,37.25"
-                    Point3="-4,37.25" />
+                    Point1="0,26.1461761858664"
+                    Point2="0,30.1461761858664"
+                    Point3="-4,30.1461761858664" />
                   <mssgle:LineSegment
-                    End="-84,37.25" />
+                    End="-51.1666666666666,30.1461761858664" />
                   <mssgle:CubicBezierSegment
-                    Point1="-84,37.25"
-                    Point2="-88,37.25"
-                    Point3="-88,41.25" />
+                    Point1="-51.1666666666666,30.1461761858664"
+                    Point2="-55.1666666666666,30.1461761858664"
+                    Point3="-55.1666666666666,34.1461761858664" />
                   <mssgle:LineSegment
-                    End="-88,67" />
+                    End="-55.1666666666666,67" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5436,7 +5443,9 @@ where [refTable].[rik_Kod] = ? and [refTable].[rik_Namn] = ? and [refTable].[rik
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5506,7 +5515,9 @@ where [refTable].[rik_Kod] = ? and [refTable].[rik_Namn] = ? and [refTable].[rik
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5544,51 +5555,25 @@ where [refTable].[rik_Kod] = ? and [refTable].[rik_Namn] = ? and [refTable].[rik
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="205,42"
-          Id="Package\Update AFF with Parent\Dynamics CRM Destination"
-          TopLeft="265,187" />
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Update AFF with Parent\Row Count"
-          TopLeft="143,305" />
-        <EdgeLayout
-          Id="Package\Update AFF with Parent.Paths[Default Output]"
-          TopLeft="334.666666666667,229">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-126.666666666667,76"
-              Start="0,0"
-              End="-126.666666666667,68.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.7531461761859" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.7531461761859"
-                    Point2="0,30.7531461761859"
-                    Point3="-4,30.7531461761859" />
-                  <mssgle:LineSegment
-                    End="-122.666666666667,30.7531461761859" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-122.666666666667,30.7531461761859"
-                    Point2="-126.666666666667,30.7531461761859"
-                    Point3="-126.666666666667,34.7531461761859" />
-                  <mssgle:LineSegment
-                    End="-126.666666666667,68.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="113,42"
+          Id="Package\Update AFF with Parent\Lookup"
+          TopLeft="306,106" />
         <NodeLayout
           Size="171,42"
           Id="Package\Update AFF with Parent\OLE DB Destination"
           TopLeft="402,306" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Update AFF with Parent\Dynamics CRM Source"
+          TopLeft="268,23" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Update AFF with Parent\Row Count"
+          TopLeft="143,305" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Update AFF with Parent\Dynamics CRM Destination"
+          TopLeft="265,187" />
         <EdgeLayout
           Id="Package\Update AFF with Parent.Paths[Error Output]"
           TopLeft="400.333333333333,229">
@@ -5625,14 +5610,42 @@ where [refTable].[rik_Kod] = ? and [refTable].[rik_Namn] = ? and [refTable].[rik
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="113,42"
-          Id="Package\Update AFF with Parent\Lookup"
-          TopLeft="306,106" />
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Update AFF with Parent\Dynamics CRM Source"
-          TopLeft="268,23" />
+        <EdgeLayout
+          Id="Package\Update AFF with Parent.Paths[Default Output]"
+          TopLeft="334.666666666667,229">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-126.666666666667,76"
+              Start="0,0"
+              End="-126.666666666667,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.7531461761859" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.7531461761859"
+                    Point2="0,30.7531461761859"
+                    Point3="-4,30.7531461761859" />
+                  <mssgle:LineSegment
+                    End="-122.666666666667,30.7531461761859" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-122.666666666667,30.7531461761859"
+                    Point2="-126.666666666667,30.7531461761859"
+                    Point3="-126.666666666667,34.7531461761859" />
+                  <mssgle:LineSegment
+                    End="-126.666666666667,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Update AFF with Parent.Paths[CRM Primary Output]"
           TopLeft="361.25,65">
@@ -5652,7 +5665,9 @@ where [refTable].[rik_Kod] = ? and [refTable].[rik_Namn] = ? and [refTable].[rik
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5701,7 +5716,7 @@ where [refTable].[rik_Kod] = ? and [refTable].[rik_Namn] = ? and [refTable].[rik
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5711,7 +5726,7 @@ where [refTable].[rik_Kod] = ? and [refTable].[rik_Namn] = ? and [refTable].[rik
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
