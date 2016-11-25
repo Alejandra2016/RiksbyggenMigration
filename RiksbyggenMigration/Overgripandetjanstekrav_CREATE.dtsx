@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Overgripandetjanstekrav_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="65"
-  DTS:VersionGUID="{14E40FA2-1AB5-4CDF-8B80-4DDDF3FE5852}">
+  DTS:VersionBuild="66"
+  DTS:VersionGUID="{AA7869B1-A1DB-4357-AEE6-82B8BC49CF7F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -980,6 +980,19 @@
                       cachedName="rik_namn"
                       externalMetadataColumnId="Package\Load Overgripandetjanstekrav\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_namn]"
                       lineageId="Package\Load Overgripandetjanstekrav\STG rik_Overgripandetjanstekrav.Outputs[OLE DB Source Output].Columns[rik_namn]" />
+                    <inputColumn
+                      refId="Package\Load Overgripandetjanstekrav\Dynamics CRM Destination.Inputs[Input].Columns[rik_kod]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_kod"
+                      externalMetadataColumnId="Package\Load Overgripandetjanstekrav\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_kod]"
+                      lineageId="Package\Load Overgripandetjanstekrav\STG rik_Overgripandetjanstekrav.Outputs[OLE DB Source Output].Columns[rik_kod]" />
+                    <inputColumn
+                      refId="Package\Load Overgripandetjanstekrav\Dynamics CRM Destination.Inputs[Input].Columns[rik_Radstext]"
+                      cachedDataType="nText"
+                      cachedName="rik_Radstext"
+                      externalMetadataColumnId="Package\Load Overgripandetjanstekrav\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_radstext]"
+                      lineageId="Package\Load Overgripandetjanstekrav\STG rik_Overgripandetjanstekrav.Outputs[OLE DB Source Output].Columns[rik_Radstext]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1077,19 +1090,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Overgripandetjanstekrav\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_nummer]"
-                      dataType="i4"
-                      name="rik_nummer">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Integer</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Overgripandetjanstekrav\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_overgripandetjanstekravid]"
                       dataType="guid"
                       name="rik_overgripandetjanstekravid">
@@ -1100,19 +1100,6 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Load Overgripandetjanstekrav\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_overgripandetjansterid]"
-                      dataType="guid"
-                      name="rik_overgripandetjansterid">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Lookup</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes">rik_overgripandetjanster</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1162,6 +1149,33 @@
                         <property
                           dataType="System.String"
                           name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Overgripandetjanstekrav\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_kod]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_kod">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Overgripandetjanstekrav\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_radstext]"
+                      dataType="nText"
+                      name="rik_radstext">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -2928,7 +2942,9 @@ FROM rik_Overgripandetjanstekrav</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2950,7 +2966,9 @@ FROM rik_Overgripandetjanstekrav</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2975,6 +2993,14 @@ FROM rik_Overgripandetjanstekrav</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="234,42"
+          Id="Package\Load Overgripandetjanstekrav\Overgripandetjänstekrav_ERROR"
+          TopLeft="382,254" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Load Overgripandetjanstekrav\Row Inserted"
+          TopLeft="178.857145766822,254.000003646402" />
+        <NodeLayout
           Size="235,42"
           Id="Package\Load Overgripandetjanstekrav\STG rik_Overgripandetjanstekrav"
           TopLeft="217.000004019056,19.3529414338637" />
@@ -2982,10 +3008,6 @@ FROM rik_Overgripandetjanstekrav</property>
           Size="205,42"
           Id="Package\Load Overgripandetjanstekrav\Dynamics CRM Destination"
           TopLeft="233.142861249497,118.482354897364" />
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Load Overgripandetjanstekrav\Row Inserted"
-          TopLeft="178.857145766822,254.000003646402" />
         <EdgeLayout
           Id="Package\Load Overgripandetjanstekrav.Paths[OLE DB Source Output]"
           TopLeft="335.071432634277,61.3529414338637">
@@ -3008,44 +3030,6 @@ FROM rik_Overgripandetjanstekrav</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Overgripandetjanstekrav.Paths[Default Output]"
-          TopLeft="302.809527916164,160.482354897364">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-52.9523821493417,93.517648749038"
-              Start="0,0"
-              End="-52.9523821493417,86.017648749038">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.841604237268" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.841604237268"
-                    Point2="0,37.841604237268"
-                    Point3="-4,37.841604237268" />
-                  <mssgle:LineSegment
-                    End="-48.9523821493417,37.841604237268" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-48.9523821493417,37.841604237268"
-                    Point2="-52.9523821493417,37.841604237268"
-                    Point3="-52.9523821493417,41.841604237268" />
-                  <mssgle:LineSegment
-                    End="-52.9523821493417,86.017648749038" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="234,42"
-          Id="Package\Load Overgripandetjanstekrav\Overgripandetjänstekrav_ERROR"
-          TopLeft="382,254" />
         <EdgeLayout
           Id="Package\Load Overgripandetjanstekrav.Paths[Error Output]"
           TopLeft="368.47619458283,160.482354897364">
@@ -3080,6 +3064,40 @@ FROM rik_Overgripandetjanstekrav</property>
             <mssgm:EdgeLabel
               BoundingBox="36.9255159898348,42.8416027617637,56.6727734375,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Overgripandetjanstekrav.Paths[Default Output]"
+          TopLeft="302.809527916164,160.482354897364">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-52.9523821493417,93.517648749038"
+              Start="0,0"
+              End="-52.9523821493417,86.017648749038">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.841604237268" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.841604237268"
+                    Point2="0,37.841604237268"
+                    Point3="-4,37.841604237268" />
+                  <mssgle:LineSegment
+                    End="-48.9523821493417,37.841604237268" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-48.9523821493417,37.841604237268"
+                    Point2="-52.9523821493417,37.841604237268"
+                    Point3="-52.9523821493417,41.841604237268" />
+                  <mssgle:LineSegment
+                    End="-52.9523821493417,86.017648749038" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
