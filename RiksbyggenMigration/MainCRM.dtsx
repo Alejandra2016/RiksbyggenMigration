@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="MainCRM"
   DTS:PackageType="5"
-  DTS:VersionBuild="75"
-  DTS:VersionGUID="{219E070F-B454-4DEC-9E53-EC2BBDBB602B}">
+  DTS:VersionBuild="77"
+  DTS:VersionGUID="{9047B232-FA71-4B63-9F43-BF06B03FCE56}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -238,19 +238,19 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Ladda alla CRM tabeller\Account_CREATE"
+          DTS:refId="Package\Ladda alla CRM tabeller\Account_CREATE_UPDATE"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
           DTS:DTSID="{6D5D79EC-913C-437E-AB8E-E14455AD6EA6}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Account_CREATE"
+          DTS:ObjectName="Account_CREATE_UPDATE"
           DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
-              <PackageName>Account_CREATE.dtsx</PackageName>
+              <PackageName>Account_CREATE_UPDATE.dtsx</PackageName>
               <ParameterAssignment>
                 <ParameterName>ParentPackageExecutionID</ParameterName>
                 <BindedVariableOrParameterName>System::ExecutionInstanceGUID</BindedVariableOrParameterName>
@@ -363,19 +363,19 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Ladda alla CRM tabeller\Contact_CREATE"
+          DTS:refId="Package\Ladda alla CRM tabeller\Contact_CREATE_UPDATE"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
           DTS:DTSID="{1BA24BEE-48B9-48BA-B417-DC857FD10D5C}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Contact_CREATE"
+          DTS:ObjectName="Contact_CREATE_UPDATE"
           DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
-              <PackageName>Contact_CREATE.dtsx</PackageName>
+              <PackageName>Contact_CREATE_UPDATE.dtsx</PackageName>
               <ParameterAssignment>
                 <ParameterName>ParentPackageExecutionID</ParameterName>
                 <BindedVariableOrParameterName>System::ExecutionInstanceGUID</BindedVariableOrParameterName>
@@ -774,11 +774,11 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 12]"
           DTS:CreationName=""
-          DTS:DTSID="{D5ACE9B9-E269-4F69-9330-91450E6DFB9F}"
+          DTS:DTSID="{810A2EB9-885C-489B-8795-953806C3268C}"
           DTS:From="Package\Ladda alla CRM tabeller\Atgard_CREATE"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 12"
-          DTS:To="Package\Ladda alla CRM tabeller\Contact_CREATE" />
+          DTS:To="Package\Ladda alla CRM tabeller\Overgripandetjanstekrav_CREATE" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 13]"
           DTS:CreationName=""
@@ -790,11 +790,11 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 14]"
           DTS:CreationName=""
-          DTS:DTSID="{417355EE-A78D-46EE-B6E3-399EAE897820}"
-          DTS:From="Package\Ladda alla CRM tabeller\Activities_CREATE"
+          DTS:DTSID="{B63D65FD-6E3C-4C4D-B104-03DD49DE8A81}"
+          DTS:From="Package\Ladda alla CRM tabeller\Anvandning_CREATE"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 14"
-          DTS:To="Package\Ladda alla CRM tabeller\Overgripandetjanstekrav_CREATE" />
+          DTS:To="Package\Ladda alla CRM tabeller\Contact_CREATE_UPDATE" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 15]"
           DTS:CreationName=""
@@ -806,8 +806,8 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 16]"
           DTS:CreationName=""
-          DTS:DTSID="{624071F6-BA8A-4F3F-A944-1005B106E99E}"
-          DTS:From="Package\Ladda alla CRM tabeller\Anvandning_CREATE"
+          DTS:DTSID="{BCA0A1C7-7654-42B6-B4DB-40A51964E9BA}"
+          DTS:From="Package\Ladda alla CRM tabeller\Activities_CREATE"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 16"
           DTS:To="Package\Ladda alla CRM tabeller\Objekt_CREATE" />
@@ -847,10 +847,10 @@
           DTS:refId="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 4]"
           DTS:CreationName=""
           DTS:DTSID="{F51306A7-DA3D-40B1-BD0B-1ABC9BD4BF23}"
-          DTS:From="Package\Ladda alla CRM tabeller\Contact_CREATE"
+          DTS:From="Package\Ladda alla CRM tabeller\Contact_CREATE_UPDATE"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 4"
-          DTS:To="Package\Ladda alla CRM tabeller\Account_CREATE" />
+          DTS:To="Package\Ladda alla CRM tabeller\Account_CREATE_UPDATE" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 5]"
           DTS:CreationName=""
@@ -871,7 +871,7 @@
           DTS:refId="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 7]"
           DTS:CreationName=""
           DTS:DTSID="{70A471F1-5FCB-4806-A687-D325E740F412}"
-          DTS:From="Package\Ladda alla CRM tabeller\Account_CREATE"
+          DTS:From="Package\Ladda alla CRM tabeller\Account_CREATE_UPDATE"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 7"
           DTS:To="Package\Ladda alla CRM tabeller\Foretagsinformation_CREATE" />
@@ -1641,91 +1641,91 @@
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="224,42"
+          Size="224,41.6"
           Id="Package\Aktivera plugins och workflows"
           TopLeft="240,674" />
         <NodeLayout
-          Size="233,42"
+          Size="232.8,41.6"
           Id="Package\Inaktivera plugins och workflows"
           TopLeft="416,89" />
         <NodeLayout
-          Size="238,42"
-          Id="Package\Ladda alla CRM tabeller\Account_CREATE"
-          TopLeft="312.817356618014,410.045380976456" />
+          Size="204,41.6"
+          Id="Package\Ladda alla CRM tabeller\Account_CREATE_UPDATE"
+          TopLeft="318.531642429613,249.966947358868" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Ladda alla CRM tabeller\Activities_CREATE"
-          TopLeft="312.817356618014,109.538661355874" />
+          TopLeft="591.864980417786,22.87199347374" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Ladda alla CRM tabeller\Aff_CREATE"
           TopLeft="37.4857199785662,572.695800009237" />
         <NodeLayout
-          Size="238,42"
+          Size="176.8,41.6"
           Id="Package\Ladda alla CRM tabeller\Anvandning_CREATE"
-          TopLeft="600.75,15.75" />
+          TopLeft="335.988090729227,413.397064400379" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Ladda alla CRM tabeller\Atgard_CREATE"
           TopLeft="312.817356618014,566.695800009237" />
         <NodeLayout
-          Size="238,42"
-          Id="Package\Ladda alla CRM tabeller\Contact_CREATE"
-          TopLeft="312.817356618014,491.495590492847" />
+          Size="238.4,41.6"
+          Id="Package\Ladda alla CRM tabeller\Contact_CREATE_UPDATE"
+          TopLeft="318.531642429613,331.417156875259" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Ladda alla CRM tabeller\Engagemang_CREATE"
-          TopLeft="312.817356618014,254.644961943676" />
+          TopLeft="318.531642429613,94.5665283260875" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Ladda alla CRM tabeller\Engagemangsroll_CREATE"
           TopLeft="37.4857199785662,494.695800009237" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Ladda alla CRM tabeller\Foretagsinformation_CREATE"
-          TopLeft="312.817356618014,332.345171460066" />
+          TopLeft="318.531642429613,172.266737842477" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Ladda alla CRM tabeller\Incident_CREATE_UPDATE"
-          TopLeft="312.817356618014,183.538661355874" />
+          TopLeft="318.531642429613,23.4602277382854" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Ladda alla CRM tabeller\KBArticle_CREATE_UPDATE"
           TopLeft="37.4857199785662,332.570089086547" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Ladda alla CRM tabeller\KBArticleTemplate_CREATE_UPDATE"
           TopLeft="37.4857199785662,254.101516817219" />
         <NodeLayout
-          Size="221,42"
+          Size="220.8,41.6"
           Id="Package\Ladda alla CRM tabeller\Objekt_CREATE"
           TopLeft="606.485719978566,105.695800009237" />
         <NodeLayout
-          Size="202,42"
+          Size="201.6,41.6"
           Id="Package\Ladda alla CRM tabeller\Objektskontrakt_CREATE"
           TopLeft="613.485719978566,185.695800009237" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Ladda alla CRM tabeller\Overgripandetjanstekrav_CREATE"
-          TopLeft="312.817356618014,13.695800009237" />
+          TopLeft="319.484023398213,502.087963721498" />
         <NodeLayout
-          Size="204,42"
+          Size="204,41.6"
           Id="Package\Ladda alla CRM tabeller\PM_Engagemang_CREATE"
           TopLeft="613.485719978566,263.695800009237" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Ladda alla CRM tabeller\Queue_CREATE_UPDATE"
           TopLeft="37.4857199785662,411.038661355874" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Ladda alla CRM tabeller\Subject_CREATE_UPDATE"
           TopLeft="37.4857199785662,175.632944547892" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Ladda alla CRM tabeller\SystemUser_CREATE"
           TopLeft="37.4857199785662,14.6958000092367" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Ladda alla CRM tabeller\Team_CREATE"
           TopLeft="37.4857199785662,97.1643722785642" />
         <EdgeLayout
@@ -1817,28 +1817,6 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 12]"
-          TopLeft="431.817356618014,566.695800009237">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,-33.2002095163901"
-              Start="0,0"
-              End="0,-25.7002095163901">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-25.7002095163901" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 13]"
           TopLeft="275.485719978566,590.695800009237">
           <EdgeLayout.Curve>
@@ -1861,63 +1839,31 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 14]"
-          TopLeft="431.817356618014,109.538661355874">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,-53.8428613466369"
-              Start="0,0"
-              End="0,-46.3428613466369">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-46.3428613466369" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 15]"
-          TopLeft="550.817356618014,35.7229000046185">
+          TopLeft="438.684023398213,502.087963721498">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="49.9326433819861,0"
+              EndConnector="-14.2959326689862,-47.0908993211183"
               Start="0,0"
-              End="42.4326433819861,0">
+              End="-14.2959326689862,-39.5908993211183">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="42.4326433819861,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 16]"
-          TopLeft="718.367859989283,57.75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,47.945800009237"
-              Start="0,0"
-              End="0,40.445800009237">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
+                    End="0,-19.5454496605591" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-19.5454496605591"
+                    Point2="0,-23.5454496605591"
+                    Point3="-4,-23.5454496605591" />
                   <mssgle:LineSegment
-                    End="0,40.445800009237" />
+                    End="-10.2959326689862,-23.5454496605591" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.2959326689862,-23.5454496605591"
+                    Point2="-14.2959326689862,-23.5454496605591"
+                    Point3="-14.2959326689862,-27.5454496605591" />
+                  <mssgle:LineSegment
+                    End="-14.2959326689862,-39.5908993211183" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2016,18 +1962,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 4]"
-          TopLeft="431.817356618014,491.495590492847">
+          TopLeft="437.731642429613,331.417156875259">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,-39.4502095163905"
+              EndConnector="-17.2,-39.8502095163909"
               Start="0,0"
-              End="0,-31.9502095163905">
+              End="-17.2,-32.3502095163909">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-31.9502095163905" />
+                    End="0,-15.9251047581955" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-15.9251047581955"
+                    Point2="0,-19.9251047581955"
+                    Point3="-4,-19.9251047581955" />
+                  <mssgle:LineSegment
+                    End="-13.2,-19.9251047581955" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.2,-19.9251047581955"
+                    Point2="-17.2,-19.9251047581955"
+                    Point3="-17.2,-23.9251047581955" />
+                  <mssgle:LineSegment
+                    End="-17.2,-32.3502095163909" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2038,7 +1996,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 5]"
-          TopLeft="431.817356618014,332.345171460066">
+          TopLeft="437.531642429613,172.266737842477">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2082,18 +2040,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 7]"
-          TopLeft="431.817356618014,410.045380976456">
+          TopLeft="420.531642429613,249.966947358868">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,-35.70020951639"
+              EndConnector="17.2,-36.10020951639"
               Start="0,0"
-              End="0,-28.20020951639">
+              End="17.2,-28.60020951639">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-28.20020951639" />
+                    End="0,-14.0501047581951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-14.0501047581951"
+                    Point2="0,-18.0501047581951"
+                    Point3="4,-18.0501047581951" />
+                  <mssgle:LineSegment
+                    End="13.2,-18.0501047581951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.2,-18.0501047581951"
+                    Point2="17.2,-18.0501047581951"
+                    Point3="17.2,-22.0501047581951" />
+                  <mssgle:LineSegment
+                    End="17.2,-28.60020951639" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2104,7 +2074,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 8]"
-          TopLeft="431.817356618014,254.644961943676">
+          TopLeft="437.531642429613,94.5665283260875">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2126,18 +2096,96 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 9]"
-          TopLeft="431.817356618014,183.538661355874">
+          TopLeft="556.931642429613,43.9661106060127">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,-32"
+              EndConnector="34.9333379881726,0"
               Start="0,0"
-              End="0,-24.5">
+              End="27.4333379881726,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-24.5" />
+                    End="27.4333379881726,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 12]"
+          TopLeft="435.350690008114,566.695800009237">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-23.0078362877393"
+              Start="0,0"
+              End="0,-15.5078362877393">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-15.5078362877393" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 14]"
+          TopLeft="424.388090729227,413.397064400379">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.3435517003864,-40.3799075251209"
+              Start="0,0"
+              End="13.3435517003864,-32.8799075251209">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-16.1899537625604" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-16.1899537625604"
+                    Point2="0,-20.1899537625604"
+                    Point3="4,-20.1899537625604" />
+                  <mssgle:LineSegment
+                    End="9.3435517003864,-20.1899537625604" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.3435517003864,-20.1899537625604"
+                    Point2="13.3435517003864,-20.1899537625604"
+                    Point3="13.3435517003864,-24.1899537625604" />
+                  <mssgle:LineSegment
+                    End="13.3435517003864,-32.8799075251209" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Ladda alla CRM tabeller.PrecedenceConstraints[Constraint 16]"
+          TopLeft="713.975350198176,64.47199347374">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.223806535497"
+              Start="0,0"
+              End="0,33.723806535497">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.723806535497" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2149,20 +2197,20 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="908,698"
-          Size="908,741"
+          PanelSize="908,697.6"
+          Size="908,740.8"
           Id="Package\Ladda alla CRM tabeller"
           TopLeft="564.64286220317,155.950002625409" />
         <NodeLayout
-          Size="152,42"
+          Size="152,41.6"
           Id="Package\LogPackageEnd"
           TopLeft="47.5714293475056,568.494123586405" />
         <NodeLayout
-          Size="162,42"
+          Size="161.6,41.6"
           Id="Package\LogPackageStart"
           TopLeft="58.6428580478746,73.0882357231061" />
         <NodeLayout
-          Size="143,42"
+          Size="143.2,41.6"
           Id="Package\New LoggStatus"
           TopLeft="64.5714296710736,156.294119320114" />
         <EdgeLayout
@@ -2223,37 +2271,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="564.64286220317,404.283335958742">
+          TopLeft="564.64286220317,404.216669292076">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-365.071432855664,185.210787627663"
+              EndConnector="-365.071432855664,185.077454294329"
               Start="0,0"
-              End="-357.571432855664,185.210787627663">
+              End="-357.571432855664,185.077454294329">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-142.500521129798,0" />
+                    End="-142.500648270958,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-142.500521129798,0"
-                    Point2="-146.500521129798,0"
-                    Point3="-146.500521129798,4" />
+                    Point1="-142.500648270958,0"
+                    Point2="-146.500648270958,0"
+                    Point3="-146.500648270958,4" />
                   <mssgle:LineSegment
-                    End="-146.500521129798,181.210787627663" />
+                    End="-146.500648270958,181.077454294329" />
                   <mssgle:CubicBezierSegment
-                    Point1="-146.500521129798,181.210787627663"
-                    Point2="-146.500521129798,185.210787627663"
-                    Point3="-150.500521129798,185.210787627663" />
+                    Point1="-146.500648270958,181.077454294329"
+                    Point2="-146.500648270958,185.077454294329"
+                    Point3="-150.500648270958,185.077454294329" />
                   <mssgle:LineSegment
-                    End="-357.571432855664,185.210787627663" />
+                    End="-357.571432855664,185.077454294329" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-161.741868786048,-15.7490234375,30.4826953125,9.7490234375"
+              BoundingBox="-161.741995927208,-15.7490234375,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2295,30 +2343,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="588.75,131">
+          TopLeft="588.6,130.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="429.89286220317,24.9500026254091"
+              EndConnector="430.04286220317,25.350002625409"
               Start="0,0"
-              End="429.89286220317,17.4500026254091">
+              End="430.04286220317,17.850002625409">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,4.50488066863308" />
+                    End="0,4.64139387344065" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,4.50488066863308"
-                    Point2="0,8.50488066863308"
-                    Point3="4,8.50488066863308" />
+                    Point1="0,4.64139387344065"
+                    Point2="0,8.64139387344065"
+                    Point3="4,8.64139387344065" />
                   <mssgle:LineSegment
-                    End="425.89286220317,8.50488066863308" />
+                    End="426.04286220317,8.64139387344065" />
                   <mssgle:CubicBezierSegment
-                    Point1="425.89286220317,8.50488066863308"
-                    Point2="429.89286220317,8.50488066863308"
-                    Point3="429.89286220317,12.5048806686331" />
+                    Point1="426.04286220317,8.64139387344065"
+                    Point2="430.04286220317,8.64139387344065"
+                    Point3="430.04286220317,12.6413938734407" />
                   <mssgle:LineSegment
-                    End="429.89286220317,17.4500026254091" />
+                    End="430.04286220317,17.850002625409" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2329,30 +2377,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="564.64286220317,648.616669292076">
+          TopLeft="564.64286220317,648.483335958742">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-100.64286220317,46.3833307079243"
+              EndConnector="-100.64286220317,46.3166640412577"
               Start="0,0"
-              End="-93.14286220317,46.3833307079243">
+              End="-93.14286220317,46.3166640412577">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-36.3872514631628,0" />
+                    End="-36.3872865134273,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-36.3872514631628,0"
-                    Point2="-40.3872514631628,0"
-                    Point3="-40.3872514631628,4" />
+                    Point1="-36.3872865134273,0"
+                    Point2="-40.3872865134273,0"
+                    Point3="-40.3872865134273,4" />
                   <mssgle:LineSegment
-                    End="-40.3872514631628,42.3833307079243" />
+                    End="-40.3872865134273,42.3166640412577" />
                   <mssgle:CubicBezierSegment
-                    Point1="-40.3872514631628,42.3833307079243"
-                    Point2="-40.3872514631628,46.3833307079243"
-                    Point3="-44.3872514631628,46.3833307079243" />
+                    Point1="-40.3872865134273,42.3166640412577"
+                    Point2="-40.3872865134273,46.3166640412577"
+                    Point3="-44.3872865134273,46.3166640412577" />
                   <mssgle:LineSegment
-                    End="-93.14286220317,46.3833307079243" />
+                    End="-93.14286220317,46.3166640412577" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
