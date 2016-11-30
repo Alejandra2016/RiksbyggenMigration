@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="PM_Engagemang_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="106"
-  DTS:VersionGUID="{6BF1DC2F-D985-4D74-8D16-033C3633E305}">
+  DTS:VersionBuild="107"
+  DTS:VersionGUID="{28F1C3D8-8F14-4FFA-A5A1-4F4F91678C75}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -256,6 +256,14 @@
                   <externalMetadataColumns />
                 </output>
                 <output
+                  refId="Package\Load Engagemang\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 4]"
+                  deleteOutputOnPathDetached="true"
+                  exclusionGroup="1"
+                  name="Balanced Data Distributor Output 4"
+                  synchronousInputId="Package\Load Engagemang\Balanced Data Distributor.Inputs[Balanced Data Distributor Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
                   refId="Package\Load Engagemang\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 2]"
                   deleteOutputOnPathDetached="true"
                   exclusionGroup="1"
@@ -265,18 +273,10 @@
                 </output>
                 <output
                   refId="Package\Load Engagemang\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 3]"
-                  deleteOutputOnPathDetached="true"
-                  exclusionGroup="1"
-                  name="Balanced Data Distributor Output 3"
-                  synchronousInputId="Package\Load Engagemang\Balanced Data Distributor.Inputs[Balanced Data Distributor Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Load Engagemang\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 4]"
                   dangling="true"
                   deleteOutputOnPathDetached="true"
                   exclusionGroup="1"
-                  name="Balanced Data Distributor Output 4"
+                  name="Balanced Data Distributor Output 3"
                   synchronousInputId="Package\Load Engagemang\Balanced Data Distributor.Inputs[Balanced Data Distributor Input]">
                   <externalMetadataColumns />
                 </output>
@@ -416,14 +416,6 @@
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_engagemangsrollid]"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_EngagemangsrollKod]" />
                     <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[rik_Kontaktidnummer]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontaktidnummer"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_kontaktidnummer]"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktidnummer]" />
-                    <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[rik_Kontoidnummer]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -431,14 +423,6 @@
                       cachedName="rik_Kontoidnummer"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_kontoidnummer]"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoidnummer]" />
-                    <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[rik_Kontaktid]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontaktid"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_contactid]"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]" />
                     <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[rik_sync]"
                       cachedDataType="i4"
@@ -467,6 +451,22 @@
                       cachedName="rik_ObejktkontraktId"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_objektskontraktid]"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_ObejktkontraktId]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[rik_Kontaktidnummer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontaktidnummer"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_partidnummer]"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktidnummer]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[rik_Kontaktid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontaktid"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_partcontactid]"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -574,30 +574,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_contactid]"
-                      dataType="guid"
-                      name="rik_contactid">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Lookup</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes">contact</property>
-                        <property
-                          dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;rik_idnummer&lt;/TargetTextField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_engagemangid]"
                       dataType="guid"
                       name="rik_engagemangid">
@@ -684,20 +660,6 @@
                         <property
                           dataType="System.String"
                           name="CrmFieldType">DateTime</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_kontaktidnummer]"
-                      dataType="wstr"
-                      length="100"
-                      name="rik_kontaktidnummer">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">String</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -842,6 +804,57 @@
                         <property
                           dataType="System.String"
                           name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_partaccountid]"
+                      dataType="guid"
+                      name="rik_partaccountid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">account</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_partcontactid]"
+                      dataType="guid"
+                      name="rik_partcontactid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">contact</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_idnummer&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_partidnummer]"
+                      dataType="wstr"
+                      length="18"
+                      name="rik_partidnummer">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -1022,14 +1035,6 @@
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_engagemangsrollid]"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_EngagemangsrollKod]" />
                     <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_Kontaktidnummer]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontaktidnummer"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_kontaktidnummer]"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktidnummer]" />
-                    <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_Kontoidnummer]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -1037,14 +1042,6 @@
                       cachedName="rik_Kontoidnummer"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_kontoidnummer]"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoidnummer]" />
-                    <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_Kontaktid]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontaktid"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_contactid]"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]" />
                     <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_sync]"
                       cachedDataType="i4"
@@ -1073,6 +1070,22 @@
                       cachedName="rik_ObejktkontraktId"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_objektskontraktid]"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_ObejktkontraktId]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_Kontaktidnummer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontaktidnummer"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_partidnummer]"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktidnummer]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_Kontaktid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontaktid"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_partcontactid]"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1180,30 +1193,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_contactid]"
-                      dataType="guid"
-                      name="rik_contactid">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Lookup</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes">contact</property>
-                        <property
-                          dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;rik_idnummer&lt;/TargetTextField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_engagemangid]"
                       dataType="guid"
                       name="rik_engagemangid">
@@ -1230,6 +1219,7 @@
                         <property
                           dataType="System.String"
                           name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
   &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
   &lt;LookupTargets&gt;
     &lt;LookupTarget&gt;
@@ -1289,20 +1279,6 @@
                         <property
                           dataType="System.String"
                           name="CrmFieldType">DateTime</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_kontaktidnummer]"
-                      dataType="wstr"
-                      length="100"
-                      name="rik_kontaktidnummer">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">String</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -1447,6 +1423,57 @@
                         <property
                           dataType="System.String"
                           name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_partaccountid]"
+                      dataType="guid"
+                      name="rik_partaccountid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">account</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_partcontactid]"
+                      dataType="guid"
+                      name="rik_partcontactid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">contact</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_idnummer&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_partidnummer]"
+                      dataType="wstr"
+                      length="18"
+                      name="rik_partidnummer">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -1627,14 +1654,6 @@
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_engagemangsrollid]"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_EngagemangsrollKod]" />
                     <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_Kontaktidnummer]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontaktidnummer"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_kontaktidnummer]"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktidnummer]" />
-                    <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_Kontoidnummer]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -1642,14 +1661,6 @@
                       cachedName="rik_Kontoidnummer"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_kontoidnummer]"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoidnummer]" />
-                    <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_Kontaktid]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontaktid"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_contactid]"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]" />
                     <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_sync]"
                       cachedDataType="i4"
@@ -1678,6 +1689,22 @@
                       cachedName="rik_ObejktkontraktId"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_objektskontraktid]"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_ObejktkontraktId]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_Kontaktidnummer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontaktidnummer"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_partidnummer]"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktidnummer]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_Kontaktid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontaktid"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_partcontactid]"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1785,30 +1812,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_contactid]"
-                      dataType="guid"
-                      name="rik_contactid">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Lookup</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes">contact</property>
-                        <property
-                          dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;rik_idnummer&lt;/TargetTextField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_engagemangid]"
                       dataType="guid"
                       name="rik_engagemangid">
@@ -1835,6 +1838,7 @@
                         <property
                           dataType="System.String"
                           name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
   &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
   &lt;LookupTargets&gt;
     &lt;LookupTarget&gt;
@@ -1894,20 +1898,6 @@
                         <property
                           dataType="System.String"
                           name="CrmFieldType">DateTime</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_kontaktidnummer]"
-                      dataType="wstr"
-                      length="100"
-                      name="rik_kontaktidnummer">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">String</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -2052,6 +2042,57 @@
                         <property
                           dataType="System.String"
                           name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_partaccountid]"
+                      dataType="guid"
+                      name="rik_partaccountid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">account</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_partcontactid]"
+                      dataType="guid"
+                      name="rik_partcontactid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">contact</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_idnummer&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_partidnummer]"
+                      dataType="wstr"
+                      length="18"
+                      name="rik_partidnummer">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -3083,6 +3124,222 @@ FROM STG.dbo.PM_Engagemang</property>
                   <externalMetadataColumns />
                 </input>
                 <input
+                  refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4]"
+                  hasSideEffects="true"
+                  name="Union All Input 4">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[rik_namn]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_namn"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_namn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_namn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[rik_KontraksIdnummer]"
+                      cachedDataType="i4"
+                      cachedName="rik_KontraksIdnummer"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_KontraksIdnummer]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_KontraksIdnummer]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[rik_EngagemangsrollKod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="rik_EngagemangsrollKod"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_EngagemangsrollKod]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_EngagemangsrollKod]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[rik_Andel]"
+                      cachedDataType="r8"
+                      cachedName="rik_Andel"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Andel]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_Andel]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[rik_GallerFran]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="rik_GallerFran"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_GallerFran]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_GallerFran]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[rik_GallerTill]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="rik_GallerTill"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_GallerTill]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_GallerTill]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[rik_Kontaktidnummer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontaktidnummer"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktidnummer]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_Kontaktidnummer]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[rik_Kontoidnummer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontoidnummer"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoidnummer]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_Kontoidnummer]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[rik_Kontaktid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontaktid"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_Kontaktid]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[rik_Kontoid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontoid"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoid]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_Kontoid]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[rik_sync]"
+                      cachedDataType="i4"
+                      cachedName="rik_sync"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_sync]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_sync]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[rik_ObejktkontraktId]"
+                      cachedDataType="i4"
+                      cachedName="rik_ObejktkontraktId"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_ObejktkontraktId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_ObejktkontraktId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Destination 1.Outputs[Error Output].Columns[ErrorCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[ErrorCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Destination 1.Outputs[Error Output].Columns[ErrorColumn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[ErrorColumn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4].Columns[CrmErrorMessage]"
+                      cachedDataType="wstr"
+                      cachedLength="2048"
+                      cachedName="CrmErrorMessage"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Destination 1.Outputs[Error Output].Columns[CrmErrorMessage]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[CrmErrorMessage]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
                   refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 2]"
                   hasSideEffects="true"
                   name="Union All Input 2">
@@ -3259,7 +3516,7 @@ FROM STG.dbo.PM_Engagemang</property>
                       refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 2].Columns[ErrorCode]"
                       cachedDataType="i4"
                       cachedName="ErrorCode"
-                      lineageId="Package\Load Engagemang\Dynamics CRM Destination 1.Outputs[Error Output].Columns[ErrorCode]">
+                      lineageId="Package\Load Engagemang\Dynamics CRM Destination 2.Outputs[Error Output].Columns[ErrorCode]">
                       <properties>
                         <property
                           containsID="true"
@@ -3272,222 +3529,6 @@ FROM STG.dbo.PM_Engagemang</property>
                       refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 2].Columns[ErrorColumn]"
                       cachedDataType="i4"
                       cachedName="ErrorColumn"
-                      lineageId="Package\Load Engagemang\Dynamics CRM Destination 1.Outputs[Error Output].Columns[ErrorColumn]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[ErrorColumn]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 2].Columns[CrmErrorMessage]"
-                      cachedDataType="wstr"
-                      cachedLength="2048"
-                      cachedName="CrmErrorMessage"
-                      lineageId="Package\Load Engagemang\Dynamics CRM Destination 1.Outputs[Error Output].Columns[CrmErrorMessage]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[CrmErrorMessage]}</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-                <input
-                  refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3]"
-                  hasSideEffects="true"
-                  name="Union All Input 3">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[rik_namn]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_namn"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_namn]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_namn]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[rik_KontraksIdnummer]"
-                      cachedDataType="i4"
-                      cachedName="rik_KontraksIdnummer"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_KontraksIdnummer]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_KontraksIdnummer]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[rik_EngagemangsrollKod]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4"
-                      cachedName="rik_EngagemangsrollKod"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_EngagemangsrollKod]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_EngagemangsrollKod]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[rik_Andel]"
-                      cachedDataType="r8"
-                      cachedName="rik_Andel"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Andel]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_Andel]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[rik_GallerFran]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="rik_GallerFran"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_GallerFran]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_GallerFran]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[rik_GallerTill]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="rik_GallerTill"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_GallerTill]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_GallerTill]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[rik_Kontaktidnummer]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontaktidnummer"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktidnummer]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_Kontaktidnummer]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[rik_Kontoidnummer]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontoidnummer"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoidnummer]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_Kontoidnummer]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[rik_Kontaktid]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontaktid"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_Kontaktid]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[rik_Kontoid]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontoid"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoid]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_Kontoid]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[rik_sync]"
-                      cachedDataType="i4"
-                      cachedName="rik_sync"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_sync]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_sync]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[rik_ObejktkontraktId]"
-                      cachedDataType="i4"
-                      cachedName="rik_ObejktkontraktId"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_ObejktkontraktId]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[rik_ObejktkontraktId]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[ErrorCode]"
-                      cachedDataType="i4"
-                      cachedName="ErrorCode"
-                      lineageId="Package\Load Engagemang\Dynamics CRM Destination 2.Outputs[Error Output].Columns[ErrorCode]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[ErrorCode]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[ErrorColumn]"
-                      cachedDataType="i4"
-                      cachedName="ErrorColumn"
                       lineageId="Package\Load Engagemang\Dynamics CRM Destination 2.Outputs[Error Output].Columns[ErrorColumn]">
                       <properties>
                         <property
@@ -3498,7 +3539,7 @@ FROM STG.dbo.PM_Engagemang</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3].Columns[CrmErrorMessage]"
+                      refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 2].Columns[CrmErrorMessage]"
                       cachedDataType="wstr"
                       cachedLength="2048"
                       cachedName="CrmErrorMessage"
@@ -3515,10 +3556,10 @@ FROM STG.dbo.PM_Engagemang</property>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4]"
+                  refId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3]"
                   dangling="true"
                   hasSideEffects="true"
-                  name="Union All Input 4">
+                  name="Union All Input 3">
                   <externalMetadataColumns />
                 </input>
               </inputs>
@@ -3804,6 +3845,182 @@ FROM STG.dbo.PM_Engagemang</property>
                   <externalMetadataColumns />
                 </input>
                 <input
+                  refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4]"
+                  hasSideEffects="true"
+                  name="Union All Input 4">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_namn]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_namn"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_namn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_namn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_KontraksIdnummer]"
+                      cachedDataType="i4"
+                      cachedName="rik_KontraksIdnummer"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_KontraksIdnummer]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_KontraksIdnummer]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_EngagemangsrollKod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="rik_EngagemangsrollKod"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_EngagemangsrollKod]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_EngagemangsrollKod]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_Andel]"
+                      cachedDataType="r8"
+                      cachedName="rik_Andel"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Andel]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Andel]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_GallerFran]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="rik_GallerFran"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_GallerFran]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_GallerFran]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_GallerTill]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="rik_GallerTill"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_GallerTill]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_GallerTill]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_Kontaktidnummer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontaktidnummer"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktidnummer]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontaktidnummer]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_Kontoidnummer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontoidnummer"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoidnummer]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontoidnummer]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_Kontaktid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontaktid"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontaktid]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_Kontoid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontoid"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoid]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontoid]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_sync]"
+                      cachedDataType="i4"
+                      cachedName="rik_sync"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_sync]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_sync]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_ObejktkontraktId]"
+                      cachedDataType="i4"
+                      cachedName="rik_ObejktkontraktId"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_ObejktkontraktId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_ObejktkontraktId]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
                   refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 2]"
                   hasSideEffects="true"
                   name="Union All Input 2">
@@ -3981,185 +4198,9 @@ FROM STG.dbo.PM_Engagemang</property>
                 </input>
                 <input
                   refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3]"
-                  hasSideEffects="true"
-                  name="Union All Input 3">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_namn]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_namn"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_namn]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_namn]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_KontraksIdnummer]"
-                      cachedDataType="i4"
-                      cachedName="rik_KontraksIdnummer"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_KontraksIdnummer]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_KontraksIdnummer]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_EngagemangsrollKod]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4"
-                      cachedName="rik_EngagemangsrollKod"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_EngagemangsrollKod]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_EngagemangsrollKod]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_Andel]"
-                      cachedDataType="r8"
-                      cachedName="rik_Andel"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Andel]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Andel]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_GallerFran]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="rik_GallerFran"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_GallerFran]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_GallerFran]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_GallerTill]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="rik_GallerTill"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_GallerTill]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_GallerTill]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_Kontaktidnummer]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontaktidnummer"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktidnummer]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontaktidnummer]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_Kontoidnummer]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontoidnummer"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoidnummer]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontoidnummer]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_Kontaktid]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontaktid"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontaktid]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_Kontoid]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontoid"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoid]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontoid]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_sync]"
-                      cachedDataType="i4"
-                      cachedName="rik_sync"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_sync]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_sync]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_ObejktkontraktId]"
-                      cachedDataType="i4"
-                      cachedName="rik_ObejktkontraktId"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_ObejktkontraktId]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_ObejktkontraktId]}</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-                <input
-                  refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4]"
                   dangling="true"
                   hasSideEffects="true"
-                  name="Union All Input 4">
+                  name="Union All Input 3">
                   <externalMetadataColumns />
                 </input>
               </inputs>
@@ -4254,14 +4295,14 @@ FROM STG.dbo.PM_Engagemang</property>
               startId="Package\Load Engagemang\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 1]" />
             <path
               refId="Package\Load Engagemang.Paths[Balanced Data Distributor Output 2]"
-              endId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input]"
+              endId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input]"
               name="Balanced Data Distributor Output 2"
               startId="Package\Load Engagemang\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 2]" />
             <path
-              refId="Package\Load Engagemang.Paths[Balanced Data Distributor Output 3]"
-              endId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input]"
-              name="Balanced Data Distributor Output 3"
-              startId="Package\Load Engagemang\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 3]" />
+              refId="Package\Load Engagemang.Paths[Balanced Data Distributor Output 4]"
+              endId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input]"
+              name="Balanced Data Distributor Output 4"
+              startId="Package\Load Engagemang\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 4]" />
             <path
               refId="Package\Load Engagemang.Paths[Default Output]"
               endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 1]"
@@ -4269,12 +4310,12 @@ FROM STG.dbo.PM_Engagemang</property>
               startId="Package\Load Engagemang\Dynamics CRM Destination.Outputs[Default Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Default Output1]"
-              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 2]"
+              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4]"
               name="Default Output"
               startId="Package\Load Engagemang\Dynamics CRM Destination 1.Outputs[Default Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Default Output2]"
-              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3]"
+              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 2]"
               name="Default Output"
               startId="Package\Load Engagemang\Dynamics CRM Destination 2.Outputs[Default Output]" />
             <path
@@ -4284,12 +4325,12 @@ FROM STG.dbo.PM_Engagemang</property>
               startId="Package\Load Engagemang\Dynamics CRM Destination.Outputs[Error Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Error Output1]"
-              endId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 2]"
+              endId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 4]"
               name="Error Output"
               startId="Package\Load Engagemang\Dynamics CRM Destination 1.Outputs[Error Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Error Output2]"
-              endId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3]"
+              endId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 2]"
               name="Error Output"
               startId="Package\Load Engagemang\Dynamics CRM Destination 2.Outputs[Error Output]" />
             <path
@@ -5369,10 +5410,6 @@ FROM STG.dbo.PM_Engagemang</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="214,42"
-          Id="Package\Load Engagemang\Dynamics CRM Destination 2"
-          TopLeft="756,235.400003792257" />
-        <NodeLayout
           Size="142,42"
           Id="Package\Load Engagemang\Row Inserted"
           TopLeft="107.571431033466,487.400003792257" />
@@ -5392,10 +5429,6 @@ FROM STG.dbo.PM_Engagemang</property>
           Size="157,42"
           Id="Package\Load Engagemang\Union All ERROR"
           TopLeft="542,441" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Load Engagemang\Dynamics CRM Destination 1"
-          TopLeft="421,246" />
         <NodeLayout
           Size="398,42"
           Id="Package\Load Engagemang\Balanced Data Distributor"
@@ -5471,78 +5504,6 @@ FROM STG.dbo.PM_Engagemang</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Error Output2]"
-          TopLeft="897.333333333333,277.400003792257">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-239.583333333333,163.599996207743"
-              Start="0,0"
-              End="-239.583333333333,156.099996207743">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,88.2337641385674" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,88.2337641385674"
-                    Point2="0,92.2337641385674"
-                    Point3="-4,92.2337641385674" />
-                  <mssgle:LineSegment
-                    End="-235.583333333333,92.2337641385674" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-235.583333333333,92.2337641385674"
-                    Point2="-239.583333333333,92.2337641385674"
-                    Point3="-239.583333333333,96.2337641385674" />
-                  <mssgle:LineSegment
-                    End="-239.583333333333,156.099996207743" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-148.128053385417,97.2337641385674,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Error Output1]"
-          TopLeft="556.333333333333,288">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="64.1666666666667,153"
-              Start="0,0"
-              End="64.1666666666667,145.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57.9109390125847" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,57.9109390125847"
-                    Point2="0,61.9109390125847"
-                    Point3="4,61.9109390125847" />
-                  <mssgle:LineSegment
-                    End="60.1666666666667,61.9109390125847" />
-                  <mssgle:CubicBezierSegment
-                    Point1="60.1666666666667,61.9109390125847"
-                    Point2="64.1666666666667,61.9109390125847"
-                    Point3="64.1666666666667,65.9109390125847" />
-                  <mssgle:LineSegment
-                    End="64.1666666666667,145.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="3.74694661458337,66.9109390125847,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Load Engagemang.Paths[Error Output]"
           TopLeft="270.19048189306,277.811766610592">
           <EdgeLayout.Curve>
@@ -5576,74 +5537,6 @@ FROM STG.dbo.PM_Engagemang</property>
             <mssgm:EdgeLabel
               BoundingBox="128.19337233472,97.0339367964464,56.6727734375,11.43359375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Default Output2]"
-          TopLeft="828.666666666667,277.400003792257">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-605.416666666667,117.599996207743"
-              Start="0,0"
-              End="-605.416666666667,110.099996207743">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,62.3517218340244" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,62.3517218340244"
-                    Point2="0,66.3517218340244"
-                    Point3="-4,66.3517218340244" />
-                  <mssgle:LineSegment
-                    End="-601.416666666667,66.3517218340244" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-601.416666666667,66.3517218340244"
-                    Point2="-605.416666666667,66.3517218340244"
-                    Point3="-605.416666666667,70.3517218340244" />
-                  <mssgle:LineSegment
-                    End="-605.416666666667,110.099996207743" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Default Output1]"
-          TopLeft="490.666666666667,288">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-306.166666666667,107"
-              Start="0,0"
-              End="-306.166666666667,99.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.297192642788" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,39.297192642788"
-                    Point2="0,43.297192642788"
-                    Point3="-4,43.297192642788" />
-                  <mssgle:LineSegment
-                    End="-302.166666666667,43.297192642788" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-302.166666666667,43.297192642788"
-                    Point2="-306.166666666667,43.297192642788"
-                    Point3="-306.166666666667,47.297192642788" />
-                  <mssgle:LineSegment
-                    End="-306.166666666667,99.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5681,78 +5574,6 @@ FROM STG.dbo.PM_Engagemang</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Balanced Data Distributor Output 3]"
-          TopLeft="515.5,177">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="347.5,58.4000037922569"
-              Start="0,0"
-              End="347.5,50.9000037922569">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.7257916303297" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.7257916303297"
-                    Point2="0,19.7257916303297"
-                    Point3="4,19.7257916303297" />
-                  <mssgle:LineSegment
-                    End="343.5,19.7257916303297" />
-                  <mssgle:CubicBezierSegment
-                    Point1="343.5,19.7257916303297"
-                    Point2="347.5,19.7257916303297"
-                    Point3="347.5,23.7257916303297" />
-                  <mssgle:LineSegment
-                    End="347.5,50.9000037922569" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="95.92736328125,24.7257916303297,155.6452734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Balanced Data Distributor Output 2]"
-          TopLeft="418,177">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="105.5,69"
-              Start="0,0"
-              End="105.5,61.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.5"
-                    Point2="0,34.5"
-                    Point3="4,34.5" />
-                  <mssgle:LineSegment
-                    End="101.5,34.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="101.5,34.5"
-                    Point2="105.5,34.5"
-                    Point3="105.5,38.5" />
-                  <mssgle:LineSegment
-                    End="105.5,61.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-25.13611328125,39.5,155.7722265625,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Load Engagemang.Paths[Balanced Data Distributor Output 1]"
           TopLeft="320.5,177">
           <EdgeLayout.Curve>
@@ -5785,6 +5606,226 @@ FROM STG.dbo.PM_Engagemang</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-119.271992126387,24.8648729150585,155.4011328125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Load Engagemang\Dynamics CRM Destination 1"
+          TopLeft="432,241" />
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Balanced Data Distributor Output 4]"
+          TopLeft="483,177">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="56,64"
+              Start="0,0"
+              End="56,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.7537537537538" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.7537537537538"
+                    Point2="0,25.7537537537538"
+                    Point3="4,25.7537537537538" />
+                  <mssgle:LineSegment
+                    End="52,25.7537537537538" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52,25.7537537537538"
+                    Point2="56,25.7537537537538"
+                    Point3="56,29.7537537537538" />
+                  <mssgle:LineSegment
+                    End="56,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-49.981328125,30.7537537537538,155.96265625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Default Output1]"
+          TopLeft="539,283">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-328.666666666667,112"
+              Start="0,0"
+              End="-328.666666666667,104.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.546780072904" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,62.546780072904"
+                    Point2="0,66.546780072904"
+                    Point3="-4,66.546780072904" />
+                  <mssgle:LineSegment
+                    End="-324.666666666667,66.546780072904" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-324.666666666667,66.546780072904"
+                    Point2="-328.666666666667,66.546780072904"
+                    Point3="-328.666666666667,70.546780072904" />
+                  <mssgle:LineSegment
+                    End="-328.666666666667,104.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Error Output1]"
+          TopLeft="573.333333333333,283">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72.0000000000001,158"
+              Start="0,0"
+              End="72.0000000000001,150.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.7377402446128" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,74.7377402446128"
+                    Point2="0,78.7377402446128"
+                    Point3="4,78.7377402446128" />
+                  <mssgle:LineSegment
+                    End="68.0000000000001,78.7377402446128" />
+                  <mssgle:CubicBezierSegment
+                    Point1="68.0000000000001,78.7377402446128"
+                    Point2="72.0000000000001,78.7377402446128"
+                    Point3="72.0000000000001,82.7377402446128" />
+                  <mssgle:LineSegment
+                    End="72.0000000000001,150.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="7.66361328125005,83.7377402446128,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Load Engagemang\Dynamics CRM Destination 2"
+          TopLeft="771,246" />
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Balanced Data Distributor Output 2]"
+          TopLeft="515.5,177">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="362.5,69"
+              Start="0,0"
+              End="362.5,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.30615640599" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.30615640599"
+                    Point2="0,23.30615640599"
+                    Point3="4,23.30615640599" />
+                  <mssgle:LineSegment
+                    End="358.5,23.30615640599" />
+                  <mssgle:CubicBezierSegment
+                    Point1="358.5,23.30615640599"
+                    Point2="362.5,23.30615640599"
+                    Point3="362.5,27.30615640599" />
+                  <mssgle:LineSegment
+                    End="362.5,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="103.36388671875,28.30615640599,155.7722265625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Default Output2]"
+          TopLeft="878,288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-654.75,107"
+              Start="0,0"
+              End="-654.75,99.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.1851106639839" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,66.1851106639839"
+                    Point2="0,70.1851106639839"
+                    Point3="-4,70.1851106639839" />
+                  <mssgle:LineSegment
+                    End="-650.75,70.1851106639839" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-650.75,70.1851106639839"
+                    Point2="-654.75,70.1851106639839"
+                    Point3="-654.75,74.1851106639839" />
+                  <mssgle:LineSegment
+                    End="-654.75,99.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Error Output2]"
+          TopLeft="912.333333333333,288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-254.583333333333,153"
+              Start="0,0"
+              End="-254.583333333333,145.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.2577398552098" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,82.2577398552098"
+                    Point2="0,86.2577398552098"
+                    Point3="-4,86.2577398552098" />
+                  <mssgle:LineSegment
+                    End="-250.583333333333,86.2577398552098" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-250.583333333333,86.2577398552098"
+                    Point2="-254.583333333333,86.2577398552098"
+                    Point3="-254.583333333333,90.2577398552098" />
+                  <mssgle:LineSegment
+                    End="-254.583333333333,145.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-155.628053385417,91.2577398552098,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
