@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/28/2016 3:43:43 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Engagemang_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="96"
-  DTS:VersionGUID="{6AE20A99-5463-451E-9E7A-CF4562302A5F}">
+  DTS:VersionBuild="97"
+  DTS:VersionGUID="{8119BD82-FAAE-49BE-813F-4EFC724EB4F9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -528,8 +528,8 @@
               <connections>
                 <connection
                   refId="Package\Load Engagemang\Dynamics CRM Destination.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -1157,8 +1157,8 @@
               <connections>
                 <connection
                   refId="Package\Load Engagemang\Dynamics CRM Destination 1.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -1786,8 +1786,8 @@
               <connections>
                 <connection
                   refId="Package\Load Engagemang\Dynamics CRM Destination 2.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -2409,8 +2409,8 @@
               <connections>
                 <connection
                   refId="Package\Load Engagemang\Dynamics CRM Source.Connections[DynamicsCRM]"
-                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[oldCRM]"
+                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:invalid"
+                  connectionManagerRefId="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:invalid"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -3431,8 +3431,8 @@
               <connections>
                 <connection
                   refId="Package\Load Engagemang\Engagemang_ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3554,13 +3554,6 @@
                       cachedName="ownerid"
                       externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
                       lineageId="Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[ownerid]" />
-                    <inputColumn
-                      refId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].Columns[owneridtype]"
-                      cachedDataType="wstr"
-                      cachedLength="64"
-                      cachedName="owneridtype"
-                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
-                      lineageId="Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[owneridtype]" />
                     <inputColumn
                       refId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].Columns[owningbusinessunit]"
                       cachedDataType="guid"
@@ -11418,7 +11411,7 @@
 <!--If you manually edit this section and make a mistake, you can delete it. -->
 <!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
-  Version="8">
+  Version="sql12">
   <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
@@ -11616,29 +11609,33 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="184,42"
-          Id="Package\Load Engagemang\Dynamics CRM Source"
-          TopLeft="357,22" />
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Load Engagemang\Row Inserted"
-          TopLeft="135.571431033466,532.400003792257" />
-        <NodeLayout
           Size="205,42"
-          Id="Package\Load Engagemang\Dynamics CRM Destination"
-          TopLeft="185.857148559727,285.811766610592" />
+          Id="Package\Load Engagemang\Dynamics CRM Destination 2"
+          TopLeft="704,282.400003792258" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Load Engagemang\Union All ERROR"
+          TopLeft="590,485" />
         <NodeLayout
           Size="205,42"
           Id="Package\Load Engagemang\Dynamics CRM Destination 1"
           TopLeft="448,282.400003792258" />
         <NodeLayout
           Size="205,42"
-          Id="Package\Load Engagemang\Dynamics CRM Destination 2"
-          TopLeft="704,282.400003792258" />
+          Id="Package\Load Engagemang\Dynamics CRM Destination"
+          TopLeft="185.857148559727,285.811766610592" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Load Engagemang\Engagemang_ERROR"
+          TopLeft="582,568" />
         <NodeLayout
           Size="154,42"
           Id="Package\Load Engagemang\Derived Column"
           TopLeft="371,115" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Load Engagemang\Row Inserted"
+          TopLeft="135.571431033466,532.400003792257" />
         <NodeLayout
           Size="163,42"
           Id="Package\Load Engagemang\Union All Inserted"
@@ -11647,6 +11644,68 @@
           Size="407,42"
           Id="Package\Load Engagemang\Balanced Data Distributor"
           TopLeft="248,193" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Load Engagemang\Dynamics CRM Source"
+          TopLeft="357,22" />
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Error Output]"
+          TopLeft="321.19048189306,327.811766610592">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="347.30951810694,157.188233389408"
+              Start="0,0"
+              End="347.30951810694,149.688233389408">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.6056936658011" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,59.6056936658011"
+                    Point2="0,63.6056936658011"
+                    Point3="4,63.6056936658011" />
+                  <mssgle:LineSegment
+                    End="343.30951810694,63.6056936658011" />
+                  <mssgle:CubicBezierSegment
+                    Point1="343.30951810694,63.6056936658011"
+                    Point2="347.30951810694,63.6056936658011"
+                    Point3="347.30951810694,67.6056936658011" />
+                  <mssgle:LineSegment
+                    End="347.30951810694,149.688233389408" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="145.31837233472,68.6056936658011,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Derived Column Output]"
+          TopLeft="449.75,157">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Default Output2]"
           TopLeft="806.5,324.400003792258">
@@ -11880,58 +11939,6 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Union All Output 1]"
-          TopLeft="205.035715516733,489">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43.4000037922569"
-              Start="0,0"
-              End="0,35.9000037922569">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.9000037922569" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Derived Column Output]"
-          TopLeft="449.75,157">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36"
-              Start="0,0"
-              End="0,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Load Engagemang\Engagemang_ERROR"
-          TopLeft="582,568" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Load Engagemang\Union All ERROR"
-          TopLeft="590,485" />
-        <EdgeLayout
           Id="Package\Load Engagemang.Paths[Union All Output 11]"
           TopLeft="670.25,527">
           <EdgeLayout.Curve>
@@ -11954,38 +11961,60 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Error Output]"
-          TopLeft="321.19048189306,327.811766610592">
+          Id="Package\Load Engagemang.Paths[Union All Output 1]"
+          TopLeft="205.035715516733,489">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="347.30951810694,157.188233389408"
+              EndConnector="0,43.4000037922569"
               Start="0,0"
-              End="347.30951810694,149.688233389408">
+              End="0,35.9000037922569">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,59.6056936658011" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,59.6056936658011"
-                    Point2="0,63.6056936658011"
-                    Point3="4,63.6056936658011" />
+                    End="0,35.9000037922569" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Error Output2]"
+          TopLeft="839.333333333333,324.400003792258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-133.583333333333,160.599996207742"
+              Start="0,0"
+              End="-133.583333333333,153.099996207742">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="343.30951810694,63.6056936658011" />
+                    End="0,86.5742380654525" />
                   <mssgle:CubicBezierSegment
-                    Point1="343.30951810694,63.6056936658011"
-                    Point2="347.30951810694,63.6056936658011"
-                    Point3="347.30951810694,67.6056936658011" />
+                    Point1="0,86.5742380654525"
+                    Point2="0,90.5742380654525"
+                    Point3="-4,90.5742380654525" />
                   <mssgle:LineSegment
-                    End="347.30951810694,149.688233389408" />
+                    End="-129.583333333333,90.5742380654525" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-129.583333333333,90.5742380654525"
+                    Point2="-133.583333333333,90.5742380654525"
+                    Point3="-133.583333333333,94.5742380654525" />
+                  <mssgle:LineSegment
+                    End="-133.583333333333,153.099996207742" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="145.31837233472,68.6056936658011,56.6727734375,11.43359375"
+              BoundingBox="-95.1280533854166,95.5742380654525,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -12022,42 +12051,6 @@
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="26.6636132812501,85.0657521584467,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Error Output2]"
-          TopLeft="839.333333333333,324.400003792258">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-133.583333333333,160.599996207742"
-              Start="0,0"
-              End="-133.583333333333,153.099996207742">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,86.5742380654525" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,86.5742380654525"
-                    Point2="0,90.5742380654525"
-                    Point3="-4,90.5742380654525" />
-                  <mssgle:LineSegment
-                    End="-129.583333333333,90.5742380654525" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-129.583333333333,90.5742380654525"
-                    Point2="-133.583333333333,90.5742380654525"
-                    Point3="-133.583333333333,94.5742380654525" />
-                  <mssgle:LineSegment
-                    End="-133.583333333333,153.099996207742" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-95.1280533854166,95.5742380654525,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
