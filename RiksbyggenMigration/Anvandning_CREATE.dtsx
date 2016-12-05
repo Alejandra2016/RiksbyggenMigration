@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/28/2016 3:43:43 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Anvandning_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="84"
-  DTS:VersionGUID="{B91ABF32-C538-458B-BC42-7523C64B4665}">
+  DTS:VersionBuild="87"
+  DTS:VersionGUID="{49077AC5-34E1-4219-8407-70ABFDA02A06}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -194,6 +194,22 @@
   </DTS:LoggingOptions>
   <DTS:Executables>
     <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9EE6EE21-3BC9-4F86-9CE0-890E1790D91E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="EXEC GetAnvandningar;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Load Anvandning"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -257,7 +273,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -291,8 +307,8 @@
               <connections>
                 <connection
                   refId="Package\Load Anvandning\Anvandning_ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -550,14 +566,14 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Load Anvandning\Data Conversion.Inputs[Data Conversion Input].Columns[rik_Kod]"
-                      cachedDataType="i4"
+                      cachedDataType="wstr"
+                      cachedLength="10"
                       cachedName="rik_Kod"
                       lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[rik_Kod]" />
                     <inputColumn
                       refId="Package\Load Anvandning\Data Conversion.Inputs[Data Conversion Input].Columns[rik_Namn]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
+                      cachedDataType="wstr"
+                      cachedLength="100"
                       cachedName="rik_Namn"
                       lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[rik_Namn]" />
                   </inputColumns>
@@ -728,8 +744,8 @@
               <connections>
                 <connection
                   refId="Package\Load Anvandning\Dynamics CRM Destination.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -743,15 +759,15 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Load Anvandning\Dynamics CRM Destination.Inputs[Input].Columns[rik_Kod]"
-                      cachedDataType="i4"
+                      cachedDataType="wstr"
+                      cachedLength="10"
                       cachedName="rik_Kod"
                       externalMetadataColumnId="Package\Load Anvandning\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_kod]"
                       lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[rik_Kod]" />
                     <inputColumn
                       refId="Package\Load Anvandning\Dynamics CRM Destination.Inputs[Input].Columns[rik_Namn]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
+                      cachedDataType="wstr"
+                      cachedLength="100"
                       cachedName="rik_Namn"
                       externalMetadataColumnId="Package\Load Anvandning\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_namn]"
                       lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[rik_Namn]" />
@@ -974,7 +990,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
+                  name="OpenRowset">[dbo].[rik_Anvandning]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -983,9 +999,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT	 ANN_KOD AS rik_Kod
-		,ANN_BETECKNING AS rik_Namn
-FROM dbo.ANVANDNINGAR</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1002,7 +1016,7 @@ FROM dbo.ANVANDNINGAR</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">2</property>
+                  typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -1011,8 +1025,8 @@ FROM dbo.ANVANDNINGAR</property>
               <connections>
                 <connection
                   refId="Package\Load Anvandning\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{1C2C8F33-F9FA-405C-8FDD-CFA4D28B4481}:invalid"
-                  connectionManagerRefId="{1C2C8F33-F9FA-405C-8FDD-CFA4D28B4481}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1022,38 +1036,483 @@ FROM dbo.ANVANDNINGAR</property>
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[rik_Kod]"
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedByName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedByName]"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedByName]"
+                      name="CreatedByName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedByYomiName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedByYomiName]"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedByYomiName]"
+                      name="CreatedByYomiName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfByName]"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfByName]"
+                      name="CreatedOnBehalfByName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfByYomiName]"
+                      name="CreatedOnBehalfByYomiName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedByName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedByName]"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedByName]"
+                      name="ModifiedByName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedByYomiName]"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedByYomiName]"
+                      name="ModifiedByYomiName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfByName]"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfByName]"
+                      name="ModifiedOnBehalfByName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfByYomiName]"
+                      name="ModifiedOnBehalfByYomiName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwnerId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwnerId]"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwnerId]"
+                      name="OwnerId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwnerIdName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdName]"
+                      length="160"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwnerIdName]"
+                      name="OwnerIdName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwnerIdYomiName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdYomiName]"
+                      length="160"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwnerIdYomiName]"
+                      name="OwnerIdYomiName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwnerIdDsc]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdDsc]"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwnerIdDsc]"
+                      name="OwnerIdDsc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwnerIdType]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdType]"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwnerIdType]"
+                      name="OwnerIdType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwningUser]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwningUser]"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwningUser]"
+                      name="OwningUser"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwningTeam]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwningTeam]"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwningTeam]"
+                      name="OwningTeam"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[rik_AnvandningId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rik_AnvandningId]"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[rik_AnvandningId]"
+                      name="rik_AnvandningId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOn]"
+                      name="CreatedOn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedBy]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedBy]"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedBy]"
+                      name="CreatedBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOn]"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedOn]"
+                      name="ModifiedOn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedBy]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedBy]"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedBy]"
+                      name="ModifiedBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfBy]"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedOnBehalfBy]"
+                      name="CreatedOnBehalfBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfBy]"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedOnBehalfBy]"
+                      name="ModifiedOnBehalfBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwningBusinessUnit]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwningBusinessUnit]"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OwningBusinessUnit]"
+                      name="OwningBusinessUnit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[statecode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[statecode]"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[statecode]"
+                      name="statecode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[statuscode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[statuscode]"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[statuscode]"
+                      name="statuscode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[VersionNumber]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[VersionNumber]"
+                      length="8"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[VersionNumber]"
+                      name="VersionNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImportSequenceNumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ImportSequenceNumber]"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[ImportSequenceNumber]"
+                      name="ImportSequenceNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OverriddenCreatedOn]"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[OverriddenCreatedOn]"
+                      name="OverriddenCreatedOn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[TimeZoneRuleVersionNumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TimeZoneRuleVersionNumber]"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[TimeZoneRuleVersionNumber]"
+                      name="TimeZoneRuleVersionNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[UTCConversionTimeZoneCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UTCConversionTimeZoneCode]"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[UTCConversionTimeZoneCode]"
+                      name="UTCConversionTimeZoneCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[rik_Namn]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rik_Namn]"
+                      length="100"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[rik_Namn]"
+                      name="rik_Namn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[rik_Kod]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rik_Kod]"
+                      length="10"
                       lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[rik_Kod]"
                       name="rik_Kod"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[rik_Namn]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[Migrationid]"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rik_Namn]"
-                      length="40"
-                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[rik_Namn]"
-                      name="rik_Namn"
+                      externalMetadataColumnId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Migrationid]"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].Columns[Migrationid]"
+                      name="Migrationid"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rik_Kod]"
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdYomiName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdDsc]"
                       dataType="i4"
-                      name="rik_Kod" />
+                      name="OwnerIdDsc" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdType]"
+                      dataType="i4"
+                      name="OwnerIdType" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwningUser]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningUser" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwningTeam]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningTeam" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rik_AnvandningId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_AnvandningId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="CreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OwningBusinessUnit]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningBusinessUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ImportSequenceNumber]"
+                      dataType="i4"
+                      name="ImportSequenceNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="OverriddenCreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TimeZoneRuleVersionNumber]"
+                      dataType="i4"
+                      name="TimeZoneRuleVersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UTCConversionTimeZoneCode]"
+                      dataType="i4"
+                      name="UTCConversionTimeZoneCode" />
                     <externalMetadataColumn
                       refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rik_Namn]"
-                      codePage="1252"
-                      dataType="str"
-                      length="40"
+                      dataType="wstr"
+                      length="100"
                       name="rik_Namn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rik_Kod]"
+                      dataType="wstr"
+                      length="10"
+                      name="rik_Kod" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Migrationid]"
+                      dataType="wstr"
+                      length="255"
+                      name="Migrationid" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1062,17 +1521,193 @@ FROM dbo.ANVANDNINGAR</property>
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rik_Kod]"
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedByName]"
+                      name="CreatedByName" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedByYomiName]"
+                      name="CreatedByYomiName" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfByName]"
+                      name="CreatedOnBehalfByName" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfByYomiName]"
+                      name="CreatedOnBehalfByYomiName" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedByName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedByName]"
+                      name="ModifiedByName" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedByYomiName]"
+                      name="ModifiedByYomiName" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfByName]"
+                      name="ModifiedOnBehalfByName" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfByYomiName]"
+                      name="ModifiedOnBehalfByYomiName" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwnerId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwnerId]"
+                      name="OwnerId" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwnerIdName]"
+                      dataType="wstr"
+                      length="160"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwnerIdName]"
+                      name="OwnerIdName" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwnerIdYomiName]"
+                      dataType="wstr"
+                      length="160"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwnerIdYomiName]"
+                      name="OwnerIdYomiName" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwnerIdDsc]"
                       dataType="i4"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwnerIdDsc]"
+                      name="OwnerIdDsc" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwnerIdType]"
+                      dataType="i4"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwnerIdType]"
+                      name="OwnerIdType" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwningUser]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwningUser]"
+                      name="OwningUser" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwningTeam]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwningTeam]"
+                      name="OwningTeam" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rik_AnvandningId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rik_AnvandningId]"
+                      name="rik_AnvandningId" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOn]"
+                      name="CreatedOn" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedBy]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedBy]"
+                      name="CreatedBy" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedOn]"
+                      name="ModifiedOn" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedBy]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedBy]"
+                      name="ModifiedBy" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedOnBehalfBy]"
+                      name="CreatedOnBehalfBy" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedOnBehalfBy]"
+                      name="ModifiedOnBehalfBy" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwningBusinessUnit]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OwningBusinessUnit]"
+                      name="OwningBusinessUnit" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[statecode]"
+                      dataType="i4"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[statecode]"
+                      name="statecode" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[statuscode]"
+                      dataType="i4"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[statuscode]"
+                      name="statuscode" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[VersionNumber]"
+                      name="VersionNumber" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ImportSequenceNumber]"
+                      dataType="i4"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ImportSequenceNumber]"
+                      name="ImportSequenceNumber" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OverriddenCreatedOn]"
+                      name="OverriddenCreatedOn" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TimeZoneRuleVersionNumber]"
+                      dataType="i4"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TimeZoneRuleVersionNumber]"
+                      name="TimeZoneRuleVersionNumber" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UTCConversionTimeZoneCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UTCConversionTimeZoneCode]"
+                      name="UTCConversionTimeZoneCode" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rik_Namn]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rik_Namn]"
+                      name="rik_Namn" />
+                    <outputColumn
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rik_Kod]"
+                      dataType="wstr"
+                      length="10"
                       lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rik_Kod]"
                       name="rik_Kod" />
                     <outputColumn
-                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rik_Namn]"
-                      codePage="1252"
-                      dataType="str"
-                      length="40"
-                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rik_Namn]"
-                      name="rik_Namn" />
+                      refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Migrationid]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Migrationid]"
+                      name="Migrationid" />
                     <outputColumn
                       refId="Package\Load Anvandning\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -1827,7 +2462,7 @@ FROM dbo.ANVANDNINGAR</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE rik_Anvandning_ERROR;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE rik_Anvandning;&#xA;TRUNCATE TABLE rik_Anvandning_ERROR;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -1867,8 +2502,8 @@ FROM dbo.ANVANDNINGAR</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
-      DTS:DTSID="{400433D0-0305-4F79-AA7B-4531744E59B5}"
-      DTS:From="Package\Truncate rows in ERROR table"
+      DTS:DTSID="{D1609AC6-2D80-4621-8D9B-AA6E70DD30F6}"
+      DTS:From="Package\Execute SQL Task"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
       DTS:To="Package\Load Anvandning" />
@@ -1878,6 +2513,22 @@ FROM dbo.ANVANDNINGAR</property>
       DTS:DTSID="{CA34C98B-193A-402B-9C3D-B2D488BC473B}"
       DTS:From="Package\Truncate rows in ERROR table"
       DTS:ObjectName="Constraint 5"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{01621380-21BA-42BB-8749-F74B3DE5A082}"
+      DTS:From="Package\Truncate rows in ERROR table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Execute SQL Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{750E22C0-481C-4A63-903D-19C3C95AAFD9}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:ObjectName="Constraint 7"
       DTS:To="Package\LogPackageEnd"
       DTS:Value="1" />
   </DTS:PrecedenceConstraints>
@@ -1896,11 +2547,11 @@ FROM dbo.ANVANDNINGAR</property>
         <NodeLayout
           Size="160,42"
           Id="Package\Load Anvandning"
-          TopLeft="337.142862884366,307.105886659984" />
+          TopLeft="334.142862884366,355.105886659984" />
         <NodeLayout
           Size="152,42"
           Id="Package\LogPackageEnd"
-          TopLeft="67.1428582522335,306.82353220019" />
+          TopLeft="64.1428582522335,354.82353220019" />
         <NodeLayout
           Size="162,42"
           Id="Package\LogPackageStart"
@@ -1937,7 +2588,7 @@ FROM dbo.ANVANDNINGAR</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="337.142862884366,327.964709430087">
+          TopLeft="334.142862884366,375.964709430087">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1955,7 +2606,7 @@ FROM dbo.ANVANDNINGAR</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-80.5544554410663,5,50.60890625,11.609375"
+              BoundingBox="-80.5544554410665,5,50.60890625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1983,54 +2634,106 @@ FROM dbo.ANVANDNINGAR</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="135.600001089914,161.505884034576">
+          TopLeft="135.500001089914,161.905884034576">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-28.4571428376802,145.317648165614"
+              EndConnector="-31.3571428376802,192.917648165614"
               Start="0,0"
-              End="-28.4571428376802,137.817648165614">
+              End="-31.3571428376802,185.417648165614">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,91.2081143154022" />
+                    End="0,122.394321211954" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,91.2081143154022"
-                    Point2="0,95.2081143154022"
-                    Point3="-4,95.2081143154022" />
+                    Point1="0,122.394321211954"
+                    Point2="0,126.394321211954"
+                    Point3="-4,126.394321211954" />
                   <mssgle:LineSegment
-                    End="-24.4571428376802,95.2081143154022" />
+                    End="-27.3571428376802,126.394321211954" />
                   <mssgle:CubicBezierSegment
-                    Point1="-24.4571428376802,95.2081143154022"
-                    Point2="-28.4571428376802,95.2081143154022"
-                    Point3="-28.4571428376802,99.2081143154022" />
+                    Point1="-27.3571428376802,126.394321211954"
+                    Point2="-31.3571428376802,126.394321211954"
+                    Point3="-31.3571428376802,130.394321211954" />
                   <mssgle:LineSegment
-                    End="-28.4571428376802,137.817648165614" />
+                    End="-31.3571428376802,185.417648165614" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-29.4699190750901,100.208114315402,30.4826953125,9.7490234375"
+              BoundingBox="-30.9199190750901,131.394321211954,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="415.619053107541,162.1294134635">
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="362.761909997382,162.1294134635">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,144.976473196484"
+              EndConnector="-222.619051745149,192.69411873669"
               Start="0,0"
-              End="0,137.476473196484">
+              End="-222.619051745149,185.19411873669">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,137.476473196484" />
+                    End="0,74.2083709298057" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,74.2083709298057"
+                    Point2="0,78.2083709298057"
+                    Point3="-4,78.2083709298057" />
+                  <mssgle:LineSegment
+                    End="-218.619051745149,78.2083709298057" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-218.619051745149,78.2083709298057"
+                    Point2="-222.619051745149,78.2083709298057"
+                    Point3="-222.619051745149,82.2083709298057" />
+                  <mssgle:LineSegment
+                    End="-222.619051745149,185.19411873669" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-126.550873528824,83.2083709298057,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="337.5,257.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="444.833333333333,299.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-30.6904704489673,55.605886659984"
+              Start="0,0"
+              End="-30.6904704489673,48.105886659984">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5666660321199" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5666660321199"
+                    Point2="0,22.5666660321199"
+                    Point3="-4,22.5666660321199" />
+                  <mssgle:LineSegment
+                    End="-26.6904704489673,22.5666660321199" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26.6904704489673,22.5666660321199"
+                    Point2="-30.6904704489673,22.5666660321199"
+                    Point3="-30.6904704489673,26.5666660321199" />
+                  <mssgle:LineSegment
+                    End="-30.6904704489673,48.105886659984" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2040,38 +2743,60 @@ FROM dbo.ANVANDNINGAR</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="362.761909997382,162.1294134635">
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="416.547621665358,162.1294134635">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-195.619051745149,144.69411873669"
+              EndConnector="0,95.3705865365"
               Start="0,0"
-              End="-195.619051745149,137.19411873669">
+              End="0,87.8705865365">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,68.289759305484" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,68.289759305484"
-                    Point2="0,72.289759305484"
-                    Point3="-4,72.289759305484" />
+                    End="0,87.8705865365" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="393.166666666667,299.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-217.023808414433,55.32353220019"
+              Start="0,0"
+              End="-217.023808414433,47.82353220019">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-191.619051745149,72.289759305484" />
+                    End="0,27.2462740603779" />
                   <mssgle:CubicBezierSegment
-                    Point1="-191.619051745149,72.289759305484"
-                    Point2="-195.619051745149,72.289759305484"
-                    Point3="-195.619051745149,76.289759305484" />
+                    Point1="0,27.2462740603779"
+                    Point2="0,31.2462740603779"
+                    Point3="-4,31.2462740603779" />
                   <mssgle:LineSegment
-                    End="-195.619051745149,137.19411873669" />
+                    End="-213.023808414433,31.2462740603779" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-213.023808414433,31.2462740603779"
+                    Point2="-217.023808414433,31.2462740603779"
+                    Point3="-217.023808414433,35.2462740603779" />
+                  <mssgle:LineSegment
+                    End="-217.023808414433,47.82353220019" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-113.050873528824,77.289759305484,30.4826953125,9.7490234375"
+              BoundingBox="-123.753251863467,36.2462740603779,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2084,81 +2809,43 @@ FROM dbo.ANVANDNINGAR</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="142,42"
-          Id="Package\Load Anvandning\Row Inserted"
-          TopLeft="198.571431033466,259.400003792257" />
+          Size="156,42"
+          Id="Package\Load Anvandning\Data Conversion"
+          TopLeft="448,228" />
         <NodeLayout
           Size="205,42"
           Id="Package\Load Anvandning\Dynamics CRM Destination"
           TopLeft="279.857148559727,105.811766610592" />
-        <EdgeLayout
-          Id="Package\Load Anvandning.Paths[Default Output]"
-          TopLeft="382.357148559727,147.811766610592">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-112.785717526261,111.588237181665"
-              Start="0,0"
-              End="-112.785717526261,104.088237181665">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.7941185908325" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,51.7941185908325"
-                    Point2="0,55.7941185908325"
-                    Point3="-4,55.7941185908325" />
-                  <mssgle:LineSegment
-                    End="-108.785717526261,55.7941185908325" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-108.785717526261,55.7941185908325"
-                    Point2="-112.785717526261,55.7941185908325"
-                    Point3="-112.785717526261,59.7941185908325" />
-                  <mssgle:LineSegment
-                    End="-112.785717526261,104.088237181665" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="150,42"
-          Id="Package\Load Anvandning\OLE DB Source"
-          TopLeft="300,15" />
-        <EdgeLayout
-          Id="Package\Load Anvandning.Paths[OLE DB Source Output]"
-          TopLeft="378.678574279863,57">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48.811766610592"
-              Start="0,0"
-              End="0,41.311766610592">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.311766610592" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="142,42"
+          Id="Package\Load Anvandning\Row Inserted"
+          TopLeft="198.571431033466,259.400003792257" />
         <NodeLayout
           Size="174,42"
           Id="Package\Load Anvandning\Anvandning_ERROR"
           TopLeft="446,299" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Load Anvandning\Data Conversion"
-          TopLeft="448,228" />
+        <EdgeLayout
+          Id="Package\Load Anvandning.Paths[Data Conversion Output]"
+          TopLeft="529.5,270">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Anvandning.Paths[Error Output]"
           TopLeft="415.19048189306,147.811766610592">
@@ -2196,19 +2883,57 @@ FROM dbo.ANVANDNINGAR</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Anvandning.Paths[Data Conversion Output]"
-          TopLeft="529.5,270">
+          Id="Package\Load Anvandning.Paths[Default Output]"
+          TopLeft="349.523815226394,147.811766610592">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,29"
+              EndConnector="-79.9523841929277,111.588237181665"
               Start="0,0"
-              End="0,21.5">
+              End="-79.9523841929277,104.088237181665">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.5" />
+                    End="0,41.1538074946137" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.1538074946137"
+                    Point2="0,45.1538074946137"
+                    Point3="-4,45.1538074946137" />
+                  <mssgle:LineSegment
+                    End="-75.9523841929277,45.1538074946137" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-75.9523841929277,45.1538074946137"
+                    Point2="-79.9523841929277,45.1538074946137"
+                    Point3="-79.9523841929277,49.1538074946137" />
+                  <mssgle:LineSegment
+                    End="-79.9523841929277,104.088237181665" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Load Anvandning\OLE DB Source"
+          TopLeft="301,15" />
+        <EdgeLayout
+          Id="Package\Load Anvandning.Paths[OLE DB Source Output]"
+          TopLeft="379.178574279863,57">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.811766610592"
+              Start="0,0"
+              End="0,41.311766610592">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.311766610592" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2221,15 +2946,20 @@ FROM dbo.ANVANDNINGAR</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Anvandning\OLE DB Source">
+    design-time-name="Package\Load Anvandning\Anvandning_ERROR">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Anvandning\Anvandning_ERROR">
+    design-time-name="Package\Load Anvandning\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

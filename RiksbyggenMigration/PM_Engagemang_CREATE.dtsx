@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/28/2016 3:43:43 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="PM_Engagemang_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="108"
-  DTS:VersionGUID="{FC7C8DBB-0D2E-4BC9-B197-7A8A8C10AC27}">
+  DTS:VersionBuild="121"
+  DTS:VersionGUID="{6D3D4C1F-6455-4516-AD41-A1D7AC5A5DCC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -283,6 +283,84 @@
               </outputs>
             </component>
             <component
+              refId="Package\Load Engagemang\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Engagemang\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Data Conversion.Inputs[Data Conversion Input].Columns[rik_EngagemangsrollKod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="rik_EngagemangsrollKod"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_EngagemangsrollKod]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load Engagemang\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output].Columns[STR_rik_EngagemangsrollKod]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="4"
+                      lineageId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output].Columns[STR_rik_EngagemangsrollKod]"
+                      name="STR_rik_EngagemangsrollKod"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_EngagemangsrollKod]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load Engagemang\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Engagemang\Dynamics CRM Destination"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
@@ -370,8 +448,8 @@
               <connections>
                 <connection
                   refId="Package\Load Engagemang\Dynamics CRM Destination.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -438,14 +516,6 @@
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_accountid]"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoid]" />
                     <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[rik_namn]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_namn"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_engagemangsrollnamn]"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_namn]" />
-                    <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[rik_ObejktkontraktId]"
                       cachedDataType="i4"
                       cachedName="rik_ObejktkontraktId"
@@ -467,6 +537,33 @@
                       cachedName="rik_Kontaktid"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_partcontactid]"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[rik_kod]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_kod"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_engagemangsrollkod]"
+                      lineageId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[rik_kod]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[rik_Typ]"
+                      cachedDataType="i4"
+                      cachedName="rik_Typ"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_typ]"
+                      lineageId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[rik_Typ]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[rik_namn]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_namn"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_engagemangsrollnamn]"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_namn]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[RowNumber]"
+                      cachedDataType="i8"
+                      cachedName="RowNumber"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_idnummer]"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[RowNumber]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -860,6 +957,20 @@
                           name="LookupTypes"></property>
                       </properties>
                     </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_idnummer]"
+                      dataType="wstr"
+                      length="18"
+                      name="rik_idnummer">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -989,8 +1100,8 @@
               <connections>
                 <connection
                   refId="Package\Load Engagemang\Dynamics CRM Destination 1.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -1086,6 +1197,25 @@
                       cachedName="rik_Kontaktid"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_partcontactid]"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_kod]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_kod"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_engagemangsrollkod]"
+                      lineageId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[rik_kod]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_Typ]"
+                      cachedDataType="i4"
+                      cachedName="rik_Typ"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_typ]"
+                      lineageId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[rik_Typ]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[RowNumber]"
+                      cachedDataType="i8"
+                      cachedName="RowNumber"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_idnummer]"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[RowNumber]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1479,6 +1609,20 @@
                           name="LookupTypes"></property>
                       </properties>
                     </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_idnummer]"
+                      dataType="wstr"
+                      length="18"
+                      name="rik_idnummer">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1608,8 +1752,8 @@
               <connections>
                 <connection
                   refId="Package\Load Engagemang\Dynamics CRM Destination 2.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -1705,6 +1849,25 @@
                       cachedName="rik_Kontaktid"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_partcontactid]"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_kod]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_kod"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_engagemangsrollkod]"
+                      lineageId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[rik_kod]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_Typ]"
+                      cachedDataType="i4"
+                      cachedName="rik_Typ"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_typ]"
+                      lineageId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[rik_Typ]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[RowNumber]"
+                      cachedDataType="i8"
+                      cachedName="RowNumber"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_idnummer]"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[RowNumber]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2098,6 +2261,20 @@
                           name="LookupTypes"></property>
                       </properties>
                     </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_idnummer]"
+                      dataType="wstr"
+                      length="18"
+                      name="rik_idnummer">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2164,7 +2341,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2198,8 +2375,8 @@
               <connections>
                 <connection
                   refId="Package\Load Engagemang\Engagemang_ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2540,6 +2717,196 @@
               </outputs>
             </component>
             <component
+              refId="Package\Load Engagemang\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT rik_Namn as EngagemangsrollNamn, rik_Typ, rik_kod
+FROM STG.dbo.rik_Engagemangsroll</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT rik_Namn as EngagemangsrollNamn, rik_Typ, rik_kod
+FROM STG.dbo.rik_Engagemangsroll) [refTable]
+where [refTable].[rik_kod] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EngagemangsrollNamn" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="rik_Typ" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="rik_kod" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output].Columns[STR_rik_EngagemangsrollKod]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Engagemang\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Engagemang\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Lookup.Inputs[Lookup Input].Columns[STR_rik_EngagemangsrollKod]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="STR_rik_EngagemangsrollKod"
+                      lineageId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output].Columns[STR_rik_EngagemangsrollKod]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">rik_kod</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load Engagemang\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[rik_Typ]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[rik_Typ]"
+                      name="rik_Typ"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">rik_Typ</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[rik_kod]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[rik_kod]"
+                      name="rik_kod"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">rik_kod</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[EngagemangsrollNamn]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[EngagemangsrollNamn]"
+                      name="EngagemangsrollNamn"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">EngagemangsrollNamn</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Engagemang\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load Engagemang\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Engagemang\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load Engagemang\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Engagemang\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Engagemang\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Engagemang\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Engagemang\PM Engagemang"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -2564,7 +2931,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Avtal_Entity_Id AS rik_KontraksIdnummer
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT Avtal_Entity_Id AS rik_KontraksIdnummer
 	  ,Avtal_Entity_Id AS rik_ObejktkontraktId
       ,CASE WHEN LEFT(Namn_Entity_Id,1) = 'P' THEN Namn_Entity_Id END AS rik_Kontaktidnummer
       ,CASE WHEN LEFT(Namn_Entity_Id,1) !='P' THEN Namn_Entity_Id END AS rik_Kontoidnummer
@@ -2575,8 +2942,15 @@
       ,Namn_Andel AS rik_Andel
       ,Namn_Datum_From AS rik_GallerFran
       ,Namn_Datum_Tom AS rik_GallerTill
+	  ,er.rik_Typ
+	  ,er.rik_Kod
 	  ,1 as rik_sync
-FROM STG.dbo.PM_Engagemang</property>
+	  ,rik_AktuelltNummer + ROW_NUMBER() OVER (ORDER BY Namn_Entity_Id)AS RowNumber
+FROM STG.dbo.PM_Engagemang en
+LEFT JOIN STG.dbo.rik_Engagemangsroll er
+	ON Namn_Roll_Id = rik_Kod
+LEFT JOIN STG.dbo.rik_Nummerserie ns
+	ON ns.rik_Namn = 'Engagemang'</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -2602,8 +2976,8 @@ FROM STG.dbo.PM_Engagemang</property>
               <connections>
                 <connection
                   refId="Package\Load Engagemang\PM Engagemang.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2732,6 +3106,34 @@ FROM STG.dbo.PM_Engagemang</property>
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_ObejktkontraktId]"
                       name="rik_ObejktkontraktId"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Typ]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].ExternalColumns[rik_Typ]"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Typ]"
+                      name="rik_Typ"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kod]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].ExternalColumns[rik_Kod]"
+                      length="100"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kod]"
+                      name="rik_Kod"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[RowNumber]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].ExternalColumns[RowNumber]"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[RowNumber]"
+                      name="RowNumber"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2795,6 +3197,19 @@ FROM STG.dbo.PM_Engagemang</property>
                       refId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].ExternalColumns[rik_ObejktkontraktId]"
                       dataType="i4"
                       name="rik_ObejktkontraktId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].ExternalColumns[rik_Typ]"
+                      dataType="i4"
+                      name="rik_Typ" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].ExternalColumns[rik_Kod]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_Kod" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].ExternalColumns[RowNumber]"
+                      dataType="i8"
+                      name="RowNumber" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2870,10 +3285,26 @@ FROM STG.dbo.PM_Engagemang</property>
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Error Output].Columns[rik_GallerTill]"
                       name="rik_GallerTill" />
                     <outputColumn
+                      refId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Error Output].Columns[rik_Typ]"
+                      dataType="i4"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Error Output].Columns[rik_Typ]"
+                      name="rik_Typ" />
+                    <outputColumn
+                      refId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Error Output].Columns[rik_Kod]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Error Output].Columns[rik_Kod]"
+                      name="rik_Kod" />
+                    <outputColumn
                       refId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Error Output].Columns[rik_sync]"
                       dataType="i4"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Error Output].Columns[rik_sync]"
                       name="rik_sync" />
+                    <outputColumn
+                      refId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Error Output].Columns[RowNumber]"
+                      dataType="i8"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Error Output].Columns[RowNumber]"
+                      name="RowNumber" />
                     <outputColumn
                       refId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -3690,7 +4121,184 @@ FROM STG.dbo.PM_Engagemang</property>
               version="1">
               <inputs>
                 <input
+                  refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3]"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_namn]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_namn"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_namn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_namn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_KontraksIdnummer]"
+                      cachedDataType="i4"
+                      cachedName="rik_KontraksIdnummer"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_KontraksIdnummer]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_KontraksIdnummer]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_EngagemangsrollKod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="rik_EngagemangsrollKod"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_EngagemangsrollKod]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_EngagemangsrollKod]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_Andel]"
+                      cachedDataType="r8"
+                      cachedName="rik_Andel"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Andel]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Andel]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_GallerFran]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="rik_GallerFran"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_GallerFran]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_GallerFran]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_GallerTill]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="rik_GallerTill"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_GallerTill]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_GallerTill]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_Kontaktidnummer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontaktidnummer"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktidnummer]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontaktidnummer]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_Kontoidnummer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontoidnummer"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoidnummer]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontoidnummer]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_Kontaktid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontaktid"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontaktid]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_Kontoid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="40"
+                      cachedName="rik_Kontoid"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoid]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontoid]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_sync]"
+                      cachedDataType="i4"
+                      cachedName="rik_sync"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_sync]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_sync]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3].Columns[rik_ObejktkontraktId]"
+                      cachedDataType="i4"
+                      cachedName="rik_ObejktkontraktId"
+                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_ObejktkontraktId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_ObejktkontraktId]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
                   refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 1]"
+                  hasSideEffects="true"
                   name="Union All Input 1">
                   <inputColumns>
                     <inputColumn
@@ -3850,182 +4458,6 @@ FROM STG.dbo.PM_Engagemang</property>
                     </inputColumn>
                     <inputColumn
                       refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 1].Columns[rik_ObejktkontraktId]"
-                      cachedDataType="i4"
-                      cachedName="rik_ObejktkontraktId"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_ObejktkontraktId]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_ObejktkontraktId]}</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-                <input
-                  refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4]"
-                  hasSideEffects="true"
-                  name="Union All Input 4">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_namn]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_namn"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_namn]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_namn]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_KontraksIdnummer]"
-                      cachedDataType="i4"
-                      cachedName="rik_KontraksIdnummer"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_KontraksIdnummer]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_KontraksIdnummer]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_EngagemangsrollKod]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4"
-                      cachedName="rik_EngagemangsrollKod"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_EngagemangsrollKod]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_EngagemangsrollKod]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_Andel]"
-                      cachedDataType="r8"
-                      cachedName="rik_Andel"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Andel]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Andel]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_GallerFran]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="rik_GallerFran"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_GallerFran]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_GallerFran]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_GallerTill]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="rik_GallerTill"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_GallerTill]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_GallerTill]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_Kontaktidnummer]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontaktidnummer"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktidnummer]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontaktidnummer]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_Kontoidnummer]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontoidnummer"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoidnummer]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontoidnummer]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_Kontaktid]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontaktid"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontaktid]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontaktid]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_Kontoid]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="40"
-                      cachedName="rik_Kontoid"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_Kontoid]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_Kontoid]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_sync]"
-                      cachedDataType="i4"
-                      cachedName="rik_sync"
-                      lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_sync]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1].Columns[rik_sync]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4].Columns[rik_ObejktkontraktId]"
                       cachedDataType="i4"
                       cachedName="rik_ObejktkontraktId"
                       lineageId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output].Columns[rik_ObejktkontraktId]">
@@ -4217,10 +4649,10 @@ FROM STG.dbo.PM_Engagemang</property>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3]"
+                  refId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4]"
                   dangling="true"
                   hasSideEffects="true"
-                  name="Union All Input 3">
+                  name="Union All Input 4">
                   <externalMetadataColumns />
                 </input>
               </inputs>
@@ -4324,13 +4756,18 @@ FROM STG.dbo.PM_Engagemang</property>
               name="Balanced Data Distributor Output 4"
               startId="Package\Load Engagemang\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 4]" />
             <path
+              refId="Package\Load Engagemang.Paths[Data Conversion Output]"
+              endId="Package\Load Engagemang\Lookup.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
               refId="Package\Load Engagemang.Paths[Default Output]"
-              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 1]"
+              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3]"
               name="Default Output"
               startId="Package\Load Engagemang\Dynamics CRM Destination.Outputs[Default Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Default Output1]"
-              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4]"
+              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 1]"
               name="Default Output"
               startId="Package\Load Engagemang\Dynamics CRM Destination 1.Outputs[Default Output]" />
             <path
@@ -4354,8 +4791,13 @@ FROM STG.dbo.PM_Engagemang</property>
               name="Error Output"
               startId="Package\Load Engagemang\Dynamics CRM Destination 2.Outputs[Error Output]" />
             <path
-              refId="Package\Load Engagemang.Paths[OLE DB Source Output]"
+              refId="Package\Load Engagemang.Paths[Lookup Match Output]"
               endId="Package\Load Engagemang\Balanced Data Distributor.Inputs[Balanced Data Distributor Input]"
+              name="Lookup Match Output"
+              startId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load Engagemang.Paths[OLE DB Source Output]"
+              endId="Package\Load Engagemang\Data Conversion.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\Load Engagemang\PM Engagemang.Outputs[OLE DB Source Output]" />
             <path
@@ -5053,8 +5495,8 @@ FROM STG.dbo.PM_Engagemang</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{1C2C8F33-F9FA-405C-8FDD-CFA4D28B4481}"
-          SQLTask:SqlStatementSource="DECLARE @TODAY           DATETIME    = DBO.DATETIMETODATE_F(GETDATE())&#xA;&#xA;&#xA;INSERT INTO [STG].[dbo].[PM_Engagemang]&#xA;           ([Avtal_Entity_Id]&#xA;           ,[Namn_Entity_Id]&#xA;           ,[Namn_Roll_Id]&#xA;           ,[Namn_Roll_Beteckning]&#xA;           ,[Namn_Andel]&#xA;           ,[Namn_Datum_From]&#xA;           ,[Namn_Datum_Tom])&#xA;SELECT   &#xA;&#x9; HGA.AVT_ID AS Avtal_Entity_Id&#xA;&#x9;,PFO.PERS_KUND_ID                       AS Namn_Entity_Id&#xA;&#x9;,CASE WHEN OBR.AVT_ID IS NOT NULL THEN '1002' ELSE '1001' END  AS Namn_Roll_Id&#xA;&#x9;,CASE WHEN OBR.AVT_ID IS NOT NULL THEN 'Bostadsrättshavare' ELSE 'Hyresgäst' END  AS Namn_Roll_Beteckning&#xA;&#x9;,HGA.TOTAL_ANDEL AS Namn_Andel&#xA;&#x9;,NULL  AS Namn_Datum_From&#xA;&#x9;,NULL  AS Namn_Datum_Tom&#xA;FROM HYRESGASTER HGA WITH (NOLOCK)&#xA;INNER JOIN HYRESVARDAR HVA WITH (NOLOCK) ON HVA.AVT_ID = HGA.AVT_ID&#xA;INNER JOIN PERSON_FORETAG PFO WITH (NOLOCK) ON PFO.NAMN_ID = HGA.NAMN_ID&#xA;LEFT OUTER JOIN OVERLATELSER_BR OBR WITH (NOLOCK) ON OBR.AVT_ID = HGA.AVT_ID&#xA;WHERE HGA.AVT_ID = HGA.AVT_ID --@AVT_ID&#xA;&#x9;AND HGA.HYR_GAST_DATUM IS NOT NULL&#xA;&#x9;AND HVA.HYR_VARD_DATUM IS NOT NULL&#xA;&#x9;AND PFO.PERS_KUND_ID IS NOT NULL&#xA;&#xA;UNION ALL&#xA;&#xA;SELECT &#xA;&#x9; AVT.AVT_ID  AS Avtal_Entity_Id&#xA;&#x9;,PFO.PERS_KUND_ID                       AS Namn_Entity_Id&#xA;&#x9;,'1003'AS Namn_Roll_Id&#xA;&#x9;,'Avimottagare'                                     AS Namn_Roll_Beteckning&#xA;&#x9;,NULL  AS Namn_Andel&#xA;&#x9;,NULL  AS Namn_Datum_From&#xA;&#x9;,NULL  AS Namn_Datum_Tom&#xA;FROM AVTAL AVT WITH (NOLOCK)&#xA;INNER JOIN HYRESVARDAR HVA WITH (NOLOCK) ON HVA.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN HYRESGASTER HGA WITH (NOLOCK) ON HGA.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN PERSON_FORETAG PFO WITH (NOLOCK) ON PFO.NAMN_ID = AVT.AVT_AVIMOTTAGARE_ID&#xA;WHERE AVT.AVT_ID = AVT.AVT_ID  --@AVT_ID&#xA;  AND HGA.HYR_GAST_DATUM IS NOT NULL&#xA;  AND HGA.HYR_GAST_NR = 1&#xA;  AND HVA.HYR_VARD_DATUM IS NOT NULL&#xA;  AND PFO.PERS_KUND_ID IS NOT NULL&#xA;&#xA;UNION ALL&#xA;&#xA;SELECT &#xA;&#x9; AVT.AVT_ID AS Avtal_Entity_Id&#xA;&#x9;,PFO.PERS_KUND_ID                       AS Namn_Entity_Id&#xA;&#x9;,'1004'AS Namn_Roll_Id&#xA;&#x9;,'Andrahandshyresgäst'     AS Namn_Roll_Beteckning&#xA;&#x9;,NULL  AS Namn_Andel&#xA;&#x9;,AHY.AN_HA_FROM                                     AS Namn_Datum_From&#xA;&#x9;,AHY.AN_HA_TOM                                      AS Namn_Datum_Tom&#xA;FROM AVTAL AVT WITH (NOLOCK)&#xA;INNER JOIN HYRESVARDAR HVA WITH (NOLOCK) ON HVA.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN HYRESGASTER HGA WITH (NOLOCK) ON HGA.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN ANDRAH_HYRESGASTER AHY WITH (NOLOCK) ON AHY.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN PERSON_FORETAG PFO WITH (NOLOCK) ON PFO.NAMN_ID = AHY.AN_HA_NAMN_ID&#xA;WHERE AVT.AVT_ID = AVT.AVT_ID --@AVT_ID&#xA;  AND HGA.HYR_GAST_DATUM IS NOT NULL&#xA;  AND HGA.HYR_GAST_NR = 1&#xA;  AND HVA.HYR_VARD_DATUM IS NOT NULL&#xA;  AND PFO.PERS_KUND_ID IS NOT NULL&#xA;&#xA;UNION ALL&#xA;&#xA;SELECT &#xA;&#x9; AVT.AVT_ID AS Avtal_Entity_Id&#xA;&#x9;,PFO.PERS_KUND_ID                       AS Namn_Entity_Id&#xA;&#x9;,CASE WHEN ASA.ASA_TYP = 'B' THEN '1005' ELSE '1006' END                   AS Namn_Roll_Id&#xA;&#x9;,CASE WHEN ASA.ASA_TYP = 'B' THEN 'Borgensman' ELSE 'Garantigivare' END AS Namn_Roll_Beteckning&#xA;&#x9;,NULL  AS Namn_Andel&#xA;&#x9;,ASA.ASA_REG_DATUM                      AS Namn_Datum_From&#xA;&#x9;,ASA.ASA_GILT_DATUM                     AS Namn_Datum_Tom&#xA;FROM AVTAL AVT WITH (NOLOCK)&#xA;INNER JOIN HYRESVARDAR HVA WITH (NOLOCK) ON HVA.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN HYRESGASTER HGA WITH (NOLOCK) ON HGA.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN AVTAL_SAKERHETER ASA WITH (NOLOCK) ON ASA.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN PERSON_FORETAG PFO WITH (NOLOCK) ON PFO.NAMN_ID = ASA.ASA_NAMN_ID_1&#xA;WHERE AVT.AVT_ID = AVT.AVT_ID --@AVT_ID&#xA;  AND HGA.HYR_GAST_DATUM IS NOT NULL&#xA;  AND HGA.HYR_GAST_NR = 1&#xA;  AND HVA.HYR_VARD_DATUM IS NOT NULL&#xA;  AND PFO.PERS_KUND_ID IS NOT NULL&#xA;&#xA;UNION ALL&#xA;&#xA;SELECT &#xA;&#x9; AVT.AVT_ID AS Avtal_Entity_Id&#xA;&#x9;,PFO.PERS_KUND_ID                       AS Namn_Entity_Id&#xA;&#x9;,CASE WHEN ASA.ASA_TYP = 'B' THEN '1005' ELSE '1006' END                   AS Namn_Roll_Id&#xA;&#x9;,CASE WHEN ASA.ASA_TYP = 'B' THEN 'Borgensman' ELSE 'Garantigivare' END AS Namn_Roll_Beteckning&#xA;&#x9;,NULL  AS Namn_Andel&#xA;&#x9;,ASA.ASA_REG_DATUM                      AS Namn_Datum_From&#xA;&#x9;,ASA.ASA_GILT_DATUM                     AS Namn_Datum_Tom&#xA;FROM AVTAL AVT WITH (NOLOCK)&#xA;INNER JOIN HYRESVARDAR HVA WITH (NOLOCK) ON HVA.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN HYRESGASTER HGA WITH (NOLOCK) ON HGA.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN AVTAL_SAKERHETER ASA WITH (NOLOCK) ON ASA.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN PERSON_FORETAG PFO WITH (NOLOCK) ON PFO.NAMN_ID = ASA.ASA_NAMN_ID_2&#xA;WHERE AVT.AVT_ID = AVT.AVT_ID --@AVT_ID&#xA;  AND HGA.HYR_GAST_DATUM IS NOT NULL&#xA;  AND HGA.HYR_GAST_NR = 1&#xA;  AND HVA.HYR_VARD_DATUM IS NOT NULL&#xA;  AND PFO.PERS_KUND_ID IS NOT NULL&#xA;&#xA;UNION ALL&#xA;&#xA;SELECT &#xA;&#x9; AVT.AVT_ID AS Avtal_Entity_Id&#xA;&#x9;,PFO.PERS_KUND_ID                       AS Namn_Entity_Id&#xA;&#x9;,'1007'AS Namn_Roll_Id&#xA;&#x9;,'Deponent' AS Namn_Roll_Beteckning&#xA;&#x9;,NULL  AS Namn_Andel&#xA;&#x9;,ADE.INBET_DATUM                        AS Namn_Datum_From&#xA;&#x9;,ADE.UTBET_DATUM                        AS Namn_Datum_Tom&#xA;FROM AVTAL AVT WITH (NOLOCK)&#xA;INNER JOIN HYRESVARDAR HVA WITH (NOLOCK) ON HVA.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN HYRESGASTER HGA WITH (NOLOCK) ON HGA.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN AVTAL_DEPOSITIONER ADE WITH (NOLOCK) ON ADE.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN PERSON_FORETAG PFO WITH (NOLOCK) ON PFO.NAMN_ID = ADE.NAMN_ID&#xA;WHERE AVT.AVT_ID = AVT.AVT_ID--@AVT_ID&#xA;  AND HGA.HYR_GAST_DATUM IS NOT NULL&#xA;  AND HGA.HYR_GAST_NR = 1&#xA;  AND HVA.HYR_VARD_DATUM IS NOT NULL&#xA;  AND PFO.PERS_KUND_ID IS NOT NULL&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="EXEC GetPM_Engagemang;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -5074,6 +5516,923 @@ FROM STG.dbo.PM_Engagemang</property>
           SQLTask:SqlStatementSource="TRUNCATE TABLE rik_Engagemang_Error;&#xA;TRUNCATE TABLE STG.dbo.PM_Engagemang;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update rik_Idnummer på CRM rik_Nummerserie"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DB8DAECB-F4B0-4150-82B4-628AC9016D39}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update rik_Idnummer på CRM rik_Nummerserie"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Extract data from Microsoft Dynamics CRM."
+              name="Dynamics CRM Source"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">1</property>
+                <property
+                  dataType="System.String"
+                  description="Dynamics CRM entity to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceEntity"></property>
+                <property
+                  dataType="System.String"
+                  description="FetchXML statement."
+                  expressionType="Notify"
+                  name="FetchXML">&lt;fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false"&gt;
+  &lt;entity name="rik_nummerserie"&gt;
+    &lt;attribute name="rik_nummerserieid" /&gt;
+    &lt;attribute name="rik_namn" /&gt;
+    &lt;order attribute="rik_namn" descending="false" /&gt;
+    &lt;filter type="and"&gt;
+      &lt;condition attribute="rik_namn" operator="eq" value="Engagemang" /&gt;
+    &lt;/filter&gt;
+  &lt;/entity&gt;
+&lt;/fetch&gt;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">2000</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="ImpersonateAs" />
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for CRM datetime fields."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output]"
+                  name="CRM Primary Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_namn]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_namn]"
+                      length="100"
+                      lineageId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_namn]"
+                      name="rik_namn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_nummerserieid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_nummerserieid]"
+                      lineageId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_nummerserieid]"
+                      name="rik_nummerserieid"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_namn" />
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_nummerserieid]"
+                      dataType="guid"
+                      name="rik_nummerserieid" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT rik_AktuelltNummer
+,rik_namn
+FROM STG.dbo.rik_Nummerserie
+WHERE rik_Namn = 'Engagemang'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT rik_AktuelltNummer
+,rik_namn
+FROM STG.dbo.rik_Nummerserie
+WHERE rik_Namn = 'Engagemang') [refTable]
+where [refTable].[rik_namn] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="rik_AktuelltNummer" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="rik_namn" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_namn]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Inputs[Lookup Input].Columns[rik_namn]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_namn"
+                      lineageId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_namn]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">rik_namn</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Outputs[Lookup Match Output].Columns[rik_AktuelltNummer]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Outputs[Lookup Match Output].Columns[rik_AktuelltNummer]"
+                      name="rik_AktuelltNummer"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">rik_AktuelltNummer</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Populate data into Microsoft Dynamics CRM."
+              name="Update rik_Nummerserie"
+              usesDispositions="true"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Destination entity to write data."
+                  expressionType="Notify"
+                  name="DestinationEntity">rik_nummerserie</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to CRM server."
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
+                  expressionType="Notify"
+                  name="RemoveUnresolvableReferences">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether duplicate detection should be enabled when creating or updating CRM records. Duplicate records are determined by the duplicate detection rules and settings defined in Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="EnableDuplicateDetection">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the matching criteria to be used when Upsert action is chosen."
+                  expressionType="Notify"
+                  name="UpsertMatchingCriteria"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">1</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
+                  expressionType="Notify"
+                  name="UpsertMatchingFields"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those fields that have no value changes in the target system. "
+                  expressionType="Notify"
+                  name="IgnoreUnchangedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to CRM."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the flag field(s) that are used to track the source of changes. The field(s) will not posted to CRM server unless there are changes to other fields if specified. &quot;Ignore Unchange Fields&quot; option is required in order for the specified flag field(s) to work. "
+                  expressionType="Notify"
+                  name="ChangeFlagFields"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify what action will be taken when multiple matches are found with Upsert action."
+                  expressionType="Notify"
+                  name="HandlingOfMultipleMatches"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
+                <property
+                  dataType="System.String"
+                  description="Workflow to be executed."
+                  expressionType="Notify"
+                  name="Workflow"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of records to be sent to Microsoft Dynamics CRM in each batch (CRM 2011 Update Rollup 12 or later is required if batch size is greater than 1)."
+                  expressionType="Notify"
+                  name="BatchSize">200</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether datetime values should be sent to CRM server in UTC format."
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].Columns[rik_AktuelltNummer]"
+                      cachedDataType="i4"
+                      cachedName="rik_AktuelltNummer"
+                      externalMetadataColumnId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_aktuelltnummer]"
+                      lineageId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Outputs[Lookup Match Output].Columns[rik_AktuelltNummer]" />
+                    <inputColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].Columns[rik_nummerserieid]"
+                      cachedDataType="guid"
+                      cachedName="rik_nummerserieid"
+                      externalMetadataColumnId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_nummerserieid]"
+                      lineageId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_nummerserieid]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[modifiedby]"
+                      dataType="guid"
+                      name="modifiedby">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[ownerid]"
+                      dataType="guid"
+                      name="ownerid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Owner</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser;team</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[owneridtype]"
+                      dataType="wstr"
+                      length="64"
+                      name="owneridtype">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">EntityName</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_aktuelltnummer]"
+                      dataType="i4"
+                      name="rik_aktuelltnummer">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_antalsiffror]"
+                      dataType="i4"
+                      name="rik_antalsiffror">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_format]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_format">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_lastid]"
+                      dataType="dbTimeStamp"
+                      name="rik_lastid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">DateTime</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_lasvarde]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_lasvarde">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_namn">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_nummer]"
+                      dataType="i4"
+                      name="rik_nummer">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_nummerserieid]"
+                      dataType="guid"
+                      name="rik_nummerserieid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">rik_nummerserie</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_prefix]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_prefix">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_verifieringlas]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_verifieringlas">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">State</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Status</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[timezoneruleversionnumber]"
+                      dataType="i4"
+                      name="timezoneruleversionnumber">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input].ExternalColumns[utcconversiontimezonecode]"
+                      dataType="i4"
+                      name="utcconversiontimezonecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      name="CrmErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Outputs[Default Output].Columns[CrmRecordId]"
+                      dataType="guid"
+                      lineageId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Outputs[Default Output].Columns[CrmRecordId]"
+                      name="CrmRecordId" />
+                    <outputColumn
+                      refId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Outputs[Default Output].Columns[IsNew]"
+                      dataType="bool"
+                      lineageId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Outputs[Default Output].Columns[IsNew]"
+                      name="IsNew" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Update rik_Idnummer på CRM rik_Nummerserie.Paths[CRM Primary Output]"
+              endId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Inputs[Lookup Input]"
+              name="CRM Primary Output"
+              startId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output]" />
+            <path
+              refId="Package\Update rik_Idnummer på CRM rik_Nummerserie.Paths[Lookup Match Output]"
+              endId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie.Inputs[Input]"
+              name="Lookup Match Output"
+              startId="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup.Outputs[Lookup Match Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update rik_Idnummer på STG rik_Nummerserie"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2214BF11-5764-4FF0-950B-AE42AFD1418E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update rik_Idnummer på STG rik_Nummerserie"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Update rik_Idnummer på STG rik_Nummerserie\Dynamics CRM Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Extract data from Microsoft Dynamics CRM."
+              name="Dynamics CRM Source"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">1</property>
+                <property
+                  dataType="System.String"
+                  description="Dynamics CRM entity to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceEntity"></property>
+                <property
+                  dataType="System.String"
+                  description="FetchXML statement."
+                  expressionType="Notify"
+                  name="FetchXML">&lt;fetch distinct="false" mapping="logical" count="1" page="1"&gt;
+    &lt;entity name="rik_engagemang" &gt;
+        &lt;attribute name="rik_idnummer" /&gt;
+        &lt;filter type="and" &gt;
+            &lt;condition attribute="rik_idnummer" operator="not-null" /&gt;
+        &lt;/filter&gt;
+        &lt;order attribute="rik_idnummer" descending="true" /&gt;
+    &lt;/entity&gt;
+&lt;/fetch&gt; 
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="ImpersonateAs" />
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for CRM datetime fields."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update rik_Idnummer på STG rik_Nummerserie\Dynamics CRM Source.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Update rik_Idnummer på STG rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output]"
+                  name="CRM Primary Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update rik_Idnummer på STG rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_engagemangid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update rik_Idnummer på STG rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_engagemangid]"
+                      lineageId="Package\Update rik_Idnummer på STG rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_engagemangid]"
+                      name="rik_engagemangid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update rik_Idnummer på STG rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_idnummer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update rik_Idnummer på STG rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_idnummer]"
+                      length="18"
+                      lineageId="Package\Update rik_Idnummer på STG rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_idnummer]"
+                      name="rik_idnummer"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på STG rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_engagemangid]"
+                      dataType="guid"
+                      name="rik_engagemangid" />
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på STG rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_idnummer]"
+                      dataType="wstr"
+                      length="18"
+                      name="rik_idnummer" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE STG.dbo.rik_Nummerserie
+	SET rik_AktuelltNummer = ?
+WHERE rik_Namn = 'Engagemang'
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command.Inputs[OLE DB Command Input].Columns[rik_idnummer]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="rik_idnummer"
+                      externalMetadataColumnId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Update rik_Idnummer på STG rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_idnummer]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Update rik_Idnummer på STG rik_Nummerserie.Paths[CRM Primary Output]"
+              endId="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="CRM Primary Output"
+              startId="Package\Update rik_Idnummer på STG rik_Nummerserie\Dynamics CRM Source.Outputs[CRM Primary Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -5090,6 +6449,22 @@ FROM STG.dbo.PM_Engagemang</property>
       DTS:DTSID="{F21C601D-EFED-46A5-8DBE-86A6E9668D5A}"
       DTS:From="Package\Load Engagemang"
       DTS:ObjectName="Constraint 1"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
+      DTS:CreationName=""
+      DTS:DTSID="{50F32D03-D8BC-44C3-B71A-0AEE8BEB085F}"
+      DTS:From="Package\Update rik_Idnummer på STG rik_Nummerserie"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 10"
+      DTS:To="Package\Update rik_Idnummer på CRM rik_Nummerserie" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 11]"
+      DTS:CreationName=""
+      DTS:DTSID="{3A4A10C2-5390-47FB-9C37-8FDB57DAFD94}"
+      DTS:From="Package\Update rik_Idnummer på CRM rik_Nummerserie"
+      DTS:ObjectName="Constraint 11"
       DTS:To="Package\LogPackageEnd"
       DTS:Value="2" />
     <DTS:PrecedenceConstraint
@@ -5140,6 +6515,22 @@ FROM STG.dbo.PM_Engagemang</property>
       DTS:ObjectName="Constraint 7"
       DTS:To="Package\LogPackageEnd"
       DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{D18DE8EA-2803-4E94-92DC-F81E9DE54B11}"
+      DTS:From="Package\Load Engagemang"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Update rik_Idnummer på STG rik_Nummerserie" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{FAA3C994-011E-429A-BD19-1DCC0E62E5C4}"
+      DTS:From="Package\Update rik_Idnummer på STG rik_Nummerserie"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -5152,15 +6543,15 @@ FROM STG.dbo.PM_Engagemang</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="166,42"
           Id="Package\Load Engagemang"
-          TopLeft="429.142862884366,371.105886659984" />
+          TopLeft="455.142862884366,396.105886659984" />
         <NodeLayout
-          Size="152,42"
+          Size="153,42"
           Id="Package\LogPackageEnd"
-          TopLeft="69.1428582522335,376.82353220019" />
+          TopLeft="43.1428582522335,579.82353220019" />
         <NodeLayout
           Size="162,42"
           Id="Package\LogPackageStart"
@@ -5177,6 +6568,14 @@ FROM STG.dbo.PM_Engagemang</property>
           Size="162,42"
           Id="Package\Truncate rows in ERROR table"
           TopLeft="342.428576664049,124.1294134635" />
+        <NodeLayout
+          Size="305,42"
+          Id="Package\Update rik_Idnummer på CRM rik_Nummerserie"
+          TopLeft="547.5,581.5" />
+        <NodeLayout
+          Size="303,42"
+          Id="Package\Update rik_Idnummer på STG rik_Nummerserie"
+          TopLeft="483,500" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="137.721429568894,77.6882357231061">
@@ -5201,25 +6600,95 @@ FROM STG.dbo.PM_Engagemang</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="429.142862884366,394.964709430087">
+          TopLeft="511.809529551033,438.105886659984">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-208.000004632132,0"
+              EndConnector="-368.000004632132,141.717645540206"
               Start="0,0"
-              End="-200.500004632132,0">
+              End="-368.000004632132,134.217645540206">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-200.500004632132,0" />
+                    End="0,66.7880619238892" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,66.7880619238892"
+                    Point2="0,70.7880619238892"
+                    Point3="-4,70.7880619238892" />
+                  <mssgle:LineSegment
+                    End="-364.000004632132,70.7880619238892" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-364.000004632132,70.7880619238892"
+                    Point2="-368.000004632132,70.7880619238892"
+                    Point3="-368.000004632132,74.7880619238892" />
+                  <mssgle:LineSegment
+                    End="-368.000004632132,134.217645540206" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-125.554455441066,5,50.60890625,11.609375"
+              BoundingBox="-199.241349972316,75.7880619238892,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="683.666666666667,542">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.3333333333334,39.5"
+              Start="0,0"
+              End="16.3333333333334,32">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.924491135916" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.924491135916"
+                    Point2="0,15.924491135916"
+                    Point3="4,15.924491135916" />
+                  <mssgle:LineSegment
+                    End="12.3333333333334,15.924491135916" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.3333333333334,15.924491135916"
+                    Point2="16.3333333333334,15.924491135916"
+                    Point3="16.3333333333334,19.924491135916" />
+                  <mssgle:LineSegment
+                    End="16.3333333333334,32" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 11]"
+          TopLeft="547.5,601.661766100095">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-351.357141747766,0"
+              Start="0,0"
+              End="-343.857141747766,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-343.857141747766,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-197.233023998883,5,50.60890625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5251,33 +6720,33 @@ FROM STG.dbo.PM_Engagemang</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-14.3571428376802,214.917648165614"
+              EndConnector="-64.1904761710135,417.917648165614"
               Start="0,0"
-              End="-14.3571428376802,207.417648165614">
+              End="-64.1904761710135,410.417648165614">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,123.607353598333" />
+                    End="0,301.452548579645" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,123.607353598333"
-                    Point2="0,127.607353598333"
-                    Point3="-4,127.607353598333" />
+                    Point1="0,301.452548579645"
+                    Point2="0,305.452548579645"
+                    Point3="-4,305.452548579645" />
                   <mssgle:LineSegment
-                    End="-10.3571428376802,127.607353598333" />
+                    End="-60.1904761710135,305.452548579645" />
                   <mssgle:CubicBezierSegment
-                    Point1="-10.3571428376802,127.607353598333"
-                    Point2="-14.3571428376802,127.607353598333"
-                    Point3="-14.3571428376802,131.607353598333" />
+                    Point1="-60.1904761710135,305.452548579645"
+                    Point2="-64.1904761710135,305.452548579645"
+                    Point3="-64.1904761710135,309.452548579645" />
                   <mssgle:LineSegment
-                    End="-14.3571428376802,207.417648165614" />
+                    End="-64.1904761710135,410.417648165614" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-22.4199190750901,132.607353598333,30.4826953125,9.7490234375"
+              BoundingBox="-47.3365857417568,310.452548579645,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5321,62 +6790,50 @@ FROM STG.dbo.PM_Engagemang</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-252.619051745149,210.69411873669"
+              EndConnector="-302.285718411815,413.69411873669"
               Start="0,0"
-              End="-252.619051745149,203.19411873669">
+              End="-302.285718411815,406.19411873669">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,81.5139944016884" />
+                    End="0,202.700567116668" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,81.5139944016884"
-                    Point2="0,85.5139944016884"
-                    Point3="-4,85.5139944016884" />
+                    Point1="0,202.700567116668"
+                    Point2="0,206.700567116668"
+                    Point3="-4,206.700567116668" />
                   <mssgle:LineSegment
-                    End="-248.619051745149,85.5139944016884" />
+                    End="-298.285718411815,206.700567116668" />
                   <mssgle:CubicBezierSegment
-                    Point1="-248.619051745149,85.5139944016884"
-                    Point2="-252.619051745149,85.5139944016884"
-                    Point3="-252.619051745149,89.5139944016884" />
+                    Point1="-298.285718411815,206.700567116668"
+                    Point2="-302.285718411815,206.700567116668"
+                    Point3="-302.285718411815,210.700567116668" />
                   <mssgle:LineSegment
-                    End="-252.619051745149,203.19411873669" />
+                    End="-302.285718411815,406.19411873669" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-141.550873528824,90.5139944016884,30.4826953125,9.7490234375"
+              BoundingBox="-166.384206862158,211.700567116668,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="540.666666666667,300">
+          TopLeft="539.404764775516,300">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-28.5238037823007,71.105886659984"
+              EndConnector="0,96.105886659984"
               Start="0,0"
-              End="-28.5238037823007,63.605886659984">
+              End="0,88.605886659984">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.7358269391165" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.7358269391165"
-                    Point2="0,28.7358269391165"
-                    Point3="-4,28.7358269391165" />
-                  <mssgle:LineSegment
-                    End="-24.5238037823007,28.7358269391165" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-24.5238037823007,28.7358269391165"
-                    Point2="-28.5238037823007,28.7358269391165"
-                    Point3="-28.5238037823007,32.7358269391165" />
-                  <mssgle:LineSegment
-                    End="-28.5238037823007,63.605886659984" />
+                    End="0,88.605886659984" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5391,33 +6848,103 @@ FROM STG.dbo.PM_Engagemang</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-285.1904750811,76.82353220019"
+              EndConnector="-346.6904750811,279.82353220019"
               Start="0,0"
-              End="-285.1904750811,69.32353220019">
+              End="-346.6904750811,272.32353220019">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.2556205893882" />
+                    End="0,109.08431653834" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,39.2556205893882"
-                    Point2="0,43.2556205893882"
-                    Point3="-4,43.2556205893882" />
+                    Point1="0,109.08431653834"
+                    Point2="0,113.08431653834"
+                    Point3="-4,113.08431653834" />
                   <mssgle:LineSegment
-                    End="-281.1904750811,43.2556205893882" />
+                    End="-342.6904750811,113.08431653834" />
                   <mssgle:CubicBezierSegment
-                    Point1="-281.1904750811,43.2556205893882"
-                    Point2="-285.1904750811,43.2556205893882"
-                    Point3="-285.1904750811,47.2556205893882" />
+                    Point1="-342.6904750811,113.08431653834"
+                    Point2="-346.6904750811,113.08431653834"
+                    Point3="-346.6904750811,117.08431653834" />
                   <mssgle:LineSegment
-                    End="-285.1904750811,69.32353220019" />
+                    End="-346.6904750811,272.32353220019" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-157.8365851968,48.2556205893882,30.4826953125,9.7490234375"
+              BoundingBox="-188.5865851968,118.08431653834,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="564.476196217699,438.105886659984">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70.0238037823007,61.894113340016"
+              Start="0,0"
+              End="70.0238037823007,54.394113340016">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.1121700902213" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.1121700902213"
+                    Point2="0,25.1121700902213"
+                    Point3="4,25.1121700902213" />
+                  <mssgle:LineSegment
+                    End="66.0238037823007,25.1121700902213" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66.0238037823007,25.1121700902213"
+                    Point2="70.0238037823007,25.1121700902213"
+                    Point3="70.0238037823007,29.1121700902213" />
+                  <mssgle:LineSegment
+                    End="70.0238037823007,54.394113340016" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="585.333333333333,542">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-417.357141747766,37.82353220019"
+              Start="0,0"
+              End="-417.357141747766,30.32353220019">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.4797984274797" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.4797984274797"
+                    Point2="0,24.4797984274797"
+                    Point3="-4,24.4797984274797" />
+                  <mssgle:LineSegment
+                    End="-413.357141747766,24.4797984274797" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-413.357141747766,24.4797984274797"
+                    Point2="-417.357141747766,24.4797984274797"
+                    Point3="-417.357141747766,28.4797984274797" />
+                  <mssgle:LineSegment
+                    End="-417.357141747766,30.32353220019" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-223.919918530133,29.4797984274797,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5432,53 +6959,61 @@ FROM STG.dbo.PM_Engagemang</property>
         <NodeLayout
           Size="157,42"
           Id="Package\Load Engagemang\Union All ERROR"
-          TopLeft="542,441" />
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Load Engagemang\Row Inserted"
-          TopLeft="107.571431033466,487.400003792257" />
-        <NodeLayout
-          Size="214,42"
-          Id="Package\Load Engagemang\Dynamics CRM Destination 1"
-          TopLeft="432,241" />
+          TopLeft="553,618" />
         <NodeLayout
           Size="158,42"
           Id="Package\Load Engagemang\PM Engagemang"
-          TopLeft="337,23" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Load Engagemang\Dynamics CRM Destination"
-          TopLeft="134.857148559727,235.811766610592" />
+          TopLeft="336,23" />
         <NodeLayout
           Size="180,42"
           Id="Package\Load Engagemang\Engagemang_ERROR"
-          TopLeft="525,535" />
+          TopLeft="543,691" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\Load Engagemang\Union All Inserted"
-          TopLeft="103,395" />
+          Size="142,42"
+          Id="Package\Load Engagemang\Row Inserted"
+          TopLeft="109.571431033466,652.400003792257" />
         <NodeLayout
           Size="214,42"
           Id="Package\Load Engagemang\Dynamics CRM Destination 2"
-          TopLeft="771,246" />
+          TopLeft="773,411" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Load Engagemang\Data Conversion"
+          TopLeft="339,109" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Load Engagemang\Lookup"
+          TopLeft="357,190" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Load Engagemang\Dynamics CRM Destination 1"
+          TopLeft="434,406" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Load Engagemang\Union All Inserted"
+          TopLeft="105,560" />
         <NodeLayout
           Size="398,42"
           Id="Package\Load Engagemang\Balanced Data Distributor"
-          TopLeft="219,135" />
+          TopLeft="221,300" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Load Engagemang\Dynamics CRM Destination"
+          TopLeft="136.857148559727,401.811766610592" />
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Union All Output 11]"
-          TopLeft="617.75,483">
+          TopLeft="632.25,660">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,52"
+              EndConnector="0,31"
               Start="0,0"
-              End="0,44.5">
+              End="0,23.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,44.5" />
+                    End="0,23.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5489,7 +7024,7 @@ FROM STG.dbo.PM_Engagemang</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Union All Output 1]"
-          TopLeft="181.535715516733,437">
+          TopLeft="183.535715516733,602">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5511,18 +7046,18 @@ FROM STG.dbo.PM_Engagemang</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[OLE DB Source Output]"
-          TopLeft="417,65">
+          TopLeft="416,65">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,70"
+              EndConnector="0,44"
               Start="0,0"
-              End="0,62.5">
+              End="0,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,62.5" />
+                    End="0,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5532,139 +7067,163 @@ FROM STG.dbo.PM_Engagemang</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Error Output2]"
-          TopLeft="912.333333333333,288">
+          Id="Package\Load Engagemang.Paths[Lookup Match Output]"
+          TopLeft="416.75,232">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-254.583333333333,153"
+              EndConnector="0,68"
               Start="0,0"
-              End="-254.583333333333,145.5">
+              End="0,60.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,82.2577398552098" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,82.2577398552098"
-                    Point2="0,86.2577398552098"
-                    Point3="-4,86.2577398552098" />
-                  <mssgle:LineSegment
-                    End="-250.583333333333,86.2577398552098" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-250.583333333333,86.2577398552098"
-                    Point2="-254.583333333333,86.2577398552098"
-                    Point3="-254.583333333333,90.2577398552098" />
-                  <mssgle:LineSegment
-                    End="-254.583333333333,145.5" />
+                    End="0,60.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-155.628053385417,91.2577398552098,56.6727734375,11.43359375"
+              BoundingBox="-48.19138671875,24.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Error Output2]"
+          TopLeft="914.333333333333,453">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-245.583333333333,165"
+              Start="0,0"
+              End="-245.583333333333,157.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,89.0230527850301" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,89.0230527850301"
+                    Point2="0,93.0230527850301"
+                    Point3="-4,93.0230527850301" />
+                  <mssgle:LineSegment
+                    End="-241.583333333333,93.0230527850301" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-241.583333333333,93.0230527850301"
+                    Point2="-245.583333333333,93.0230527850301"
+                    Point3="-245.583333333333,97.0230527850301" />
+                  <mssgle:LineSegment
+                    End="-245.583333333333,157.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-151.128053385417,98.0230527850301,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Error Output1]"
-          TopLeft="573.333333333333,283">
+          TopLeft="575.333333333333,448">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="72.0000000000001,158"
+              EndConnector="56.1666666666667,170"
               Start="0,0"
-              End="72.0000000000001,150.5">
+              End="56.1666666666667,162.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,74.7377402446128" />
+                    End="0,64.756957328386" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,74.7377402446128"
-                    Point2="0,78.7377402446128"
-                    Point3="4,78.7377402446128" />
+                    Point1="0,64.756957328386"
+                    Point2="0,68.756957328386"
+                    Point3="4,68.756957328386" />
                   <mssgle:LineSegment
-                    End="68.0000000000001,78.7377402446128" />
+                    End="52.1666666666667,68.756957328386" />
                   <mssgle:CubicBezierSegment
-                    Point1="68.0000000000001,78.7377402446128"
-                    Point2="72.0000000000001,78.7377402446128"
-                    Point3="72.0000000000001,82.7377402446128" />
+                    Point1="52.1666666666667,68.756957328386"
+                    Point2="56.1666666666667,68.756957328386"
+                    Point3="56.1666666666667,72.756957328386" />
                   <mssgle:LineSegment
-                    End="72.0000000000001,150.5" />
+                    End="56.1666666666667,162.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="7.66361328125005,83.7377402446128,56.6727734375,11.43359375"
+              BoundingBox="-0.253053385416631,73.756957328386,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Error Output]"
-          TopLeft="270.19048189306,277.811766610592">
+          TopLeft="272.19048189306,443.811766610592">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="313.05951810694,163.188233389408"
+              EndConnector="322.05951810694,174.188233389408"
               Start="0,0"
-              End="313.05951810694,155.688233389408">
+              End="322.05951810694,166.688233389408">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,88.0339367964464" />
+                    End="0,94.237651878925" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,88.0339367964464"
-                    Point2="0,92.0339367964464"
-                    Point3="4,92.0339367964464" />
+                    Point1="0,94.237651878925"
+                    Point2="0,98.237651878925"
+                    Point3="4,98.237651878925" />
                   <mssgle:LineSegment
-                    End="309.05951810694,92.0339367964464" />
+                    End="318.05951810694,98.237651878925" />
                   <mssgle:CubicBezierSegment
-                    Point1="309.05951810694,92.0339367964464"
-                    Point2="313.05951810694,92.0339367964464"
-                    Point3="313.05951810694,96.0339367964464" />
+                    Point1="318.05951810694,98.237651878925"
+                    Point2="322.05951810694,98.237651878925"
+                    Point3="322.05951810694,102.237651878925" />
                   <mssgle:LineSegment
-                    End="313.05951810694,155.688233389408" />
+                    End="322.05951810694,166.688233389408" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="128.19337233472,97.0339367964464,56.6727734375,11.43359375"
+              BoundingBox="132.69337233472,103.237651878925,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Default Output2]"
-          TopLeft="878,288">
+          TopLeft="845.666666666667,453">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-654.75,107"
+              EndConnector="-620.416666666667,107"
               Start="0,0"
-              End="-654.75,99.5">
+              End="-620.416666666667,99.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,66.1851106639839" />
+                    End="0,56.3710413706047" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,66.1851106639839"
-                    Point2="0,70.1851106639839"
-                    Point3="-4,70.1851106639839" />
+                    Point1="0,56.3710413706047"
+                    Point2="0,60.3710413706047"
+                    Point3="-4,60.3710413706047" />
                   <mssgle:LineSegment
-                    End="-650.75,70.1851106639839" />
+                    End="-616.416666666667,60.3710413706047" />
                   <mssgle:CubicBezierSegment
-                    Point1="-650.75,70.1851106639839"
-                    Point2="-654.75,70.1851106639839"
-                    Point3="-654.75,74.1851106639839" />
+                    Point1="-616.416666666667,60.3710413706047"
+                    Point2="-620.416666666667,60.3710413706047"
+                    Point3="-620.416666666667,64.3710413706047" />
                   <mssgle:LineSegment
-                    End="-654.75,99.5" />
+                    End="-620.416666666667,99.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5675,30 +7234,30 @@ FROM STG.dbo.PM_Engagemang</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Default Output1]"
-          TopLeft="539,283">
+          TopLeft="506.666666666667,448">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-328.666666666667,112"
+              EndConnector="-294.333333333333,112"
               Start="0,0"
-              End="-328.666666666667,104.5">
+              End="-294.333333333333,104.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,62.546780072904" />
+                    End="0,51.8397126501291" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,62.546780072904"
-                    Point2="0,66.546780072904"
-                    Point3="-4,66.546780072904" />
+                    Point1="0,51.8397126501291"
+                    Point2="0,55.8397126501291"
+                    Point3="-4,55.8397126501291" />
                   <mssgle:LineSegment
-                    End="-324.666666666667,66.546780072904" />
+                    End="-290.333333333333,55.8397126501291" />
                   <mssgle:CubicBezierSegment
-                    Point1="-324.666666666667,66.546780072904"
-                    Point2="-328.666666666667,66.546780072904"
-                    Point3="-328.666666666667,70.546780072904" />
+                    Point1="-290.333333333333,55.8397126501291"
+                    Point2="-294.333333333333,55.8397126501291"
+                    Point3="-294.333333333333,59.8397126501291" />
                   <mssgle:LineSegment
-                    End="-328.666666666667,104.5" />
+                    End="-294.333333333333,104.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5709,30 +7268,52 @@ FROM STG.dbo.PM_Engagemang</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Default Output]"
-          TopLeft="204.523815226394,277.811766610592">
+          TopLeft="206.523815226394,443.811766610592">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-58.7738152263937,117.188233389408"
+              EndConnector="-20.0238152263937,116.188233389408"
               Start="0,0"
-              End="-58.7738152263937,109.688233389408">
+              End="-20.0238152263937,108.688233389408">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,62.142599344364" />
+                    End="0,43.0151805970692" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,62.142599344364"
-                    Point2="0,66.142599344364"
-                    Point3="-4,66.142599344364" />
+                    Point1="0,43.0151805970692"
+                    Point2="0,47.0151805970692"
+                    Point3="-4,47.0151805970692" />
                   <mssgle:LineSegment
-                    End="-54.7738152263937,66.142599344364" />
+                    End="-16.0238152263937,47.0151805970692" />
                   <mssgle:CubicBezierSegment
-                    Point1="-54.7738152263937,66.142599344364"
-                    Point2="-58.7738152263937,66.142599344364"
-                    Point3="-58.7738152263937,70.142599344364" />
+                    Point1="-16.0238152263937,47.0151805970692"
+                    Point2="-20.0238152263937,47.0151805970692"
+                    Point3="-20.0238152263937,51.0151805970692" />
                   <mssgle:LineSegment
-                    End="-58.7738152263937,109.688233389408" />
+                    End="-20.0238152263937,108.688233389408" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Data Conversion Output]"
+          TopLeft="415.25,151">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5743,7 +7324,7 @@ FROM STG.dbo.PM_Engagemang</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Balanced Data Distributor Output 4]"
-          TopLeft="483,177">
+          TopLeft="485,342">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5779,7 +7360,7 @@ FROM STG.dbo.PM_Engagemang</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Balanced Data Distributor Output 2]"
-          TopLeft="515.5,177">
+          TopLeft="517.5,342">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5815,37 +7396,37 @@ FROM STG.dbo.PM_Engagemang</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Balanced Data Distributor Output 1]"
-          TopLeft="320.5,177">
+          TopLeft="322.5,342">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-83.142851440273,58.811766610592"
+              EndConnector="-83.142851440273,59.811766610592"
               Start="0,0"
-              End="-83.142851440273,51.311766610592">
+              End="-83.142851440273,52.311766610592">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.8648729150585" />
+                    End="0,16.202643297754" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.8648729150585"
-                    Point2="0,19.8648729150585"
-                    Point3="-4,19.8648729150585" />
+                    Point1="0,16.202643297754"
+                    Point2="0,20.202643297754"
+                    Point3="-4,20.202643297754" />
                   <mssgle:LineSegment
-                    End="-79.142851440273,19.8648729150585" />
+                    End="-79.142851440273,20.202643297754" />
                   <mssgle:CubicBezierSegment
-                    Point1="-79.142851440273,19.8648729150585"
-                    Point2="-83.142851440273,19.8648729150585"
-                    Point3="-83.142851440273,23.8648729150585" />
+                    Point1="-79.142851440273,20.202643297754"
+                    Point2="-83.142851440273,20.202643297754"
+                    Point3="-83.142851440273,24.202643297754" />
                   <mssgle:LineSegment
-                    End="-83.142851440273,51.311766610592" />
+                    End="-83.142851440273,52.311766610592" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-119.271992126387,24.8648729150585,155.4011328125,11.609375"
+              BoundingBox="-119.271992126387,25.202643297754,155.4011328125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5870,6 +7451,156 @@ FROM STG.dbo.PM_Engagemang</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Engagemang\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Update rik_Idnummer på CRM rik_Nummerserie">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Update rik_Idnummer på CRM rik_Nummerserie\Update rik_Nummerserie"
+          TopLeft="288,195" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Update rik_Idnummer på CRM rik_Nummerserie\Dynamics CRM Source"
+          TopLeft="297,24" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup"
+          TopLeft="327,108" />
+        <EdgeLayout
+          Id="Package\Update rik_Idnummer på CRM rik_Nummerserie.Paths[CRM Primary Output]"
+          TopLeft="386.25,66">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Update rik_Idnummer på CRM rik_Nummerserie.Paths[Lookup Match Output]"
+          TopLeft="384.75,150">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,12.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Update rik_Idnummer på STG rik_Nummerserie">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Update rik_Idnummer på STG rik_Nummerserie\OLE DB Command"
+          TopLeft="259,110" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Update rik_Idnummer på STG rik_Nummerserie\Dynamics CRM Source"
+          TopLeft="248,24" />
+        <EdgeLayout
+          Id="Package\Update rik_Idnummer på STG rik_Nummerserie.Paths[CRM Primary Output]"
+          TopLeft="341,66">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Update rik_Idnummer på CRM rik_Nummerserie\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

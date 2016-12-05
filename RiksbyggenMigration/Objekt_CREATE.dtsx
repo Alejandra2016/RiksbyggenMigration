@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/28/2016 3:43:43 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Objekt_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="99"
-  DTS:VersionGUID="{1BE9993A-F058-43AD-9E58-28811DDB69D6}">
+  DTS:VersionBuild="100"
+  DTS:VersionGUID="{A6966954-7395-4349-A3C1-7084DE60DA18}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -206,8 +206,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{1C2C8F33-F9FA-405C-8FDD-CFA4D28B4481}"
-          SQLTask:SqlStatementSource="DECLARE&#xA; @TODAY                  DATETIME    = dbo.DATETIMETODATE_F(GETDATE())&#xA;,@OBJECTREF_FASTIGHET    CHAR(1)     = CONVERT(CHAR(1),dbo.GET_PARAM_F('Agressoservice', 'Objectref_Fastighet', ''))&#xA;,@OBJECTREF_OMRADE       CHAR(1)     = CONVERT(CHAR(1),dbo.GET_PARAM_F('Agressoservice', 'Objectref_Omrade', ''))&#xA;,@STRUCTUREID_SEP        VARCHAR(1)  = CONVERT(VARCHAR(1),dbo.GET_PARAM_F('Agressoservice', 'StructureIdSep', ''))&#xA;&#xA;&#xA;DECLARE&#xA; @UTH_OBJEKT_ID          INT&#xA;,@OBJ_ID                 INT&#xA;,@START                  INT&#xA;,@SLUT                   INT&#xA;,@FAST_ID                INT&#xA;,@HYRESOBJEKT_NIVA_1     VARCHAR(40)&#xA;,@HYRESOBJEKT_NIVA_2     VARCHAR(40)&#xA;,@HYRESOBJEKT_NIVA_3     VARCHAR(40)&#xA;,@HYRESOBJEKT_NIVA_4     VARCHAR(40)&#xA;,@HYRESOBJEKT_NIVA_5     VARCHAR(40)&#xA;&#xA; &#xA;CREATE TABLE #HYRESOBJEKT_NIVA_1_OMRADE&#xA;&#x9;(&#xA;&#x9; UTH_OBJEKT_ID          INT&#xA;&#x9;,HYRESOBJEKT_NIVA_1     VARCHAR(40)&#xA;&#x9;,FAST_ID                INT&#xA;&#x9;)&#xA;&#xA;CREATE INDEX IX_Niva1 ON #HYRESOBJEKT_NIVA_1_OMRADE (UTH_OBJEKT_ID)&#xA;&#xA;SELECT &#x9; UOB.UTH_OBJEKT_ID &#xA;&#x9;&#x9;,CASE WHEN @OBJECTREF_FASTIGHET = '1' THEN OEN.ORG_ENH_RESULTATENHET ELSE CAST(FAS.FAST_ID AS VARCHAR(40)) END AS HYRESOBJEKT_NIVA_2&#xA;&#x9;&#x9;,FAS.FAST_ID&#xA;INTO #HYRESOBJEKT_NIVA_2&#xA;FROM dbo.UTHYRN_OBJEKT UOB WITH (NOLOCK)&#xA;INNER JOIN dbo.ORG_ENHETER OEN WITH (NOLOCK) ON OEN.ORG_TYP = UOB.UTH_OBJ_KONT_ORG_TYP AND OEN.ORG_ENH_ID = UOB.UTH_OBJ_KONT_ORG_ENH_ID&#xA;INNER JOIN dbo.FASTIGHETER FAS WITH (NOLOCK) ON FAS.ORG_TYP = OEN.ORG_TYP AND FAS.ORG_ENH_ID = OEN.ORG_ENH_ID&#xA;WHERE UOB.UTH_OBJEKT_ID = UOB.UTH_OBJEKT_ID &#xA;&#xA;CREATE INDEX IX_Niva2 ON #HYRESOBJEKT_NIVA_2(UTH_OBJEKT_ID)&#xA;&#xA;IF @OBJECTREF_OMRADE = '1'&#xA;&#x9;INSERT INTO #HYRESOBJEKT_NIVA_1_OMRADE (UTH_OBJEKT_ID, HYRESOBJEKT_NIVA_1, FAST_ID)&#xA;&#x9;SELECT   UTH_OBJEKT_ID&#xA;&#x9;&#x9;&#x9;,OMR.FAST_OMR_AGRSERVICE_KOD AS HYRESOBJEKT_NIVA_1&#xA;&#x9;&#x9;&#x9;,FOM.FAST_ID&#xA;&#x9;FROM dbo.FAST_OMRADEN FOM WITH (NOLOCK)&#xA;&#x9;INNER JOIN dbo.OMRADEN OMR WITH (NOLOCK) ON OMR.OMR_TYP = FOM.OMR_TYP AND OMR.FAST_OMR_ID = FOM.FAST_OMR_ID&#xA;&#x9;INNER JOIN dbo.OMR_TYPER OTY WITH (NOLOCK) ON OTY.OMR_TYP = FOM.OMR_TYP&#xA;&#x9;INNER JOIN dbo.EGENSKAPER_FAST EFA WITH (NOLOCK) ON EFA.FAST_ID = FOM.FAST_ID&#xA;&#x9;INNER JOIN dbo.EGENSKAPER EGE WITH (NOLOCK) ON EGE.EGE_ID = EFA.EGE_ID&#xA;&#x9;INNER JOIN dbo.EGENSKAPER_TYPER ETY WITH (NOLOCK) ON ETY.ETY_ID = EGE.ETY_ID&#xA;&#x9;INNER JOIN #HYRESOBJEKT_NIVA_2 tmp on FOM.FAST_ID = tmp.FAST_ID&#xA;&#x9;WHERE OTY.OMR_TYP_AGRSERVICE = 'J'&#xA;&#x9;&#x9;AND ETY.ETY_BETECKNING = 'AgressoService'&#xA;&#x9;&#x9;AND EGE.EGE_KOD = 'J'&#xA;&#x9;&#x9;AND ISNULL(OMR.FAST_OMR_AGRSERVICE_KOD,'') &lt;&gt; ''&#xA;&#xA;&#x9;ELSE  -- @Objectref_omrade = '0'&#xA;&#xA;&#x9;INSERT INTO #HYRESOBJEKT_NIVA_1_OMRADE (UTH_OBJEKT_ID, HYRESOBJEKT_NIVA_1, FAST_ID)&#xA;&#x9;SELECT&#x9; UTH_OBJEKT_ID&#xA;&#x9;&#x9;&#x9;,CONVERT(VARCHAR,ISNULL(FOM.OMR_TYP,'')) + ISNULL(@STRUCTUREID_SEP,'') + CONVERT(VARCHAR,ISNULL(FOM.FAST_OMR_ID, '')) AS HYRESOBJEKT_NIVA_1&#xA;&#x9;&#x9;&#x9;,FOM.FAST_ID &#xA;&#x9;FROM dbo.FAST_OMRADEN FOM WITH (NOLOCK)&#xA;&#x9;INNER JOIN dbo.OMR_TYPER OTY WITH (NOLOCK) ON OTY.OMR_TYP = FOM.OMR_TYP&#xA;&#x9;INNER JOIN dbo.EGENSKAPER_FAST EFA WITH (NOLOCK) ON EFA.FAST_ID = FOM.FAST_ID&#xA;&#x9;INNER JOIN dbo.EGENSKAPER EGE WITH (NOLOCK) ON EGE.EGE_ID = EFA.EGE_ID&#xA;&#x9;INNER JOIN dbo.EGENSKAPER_TYPER ETY WITH (NOLOCK) ON ETY.ETY_ID = EGE.ETY_ID&#xA;&#x9;INNER JOIN #HYRESOBJEKT_NIVA_2 tmp on FOM.FAST_ID = tmp.FAST_ID&#xA;&#x9;WHERE OTY.OMR_TYP_AGRSERVICE = 'J'&#xA;&#x9;&#x9;AND ETY.ETY_BETECKNING = 'AgressoService'&#xA;&#x9;&#x9;AND EGE.EGE_KOD = 'J'&#xA;&#xA;&#xA;SELECT&#x9; OUR.OBJ_ID  &#xA;&#x9;&#x9;,CONVERT(VARCHAR,UTR.BYGG_ID) AS HYRESOBJEKT_NIVA_3&#xA;&#x9;&#x9;,CONVERT(VARCHAR,UTR.UTR_BYGGDEL_ID) AS HYRESOBJEKT_NIVA_4&#xA;&#x9;&#x9;,CONVERT(VARCHAR,UTR.UTR_ID) AS HYRESOBJEKT_NIVA_5&#xA;INTO #HYRESOBJEKT_NIVA_X&#xA;FROM dbo.OBJ_UTRYMMEN OUR WITH (NOLOCK)&#xA;INNER JOIN dbo.UTRYMMEN UTR WITH (NOLOCK) ON UTR.BYGG_ID = OUR.BYGG_ID AND UTR.UTR_ID = OUR.UTR_ID&#xA;WHERE OUR.OBJ_ID = OUR.OBJ_ID  &#xA;  AND @TODAY BETWEEN OUR.OUR_FROM AND ISNULL(OUR.OUR_TOM,'9999')&#xA; &#xA;CREATE INDEX IX_NivaX ON #HYRESOBJEKT_NIVA_X (OBJ_ID)&#xA;&#xA;;WITH CTE_UTR AS&#xA;(&#xA;&#x9;SELECT OUR.OBJ_ID&#xA;&#x9;,SUM(UPE.UTR_AREA) AS UTR_AREA&#xA;&#x9;FROM dbo.OBJ_UTRYMMEN OUR WITH (NOLOCK)&#xA;&#x9;INNER JOIN dbo.UTRYMME_PERIODER UPE WITH (NOLOCK) ON UPE.BYGG_ID = OUR.BYGG_ID AND UPE.UTR_ID = OUR.UTR_ID&#xA;&#x9;WHERE OUR.OBJ_ID = OUR.OBJ_ID &#xA;&#x9;  AND @TODAY BETWEEN OUR.OUR_FROM AND ISNULL(OUR.OUR_TOM,'9999')&#xA;&#x9;  AND UPE.UTR_FROM = ISNULL((SELECT MAX(UTR_FROM) FROM dbo.UTRYMME_PERIODER WITH (NOLOCK) WHERE BYGG_ID = OUR.BYGG_ID AND UTR_ID = OUR.UTR_ID AND UTR_FROM &lt;= @TODAY),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;(SELECT MIN(UTR_FROM) FROM dbo.UTRYMME_PERIODER WITH (NOLOCK) WHERE BYGG_ID = OUR.BYGG_ID AND UTR_ID = OUR.UTR_ID))&#xA;&#x9;GROUP BY OUR.OBJ_ID&#xA;)&#xA;,CTE_MAR AS&#xA;(&#xA;&#x9;SELECT OMA.OBJ_ID&#xA;&#x9;,SUM(MPE.MARKDEL_AREA) AS MARKDEL_AREA&#xA;&#x9;FROM dbo.OBJ_MARKDELAR OMA WITH (NOLOCK)&#xA;&#x9;INNER JOIN dbo.MARKDEL_PERIODER MPE WITH (NOLOCK) ON MPE.FAST_ID = OMA.FAST_ID AND MPE.MARK_ID = OMA.MARK_ID AND MPE.MARKDEL_ID = OMA.MARKDEL_ID&#xA;&#x9;WHERE OMA.OBJ_ID = OMA.OBJ_ID &#xA;&#x9;  AND MPE.MARKDEL_FROM = ISNULL((SELECT MAX(MARKDEL_FROM) FROM dbo.MARKDEL_PERIODER WITH (NOLOCK) WHERE FAST_ID = OMA.FAST_ID AND MARK_ID = OMA.MARK_ID AND MARKDEL_ID = OMA.MARKDEL_ID AND MARKDEL_FROM &lt;= @TODAY),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  (SELECT MIN(MARKDEL_FROM) FROM dbo.MARKDEL_PERIODER WITH (NOLOCK) WHERE FAST_ID = OMA.FAST_ID AND MARK_ID = OMA.MARK_ID AND MARKDEL_ID = OMA.MARKDEL_ID))&#xA;&#x9;GROUP BY OMA.OBJ_ID&#xA;)&#xA;INSERT INTO [STG].[dbo].[PM_Objekt]&#xA;           ([Hyresobjekt_Entity_Id]&#xA;           ,[Hyresobjekt_Beteckning]&#xA;           ,[Hyresobjekt_Id]&#xA;           ,[Anvandning_Entity_Id]&#xA;           ,[Anvandning_Beteckning]&#xA;           ,[Fastighet_Entity_Id]&#xA;           ,[Hyresobjekt_Vindsnr]&#xA;           ,[Hyresobjekt_Kallarnr]&#xA;           ,[Hyresobjekt_Bilplats]&#xA;           ,[Hyresobjekt_Garage]&#xA;           ,[Hyresobjekt_Vaning]&#xA;           ,[Hyresobjekt_Avisering_From]&#xA;           ,[Hyresobjekt_Avisering_Tom]&#xA;           ,[Hyresobjekt_Tillganglig_From]&#xA;           ,[Fastighet_Adress]&#xA;           ,[Fastighet_Postnr]&#xA;           ,[Fastighet_Postadress]&#xA;           ,[Fastighet_Landskod]&#xA;           ,[Hyresobjekt_Konteringstyp]&#xA;           ,[Hyresobjekt_Period_From]&#xA;           ,[Hyresobjekt_Area]&#xA;           ,[Hyresobjekt_Moms]&#xA;           ,[Hyresobjekt_Utrymmen_Kvm]&#xA;           ,[Hyresobjekt_Markdelar_Kvm]&#xA;           ,[Hyresobjekt_Fritext]&#xA;           ,[Hyresobjekt_Uppdaterad]&#xA;           ,[Hyresobjekt_Uppdaterad_av]&#xA;           ,[Hyresobjekt_Niva_1]&#xA;           ,[Hyresobjekt_Niva_2]&#xA;           ,[Hyresobjekt_Niva_3]&#xA;           ,[Hyresobjekt_Niva_4]&#xA;           ,[Hyresobjekt_Niva_5])&#xA;SELECT&#xA;&#x9; CONVERT(VARCHAR,UOB.UTH_OBJEKT_ID) + '-' + CONVERT(VARCHAR,UOB.UTH_OBJ_ID) AS Hyresobjekt_Entity_Id&#xA;&#x9;,UOB.UTH_OBJEKT_BETECKN        AS Hyresobjekt_Beteckning&#xA;&#x9;,OBJ.OBJ_NAMN   AS Hyresobjekt_Id&#xA;&#x9;,CONVERT(VARCHAR,UOB.UTH_ANN_KOD)    AS Anvandning_Entity_Id&#xA;&#x9;,ANN.ANN_BETECKNING     AS Anvandning_Beteckning&#xA;&#x9;,CONVERT(VARCHAR,UOB.UTH_FAST_ID)    AS Fastighet_Entity_Id&#xA;&#x9;,OBE.OBJ_VINDS_NR       AS Hyresobjekt_Vindsnr&#xA;&#x9;,OBE.OBJ_KALLAR_NR      AS Hyresobjekt_Kallarnr&#xA;&#x9;,OBE.OBJ_BILPLATS_NR  AS Hyresobjekt_Bilplats&#xA;&#x9;,OBE.OBJ_GARAGE_NR      AS Hyresobjekt_Garage&#xA;&#x9;,VAN.BETECKNING AS Hyresobjekt_Vaning&#xA;&#x9;,UOB.UTH_AVIS_FROM      AS Hyresobjekt_Avisering_From&#xA;&#x9;,UOB.UTH_AVIS_TOM       AS Hyresobjekt_Avisering_Tom&#xA;&#x9;,UOB.UTH_TILLG_DATUM  AS Hyresobjekt_Tillganglig_From&#xA;&#x9;,FAD.FAST_ADRESS        AS Fastighet_Adress&#xA;&#x9;,FAD.FAST_POSTNR        AS Fastighet_Postnr&#xA;&#x9;,FAD.FAST_POSTADR       AS Fastighet_Postadress&#xA;&#x9;,FAD.FAST_LANDSKOD      AS Fastighet_Landskod&#xA;&#x9;,HST.HYRESSTATUS_BETECKN    AS Hyresobjekt_Konteringstyp&#xA;&#x9;,OPE.OBJ_FROM   AS Hyresobjekt_Period_From&#xA;&#x9;,OPE.OBJ_AREA   AS Hyresobjekt_Area&#xA;&#x9;,OPE.OBJ_MOMS   AS Hyresobjekt_Moms&#xA;&#x9;,UTR.UTR_AREA   AS Hyresobjekt_Utrymmen_Kvm&#xA;&#x9;,MAR.MARKDEL_AREA       AS Hyresobjekt_Markdelar_Kvm&#xA;&#x9;,OBJ.OBJ_TEXT   AS Hyresobjekt_Fritext&#xA;&#x9;,UOB.UPPD_TID   AS Hyresobjekt_Uppdaterad&#xA;&#x9;,UOB.UPPD_ANV   AS Hyresobjekt_Uppdaterad_av&#xA;&#x9;,HYRESOBJEKT_NIVA_1 AS Hyresobjekt_Niva_1&#xA;&#x9;,HYRESOBJEKT_NIVA_2 as Hyresobjekt_Niva_2&#xA;&#x9;,HYRESOBJEKT_NIVA_3 AS Hyresobjekt_Niva_3&#xA;&#x9;,HYRESOBJEKT_NIVA_4  AS Hyresobjekt_Niva_4&#xA;&#x9;,HYRESOBJEKT_NIVA_5  AS Hyresobjekt_Niva_5&#xA;FROM dbo.UTHYRN_OBJEKT UOB WITH (NOLOCK)&#xA;INNER JOIN dbo.OBJEKT OBJ WITH (NOLOCK) ON OBJ.OBJ_ID = UOB.UTH_OBJ_ID&#xA;INNER JOIN dbo.HYRESSTATUS HST WITH (NOLOCK) ON HST.HYRESSTATUS_ID = UOB.UTH_TYP&#xA;INNER JOIN dbo.OBJ_PERIODER OPE WITH (NOLOCK) ON OPE.OBJ_ID = OBJ.OBJ_ID&#xA;INNER JOIN dbo.ANVANDNINGAR ANN WITH (NOLOCK) ON ANN.ANN_KOD = UOB.UTH_ANN_KOD&#xA;INNER JOIN dbo.FAST_ADRESSER FAD WITH (NOLOCK) ON FAD.FAST_ID = UOB.UTH_FAST_ID AND FAD.FAST_ADR_ID = UOB.UTH_ADRESS&#xA;LEFT OUTER JOIN dbo.OBJEKT_BESKRIVNING OBE WITH (NOLOCK) ON OBE.OBJ_ID = OBJ.OBJ_ID&#xA;LEFT OUTER JOIN dbo.VANING VAN WITH (NOLOCK) ON VAN.VANING_ID = OBE.OBJ_VAN_ID&#xA;LEFT OUTER JOIN CTE_UTR UTR ON UTR.OBJ_ID = OBJ.OBJ_ID&#xA;LEFT OUTER JOIN CTE_MAR MAR ON MAR.OBJ_ID = OBJ.OBJ_ID&#xA;LEFT JOIN #HYRESOBJEKT_NIVA_2 tmp on tmp.UTH_OBJEKT_ID = UOB.UTH_OBJEKT_ID &#xA;LEFT JOIN #HYRESOBJEKT_NIVA_1_OMRADE tmp1 on tmp1.UTH_OBJEKT_ID = UOB.UTH_OBJEKT_ID  &#xA;LEFT JOIN #HYRESOBJEKT_NIVA_X tmpx on tmpx.OBJ_ID = UOB.UTH_OBJEKT_ID  &#xA;WHERE UOB.UTH_OBJEKT_ID = UOB.UTH_OBJEKT_ID &#xA;  AND OPE.OBJ_FROM = ISNULL((SELECT MAX(OBJ_FROM) FROM dbo.OBJ_PERIODER WITH (NOLOCK) WHERE OBJ_ID = OBJ.OBJ_ID AND OBJ_FROM &lt;= @TODAY),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;(SELECT MIN(OBJ_FROM) FROM dbo.OBJ_PERIODER WITH (NOLOCK) WHERE OBJ_ID = OBJ.OBJ_ID))&#xA;ORDER BY 1&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="EXEC GetPM_Objekt;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -337,8 +337,8 @@
               <connections>
                 <connection
                   refId="Package\Load Objekt\Dynamics CRM Destination.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -1255,7 +1255,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1289,8 +1289,8 @@
               <connections>
                 <connection
                   refId="Package\Load Objekt\Objekt_ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1720,7 +1720,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Hyresobjekt_Entity_Id AS rik_Idnummer
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT Hyresobjekt_Entity_Id AS rik_Idnummer
       ,Hyresobjekt_Beteckning AS rik_namn
       ,Anvandning_Entity_Id AS rik_anvandningskod
       ,Anvandning_Beteckning AS rik_anvandningsnamn
@@ -1777,8 +1777,8 @@ FROM STG.dbo.PM_Objekt</property>
               <connections>
                 <connection
                   refId="Package\Load Objekt\PM Objekt.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3583,13 +3583,13 @@ FROM STG.dbo.PM_Objekt</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="127,42"
-          Id="Package\Load Objekt\PM Objekt"
-          TopLeft="350,25" />
-        <NodeLayout
           Size="149,42"
           Id="Package\Load Objekt\Objekt_ERROR"
           TopLeft="470,290" />
+        <NodeLayout
+          Size="127,42"
+          Id="Package\Load Objekt\PM Objekt"
+          TopLeft="350,25" />
         <NodeLayout
           Size="205,42"
           Id="Package\Load Objekt\Dynamics CRM Destination"
@@ -3598,28 +3598,6 @@ FROM STG.dbo.PM_Objekt</property>
           Size="142,42"
           Id="Package\Load Objekt\Row Inserted"
           TopLeft="215.571431033466,295.400003792257" />
-        <EdgeLayout
-          Id="Package\Load Objekt.Paths[OLE DB Source Output]"
-          TopLeft="416.428574279863,67">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,76.811766610592"
-              Start="0,0"
-              End="0,69.311766610592">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,69.311766610592" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Objekt.Paths[Error Output]"
           TopLeft="452.19048189306,185.811766610592">
@@ -3690,17 +3668,31 @@ FROM STG.dbo.PM_Objekt</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Objekt.Paths[OLE DB Source Output]"
+          TopLeft="416.428574279863,67">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.811766610592"
+              Start="0,0"
+              End="0,69.311766610592">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.311766610592" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Objekt\PM Objekt">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Objekt\Objekt_ERROR">
     <Properties>
@@ -3711,6 +3703,14 @@ FROM STG.dbo.PM_Objekt</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Objekt\PM Objekt">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

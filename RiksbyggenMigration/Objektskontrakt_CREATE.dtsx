@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/28/2016 3:43:43 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Objektskontrakt_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="102"
-  DTS:VersionGUID="{B51E6050-3104-4897-AFD1-560329668623}">
+  DTS:VersionBuild="104"
+  DTS:VersionGUID="{C8D46089-86D2-4E23-A102-1F7FE8C2A4F7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -320,8 +320,8 @@
               <connections>
                 <connection
                   refId="Package\Load Objektskontrakt\Dynamics CRM Destination.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -1574,7 +1574,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1608,8 +1608,8 @@
               <connections>
                 <connection
                   refId="Package\Load Objektskontrakt\Objektskontrakt_ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2095,7 +2095,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Avtal_Entity_Id AS rik_Idnummer 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT Avtal_Entity_Id AS rik_Idnummer 
       ,Hyresobjekt_Entity_Id AS rik_objektsidnummer
 	  ,Avtal_Beteckning AS rik_namn
       ,Avtal_Kontrakt_From AS rik_kontraktfran
@@ -2170,8 +2170,8 @@
               <connections>
                 <connection
                   refId="Package\Load Objektskontrakt\PM Objektskontrakt.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3960,8 +3960,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{1C2C8F33-F9FA-405C-8FDD-CFA4D28B4481}"
-          SQLTask:SqlStatementSource="DECLARE @TODAY           DATETIME    = DBO.DATETIMETODATE_F(GETDATE())&#xA;&#xA;INSERT INTO [STG].[dbo].[PM_Avtal]&#xA;           ([Avtal_Entity_Id]&#xA;           ,[Hyresobjekt_Entity_Id]&#xA;           ,[Avtal_Beteckning]&#xA;           ,[Avtal_Kontrakt_From]&#xA;           ,[Avtal_Kontrakt_Tom]&#xA;           ,[Avtal_Avisering_From]&#xA;           ,[Avtal_Avisering_Tom]&#xA;           ,[Avtal_Inflyttning]&#xA;           ,[Avtal_Avflyttning]&#xA;           ,[Avtal_Uppsagningstid_HV]&#xA;           ,[Avtal_Uppsagningstid_HG]&#xA;           ,[Avtal_Forlangningstid_HV]&#xA;           ,[Avtal_Forlangningstid_HG]&#xA;           ,[Avtal_Huvudavtal]&#xA;           ,[Avtal_Konteringstyp]&#xA;           ,[Avtal_Annulleras]&#xA;           ,[Avtal_Bevakning_Datum]&#xA;           ,[Avtal_Bevakning_text]&#xA;           ,[Avtal_Ref_1]&#xA;           ,[Avtal_Ref_2]&#xA;           ,[Avtal_Uppsagning_Uppsagd_Av]&#xA;           ,[Avtal_Uppsagning_Orsak]&#xA;           ,[Avtal_Uppsagning_Mottagning_Datum]&#xA;           ,[Avtal_Uppsagning_Uppsagt_Tom]&#xA;           ,[Avtal_Uppsagning_Aviseras_Tom]&#xA;           ,[Avtal_Uppsagning_Avflyttning_Datum]&#xA;           ,[Avtal_Uppsagning_Fri_Text]&#xA;           ,[Avtal_Inflyttning_Orsak]&#xA;           ,[Avtal_Inflyttning_Hyresgastanpassning]&#xA;           ,[Avtal_Inflyttning_Aktiveringsgrad]&#xA;           ,[Avtal_Inflyttning_Lokalens_Skick]&#xA;           ,[Avtal_Inflyttning_Ovriga_Kostnader]&#xA;           ,[Avtal_Inflyttning_Notering_1]&#xA;           ,[Avtal_Inflyttning_Notering_2]&#xA;           ,[Avtal_Inflyttning_Fri_Text]&#xA;           ,[Avtal_Period_From]&#xA;           ,[Avtal_Betalningsperiod_Manader]&#xA;           ,[Avtal_Betalningsformedlare]&#xA;           ,[Avtal_Moms]&#xA;           ,[Avtal_Avi_Adress_From]&#xA;           ,[Avtal_Avi_Adress]&#xA;           ,[Avtal_Avi_CO]&#xA;           ,[Avtal_Avi_Postnr]&#xA;           ,[Avtal_Avi_Postadress]&#xA;           ,[Avtal_Avi_Landskod]&#xA;           ,[Avtal_Forlangt_Tom]&#xA;           ,[Avtal_Uppdaterad]&#xA;           ,[Avtal_Uppdaterad_Av]&#xA;    )&#xA;SELECT&#xA;&#x9;AVT.AVT_ID       AS Avtal_Entity_Id&#xA;&#x9;,CONVERT(VARCHAR,UOB.UTH_OBJEKT_ID) + '-' + CONVERT(VARCHAR,UOB.UTH_OBJ_ID) AS Hyresobjekt_Entity_Id&#xA;&#x9;,AVT.AVT_BETECKNING        AS Avtal_Beteckning&#xA;&#x9;,AVT.AVT_KONT_FROM         AS Avtal_Kontrakt_From&#xA;&#x9;,AVT.AVT_KONT_TOM          AS Avtal_Kontrakt_Tom&#xA;&#x9;,KON.KONT_FAKT_FROM        AS Avtal_Avisering_From&#xA;&#x9;,KON.KONT_FAKT_TOM         AS Avtal_Avisering_Tom&#xA;&#x9;,KON.KONT_INFLYTT_DATUM    AS Avtal_Inflyttning&#xA;&#x9;,KON.KONT_AVFLYTT_DATUM    AS Avtal_Avflyttning&#xA;&#x9;,KON.KONT_UPPSAGN          AS Avtal_Uppsagningstid_HV&#xA;&#x9;,KON.KONT_UPPSAGN_HGT      AS Avtal_Uppsagningstid_HG&#xA;&#x9;,KON.KONT_FORLANGN         AS Avtal_Forlangningstid_HV&#xA;&#x9;,KON.KONT_FORLANGN_HGT     AS Avtal_Forlangningstid_HG&#xA;&#x9;,HAV.AVT_BETECKNING        AS Avtal_Huvudavtal&#xA;&#x9;,HST.HYRESSTATUS_BETECKN   AS Avtal_Konteringstyp&#xA;&#x9;,AVT.AVT_STOPP&#x9;&#x9;&#x9;   AS Avtal_Annulleras&#xA;&#x9;,KON.KONT_BEVAKN_DATUM     AS Avtal_Bevakning_Datum&#xA;&#x9;,KON.KONT_BEVAKN_TEXT      AS Avtal_Bevakning_text&#xA;&#x9;,AVT.AVT_REF_1&#x9;&#x9;&#x9;   AS Avtal_Ref_1&#xA;&#x9;,AVT.AVT_REF_2&#x9;&#x9;&#x9;   AS Avtal_Ref_2&#xA;&#x9;,TK1.GEN_KOD_BETECKNING    AS Avtal_Uppsagning_Uppsagd_Av&#xA;&#x9;,TK2.GEN_KOD_BETECKNING    AS Avtal_Uppsagning_Orsak&#xA;&#x9;,KON.KONT_UPP_MOT_DATUM    AS Avtal_Uppsagning_Mottagning_Datum&#xA;&#x9;,KON.KONT_UPP_TILL         AS Avtal_Uppsagning_Uppsagt_Tom&#xA;&#x9;,KON.KONT_FAKT_TOM         AS Avtal_Uppsagning_Aviseras_Tom&#xA;&#x9;,KON.KONT_AVFLYTT_DATUM    AS Avtal_Uppsagning_Avflyttning_Datum&#xA;&#x9;,KON.KONT_UPP_TEXT         AS Avtal_Uppsagning_Fri_Text&#xA;&#x9;,TK3.GEN_KOD_BETECKNING    AS Avtal_Inflyttning_Orsak&#xA;&#x9;,KON.KONT_INFL_HGANPASSN_BEL    AS Avtal_Inflyttning_Hyresgastanpassning&#xA;&#x9;,KON.KONT_INFL_AKTIVERINGSGRAD  AS Avtal_Inflyttning_Aktiveringsgrad&#xA;&#x9;,TK4.GEN_KOD_BETECKNING    AS Avtal_Inflyttning_Lokalens_Skick&#xA;&#x9;,KON.KONT_INFL_OVRIGA_KOSTNADER AS Avtal_Inflyttning_Ovriga_Kostnader&#xA;&#x9;,KON.KONT_INFL_NOT1        AS Avtal_Inflyttning_Notering_1&#xA;&#x9;,KON.KONT_INFL_NOT2        AS Avtal_Inflyttning_Notering_2&#xA;&#x9;,KON.KONT_INFL_FRI_TEXT    AS Avtal_Inflyttning_Fri_Text&#xA;&#x9;,KPE.KONT_FROM AS Avtal_Period_From&#xA;&#x9;,KPE.KONT_BET_PER          AS Avtal_Betalningsperiod_Manader&#xA;&#x9;,KPE.KONT_BET_SATT         AS Avtal_Betalningsformedlare&#xA;&#x9;,KPE.KONT_MOMS AS Avtal_Moms&#xA;&#x9;,AAD.ADR_FROM  AS Avtal_Avi_Adress_From&#xA;&#x9;,AAD.AAD_ADRESS AS Avtal_Avi_Adress&#xA;&#x9;,AAD.AAD_CO_NAMN           AS Avtal_Avi_CO&#xA;&#x9;,AAD.AAD_POSTNR AS Avtal_Avi_Postnr&#xA;&#x9;,AAD.AAD_POSTADRESS        AS Avtal_Avi_Postadress&#xA;&#x9;,AAD.AAD_LANDSKOD          AS Avtal_Avi_Landskod&#xA;&#x9;,GAD.FORLANG_TOM           AS Avtal_Forlangt_Tom&#xA;&#x9;,AVT.UPPD_TID  AS Avtal_Uppdaterad&#xA;&#x9;,AVT.UPPD_ANV  AS Avtal_Uppdaterad_Av&#xA;FROM AVTAL AVT WITH (NOLOCK)&#x9;&#x9;&#x9;&#xA;INNER JOIN KONTRAKT KON WITH (NOLOCK) ON KON.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN KONTRAKT_PERIODER KPE WITH (NOLOCK) ON KPE.AVT_ID = AVT.AVT_ID&#xA;INNER JOIN UTHYRN_OBJEKT UOB WITH (NOLOCK) ON UOB.UTH_OBJEKT_ID = KON.KONT_UTH_OBJ_ID&#xA;INNER JOIN ANVANDNINGAR ANN WITH (NOLOCK) ON ANN.ANN_KOD = UOB.UTH_ANN_KOD&#xA;INNER JOIN HYRESSTATUS HST WITH (NOLOCK) ON HST.HYRESSTATUS_ID = KON.KONT_HYRESSTATUS&#xA;INNER JOIN HYRESGASTER HG1 WITH (NOLOCK) ON HG1.AVT_ID = AVT.AVT_ID AND HG1.HYR_GAST_NR = 1 AND HG1.HYR_GAST_DATUM IS NOT NULL&#xA;INNER JOIN HYRESVARDAR HVA WITH (NOLOCK) ON HVA.AVT_ID = AVT.AVT_ID AND HVA.HYR_VARD_DATUM IS NOT NULL&#xA;INNER JOIN AVTAL_ADRESSER AAD WITH (NOLOCK) ON AAD.AVT_ID = AVT.AVT_ID AND AAD.ADRESS_TYP = 'AVI'&#xA;CROSS APPLY DBO.GET_AVT_DATES_F(AVT.AVT_ID,'HVD',NULL,@TODAY,'J',KON.KONT_FAKT_TOM) GAD&#xA;LEFT OUTER JOIN BRANSCHER BRA WITH (NOLOCK) ON BRA.BRANSCH_ID = AVT.AVT_BRANSCH&#xA;LEFT OUTER JOIN AVTAL HAV WITH (NOLOCK) ON HAV.AVT_ID = AVT.AVT_HUV_AVT_ID&#xA;LEFT OUTER JOIN TYP_KODER TK1 WITH (NOLOCK) ON TK1.GEN_TYP = KON.KONT_UPP_AV_TYP AND TK1.GEN_KOD = KON.KONT_UPP_AV_KOD&#xA;LEFT OUTER JOIN TYP_KODER TK2 WITH (NOLOCK) ON TK2.GEN_TYP = KON.KONT_UPP_ORS_TYP AND TK2.GEN_KOD = KON.KONT_UPP_ORS_KOD&#xA;LEFT OUTER JOIN TYP_KODER TK3 WITH (NOLOCK) ON TK3.GEN_TYP = KON.KONT_INFL_ORS_TYP AND TK3.GEN_KOD = KON.KONT_INFL_ORS_KOD&#xA;LEFT OUTER JOIN TYP_KODER TK4 WITH (NOLOCK) ON TK4.GEN_TYP = KON.KONT_INFL_LOK_SKICK_TYP AND TK4.GEN_KOD = KON.KONT_INFL_LOK_SKICK_KOD&#xA;LEFT OUTER JOIN OVERLATELSER_BR OBR WITH (NOLOCK) ON OBR.AVT_ID = AVT.AVT_ID&#xA;LEFT OUTER JOIN TYP_KODER TK5 WITH (NOLOCK) ON TK5.GEN_TYP = OBR.GEN_TYP AND TK5.GEN_KOD = OBR.GEN_KOD&#xA;LEFT OUTER JOIN OVERLATELSER_BR OB2 WITH (NOLOCK) ON OB2.OVERLATET_AVT_ID = OBR.AVT_ID&#xA;LEFT OUTER JOIN TYP_KODER TK6 WITH (NOLOCK) ON TK6.GEN_TYP = OB2.GEN_TYP AND TK6.GEN_KOD = OB2.GEN_KOD&#xA;LEFT OUTER JOIN AVTAL AVO WITH (NOLOCK) ON AVO.AVT_ID = OB2.AVT_ID&#xA;WHERE AVT.AVT_ID = AVT.AVT_ID --@AVT_ID&#xA;  AND AAD.ADR_FROM = ISNULL((SELECT MAX(ADR_FROM) FROM AVTAL_ADRESSER WITH (NOLOCK) WHERE AVT_ID = AVT.AVT_ID AND ADRESS_TYP = 'AVI' AND ADR_FROM &lt;= @TODAY)&#xA;   ,(SELECT MIN(ADR_FROM) FROM AVTAL_ADRESSER WITH (NOLOCK) WHERE AVT_ID = AVT.AVT_ID AND ADRESS_TYP = 'AVI'))&#xA;  AND KPE.KONT_FROM = ISNULL((SELECT MAX(KONT_FROM) FROM KONTRAKT_PERIODER WITH (NOLOCK) WHERE AVT_ID = AVT.AVT_ID AND KONT_FROM &lt;= @TODAY)&#xA;    ,(SELECT MIN(KONT_FROM) FROM KONTRAKT_PERIODER WITH (NOLOCK) WHERE AVT_ID = AVT.AVT_ID))&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="EXEC GetPM_Avtal;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -4440,7 +4440,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="28.8183723347198,47.1594206745136,56.6727734375,11.43359375"
+              BoundingBox="28.81837233472,47.1594206745136,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/28/2016 3:43:43 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="SvenskaBostadsfonden_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="95"
-  DTS:VersionGUID="{C27DE8C7-9458-462A-935E-F8E4B2E192C2}">
+  DTS:VersionBuild="96"
+  DTS:VersionGUID="{AF45B5C8-B4C3-458C-A7B6-FD6E3391C332}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -337,8 +337,8 @@
               <connections>
                 <connection
                   refId="Package\Load Sv Bostadsfonden\Migrate account records.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -2093,7 +2093,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2127,8 +2127,8 @@
               <connections>
                 <connection
                   refId="Package\Load Sv Bostadsfonden\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2426,7 +2426,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Name
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT Name
 	,rik_Organisationsnummer
 	,rik_Idnummer
 	,address1_line1 
@@ -2459,8 +2459,8 @@ FROM SvenskaBostadsfonden</property>
               <connections>
                 <connection
                   refId="Package\Load Sv Bostadsfonden\STG Sv Bostadsfonden.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3366,7 +3366,7 @@ FROM SvenskaBostadsfonden</property>
       DTS:From="Package\Load Sv Bostadsfonden"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\LogPackageEnd"
-      DTS:Value="1" />
+      DTS:Value="2" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -3421,27 +3421,27 @@ FROM SvenskaBostadsfonden</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="188,41.6"
-          Id="Package\Load Sv Bostadsfonden"
-          TopLeft="372.738101093695,401.715690702503" />
-        <NodeLayout
-          Size="234.4,41.6"
+          Size="234,42"
           Id="Package\Load STG SvenskaBostadsfonden"
           TopLeft="357,279" />
         <NodeLayout
-          Size="152,40.8"
+          Size="188,42"
+          Id="Package\Load Sv Bostadsfonden"
+          TopLeft="372.738101093695,401.715690702503" />
+        <NodeLayout
+          Size="152,41"
           Id="Package\LogPackageEnd"
           TopLeft="72.3571444544562,399.335949217453" />
         <NodeLayout
-          Size="163.2,40.8"
+          Size="163,41"
           Id="Package\LogPackageStart"
           TopLeft="58.6428580478746,36.0882357231061" />
         <NodeLayout
-          Size="143.2,40.8"
+          Size="143,41"
           Id="Package\New LoggStatus"
           TopLeft="64.5714296710736,119.294119320114" />
         <NodeLayout
-          Size="163.2,40.8"
+          Size="163,41"
           Id="Package\Truncate rows in ERROR table"
           TopLeft="292.476195740862,118.070589891189" />
         <EdgeLayout
@@ -3486,7 +3486,7 @@ FROM SvenskaBostadsfonden</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-85.6818259758694,5,30.4826953125,9.7490234375"
+              BoundingBox="-95.7449314446195,5,50.60890625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

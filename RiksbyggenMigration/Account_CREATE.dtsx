@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/28/2016 3:43:43 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Account_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="111"
-  DTS:VersionGUID="{9B49A203-F4F0-4F32-95C5-260CA30E5E28}">
+  DTS:VersionBuild="112"
+  DTS:VersionGUID="{A8F85FC7-E689-4C79-818B-DC73ADB8130F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -257,7 +257,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -291,8 +291,8 @@
               <connections>
                 <connection
                   refId="Package\Load Account\Account_ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1972,8 +1972,8 @@
               <connections>
                 <connection
                   refId="Package\Load Account\Dynamics CRM Destination.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -2151,6 +2151,14 @@
                       cachedName="statuscode"
                       externalMetadataColumnId="Package\Load Account\Dynamics CRM Destination.Inputs[Input].ExternalColumns[statuscode]"
                       lineageId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output].Columns[statuscode]" />
+                    <inputColumn
+                      refId="Package\Load Account\Dynamics CRM Destination.Inputs[Input].Columns[Kundansvarig]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="21"
+                      cachedName="Kundansvarig"
+                      externalMetadataColumnId="Package\Load Account\Dynamics CRM Destination.Inputs[Input].ExternalColumns[ownerid]"
+                      lineageId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output].Columns[Kundansvarig]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3231,6 +3239,22 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">systemuser;team</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;domainname&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -3965,8 +3989,8 @@
               <connections>
                 <connection
                   refId="Package\Load Account\Dynamics CRM Destination 1.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -4144,6 +4168,14 @@
                       cachedName="statuscode"
                       externalMetadataColumnId="Package\Load Account\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[statuscode]"
                       lineageId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output].Columns[statuscode]" />
+                    <inputColumn
+                      refId="Package\Load Account\Dynamics CRM Destination 1.Inputs[Input].Columns[Kundansvarig]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="21"
+                      cachedName="Kundansvarig"
+                      externalMetadataColumnId="Package\Load Account\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[ownerid]"
+                      lineageId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output].Columns[Kundansvarig]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -5224,6 +5256,22 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">systemuser;team</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;domainname&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -5959,8 +6007,8 @@
               <connections>
                 <connection
                   refId="Package\Load Account\Dynamics CRM Destination 2.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -6138,6 +6186,14 @@
                       cachedName="statuscode"
                       externalMetadataColumnId="Package\Load Account\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[statuscode]"
                       lineageId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output].Columns[statuscode]" />
+                    <inputColumn
+                      refId="Package\Load Account\Dynamics CRM Destination 2.Inputs[Input].Columns[Kundansvarig]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="21"
+                      cachedName="Kundansvarig"
+                      externalMetadataColumnId="Package\Load Account\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[ownerid]"
+                      lineageId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output].Columns[Kundansvarig]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -7218,6 +7274,22 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">systemuser;team</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;domainname&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -7919,9 +7991,10 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  CAST(Visningsnamn AS NVARCHAR)AS Name
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  CAST(Visningsnamn AS NVARCHAR)AS Name
 	,CAST(Organisationsnummer AS NVARCHAR(20))AS rik_Organisationsnummer
 	,CAST(Kundnummer AS NVARCHAR(18)) AS rik_Idnummer
+	,'RIKSBYGGEN\' + KundansvarigAnvId AS Kundansvarig
 	,Epost AS emailaddress1
 	,Tel1 AS address1_telephone1
 	,Tel2 AS address1_telephone2
@@ -7975,8 +8048,8 @@ LEFT JOIN ovDelsegment ds
               <connections>
                 <connection
                   refId="Package\Load Account\STG_Account.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -8217,6 +8290,17 @@ LEFT JOIN ovDelsegment ds
                       lineageId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output].Columns[statecode]"
                       name="statecode"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output].Columns[Kundansvarig]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output].ExternalColumns[Kundansvarig]"
+                      length="21"
+                      lineageId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output].Columns[Kundansvarig]"
+                      name="Kundansvarig"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -8342,6 +8426,12 @@ LEFT JOIN ovDelsegment ds
                       refId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output].ExternalColumns[statecode]"
                       dataType="i4"
                       name="statecode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output].ExternalColumns[Kundansvarig]"
+                      codePage="1252"
+                      dataType="str"
+                      length="21"
+                      name="Kundansvarig" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -8367,6 +8457,13 @@ LEFT JOIN ovDelsegment ds
                       length="18"
                       lineageId="Package\Load Account\STG_Account.Outputs[OLE DB Source Error Output].Columns[rik_Idnummer]"
                       name="rik_Idnummer" />
+                    <outputColumn
+                      refId="Package\Load Account\STG_Account.Outputs[OLE DB Source Error Output].Columns[Kundansvarig]"
+                      codePage="1252"
+                      dataType="str"
+                      length="21"
+                      lineageId="Package\Load Account\STG_Account.Outputs[OLE DB Source Error Output].Columns[Kundansvarig]"
+                      name="Kundansvarig" />
                     <outputColumn
                       refId="Package\Load Account\STG_Account.Outputs[OLE DB Source Error Output].Columns[emailaddress1]"
                       codePage="1252"
@@ -11687,6 +11784,26 @@ LEFT JOIN ovDelsegment ds
           Id="Package\Load Account\Data Conversion"
           TopLeft="503,487" />
         <NodeLayout
+          Size="163,42"
+          Id="Package\Load Account\Union All Inserted"
+          TopLeft="153,384" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Load Account\Dynamics CRM Destination 2"
+          TopLeft="747.714288127666,193.593470435815" />
+        <NodeLayout
+          Size="388,41"
+          Id="Package\Load Account\Balanced Data Distributor"
+          TopLeft="217.00000340598,92.8823543139395" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Load Account\Union All to ERROR"
+          TopLeft="493,413" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Load Account\Dynamics CRM Destination 1"
+          TopLeft="439,192.593470435815" />
+        <NodeLayout
           Size="141,41"
           Id="Package\Load Account\Row Inserted"
           TopLeft="157.571428513041,455.917653270575" />
@@ -11694,26 +11811,6 @@ LEFT JOIN ovDelsegment ds
           Size="142,42"
           Id="Package\Load Account\STG_Account"
           TopLeft="333.285719842328,3.6352944350985" />
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Load Account\Union All to ERROR"
-          TopLeft="493,413" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Load Account\Union All Inserted"
-          TopLeft="153,384" />
-        <NodeLayout
-          Size="388,41"
-          Id="Package\Load Account\Balanced Data Distributor"
-          TopLeft="217.00000340598,92.8823543139395" />
-        <NodeLayout
-          Size="214,42"
-          Id="Package\Load Account\Dynamics CRM Destination 2"
-          TopLeft="747.714288127666,193.593470435815" />
-        <NodeLayout
-          Size="214,42"
-          Id="Package\Load Account\Dynamics CRM Destination 1"
-          TopLeft="439,192.593470435815" />
         <NodeLayout
           Size="156,42"
           Id="Package\Load Account\Account_ERROR"
