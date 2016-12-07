@@ -1,18 +1,19 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/28/2016 3:43:43 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="WIN-MDNURGQAKC3"
   DTS:CreatorName="CORP\Administrator"
+  DTS:DelayValidation="True"
   DTS:DTSID="{2D70FE86-DFF0-4421-9FC1-E6BA8B1FEAFE}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="13.0.2165.0"
   DTS:LocaleID="1053"
   DTS:ObjectName="SystemUser_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="55"
-  DTS:VersionGUID="{0671D695-F70C-4924-95AE-38DE42CEEC5E}">
+  DTS:VersionBuild="56"
+  DTS:VersionGUID="{366156BA-D7CD-4656-B999-4E81812A7C46}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -419,8 +420,8 @@
               <connections>
                 <connection
                   refId="Package\Load SystemUser\Dynamics CRM Destination.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -2444,8 +2445,8 @@
               <connections>
                 <connection
                   refId="Package\Load SystemUser\Dynamics CRM Source.Connections[DynamicsCRM]"
-                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:invalid"
-                  connectionManagerRefId="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:invalid"
+                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[oldCRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -4914,7 +4915,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4948,8 +4949,8 @@
               <connections>
                 <connection
                   refId="Package\Load SystemUser\SystemUser_Error.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>

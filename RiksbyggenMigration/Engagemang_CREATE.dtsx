@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Engagemang_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="117"
-  DTS:VersionGUID="{A49D3EF3-D7B7-4A2D-92F1-9C0F528DECFA}">
+  DTS:VersionBuild="118"
+  DTS:VersionGUID="{3A47F6FA-0C9C-4BFD-8E6C-90135DEBF13D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -2663,7 +2663,7 @@
                   dataType="System.String"
                   description="FetchXML statement."
                   expressionType="Notify"
-                  name="FetchXML">  &lt;fetch mapping='logical' count="5"&gt;
+                  name="FetchXML">  &lt;fetch mapping='logical'&gt;
     &lt;entity name='connection'&gt;
     &lt;all-attributes /&gt;
     &lt;order attribute="record2id" descending="false" /&gt;
@@ -2731,6 +2731,26 @@
                   refId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output]"
                   name="CRM Primary Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[acc.accountnumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[acc.accountnumber]"
+                      length="30"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[acc.accountnumber]"
+                      name="acc.accountnumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[con.rb_pnumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[con.rb_pnumber]"
+                      length="30"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[con.rb_pnumber]"
+                      name="con.rb_pnumber"
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[connectionid]"
                       dataType="guid"
@@ -3354,29 +3374,19 @@
                       lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[versionnumber]"
                       name="versionnumber"
                       truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[acc.accountnumber]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[acc.accountnumber]"
-                      length="30"
-                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[acc.accountnumber]"
-                      name="acc.accountnumber"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[con.rb_pnumber]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[con.rb_pnumber]"
-                      length="30"
-                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[con.rb_pnumber]"
-                      name="con.rb_pnumber"
-                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[acc.accountnumber]"
+                      dataType="wstr"
+                      length="30"
+                      name="acc.accountnumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[con.rb_pnumber]"
+                      dataType="wstr"
+                      length="30"
+                      name="con.rb_pnumber" />
                     <externalMetadataColumn
                       refId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[connectionid]"
                       dataType="guid"
@@ -3670,16 +3680,6 @@
                       refId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[versionnumber]"
                       dataType="i8"
                       name="versionnumber" />
-                    <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[acc.accountnumber]"
-                      dataType="wstr"
-                      length="30"
-                      name="acc.accountnumber" />
-                    <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[con.rb_pnumber]"
-                      dataType="wstr"
-                      length="30"
-                      name="con.rb_pnumber" />
                   </externalMetadataColumns>
                 </output>
               </outputs>
@@ -4283,7 +4283,7 @@ where [refTable].[rik_Namn] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record2roleidname]};</property>
+                  name="ParameterMap">#{Package\Load Engagemang\497:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -13690,7 +13690,7 @@ WHERE rik_Namn = 'Engagemang'
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-118.265644470137,21.8200839246507,173.1384375,16"
+              BoundingBox="-109.396992126387,21.8200839246507,155.4011328125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
