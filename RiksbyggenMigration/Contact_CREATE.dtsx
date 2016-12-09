@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Contact_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="85"
-  DTS:VersionGUID="{1284C03E-D1CD-46F9-BA6A-9BB4B21C271E}">
+  DTS:VersionBuild="86"
+  DTS:VersionGUID="{A34E7111-A462-426D-B0A4-11319DEC13C5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -1542,6 +1542,16 @@
                       refId="Package\Load Contact\Contact_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Telefonnummer1Hemlig]"
                       dataType="bool"
                       name="rik_Telefonnummer1Hemlig" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Contact_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_SkyddadIdentitetId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_SkyddadIdentitetId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Contact_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_SkyddadIdentitetIdName]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_SkyddadIdentitetIdName" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1849,12 +1859,6 @@
                       externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_personnummer]"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Personnummer]" />
                     <inputColumn
-                      refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].Columns[rik_SkyddadIdentiet]"
-                      cachedDataType="bool"
-                      cachedName="rik_SkyddadIdentiet"
-                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_skyddadidentitet]"
-                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_SkyddadIdentiet]" />
-                    <inputColumn
                       refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].Columns[rik_MigreringId]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -1972,7 +1976,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[address1_city]"
                       dataType="wstr"
-                      length="80"
+                      length="40"
                       name="address1_city">
                       <properties>
                         <property
@@ -2054,7 +2058,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[address1_line1]"
                       dataType="wstr"
-                      length="250"
+                      length="40"
                       name="address1_line1">
                       <properties>
                         <property
@@ -2123,7 +2127,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[address1_postalcode]"
                       dataType="wstr"
-                      length="20"
+                      length="8"
                       name="address1_postalcode">
                       <properties>
                         <property
@@ -3828,19 +3832,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_skyddadidentitet]"
-                      dataType="bool"
-                      name="rik_skyddadidentitet">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Boolean</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[salutation]"
                       dataType="wstr"
                       length="100"
@@ -4266,6 +4257,19 @@
                           name="LookupTypes"></property>
                       </properties>
                     </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_skyddadidentitetid]"
+                      dataType="guid"
+                      name="rik_skyddadidentitetid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">rik_skyddadidentitet</property>
+                      </properties>
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4480,12 +4484,6 @@
                       externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_personnummer]"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Personnummer]" />
                     <inputColumn
-                      refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_SkyddadIdentiet]"
-                      cachedDataType="bool"
-                      cachedName="rik_SkyddadIdentiet"
-                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_skyddadidentitet]"
-                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_SkyddadIdentiet]" />
-                    <inputColumn
                       refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_MigreringId]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -4603,7 +4601,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[address1_city]"
                       dataType="wstr"
-                      length="80"
+                      length="40"
                       name="address1_city">
                       <properties>
                         <property
@@ -4685,7 +4683,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[address1_line1]"
                       dataType="wstr"
-                      length="250"
+                      length="40"
                       name="address1_line1">
                       <properties>
                         <property
@@ -4754,7 +4752,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[address1_postalcode]"
                       dataType="wstr"
-                      length="20"
+                      length="8"
                       name="address1_postalcode">
                       <properties>
                         <property
@@ -6459,19 +6457,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_skyddadidentitet]"
-                      dataType="bool"
-                      name="rik_skyddadidentitet">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Boolean</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[salutation]"
                       dataType="wstr"
                       length="100"
@@ -6897,6 +6882,19 @@
                           name="LookupTypes"></property>
                       </properties>
                     </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_skyddadidentitetid]"
+                      dataType="guid"
+                      name="rik_skyddadidentitetid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">rik_skyddadidentitet</property>
+                      </properties>
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -7111,12 +7109,6 @@
                       externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_personnummer]"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Personnummer]" />
                     <inputColumn
-                      refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_SkyddadIdentiet]"
-                      cachedDataType="bool"
-                      cachedName="rik_SkyddadIdentiet"
-                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_skyddadidentitet]"
-                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_SkyddadIdentiet]" />
-                    <inputColumn
                       refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_MigreringId]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -7234,7 +7226,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[address1_city]"
                       dataType="wstr"
-                      length="80"
+                      length="40"
                       name="address1_city">
                       <properties>
                         <property
@@ -7316,7 +7308,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[address1_line1]"
                       dataType="wstr"
-                      length="250"
+                      length="40"
                       name="address1_line1">
                       <properties>
                         <property
@@ -7385,7 +7377,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[address1_postalcode]"
                       dataType="wstr"
-                      length="20"
+                      length="8"
                       name="address1_postalcode">
                       <properties>
                         <property
@@ -9090,19 +9082,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_skyddadidentitet]"
-                      dataType="bool"
-                      name="rik_skyddadidentitet">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Boolean</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[salutation]"
                       dataType="wstr"
                       length="100"
@@ -9528,6 +9507,19 @@
                           name="LookupTypes"></property>
                       </properties>
                     </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_skyddadidentitetid]"
+                      dataType="guid"
+                      name="rik_skyddadidentitetid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">rik_skyddadidentitet</property>
+                      </properties>
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -9630,7 +9622,7 @@
 ,AnnanUnikIdentierare AS rik_IdNummer
 ,PrivatEpost AS EmailAddress1
 ,PublikEpost AS EmailAddress2
-,Skyddadidentiet AS rik_SkyddadIdentiet
+--,Skyddadidentiet AS rik_SkyddadIdentiet
 ,CAST(Telefon1 AS NVARCHAR(50))AS Telephone1
 ,CAST(CASE WHEN Telefon1 = Telefon2 THEN '' ELSE CAST(Telefon2 AS NVARCHAR(50))END AS NVARCHAR(50)) AS Telephone2
 ,CAST(Adress1  AS NVARCHAR(400))AS Address1_Line1
@@ -9786,15 +9778,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                       length="100"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[EmailAddress1]"
                       name="EmailAddress1"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_SkyddadIdentiet]"
-                      dataType="bool"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_SkyddadIdentiet]"
-                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_SkyddadIdentiet]"
-                      name="rik_SkyddadIdentiet"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_MigreringId]"
@@ -9957,10 +9940,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                       length="100"
                       name="EmailAddress1" />
                     <externalMetadataColumn
-                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_SkyddadIdentiet]"
-                      dataType="bool"
-                      name="rik_SkyddadIdentiet" />
-                    <externalMetadataColumn
                       refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_MigreringId]"
                       codePage="1252"
                       dataType="str"
@@ -10057,11 +10036,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                       length="100"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[EmailAddress2]"
                       name="EmailAddress2" />
-                    <outputColumn
-                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_SkyddadIdentiet]"
-                      dataType="bool"
-                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_SkyddadIdentiet]"
-                      name="rik_SkyddadIdentiet" />
                     <outputColumn
                       refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[Telephone1]"
                       dataType="wstr"
@@ -10317,19 +10291,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Load Contact\Union All ERROR.Inputs[Union All Input 1].Columns[rik_SkyddadIdentiet]"
-                      cachedDataType="bool"
-                      cachedName="rik_SkyddadIdentiet"
-                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_SkyddadIdentiet]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Contact\Union All ERROR.Outputs[Union All Output 1].Columns[rik_SkyddadIdentiet]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Load Contact\Union All ERROR.Inputs[Union All Input 1].Columns[rik_MigreringId]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -10559,19 +10520,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Load Contact\Union All ERROR.Outputs[Union All Output 1].Columns[EmailAddress1]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Contact\Union All ERROR.Inputs[Union All Input 2].Columns[rik_SkyddadIdentiet]"
-                      cachedDataType="bool"
-                      cachedName="rik_SkyddadIdentiet"
-                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_SkyddadIdentiet]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Contact\Union All ERROR.Outputs[Union All Output 1].Columns[rik_SkyddadIdentiet]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -10807,19 +10755,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Load Contact\Union All ERROR.Inputs[Union All Input 3].Columns[rik_SkyddadIdentiet]"
-                      cachedDataType="bool"
-                      cachedName="rik_SkyddadIdentiet"
-                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_SkyddadIdentiet]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Contact\Union All ERROR.Outputs[Union All Output 1].Columns[rik_SkyddadIdentiet]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Load Contact\Union All ERROR.Inputs[Union All Input 3].Columns[rik_MigreringId]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -10979,11 +10914,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                       length="100"
                       lineageId="Package\Load Contact\Union All ERROR.Outputs[Union All Output 1].Columns[EmailAddress1]"
                       name="EmailAddress1" />
-                    <outputColumn
-                      refId="Package\Load Contact\Union All ERROR.Outputs[Union All Output 1].Columns[rik_SkyddadIdentiet]"
-                      dataType="bool"
-                      lineageId="Package\Load Contact\Union All ERROR.Outputs[Union All Output 1].Columns[rik_SkyddadIdentiet]"
-                      name="rik_SkyddadIdentiet" />
                     <outputColumn
                       refId="Package\Load Contact\Union All ERROR.Outputs[Union All Output 1].Columns[rik_MigreringId]"
                       codePage="1252"
@@ -11178,19 +11108,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                           name="OutputColumnLineageID">#{Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[EmailAddress1]}</property>
                       </properties>
                     </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Contact\Union All Inserted.Inputs[Union All Input 4].Columns[rik_SkyddadIdentiet]"
-                      cachedDataType="bool"
-                      cachedName="rik_SkyddadIdentiet"
-                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_SkyddadIdentiet]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[rik_SkyddadIdentiet]}</property>
-                      </properties>
-                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -11338,19 +11255,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[EmailAddress1]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Contact\Union All Inserted.Inputs[Union All Input 1].Columns[rik_SkyddadIdentiet]"
-                      cachedDataType="bool"
-                      cachedName="rik_SkyddadIdentiet"
-                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_SkyddadIdentiet]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[rik_SkyddadIdentiet]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -11502,19 +11406,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                           name="OutputColumnLineageID">#{Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[EmailAddress1]}</property>
                       </properties>
                     </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Contact\Union All Inserted.Inputs[Union All Input 2].Columns[rik_SkyddadIdentiet]"
-                      cachedDataType="bool"
-                      cachedName="rik_SkyddadIdentiet"
-                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_SkyddadIdentiet]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[rik_SkyddadIdentiet]}</property>
-                      </properties>
-                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -11592,11 +11483,6 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
                       length="100"
                       lineageId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[EmailAddress1]"
                       name="EmailAddress1" />
-                    <outputColumn
-                      refId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[rik_SkyddadIdentiet]"
-                      dataType="bool"
-                      lineageId="Package\Load Contact\Union All Inserted.Outputs[Union All Output 1].Columns[rik_SkyddadIdentiet]"
-                      name="rik_SkyddadIdentiet" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -12642,7 +12528,7 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
         <NodeLayout
           Size="140,42"
           Id="Package\Load Contact\STG_Contact"
-          TopLeft="347.142863020605,15.8000002917121" />
+          TopLeft="366.142863020605,9.8000002917121" />
         <NodeLayout
           Size="383,42"
           Id="Package\Load Contact\Balanced Data Distributor"
@@ -12697,30 +12583,30 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Contact.Paths[OLE DB Source Output]"
-          TopLeft="417.142863020605,57.8000002917121">
+          TopLeft="436.142863020605,51.8000002917121">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="34.357141407169,27.847059732985"
+              EndConnector="15.357141407169,33.847059732985"
               Start="0,0"
-              End="34.357141407169,20.347059732985">
+              End="15.357141407169,26.347059732985">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.9235298664925" />
+                    End="0,12.9235298664925" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9.9235298664925"
-                    Point2="0,13.9235298664925"
-                    Point3="4,13.9235298664925" />
+                    Point1="0,12.9235298664925"
+                    Point2="0,16.9235298664925"
+                    Point3="4,16.9235298664925" />
                   <mssgle:LineSegment
-                    End="30.357141407169,13.9235298664925" />
+                    End="11.357141407169,16.9235298664925" />
                   <mssgle:CubicBezierSegment
-                    Point1="30.357141407169,13.9235298664925"
-                    Point2="34.357141407169,13.9235298664925"
-                    Point3="34.357141407169,17.9235298664925" />
+                    Point1="11.357141407169,16.9235298664925"
+                    Point2="15.357141407169,16.9235298664925"
+                    Point3="15.357141407169,20.9235298664925" />
                   <mssgle:LineSegment
-                    End="34.357141407169,20.347059732985" />
+                    End="15.357141407169,26.347059732985" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Engagemang_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="118"
-  DTS:VersionGUID="{3A47F6FA-0C9C-4BFD-8E6C-90135DEBF13D}">
+  DTS:VersionBuild="120"
+  DTS:VersionGUID="{EE801B8D-6BD5-4B37-AE0E-68059499A31B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -854,6 +854,7 @@
                         <property
                           dataType="System.String"
                           name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
   &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
   &lt;LookupTargets&gt;
     &lt;LookupTarget&gt;
@@ -1548,6 +1549,7 @@
                         <property
                           dataType="System.String"
                           name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
   &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
   &lt;LookupTargets&gt;
     &lt;LookupTarget&gt;
@@ -2243,6 +2245,7 @@
                         <property
                           dataType="System.String"
                           name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
   &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
   &lt;LookupTargets&gt;
     &lt;LookupTarget&gt;
@@ -3915,6 +3918,13 @@
                       cachedName="CrmErrorMessage"
                       externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
                       lineageId="Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[CrmErrorMessage]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].Columns[con.rb_pnumber]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="con.rb_pnumber"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      lineageId="Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[con.rb_pnumber]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4283,7 +4293,7 @@ where [refTable].[rik_Namn] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Engagemang\497:invalid};</property>
+                  name="ParameterMap">#{Package\Load Engagemang\5229:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."

@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Incident_CREATE_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="88"
-  DTS:VersionGUID="{82C057ED-7DD5-4A4C-AB74-F56FBCF0F6F6}">
+  DTS:VersionBuild="89"
+  DTS:VersionGUID="{787C3009-638B-4391-B70F-A3FE6D5E6E44}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -941,12 +941,6 @@
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_tilltradesdatum]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_occupancy_date]" />
                     <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[rb_x_propertyobject_id]"
-                      cachedDataType="guid"
-                      cachedName="rb_x_propertyobject_id"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_fastighetsobjektid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_x_propertyobject_id]" />
-                    <inputColumn
                       refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[STR_customerid]"
                       cachedDataType="wstr"
                       cachedLength="255"
@@ -967,6 +961,13 @@
                       cachedName="STR_cre_owner_account_id"
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_fastighetsagareid]"
                       lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_owner_account_id]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[rb_x_propertyobject_idname]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rb_x_propertyobject_idname"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_fastighetsobjektid]"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_x_propertyobject_idname]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2145,7 +2146,16 @@
                           name="LookupTypes">rik_objekt</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup"></property>
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_objekt&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_idnummer&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2728,12 +2738,6 @@
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_tilltradesdatum]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_occupancy_date]" />
                     <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[rb_x_propertyobject_id]"
-                      cachedDataType="guid"
-                      cachedName="rb_x_propertyobject_id"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_fastighetsobjektid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_x_propertyobject_id]" />
-                    <inputColumn
                       refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[STR_customerid]"
                       cachedDataType="wstr"
                       cachedLength="255"
@@ -2754,6 +2758,13 @@
                       cachedName="STR_cre_owner_account_id"
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_fastighetsagareid]"
                       lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_owner_account_id]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[rb_x_propertyobject_idname]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rb_x_propertyobject_idname"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_fastighetsobjektid]"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_x_propertyobject_idname]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3932,7 +3943,16 @@
                           name="LookupTypes">rik_objekt</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup"></property>
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_objekt&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_idnummer&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -4515,12 +4535,6 @@
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_tilltradesdatum]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_occupancy_date]" />
                     <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[rb_x_propertyobject_id]"
-                      cachedDataType="guid"
-                      cachedName="rb_x_propertyobject_id"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_fastighetsobjektid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_x_propertyobject_id]" />
-                    <inputColumn
                       refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[STR_customerid]"
                       cachedDataType="wstr"
                       cachedLength="255"
@@ -4541,6 +4555,13 @@
                       cachedName="STR_cre_owner_account_id"
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_fastighetsagareid]"
                       lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_owner_account_id]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[rb_x_propertyobject_idname]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rb_x_propertyobject_idname"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_fastighetsobjektid]"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_x_propertyobject_idname]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -5719,7 +5740,16 @@
                           name="LookupTypes">rik_objekt</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup"></property>
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_objekt&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_idnummer&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
