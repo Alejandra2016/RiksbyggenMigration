@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Engagemang_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="120"
-  DTS:VersionGUID="{EE801B8D-6BD5-4B37-AE0E-68059499A31B}">
+  DTS:VersionBuild="121"
+  DTS:VersionGUID="{923972A9-4DDD-496A-852E-A7277364F00C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -377,6 +377,189 @@
                       refId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Engagemang\Data Conversion 1"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Engagemang\Data Conversion 1.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1.Inputs[Data Conversion Input].Columns[record2id]"
+                      cachedDataType="guid"
+                      cachedName="record2id"
+                      lineageId="Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[record2id]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1.Inputs[Data Conversion Input].Columns[record1id]"
+                      cachedDataType="guid"
+                      cachedName="record1id"
+                      lineageId="Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[record1id]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1.Inputs[Data Conversion Input].Columns[record1idname]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="record1idname"
+                      lineageId="Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[record1idname]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1.Inputs[Data Conversion Input].Columns[record2idname]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="record2idname"
+                      lineageId="Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[record2idname]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1.Inputs[Data Conversion Input].Columns[record2roleidname]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="record2roleidname"
+                      lineageId="Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[record2roleidname]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load Engagemang\Data Conversion 1.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record2id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record2id]"
+                      name="STR_record2id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[record2id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record1id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record1id]"
+                      name="STR_record1id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[record1id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record1idname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record1idname]"
+                      name="STR_record1idname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[record1idname]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record2idname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record2idname]"
+                      name="STR_record2idname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[record2idname]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record2roleidname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record2roleidname]"
+                      name="STR_record2roleidname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[record2roleidname]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load Engagemang\Data Conversion 1.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -3925,6 +4108,41 @@
                       cachedName="con.rb_pnumber"
                       externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
                       lineageId="Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1].Columns[con.rb_pnumber]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].Columns[STR_record2id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_record2id"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AccountId]"
+                      lineageId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record2id]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].Columns[STR_record2idname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="STR_record2idname"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AccountIdName]"
+                      lineageId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record2idname]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].Columns[STR_record2roleidname]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="STR_record2roleidname"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_EngagemangsrollNamn]"
+                      lineageId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record2roleidname]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].Columns[STR_record1id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_record1id"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_partContactId]"
+                      lineageId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record1id]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].Columns[STR_record1idname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="STR_record1idname"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_partContactIdName]"
+                      lineageId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record1idname]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4293,7 +4511,7 @@ where [refTable].[rik_Namn] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Engagemang\5229:invalid};</property>
+                  name="ParameterMap">#{Package\Load Engagemang\5227:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -11813,6 +12031,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
               name="CRM Primary Output"
               startId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output]" />
             <path
+              refId="Package\Load Engagemang.Paths[Data Conversion Output1]"
+              endId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output]" />
+            <path
               refId="Package\Load Engagemang.Paths[Data Conversion Output]"
               endId="Package\Load Engagemang\Derived Column.Inputs[Derived Column Input]"
               name="Data Conversion Output"
@@ -11863,15 +12086,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
               name="Output 0"
               startId="Package\Load Engagemang\Script Component.Outputs[Output 0]" />
             <path
+              refId="Package\Load Engagemang.Paths[Union All Output 11]"
+              endId="Package\Load Engagemang\Data Conversion 1.Inputs[Data Conversion Input]"
+              name="Union All Output 1"
+              startId="Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1]" />
+            <path
               refId="Package\Load Engagemang.Paths[Union All Output 1]"
               endId="Package\Load Engagemang\Row Inserted.Inputs[Row Count Input 1]"
               name="Union All Output 1"
               startId="Package\Load Engagemang\Union All Inserted.Outputs[Union All Output 1]" />
-            <path
-              refId="Package\Load Engagemang.Paths[Union All Output 11]"
-              endId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input]"
-              name="Union All Output 1"
-              startId="Package\Load Engagemang\Union All ERROR.Outputs[Union All Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -12869,7 +13092,7 @@ WHERE rik_Namn = 'Engagemang'
         <NodeLayout
           Size="166,42"
           Id="Package\Load Engagemang"
-          TopLeft="339.142862884366,306.105886659984" />
+          TopLeft="337.142862884366,292.105886659984" />
         <NodeLayout
           Size="152,42"
           Id="Package\LogPackageEnd"
@@ -12914,37 +13137,37 @@ WHERE rik_Namn = 'Engagemang'
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="395.809529551033,348.105886659984">
+          TopLeft="393.809529551033,334.105886659984">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-217.666671298799,54.717645540206"
+              EndConnector="-215.666671298799,68.717645540206"
               Start="0,0"
-              End="-217.666671298799,47.217645540206">
+              End="-215.666671298799,61.217645540206">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.8982508907108" />
+                    End="0,34.8038452963052" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.8982508907108"
-                    Point2="0,30.8982508907108"
-                    Point3="-4,30.8982508907108" />
+                    Point1="0,34.8038452963052"
+                    Point2="0,38.8038452963052"
+                    Point3="-4,38.8038452963052" />
                   <mssgle:LineSegment
-                    End="-213.666671298799,30.8982508907108" />
+                    End="-211.666671298799,38.8038452963052" />
                   <mssgle:CubicBezierSegment
-                    Point1="-213.666671298799,30.8982508907108"
-                    Point2="-217.666671298799,30.8982508907108"
-                    Point3="-217.666671298799,34.8982508907108" />
+                    Point1="-211.666671298799,38.8038452963052"
+                    Point2="-215.666671298799,38.8038452963052"
+                    Point3="-215.666671298799,42.8038452963052" />
                   <mssgle:LineSegment
-                    End="-217.666671298799,47.217645540206" />
+                    End="-215.666671298799,61.217645540206" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-124.07468330565,35.8982508907108,30.4826953125,9.7490234375"
+              BoundingBox="-123.07468330565,43.8038452963052,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -13008,18 +13231,18 @@ WHERE rik_Namn = 'Engagemang'
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="424.619053107541,163.1294134635">
+          TopLeft="423.619053107541,163.1294134635">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,142.976473196484"
+              EndConnector="0,128.976473196484"
               Start="0,0"
-              End="0,135.476473196484">
+              End="0,121.476473196484">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,135.476473196484" />
+                    End="0,121.476473196484" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13066,30 +13289,18 @@ WHERE rik_Namn = 'Engagemang'
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="448.476196217699,348.105886659984">
+          TopLeft="442.73809810885,334.105886659984">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-9.47619621769934,54.894113340016"
+              EndConnector="0,68.894113340016"
               Start="0,0"
-              End="-9.47619621769934,47.394113340016">
+              End="0,61.394113340016">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.2720746248275" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.2720746248275"
-                    Point2="0,22.2720746248275"
-                    Point3="-4,22.2720746248275" />
-                  <mssgle:LineSegment
-                    End="-5.47619621769934,22.2720746248275" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5.47619621769934,22.2720746248275"
-                    Point2="-9.47619621769934,22.2720746248275"
-                    Point3="-9.47619621769934,26.2720746248275" />
-                  <mssgle:LineSegment
-                    End="-9.47619621769934,47.394113340016" />
+                    End="0,61.394113340016" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13129,15 +13340,19 @@ WHERE rik_Namn = 'Engagemang'
     design-time-name="Package\Load Engagemang">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="157,42"
-          Id="Package\Load Engagemang\Union All ERROR"
-          TopLeft="590,625" />
+          Size="163,42"
+          Id="Package\Load Engagemang\Script Component"
+          TopLeft="523,266" />
         <NodeLayout
           Size="214,42"
           Id="Package\Load Engagemang\Dynamics CRM Destination 1"
           TopLeft="479,426" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Load Engagemang\Union All ERROR"
+          TopLeft="590,625" />
         <NodeLayout
           Size="184,42"
           Id="Package\Load Engagemang\Dynamics CRM Source"
@@ -13149,7 +13364,7 @@ WHERE rik_Namn = 'Engagemang'
         <NodeLayout
           Size="180,42"
           Id="Package\Load Engagemang\Engagemang_ERROR"
-          TopLeft="582,708" />
+          TopLeft="574,785" />
         <NodeLayout
           Size="113,42"
           Id="Package\Load Engagemang\Lookup"
@@ -13160,8 +13375,8 @@ WHERE rik_Namn = 'Engagemang'
           TopLeft="363,100" />
         <NodeLayout
           Size="163,42"
-          Id="Package\Load Engagemang\Script Component"
-          TopLeft="523,266" />
+          Id="Package\Load Engagemang\Union All Inserted"
+          TopLeft="122,587" />
         <NodeLayout
           Size="205,42"
           Id="Package\Load Engagemang\Dynamics CRM Destination"
@@ -13178,32 +13393,6 @@ WHERE rik_Namn = 'Engagemang'
           Size="407,42"
           Id="Package\Load Engagemang\Balanced Data Distributor"
           TopLeft="248,333" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Load Engagemang\Union All Inserted"
-          TopLeft="122,587" />
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Union All Output 11]"
-          TopLeft="670.25,667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41"
-              Start="0,0"
-              End="0,33.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Union All Output 1]"
           TopLeft="205.035715516733,629">
@@ -13718,6 +13907,54 @@ WHERE rik_Namn = 'Engagemang'
           Size="190,40"
           Id="78feb642-a361-4b18-a3b9-1176b7518431"
           TopLeft="772,43" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Load Engagemang\Data Conversion 1"
+          TopLeft="586,698" />
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Union All Output 11]"
+          TopLeft="668.5,667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Data Conversion Output1]"
+          TopLeft="666.25,740">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
