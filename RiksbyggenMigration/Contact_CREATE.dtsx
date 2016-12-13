@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Contact_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="86"
-  DTS:VersionGUID="{A34E7111-A462-426D-B0A4-11319DEC13C5}">
+  DTS:VersionBuild="87"
+  DTS:VersionGUID="{3F69CB85-A0D5-4D94-BEB2-80837A18AB6B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -9642,7 +9642,7 @@
 	  END AS statuscode 
 ,0 AS statecode
 ,CRMguid AS rik_MigreringId
-FROM [STG].[dbo].[CRM_KONTAKT]</property>
+FROM [STG].[dbo].[CrmKontakt]</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -11560,6 +11560,22 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Load STG Crmkontakt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{AA77FE60-DEF1-4A5E-B479-47A58D8CFA82}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load STG Crmkontakt"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="EXEC GetCrmKontakt;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\LogPackageEnd"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -12241,7 +12257,7 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE Contact_Error" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Contact_Error;&#xA;DROP TABLE CrmKontakt;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -12281,17 +12297,33 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
-      DTS:DTSID="{878663E7-FAB9-43AD-AD75-B7D35B0C50CC}"
+      DTS:DTSID="{32C2A2B9-AD50-423F-B448-2589A6716BC1}"
       DTS:From="Package\Truncate rows in ERROR table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
-      DTS:To="Package\Load Contact" />
+      DTS:To="Package\Load STG Crmkontakt" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
       DTS:DTSID="{098846CB-B29D-4EA9-83FE-0C67EDA873A3}"
       DTS:From="Package\Truncate rows in ERROR table"
       DTS:ObjectName="Constraint 5"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{64B0508E-10FE-47ED-9D0E-F838EB62570A}"
+      DTS:From="Package\Load STG Crmkontakt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Load Contact" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{47133B98-0012-49BC-A681-C89578C4DB94}"
+      DTS:From="Package\Load STG Crmkontakt"
+      DTS:ObjectName="Constraint 7"
       DTS:To="Package\LogPackageEnd"
       DTS:Value="1" />
   </DTS:PrecedenceConstraints>
@@ -12310,11 +12342,11 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
         <NodeLayout
           Size="141,42"
           Id="Package\Load Contact"
-          TopLeft="361.857150126477,337.000003646401" />
+          TopLeft="462.857150126477,366.000003646401" />
         <NodeLayout
           Size="152,42"
           Id="Package\LogPackageEnd"
-          TopLeft="63.4285726449929,344.01176850672" />
+          TopLeft="56.4285726449929,373.01176850672" />
         <NodeLayout
           Size="162,42"
           Id="Package\LogPackageStart"
@@ -12351,25 +12383,25 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="361.857150126477,361.505886076561">
+          TopLeft="462.857150126477,390.505886076561">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-146.428577481484,0"
+              EndConnector="-254.428577481484,0"
               Start="0,0"
-              End="-138.928577481484,0">
+              End="-246.928577481484,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-138.928577481484,0" />
+                    End="-246.928577481484,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-94.768741865742,5,50.60890625,11.609375"
+              BoundingBox="-148.768741865742,5,50.60890625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -12401,50 +12433,102 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-20.0714284449208,182.105884472144"
+              EndConnector="-39.0714284449208,211.105884472144"
               Start="0,0"
-              End="-20.0714284449208,174.605884472144">
+              End="-39.0714284449208,203.605884472144">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,104.125368905336" />
+                    End="0,134.310751895543" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,104.125368905336"
-                    Point2="0,108.125368905336"
-                    Point3="-4,108.125368905336" />
+                    Point1="0,134.310751895543"
+                    Point2="0,138.310751895543"
+                    Point3="-4,138.310751895543" />
                   <mssgle:LineSegment
-                    End="-16.0714284449208,108.125368905336" />
+                    End="-35.0714284449208,138.310751895543" />
                   <mssgle:CubicBezierSegment
-                    Point1="-16.0714284449208,108.125368905336"
-                    Point2="-20.0714284449208,108.125368905336"
-                    Point3="-20.0714284449208,112.125368905336" />
+                    Point1="-35.0714284449208,138.310751895543"
+                    Point2="-39.0714284449208,138.310751895543"
+                    Point3="-39.0714284449208,142.310751895543" />
                   <mssgle:LineSegment
-                    End="-20.0714284449208,174.605884472144" />
+                    End="-39.0714284449208,203.605884472144" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-25.2770618787104,113.125368905336,30.4826953125,9.7490234375"
+              BoundingBox="-34.7770618787104,143.310751895543,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="434.369053720617,164.964707606886">
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="385.047623981424,164.964707606886">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,172.035296039515"
+              EndConnector="-252.619051336431,208.047060899834"
               Start="0,0"
-              End="0,164.535296039515">
+              End="-252.619051336431,200.547060899834">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,164.535296039515" />
+                    End="0,80.4396384092235" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,80.4396384092235"
+                    Point2="0,84.4396384092235"
+                    Point3="-4,84.4396384092235" />
+                  <mssgle:LineSegment
+                    End="-248.619051336431,84.4396384092235" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-248.619051336431,84.4396384092235"
+                    Point2="-252.619051336431,84.4396384092235"
+                    Point3="-252.619051336431,88.4396384092235" />
+                  <mssgle:LineSegment
+                    End="-252.619051336431,200.547060899834" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-141.550873324466,89.4396384092235,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Load STG Crmkontakt"
+          TopLeft="419,228" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="436.380957314758,164.964707606886">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="73.6190426852423,63.035292393114"
+              Start="0,0"
+              End="73.6190426852423,55.535292393114">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5840062035622" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.5840062035622"
+                    Point2="0,25.5840062035622"
+                    Point3="4,25.5840062035622" />
+                  <mssgle:LineSegment
+                    End="69.6190426852423,25.5840062035622" />
+                  <mssgle:CubicBezierSegment
+                    Point1="69.6190426852423,25.5840062035622"
+                    Point2="73.6190426852423,25.5840062035622"
+                    Point3="73.6190426852423,29.5840062035622" />
+                  <mssgle:LineSegment
+                    End="73.6190426852423,55.535292393114" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12454,38 +12538,60 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="385.047623981424,164.964707606886">
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="536.178575063238,270">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-221.619051336431,179.047060899834"
+              EndConnector="0,96.000003646401"
               Start="0,0"
-              End="-221.619051336431,171.547060899834">
+              End="0,88.500003646401">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,85.4526263389951" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,85.4526263389951"
-                    Point2="0,89.4526263389951"
-                    Point3="-4,89.4526263389951" />
+                    End="0,88.500003646401" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="481,270">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-312.571427355007,103.01176850672"
+              Start="0,0"
+              End="-312.571427355007,95.51176850672">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-217.619051336431,89.4526263389951" />
+                    End="0,54.116792768638" />
                   <mssgle:CubicBezierSegment
-                    Point1="-217.619051336431,89.4526263389951"
-                    Point2="-221.619051336431,89.4526263389951"
-                    Point3="-221.619051336431,93.4526263389951" />
+                    Point1="0,54.116792768638"
+                    Point2="0,58.116792768638"
+                    Point3="-4,58.116792768638" />
                   <mssgle:LineSegment
-                    End="-221.619051336431,171.547060899834" />
+                    End="-308.571427355007,58.116792768638" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-308.571427355007,58.116792768638"
+                    Point2="-312.571427355007,58.116792768638"
+                    Point3="-312.571427355007,62.116792768638" />
+                  <mssgle:LineSegment
+                    End="-312.571427355007,95.51176850672" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-126.050873324466,94.4526263389951,30.4826953125,9.7490234375"
+              BoundingBox="-171.527061333754,63.116792768638,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -12498,45 +12604,45 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="205,42"
-          Id="Package\Load Contact\Dynamics CRM Destination"
-          TopLeft="115.428573530547,174.964708336168" />
-        <NodeLayout
           Size="214,42"
           Id="Package\Load Contact\Dynamics CRM Destination 1"
           TopLeft="392,175" />
-        <NodeLayout
-          Size="214,42"
-          Id="Package\Load Contact\Dynamics CRM Destination 2"
-          TopLeft="730.857144268192,174.847064837949" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Load Contact\Data Conversion"
-          TopLeft="582,451" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Load Contact\Contact_ERROR"
-          TopLeft="580,545" />
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Load Contact\Union All Inserted"
-          TopLeft="95.285715618911,349.847064837949" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Load Contact\Union All ERROR"
-          TopLeft="586,364" />
         <NodeLayout
           Size="140,42"
           Id="Package\Load Contact\STG_Contact"
           TopLeft="366.142863020605,9.8000002917121" />
         <NodeLayout
-          Size="383,42"
-          Id="Package\Load Contact\Balanced Data Distributor"
-          TopLeft="260.000004427774,85.6470600246971" />
+          Size="214,42"
+          Id="Package\Load Contact\Dynamics CRM Destination 2"
+          TopLeft="730.857144268192,174.847064837949" />
         <NodeLayout
           Size="142,42"
           Id="Package\Load Contact\Row Inserted"
           TopLeft="105.285715618911,428.717652833009" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Load Contact\Union All ERROR"
+          TopLeft="586,364" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Load Contact\Contact_ERROR"
+          TopLeft="580,545" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Load Contact\Data Conversion"
+          TopLeft="582,451" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Load Contact\Union All Inserted"
+          TopLeft="95.285715618911,349.847064837949" />
+        <NodeLayout
+          Size="383,42"
+          Id="Package\Load Contact\Balanced Data Distributor"
+          TopLeft="260.000004427774,85.6470600246971" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Load Contact\Dynamics CRM Destination"
+          TopLeft="115.428573530547,174.964708336168" />
         <EdgeLayout
           Id="Package\Load Contact.Paths[Union All Output 11]"
           TopLeft="662.25,406">
@@ -12959,7 +13065,7 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Contact\Contact_ERROR">
+    design-time-name="Package\Load Contact\STG_Contact">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -12972,7 +13078,7 @@ FROM [STG].[dbo].[CRM_KONTAKT]</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Contact\STG_Contact">
+    design-time-name="Package\Load Contact\Contact_ERROR">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
