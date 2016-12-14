@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/28/2016 3:43:43 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Queue_CREATE_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="124"
-  DTS:VersionGUID="{2A1BCA34-CF2C-42F7-8E72-F4A3541B0CFC}">
+  DTS:VersionBuild="125"
+  DTS:VersionGUID="{5F76844C-382B-49FA-9DE0-E104D457208F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -320,8 +320,8 @@
               <connections>
                 <connection
                   refId="Package\Load Queue\Dynamics CRM Destination.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -499,6 +499,7 @@
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
       &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+      &lt;DefaultValue&gt;CRM MIG_SVC_MIG&lt;/DefaultValue&gt;
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
@@ -721,6 +722,7 @@
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
       &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+      &lt;DefaultValue&gt;CRM MIG_SVC_MIG&lt;/DefaultValue&gt;
     &lt;/LookupTarget&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
@@ -1007,8 +1009,8 @@
               <connections>
                 <connection
                   refId="Package\Load Queue\Dynamics CRM Source.Connections[DynamicsCRM]"
-                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:invalid"
-                  connectionManagerRefId="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:invalid"
+                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[oldCRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -2264,7 +2266,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2298,8 +2300,8 @@
               <connections>
                 <connection
                   refId="Package\Load Queue\Queue_ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3879,8 +3881,8 @@
               <connections>
                 <connection
                   refId="Package\Update Queue\Dynamics CRM Source.Connections[DynamicsCRM]"
-                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:invalid"
-                  connectionManagerRefId="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:invalid"
+                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[oldCRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -4020,7 +4022,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4054,8 +4056,8 @@
               <connections>
                 <connection
                   refId="Package\Update Queue\Queue_ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4572,8 +4574,8 @@
               <connections>
                 <connection
                   refId="Package\Update Queue\Update Queue.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -5286,6 +5288,10 @@
           Id="Package\Load Queue\Row Inserted"
           TopLeft="173.71429057997,233.129414192779" />
         <NodeLayout
+          Size="149,42"
+          Id="Package\Load Queue\Queue_ERROR"
+          TopLeft="433.857147469813,236.870591641463" />
+        <NodeLayout
           Size="184,42"
           Id="Package\Load Queue\Dynamics CRM Source"
           TopLeft="243,35" />
@@ -5293,10 +5299,28 @@
           Size="205,42"
           Id="Package\Load Queue\Dynamics CRM Destination"
           TopLeft="237,135" />
-        <NodeLayout
-          Size="149,42"
-          Id="Package\Load Queue\Queue_ERROR"
-          TopLeft="433.857147469813,236.870591641463" />
+        <EdgeLayout
+          Id="Package\Load Queue.Paths[CRM Primary Output]"
+          TopLeft="337.25,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Queue.Paths[Error Output]"
           TopLeft="372.333333333333,177">
@@ -5359,28 +5383,6 @@
                     Point3="-61.9523760866966,26.7125799928186" />
                   <mssgle:LineSegment
                     End="-61.9523760866966,48.629414192779" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Queue.Paths[CRM Primary Output]"
-          TopLeft="337.25,77">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,58"
-              Start="0,0"
-              End="0,50.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

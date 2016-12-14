@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/28/2016 3:43:43 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Subject_CREATE_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="51"
-  DTS:VersionGUID="{DBB9D627-A607-4496-B1DF-1B9C54640ADA}">
+  DTS:VersionBuild="52"
+  DTS:VersionGUID="{CA9FA016-F8DE-4AF6-ADFA-B1AB94611FE4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -320,8 +320,8 @@
               <connections>
                 <connection
                   refId="Package\Load Subject\Dynamics CRM Destination.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -399,6 +399,7 @@
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
       &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+      &lt;DefaultValue&gt;CRM MIG_SVC_MIG&lt;/DefaultValue&gt;
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
@@ -638,8 +639,8 @@
               <connections>
                 <connection
                   refId="Package\Load Subject\Dynamics CRM Source.Connections[DynamicsCRM]"
-                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:invalid"
-                  connectionManagerRefId="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:invalid"
+                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[oldCRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -1056,7 +1057,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1090,8 +1091,8 @@
               <connections>
                 <connection
                   refId="Package\Load Subject\Subject_ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2278,8 +2279,8 @@
               <connections>
                 <connection
                   refId="Package\Update Subject med parent\Dynamics CRM Destination.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -2504,8 +2505,8 @@
               <connections>
                 <connection
                   refId="Package\Update Subject med parent\Dynamics CRM Source.Connections[DynamicsCRM]"
-                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:invalid"
-                  connectionManagerRefId="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:invalid"
+                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[oldCRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -2631,7 +2632,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2665,8 +2666,8 @@
               <connections>
                 <connection
                   refId="Package\Update Subject med parent\Subject_ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3254,20 +3255,20 @@
         <NodeLayout
           Size="205,42"
           Id="Package\Load Subject\Dynamics CRM Destination"
-          TopLeft="241.142861385735,135.811766610591" />
+          TopLeft="242.142861385735,135.811766610591" />
         <NodeLayout
           Size="142,42"
           Id="Package\Load Subject\Row Inserted"
           TopLeft="185.142860159581,261.835297789787" />
         <EdgeLayout
           Id="Package\Load Subject.Paths[Error Output]"
-          TopLeft="376.476194719068,177.811766610591">
+          TopLeft="377.476194719068,177.811766610591">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="41.7380968145777,82.18823703581"
+              EndConnector="40.7380968145777,82.18823703581"
               Start="0,0"
-              End="41.7380968145777,74.68823703581">
+              End="40.7380968145777,74.68823703581">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -3278,32 +3279,32 @@
                     Point2="0,33.2571956253326"
                     Point3="4,33.2571956253326" />
                   <mssgle:LineSegment
-                    End="37.7380968145777,33.2571956253326" />
+                    End="36.7380968145777,33.2571956253326" />
                   <mssgle:CubicBezierSegment
-                    Point1="37.7380968145777,33.2571956253326"
-                    Point2="41.7380968145777,33.2571956253326"
-                    Point3="41.7380968145777,37.2571956253326" />
+                    Point1="36.7380968145777,33.2571956253326"
+                    Point2="40.7380968145777,33.2571956253326"
+                    Point3="40.7380968145777,37.2571956253326" />
                   <mssgle:LineSegment
-                    End="41.7380968145777,74.68823703581" />
+                    End="40.7380968145777,74.68823703581" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-7.46733831146114,38.2571956253326,56.6727734375,11.43359375"
+              BoundingBox="-7.96733831146114,38.2571956253326,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Subject.Paths[Default Output]"
-          TopLeft="310.809528052402,177.811766610591">
+          TopLeft="311.809528052402,177.811766610591">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-54.6666678928207,84.023531179196"
+              EndConnector="-55.6666678928207,84.023531179196"
               Start="0,0"
-              End="-54.6666678928207,76.523531179196">
+              End="-55.6666678928207,76.523531179196">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -3314,13 +3315,13 @@
                     Point2="0,33.9998412709622"
                     Point3="-4,33.9998412709622" />
                   <mssgle:LineSegment
-                    End="-50.6666678928207,33.9998412709622" />
+                    End="-51.6666678928207,33.9998412709622" />
                   <mssgle:CubicBezierSegment
-                    Point1="-50.6666678928207,33.9998412709622"
-                    Point2="-54.6666678928207,33.9998412709622"
-                    Point3="-54.6666678928207,37.9998412709622" />
+                    Point1="-51.6666678928207,33.9998412709622"
+                    Point2="-55.6666678928207,33.9998412709622"
+                    Point3="-55.6666678928207,37.9998412709622" />
                   <mssgle:LineSegment
-                    End="-54.6666678928207,76.523531179196" />
+                    End="-55.6666678928207,76.523531179196" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3331,7 +3332,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Subject.Paths[CRM Primary Output]"
-          TopLeft="341.892860772658,63.835297789787">
+          TopLeft="342.392860772658,63.835297789787">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
