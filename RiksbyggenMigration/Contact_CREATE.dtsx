@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Contact_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="88"
-  DTS:VersionGUID="{2D8F8DEB-A870-4D39-912C-E3A40E598DBF}">
+  DTS:VersionBuild="91"
+  DTS:VersionGUID="{B2A2F36D-1455-4557-88A3-35BCD89B8094}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -12426,7 +12426,7 @@ FROM [STG].[dbo].[CrmKontakt]</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE Contact_Error;&#xA;DROP TABLE CrmKontakt;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Contact_Error;&#xA;&#xA;IF OBJECT_ID (N'dbo.CrmKontakt', N'U') IS NOT NULL  &#xA;&#x9;DROP TABLE CrmKontakt;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -12773,37 +12773,37 @@ FROM [STG].[dbo].[CrmKontakt]</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="214,42"
-          Id="Package\Load Contact\Dynamics CRM Destination 1"
-          TopLeft="392,175" />
-        <NodeLayout
-          Size="140,42"
-          Id="Package\Load Contact\STG_Contact"
-          TopLeft="366.142863020605,9.8000002917121" />
+          Size="163,42"
+          Id="Package\Load Contact\Union All Inserted"
+          TopLeft="95.285715618911,349.847064837949" />
         <NodeLayout
           Size="214,42"
           Id="Package\Load Contact\Dynamics CRM Destination 2"
           TopLeft="730.857144268192,174.847064837949" />
         <NodeLayout
-          Size="142,42"
-          Id="Package\Load Contact\Row Inserted"
-          TopLeft="105.285715618911,428.717652833009" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Load Contact\Union All ERROR"
-          TopLeft="586,364" />
+          Size="214,42"
+          Id="Package\Load Contact\Dynamics CRM Destination 1"
+          TopLeft="392,175" />
         <NodeLayout
           Size="154,42"
           Id="Package\Load Contact\Contact_ERROR"
           TopLeft="580,545" />
         <NodeLayout
+          Size="140,42"
+          Id="Package\Load Contact\STG_Contact"
+          TopLeft="366.142863020605,9.8000002917121" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Load Contact\Union All ERROR"
+          TopLeft="586,364" />
+        <NodeLayout
           Size="156,42"
           Id="Package\Load Contact\Data Conversion"
           TopLeft="582,451" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\Load Contact\Union All Inserted"
-          TopLeft="95.285715618911,349.847064837949" />
+          Size="142,42"
+          Id="Package\Load Contact\Row Inserted"
+          TopLeft="105.285715618911,428.717652833009" />
         <NodeLayout
           Size="383,42"
           Id="Package\Load Contact\Balanced Data Distributor"
@@ -13234,7 +13234,7 @@ FROM [STG].[dbo].[CrmKontakt]</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Contact\STG_Contact">
+    design-time-name="Package\Load Contact\Contact_ERROR">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -13247,7 +13247,7 @@ FROM [STG].[dbo].[CrmKontakt]</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Contact\Contact_ERROR">
+    design-time-name="Package\Load Contact\STG_Contact">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

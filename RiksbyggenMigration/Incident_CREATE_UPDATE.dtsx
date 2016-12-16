@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Incident_CREATE_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="95"
-  DTS:VersionGUID="{B8D6C591-C53E-4887-BDFF-3BF70080EAE4}">
+  DTS:VersionBuild="98"
+  DTS:VersionGUID="{51DA20C2-0D8C-4F27-A032-F84296C016ED}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -519,6 +519,22 @@
                           name="FriendlyExpression">REPLACE(REPLACE(STR_customerid,"{",""),"}","")</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Incident\Derived Column.Inputs[Derived Column Input].Columns[rb_closingreason]"
+                      cachedDataType="nText"
+                      cachedName="rb_closingreason"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_closingreason]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Derived Column.Inputs[Derived Column Input].Columns[rb_x_propertyobject_idname]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rb_x_propertyobject_idname"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_x_propertyobject_idname]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Derived Column.Inputs[Derived Column Input].Columns[rb_x_propertyobject_id]"
+                      cachedDataType="guid"
+                      cachedName="rb_x_propertyobject_id"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_x_propertyobject_id]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -530,6 +546,31 @@
                   exclusionGroup="1"
                   name="Derived Column Output"
                   synchronousInputId="Package\Load Incident\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Incident\Derived Column.Outputs[Derived Column Output].Columns[rik_Stangningsorsak]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="3000"
+                      lineageId="Package\Load Incident\Derived Column.Outputs[Derived Column Output].Columns[rik_Stangningsorsak]"
+                      name="rik_Stangningsorsak"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,3000)(([ISNULL](#{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_closingreason]}) ? "" : (DT_WSTR,1000)#{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_closingreason]}) + ([ISNULL](#{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_x_propertyobject_id]}) ? "" : " ObjektId:" + #{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_x_propertyobject_idname]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,3000)((ISNULL(rb_closingreason) ? "" : (DT_WSTR,1000)rb_closingreason) + (ISNULL(rb_x_propertyobject_id) ? "" : " ObjektId:" + rb_x_propertyobject_idname))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -834,12 +875,6 @@
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_stangningsdatum]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_closed_on_date]" />
                     <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[rb_closingreason]"
-                      cachedDataType="nText"
-                      cachedName="rb_closingreason"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_stangningsorsak]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_closingreason]" />
-                    <inputColumn
                       refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[owneridname]"
                       cachedDataType="wstr"
                       cachedLength="200"
@@ -962,12 +997,12 @@
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_fastighetsagareid]"
                       lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_owner_account_id]" />
                     <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[ab.rb_x_realestateobjectcode]"
+                      refId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].Columns[rik_Stangningsorsak]"
                       cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="ab.rb_x_realestateobjectcode"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_fastighetsobjektid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[ab.rb_x_realestateobjectcode]" />
+                      cachedLength="3000"
+                      cachedName="rik_Stangningsorsak"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_stangningsorsak]"
+                      lineageId="Package\Load Incident\Derived Column.Outputs[Derived Column Output].Columns[rik_Stangningsorsak]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2645,12 +2680,6 @@
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_stangningsdatum]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_closed_on_date]" />
                     <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[rb_closingreason]"
-                      cachedDataType="nText"
-                      cachedName="rb_closingreason"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_stangningsorsak]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_closingreason]" />
-                    <inputColumn
                       refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[owneridname]"
                       cachedDataType="wstr"
                       cachedLength="200"
@@ -2773,12 +2802,12 @@
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_fastighetsagareid]"
                       lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_owner_account_id]" />
                     <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[ab.rb_x_realestateobjectcode]"
+                      refId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_Stangningsorsak]"
                       cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="ab.rb_x_realestateobjectcode"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_fastighetsobjektid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[ab.rb_x_realestateobjectcode]" />
+                      cachedLength="3000"
+                      cachedName="rik_Stangningsorsak"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_stangningsorsak]"
+                      lineageId="Package\Load Incident\Derived Column.Outputs[Derived Column Output].Columns[rik_Stangningsorsak]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4456,12 +4485,6 @@
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_stangningsdatum]"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_closed_on_date]" />
                     <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[rb_closingreason]"
-                      cachedDataType="nText"
-                      cachedName="rb_closingreason"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_stangningsorsak]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_closingreason]" />
-                    <inputColumn
                       refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[owneridname]"
                       cachedDataType="wstr"
                       cachedLength="200"
@@ -4584,12 +4607,12 @@
                       externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_fastighetsagareid]"
                       lineageId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_cre_owner_account_id]" />
                     <inputColumn
-                      refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[ab.rb_x_realestateobjectcode]"
+                      refId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_Stangningsorsak]"
                       cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="ab.rb_x_realestateobjectcode"
-                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_fastighetsobjektid]"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[ab.rb_x_realestateobjectcode]" />
+                      cachedLength="3000"
+                      cachedName="rik_Stangningsorsak"
+                      externalMetadataColumnId="Package\Load Incident\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_stangningsorsak]"
+                      lineageId="Package\Load Incident\Derived Column.Outputs[Derived Column Output].Columns[rik_Stangningsorsak]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -7058,9 +7081,6 @@
         &lt;value&gt;{DD7F81BE-C9B9-E511-9438-005056940427}&lt;/value&gt;
       &lt;/condition&gt;
     &lt;/filter&gt;
-    &lt;link-entity name="rb_x_propertyobject" from="rb_x_propertyobjectid" to="rb_x_propertyobject_id" alias="ab" link-type="outer"&gt;
-      &lt;attribute name="rb_x_realestateobjectcode" /&gt;
-    &lt;/link-entity&gt;
     &lt;/entity&gt;
 &lt;/fetch&gt;</property>
                 <property
@@ -9369,16 +9389,6 @@
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[versionnumber]"
                       name="versionnumber"
                       truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[ab.rb_x_realestateobjectcode]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].ExternalColumns[ab.rb_x_realestateobjectcode]"
-                      length="100"
-                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[ab.rb_x_realestateobjectcode]"
-                      name="ab.rb_x_realestateobjectcode"
-                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -10455,11 +10465,6 @@
                       refId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].ExternalColumns[versionnumber]"
                       dataType="i8"
                       name="versionnumber" />
-                    <externalMetadataColumn
-                      refId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].ExternalColumns[ab.rb_x_realestateobjectcode]"
-                      dataType="wstr"
-                      length="100"
-                      name="ab.rb_x_realestateobjectcode" />
                   </externalMetadataColumns>
                 </output>
               </outputs>
@@ -36487,17 +36492,25 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="164,43"
-          Id="Package\Load Incident\Union All Inserted"
-          TopLeft="153.444443409642,474.999994352129" />
+          Size="205,42"
+          Id="Package\Load Incident\Dynamics CRM Destination"
+          TopLeft="56.354498420883,306.562965133585" />
         <NodeLayout
           Size="214,42"
           Id="Package\Load Incident\Dynamics CRM Destination 2"
           TopLeft="701.354498420883,289.556814507426" />
         <NodeLayout
-          Size="205,42"
-          Id="Package\Load Incident\Dynamics CRM Destination"
-          TopLeft="56.354498420883,306.562965133585" />
+          Size="164,43"
+          Id="Package\Load Incident\Union All Inserted"
+          TopLeft="153.444443409642,474.999994352129" />
+        <NodeLayout
+          Size="159,43"
+          Id="Package\Load Incident\Union All ERROR"
+          TopLeft="607.395826294087,505.013882579158" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Load Incident\Read incident records"
+          TopLeft="371.166662506759,12.7583330873152" />
         <NodeLayout
           Size="155,43"
           Id="Package\Load Incident\Derived Column"
@@ -36507,29 +36520,21 @@
           Id="Package\Load Incident\Data Conversion"
           TopLeft="376,84" />
         <NodeLayout
-          Size="141,41"
-          Id="Package\Load Incident\Row Inserted"
-          TopLeft="162.857143246397,558.505888993683" />
-        <NodeLayout
-          Size="181,42"
-          Id="Package\Load Incident\Read incident records"
-          TopLeft="371.166662506759,12.7583330873152" />
-        <NodeLayout
           Size="214,42"
           Id="Package\Load Incident\Dynamics CRM Destination 1"
-          TopLeft="379.354498420883,339.556814507426" />
+          TopLeft="379.354498420883,340.556814507426" />
         <NodeLayout
           Size="171,41"
           Id="Package\Load Incident\Incident_ERROR"
           TopLeft="603.364424068528,574.556814507426" />
         <NodeLayout
+          Size="141,41"
+          Id="Package\Load Incident\Row Inserted"
+          TopLeft="162.857143246397,558.505888993683" />
+        <NodeLayout
           Size="492,41"
           Id="Package\Load Incident\Balanced Data Distributor"
           TopLeft="206.857146379899,222.800002479553" />
-        <NodeLayout
-          Size="159,43"
-          Id="Package\Load Incident\Union All ERROR"
-          TopLeft="607.395826294087,505.013882579158" />
         <EdgeLayout
           Id="Package\Load Incident.Paths[Union All Output 11]"
           TopLeft="687.713458514641,547.680549245825">
@@ -36612,37 +36617,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Incident.Paths[Error Output1]"
-          TopLeft="520.687831754216,381.556814507426">
+          TopLeft="520.687831754216,382.556814507426">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="166.207994539871,123.457068071732"
+              EndConnector="166.207994539871,122.457068071732"
               Start="0,0"
-              End="166.207994539871,115.957068071732">
+              End="166.207994539871,114.957068071732">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.9325433017395" />
+                    End="0,45.5280906115725" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,45.9325433017395"
-                    Point2="0,49.9325433017395"
-                    Point3="4,49.9325433017395" />
+                    Point1="0,45.5280906115725"
+                    Point2="0,49.5280906115725"
+                    Point3="4,49.5280906115725" />
                   <mssgle:LineSegment
-                    End="162.207994539871,49.9325433017395" />
+                    End="162.207994539871,49.5280906115725" />
                   <mssgle:CubicBezierSegment
-                    Point1="162.207994539871,49.9325433017395"
-                    Point2="166.207994539871,49.9325433017395"
-                    Point3="166.207994539871,53.9325433017395" />
+                    Point1="162.207994539871,49.5280906115725"
+                    Point2="166.207994539871,49.5280906115725"
+                    Point3="166.207994539871,53.5280906115725" />
                   <mssgle:LineSegment
-                    End="166.207994539871,115.957068071732" />
+                    End="166.207994539871,114.957068071732" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="54.7676105511853,54.9325433017395,56.6727734375,11.43359375"
+              BoundingBox="54.7676105511853,54.5280906115725,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -36740,30 +36745,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Incident.Paths[Default Output1]"
-          TopLeft="452.02116508755,381.556814507426">
+          TopLeft="452.02116508755,382.556814507426">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-216.576721677908,93.443179844703"
+              EndConnector="-216.576721677908,92.443179844703"
               Start="0,0"
-              End="-216.576721677908,85.943179844703">
+              End="-216.576721677908,84.943179844703">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.7933454659467" />
+                    End="0,33.3888927757797" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,33.7933454659467"
-                    Point2="0,37.7933454659467"
-                    Point3="-4,37.7933454659467" />
+                    Point1="0,33.3888927757797"
+                    Point2="0,37.3888927757797"
+                    Point3="-4,37.3888927757797" />
                   <mssgle:LineSegment
-                    End="-212.576721677908,37.7933454659467" />
+                    End="-212.576721677908,37.3888927757797" />
                   <mssgle:CubicBezierSegment
-                    Point1="-212.576721677908,37.7933454659467"
-                    Point2="-216.576721677908,37.7933454659467"
-                    Point3="-216.576721677908,41.7933454659467" />
+                    Point1="-212.576721677908,37.3888927757797"
+                    Point2="-216.576721677908,37.3888927757797"
+                    Point3="-216.576721677908,41.3888927757797" />
                   <mssgle:LineSegment
-                    End="-216.576721677908,85.943179844703" />
+                    End="-216.576721677908,84.943179844703" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -36856,33 +36861,33 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="33.497352040984,75.756812027873"
+              EndConnector="33.497352040984,76.756812027873"
               Start="0,0"
-              End="33.497352040984,68.256812027873">
+              End="33.497352040984,69.256812027873">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.8784060139365" />
+                    End="0,34.3784060139365" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,33.8784060139365"
-                    Point2="0,37.8784060139365"
-                    Point3="4,37.8784060139365" />
+                    Point1="0,34.3784060139365"
+                    Point2="0,38.3784060139365"
+                    Point3="4,38.3784060139365" />
                   <mssgle:LineSegment
-                    End="29.497352040984,37.8784060139365" />
+                    End="29.497352040984,38.3784060139365" />
                   <mssgle:CubicBezierSegment
-                    Point1="29.497352040984,37.8784060139365"
-                    Point2="33.497352040984,37.8784060139365"
-                    Point3="33.497352040984,41.8784060139365" />
+                    Point1="29.497352040984,38.3784060139365"
+                    Point2="33.497352040984,38.3784060139365"
+                    Point3="33.497352040984,42.3784060139365" />
                   <mssgle:LineSegment
-                    End="33.497352040984,68.256812027873" />
+                    End="33.497352040984,69.256812027873" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-61.073960698258,42.8784060139365,155.6452734375,11.609375"
+              BoundingBox="-61.073960698258,43.3784060139365,155.6452734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
