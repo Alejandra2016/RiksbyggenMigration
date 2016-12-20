@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="ServiceObjekt_CREATE_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="131"
-  DTS:VersionGUID="{A7C377F2-D6E9-4CCC-8D6B-E4CAA6D1D776}">
+  DTS:VersionBuild="134"
+  DTS:VersionGUID="{27728CCE-3988-49D8-9CFE-5A72FAF9F9E8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2149,10 +2149,6 @@ FROM STG.dbo.rik_Serviceobjekt</property>
                       dataType="wstr"
                       length="100"
                       name="rik_Objektstypnamn" />
-                    <externalMetadataColumn
-                      refId="Package\Load ServiceObjekt\ServiceObjekt_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Synk]"
-                      dataType="bool"
-                      name="rik_Synk" />
                     <externalMetadataColumn
                       refId="Package\Load ServiceObjekt\ServiceObjekt_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Synkstatus]"
                       dataType="i4"
@@ -4344,10 +4340,6 @@ FROM STG.dbo.rik_Serviceobjekt</property>
                       length="100"
                       name="rik_Objektstypnamn" />
                     <externalMetadataColumn
-                      refId="Package\Load ServiceObjekt from file\ServiceObjekt.Inputs[OLE DB Destination Input].ExternalColumns[rik_Synk]"
-                      dataType="bool"
-                      name="rik_Synk" />
-                    <externalMetadataColumn
                       refId="Package\Load ServiceObjekt from file\ServiceObjekt.Inputs[OLE DB Destination Input].ExternalColumns[rik_Synkstatus]"
                       dataType="i4"
                       name="rik_Synkstatus" />
@@ -5277,7 +5269,8 @@ FROM STG.dbo.rik_Serviceobjekt</property>
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT rik_ParentServiceobjektIdName
       ,rik_Idnummer
       ,rik_ParentServiceobjektId
-FROM STG.dbo.rik_Serviceobjekt</property>
+FROM STG.dbo.rik_Serviceobjekt
+WHERE rik_ParentServiceobjektId !=''</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
@@ -5286,7 +5279,8 @@ FROM STG.dbo.rik_Serviceobjekt</property>
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT rik_ParentServiceobjektIdName
       ,rik_Idnummer
       ,rik_ParentServiceobjektId
-FROM STG.dbo.rik_Serviceobjekt) [refTable]
+FROM STG.dbo.rik_Serviceobjekt
+WHERE rik_ParentServiceobjektId !='') [refTable]
 where [refTable].[rik_Idnummer] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -6382,10 +6376,6 @@ where [refTable].[rik_Idnummer] = ?</property>
                       length="100"
                       name="rik_Objektstypnamn" />
                     <externalMetadataColumn
-                      refId="Package\Update Parent ServiceObjekt\ServiceObjekt_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Synk]"
-                      dataType="bool"
-                      name="rik_Synk" />
-                    <externalMetadataColumn
                       refId="Package\Update Parent ServiceObjekt\ServiceObjekt_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Synkstatus]"
                       dataType="i4"
                       name="rik_Synkstatus" />
@@ -7079,13 +7069,13 @@ where [refTable].[rik_Idnummer] = ?</property>
           Id="Package\Load ServiceObjekt\STG ServiceObjekt"
           TopLeft="233,11" />
         <NodeLayout
-          Size="220,42"
-          Id="Package\Load ServiceObjekt\Migrate ServiceObjekt records"
-          TopLeft="207.857147265455,110.117647290477" />
-        <NodeLayout
           Size="142,42"
           Id="Package\Load ServiceObjekt\Row Inserted"
           TopLeft="131.857143246397,226.505888993683" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\Load ServiceObjekt\Migrate ServiceObjekt records"
+          TopLeft="207.857147265455,110.117647290477" />
         <EdgeLayout
           Id="Package\Load ServiceObjekt.Paths[OLE DB Source Output]"
           TopLeft="316.928573632728,53">
@@ -7211,7 +7201,7 @@ where [refTable].[rik_Idnummer] = ?</property>
     design-time-name="Package\Load ServiceObjekt from file">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="130,42"
           Id="Package\Load ServiceObjekt from file\Row Count"
@@ -7251,9 +7241,7 @@ where [refTable].[rik_Idnummer] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7275,9 +7263,7 @@ where [refTable].[rik_Idnummer] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7299,9 +7285,7 @@ where [refTable].[rik_Idnummer] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7323,9 +7307,7 @@ where [refTable].[rik_Idnummer] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7436,9 +7418,7 @@ where [refTable].[rik_Idnummer] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7460,9 +7440,7 @@ where [refTable].[rik_Idnummer] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7492,6 +7470,19 @@ where [refTable].[rik_Idnummer] = ?</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Update Parent ServiceObjekt\ServiceObjekt_ERROR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Update Parent ServiceObjekt\Lookup">
     <Properties>

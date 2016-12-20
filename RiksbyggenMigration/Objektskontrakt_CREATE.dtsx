@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Objektskontrakt_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="115"
-  DTS:VersionGUID="{5F2B77A2-3DA0-43B2-83F3-EDE06C94A597}">
+  DTS:VersionBuild="116"
+  DTS:VersionGUID="{ABB7E110-4F8D-493E-98B1-2A36B2507C94}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -957,12 +957,6 @@
                       externalMetadataColumnId="Package\Load Objektskontrakt\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_address1_postalcode]"
                       lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_address1_postalcode]" />
                     <inputColumn
-                      refId="Package\Load Objektskontrakt\Dynamics CRM Destination.Inputs[Input].Columns[rik_synk]"
-                      cachedDataType="i4"
-                      cachedName="rik_synk"
-                      externalMetadataColumnId="Package\Load Objektskontrakt\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_synk]"
-                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_synk]" />
-                    <inputColumn
                       refId="Package\Load Objektskontrakt\Dynamics CRM Destination.Inputs[Input].Columns[rik_inflyttningsorsak]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -984,6 +978,12 @@
                       cachedName="rik_annuleras"
                       externalMetadataColumnId="Package\Load Objektskontrakt\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_annuleras]"
                       lineageId="Package\Load Objektskontrakt\Derived Column.Outputs[Derived Column Output].Columns[rik_annuleras]" />
+                    <inputColumn
+                      refId="Package\Load Objektskontrakt\Dynamics CRM Destination.Inputs[Input].Columns[rik_Synkstatus]"
+                      cachedDataType="i4"
+                      cachedName="rik_Synkstatus"
+                      externalMetadataColumnId="Package\Load Objektskontrakt\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_synkstatus]"
+                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_Synkstatus]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1607,19 +1607,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Objektskontrakt\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_synk]"
-                      dataType="bool"
-                      name="rik_synk">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Boolean</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Objektskontrakt\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_uppdaterad]"
                       dataType="dbTimeStamp"
                       name="rik_uppdaterad">
@@ -1716,7 +1703,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Objektskontrakt\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_uppsagdtext]"
                       dataType="wstr"
-                      length="100"
+                      length="250"
                       name="rik_uppsagdtext">
                       <properties>
                         <property
@@ -2299,12 +2286,6 @@
                       externalMetadataColumnId="Package\Load Objektskontrakt\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_address1_postalcode]"
                       lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_address1_postalcode]" />
                     <inputColumn
-                      refId="Package\Load Objektskontrakt\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_synk]"
-                      cachedDataType="i4"
-                      cachedName="rik_synk"
-                      externalMetadataColumnId="Package\Load Objektskontrakt\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_synk]"
-                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_synk]" />
-                    <inputColumn
                       refId="Package\Load Objektskontrakt\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_inflyttningsorsak]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -2326,6 +2307,12 @@
                       cachedName="rik_annuleras"
                       externalMetadataColumnId="Package\Load Objektskontrakt\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_annuleras]"
                       lineageId="Package\Load Objektskontrakt\Derived Column.Outputs[Derived Column Output].Columns[rik_annuleras]" />
+                    <inputColumn
+                      refId="Package\Load Objektskontrakt\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_Synkstatus]"
+                      cachedDataType="i4"
+                      cachedName="rik_Synkstatus"
+                      externalMetadataColumnId="Package\Load Objektskontrakt\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_synkstatus]"
+                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_Synkstatus]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2949,19 +2936,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Objektskontrakt\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_synk]"
-                      dataType="bool"
-                      name="rik_synk">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Boolean</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Objektskontrakt\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_uppdaterad]"
                       dataType="dbTimeStamp"
                       name="rik_uppdaterad">
@@ -3058,7 +3032,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Objektskontrakt\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_uppsagdtext]"
                       dataType="wstr"
-                      length="100"
+                      length="250"
                       name="rik_uppsagdtext">
                       <properties>
                         <property
@@ -3641,12 +3615,6 @@
                       externalMetadataColumnId="Package\Load Objektskontrakt\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_address1_postalcode]"
                       lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_address1_postalcode]" />
                     <inputColumn
-                      refId="Package\Load Objektskontrakt\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_synk]"
-                      cachedDataType="i4"
-                      cachedName="rik_synk"
-                      externalMetadataColumnId="Package\Load Objektskontrakt\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_synk]"
-                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_synk]" />
-                    <inputColumn
                       refId="Package\Load Objektskontrakt\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_inflyttningsorsak]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -3668,6 +3636,12 @@
                       cachedName="rik_annuleras"
                       externalMetadataColumnId="Package\Load Objektskontrakt\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_annuleras]"
                       lineageId="Package\Load Objektskontrakt\Derived Column.Outputs[Derived Column Output].Columns[rik_annuleras]" />
+                    <inputColumn
+                      refId="Package\Load Objektskontrakt\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_Synkstatus]"
+                      cachedDataType="i4"
+                      cachedName="rik_Synkstatus"
+                      externalMetadataColumnId="Package\Load Objektskontrakt\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_synkstatus]"
+                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_Synkstatus]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4291,19 +4265,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Objektskontrakt\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_synk]"
-                      dataType="bool"
-                      name="rik_synk">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Boolean</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Objektskontrakt\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_uppdaterad]"
                       dataType="dbTimeStamp"
                       name="rik_uppdaterad">
@@ -4400,7 +4361,7 @@
                     <externalMetadataColumn
                       refId="Package\Load Objektskontrakt\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_uppsagdtext]"
                       dataType="wstr"
-                      length="100"
+                      length="250"
                       name="rik_uppsagdtext">
                       <properties>
                         <property
@@ -4875,10 +4836,6 @@
                       dataType="dbTimeStamp"
                       name="rik_PeriodFran" />
                     <externalMetadataColumn
-                      refId="Package\Load Objektskontrakt\Objektskontrakt_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Synk]"
-                      dataType="bool"
-                      name="rik_Synk" />
-                    <externalMetadataColumn
                       refId="Package\Load Objektskontrakt\Objektskontrakt_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
                       dataType="wstr"
                       length="255"
@@ -5180,7 +5137,7 @@
       ,Avtal_Forlangt_Tom AS rik_forlangttom
       ,Avtal_Uppdaterad AS rik_uppdaterad
       ,Avtal_Uppdaterad_Av AS rik_uppdateradav
-,1 as rik_synk
+,908400002 as rik_Synkstatus
   FROM STG.dbo.PM_Avtal</property>
                 <property
                   dataType="System.String"
@@ -5687,15 +5644,6 @@
                       name="rik_address1_country"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_synk]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].ExternalColumns[rik_synk]"
-                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_synk]"
-                      name="rik_synk"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[Avtal_Annulleras]"
                       codePage="1252"
                       dataType="str"
@@ -5705,6 +5653,15 @@
                       length="1"
                       lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[Avtal_Annulleras]"
                       name="Avtal_Annulleras"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_Synkstatus]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].ExternalColumns[rik_Synkstatus]"
+                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_Synkstatus]"
+                      name="rik_Synkstatus"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -5944,15 +5901,15 @@
                       length="2"
                       name="rik_address1_country" />
                     <externalMetadataColumn
-                      refId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].ExternalColumns[rik_synk]"
-                      dataType="i4"
-                      name="rik_synk" />
-                    <externalMetadataColumn
                       refId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].ExternalColumns[Avtal_Annulleras]"
                       codePage="1252"
                       dataType="str"
                       length="1"
                       name="Avtal_Annulleras" />
+                    <externalMetadataColumn
+                      refId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].ExternalColumns[rik_Synkstatus]"
+                      dataType="i4"
+                      name="rik_Synkstatus" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -6249,10 +6206,10 @@
                       lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Error Output].Columns[rik_uppdateradav]"
                       name="rik_uppdateradav" />
                     <outputColumn
-                      refId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Error Output].Columns[rik_synk]"
+                      refId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Error Output].Columns[rik_Synkstatus]"
                       dataType="i4"
-                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Error Output].Columns[rik_synk]"
-                      name="rik_synk" />
+                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Error Output].Columns[rik_Synkstatus]"
+                      name="rik_Synkstatus" />
                     <outputColumn
                       refId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -6967,19 +6924,6 @@
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Load Objektskontrakt\Union All ERROR.Outputs[Union All Output 1].Columns[rik_address1_country]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Objektskontrakt\Union All ERROR.Inputs[Union All Input 4].Columns[rik_synk]"
-                      cachedDataType="i4"
-                      cachedName="rik_synk"
-                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_synk]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Objektskontrakt\Union All ERROR.Outputs[Union All Output 1].Columns[rik_synk]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -7703,19 +7647,6 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Load Objektskontrakt\Union All ERROR.Inputs[Union All Input 1].Columns[rik_synk]"
-                      cachedDataType="i4"
-                      cachedName="rik_synk"
-                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_synk]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Objektskontrakt\Union All ERROR.Outputs[Union All Output 1].Columns[rik_synk]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Load Objektskontrakt\Union All ERROR.Inputs[Union All Input 1].Columns[Avtal_Annulleras]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -8436,19 +8367,6 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Load Objektskontrakt\Union All ERROR.Inputs[Union All Input 2].Columns[rik_synk]"
-                      cachedDataType="i4"
-                      cachedName="rik_synk"
-                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_synk]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Objektskontrakt\Union All ERROR.Outputs[Union All Output 1].Columns[rik_synk]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Load Objektskontrakt\Union All ERROR.Inputs[Union All Input 2].Columns[Avtal_Annulleras]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -8800,11 +8718,6 @@
                       length="2"
                       lineageId="Package\Load Objektskontrakt\Union All ERROR.Outputs[Union All Output 1].Columns[rik_address1_country]"
                       name="rik_address1_country" />
-                    <outputColumn
-                      refId="Package\Load Objektskontrakt\Union All ERROR.Outputs[Union All Output 1].Columns[rik_synk]"
-                      dataType="i4"
-                      lineageId="Package\Load Objektskontrakt\Union All ERROR.Outputs[Union All Output 1].Columns[rik_synk]"
-                      name="rik_synk" />
                     <outputColumn
                       refId="Package\Load Objektskontrakt\Union All ERROR.Outputs[Union All Output 1].Columns[Avtal_Annulleras]"
                       codePage="1252"
@@ -9504,19 +9417,6 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Load Objektskontrakt\Union All Inserted.Inputs[Union All Input 4].Columns[rik_synk]"
-                      cachedDataType="i4"
-                      cachedName="rik_synk"
-                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_synk]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Objektskontrakt\Union All Inserted.Outputs[Union All Output 1].Columns[rik_synk]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Load Objektskontrakt\Union All Inserted.Inputs[Union All Input 4].Columns[Avtal_Annulleras]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -10194,19 +10094,6 @@
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Load Objektskontrakt\Union All Inserted.Outputs[Union All Output 1].Columns[rik_address1_country]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Load Objektskontrakt\Union All Inserted.Inputs[Union All Input 1].Columns[rik_synk]"
-                      cachedDataType="i4"
-                      cachedName="rik_synk"
-                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_synk]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Objektskontrakt\Union All Inserted.Outputs[Union All Output 1].Columns[rik_synk]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -10890,19 +10777,6 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Load Objektskontrakt\Union All Inserted.Inputs[Union All Input 2].Columns[rik_synk]"
-                      cachedDataType="i4"
-                      cachedName="rik_synk"
-                      lineageId="Package\Load Objektskontrakt\PM Objektskontrakt.Outputs[OLE DB Source Output].Columns[rik_synk]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Load Objektskontrakt\Union All Inserted.Outputs[Union All Output 1].Columns[rik_synk]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Load Objektskontrakt\Union All Inserted.Inputs[Union All Input 2].Columns[Avtal_Annulleras]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -11214,11 +11088,6 @@
                       length="2"
                       lineageId="Package\Load Objektskontrakt\Union All Inserted.Outputs[Union All Output 1].Columns[rik_address1_country]"
                       name="rik_address1_country" />
-                    <outputColumn
-                      refId="Package\Load Objektskontrakt\Union All Inserted.Outputs[Union All Output 1].Columns[rik_synk]"
-                      dataType="i4"
-                      lineageId="Package\Load Objektskontrakt\Union All Inserted.Outputs[Union All Output 1].Columns[rik_synk]"
-                      name="rik_synk" />
                     <outputColumn
                       refId="Package\Load Objektskontrakt\Union All Inserted.Outputs[Union All Output 1].Columns[Avtal_Annulleras]"
                       codePage="1252"
@@ -12515,7 +12384,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-168.91376890215,75.4720096856288,56.6727734375,11.43359375"
+              BoundingBox="-168.913768902149,75.4720096856288,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -12791,7 +12660,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="108.969426454233,23.6195121951219,155.6452734375,11.609375"
+              BoundingBox="117.838078797983,23.6195121951219,155.6452734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

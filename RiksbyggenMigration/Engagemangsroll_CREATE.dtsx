@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Engagemangsroll_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="59"
-  DTS:VersionGUID="{8684712E-C5D8-4453-9CB0-158ED049B5E3}">
+  DTS:VersionBuild="60"
+  DTS:VersionGUID="{22C439C8-87BA-42EA-94B0-2DF977DFDC0D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -736,6 +736,10 @@
                       refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kundteam]"
                       dataType="bool"
                       name="rik_Kundteam" />
+                    <externalMetadataColumn
+                      refId="Package\Delete target CRM table\Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Behorighetsroll]"
+                      dataType="bool"
+                      name="rik_Behorighetsroll" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1795,6 +1799,10 @@
                       refId="Package\Load Engagemangsroll\rik_Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kundteam]"
                       dataType="bool"
                       name="rik_Kundteam" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemangsroll\rik_Engagemangsroll_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Behorighetsroll]"
+                      dataType="bool"
+                      name="rik_Behorighetsroll" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2279,6 +2287,15 @@
                       lineageId="Package\Load Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Output].Columns[rik_Kundteam]"
                       name="rik_Kundteam"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Output].Columns[rik_Behorighetsroll]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Output].ExternalColumns[rik_Behorighetsroll]"
+                      lineageId="Package\Load Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Output].Columns[rik_Behorighetsroll]"
+                      name="rik_Behorighetsroll"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2458,6 +2475,10 @@
                       refId="Package\Load Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Output].ExternalColumns[rik_Kundteam]"
                       dataType="bool"
                       name="rik_Kundteam" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Output].ExternalColumns[rik_Behorighetsroll]"
+                      dataType="bool"
+                      name="rik_Behorighetsroll" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2679,6 +2700,11 @@
                       dataType="bool"
                       lineageId="Package\Load Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Error Output].Columns[rik_Kundteam]"
                       name="rik_Kundteam" />
+                    <outputColumn
+                      refId="Package\Load Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Error Output].Columns[rik_Behorighetsroll]"
+                      dataType="bool"
+                      lineageId="Package\Load Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Error Output].Columns[rik_Behorighetsroll]"
+                      name="rik_Behorighetsroll" />
                     <outputColumn
                       refId="Package\Load Engagemangsroll\STG rik_Engagemangsroll.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -3984,55 +4010,21 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="142,42"
-          Id="Package\Load Engagemangsroll\Row Inserted"
-          TopLeft="178.857145766822,260.000003646402" />
-        <NodeLayout
           Size="216,42"
           Id="Package\Load Engagemangsroll\rik_Engagemangsroll_ERROR"
           TopLeft="380.571435052521,257.552944788553" />
         <NodeLayout
-          Size="199,42"
-          Id="Package\Load Engagemangsroll\STG rik_Engagemangsroll"
-          TopLeft="238.000004019056,40.3529414338637" />
+          Size="142,42"
+          Id="Package\Load Engagemangsroll\Row Inserted"
+          TopLeft="178.857145766822,260.000003646402" />
         <NodeLayout
           Size="205,42"
           Id="Package\Load Engagemangsroll\Dynamics CRM Destination"
           TopLeft="233.142861249497,139.482354897364" />
-        <EdgeLayout
-          Id="Package\Load Engagemangsroll.Paths[Default Output]"
-          TopLeft="302.809527916164,181.482354897364">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-52.9523821493417,78.517648749038"
-              Start="0,0"
-              End="-52.9523821493417,71.017648749038">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.7719043340735" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27.7719043340735"
-                    Point2="0,31.7719043340735"
-                    Point3="-4,31.7719043340735" />
-                  <mssgle:LineSegment
-                    End="-48.9523821493417,31.7719043340735" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-48.9523821493417,31.7719043340735"
-                    Point2="-52.9523821493417,31.7719043340735"
-                    Point3="-52.9523821493417,35.7719043340735" />
-                  <mssgle:LineSegment
-                    End="-52.9523821493417,71.017648749038" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Load Engagemangsroll\STG rik_Engagemangsroll"
+          TopLeft="238.000004019056,40.3529414338637" />
         <EdgeLayout
           Id="Package\Load Engagemangsroll.Paths[OLE DB Source Output]"
           TopLeft="336.571432634277,82.3529414338637">
@@ -4089,6 +4081,40 @@
             <mssgm:EdgeLabel
               BoundingBox="31.7112335160953,35.7817101399003,56.6727734375,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemangsroll.Paths[Default Output]"
+          TopLeft="302.809527916164,181.482354897364">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-52.9523821493417,78.517648749038"
+              Start="0,0"
+              End="-52.9523821493417,71.017648749038">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.7719043340735" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.7719043340735"
+                    Point2="0,31.7719043340735"
+                    Point3="-4,31.7719043340735" />
+                  <mssgle:LineSegment
+                    End="-48.9523821493417,31.7719043340735" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-48.9523821493417,31.7719043340735"
+                    Point2="-52.9523821493417,31.7719043340735"
+                    Point3="-52.9523821493417,35.7719043340735" />
+                  <mssgle:LineSegment
+                    End="-52.9523821493417,71.017648749038" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

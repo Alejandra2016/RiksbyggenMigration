@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Activities_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="163"
-  DTS:VersionGUID="{3B2C3B83-DC38-4232-BE4A-2159566DA920}">
+  DTS:VersionBuild="170"
+  DTS:VersionGUID="{8B8E7C09-D53F-40DB-8A6F-56515B0F4A54}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -393,25 +393,7 @@
                           cachedDataType="wstr"
                           cachedLength="255"
                           cachedName="STR_regardingobjectid"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          lineageId="Package\Core activities entities\Migrate Email\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]"
-                          truncationRowDisposition="FailComponent"
-                          usageType="readWrite">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">[REPLACE]([REPLACE](#{Package\Core activities entities\Migrate Email\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]},"{",""),"}","")</property>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">REPLACE(REPLACE(STR_regardingobjectid,"{",""),"}","")</property>
-                          </properties>
-                        </inputColumn>
+                          lineageId="Package\Core activities entities\Migrate Email\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -445,6 +427,29 @@
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
                               name="FriendlyExpression">REPLACE(REPLACE(SRT_activityid,"{",""),"}","")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Core activities entities\Migrate Email\Derived Column.Outputs[Derived Column Output].Columns[rik_regardingobjectid]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Core activities entities\Migrate Email\Derived Column.Outputs[Derived Column Output].Columns[rik_regardingobjectid]"
+                          name="rik_regardingobjectid"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[REPLACE]([REPLACE](#{Package\Core activities entities\Migrate Email\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]},"{",""),"}","")</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">REPLACE(REPLACE(STR_regardingobjectid,"{",""),"}","")</property>
                           </properties>
                         </outputColumn>
                       </outputColumns>
@@ -1856,12 +1861,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[notifications]"
                           lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[notifications]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[overriddencreatedon]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="overriddencreatedon"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[overriddencreatedon]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[overriddencreatedon]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[owneridtype]"
                           cachedDataType="wstr"
                           cachedLength="64"
@@ -1993,12 +1992,18 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[rik_eelateratepost]"
                           lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[rb_relateratepostmeddelande]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[STR_regardingobjectid]"
+                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[createdon]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="createdon"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[createdon]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].Columns[rik_regardingobjectid]"
                           cachedDataType="wstr"
                           cachedLength="255"
-                          cachedName="STR_regardingobjectid"
+                          cachedName="rik_regardingobjectid"
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records.Inputs[Input].ExternalColumns[regardingobjectid]"
-                          lineageId="Package\Core activities entities\Migrate Email\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]" />
+                          lineageId="Package\Core activities entities\Migrate Email\Derived Column.Outputs[Derived Column Output].Columns[rik_regardingobjectid]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -3615,12 +3620,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records 1.Inputs[Input].ExternalColumns[notifications]"
                           lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[notifications]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records 1.Inputs[Input].Columns[overriddencreatedon]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="overriddencreatedon"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records 1.Inputs[Input].ExternalColumns[overriddencreatedon]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[overriddencreatedon]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate Email\Migrate Email records 1.Inputs[Input].Columns[owneridtype]"
                           cachedDataType="wstr"
                           cachedLength="64"
@@ -3752,12 +3751,18 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records 1.Inputs[Input].ExternalColumns[rik_eelateratepost]"
                           lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[rb_relateratepostmeddelande]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records 1.Inputs[Input].Columns[STR_regardingobjectid]"
+                          refId="Package\Core activities entities\Migrate Email\Migrate Email records 1.Inputs[Input].Columns[createdon]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="createdon"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records 1.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[createdon]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate Email\Migrate Email records 1.Inputs[Input].Columns[rik_regardingobjectid]"
                           cachedDataType="wstr"
                           cachedLength="255"
-                          cachedName="STR_regardingobjectid"
+                          cachedName="rik_regardingobjectid"
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records 1.Inputs[Input].ExternalColumns[regardingobjectid]"
-                          lineageId="Package\Core activities entities\Migrate Email\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]" />
+                          lineageId="Package\Core activities entities\Migrate Email\Derived Column.Outputs[Derived Column Output].Columns[rik_regardingobjectid]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -5373,12 +5378,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records 2.Inputs[Input].ExternalColumns[notifications]"
                           lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[notifications]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records 2.Inputs[Input].Columns[overriddencreatedon]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="overriddencreatedon"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records 2.Inputs[Input].ExternalColumns[overriddencreatedon]"
-                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[overriddencreatedon]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate Email\Migrate Email records 2.Inputs[Input].Columns[owneridtype]"
                           cachedDataType="wstr"
                           cachedLength="64"
@@ -5510,12 +5509,18 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records 2.Inputs[Input].ExternalColumns[rik_eelateratepost]"
                           lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[rb_relateratepostmeddelande]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate Email\Migrate Email records 2.Inputs[Input].Columns[STR_regardingobjectid]"
+                          refId="Package\Core activities entities\Migrate Email\Migrate Email records 2.Inputs[Input].Columns[createdon]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="createdon"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records 2.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                          lineageId="Package\Core activities entities\Migrate Email\Read Email records.Outputs[CRM Primary Output].Columns[createdon]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate Email\Migrate Email records 2.Inputs[Input].Columns[rik_regardingobjectid]"
                           cachedDataType="wstr"
                           cachedLength="255"
-                          cachedName="STR_regardingobjectid"
+                          cachedName="rik_regardingobjectid"
                           externalMetadataColumnId="Package\Core activities entities\Migrate Email\Migrate Email records 2.Inputs[Input].ExternalColumns[regardingobjectid]"
-                          lineageId="Package\Core activities entities\Migrate Email\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]" />
+                          lineageId="Package\Core activities entities\Migrate Email\Derived Column.Outputs[Derived Column Output].Columns[rik_regardingobjectid]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -20201,25 +20206,7 @@
                           cachedDataType="wstr"
                           cachedLength="255"
                           cachedName="STR_regardingobjectid"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          lineageId="Package\Core activities entities\Migrate phonecalls\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]"
-                          truncationRowDisposition="FailComponent"
-                          usageType="readWrite">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">[REPLACE]([REPLACE](#{Package\Core activities entities\Migrate phonecalls\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]},"{",""),"}","")</property>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">REPLACE(REPLACE(STR_regardingobjectid,"{",""),"}","")</property>
-                          </properties>
-                        </inputColumn>
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -20253,6 +20240,29 @@
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
                               name="FriendlyExpression">REPLACE(REPLACE(SRT_activityid,"{",""),"}","")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Output].Columns[rik_regardingobjectid]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Output].Columns[rik_regardingobjectid]"
+                          name="rik_regardingobjectid"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[REPLACE]([REPLACE](#{Package\Core activities entities\Migrate phonecalls\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]},"{",""),"}","")</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">REPLACE(REPLACE(STR_regardingobjectid,"{",""),"}","")</property>
                           </properties>
                         </outputColumn>
                       </outputColumns>
@@ -20452,12 +20462,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[leftvoicemail]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[leftvoicemail]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[overriddencreatedon]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="overriddencreatedon"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[overriddencreatedon]"
-                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[overriddencreatedon]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[owneridtype]"
                           cachedDataType="wstr"
                           cachedLength="64"
@@ -20555,13 +20559,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[rik_migreringid]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Output].Columns[rik_MigrationId]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[STR_regardingobjectid]"
-                          cachedDataType="wstr"
-                          cachedLength="255"
-                          cachedName="STR_regardingobjectid"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[regardingobjectid]"
-                          lineageId="Package\Core activities entities\Migrate phonecalls\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[createdbyname]"
                           cachedDataType="wstr"
                           cachedLength="200"
@@ -20575,6 +20572,19 @@
                           cachedName="owneridname"
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[ownerid]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[owneridname]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[createdon]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="createdon"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[createdon]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].Columns[rik_regardingobjectid]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="rik_regardingobjectid"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records.Inputs[Input].ExternalColumns[regardingobjectid]"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Output].Columns[rik_regardingobjectid]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -21648,12 +21658,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 1.Inputs[Input].ExternalColumns[leftvoicemail]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[leftvoicemail]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 1.Inputs[Input].Columns[overriddencreatedon]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="overriddencreatedon"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 1.Inputs[Input].ExternalColumns[overriddencreatedon]"
-                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[overriddencreatedon]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 1.Inputs[Input].Columns[owneridtype]"
                           cachedDataType="wstr"
                           cachedLength="64"
@@ -21751,13 +21755,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 1.Inputs[Input].ExternalColumns[rik_migreringid]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Output].Columns[rik_MigrationId]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 1.Inputs[Input].Columns[STR_regardingobjectid]"
-                          cachedDataType="wstr"
-                          cachedLength="255"
-                          cachedName="STR_regardingobjectid"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 1.Inputs[Input].ExternalColumns[regardingobjectid]"
-                          lineageId="Package\Core activities entities\Migrate phonecalls\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 1.Inputs[Input].Columns[createdbyname]"
                           cachedDataType="wstr"
                           cachedLength="200"
@@ -21771,6 +21768,19 @@
                           cachedName="owneridname"
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 1.Inputs[Input].ExternalColumns[ownerid]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[owneridname]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 1.Inputs[Input].Columns[createdon]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="createdon"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 1.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[createdon]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 1.Inputs[Input].Columns[rik_regardingobjectid]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="rik_regardingobjectid"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 1.Inputs[Input].ExternalColumns[regardingobjectid]"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Output].Columns[rik_regardingobjectid]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -22844,12 +22854,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 2.Inputs[Input].ExternalColumns[leftvoicemail]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[leftvoicemail]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 2.Inputs[Input].Columns[overriddencreatedon]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="overriddencreatedon"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 2.Inputs[Input].ExternalColumns[overriddencreatedon]"
-                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[overriddencreatedon]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 2.Inputs[Input].Columns[owneridtype]"
                           cachedDataType="wstr"
                           cachedLength="64"
@@ -22947,13 +22951,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 2.Inputs[Input].ExternalColumns[rik_migreringid]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Output].Columns[rik_MigrationId]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 2.Inputs[Input].Columns[STR_regardingobjectid]"
-                          cachedDataType="wstr"
-                          cachedLength="255"
-                          cachedName="STR_regardingobjectid"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 2.Inputs[Input].ExternalColumns[regardingobjectid]"
-                          lineageId="Package\Core activities entities\Migrate phonecalls\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 2.Inputs[Input].Columns[createdbyname]"
                           cachedDataType="wstr"
                           cachedLength="200"
@@ -22967,6 +22964,19 @@
                           cachedName="owneridname"
                           externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 2.Inputs[Input].ExternalColumns[ownerid]"
                           lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[owneridname]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 2.Inputs[Input].Columns[createdon]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="createdon"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 2.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Read phonecall records.Outputs[CRM Primary Output].Columns[createdon]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 2.Inputs[Input].Columns[rik_regardingobjectid]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="rik_regardingobjectid"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records 2.Inputs[Input].ExternalColumns[regardingobjectid]"
+                          lineageId="Package\Core activities entities\Migrate phonecalls\Derived Column.Outputs[Derived Column Output].Columns[rik_regardingobjectid]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -32995,25 +33005,7 @@
                           cachedDataType="wstr"
                           cachedLength="255"
                           cachedName="STR_regardingobjectid"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          lineageId="Package\Core activities entities\Migrate Task\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]"
-                          truncationRowDisposition="FailComponent"
-                          usageType="readWrite">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">[REPLACE]([REPLACE](#{Package\Core activities entities\Migrate Task\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]},"{",""),"}","")</property>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">REPLACE(REPLACE(STR_regardingobjectid,"{",""),"}","")</property>
-                          </properties>
-                        </inputColumn>
+                          lineageId="Package\Core activities entities\Migrate Task\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -33047,6 +33039,29 @@
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
                               name="FriendlyExpression">REPLACE(REPLACE(SRT_activityid,"{",""),"}","")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Core activities entities\Migrate Task\Derived Column.Outputs[Derived Column Output].Columns[rik_regardingobjectid]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Core activities entities\Migrate Task\Derived Column.Outputs[Derived Column Output].Columns[rik_regardingobjectid]"
+                          name="rik_regardingobjectid"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[REPLACE]([REPLACE](#{Package\Core activities entities\Migrate Task\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]},"{",""),"}","")</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">REPLACE(REPLACE(STR_regardingobjectid,"{",""),"}","")</property>
                           </properties>
                         </outputColumn>
                       </outputColumns>
@@ -33240,12 +33255,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[isworkflowcreated]"
                           lineageId="Package\Core activities entities\Migrate Task\Read task records.Outputs[CRM Primary Output].Columns[isworkflowcreated]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].Columns[overriddencreatedon]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="overriddencreatedon"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[overriddencreatedon]"
-                          lineageId="Package\Core activities entities\Migrate Task\Read task records.Outputs[CRM Primary Output].Columns[overriddencreatedon]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].Columns[owneridtype]"
                           cachedDataType="wstr"
                           cachedLength="64"
@@ -33298,13 +33307,6 @@
                           externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[subject]"
                           lineageId="Package\Core activities entities\Migrate Task\Read task records.Outputs[CRM Primary Output].Columns[subject]" />
                         <inputColumn
-                          refId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].Columns[STR_regardingobjectid]"
-                          cachedDataType="wstr"
-                          cachedLength="255"
-                          cachedName="STR_regardingobjectid"
-                          externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[regardingobjectid]"
-                          lineageId="Package\Core activities entities\Migrate Task\Data Conversion.Outputs[Data Conversion Output].Columns[STR_regardingobjectid]" />
-                        <inputColumn
                           refId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].Columns[rik_MigrationId]"
                           cachedDataType="wstr"
                           cachedLength="255"
@@ -33325,6 +33327,19 @@
                           cachedName="owneridname"
                           externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[ownerid]"
                           lineageId="Package\Core activities entities\Migrate Task\Read task records.Outputs[CRM Primary Output].Columns[owneridname]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].Columns[createdon]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="createdon"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                          lineageId="Package\Core activities entities\Migrate Task\Read task records.Outputs[CRM Primary Output].Columns[createdon]" />
+                        <inputColumn
+                          refId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].Columns[rik_regardingobjectid]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="rik_regardingobjectid"
+                          externalMetadataColumnId="Package\Core activities entities\Migrate Task\Migrate task records.Inputs[Input].ExternalColumns[regardingobjectid]"
+                          lineageId="Package\Core activities entities\Migrate Task\Derived Column.Outputs[Derived Column Output].Columns[rik_regardingobjectid]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -43091,26 +43106,26 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="83,44.8611097486483"
+              EndConnector="83.0000000000005,44.8611097486487"
               Start="0,0"
-              End="83,37.3611097486483">
+              End="83.0000000000005,37.3611097486487">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.618832755422" />
+                    End="0,22.6188327554223" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.618832755422"
-                    Point2="0,26.618832755422"
-                    Point3="4,26.618832755422" />
+                    Point1="0,22.6188327554223"
+                    Point2="0,26.6188327554223"
+                    Point3="4,26.6188327554223" />
                   <mssgle:LineSegment
-                    End="79,26.618832755422" />
+                    End="79.0000000000005,26.6188327554223" />
                   <mssgle:CubicBezierSegment
-                    Point1="79,26.618832755422"
-                    Point2="83,26.618832755422"
-                    Point3="83,30.618832755422" />
+                    Point1="79.0000000000005,26.6188327554223"
+                    Point2="83.0000000000005,26.6188327554223"
+                    Point3="83.0000000000005,30.6188327554223" />
                   <mssgle:LineSegment
-                    End="83,37.3611097486483" />
+                    End="83.0000000000005,37.3611097486487" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -43125,26 +43140,26 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="42.0624972572555,-43.2361097777057"
+              EndConnector="42.062497257255,-43.2361097777061"
               Start="0,0"
-              End="42.0624972572555,-35.7361097777057">
+              End="42.062497257255,-35.7361097777061">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-13.5814886232994" />
+                    End="0,-13.5814886232996" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,-13.5814886232994"
-                    Point2="0,-17.5814886232994"
-                    Point3="4,-17.5814886232994" />
+                    Point1="0,-13.5814886232996"
+                    Point2="0,-17.5814886232996"
+                    Point3="4,-17.5814886232996" />
                   <mssgle:LineSegment
-                    End="38.0624972572555,-17.5814886232994" />
+                    End="38.062497257255,-17.5814886232996" />
                   <mssgle:CubicBezierSegment
-                    Point1="38.0624972572555,-17.5814886232994"
-                    Point2="42.0624972572555,-17.5814886232994"
-                    Point3="42.0624972572555,-21.5814886232994" />
+                    Point1="38.062497257255,-17.5814886232996"
+                    Point2="42.062497257255,-17.5814886232996"
+                    Point3="42.062497257255,-21.5814886232996" />
                   <mssgle:LineSegment
-                    End="42.0624972572555,-35.7361097777057" />
+                    End="42.062497257255,-35.7361097777061" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -43505,15 +43520,15 @@
         <NodeLayout
           Size="169,42"
           Id="Package\Core activities entities\Migrate Email\Read Email records"
-          TopLeft="262.015147581019,13.9696967020179" />
+          TopLeft="423.015147581019,19.9696967020179" />
         <NodeLayout
           Size="181,42"
           Id="Package\Core activities entities\Migrate Email\Migrate Email records"
-          TopLeft="172.583329440405,367.433331155976" />
+          TopLeft="172.583329440405,368.433331155976" />
         <NodeLayout
           Size="156,42"
           Id="Package\Core activities entities\Migrate Email\Data Conversion"
-          TopLeft="272,97" />
+          TopLeft="433,103" />
         <NodeLayout
           Size="157,42"
           Id="Package\Core activities entities\Migrate Email\Union All ERROR"
@@ -43525,11 +43540,11 @@
         <NodeLayout
           Size="154,42"
           Id="Package\Core activities entities\Migrate Email\Derived Column"
-          TopLeft="275.333330526948,190.333329304059" />
+          TopLeft="436.333330526948,183.333329304059" />
         <NodeLayout
-          Size="199,42"
+          Size="488,42"
           Id="Package\Core activities entities\Migrate Email\Balanced Data Distributor"
-          TopLeft="256,267" />
+          TopLeft="256,266" />
         <NodeLayout
           Size="144,43"
           Id="Package\Core activities entities\Migrate Email\Email_ERROR"
@@ -43656,54 +43671,66 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[Error Output]"
-          TopLeft="291.916662773738,409.433331155976">
+          TopLeft="291.916662773738,410.433331155976">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="341.333337226262,92.566668844024"
+              EndConnector="341.333337226262,91.566668844024"
               Start="0,0"
-              End="341.333337226262,85.066668844024">
+              End="341.333337226262,84.066668844024">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.2628870674217" />
+                    End="0,47.6982898131391" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,48.2628870674217"
-                    Point2="0,52.2628870674217"
-                    Point3="4,52.2628870674217" />
+                    Point1="0,47.6982898131391"
+                    Point2="0,51.6982898131391"
+                    Point3="4,51.6982898131391" />
                   <mssgle:LineSegment
-                    End="337.333337226262,52.2628870674217" />
+                    End="337.333337226262,51.6982898131391" />
                   <mssgle:CubicBezierSegment
-                    Point1="337.333337226262,52.2628870674217"
-                    Point2="341.333337226262,52.2628870674217"
-                    Point3="341.333337226262,56.2628870674217" />
+                    Point1="337.333337226262,51.6982898131391"
+                    Point2="341.333337226262,51.6982898131391"
+                    Point3="341.333337226262,55.6982898131391" />
                   <mssgle:LineSegment
-                    End="341.333337226262,85.066668844024" />
+                    End="341.333337226262,84.066668844024" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="142.330281894381,57.2628870674217,56.6727734375,11.43359375"
+              BoundingBox="142.330281894381,56.6982898131391,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[Derived Column Output]"
-          TopLeft="353.916665263474,232.333329304059">
+          TopLeft="513.333330526948,225.333329304059">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34.666670695941"
+              EndConnector="-13.333330526948,40.666670695941"
               Start="0,0"
-              End="0,27.166670695941">
+              End="-13.333330526948,33.166670695941">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.166670695941" />
+                    End="0,16.3333353479705" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.3333353479705"
+                    Point2="0,20.3333353479705"
+                    Point3="-4,20.3333353479705" />
+                  <mssgle:LineSegment
+                    End="-9.33333052694798,20.3333353479705" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-9.33333052694798,20.3333353479705"
+                    Point2="-13.333330526948,20.3333353479705"
+                    Point3="-13.333330526948,24.3333353479705" />
+                  <mssgle:LineSegment
+                    End="-13.333330526948,33.166670695941" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -43782,30 +43809,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[Default Output]"
-          TopLeft="234.249996107072,409.433331155976">
+          TopLeft="234.249996107072,410.433331155976">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-43.4999961070717,92.566668844024"
+              EndConnector="-43.4999961070717,91.566668844024"
               Start="0,0"
-              End="-43.4999961070717,85.066668844024">
+              End="-43.4999961070717,84.066668844024">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.3035306383766" />
+                    End="0,47.7384943105975" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,48.3035306383766"
-                    Point2="0,52.3035306383766"
-                    Point3="-4,52.3035306383766" />
+                    Point1="0,47.7384943105975"
+                    Point2="0,51.7384943105975"
+                    Point3="-4,51.7384943105975" />
                   <mssgle:LineSegment
-                    End="-39.4999961070717,52.3035306383766" />
+                    End="-39.4999961070717,51.7384943105975" />
                   <mssgle:CubicBezierSegment
-                    Point1="-39.4999961070717,52.3035306383766"
-                    Point2="-43.4999961070717,52.3035306383766"
-                    Point3="-43.4999961070717,56.3035306383766" />
+                    Point1="-39.4999961070717,51.7384943105975"
+                    Point2="-43.4999961070717,51.7384943105975"
+                    Point3="-43.4999961070717,55.7384943105975" />
                   <mssgle:LineSegment
-                    End="-43.4999961070717,85.066668844024" />
+                    End="-43.4999961070717,84.066668844024" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -43816,18 +43843,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[Data Conversion Output]"
-          TopLeft="351.166665263474,139">
+          TopLeft="512.166665263474,145">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,51.333329304059"
+              EndConnector="0,38.333329304059"
               Start="0,0"
-              End="0,43.833329304059">
+              End="0,30.833329304059">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.833329304059" />
+                    End="0,30.833329304059" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -43838,7 +43865,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[CRM Primary Output]"
-          TopLeft="348.257573790509,55.9696967020179">
+          TopLeft="509.257573790509,61.9696967020179">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -43860,109 +43887,109 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[Balanced Data Distributor Output 3]"
-          TopLeft="403.25,309">
+          TopLeft="620,308">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="412.333329440405,59.333329304059"
+              EndConnector="195.583329440405,60.333329304059"
               Start="0,0"
-              End="412.333329440405,51.833329304059">
+              End="195.583329440405,52.833329304059">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.3008250676698" />
+                    End="0,16.3297087872373" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.3008250676698"
-                    Point2="0,20.3008250676698"
-                    Point3="4,20.3008250676698" />
+                    Point1="0,16.3297087872373"
+                    Point2="0,20.3297087872373"
+                    Point3="4,20.3297087872373" />
                   <mssgle:LineSegment
-                    End="408.333329440405,20.3008250676698" />
+                    End="191.583329440405,20.3297087872373" />
                   <mssgle:CubicBezierSegment
-                    Point1="408.333329440405,20.3008250676698"
-                    Point2="412.333329440405,20.3008250676698"
-                    Point3="412.333329440405,24.3008250676698" />
+                    Point1="191.583329440405,20.3297087872373"
+                    Point2="195.583329440405,20.3297087872373"
+                    Point3="195.583329440405,24.3297087872373" />
                   <mssgle:LineSegment
-                    End="412.333329440405,51.833329304059" />
+                    End="195.583329440405,52.833329304059" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="128.344028001453,25.3008250676698,155.6452734375,11.609375"
+              BoundingBox="19.9690280014525,25.3297087872373,155.6452734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[Balanced Data Distributor Output 2]"
-          TopLeft="355.5,309">
+          TopLeft="500,308">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="190.5,59"
+              EndConnector="46,60"
               Start="0,0"
-              End="190.5,51.5">
+              End="46,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.5" />
+                    End="0,26" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25.5"
-                    Point2="0,29.5"
-                    Point3="4,29.5" />
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
                   <mssgle:LineSegment
-                    End="186.5,29.5" />
+                    End="42,30" />
                   <mssgle:CubicBezierSegment
-                    Point1="186.5,29.5"
-                    Point2="190.5,29.5"
-                    Point3="190.5,33.5" />
+                    Point1="42,30"
+                    Point2="46,30"
+                    Point3="46,34" />
                   <mssgle:LineSegment
-                    End="190.5,51.5" />
+                    End="46,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="17.36388671875,34.5,155.7722265625,11.609375"
+              BoundingBox="-54.88611328125,35,155.7722265625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate Email.Paths[Balanced Data Distributor Output 1]"
-          TopLeft="307.75,309">
+          TopLeft="380,308">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-44.666670559595,58.433331155976"
+              EndConnector="-116.916670559595,60.433331155976"
               Start="0,0"
-              End="-44.666670559595,50.933331155976">
+              End="-116.916670559595,52.933331155976">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.9928918170034" />
+                    End="0,16.3634050634267" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.9928918170034"
-                    Point2="0,19.9928918170034"
-                    Point3="-4,19.9928918170034" />
+                    Point1="0,16.3634050634267"
+                    Point2="0,20.3634050634267"
+                    Point3="-4,20.3634050634267" />
                   <mssgle:LineSegment
-                    End="-40.666670559595,19.9928918170034" />
+                    End="-112.916670559595,20.3634050634267" />
                   <mssgle:CubicBezierSegment
-                    Point1="-40.666670559595,19.9928918170034"
-                    Point2="-44.666670559595,19.9928918170034"
-                    Point3="-44.666670559595,23.9928918170034" />
+                    Point1="-112.916670559595,20.3634050634267"
+                    Point2="-116.916670559595,20.3634050634267"
+                    Point3="-116.916670559595,24.3634050634267" />
                   <mssgle:LineSegment
-                    End="-44.666670559595,50.933331155976" />
+                    End="-116.916670559595,52.933331155976" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-100.033901686048,24.9928918170034,155.4011328125,11.609375"
+              BoundingBox="-136.158901686048,25.3634050634267,155.4011328125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -44030,7 +44057,7 @@
         <NodeLayout
           Size="200,42"
           Id="Package\Core activities entities\Migrate phonecalls\Migrate phonecall records"
-          TopLeft="127.249996107072,375.766664489309" />
+          TopLeft="127.249996107072,376.766664489309" />
         <EdgeLayout
           Id="Package\Core activities entities\Migrate phonecalls.Paths[Error Output2]"
           TopLeft="829.333330526948,441.060601946802">
@@ -44105,37 +44132,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate phonecalls.Paths[Error Output]"
-          TopLeft="259.249996107072,417.766664489309">
+          TopLeft="259.249996107072,418.766664489309">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="393.250003892928,140.233335510691"
+              EndConnector="393.250003892928,139.233335510691"
               Start="0,0"
-              End="393.250003892928,132.733335510691">
+              End="393.250003892928,131.733335510691">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,75.2325199659623" />
+                    End="0,74.6675150783767" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,75.2325199659623"
-                    Point2="0,79.2325199659623"
-                    Point3="4,79.2325199659623" />
+                    Point1="0,74.6675150783767"
+                    Point2="0,78.6675150783767"
+                    Point3="4,78.6675150783767" />
                   <mssgle:LineSegment
-                    End="389.250003892928,79.2325199659623" />
+                    End="389.250003892928,78.6675150783767" />
                   <mssgle:CubicBezierSegment
-                    Point1="389.250003892928,79.2325199659623"
-                    Point2="393.250003892928,79.2325199659623"
-                    Point3="393.250003892928,83.2325199659623" />
+                    Point1="389.250003892928,78.6675150783767"
+                    Point2="393.250003892928,78.6675150783767"
+                    Point3="393.250003892928,82.6675150783767" />
                   <mssgle:LineSegment
-                    End="393.250003892928,132.733335510691" />
+                    End="393.250003892928,131.733335510691" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="168.288615227714,84.2325199659623,56.6727734375,11.43359375"
+              BoundingBox="168.288615227714,83.6675150783767,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -44231,30 +44258,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Core activities entities\Migrate phonecalls.Paths[Default Output]"
-          TopLeft="195.249996107072,417.766664489309">
+          TopLeft="195.249996107072,418.766664489309">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-12.499996107072,102.233335510691"
+              EndConnector="-12.499996107072,101.233335510691"
               Start="0,0"
-              End="-12.499996107072,94.733335510691">
+              End="-12.499996107072,93.733335510691">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53.7138785168839" />
+                    End="0,53.1493476011255" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,53.7138785168839"
-                    Point2="0,57.7138785168839"
-                    Point3="-4,57.7138785168839" />
+                    Point1="0,53.1493476011255"
+                    Point2="0,57.1493476011255"
+                    Point3="-4,57.1493476011255" />
                   <mssgle:LineSegment
-                    End="-8.49999610707198,57.7138785168839" />
+                    End="-8.49999610707198,57.1493476011255" />
                   <mssgle:CubicBezierSegment
-                    Point1="-8.49999610707198,57.7138785168839"
-                    Point2="-12.499996107072,57.7138785168839"
-                    Point3="-12.499996107072,61.7138785168839" />
+                    Point1="-8.49999610707198,57.1493476011255"
+                    Point2="-12.499996107072,57.1493476011255"
+                    Point3="-12.499996107072,61.1493476011255" />
                   <mssgle:LineSegment
-                    End="-12.499996107072,94.733335510691" />
+                    End="-12.499996107072,93.733335510691" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -44385,33 +44412,33 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-68.000003892928,68.766664489309"
+              EndConnector="-68.000003892928,69.766664489309"
               Start="0,0"
-              End="-68.000003892928,61.266664489309">
+              End="-68.000003892928,62.266664489309">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.1521622763379" />
+                    End="0,19.4888393923254" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,19.1521622763379"
-                    Point2="0,23.1521622763379"
-                    Point3="-4,23.1521622763379" />
+                    Point1="0,19.4888393923254"
+                    Point2="0,23.4888393923254"
+                    Point3="-4,23.4888393923254" />
                   <mssgle:LineSegment
-                    End="-64.000003892928,23.1521622763379" />
+                    End="-64.000003892928,23.4888393923254" />
                   <mssgle:CubicBezierSegment
-                    Point1="-64.000003892928,23.1521622763379"
-                    Point2="-68.000003892928,23.1521622763379"
-                    Point3="-68.000003892928,27.1521622763379" />
+                    Point1="-64.000003892928,23.4888393923254"
+                    Point2="-68.000003892928,23.4888393923254"
+                    Point3="-68.000003892928,27.4888393923254" />
                   <mssgle:LineSegment
-                    End="-68.000003892928,61.266664489309" />
+                    End="-68.000003892928,62.266664489309" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-111.700568352714,28.1521622763379,155.4011328125,11.609375"
+              BoundingBox="-111.700568352714,28.4888393923254,155.4011328125,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

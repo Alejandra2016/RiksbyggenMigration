@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Engagemang_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="124"
-  DTS:VersionGUID="{AAF6D01F-A8D0-4D48-9022-D23EB63A7734}">
+  DTS:VersionBuild="128"
+  DTS:VersionGUID="{6C75ECA5-1382-467C-9F83-76C69DA6E996}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -524,7 +524,7 @@
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      length="10"
+                      length="100"
                       lineageId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record2roleidname]"
                       name="STR_record2roleidname"
                       truncationRowDisposition="FailComponent">
@@ -687,30 +687,6 @@
                   exclusionGroup="1"
                   name="Derived Column Output"
                   synchronousInputId="Package\Load Engagemang\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Engagemang\Derived Column.Outputs[Derived Column Output].Columns[rik_synk]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Load Engagemang\Derived Column.Outputs[Derived Column Output].Columns[rik_synk]"
-                      name="rik_synk"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">1</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">1</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -846,12 +822,6 @@
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[importsequencenumber]"
                       lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[importsequencenumber]" />
                     <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[overriddencreatedon]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="overriddencreatedon"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[overriddencreatedon]"
-                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[overriddencreatedon]" />
-                    <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[owneridtype]"
                       cachedDataType="wstr"
                       cachedLength="64"
@@ -945,12 +915,6 @@
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_engagemangsrollnamn]"
                       lineageId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[rik_Namn]" />
                     <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[rik_synk]"
-                      cachedDataType="i4"
-                      cachedName="rik_synk"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_synk]"
-                      lineageId="Package\Load Engagemang\Derived Column.Outputs[Derived Column Output].Columns[rik_synk]" />
-                    <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[RowNumber]"
                       cachedDataType="i4"
                       cachedName="RowNumber"
@@ -970,6 +934,12 @@
                       cachedName="ContactId"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_partcontactid]"
                       lineageId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output].Columns[ContactId]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[createdon]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="createdon"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdon]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1211,20 +1181,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_kontraksidnummer]"
-                      dataType="wstr"
-                      length="100"
-                      name="rik_kontraksidnummer">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">String</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_namn]"
                       dataType="wstr"
                       length="100"
@@ -1249,19 +1205,6 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">rik_objektskontrakt</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_synk]"
-                      dataType="bool"
-                      name="rik_synk">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Boolean</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1420,6 +1363,20 @@
                           name="LookupTypes"></property>
                       </properties>
                     </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_kontraktidnummer]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_kontraktidnummer">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1569,12 +1526,6 @@
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[importsequencenumber]"
                       lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[importsequencenumber]" />
                     <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[overriddencreatedon]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="overriddencreatedon"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[overriddencreatedon]"
-                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[overriddencreatedon]" />
-                    <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[owneridtype]"
                       cachedDataType="wstr"
                       cachedLength="64"
@@ -1668,12 +1619,6 @@
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_engagemangsrollnamn]"
                       lineageId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[rik_Namn]" />
                     <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_synk]"
-                      cachedDataType="i4"
-                      cachedName="rik_synk"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_synk]"
-                      lineageId="Package\Load Engagemang\Derived Column.Outputs[Derived Column Output].Columns[rik_synk]" />
-                    <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[RowNumber]"
                       cachedDataType="i4"
                       cachedName="RowNumber"
@@ -1693,6 +1638,12 @@
                       cachedName="ContactId"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_partcontactid]"
                       lineageId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output].Columns[ContactId]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[createdon]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="createdon"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdon]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1935,20 +1886,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_kontraksidnummer]"
-                      dataType="wstr"
-                      length="100"
-                      name="rik_kontraksidnummer">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">String</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_namn]"
                       dataType="wstr"
                       length="100"
@@ -1973,19 +1910,6 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">rik_objektskontrakt</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_synk]"
-                      dataType="bool"
-                      name="rik_synk">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Boolean</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2144,6 +2068,20 @@
                           name="LookupTypes"></property>
                       </properties>
                     </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_kontraktidnummer]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_kontraktidnummer">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2293,12 +2231,6 @@
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[importsequencenumber]"
                       lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[importsequencenumber]" />
                     <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[overriddencreatedon]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="overriddencreatedon"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[overriddencreatedon]"
-                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[overriddencreatedon]" />
-                    <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[owneridtype]"
                       cachedDataType="wstr"
                       cachedLength="64"
@@ -2392,12 +2324,6 @@
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_engagemangsrollnamn]"
                       lineageId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output].Columns[rik_Namn]" />
                     <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_synk]"
-                      cachedDataType="i4"
-                      cachedName="rik_synk"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_synk]"
-                      lineageId="Package\Load Engagemang\Derived Column.Outputs[Derived Column Output].Columns[rik_synk]" />
-                    <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[RowNumber]"
                       cachedDataType="i4"
                       cachedName="RowNumber"
@@ -2417,6 +2343,12 @@
                       cachedName="ContactId"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_partcontactid]"
                       lineageId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output].Columns[ContactId]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[createdon]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="createdon"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdon]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2659,20 +2591,6 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_kontraksidnummer]"
-                      dataType="wstr"
-                      length="100"
-                      name="rik_kontraksidnummer">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">String</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_namn]"
                       dataType="wstr"
                       length="100"
@@ -2697,19 +2615,6 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">rik_objektskontrakt</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_synk]"
-                      dataType="bool"
-                      name="rik_synk">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Boolean</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2863,6 +2768,20 @@
                         <property
                           dataType="System.String"
                           name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_kontraktidnummer]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_kontraktidnummer">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -4209,7 +4128,7 @@
                     <inputColumn
                       refId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].Columns[STR_record2roleidname]"
                       cachedDataType="wstr"
-                      cachedLength="10"
+                      cachedLength="100"
                       cachedName="STR_record2roleidname"
                       externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_EngagemangsrollNamn]"
                       lineageId="Package\Load Engagemang\Data Conversion 1.Outputs[Data Conversion Output].Columns[STR_record2roleidname]" />
@@ -4423,15 +4342,6 @@
                       length="100"
                       name="rik_KontoIdNummer" />
                     <externalMetadataColumn
-                      refId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_KontraksIdnummer]"
-                      dataType="wstr"
-                      length="100"
-                      name="rik_KontraksIdnummer" />
-                    <externalMetadataColumn
-                      refId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Synk]"
-                      dataType="bool"
-                      name="rik_Synk" />
-                    <externalMetadataColumn
                       refId="Package\Load Engagemang\Engagemang_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AccountId]"
                       dataType="wstr"
                       length="255"
@@ -4604,7 +4514,7 @@ where [refTable].[rik_Namn] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Engagemang\5237:invalid};</property>
+                  name="ParameterMap">#{Package\Load Engagemang\5238:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -12135,19 +12045,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
               startId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Default Output1]"
-              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 2]"
-              name="Default Output"
-              startId="Package\Load Engagemang\Dynamics CRM Destination 2.Outputs[Default Output]" />
-            <path
-              refId="Package\Load Engagemang.Paths[Default Output2]"
               endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 1]"
               name="Default Output"
               startId="Package\Load Engagemang\Dynamics CRM Destination.Outputs[Default Output]" />
             <path
-              refId="Package\Load Engagemang.Paths[Default Output]"
+              refId="Package\Load Engagemang.Paths[Default Output2]"
               endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4]"
               name="Default Output"
               startId="Package\Load Engagemang\Dynamics CRM Destination 1.Outputs[Default Output]" />
+            <path
+              refId="Package\Load Engagemang.Paths[Default Output]"
+              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 2]"
+              name="Default Output"
+              startId="Package\Load Engagemang\Dynamics CRM Destination 2.Outputs[Default Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Derived Column Output]"
               endId="Package\Load Engagemang\Script Component.Inputs[Input 0]"
@@ -13435,13 +13345,21 @@ WHERE rik_Namn = 'Engagemang'
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="157,42"
-          Id="Package\Load Engagemang\Union All ERROR"
-          TopLeft="590,625" />
+          Size="214,42"
+          Id="Package\Load Engagemang\Dynamics CRM Destination 2"
+          TopLeft="803,427" />
         <NodeLayout
           Size="205,42"
           Id="Package\Load Engagemang\Dynamics CRM Destination"
           TopLeft="185.857148559727,424.811766610592" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Load Engagemang\Data Conversion 1"
+          TopLeft="593,672" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Load Engagemang\Union All ERROR"
+          TopLeft="590,603" />
         <NodeLayout
           Size="184,42"
           Id="Package\Load Engagemang\Dynamics CRM Source"
@@ -13449,11 +13367,23 @@ WHERE rik_Namn = 'Engagemang'
         <NodeLayout
           Size="180,42"
           Id="Package\Load Engagemang\Engagemang_ERROR"
-          TopLeft="574,785" />
+          TopLeft="589,745" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Load Engagemang\Dynamics CRM Destination 1"
+          TopLeft="479,426" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Load Engagemang\Derived Column"
+          TopLeft="369,187" />
         <NodeLayout
           Size="113,42"
           Id="Package\Load Engagemang\Lookup"
           TopLeft="653,43" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Load Engagemang\Data Conversion"
+          TopLeft="363,100" />
         <NodeLayout
           Size="163,42"
           Id="Package\Load Engagemang\Script Component"
@@ -13463,33 +13393,57 @@ WHERE rik_Namn = 'Engagemang'
           Id="Package\Load Engagemang\Union All Inserted"
           TopLeft="122,587" />
         <NodeLayout
-          Size="214,42"
-          Id="Package\Load Engagemang\Dynamics CRM Destination 1"
-          TopLeft="479,426" />
+          Size="634,42"
+          Id="Package\Load Engagemang\Balanced Data Distributor"
+          TopLeft="248,333" />
         <NodeLayout
           Size="142,42"
           Id="Package\Load Engagemang\Row Inserted"
           TopLeft="135.571431033466,672.400003792257" />
-        <NodeLayout
-          Size="165,42"
-          Id="Package\Load Engagemang\Data Conversion 1"
-          TopLeft="586,698" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Load Engagemang\Derived Column"
-          TopLeft="369,187" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Load Engagemang\Data Conversion"
-          TopLeft="363,100" />
-        <NodeLayout
-          Size="214,42"
-          Id="Package\Load Engagemang\Dynamics CRM Destination 2"
-          TopLeft="803,427" />
-        <NodeLayout
-          Size="634,42"
-          Id="Package\Load Engagemang\Balanced Data Distributor"
-          TopLeft="248,333" />
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Union All Output 11]"
+          TopLeft="205.035715516733,629">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.4000037922569"
+              Start="0,0"
+              End="0,35.9000037922569">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.9000037922569" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Union All Output 1]"
+          TopLeft="672,645">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27"
+              Start="0,0"
+              End="0,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Output 0]"
           TopLeft="451.5,306">
@@ -13566,33 +13520,33 @@ WHERE rik_Namn = 'Engagemang'
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="310.05951810694,158.188233389408"
+              EndConnector="310.05951810694,136.188233389408"
               Start="0,0"
-              End="310.05951810694,150.688233389408">
+              End="310.05951810694,128.688233389408">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,85.2140663044107" />
+                    End="0,72.8066361394535" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,85.2140663044107"
-                    Point2="0,89.2140663044107"
-                    Point3="4,89.2140663044107" />
+                    Point1="0,72.8066361394535"
+                    Point2="0,76.8066361394535"
+                    Point3="4,76.8066361394535" />
                   <mssgle:LineSegment
-                    End="306.05951810694,89.2140663044107" />
+                    End="306.05951810694,76.8066361394535" />
                   <mssgle:CubicBezierSegment
-                    Point1="306.05951810694,89.2140663044107"
-                    Point2="310.05951810694,89.2140663044107"
-                    Point3="310.05951810694,93.2140663044107" />
+                    Point1="306.05951810694,76.8066361394535"
+                    Point2="310.05951810694,76.8066361394535"
+                    Point3="310.05951810694,80.8066361394535" />
                   <mssgle:LineSegment
-                    End="310.05951810694,150.688233389408" />
+                    End="310.05951810694,128.688233389408" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="126.69337233472,94.2140663044107,56.6727734375,11.43359375"
+              BoundingBox="126.69337233472,81.8066361394535,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -13602,33 +13556,33 @@ WHERE rik_Namn = 'Engagemang'
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="48.1666666666667,157"
+              EndConnector="48.1666666666667,135"
               Start="0,0"
-              End="48.1666666666667,149.5">
+              End="48.1666666666667,127.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,59.4990723562153" />
+                    End="0,50.6011131725418" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,59.4990723562153"
-                    Point2="0,63.4990723562153"
-                    Point3="4,63.4990723562153" />
+                    Point1="0,50.6011131725418"
+                    Point2="0,54.6011131725418"
+                    Point3="4,54.6011131725418" />
                   <mssgle:LineSegment
-                    End="44.1666666666667,63.4990723562153" />
+                    End="44.1666666666667,54.6011131725418" />
                   <mssgle:CubicBezierSegment
-                    Point1="44.1666666666667,63.4990723562153"
-                    Point2="48.1666666666667,63.4990723562153"
-                    Point3="48.1666666666667,67.4990723562153" />
+                    Point1="44.1666666666667,54.6011131725418"
+                    Point2="48.1666666666667,54.6011131725418"
+                    Point3="48.1666666666667,58.6011131725418" />
                   <mssgle:LineSegment
-                    End="48.1666666666667,149.5" />
+                    End="48.1666666666667,127.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-4.25305338541663,68.4990723562153,56.6727734375,11.43359375"
+              BoundingBox="-4.25305338541663,59.6011131725418,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -13638,33 +13592,33 @@ WHERE rik_Namn = 'Engagemang'
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-275.833333333333,156"
+              EndConnector="-238.583333333333,134"
               Start="0,0"
-              End="-275.833333333333,148.5">
+              End="-238.583333333333,126.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,59.0946196660483" />
+                    End="0,71.5459943829942" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,59.0946196660483"
-                    Point2="0,63.0946196660483"
-                    Point3="-4,63.0946196660483" />
+                    Point1="0,71.5459943829942"
+                    Point2="0,75.5459943829942"
+                    Point3="-4,75.5459943829942" />
                   <mssgle:LineSegment
-                    End="-271.833333333333,63.0946196660483" />
+                    End="-234.583333333333,75.5459943829942" />
                   <mssgle:CubicBezierSegment
-                    Point1="-271.833333333333,63.0946196660483"
-                    Point2="-275.833333333333,63.0946196660483"
-                    Point3="-275.833333333333,67.0946196660483" />
+                    Point1="-234.583333333333,75.5459943829942"
+                    Point2="-238.583333333333,75.5459943829942"
+                    Point3="-238.583333333333,79.5459943829942" />
                   <mssgle:LineSegment
-                    End="-275.833333333333,148.5" />
+                    End="-238.583333333333,126.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-166.253053385416,68.0946196660483,56.6727734375,11.43359375"
+              BoundingBox="-147.628053385417,80.5459943829942,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -13692,74 +13646,6 @@ WHERE rik_Namn = 'Engagemang'
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Default Output2]"
-          TopLeft="255.523815226394,466.811766610592">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-90.7738152263936,120.188233389408"
-              Start="0,0"
-              End="-90.7738152263936,112.688233389408">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,63.8358392908503" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,63.8358392908503"
-                    Point2="0,67.8358392908503"
-                    Point3="-4,67.8358392908503" />
-                  <mssgle:LineSegment
-                    End="-86.7738152263936,67.8358392908503" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-86.7738152263936,67.8358392908503"
-                    Point2="-90.7738152263936,67.8358392908503"
-                    Point3="-90.7738152263936,71.8358392908503" />
-                  <mssgle:LineSegment
-                    End="-90.7738152263936,112.688233389408" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Default Output1]"
-          TopLeft="875.666666666667,469">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-633.416666666667,118"
-              Start="0,0"
-              End="-633.416666666667,110.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,62.5774101096388" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,62.5774101096388"
-                    Point2="0,66.5774101096388"
-                    Point3="-4,66.5774101096388" />
-                  <mssgle:LineSegment
-                    End="-629.416666666667,66.5774101096388" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-629.416666666667,66.5774101096388"
-                    Point2="-633.416666666667,66.5774101096388"
-                    Point3="-633.416666666667,70.5774101096388" />
-                  <mssgle:LineSegment
-                    End="-633.416666666667,110.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Default Output]"
           TopLeft="551.666666666667,468">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13793,6 +13679,74 @@ WHERE rik_Namn = 'Engagemang'
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Default Output1]"
+          TopLeft="255.523815226394,466.811766610592">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-90.7738152263936,120.188233389408"
+              Start="0,0"
+              End="-90.7738152263936,112.688233389408">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.8358392908503" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,63.8358392908503"
+                    Point2="0,67.8358392908503"
+                    Point3="-4,67.8358392908503" />
+                  <mssgle:LineSegment
+                    End="-86.7738152263936,67.8358392908503" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-86.7738152263936,67.8358392908503"
+                    Point2="-90.7738152263936,67.8358392908503"
+                    Point3="-90.7738152263936,71.8358392908503" />
+                  <mssgle:LineSegment
+                    End="-90.7738152263936,112.688233389408" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Default Output]"
+          TopLeft="875.666666666667,469">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-633.416666666667,118"
+              Start="0,0"
+              End="-633.416666666667,110.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5774101096388" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,62.5774101096388"
+                    Point2="0,66.5774101096388"
+                    Point3="-4,66.5774101096388" />
+                  <mssgle:LineSegment
+                    End="-629.416666666667,66.5774101096388" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-629.416666666667,66.5774101096388"
+                    Point2="-633.416666666667,66.5774101096388"
+                    Point3="-633.416666666667,70.5774101096388" />
+                  <mssgle:LineSegment
+                    End="-633.416666666667,110.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Load Engagemang.Paths[Data Conversion Output1]"
           TopLeft="443.5,142">
           <EdgeLayout.Curve>
@@ -13816,18 +13770,18 @@ WHERE rik_Namn = 'Engagemang'
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Data Conversion Output]"
-          TopLeft="666.25,740">
+          TopLeft="677.25,714">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,45"
+              EndConnector="0,31"
               Start="0,0"
-              End="0,37.5">
+              End="0,23.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.5" />
+                    End="0,23.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13976,50 +13930,6 @@ WHERE rik_Namn = 'Engagemang'
             <mssgm:EdgeLabel
               BoundingBox="-137.771992126387,21.7430126513089,155.4011328125,11.609375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Union All Output 11]"
-          TopLeft="205.035715516733,629">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43.4000037922569"
-              Start="0,0"
-              End="0,35.9000037922569">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.9000037922569" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Union All Output 1]"
-          TopLeft="668.5,667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,31"
-              Start="0,0"
-              End="0,23.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
