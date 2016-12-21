@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Engagemang_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="128"
-  DTS:VersionGUID="{6C75ECA5-1382-467C-9F83-76C69DA6E996}">
+  DTS:VersionBuild="129"
+  DTS:VersionGUID="{14449F08-971F-49A3-80EF-B9D7603D02D8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -732,7 +732,7 @@
                   dataType="System.Int32"
                   description="Specifies how data is written to CRM server."
                   name="ActionType"
-                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">1</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">5</property>
                 <property
                   dataType="System.Boolean"
                   description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
@@ -748,7 +748,7 @@
                   description="Specify the matching criteria to be used when Upsert action is chosen."
                   expressionType="Notify"
                   name="UpsertMatchingCriteria"
-                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">0</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">1</property>
                 <property
                   dataType="System.String"
                   description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
@@ -921,25 +921,29 @@
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_idnummer]"
                       lineageId="Package\Load Engagemang\Script Component.Outputs[Output 0].Columns[RowNumber]" />
                     <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[AccountId]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="AccountId"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_accountid]"
-                      lineageId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output].Columns[AccountId]" />
-                    <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[ContactId]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="ContactId"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_partcontactid]"
-                      lineageId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output].Columns[ContactId]" />
-                    <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[createdon]"
                       cachedDataType="dbTimeStamp"
                       cachedName="createdon"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[overriddencreatedon]"
                       lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdon]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[record1id]"
+                      cachedDataType="guid"
+                      cachedName="record1id"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_accountid]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record1id]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[record2id]"
+                      cachedDataType="guid"
+                      cachedName="record2id"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_partcontactid]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record2id]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[connectionid]"
+                      cachedDataType="guid"
+                      cachedName="connectionid"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_engagemangid]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[connectionid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -966,6 +970,12 @@
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">false</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -979,6 +989,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">false</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -992,6 +1008,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">false</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1022,6 +1044,12 @@
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1036,6 +1064,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1051,15 +1085,13 @@
                           name="LookupTypes">account</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;account&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;rik_migreringid&lt;/TargetTextField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1073,6 +1105,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1086,6 +1124,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1110,6 +1154,12 @@
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1124,6 +1174,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1138,6 +1194,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1151,6 +1213,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1164,6 +1232,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1178,6 +1252,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1192,6 +1272,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1205,6 +1291,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">rik_objektskontrakt</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1218,6 +1310,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1231,6 +1329,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1244,6 +1348,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1257,6 +1367,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1270,6 +1386,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1283,6 +1405,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">account</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1298,15 +1426,13 @@
                           name="LookupTypes">contact</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;rik_migreringid&lt;/TargetTextField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1321,6 +1447,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1335,6 +1467,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1348,6 +1486,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1361,6 +1505,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1375,6 +1525,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -1436,7 +1592,7 @@
                   dataType="System.Int32"
                   description="Specifies how data is written to CRM server."
                   name="ActionType"
-                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">1</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">5</property>
                 <property
                   dataType="System.Boolean"
                   description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
@@ -1452,7 +1608,7 @@
                   description="Specify the matching criteria to be used when Upsert action is chosen."
                   expressionType="Notify"
                   name="UpsertMatchingCriteria"
-                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">0</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">1</property>
                 <property
                   dataType="System.String"
                   description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
@@ -1625,25 +1781,29 @@
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_idnummer]"
                       lineageId="Package\Load Engagemang\Script Component.Outputs[Output 0].Columns[RowNumber]" />
                     <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[AccountId]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="AccountId"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_accountid]"
-                      lineageId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output].Columns[AccountId]" />
-                    <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[ContactId]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="ContactId"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_partcontactid]"
-                      lineageId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output].Columns[ContactId]" />
-                    <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[createdon]"
                       cachedDataType="dbTimeStamp"
                       cachedName="createdon"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[overriddencreatedon]"
                       lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdon]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[record1id]"
+                      cachedDataType="guid"
+                      cachedName="record1id"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_accountid]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record1id]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[record2id]"
+                      cachedDataType="guid"
+                      cachedName="record2id"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_partcontactid]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record2id]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].Columns[connectionid]"
+                      cachedDataType="guid"
+                      cachedName="connectionid"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_engagemangid]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[connectionid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1670,6 +1830,12 @@
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">false</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1683,6 +1849,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">false</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1696,6 +1868,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">false</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1726,6 +1904,12 @@
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1740,6 +1924,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1755,16 +1945,13 @@
                           name="LookupTypes">account</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;account&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;rik_migreringid&lt;/TargetTextField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1778,6 +1965,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1791,6 +1984,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1815,6 +2014,12 @@
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1829,6 +2034,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1843,6 +2054,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1856,6 +2073,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1869,6 +2092,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1883,6 +2112,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1897,6 +2132,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1910,6 +2151,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">rik_objektskontrakt</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1923,6 +2170,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1936,6 +2189,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1949,6 +2208,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1962,6 +2227,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1975,6 +2246,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1988,6 +2265,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">account</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2003,15 +2286,13 @@
                           name="LookupTypes">contact</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;rik_migreringid&lt;/TargetTextField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2026,6 +2307,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2040,6 +2327,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2053,6 +2346,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2066,6 +2365,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2080,6 +2385,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -2141,7 +2452,7 @@
                   dataType="System.Int32"
                   description="Specifies how data is written to CRM server."
                   name="ActionType"
-                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">1</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">5</property>
                 <property
                   dataType="System.Boolean"
                   description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
@@ -2157,7 +2468,7 @@
                   description="Specify the matching criteria to be used when Upsert action is chosen."
                   expressionType="Notify"
                   name="UpsertMatchingCriteria"
-                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">0</property>
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">1</property>
                 <property
                   dataType="System.String"
                   description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
@@ -2330,25 +2641,29 @@
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_idnummer]"
                       lineageId="Package\Load Engagemang\Script Component.Outputs[Output 0].Columns[RowNumber]" />
                     <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[AccountId]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="AccountId"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_accountid]"
-                      lineageId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output].Columns[AccountId]" />
-                    <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[ContactId]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="ContactId"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_partcontactid]"
-                      lineageId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output].Columns[ContactId]" />
-                    <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[createdon]"
                       cachedDataType="dbTimeStamp"
                       cachedName="createdon"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[overriddencreatedon]"
                       lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdon]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[record1id]"
+                      cachedDataType="guid"
+                      cachedName="record1id"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_accountid]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record1id]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[record2id]"
+                      cachedDataType="guid"
+                      cachedName="record2id"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_partcontactid]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record2id]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].Columns[connectionid]"
+                      cachedDataType="guid"
+                      cachedName="connectionid"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_engagemangid]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[connectionid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2375,6 +2690,12 @@
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">false</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2388,6 +2709,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">false</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2401,6 +2728,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">false</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2431,6 +2764,12 @@
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2445,6 +2784,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2460,16 +2805,13 @@
                           name="LookupTypes">account</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;account&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;rik_migreringid&lt;/TargetTextField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2483,6 +2825,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2496,6 +2844,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2520,6 +2874,12 @@
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2534,6 +2894,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2548,6 +2914,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2561,6 +2933,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2574,6 +2952,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2588,6 +2972,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2602,6 +2992,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2615,6 +3011,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">rik_objektskontrakt</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2628,6 +3030,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2641,6 +3049,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2654,6 +3068,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2667,6 +3087,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2680,6 +3106,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2693,6 +3125,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">account</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2708,15 +3146,13 @@
                           name="LookupTypes">contact</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;rik_migreringid&lt;/TargetTextField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2731,6 +3167,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2745,6 +3187,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2758,6 +3206,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2771,6 +3225,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -2785,6 +3245,12 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -4514,7 +4980,7 @@ where [refTable].[rik_Namn] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Load Engagemang\5238:invalid};</property>
+                  name="ParameterMap">#{Package\Load Engagemang\5949:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -12045,19 +12511,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
               startId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Default Output1]"
-              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 1]"
-              name="Default Output"
-              startId="Package\Load Engagemang\Dynamics CRM Destination.Outputs[Default Output]" />
-            <path
-              refId="Package\Load Engagemang.Paths[Default Output2]"
               endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4]"
               name="Default Output"
               startId="Package\Load Engagemang\Dynamics CRM Destination 1.Outputs[Default Output]" />
             <path
-              refId="Package\Load Engagemang.Paths[Default Output]"
+              refId="Package\Load Engagemang.Paths[Default Output2]"
               endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 2]"
               name="Default Output"
               startId="Package\Load Engagemang\Dynamics CRM Destination 2.Outputs[Default Output]" />
+            <path
+              refId="Package\Load Engagemang.Paths[Default Output]"
+              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 1]"
+              name="Default Output"
+              startId="Package\Load Engagemang\Dynamics CRM Destination.Outputs[Default Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Derived Column Output]"
               endId="Package\Load Engagemang\Script Component.Inputs[Input 0]"
@@ -13646,6 +14112,40 @@ WHERE rik_Namn = 'Engagemang'
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Default Output2]"
+          TopLeft="875.666666666667,469">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-633.416666666667,118"
+              Start="0,0"
+              End="-633.416666666667,110.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5774101096388" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,62.5774101096388"
+                    Point2="0,66.5774101096388"
+                    Point3="-4,66.5774101096388" />
+                  <mssgle:LineSegment
+                    End="-629.416666666667,66.5774101096388" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-629.416666666667,66.5774101096388"
+                    Point2="-633.416666666667,66.5774101096388"
+                    Point3="-633.416666666667,70.5774101096388" />
+                  <mssgle:LineSegment
+                    End="-633.416666666667,110.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Default Output1]"
           TopLeft="551.666666666667,468">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13679,7 +14179,7 @@ WHERE rik_Namn = 'Engagemang'
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Default Output1]"
+          Id="Package\Load Engagemang.Paths[Default Output]"
           TopLeft="255.523815226394,466.811766610592">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13704,40 +14204,6 @@ WHERE rik_Namn = 'Engagemang'
                     Point3="-90.7738152263936,71.8358392908503" />
                   <mssgle:LineSegment
                     End="-90.7738152263936,112.688233389408" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Default Output]"
-          TopLeft="875.666666666667,469">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-633.416666666667,118"
-              Start="0,0"
-              End="-633.416666666667,110.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,62.5774101096388" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,62.5774101096388"
-                    Point2="0,66.5774101096388"
-                    Point3="-4,66.5774101096388" />
-                  <mssgle:LineSegment
-                    End="-629.416666666667,66.5774101096388" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-629.416666666667,66.5774101096388"
-                    Point2="-633.416666666667,66.5774101096388"
-                    Point3="-633.416666666667,70.5774101096388" />
-                  <mssgle:LineSegment
-                    End="-633.416666666667,110.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

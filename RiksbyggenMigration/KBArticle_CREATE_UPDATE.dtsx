@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="KBArticle_CREATE_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="82"
-  DTS:VersionGUID="{248A1855-B5F5-4C1F-BA98-61F64E2E4D2C}">
+  DTS:VersionBuild="85"
+  DTS:VersionGUID="{6B9DEE35-1212-4ECD-851B-A9EC3D230B11}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -408,18 +408,17 @@
                       externalMetadataColumnId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[createdby]"
                       lineageId="Package\Load KbArticle\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdbyname]" />
                     <inputColumn
-                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].Columns[subjectidname]"
-                      cachedDataType="wstr"
-                      cachedLength="500"
-                      cachedName="subjectidname"
-                      externalMetadataColumnId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[subjectid]"
-                      lineageId="Package\Load KbArticle\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[subjectidname]" />
-                    <inputColumn
                       refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].Columns[createdon]"
                       cachedDataType="dbTimeStamp"
                       cachedName="createdon"
                       externalMetadataColumnId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[overriddencreatedon]"
                       lineageId="Package\Load KbArticle\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdon]" />
+                    <inputColumn
+                      refId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].Columns[subjectid]"
+                      cachedDataType="guid"
+                      cachedName="subjectid"
+                      externalMetadataColumnId="Package\Load KbArticle\Dynamics CRM Destination.Inputs[Input].ExternalColumns[subjectid]"
+                      lineageId="Package\Load KbArticle\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[subjectid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -679,15 +678,7 @@
                           name="LookupTypes">subject</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;subject&lt;/TargetEntity&gt;
-      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
                         <property
                           dataType="System.Boolean"
                           name="Createable">true</property>
@@ -3012,13 +3003,6 @@
                   name="Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Update KBArticle status to 2\Dynamics CRM Destination.Inputs[Input].Columns[title]"
-                      cachedDataType="wstr"
-                      cachedLength="500"
-                      cachedName="title"
-                      externalMetadataColumnId="Package\Update KBArticle status to 2\Dynamics CRM Destination.Inputs[Input].ExternalColumns[kbarticleid]"
-                      lineageId="Package\Update KBArticle status to 2\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[title]" />
-                    <inputColumn
                       refId="Package\Update KBArticle status to 2\Dynamics CRM Destination.Inputs[Input].Columns[statuscode]"
                       cachedDataType="i4"
                       cachedName="statuscode"
@@ -3030,6 +3014,12 @@
                       cachedName="statecode"
                       externalMetadataColumnId="Package\Update KBArticle status to 2\Dynamics CRM Destination.Inputs[Input].ExternalColumns[statecode]"
                       lineageId="Package\Update KBArticle status to 2\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[statecode]" />
+                    <inputColumn
+                      refId="Package\Update KBArticle status to 2\Dynamics CRM Destination.Inputs[Input].Columns[kbarticleid]"
+                      cachedDataType="guid"
+                      cachedName="kbarticleid"
+                      externalMetadataColumnId="Package\Update KBArticle status to 2\Dynamics CRM Destination.Inputs[Input].ExternalColumns[kbarticleid]"
+                      lineageId="Package\Update KBArticle status to 2\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[kbarticleid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3111,15 +3101,7 @@
                           name="LookupTypes">kbarticle</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;kbarticle&lt;/TargetEntity&gt;
-      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -4803,13 +4785,6 @@
                   name="Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Update KBArticle status to 3\Dynamics CRM Destination.Inputs[Input].Columns[title]"
-                      cachedDataType="wstr"
-                      cachedLength="500"
-                      cachedName="title"
-                      externalMetadataColumnId="Package\Update KBArticle status to 3\Dynamics CRM Destination.Inputs[Input].ExternalColumns[kbarticleid]"
-                      lineageId="Package\Update KBArticle status to 3\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[title]" />
-                    <inputColumn
                       refId="Package\Update KBArticle status to 3\Dynamics CRM Destination.Inputs[Input].Columns[statuscode]"
                       cachedDataType="i4"
                       cachedName="statuscode"
@@ -4821,6 +4796,12 @@
                       cachedName="statecode"
                       externalMetadataColumnId="Package\Update KBArticle status to 3\Dynamics CRM Destination.Inputs[Input].ExternalColumns[statecode]"
                       lineageId="Package\Update KBArticle status to 3\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[statecode]" />
+                    <inputColumn
+                      refId="Package\Update KBArticle status to 3\Dynamics CRM Destination.Inputs[Input].Columns[kbarticleid]"
+                      cachedDataType="guid"
+                      cachedName="kbarticleid"
+                      externalMetadataColumnId="Package\Update KBArticle status to 3\Dynamics CRM Destination.Inputs[Input].ExternalColumns[kbarticleid]"
+                      lineageId="Package\Update KBArticle status to 3\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[kbarticleid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4902,15 +4883,7 @@
                           name="LookupTypes">kbarticle</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;kbarticle&lt;/TargetEntity&gt;
-      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -6815,13 +6788,13 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="142,42"
-          Id="Package\Load KbArticle\Row Inserted"
-          TopLeft="178.714288604502,263.000004375683" />
-        <NodeLayout
           Size="160,42"
           Id="Package\Load KbArticle\KbArticle_ERROR"
           TopLeft="374.714292078602,264.223533804606" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Load KbArticle\Row Inserted"
+          TopLeft="178.714288604502,263.000004375683" />
         <NodeLayout
           Size="205,42"
           Id="Package\Load KbArticle\Dynamics CRM Destination"
@@ -6944,39 +6917,25 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="184,42"
-          Id="Package\Update KBArticle status to 2\Dynamics CRM Source"
-          TopLeft="406,39" />
+          Size="142,42"
+          Id="Package\Update KBArticle status to 2\Row Updated"
+          TopLeft="331,339" />
         <NodeLayout
           Size="205,42"
           Id="Package\Update KBArticle status to 2\Dynamics CRM Destination"
           TopLeft="400,230" />
         <NodeLayout
+          Size="160,42"
+          Id="Package\Update KBArticle status to 2\KBArticle_ERROR"
+          TopLeft="588,335" />
+        <NodeLayout
           Size="154,42"
           Id="Package\Update KBArticle status to 2\Derived Column"
           TopLeft="419,133" />
-        <EdgeLayout
-          Id="Package\Update KBArticle status to 2.Paths[CRM Primary Output]"
-          TopLeft="497,81">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,52"
-              Start="0,0"
-              End="0,44.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Update KBArticle status to 2\Dynamics CRM Source"
+          TopLeft="406,39" />
         <EdgeLayout
           Id="Package\Update KBArticle status to 2.Paths[Derived Column Output]"
           TopLeft="499.25,175">
@@ -6999,10 +6958,62 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="160,42"
-          Id="Package\Update KBArticle status to 2\KBArticle_ERROR"
-          TopLeft="588,335" />
+        <EdgeLayout
+          Id="Package\Update KBArticle status to 2.Paths[Default Output]"
+          TopLeft="469.666666666667,272">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-67.6666666666666,67"
+              Start="0,0"
+              End="-67.6666666666666,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1113262342691" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.1113262342691"
+                    Point2="0,27.1113262342691"
+                    Point3="-4,27.1113262342691" />
+                  <mssgle:LineSegment
+                    End="-63.6666666666666,27.1113262342691" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-63.6666666666666,27.1113262342691"
+                    Point2="-67.6666666666666,27.1113262342691"
+                    Point3="-67.6666666666666,31.1113262342691" />
+                  <mssgle:LineSegment
+                    End="-67.6666666666666,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Update KBArticle status to 2.Paths[CRM Primary Output]"
+          TopLeft="497,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Update KBArticle status to 2.Paths[Error Output]"
           TopLeft="535.333333333333,272">
@@ -7039,44 +7050,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Update KBArticle status to 2\Row Updated"
-          TopLeft="331,339" />
-        <EdgeLayout
-          Id="Package\Update KBArticle status to 2.Paths[Default Output]"
-          TopLeft="469.666666666667,272">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-67.6666666666666,67"
-              Start="0,0"
-              End="-67.6666666666666,59.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.1113262342691" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.1113262342691"
-                    Point2="0,27.1113262342691"
-                    Point3="-4,27.1113262342691" />
-                  <mssgle:LineSegment
-                    End="-63.6666666666666,27.1113262342691" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-63.6666666666666,27.1113262342691"
-                    Point2="-67.6666666666666,27.1113262342691"
-                    Point3="-67.6666666666666,31.1113262342691" />
-                  <mssgle:LineSegment
-                    End="-67.6666666666666,59.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -7103,21 +7076,21 @@
           Id="Package\Update KBArticle status to 3\Row Updated"
           TopLeft="331,339" />
         <NodeLayout
-          Size="154,42"
-          Id="Package\Update KBArticle status to 3\Derived Column"
-          TopLeft="419,133" />
+          Size="205,42"
+          Id="Package\Update KBArticle status to 3\Dynamics CRM Destination"
+          TopLeft="400,230" />
         <NodeLayout
           Size="160,42"
           Id="Package\Update KBArticle status to 3\KBArticle_ERROR"
           TopLeft="588,335" />
         <NodeLayout
+          Size="154,42"
+          Id="Package\Update KBArticle status to 3\Derived Column"
+          TopLeft="419,133" />
+        <NodeLayout
           Size="184,42"
           Id="Package\Update KBArticle status to 3\Dynamics CRM Source"
           TopLeft="406,39" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Update KBArticle status to 3\Dynamics CRM Destination"
-          TopLeft="400,230" />
         <EdgeLayout
           Id="Package\Update KBArticle status to 3.Paths[Derived Column Output]"
           TopLeft="499.25,175">
@@ -7132,28 +7105,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,47.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Update KBArticle status to 3.Paths[CRM Primary Output]"
-          TopLeft="497,81">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,52"
-              Start="0,0"
-              End="0,44.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7188,6 +7139,28 @@
                     Point3="-67.6666666666666,31.1113262342691" />
                   <mssgle:LineSegment
                     End="-67.6666666666666,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Update KBArticle status to 3.Paths[CRM Primary Output]"
+          TopLeft="497,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Annotation_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="95"
-  DTS:VersionGUID="{E20893D9-8957-4469-A873-D48D63A98A43}">
+  DTS:VersionBuild="96"
+  DTS:VersionGUID="{0CCEB715-7298-4394-AA83-32C1756F59A1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -248,7 +248,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[rik_Land_ERROR]</property>
+                  name="OpenRowset">[dbo].[Annotation_ERROR]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -305,19 +305,63 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[rik_namn]"
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[ObjectId]"
                       cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="rik_namn"
-                      externalMetadataColumnId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[rik_namn]" />
+                      cachedLength="255"
+                      cachedName="ObjectId"
+                      externalMetadataColumnId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ObjectId]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[ObjectId]" />
                     <inputColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[rik_kod]"
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[OverriddenCreatedOn]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OverriddenCreatedOn"
+                      externalMetadataColumnId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OverriddenCreatedOn]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[Subject]"
                       cachedDataType="wstr"
-                      cachedLength="2"
-                      cachedName="rik_kod"
-                      externalMetadataColumnId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kod]"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[rik_kod]" />
+                      cachedLength="500"
+                      cachedName="Subject"
+                      externalMetadataColumnId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[Subject]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[Subject]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[CreatedByName]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="CreatedByName"
+                      externalMetadataColumnId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[CreatedByName]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[OwnerIdName]"
+                      cachedDataType="wstr"
+                      cachedLength="160"
+                      cachedName="OwnerIdName"
+                      externalMetadataColumnId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerIdName]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[ObjectTypeCode]"
+                      cachedDataType="i4"
+                      cachedName="ObjectTypeCode"
+                      externalMetadataColumnId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ObjectTypeCode]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[ObjectTypeCode]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[ObjectIdTypeCode]"
+                      cachedDataType="i4"
+                      cachedName="ObjectIdTypeCode"
+                      externalMetadataColumnId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ObjectIdTypeCode]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[ObjectIdTypeCode]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[IsDocument]"
+                      cachedDataType="bool"
+                      cachedName="IsDocument"
+                      externalMetadataColumnId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[IsDocument]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[IsDocument]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[NoteText]"
+                      cachedDataType="nText"
+                      cachedName="NoteText"
+                      externalMetadataColumnId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[NoteText]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[NoteText]" />
                     <inputColumn
                       refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
                       cachedDataType="i4"
@@ -341,45 +385,45 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
-                      dataType="wstr"
-                      length="200"
-                      name="CreatedByName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
-                      dataType="wstr"
-                      length="200"
-                      name="CreatedByYomiName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
-                      dataType="wstr"
-                      length="200"
-                      name="CreatedOnBehalfByName" />
-                    <externalMetadataColumn
                       refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByYomiName]"
                       dataType="wstr"
                       length="200"
                       name="CreatedOnBehalfByYomiName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
-                      dataType="wstr"
-                      length="200"
-                      name="ModifiedByName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
-                      dataType="wstr"
-                      length="200"
-                      name="ModifiedByYomiName" />
                     <externalMetadataColumn
                       refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByName]"
                       dataType="wstr"
                       length="200"
                       name="ModifiedOnBehalfByName" />
                     <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByName" />
+                    <externalMetadataColumn
                       refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByYomiName]"
                       dataType="wstr"
                       length="200"
                       name="ModifiedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByName" />
                     <externalMetadataColumn
                       refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
                       dataType="wstr"
@@ -414,28 +458,105 @@
                       length="255"
                       name="OwningTeam" />
                     <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_LandId]"
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ObjectIdTypeCode]"
+                      dataType="i4"
+                      name="ObjectIdTypeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[AnnotationId]"
                       dataType="wstr"
                       length="255"
-                      name="rik_LandId" />
+                      name="AnnotationId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ObjectTypeCode]"
+                      dataType="i4"
+                      name="ObjectTypeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ObjectId]"
+                      dataType="wstr"
+                      length="255"
+                      name="ObjectId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningBusinessUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[Subject]"
+                      dataType="wstr"
+                      length="500"
+                      name="Subject" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[IsDocument]"
+                      dataType="bool"
+                      name="IsDocument" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[NoteText]"
+                      dataType="nText"
+                      name="NoteText" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MimeType]"
+                      dataType="wstr"
+                      length="256"
+                      name="MimeType" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[LangId]"
+                      dataType="wstr"
+                      length="2"
+                      name="LangId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[DocumentBody]"
+                      codePage="1252"
+                      dataType="text"
+                      name="DocumentBody" />
                     <externalMetadataColumn
                       refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
                       dataType="dbTimeStamp"
                       name="CreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[FileSize]"
+                      dataType="i4"
+                      name="FileSize" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[FileName]"
+                      dataType="wstr"
+                      length="255"
+                      name="FileName" />
                     <externalMetadataColumn
                       refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
                       dataType="wstr"
                       length="255"
                       name="CreatedBy" />
                     <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
-                      dataType="dbTimeStamp"
-                      name="ModifiedOn" />
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[IsPrivate]"
+                      dataType="bool"
+                      name="IsPrivate" />
                     <externalMetadataColumn
                       refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
                       dataType="wstr"
                       length="255"
                       name="ModifiedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[StepId]"
+                      dataType="wstr"
+                      length="32"
+                      name="StepId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="OverriddenCreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
+                      dataType="i4"
+                      name="ImportSequenceNumber" />
                     <externalMetadataColumn
                       refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
                       dataType="wstr"
@@ -446,50 +567,6 @@
                       dataType="wstr"
                       length="255"
                       name="ModifiedOnBehalfBy" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
-                      dataType="wstr"
-                      length="255"
-                      name="OwningBusinessUnit" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statecode]"
-                      dataType="i4"
-                      name="statecode" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statuscode]"
-                      dataType="i4"
-                      name="statuscode" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
-                      dataType="bytes"
-                      length="8"
-                      name="VersionNumber" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
-                      dataType="i4"
-                      name="ImportSequenceNumber" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
-                      dataType="dbTimeStamp"
-                      name="OverriddenCreatedOn" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TimeZoneRuleVersionNumber]"
-                      dataType="i4"
-                      name="TimeZoneRuleVersionNumber" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[UTCConversionTimeZoneCode]"
-                      dataType="i4"
-                      name="UTCConversionTimeZoneCode" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
-                      dataType="wstr"
-                      length="100"
-                      name="rik_Namn" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kod]"
-                      dataType="wstr"
-                      length="2"
-                      name="rik_Kod" />
                     <externalMetadataColumn
                       refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
                       dataType="wstr"
@@ -549,7 +626,7 @@
                   dataType="System.String"
                   description="Destination entity to write data."
                   expressionType="Notify"
-                  name="DestinationEntity">rik_land</property>
+                  name="DestinationEntity">annotation</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies how data is written to CRM server."
@@ -611,7 +688,7 @@
                   dataType="System.Int32"
                   description="Specifies the number of records to be sent to Microsoft Dynamics CRM in each batch (CRM 2011 Update Rollup 12 or later is required if batch size is greater than 1)."
                   expressionType="Notify"
-                  name="BatchSize">100</property>
+                  name="BatchSize">20</property>
                 <property
                   dataType="System.Boolean"
                   description="Specifies whether datetime values should be sent to CRM server in UTC format."
@@ -638,22 +715,65 @@
                   name="Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[rik_kod]"
-                      cachedDataType="wstr"
-                      cachedLength="2"
-                      cachedName="rik_kod"
-                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[rik_kod]"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[rik_kod]" />
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[IsDocument]"
+                      cachedDataType="bool"
+                      cachedName="IsDocument"
+                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[isdocument]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[IsDocument]" />
                     <inputColumn
-                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[rik_namn]"
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[NoteText]"
+                      cachedDataType="nText"
+                      cachedName="NoteText"
+                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[notetext]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[NoteText]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[ObjectId]"
                       cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="rik_namn"
-                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[rik_namn]"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[rik_namn]" />
+                      cachedLength="255"
+                      cachedName="ObjectId"
+                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[objectid]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[ObjectId]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[ObjectIdTypeCode]"
+                      cachedDataType="i4"
+                      cachedName="ObjectIdTypeCode"
+                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[objectidtypecode]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[ObjectIdTypeCode]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[ObjectTypeCode]"
+                      cachedDataType="i4"
+                      cachedName="ObjectTypeCode"
+                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[objecttypecode]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[ObjectTypeCode]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[OverriddenCreatedOn]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OverriddenCreatedOn"
+                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OverriddenCreatedOn]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[Subject]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="Subject"
+                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[subject]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[Subject]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[annotationid]"
+                      dataType="guid"
+                      name="annotationid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[createdby]"
                       dataType="guid"
@@ -668,6 +788,33 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[documentbody]"
+                      dataType="nText"
+                      name="documentbody">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[filename]"
+                      dataType="wstr"
+                      length="255"
+                      name="filename">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
                       refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[importsequencenumber]"
                       dataType="i4"
                       name="importsequencenumber">
@@ -675,6 +822,424 @@
                         <property
                           dataType="System.String"
                           name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[isdocument]"
+                      dataType="bool"
+                      name="isdocument">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[langid]"
+                      dataType="wstr"
+                      length="2"
+                      name="langid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[mimetype]"
+                      dataType="wstr"
+                      length="256"
+                      name="mimetype">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[notetext]"
+                      dataType="nText"
+                      name="notetext">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[objectid]"
+                      dataType="guid"
+                      name="objectid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">account;appointment;calendar;campaign;campaignactivity;campaignresponse;commitment;competitor;contact;contract;contractdetail;convertrule;duplicaterule;email;emailserverprofile;entitlement;entitlementchannel;entitlementtemplate;equipment;fax;goal;incident;incidentresolution;invoice;kbarticle;lead;letter;list;mailbox;msdyn_postalbum;msdyusd_agentscriptaction;msdyusd_answer;msdyusd_configuration;msdyusd_customizationfiles;msdyusd_entityassignment;msdyusd_entitysearch;msdyusd_form;msdyusd_languagemodule;msdyusd_scriptlet;msdyusd_scripttasktrigger;msdyusd_search;msdyusd_sessioninformation;msdyusd_task;msdyusd_toolbarbutton;msdyusd_toolbarstrip;msdyusd_tracesourcesetting;msdyusd_uiievent;msdyusd_windowroute;opportunity;opportunityclose;orderclose;phonecall;product;quote;quoteclose;recurringappointmentmaster;resourcespec;rik_anbud;rik_arendepart;rik_arendepartstyp;rik_driftslarm;rik_konfiguration;routingrule;routingruleitem;salesorder;service;serviceappointment;sharepointdocument;sla;socialactivity;task;uii_action;uii_hostedapplication;uii_nonhostedapplication;uii_option;uii_workflow;uii_workflowstep;uii_workflow_workflowstep_mapping;workflow</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;account&lt;/TargetEntity&gt;
+      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;appointment&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;calendar&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;campaign&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;campaignactivity&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;campaignresponse&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;commitment&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;competitor&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;contract&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;contractdetail&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;convertrule&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;duplicaterule&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;email&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;emailserverprofile&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;entitlement&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;entitlementchannel&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;entitlementtemplate&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;equipment&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;fax&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;goal&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;incident&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;incidentresolution&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;invoice&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;kbarticle&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;lead&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;letter&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;list&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;mailbox&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyn_postalbum&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_agentscriptaction&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_answer&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_configuration&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_customizationfiles&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_entityassignment&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_entitysearch&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_form&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_languagemodule&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_scriptlet&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_scripttasktrigger&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_search&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_sessioninformation&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_task&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_toolbarbutton&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_toolbarstrip&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_tracesourcesetting&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_uiievent&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;msdyusd_windowroute&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;opportunity&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;opportunityclose&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;orderclose&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;phonecall&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;product&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;quote&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;quoteclose&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;recurringappointmentmaster&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;resourcespec&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_anbud&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_arendepart&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_arendepartstyp&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_driftslarm&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_konfiguration&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;routingrule&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;routingruleitem&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;salesorder&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;service&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;serviceappointment&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;sharepointdocument&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;sla&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;socialactivity&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;task&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;uii_action&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;uii_hostedapplication&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;uii_nonhostedapplication&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;uii_option&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;uii_workflow&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;uii_workflowstep&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;uii_workflow_workflowstep_mapping&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;workflow&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[objectidtypecode]"
+                      dataType="wstr"
+                      length="64"
+                      name="objectidtypecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">EntityName</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[objecttypecode]"
+                      dataType="wstr"
+                      length="64"
+                      name="objecttypecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">EntityName</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -721,10 +1286,10 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[rik_kod]"
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[stepid]"
                       dataType="wstr"
-                      length="2"
-                      name="rik_kod">
+                      length="32"
+                      name="stepid">
                       <properties>
                         <property
                           dataType="System.String"
@@ -735,79 +1300,14 @@
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[rik_landid]"
-                      dataType="guid"
-                      name="rik_landid">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Uniqueidentifier</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[rik_namn]"
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[subject]"
                       dataType="wstr"
-                      length="100"
-                      name="rik_namn">
+                      length="500"
+                      name="subject">
                       <properties>
                         <property
                           dataType="System.String"
                           name="CrmFieldType">String</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[statecode]"
-                      dataType="i4"
-                      name="statecode">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">State</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[statuscode]"
-                      dataType="i4"
-                      name="statuscode">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Status</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[timezoneruleversionnumber]"
-                      dataType="i4"
-                      name="timezoneruleversionnumber">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Integer</property>
-                        <property
-                          dataType="System.String"
-                          name="LookupTypes"></property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[utcconversiontimezonecode]"
-                      dataType="i4"
-                      name="utcconversiontimezonecode">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          name="CrmFieldType">Integer</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -908,9 +1408,16 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT rik_namn
-,rik_kod
-FROM rik_Land</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT ObjectId
+	,OverriddenCreatedOn
+	,Subject
+	,CreatedByName
+	,OwnerIdName
+	,ObjectTypeCode
+	,ObjectIdTypeCode
+	,IsDocument
+	,NoteText
+FROM Annotation</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -947,38 +1454,133 @@ FROM rik_Land</property>
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[rik_namn]"
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[ObjectId]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[rik_namn]"
-                      length="100"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[rik_namn]"
-                      name="rik_namn"
+                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[ObjectId]"
+                      length="255"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[ObjectId]"
+                      name="ObjectId"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[rik_kod]"
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[OverriddenCreatedOn]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OverriddenCreatedOn]"
+                      name="OverriddenCreatedOn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[Subject]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[rik_kod]"
-                      length="2"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[rik_kod]"
-                      name="rik_kod"
+                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
+                      length="500"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[Subject]"
+                      name="Subject"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[CreatedByName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[CreatedByName]"
+                      length="200"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[CreatedByName]"
+                      name="CreatedByName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerIdName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdName]"
+                      length="160"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerIdName]"
+                      name="OwnerIdName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[ObjectTypeCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[ObjectTypeCode]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[ObjectTypeCode]"
+                      name="ObjectTypeCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[ObjectIdTypeCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[ObjectIdTypeCode]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[ObjectIdTypeCode]"
+                      name="ObjectIdTypeCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[IsDocument]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[IsDocument]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[IsDocument]"
+                      name="IsDocument"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[NoteText]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[NoteText]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[NoteText]"
+                      name="NoteText"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[rik_namn]"
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[ObjectId]"
                       dataType="wstr"
-                      length="100"
-                      name="rik_namn" />
+                      length="255"
+                      name="ObjectId" />
                     <externalMetadataColumn
-                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[rik_kod]"
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="OverriddenCreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[Subject]"
                       dataType="wstr"
-                      length="2"
-                      name="rik_kod" />
+                      length="500"
+                      name="Subject" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[ObjectTypeCode]"
+                      dataType="i4"
+                      name="ObjectTypeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[ObjectIdTypeCode]"
+                      dataType="i4"
+                      name="ObjectIdTypeCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[IsDocument]"
+                      dataType="bool"
+                      name="IsDocument" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[NoteText]"
+                      dataType="nText"
+                      name="NoteText" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -987,17 +1589,54 @@ FROM rik_Land</property>
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[rik_namn]"
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[ObjectId]"
                       dataType="wstr"
-                      length="100"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[rik_namn]"
-                      name="rik_namn" />
+                      length="255"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[ObjectId]"
+                      name="ObjectId" />
                     <outputColumn
-                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[rik_kod]"
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[OverriddenCreatedOn]"
+                      name="OverriddenCreatedOn" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[Subject]"
                       dataType="wstr"
-                      length="2"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[rik_kod]"
-                      name="rik_kod" />
+                      length="500"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[Subject]"
+                      name="Subject" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[CreatedByName]"
+                      name="CreatedByName" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[OwnerIdName]"
+                      dataType="wstr"
+                      length="160"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[OwnerIdName]"
+                      name="OwnerIdName" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[ObjectTypeCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[ObjectTypeCode]"
+                      name="ObjectTypeCode" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[ObjectIdTypeCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[ObjectIdTypeCode]"
+                      name="ObjectIdTypeCode" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[IsDocument]"
+                      dataType="bool"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[IsDocument]"
+                      name="IsDocument" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[NoteText]"
+                      dataType="nText"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[NoteText]"
+                      name="NoteText" />
                     <outputColumn
                       refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -1050,7 +1689,7 @@ FROM rik_Land</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
-          SQLTask:SqlStatementSource="select 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="EXEC GetKundanteckningar;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -2040,15 +2679,11 @@ FROM rik_Land</property>
         <NodeLayout
           Size="153,42"
           Id="Package\Load Annotation\STG Annotation"
-          TopLeft="263,38" />
+          TopLeft="285,38" />
         <NodeLayout
           Size="207,42"
           Id="Package\Load Annotation\Migrate Annotation records"
           TopLeft="256.857147265455,131.117647290477" />
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Load Annotation\Annotation_ERROR"
-          TopLeft="409,261" />
         <NodeLayout
           Size="142,42"
           Id="Package\Load Annotation\Row Inserted"
@@ -2089,30 +2724,18 @@ FROM rik_Land</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Annotation.Paths[OLE DB Source Output]"
-          TopLeft="339.5,80">
+          TopLeft="360.928573632728,80">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="20.857147265455,51.117647290477"
+              EndConnector="0,51.117647290477"
               Start="0,0"
-              End="20.857147265455,43.617647290477">
+              End="0,43.617647290477">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.5588236452385" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21.5588236452385"
-                    Point2="0,25.5588236452385"
-                    Point3="4,25.5588236452385" />
-                  <mssgle:LineSegment
-                    End="16.857147265455,25.5588236452385" />
-                  <mssgle:CubicBezierSegment
-                    Point1="16.857147265455,25.5588236452385"
-                    Point2="20.857147265455,25.5588236452385"
-                    Point3="20.857147265455,29.5588236452385" />
-                  <mssgle:LineSegment
-                    End="20.857147265455,43.617647290477" />
+                    End="0,43.617647290477" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2121,39 +2744,43 @@ FROM rik_Land</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Load Annotation\Annotation_ERROR"
+          TopLeft="361,258" />
         <EdgeLayout
           Id="Package\Load Annotation.Paths[Error Output]"
           TopLeft="393.523813932122,173.117647290477">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="99.9761860678783,87.882352709523"
+              EndConnector="51.9761860678783,84.882352709523"
               Start="0,0"
-              End="99.9761860678783,80.382352709523">
+              End="51.9761860678783,77.382352709523">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.557385276528" />
+                    End="0,30.3435789486277" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.557385276528"
-                    Point2="0,35.557385276528"
-                    Point3="4,35.557385276528" />
+                    Point1="0,30.3435789486277"
+                    Point2="0,34.3435789486277"
+                    Point3="4,34.3435789486277" />
                   <mssgle:LineSegment
-                    End="95.9761860678783,35.557385276528" />
+                    End="47.9761860678783,34.3435789486277" />
                   <mssgle:CubicBezierSegment
-                    Point1="95.9761860678783,35.557385276528"
-                    Point2="99.9761860678783,35.557385276528"
-                    Point3="99.9761860678783,39.557385276528" />
+                    Point1="47.9761860678783,34.3435789486277"
+                    Point2="51.9761860678783,34.3435789486277"
+                    Point3="51.9761860678783,38.3435789486277" />
                   <mssgle:LineSegment
-                    End="99.9761860678783,80.382352709523" />
+                    End="51.9761860678783,77.382352709523" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="21.6517063151891,40.557385276528,56.6727734375,11.43359375"
+              BoundingBox="-2.34829368481085,39.3435789486277,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
