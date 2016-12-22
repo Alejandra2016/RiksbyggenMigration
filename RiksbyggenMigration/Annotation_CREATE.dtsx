@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Annotation_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="96"
-  DTS:VersionGUID="{0CCEB715-7298-4394-AA83-32C1756F59A1}">
+  DTS:VersionBuild="98"
+  DTS:VersionGUID="{578257B6-341C-48D4-BF65-FE1BB07D17D8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -899,7 +899,7 @@
   &lt;LookupTargets&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;account&lt;/TargetEntity&gt;
-      &lt;UsePrimaryField&gt;true&lt;/UsePrimaryField&gt;
+      &lt;TargetTextField&gt;rik_idnummer&lt;/TargetTextField&gt;
     &lt;/LookupTarget&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;appointment&lt;/TargetEntity&gt;
@@ -2374,7 +2374,7 @@ FROM Annotation</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE Annotation_ERROR;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Annotation;&#xA;TRUNCATE TABLE Annotation_ERROR;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2688,6 +2688,10 @@ FROM Annotation</property>
           Size="142,42"
           Id="Package\Load Annotation\Row Inserted"
           TopLeft="123.857143246397,256.505888993683" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Load Annotation\Annotation_ERROR"
+          TopLeft="361,258" />
         <EdgeLayout
           Id="Package\Load Annotation.Paths[Default Output]"
           TopLeft="327.190480598788,173.117647290477">
@@ -2744,10 +2748,6 @@ FROM Annotation</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Load Annotation\Annotation_ERROR"
-          TopLeft="361,258" />
         <EdgeLayout
           Id="Package\Load Annotation.Paths[Error Output]"
           TopLeft="393.523813932122,173.117647290477">
