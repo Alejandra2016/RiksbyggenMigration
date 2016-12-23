@@ -1,0 +1,3702 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/28/2016 3:43:43 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WIN-MDNURGQAKC3"
+  DTS:CreatorName="CORP\Administrator"
+  DTS:DTSID="{15C3572E-8D9F-4F50-AC52-93F46B3BB18F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="1053"
+  DTS:ObjectName="Utskick_CREATE"
+  DTS:PackageType="5"
+  DTS:VersionBuild="103"
+  DTS:VersionGUID="{532AA28F-DF09-4F38-B0EA-5BF2292FC945}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="LogOLEDB"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{D0964CB0-B510-4BB1-A456-5D9F34DB97C0}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{8CDCD5FE-17BD-4423-BC98-E550A0D8A472}"
+      DTS:ObjectName="ParentPackageExecutionID">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">{A82E5FBD-6395-4935-AB2F-C6EC847EC672}</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{37358DC7-D951-4365-923C-2341128C7AAB}"
+      DTS:ObjectName="Parentpackagename">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Saknas</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CA2F78EF-7F61-4218-8A3C-4890A1493413}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Event">
+      <DTS:VariableValue
+        DTS:DataType="8">Start</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{72C46D53-FAEE-4545-8674-95D9DA7C9CD6}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::ParentPackageExecutionID]== &quot;156C50F0-51B8-4EF2-BD8C-61FF52F5E722&quot; ? @[System::ExecutionInstanceGUID]  : @[$Package::ParentPackageExecutionID]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ParentPackageExecutionID">
+      <DTS:VariableValue
+        DTS:DataType="8">{A82E5FBD-6395-4935-AB2F-C6EC847EC672}</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{92C03B9B-CA19-46E5-A46F-9185D5846D10}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::Parentpackagename]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ParentPackageName">
+      <DTS:VariableValue
+        DTS:DataType="8">Saknas</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9E96690C-BEEB-44BC-90F4-3676FC04B197}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsDeleted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{815D996B-3B16-4545-99CB-44371E6D5A88}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsInserted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{62537802-4EDB-4663-82E3-EE29FBBC1B42}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsUpdated">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3CE16830-359D-41D3-B06C-0C36B34EFE1A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsUpdated2">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D70A565D-A0C8-455D-BE58-D53EF1729657}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Senastladdatum">
+      <DTS:VariableValue
+        DTS:DataType="7">10/2/2016 1:00:35 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{60BC368A-0F81-4945-BCD8-1BEA55B72FBC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceSystemID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4E311CD3-43E9-40FE-9E45-A304C7BD94B8}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Sourcetable">
+      <DTS:VariableValue
+        DTS:DataType="8">Account</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9D0E8288-7840-4263-802B-6DFAF1E610D5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQL_source_query">
+      <DTS:VariableValue
+        DTS:DataType="8">select * from dbo.Test</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5D82EA43-A926-46FA-B456-6F7E0C6885F4}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Dim.&quot;+@[System::PackageName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Target">
+      <DTS:VariableValue
+        DTS:DataType="8">Dim.Utskick_CREATE</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{D0964CB0-B510-4BB1-A456-5D9F34DB97C0}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Hyresgäst to STG"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8f65ab63-f37e-41c3-8499-cb5f2a2d6ff5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Hyresgäst to STG"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="EXEC GetUtskickHyresgast;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Resurser to STG"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E4627621-32C6-4003-B8A6-B2BE05DEEA37}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Resurser to STG"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="EXEC GetUtskickResurs;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Utskick - Hyresgäster"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4B3C6406-A717-4121-80CA-3921CD35B6D9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Utskick - Hyresgäster"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Populate data into Microsoft Dynamics CRM."
+              name="Migrate Utskick records"
+              usesDispositions="true"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Destination entity to write data."
+                  expressionType="Notify"
+                  name="DestinationEntity">rik_utskick</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to CRM server."
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
+                  expressionType="Notify"
+                  name="RemoveUnresolvableReferences">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether duplicate detection should be enabled when creating or updating CRM records. Duplicate records are determined by the duplicate detection rules and settings defined in Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="EnableDuplicateDetection">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the matching criteria to be used when Upsert action is chosen."
+                  expressionType="Notify"
+                  name="UpsertMatchingCriteria"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
+                  expressionType="Notify"
+                  name="UpsertMatchingFields"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those fields that have no value changes in the target system. "
+                  expressionType="Notify"
+                  name="IgnoreUnchangedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to CRM."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the flag field(s) that are used to track the source of changes. The field(s) will not posted to CRM server unless there are changes to other fields if specified. &quot;Ignore Unchange Fields&quot; option is required in order for the specified flag field(s) to work. "
+                  expressionType="Notify"
+                  name="ChangeFlagFields"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify what action will be taken when multiple matches are found with Upsert action."
+                  expressionType="Notify"
+                  name="HandlingOfMultipleMatches"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
+                <property
+                  dataType="System.String"
+                  description="Workflow to be executed."
+                  expressionType="Notify"
+                  name="Workflow"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of records to be sent to Microsoft Dynamics CRM in each batch (CRM 2011 Update Rollup 12 or later is required if batch size is greater than 1)."
+                  expressionType="Notify"
+                  name="BatchSize">100</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether datetime values should be sent to CRM server in UTC format."
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].Columns[rik_KontaktId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rik_KontaktId"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[rik_kontaktid]"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[rik_KontaktId]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].Columns[rik_Namn]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_Namn"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[rik_namn]"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[rik_Namn]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].Columns[rik_UtskickstypId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rik_UtskickstypId"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[rik_utskickstypid]"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[rik_UtskickstypId]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].Columns[statecode]"
+                      cachedDataType="i4"
+                      cachedName="statecode"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[statecode]"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[statecode]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].Columns[statuscode]"
+                      cachedDataType="i4"
+                      cachedName="statuscode"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[statuscode]"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[statuscode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[createdby]"
+                      dataType="guid"
+                      name="createdby">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[importsequencenumber]"
+                      dataType="i4"
+                      name="importsequencenumber">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                      dataType="dbTimeStamp"
+                      name="overriddencreatedon">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">DateTime</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[ownerid]"
+                      dataType="guid"
+                      name="ownerid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Owner</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser;team</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[owneridtype]"
+                      dataType="wstr"
+                      length="64"
+                      name="owneridtype">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">EntityName</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[rik_kontaktid]"
+                      dataType="guid"
+                      name="rik_kontaktid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">contact</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;contact&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_idnummer&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[rik_namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_namn">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[rik_utskickid]"
+                      dataType="guid"
+                      name="rik_utskickid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[rik_utskickstypid]"
+                      dataType="guid"
+                      name="rik_utskickstypid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">rik_utskickstyp</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_utskickstyp&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_kod&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">State</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Status</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[timezoneruleversionnumber]"
+                      dataType="i4"
+                      name="timezoneruleversionnumber">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input].ExternalColumns[utcconversiontimezonecode]"
+                      dataType="i4"
+                      name="utcconversiontimezonecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      name="CrmErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Utskick - Hyresgäster\Row Inserted"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Inserted">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RowsInserted</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load Utskick - Hyresgäster\Row Inserted.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Utskick - Hyresgäster\Row Inserted.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Load Utskick - Hyresgäster\Row Inserted.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="STG Hyresgäst"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[rik_Land]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  rik_KontaktId
+,rik_Namn
+,statecode  -- Active; 1 Inactive
+,statuscode --Active; 2 Inactiv
+,rik_UtskickstypId
+FROM rik_Utskick</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[rik_KontaktId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].ExternalColumns[rik_KontaktId]"
+                      length="255"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[rik_KontaktId]"
+                      name="rik_KontaktId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[rik_Namn]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].ExternalColumns[rik_Namn]"
+                      length="100"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[rik_Namn]"
+                      name="rik_Namn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[statecode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].ExternalColumns[statecode]"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[statecode]"
+                      name="statecode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[statuscode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].ExternalColumns[statuscode]"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[statuscode]"
+                      name="statuscode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[rik_UtskickstypId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].ExternalColumns[rik_UtskickstypId]"
+                      length="255"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[rik_UtskickstypId]"
+                      name="rik_UtskickstypId"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].ExternalColumns[rik_KontaktId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_KontaktId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].ExternalColumns[rik_Namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_Namn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].ExternalColumns[rik_UtskickstypId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_UtskickstypId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output].Columns[rik_KontaktId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output].Columns[rik_KontaktId]"
+                      name="rik_KontaktId" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output].Columns[rik_Namn]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output].Columns[rik_Namn]"
+                      name="rik_Namn" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output].Columns[statecode]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output].Columns[statecode]"
+                      name="statecode" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output].Columns[statuscode]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output].Columns[statuscode]"
+                      name="statuscode" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output].Columns[rik_UtskickstypId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output].Columns[rik_UtskickstypId]"
+                      name="rik_UtskickstypId" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Utskick_ERROR"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[rik_Utskick_ERROR]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[rik_KontaktId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rik_KontaktId"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_KontaktId]"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[rik_KontaktId]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[rik_Namn]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_Namn"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[rik_Namn]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[statecode]"
+                      cachedDataType="i4"
+                      cachedName="statecode"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statecode]"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[statecode]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[statuscode]"
+                      cachedDataType="i4"
+                      cachedName="statuscode"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statuscode]"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[statuscode]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[rik_UtskickstypId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rik_UtskickstypId"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_UtskickstypId]"
+                      lineageId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output].Columns[rik_UtskickstypId]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Outputs[Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Outputs[Error Output].Columns[ErrorColumn]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[CrmErrorMessage]"
+                      cachedDataType="wstr"
+                      cachedLength="2048"
+                      cachedName="CrmErrorMessage"
+                      externalMetadataColumnId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      lineageId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Outputs[Error Output].Columns[CrmErrorMessage]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_UtskickstypIdName]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_UtskickstypIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_KontaktIdYomiName]"
+                      dataType="wstr"
+                      length="450"
+                      name="rik_KontaktIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_KontaktIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="rik_KontaktIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdYomiName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdDsc]"
+                      dataType="i4"
+                      name="OwnerIdDsc" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
+                      dataType="i4"
+                      name="OwnerIdType" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningUser" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningTeam]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningTeam" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_UtskickId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_UtskickId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="CreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningBusinessUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
+                      dataType="i4"
+                      name="ImportSequenceNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="OverriddenCreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TimeZoneRuleVersionNumber]"
+                      dataType="i4"
+                      name="TimeZoneRuleVersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[UTCConversionTimeZoneCode]"
+                      dataType="i4"
+                      name="UTCConversionTimeZoneCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_Namn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_KontaktId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_KontaktId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_UtskickstypId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_UtskickstypId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      dataType="wstr"
+                      length="255"
+                      name="MigrationId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="4000"
+                      name="CrmErrorMessage" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Utskick - Hyresgäster.Paths[Default Output]"
+              endId="Package\Load Utskick - Hyresgäster\Row Inserted.Inputs[Row Count Input 1]"
+              name="Default Output"
+              startId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Outputs[Default Output]" />
+            <path
+              refId="Package\Load Utskick - Hyresgäster.Paths[Error Output]"
+              endId="Package\Load Utskick - Hyresgäster\Utskick_ERROR.Inputs[OLE DB Destination Input]"
+              name="Error Output"
+              startId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Outputs[Error Output]" />
+            <path
+              refId="Package\Load Utskick - Hyresgäster.Paths[OLE DB Source Output]"
+              endId="Package\Load Utskick - Hyresgäster\Migrate Utskick records.Inputs[Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Utskick - Hyresgäster\STG Hyresgäst.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Utskick - Resurser"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{eb290159-8c29-463a-b9a0-7a82d60d57ad}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Utskick - Resurser"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Utskick - Resurser\Migrate Utskick records"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Populate data into Microsoft Dynamics CRM."
+              name="Migrate Utskick records"
+              usesDispositions="true"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Destination entity to write data."
+                  expressionType="Notify"
+                  name="DestinationEntity">rik_utskick</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to CRM server."
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
+                  expressionType="Notify"
+                  name="RemoveUnresolvableReferences">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether duplicate detection should be enabled when creating or updating CRM records. Duplicate records are determined by the duplicate detection rules and settings defined in Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="EnableDuplicateDetection">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the matching criteria to be used when Upsert action is chosen."
+                  expressionType="Notify"
+                  name="UpsertMatchingCriteria"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
+                  expressionType="Notify"
+                  name="UpsertMatchingFields"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those fields that have no value changes in the target system. "
+                  expressionType="Notify"
+                  name="IgnoreUnchangedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to CRM."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the flag field(s) that are used to track the source of changes. The field(s) will not posted to CRM server unless there are changes to other fields if specified. &quot;Ignore Unchange Fields&quot; option is required in order for the specified flag field(s) to work. "
+                  expressionType="Notify"
+                  name="ChangeFlagFields"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify what action will be taken when multiple matches are found with Upsert action."
+                  expressionType="Notify"
+                  name="HandlingOfMultipleMatches"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
+                <property
+                  dataType="System.String"
+                  description="Workflow to be executed."
+                  expressionType="Notify"
+                  name="Workflow"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of records to be sent to Microsoft Dynamics CRM in each batch (CRM 2011 Update Rollup 12 or later is required if batch size is greater than 1)."
+                  expressionType="Notify"
+                  name="BatchSize">100</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether datetime values should be sent to CRM server in UTC format."
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Utskick - Resurser\Migrate Utskick records.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].Columns[rik_KontaktId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rik_KontaktId"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[rik_kontaktid]"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[rik_KontaktId]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].Columns[rik_Namn]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_Namn"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[rik_namn]"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[rik_Namn]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].Columns[rik_UtskickstypId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rik_UtskickstypId"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[rik_utskickstypid]"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[rik_UtskickstypId]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].Columns[statecode]"
+                      cachedDataType="i4"
+                      cachedName="statecode"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[statecode]"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[statecode]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].Columns[statuscode]"
+                      cachedDataType="i4"
+                      cachedName="statuscode"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[statuscode]"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[statuscode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[createdby]"
+                      dataType="guid"
+                      name="createdby">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[importsequencenumber]"
+                      dataType="i4"
+                      name="importsequencenumber">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                      dataType="dbTimeStamp"
+                      name="overriddencreatedon">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">DateTime</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[ownerid]"
+                      dataType="guid"
+                      name="ownerid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Owner</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser;team</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[owneridtype]"
+                      dataType="wstr"
+                      length="64"
+                      name="owneridtype">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">EntityName</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[rik_kontaktid]"
+                      dataType="guid"
+                      name="rik_kontaktid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">contact</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[rik_namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_namn">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[rik_utskickid]"
+                      dataType="guid"
+                      name="rik_utskickid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[rik_utskickstypid]"
+                      dataType="guid"
+                      name="rik_utskickstypid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">rik_utskickstyp</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_utskickstyp&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_kod&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">State</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Status</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[timezoneruleversionnumber]"
+                      dataType="i4"
+                      name="timezoneruleversionnumber">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input].ExternalColumns[utcconversiontimezonecode]"
+                      dataType="i4"
+                      name="utcconversiontimezonecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Utskick - Resurser\Migrate Utskick records.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Resurser\Migrate Utskick records.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Resurser\Migrate Utskick records.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\Migrate Utskick records.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Load Utskick - Resurser\Migrate Utskick records.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      name="CrmErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Utskick - Resurser\Migrate Utskick records.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Utskick - Resurser\Row Inserted"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Inserted">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RowsInserted</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load Utskick - Resurser\Row Inserted.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Utskick - Resurser\Row Inserted.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Load Utskick - Resurser\Row Inserted.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Utskick - Resurser\STG Utskick"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="STG Utskick"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[rik_Land]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT rik_KontaktId
+,rik_Namn
+,statecode  -- Active; 1 Inactive
+,statuscode --Active; 2 Inactiv
+,rik_UtskickstypId
+FROM  rik_Utskick</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Utskick - Resurser\STG Utskick.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[rik_KontaktId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].ExternalColumns[rik_KontaktId]"
+                      length="255"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[rik_KontaktId]"
+                      name="rik_KontaktId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[statecode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].ExternalColumns[statecode]"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[statecode]"
+                      name="statecode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[statuscode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].ExternalColumns[statuscode]"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[statuscode]"
+                      name="statuscode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[rik_UtskickstypId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].ExternalColumns[rik_UtskickstypId]"
+                      length="255"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[rik_UtskickstypId]"
+                      name="rik_UtskickstypId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[rik_Namn]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].ExternalColumns[rik_Namn]"
+                      length="100"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[rik_Namn]"
+                      name="rik_Namn"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].ExternalColumns[rik_KontaktId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_KontaktId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].ExternalColumns[rik_UtskickstypId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_UtskickstypId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].ExternalColumns[rik_Namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_Namn" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output].Columns[rik_KontaktId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output].Columns[rik_KontaktId]"
+                      name="rik_KontaktId" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output].Columns[rik_Namn]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output].Columns[rik_Namn]"
+                      name="rik_Namn" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output].Columns[statecode]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output].Columns[statecode]"
+                      name="statecode" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output].Columns[statuscode]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output].Columns[statuscode]"
+                      name="statuscode" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output].Columns[rik_UtskickstypId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output].Columns[rik_UtskickstypId]"
+                      name="rik_UtskickstypId" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Utskick - Resurser\Utskick_ERROR"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Utskick_ERROR"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[rik_Utskick_ERROR]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Utskick - Resurser\Utskick_ERROR.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[rik_KontaktId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rik_KontaktId"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_KontaktId]"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[rik_KontaktId]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[statecode]"
+                      cachedDataType="i4"
+                      cachedName="statecode"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statecode]"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[statecode]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[statuscode]"
+                      cachedDataType="i4"
+                      cachedName="statuscode"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statuscode]"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[statuscode]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[rik_UtskickstypId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rik_UtskickstypId"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_UtskickstypId]"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[rik_UtskickstypId]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[rik_Namn]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_Namn"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
+                      lineageId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output].Columns[rik_Namn]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Load Utskick - Resurser\Migrate Utskick records.Outputs[Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Load Utskick - Resurser\Migrate Utskick records.Outputs[Error Output].Columns[ErrorColumn]" />
+                    <inputColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].Columns[CrmErrorMessage]"
+                      cachedDataType="wstr"
+                      cachedLength="2048"
+                      cachedName="CrmErrorMessage"
+                      externalMetadataColumnId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      lineageId="Package\Load Utskick - Resurser\Migrate Utskick records.Outputs[Error Output].Columns[CrmErrorMessage]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_UtskickstypIdName]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_UtskickstypIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_KontaktIdYomiName]"
+                      dataType="wstr"
+                      length="450"
+                      name="rik_KontaktIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_KontaktIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="rik_KontaktIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdYomiName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdDsc]"
+                      dataType="i4"
+                      name="OwnerIdDsc" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
+                      dataType="i4"
+                      name="OwnerIdType" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningUser" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningTeam]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningTeam" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_UtskickId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_UtskickId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="CreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningBusinessUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
+                      dataType="i4"
+                      name="ImportSequenceNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="OverriddenCreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TimeZoneRuleVersionNumber]"
+                      dataType="i4"
+                      name="TimeZoneRuleVersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[UTCConversionTimeZoneCode]"
+                      dataType="i4"
+                      name="UTCConversionTimeZoneCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_Namn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_KontaktId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_KontaktId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_UtskickstypId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_UtskickstypId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      dataType="wstr"
+                      length="255"
+                      name="MigrationId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="4000"
+                      name="CrmErrorMessage" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Utskick - Resurser\Utskick_ERROR.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Resurser\Utskick_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Utskick - Resurser\Utskick_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Utskick - Resurser\Utskick_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Utskick - Resurser.Paths[Default Output]"
+              endId="Package\Load Utskick - Resurser\Row Inserted.Inputs[Row Count Input 1]"
+              name="Default Output"
+              startId="Package\Load Utskick - Resurser\Migrate Utskick records.Outputs[Default Output]" />
+            <path
+              refId="Package\Load Utskick - Resurser.Paths[Error Output]"
+              endId="Package\Load Utskick - Resurser\Utskick_ERROR.Inputs[OLE DB Destination Input]"
+              name="Error Output"
+              startId="Package\Load Utskick - Resurser\Migrate Utskick records.Outputs[Error Output]" />
+            <path
+              refId="Package\Load Utskick - Resurser.Paths[OLE DB Source Output]"
+              endId="Package\Load Utskick - Resurser\Migrate Utskick records.Inputs[Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Utskick - Resurser\STG Utskick.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LogPackageEnd"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{29143F16-396B-4A9C-A12F-5C67EEC3C61F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LogPackageEnd"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="ExecuteSQLExecutingQuery"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnExecStatusChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnProgress"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnQueryCancel"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnTaskFailed"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnWarning"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A3324C0F-E9EB-404C-85EA-9F2680BB5C0A}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="InsertLogPackage" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Eventname"
+            SQLTask:DtsVariableName="User::Event"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packagename"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packageid"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Loggingtime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="135"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Mainpackagename"
+            SQLTask:DtsVariableName="User::ParentPackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsinserted"
+            SQLTask:DtsVariableName="User::RowsInserted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsupdated"
+            SQLTask:DtsVariableName="User::RowsUpdated"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsdeleted"
+            SQLTask:DtsVariableName="User::RowsDeleted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Username"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Executionid"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="User::ParentPackageExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LogPackageStart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5DF7BC79-470E-459D-BE5E-7E606AF62CCC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LogPackageStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="ExecuteSQLExecutingQuery"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnExecStatusChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnProgress"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnQueryCancel"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnTaskFailed"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnWarning"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A3324C0F-E9EB-404C-85EA-9F2680BB5C0A}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="InsertLogPackage" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Eventname"
+            SQLTask:DtsVariableName="User::Event"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packagename"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packageid"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Loggingtime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="135"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Mainpackagename"
+            SQLTask:DtsVariableName="User::ParentPackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsinserted"
+            SQLTask:DtsVariableName="User::RowsInserted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsupdated"
+            SQLTask:DtsVariableName="User::RowsUpdated"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsdeleted"
+            SQLTask:DtsVariableName="User::RowsDeleted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Username"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Executionid"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="User::ParentPackageExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\New LoggStatus"
+      DTS:CreationName="Microsoft.ExpressionTask"
+      DTS:Description="Expression Task"
+      DTS:DTSID="{A41B1B97-C8B3-4E5E-835D-8EA0A247F561}"
+      DTS:ExecutableType="Microsoft.ExpressionTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="New LoggStatus"
+      DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExpressionTask
+          Expression="@[User::Event] = &quot;End&quot;" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate rows in ERROR table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B2054342-27FE-405A-A813-A406D182B6E9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate rows in ERROR table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE rik_Utskick_ERROR;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{52831166-1DC2-432F-96D5-9DA70C305510}"
+      DTS:From="Package\LogPackageStart"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\New LoggStatus" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D9324AA3-52AD-467A-B61A-62D488CFDA56}"
+      DTS:From="Package\Load Utskick - Hyresgäster"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
+      DTS:CreationName=""
+      DTS:DTSID="{4602196C-BFC2-414D-B7FB-5A9164C48922}"
+      DTS:From="Package\Load Hyresgäst to STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 10"
+      DTS:To="Package\Load Utskick - Hyresgäster" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 11]"
+      DTS:CreationName=""
+      DTS:DTSID="{DF5FD625-6E66-4B6F-BADA-26681FFBAE1E}"
+      DTS:From="Package\Load Hyresgäst to STG"
+      DTS:ObjectName="Constraint 11"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{53280A04-2A2C-4F17-8516-7F72AA3B0C62}"
+      DTS:From="Package\New LoggStatus"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Truncate rows in ERROR table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{1BB69DDE-DE8A-45DA-936B-D6B4D92004BE}"
+      DTS:From="Package\New LoggStatus"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{0D55DF05-2D0D-41FD-A34E-A3CA909F980F}"
+      DTS:From="Package\Truncate rows in ERROR table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Load Resurser to STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{71BE740D-C37D-4E41-AB8C-9AF5EF568E57}"
+      DTS:From="Package\Truncate rows in ERROR table"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{7BFB2C17-C9B3-42FE-82B2-C63D61ED0DEF}"
+      DTS:From="Package\Load Utskick - Resurser"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Load Hyresgäst to STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{B8CD6031-8BBB-449A-B836-2CAC3DEF80E6}"
+      DTS:From="Package\Load Utskick - Resurser"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{D5D7C4BD-5950-4829-B0FF-ACB01E3D774A}"
+      DTS:From="Package\Load Resurser to STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Load Utskick - Resurser" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{3B71D9D5-8D04-4823-8C18-9C292F8AF33F}"
+      DTS:From="Package\Load Resurser to STG"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\Load Hyresgäst to STG"
+          TopLeft="513.880961038629,386.95947704196" />
+        <NodeLayout
+          Size="204,41.6"
+          Id="Package\Load Resurser to STG"
+          TopLeft="404.547625444932,194.235296841724" />
+        <NodeLayout
+          Size="204,41.6"
+          Id="Package\Load Utskick - Hyresgäster"
+          TopLeft="481.690483901524,478.79804472473" />
+        <NodeLayout
+          Size="204,41.6"
+          Id="Package\Load Utskick - Resurser"
+          TopLeft="403.595244476332,294.411768834896" />
+        <NodeLayout
+          Size="152,40.8"
+          Id="Package\LogPackageEnd"
+          TopLeft="59.0238108940575,474.786930667781" />
+        <NodeLayout
+          Size="163.2,40.8"
+          Id="Package\LogPackageStart"
+          TopLeft="58.6428580478746,36.0882357231061" />
+        <NodeLayout
+          Size="143.2,40.8"
+          Id="Package\New LoggStatus"
+          TopLeft="64.5714296710736,119.294119320114" />
+        <NodeLayout
+          Size="163.2,40.8"
+          Id="Package\Truncate rows in ERROR table"
+          TopLeft="301.476195877101,118.070589891189" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="138.007143859474,77.6882357231061">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.6058835970077"
+              Start="0,0"
+              End="0,34.1058835970077">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.1058835970077" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="481.690483901524,497.392487696256">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-270.666673007467,0"
+              Start="0,0"
+              End="-263.166673007467,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-263.166673007467,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-156.887789628734,5,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="636.814294371962,428.55947704196">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-53.1238104704378,50.2385676827702"
+              Start="0,0"
+              End="-53.1238104704378,42.7385676827702">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.3519644399988" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.3519644399988"
+                    Point2="0,20.3519644399988"
+                    Point3="-4,20.3519644399988" />
+                  <mssgle:LineSegment
+                    End="-49.1238104704378,20.3519644399988" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-49.1238104704378,20.3519644399988"
+                    Point2="-53.1238104704378,20.3519644399988"
+                    Point3="-53.1238104704378,24.3519644399988" />
+                  <mssgle:LineSegment
+                    End="-53.1238104704378,42.7385676827702" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 11]"
+          TopLeft="577.347627705295,428.55947704196">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-394.323816811238,46.2274536258211"
+              Start="0,0"
+              End="-394.323816811238,38.7274536258211">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.9979257079663" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.9979257079663"
+                    Point2="0,29.9979257079663"
+                    Point3="-4,29.9979257079663" />
+                  <mssgle:LineSegment
+                    End="-390.323816811238,29.9979257079663" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-390.323816811238,29.9979257079663"
+                    Point2="-394.323816811238,29.9979257079663"
+                    Point3="-394.323816811238,33.9979257079662" />
+                  <mssgle:LineSegment
+                    End="-394.323816811238,38.7274536258211" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-212.403256061869,34.9979257079663,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="207.771429671074,139.082354605652">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="93.7047662060275,0"
+              Start="0,0"
+              End="86.2047662060275,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="86.2047662060275,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="136.171429671074,160.094119320114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-49.1476187770161,314.692811347667"
+              Start="0,0"
+              End="-49.1476187770161,307.192811347667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,225.967823677142" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,225.967823677142"
+                    Point2="0,229.967823677142"
+                    Point3="-4,229.967823677142" />
+                  <mssgle:LineSegment
+                    End="-45.1476187770161,229.967823677142" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-45.1476187770161,229.967823677142"
+                    Point2="-49.1476187770161,229.967823677142"
+                    Point3="-49.1476187770161,233.967823677142" />
+                  <mssgle:LineSegment
+                    End="-49.1476187770161,307.192811347667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-39.8151570447581,234.967823677142,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="408.942862543768,158.870589891189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97.604762901164,35.3647069505347"
+              Start="0,0"
+              End="97.604762901164,27.8647069505347">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.3518907818675" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.3518907818675"
+                    Point2="0,14.3518907818675"
+                    Point3="4,14.3518907818675" />
+                  <mssgle:LineSegment
+                    End="93.604762901164,14.3518907818675" />
+                  <mssgle:CubicBezierSegment
+                    Point1="93.604762901164,14.3518907818675"
+                    Point2="97.604762901164,14.3518907818675"
+                    Point3="97.604762901164,18.3518907818675" />
+                  <mssgle:LineSegment
+                    End="97.604762901164,27.8647069505347" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="357.209529210434,158.870589891189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-246.185718316377,315.916340776592"
+              Start="0,0"
+              End="-246.185718316377,308.416340776592">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,153.81907022567" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,153.81907022567"
+                    Point2="0,157.81907022567"
+                    Point3="-4,157.81907022567" />
+                  <mssgle:LineSegment
+                    End="-242.185718316377,157.81907022567" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-242.185718316377,157.81907022567"
+                    Point2="-246.185718316377,157.81907022567"
+                    Point3="-246.185718316377,161.81907022567" />
+                  <mssgle:LineSegment
+                    End="-246.185718316377,308.416340776592" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-138.334206814439,162.81907022567,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="538.261911142999,336.011768834896">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="68.81904989563,50.9477082070639"
+              Start="0,0"
+              End="68.81904989563,43.4477082070639">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.6169714145317" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.6169714145317"
+                    Point2="0,20.6169714145317"
+                    Point3="4,20.6169714145317" />
+                  <mssgle:LineSegment
+                    End="64.81904989563,20.6169714145317" />
+                  <mssgle:CubicBezierSegment
+                    Point1="64.81904989563,20.6169714145317"
+                    Point2="68.81904989563,20.6169714145317"
+                    Point3="68.81904989563,24.6169714145317" />
+                  <mssgle:LineSegment
+                    End="68.81904989563,43.4477082070639" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="472.928577809665,336.011768834896">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-323.504766915608,138.775161832885"
+              Start="0,0"
+              End="-323.504766915608,131.275161832885">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.298028664831" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,59.298028664831"
+                    Point2="0,63.298028664831"
+                    Point3="-4,63.298028664831" />
+                  <mssgle:LineSegment
+                    End="-319.504766915608,63.298028664831" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-319.504766915608,63.298028664831"
+                    Point2="-323.504766915608,63.298028664831"
+                    Point3="-323.504766915608,67.298028664831" />
+                  <mssgle:LineSegment
+                    End="-323.504766915608,131.275161832885" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-176.993731114054,68.298028664831,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="539.214292111598,235.835296841724">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-33.6190476352664,58.5764719931725"
+              Start="0,0"
+              End="-33.6190476352664,51.0764719931725">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.7040976159142" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.7040976159142"
+                    Point2="0,23.7040976159142"
+                    Point3="-4,23.7040976159142" />
+                  <mssgle:LineSegment
+                    End="-29.6190476352664,23.7040976159142" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-29.6190476352664,23.7040976159142"
+                    Point2="-33.6190476352664,23.7040976159142"
+                    Point3="-33.6190476352664,27.7040976159142" />
+                  <mssgle:LineSegment
+                    End="-33.6190476352664,51.0764719931725" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="473.880958778265,235.835296841724">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-302.857147884207,238.951633826058"
+              Start="0,0"
+              End="-302.857147884207,231.451633826058">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,130.674394877436" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,130.674394877436"
+                    Point2="0,134.674394877436"
+                    Point3="-4,134.674394877436" />
+                  <mssgle:LineSegment
+                    End="-298.857147884207,134.674394877436" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-298.857147884207,134.674394877436"
+                    Point2="-302.857147884207,134.674394877436"
+                    Point3="-302.857147884207,138.674394877436" />
+                  <mssgle:LineSegment
+                    End="-302.857147884207,231.451633826058" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-166.669921598353,139.674394877436,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Utskick - Hyresgäster">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\Load Utskick - Hyresgäster\STG Hyresgäst"
+          TopLeft="280,38" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Load Utskick - Hyresgäster\Migrate Utskick records"
+          TopLeft="256.857147265455,131.117647290477" />
+        <NodeLayout
+          Size="142.4,41.6"
+          Id="Package\Load Utskick - Hyresgäster\Row Inserted"
+          TopLeft="123.857143246397,256.505888993683" />
+        <EdgeLayout
+          Id="Package\Load Utskick - Hyresgäster.Paths[Default Output]"
+          TopLeft="350.857147265455,172.717647290477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-155.800004019058,83.788241703206"
+              Start="0,0"
+              End="-155.800004019058,76.288241703206">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.894120851603" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.894120851603"
+                    Point2="0,41.894120851603"
+                    Point3="-4,41.894120851603" />
+                  <mssgle:LineSegment
+                    End="-151.800004019058,41.894120851603" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-151.800004019058,41.894120851603"
+                    Point2="-155.800004019058,41.894120851603"
+                    Point3="-155.800004019058,45.894120851603" />
+                  <mssgle:LineSegment
+                    End="-155.800004019058,76.288241703206" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Utskick - Hyresgäster.Paths[OLE DB Source Output]"
+          TopLeft="352.228573632727,79.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.517647290477"
+              Start="0,0"
+              End="0,44.017647290477">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.017647290477" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Load Utskick - Hyresgäster\Utskick_ERROR"
+          TopLeft="400.8,254.4" />
+        <EdgeLayout
+          Id="Package\Load Utskick - Hyresgäster.Paths[Error Output]"
+          TopLeft="380.857147265455,172.717647290477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="95.542852734545,81.682352709523"
+              Start="0,0"
+              End="95.542852734545,74.182352709523">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.0865226165156" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.0865226165156"
+                    Point2="0,33.0865226165156"
+                    Point3="4,33.0865226165156" />
+                  <mssgle:LineSegment
+                    End="91.542852734545,33.0865226165156" />
+                  <mssgle:CubicBezierSegment
+                    Point1="91.542852734545,33.0865226165156"
+                    Point2="95.542852734545,33.0865226165156"
+                    Point3="95.542852734545,37.0865226165156" />
+                  <mssgle:LineSegment
+                    End="95.542852734545,74.182352709523" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="19.4350396485225,38.0865226165156,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Utskick - Hyresgäster\STG Hyresgäst">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Utskick - Hyresgäster\Utskick_ERROR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Utskick - Resurser">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Load Utskick - Resurser\Utskick_ERROR"
+          TopLeft="376.428577839112,255.411768287936" />
+        <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Load Utskick - Resurser\STG Utskick"
+          TopLeft="280,38" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Load Utskick - Resurser\Migrate Utskick records"
+          TopLeft="256.857147265455,131.117647290477" />
+        <NodeLayout
+          Size="142.4,41.6"
+          Id="Package\Load Utskick - Resurser\Row Inserted"
+          TopLeft="123.857143246397,256.505888993683" />
+        <EdgeLayout
+          Id="Package\Load Utskick - Resurser.Paths[OLE DB Source Output]"
+          TopLeft="349.028573632728,79.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.517647290477"
+              Start="0,0"
+              End="0,44.017647290477">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.017647290477" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Utskick - Resurser.Paths[Error Output]"
+          TopLeft="380.857147265455,172.717647290477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.171430573657,82.694120997459"
+              Start="0,0"
+              End="71.171430573657,75.194120997459">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.4963528090973" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.4963528090973"
+                    Point2="0,33.4963528090973"
+                    Point3="4,33.4963528090973" />
+                  <mssgle:LineSegment
+                    End="67.171430573657,33.4963528090973" />
+                  <mssgle:CubicBezierSegment
+                    Point1="67.171430573657,33.4963528090973"
+                    Point2="71.171430573657,33.4963528090973"
+                    Point3="71.171430573657,37.4963528090973" />
+                  <mssgle:LineSegment
+                    End="71.171430573657,75.194120997459" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="7.2493285680785,38.4963528090973,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Utskick - Resurser.Paths[Default Output]"
+          TopLeft="320.857147265455,172.717647290477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-125.800004019058,83.788241703206"
+              Start="0,0"
+              End="-125.800004019058,76.288241703206">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.9395409430708" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.9395409430708"
+                    Point2="0,33.9395409430708"
+                    Point3="-4,33.9395409430708" />
+                  <mssgle:LineSegment
+                    End="-121.800004019058,33.9395409430708" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-121.800004019058,33.9395409430708"
+                    Point2="-125.800004019058,33.9395409430708"
+                    Point3="-125.800004019058,37.9395409430708" />
+                  <mssgle:LineSegment
+                    End="-125.800004019058,76.288241703206" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Utskick - Resurser\Utskick_ERROR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Utskick - Resurser\STG Utskick">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
