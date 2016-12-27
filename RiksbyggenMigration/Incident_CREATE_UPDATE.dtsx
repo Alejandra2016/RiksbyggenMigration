@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Incident_CREATE_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="115"
-  DTS:VersionGUID="{FA71E312-7609-4E5E-965D-F9DEA68ECEB4}">
+  DTS:VersionBuild="116"
+  DTS:VersionGUID="{EC0464EC-B1BF-48C2-8093-E5BDADB4CD0F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -36887,12 +36887,11 @@
                       externalMetadataColumnId="Package\Update Incident\Update Incident records.Inputs[Input].ExternalColumns[incidentresolution_timespent]"
                       lineageId="Package\Update Incident\Read incident records.Outputs[CRM Primary Output].Columns[i.timespent]" />
                     <inputColumn
-                      refId="Package\Update Incident\Update Incident records.Inputs[Input].Columns[STR_incidentid]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="STR_incidentid"
+                      refId="Package\Update Incident\Update Incident records.Inputs[Input].Columns[incidentid]"
+                      cachedDataType="guid"
+                      cachedName="incidentid"
                       externalMetadataColumnId="Package\Update Incident\Update Incident records.Inputs[Input].ExternalColumns[incidentid]"
-                      lineageId="Package\Update Incident\Data Conversion.Outputs[Data Conversion Output].Columns[STR_incidentid]" />
+                      lineageId="Package\Update Incident\Read incident records.Outputs[CRM Primary Output].Columns[incidentid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -37196,15 +37195,7 @@
                           name="LookupTypes">incident</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;incident&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;rik_migreringid&lt;/TargetTextField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -38010,7 +38001,7 @@
         <NodeLayout
           Size="155,43"
           Id="Package\Update Incident"
-          TopLeft="345.666661575437,411.407400158158" />
+          TopLeft="346.666661575437,411.407400158158" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="138.007143859474,77.6882357231061">
@@ -38187,7 +38178,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="425.243386613733,317.976911219157">
+          TopLeft="425.743386613733,317.976911219157">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -38209,25 +38200,25 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="345.666661575437,430.443898949354">
+          TopLeft="346.666661575437,430.443898949354">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-141.784384488443,0"
+              EndConnector="-142.784384488443,0"
               Start="0,0"
-              End="-134.284384488443,0">
+              End="-135.284384488443,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-134.284384488443,0" />
+                    End="-135.284384488443,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-92.4466453692216,5,50.60890625,11.609375"
+              BoundingBox="-92.9466453692216,5,50.60890625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -38252,7 +38243,7 @@
           Id="Package\Load Incident\Union All Inserted"
           TopLeft="153.444443409642,474.999994352129" />
         <NodeLayout
-          Size="155,43"
+          Size="154,42"
           Id="Package\Load Incident\Derived Column"
           TopLeft="375.354162250646,151.916665523748" />
         <NodeLayout
@@ -38437,30 +38428,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Incident.Paths[Derived Column Output]"
-          TopLeft="452.854162250646,194.916665523748">
+          TopLeft="452.354162250646,193.916665523748">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="74.0029841292529,27.883336955805"
+              EndConnector="74.5029841292529,28.883336955805"
               Start="0,0"
-              End="74.0029841292529,20.383336955805">
+              End="74.5029841292529,21.383336955805">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.9416684779025" />
+                    End="0,10.4416684779025" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9.9416684779025"
-                    Point2="0,13.9416684779025"
-                    Point3="4,13.9416684779025" />
+                    Point1="0,10.4416684779025"
+                    Point2="0,14.4416684779025"
+                    Point3="4,14.4416684779025" />
                   <mssgle:LineSegment
-                    End="70.0029841292529,13.9416684779025" />
+                    End="70.5029841292529,14.4416684779025" />
                   <mssgle:CubicBezierSegment
-                    Point1="70.0029841292529,13.9416684779025"
-                    Point2="74.0029841292529,13.9416684779025"
-                    Point3="74.0029841292529,17.9416684779025" />
+                    Point1="70.5029841292529,14.4416684779025"
+                    Point2="74.5029841292529,14.4416684779025"
+                    Point3="74.5029841292529,18.4416684779025" />
                   <mssgle:LineSegment
-                    End="74.0029841292529,20.383336955805" />
+                    End="74.5029841292529,21.383336955805" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -38573,18 +38564,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Incident.Paths[Data Conversion Output]"
-          TopLeft="453.427081125323,126">
+          TopLeft="453.177081125323,126">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,25.9166655237476"
+              EndConnector="0,25.916665523748"
               Start="0,0"
-              End="0,18.4166655237476">
+              End="0,18.416665523748">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.4166655237476" />
+                    End="0,18.416665523748" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

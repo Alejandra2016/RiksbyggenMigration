@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Contact_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="93"
-  DTS:VersionGUID="{0CC7E4E9-8BC9-44C8-B832-28F232E938E6}">
+  DTS:VersionBuild="94"
+  DTS:VersionGUID="{60A00FAE-9E4C-4F21-A4E7-23C750321F9D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -1957,6 +1957,26 @@
                       cachedName="ContactId"
                       externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[contactid]"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[ContactId]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].Columns[rik_resursid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="rik_resursid"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_resursid]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_resursid]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].Columns[rik_Slutdatum]"
+                      cachedDataType="dbDate"
+                      cachedName="rik_Slutdatum"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_slutdatum]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Slutdatum]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].Columns[rik_Startdatum]"
+                      cachedDataType="dbDate"
+                      cachedName="rik_Startdatum"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_startdatum]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Startdatum]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -5706,6 +5726,26 @@
                       cachedName="ContactId"
                       externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[contactid]"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[ContactId]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_resursid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="rik_resursid"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_resursid]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_resursid]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_Slutdatum]"
+                      cachedDataType="dbDate"
+                      cachedName="rik_Slutdatum"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_slutdatum]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Slutdatum]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_Startdatum]"
+                      cachedDataType="dbDate"
+                      cachedName="rik_Startdatum"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_startdatum]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Startdatum]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -9455,6 +9495,26 @@
                       cachedName="ContactId"
                       externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[contactid]"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[ContactId]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_resursid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="rik_resursid"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_resursid]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_resursid]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_Slutdatum]"
+                      cachedDataType="dbDate"
+                      cachedName="rik_Slutdatum"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_slutdatum]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Slutdatum]" />
+                    <inputColumn
+                      refId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].Columns[rik_Startdatum]"
+                      cachedDataType="dbDate"
+                      cachedName="rik_Startdatum"
+                      externalMetadataColumnId="Package\Load Contact\Dynamics CRM Destination 2.Inputs[Input].ExternalColumns[rik_startdatum]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Startdatum]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -12998,10 +13058,12 @@
 ,CAST(CASE WHEN PersnrChk = 1 AND Sekelsiffra IS NOT NULL THEN CONCAT(CAST(Sekelsiffra AS CHAR(2)), REPLACE(Personnummer,'-','')) 
       WHEN Sekelsiffra IS NULL AND PersnrChk = 1 AND (Personnummer NOT LIKE '0%' AND Personnummer NOT LIKE '1%') THEN CONCAT(CAST('19' AS CHAR(2)), REPLACE(Personnummer,'-','')) 
 	   END AS NVARCHAR(20))AS rik_Personnummer
-	  
 ,CAST(CASE WHEN UtlandsPersnr IS NOT NULL THEN UtlandsPersnr END AS NVARCHAR(20))AS rik_AnnanUnikIdentifierare
 ,CASE WHEN Personnummer IS NULL THEN 1 ELSE 0 END AS rik_SaknarPersonnummer
 ,AnnanUnikIdentierare AS rik_IdNummer
+,Anstnummer AS rik_resursid
+,CAST(Anstdatum AS DATE) AS rik_Startdatum 
+,CASE WHEN Avgdatum != '' THEN CAST(Avgdatum AS DATE) END AS rik_Slutdatum
 ,PrivatEpost AS EmailAddress1
 ,PublikEpost AS EmailAddress2
 --,Skyddadidentiet AS rik_SkyddadIdentiet
@@ -13016,7 +13078,7 @@
 ,NULL AS rik_Epost1Hemlig
 ,Telefon1Hemlig AS rik_Telefonnummer1Hemlig
 ,Telefon2Hemlig AS rik_Telefonnummer2Hemlig
-,CASE WHEN Resurs = 1 THEN 908400002		-- Anställd  
+,CASE WHEN ResursId IS NOT NULL THEN 908400002		-- Anställd  
 	  ELSE 908400000						--Kontakt -------  908400001   Konsult
   END AS rik_Typ
 ,CASE WHEN kvalificerad = 1 THEN 908400001 
@@ -13297,6 +13359,35 @@ FROM [STG].[dbo].[CrmKontakt]</property>
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[ContactId]"
                       name="ContactId"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_resursid]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_resursid]"
+                      length="10"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_resursid]"
+                      name="rik_resursid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Startdatum]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Startdatum]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Startdatum]"
+                      name="rik_Startdatum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Slutdatum]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Slutdatum]"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].Columns[rik_Slutdatum]"
+                      name="rik_Slutdatum"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -13417,6 +13508,20 @@ FROM [STG].[dbo].[CrmKontakt]</property>
                       dataType="str"
                       length="50"
                       name="ContactId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_resursid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="rik_resursid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Startdatum]"
+                      dataType="dbDate"
+                      name="rik_Startdatum" />
+                    <externalMetadataColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Slutdatum]"
+                      dataType="dbDate"
+                      name="rik_Slutdatum" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -13467,6 +13572,23 @@ FROM [STG].[dbo].[CrmKontakt]</property>
                       length="400"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[Address1_Line2]"
                       name="Address1_Line2" />
+                    <outputColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_resursid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_resursid]"
+                      name="rik_resursid" />
+                    <outputColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Startdatum]"
+                      dataType="dbDate"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Startdatum]"
+                      name="rik_Startdatum" />
+                    <outputColumn
+                      refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Slutdatum]"
+                      dataType="dbDate"
+                      lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Slutdatum]"
+                      name="rik_Slutdatum" />
                     <outputColumn
                       refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[EmailAddress1]"
                       codePage="1252"
@@ -16049,37 +16171,33 @@ FROM [STG].[dbo].[CrmKontakt]</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="163,42"
-          Id="Package\Load Contact\Union All Inserted"
-          TopLeft="95.285715618911,349.847064837949" />
+          Size="140,42"
+          Id="Package\Load Contact\STG_Contact"
+          TopLeft="366.142863020605,9.8000002917121" />
         <NodeLayout
           Size="214,42"
           Id="Package\Load Contact\Dynamics CRM Destination 2"
           TopLeft="730.857144268192,174.847064837949" />
         <NodeLayout
-          Size="214,42"
-          Id="Package\Load Contact\Dynamics CRM Destination 1"
-          TopLeft="392,175" />
+          Size="157,42"
+          Id="Package\Load Contact\Union All ERROR"
+          TopLeft="586,364" />
         <NodeLayout
           Size="154,42"
           Id="Package\Load Contact\Contact_ERROR"
           TopLeft="580,545" />
         <NodeLayout
-          Size="140,42"
-          Id="Package\Load Contact\STG_Contact"
-          TopLeft="366.142863020605,9.8000002917121" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Load Contact\Union All ERROR"
-          TopLeft="586,364" />
+          Size="142,42"
+          Id="Package\Load Contact\Row Inserted"
+          TopLeft="105.285715618911,428.717652833009" />
         <NodeLayout
           Size="156,42"
           Id="Package\Load Contact\Data Conversion"
           TopLeft="582,451" />
         <NodeLayout
-          Size="142,42"
-          Id="Package\Load Contact\Row Inserted"
-          TopLeft="105.285715618911,428.717652833009" />
+          Size="214,42"
+          Id="Package\Load Contact\Dynamics CRM Destination 1"
+          TopLeft="392,175" />
         <NodeLayout
           Size="383,42"
           Id="Package\Load Contact\Balanced Data Distributor"
@@ -16088,6 +16206,10 @@ FROM [STG].[dbo].[CrmKontakt]</property>
           Size="205,42"
           Id="Package\Load Contact\Dynamics CRM Destination"
           TopLeft="115.428573530547,174.964708336168" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Load Contact\Union All Inserted"
+          TopLeft="95.285715618911,349.847064837949" />
         <EdgeLayout
           Id="Package\Load Contact.Paths[Union All Output 11]"
           TopLeft="662.25,406">
@@ -16510,7 +16632,7 @@ FROM [STG].[dbo].[CrmKontakt]</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Contact\Contact_ERROR">
+    design-time-name="Package\Load Contact\STG_Contact">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -16523,7 +16645,7 @@ FROM [STG].[dbo].[CrmKontakt]</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Contact\STG_Contact">
+    design-time-name="Package\Load Contact\Contact_ERROR">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
