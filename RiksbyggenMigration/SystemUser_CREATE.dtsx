@@ -12,8 +12,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="SystemUser_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="63"
-  DTS:VersionGUID="{86B2AB9B-C786-4B42-8829-3FCD9582DFE6}">
+  DTS:VersionBuild="64"
+  DTS:VersionGUID="{1CE2953B-8C9D-4B5F-922D-D7504644A0C9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -292,6 +292,54 @@
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
                           name="FriendlyExpression">"Riksbyggen"</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load SystemUser\Domain Name &amp; annat.Inputs[Derived Column Input].Columns[firstname]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="firstname"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load SystemUser\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[firstname]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load SystemUser\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[firstname]} + " " + #{Package\Load SystemUser\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[lastname]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">firstname + " " + lastname</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load SystemUser\Domain Name &amp; annat.Inputs[Derived Column Input].Columns[lastname]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="lastname"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load SystemUser\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[lastname]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">""</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">""</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
