@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Engagemang_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="133"
-  DTS:VersionGUID="{E13BC534-9704-48A9-ABE5-63B130034EBF}">
+  DTS:VersionBuild="136"
+  DTS:VersionGUID="{969AD4C7-E193-4715-9E8B-FA9546733186}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -584,6 +584,189 @@
               </outputs>
             </component>
             <component
+              refId="Package\Load Engagemang\Data Conversion 1 1"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion 1 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Engagemang\Data Conversion 1 1.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1 1.Inputs[Data Conversion Input].Columns[record2id]"
+                      cachedDataType="guid"
+                      cachedName="record2id"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record2id]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1 1.Inputs[Data Conversion Input].Columns[record1id]"
+                      cachedDataType="guid"
+                      cachedName="record1id"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record1id]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1 1.Inputs[Data Conversion Input].Columns[record1idname]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="record1idname"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record1idname]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1 1.Inputs[Data Conversion Input].Columns[record2idname]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="record2idname"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record2idname]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1 1.Inputs[Data Conversion Input].Columns[record2roleidname]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="record2roleidname"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record2roleidname]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load Engagemang\Data Conversion 1 1.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record2id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record2id]"
+                      name="STR_record2id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record2id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record1id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record1id]"
+                      name="STR_record1id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record1id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record1idname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record1idname]"
+                      name="STR_record1idname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record1idname]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record2idname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record2idname]"
+                      name="STR_record2idname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record2idname]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record2roleidname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record2roleidname]"
+                      name="STR_record2roleidname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record2roleidname]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load Engagemang\Data Conversion 1 1.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Engagemang\Derived Column"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -731,6 +914,88 @@
               </outputs>
             </component>
             <component
+              refId="Package\Load Engagemang\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Engagemang\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Derived Column 1.Inputs[Derived Column Input].Columns[record2roleidname]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="record2roleidname"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record2roleidname]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Engagemang\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Engagemang\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Derived Column 1.Outputs[Derived Column Output].Columns[CrmErrorMessage]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="128"
+                      lineageId="Package\Load Engagemang\Derived Column 1.Outputs[Derived Column Output].Columns[CrmErrorMessage]"
+                      name="CrmErrorMessage"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Ingen match för denna roll: " + #{Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[record2roleidname]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Ingen match för denna roll: " + record2roleidname</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Engagemang\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Engagemang\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Engagemang\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Engagemang\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Engagemang\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Load Engagemang\Dynamics CRM Destination"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
@@ -864,13 +1129,6 @@
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[createdby]"
                       lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdbyname]" />
                     <inputColumn
-                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[owneridname]"
-                      cachedDataType="wstr"
-                      cachedLength="200"
-                      cachedName="owneridname"
-                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[ownerid]"
-                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[owneridname]" />
-                    <inputColumn
                       refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[effectivestart]"
                       cachedDataType="dbTimeStamp"
                       cachedName="effectivestart"
@@ -960,6 +1218,12 @@
                       cachedName="connectionid"
                       externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_engagemangid]"
                       lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[connectionid]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].Columns[ownerid]"
+                      cachedDataType="guid"
+                      cachedName="ownerid"
+                      externalMetadataColumnId="Package\Load Engagemang\Dynamics CRM Destination.Inputs[Input].ExternalColumns[ownerid]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[ownerid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1046,7 +1310,6 @@
                         <property
                           dataType="System.String"
                           name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
   &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
   &lt;LookupTargets&gt;
     &lt;LookupTarget&gt;
@@ -1906,7 +2169,6 @@
                         <property
                           dataType="System.String"
                           name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
   &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
   &lt;LookupTargets&gt;
     &lt;LookupTarget&gt;
@@ -2766,7 +3028,6 @@
                         <property
                           dataType="System.String"
                           name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
   &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
   &lt;LookupTargets&gt;
     &lt;LookupTarget&gt;
@@ -3626,7 +3887,6 @@
                         <property
                           dataType="System.String"
                           name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
   &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
   &lt;LookupTargets&gt;
     &lt;LookupTarget&gt;
@@ -4486,7 +4746,6 @@
                         <property
                           dataType="System.String"
                           name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;SkipRecordIfLookupFails&gt;true&lt;/SkipRecordIfLookupFails&gt;
   &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
   &lt;LookupTargets&gt;
     &lt;LookupTarget&gt;
@@ -6656,6 +6915,582 @@
                       refId="Package\Load Engagemang\Engagemang_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Load Engagemang\Engagemang_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Engagemang\Engagemang_ERROR 1"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Engagemang_ERROR 1"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[rik_Engagemang_ERROR]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Engagemang\Engagemang_ERROR 1.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[createdby]"
+                      cachedDataType="guid"
+                      cachedName="createdby"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdby]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[createdbyname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="createdbyname"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdbyname]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[createdbyyominame]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="createdbyyominame"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdbyyominame]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[createdon]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="createdon"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdon]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[createdonbehalfby]"
+                      cachedDataType="guid"
+                      cachedName="createdonbehalfby"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdonbehalfby]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[createdonbehalfbyname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="createdonbehalfbyname"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdonbehalfbyname]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[createdonbehalfbyyominame]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="createdonbehalfbyyominame"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[createdonbehalfbyyominame]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[importsequencenumber]"
+                      cachedDataType="i4"
+                      cachedName="importsequencenumber"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[importsequencenumber]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[modifiedby]"
+                      cachedDataType="guid"
+                      cachedName="modifiedby"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedby]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[modifiedbyname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="modifiedbyname"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedbyname]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[modifiedbyyominame]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="modifiedbyyominame"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedbyyominame]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[modifiedon]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="modifiedon"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedon]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[modifiedonbehalfby]"
+                      cachedDataType="guid"
+                      cachedName="modifiedonbehalfby"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedonbehalfby]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[modifiedonbehalfbyname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="modifiedonbehalfbyname"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByName]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedonbehalfbyname]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[modifiedonbehalfbyyominame]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="modifiedonbehalfbyyominame"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[modifiedonbehalfbyyominame]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[overriddencreatedon]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="overriddencreatedon"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[overriddencreatedon]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[ownerid]"
+                      cachedDataType="guid"
+                      cachedName="ownerid"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[ownerid]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[owningbusinessunit]"
+                      cachedDataType="guid"
+                      cachedName="owningbusinessunit"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[owningbusinessunit]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[owningteam]"
+                      cachedDataType="guid"
+                      cachedName="owningteam"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[OwningTeam]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[owningteam]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[owninguser]"
+                      cachedDataType="guid"
+                      cachedName="owninguser"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[owninguser]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[statecode]"
+                      cachedDataType="i4"
+                      cachedName="statecode"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[statecode]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[statecode]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[statuscode]"
+                      cachedDataType="i4"
+                      cachedName="statuscode"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[statuscode]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[statuscode]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[con.rb_pnumber]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="con.rb_pnumber"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[con.rb_pnumber]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[STR_record2roleidname]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="STR_record2roleidname"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_EngagemangsrollNamn]"
+                      lineageId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record2roleidname]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[connectionid]"
+                      cachedDataType="guid"
+                      cachedName="connectionid"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_EngagemangId]"
+                      lineageId="Package\Load Engagemang\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[connectionid]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[STR_record1id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_record1id"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_AccountId]"
+                      lineageId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record1id]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[STR_record1idname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="STR_record1idname"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_AccountIdName]"
+                      lineageId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record1idname]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[STR_record2id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="STR_record2id"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_partContactId]"
+                      lineageId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record2id]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[STR_record2idname]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="STR_record2idname"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_partContactIdName]"
+                      lineageId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output].Columns[STR_record2idname]" />
+                    <inputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].Columns[CrmErrorMessage]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="CrmErrorMessage"
+                      externalMetadataColumnId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      lineageId="Package\Load Engagemang\Derived Column 1.Outputs[Derived Column Output].Columns[CrmErrorMessage]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_ObjektskontraktIdName]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_ObjektskontraktIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_AccountIdYomiName]"
+                      dataType="wstr"
+                      length="160"
+                      name="rik_AccountIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_AccountIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="rik_AccountIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_EngagemangsrollIdName]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_EngagemangsrollIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdYomiName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdDsc]"
+                      dataType="i4"
+                      name="OwnerIdDsc" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
+                      dataType="i4"
+                      name="OwnerIdType" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningUser" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[OwningTeam]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningTeam" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_EngagemangId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_EngagemangId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="CreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningBusinessUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
+                      dataType="i4"
+                      name="ImportSequenceNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="OverriddenCreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[TimeZoneRuleVersionNumber]"
+                      dataType="i4"
+                      name="TimeZoneRuleVersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[UTCConversionTimeZoneCode]"
+                      dataType="i4"
+                      name="UTCConversionTimeZoneCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_Namn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_Andel]"
+                      dataType="r8"
+                      name="rik_Andel" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_EngagemangsrollKod]"
+                      dataType="wstr"
+                      length="18"
+                      name="rik_EngagemangsrollKod" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_EngagemangsrollNamn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_EngagemangsrollNamn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_GallerFran]"
+                      dataType="dbTimeStamp"
+                      name="rik_GallerFran" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_GallerTill]"
+                      dataType="dbTimeStamp"
+                      name="rik_GallerTill" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_KontoIdNummer]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_KontoIdNummer" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_AccountId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_AccountId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_EngagemangsrollId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_EngagemangsrollId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_ObjektskontraktId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_ObjektskontraktId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      dataType="wstr"
+                      length="255"
+                      name="MigrationId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="4000"
+                      name="CrmErrorMessage" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_Typ]"
+                      dataType="i4"
+                      name="rik_Typ" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_Idnummer]"
+                      dataType="wstr"
+                      length="18"
+                      name="rik_Idnummer" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_partAccountId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_partAccountId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_partAccountIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="rik_partAccountIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_partAccountIdYomiName]"
+                      dataType="wstr"
+                      length="160"
+                      name="rik_partAccountIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_partContactId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_partContactId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_partContactIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="rik_partContactIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_partContactIdYomiName]"
+                      dataType="wstr"
+                      length="450"
+                      name="rik_partContactIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_Partidnummer]"
+                      dataType="wstr"
+                      length="18"
+                      name="rik_Partidnummer" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_Synkstatus]"
+                      dataType="i4"
+                      name="rik_Synkstatus" />
+                    <externalMetadataColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_Synkstatustext]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_Synkstatustext" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Engagemang\Engagemang_ERROR 1.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Engagemang\Engagemang_ERROR 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Engagemang\Engagemang_ERROR 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Engagemang\Engagemang_ERROR 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -18034,10 +18869,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
               name="Data Conversion Output"
               startId="Package\Load Engagemang\Data Conversion.Outputs[Data Conversion Output]" />
             <path
+              refId="Package\Load Engagemang.Paths[Data Conversion Output2]"
+              endId="Package\Load Engagemang\Derived Column 1.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output]" />
+            <path
               refId="Package\Load Engagemang.Paths[Default Output4]"
-              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 5]"
+              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3]"
               name="Default Output"
-              startId="Package\Load Engagemang\Dynamics CRM Destination 3.Outputs[Default Output]" />
+              startId="Package\Load Engagemang\Dynamics CRM Destination 4.Outputs[Default Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Default Output2]"
               endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 2]"
@@ -18045,9 +18885,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
               startId="Package\Load Engagemang\Dynamics CRM Destination 2.Outputs[Default Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Default Output3]"
-              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3]"
+              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 5]"
               name="Default Output"
-              startId="Package\Load Engagemang\Dynamics CRM Destination 4.Outputs[Default Output]" />
+              startId="Package\Load Engagemang\Dynamics CRM Destination 3.Outputs[Default Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Default Output]"
               endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4]"
@@ -18063,6 +18903,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
               endId="Package\Load Engagemang\Script Component.Inputs[Input 0]"
               name="Derived Column Output"
               startId="Package\Load Engagemang\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Engagemang.Paths[Derived Column Output1]"
+              endId="Package\Load Engagemang\Engagemang_ERROR 1.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load Engagemang\Derived Column 1.Outputs[Derived Column Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Error Output]"
               endId="Package\Load Engagemang\Union All ERROR.Inputs[Union All Input 3]"
@@ -18093,6 +18938,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
               endId="Package\Load Engagemang\Data Conversion.Inputs[Data Conversion Input]"
               name="Lookup Match Output"
               startId="Package\Load Engagemang\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load Engagemang.Paths[Lookup No Match Output]"
+              endId="Package\Load Engagemang\Data Conversion 1 1.Inputs[Data Conversion Input]"
+              name="Lookup No Match Output"
+              startId="Package\Load Engagemang\Lookup.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Output 0]"
               endId="Package\Load Engagemang\Balanced Data Distributor.Inputs[Balanced Data Distributor Input]"
@@ -19356,28 +20206,44 @@ WHERE rik_Namn = 'Engagemang'
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="214,42"
+          Id="Package\Load Engagemang\Dynamics CRM Destination 2"
+          TopLeft="626,429" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Load Engagemang\Lookup"
+          TopLeft="653,43" />
+        <NodeLayout
+          Size="214,42"
           Id="Package\Load Engagemang\Dynamics CRM Destination 1"
           TopLeft="302,428" />
         <NodeLayout
-          Size="142,42"
-          Id="Package\Load Engagemang\Row Inserted"
-          TopLeft="241.571431033466,707.400003792257" />
+          Size="163,42"
+          Id="Package\Load Engagemang\Script Component"
+          TopLeft="370,264" />
         <NodeLayout
           Size="205,42"
           Id="Package\Load Engagemang\Dynamics CRM Destination"
           TopLeft="8.85714855972697,426.811766610592" />
         <NodeLayout
-          Size="305,42"
-          Id="Package\Load Engagemang\Union All Inserted"
-          TopLeft="162,620" />
+          Size="142,42"
+          Id="Package\Load Engagemang\Row Inserted"
+          TopLeft="241.571431033466,707.400003792257" />
+        <NodeLayout
+          Size="466,42"
+          Id="Package\Load Engagemang\Union All ERROR"
+          TopLeft="590,603" />
         <NodeLayout
           Size="165,42"
           Id="Package\Load Engagemang\Data Conversion 1"
           TopLeft="728,681" />
         <NodeLayout
-          Size="466,42"
-          Id="Package\Load Engagemang\Union All ERROR"
-          TopLeft="590,603" />
+          Size="171,42"
+          Id="Package\Load Engagemang\Derived Column 1"
+          TopLeft="989,149" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Load Engagemang\Data Conversion 1 1"
+          TopLeft="981,60" />
         <NodeLayout
           Size="154,42"
           Id="Package\Load Engagemang\Derived Column"
@@ -19391,9 +20257,9 @@ WHERE rik_Namn = 'Engagemang'
           Id="Package\Load Engagemang\Dynamics CRM Source"
           TopLeft="357,22" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\Load Engagemang\Script Component"
-          TopLeft="370,264" />
+          Size="205,42"
+          Id="Package\Load Engagemang\Dynamics CRM Destination 3"
+          TopLeft="883,428" />
         <NodeLayout
           Size="180,42"
           Id="Package\Load Engagemang\Engagemang_ERROR"
@@ -19403,21 +20269,17 @@ WHERE rik_Namn = 'Engagemang'
           Id="Package\Load Engagemang\Dynamics CRM Destination 4"
           TopLeft="1119.85714855973,429" />
         <NodeLayout
-          Size="113,42"
-          Id="Package\Load Engagemang\Lookup"
-          TopLeft="653,43" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Load Engagemang\Dynamics CRM Destination 3"
-          TopLeft="883,428" />
+          Size="189,42"
+          Id="Package\Load Engagemang\Engagemang_ERROR 1"
+          TopLeft="981.857148559727,229" />
         <NodeLayout
           Size="1156,42"
           Id="Package\Load Engagemang\Balanced Data Distributor"
           TopLeft="61,333" />
         <NodeLayout
-          Size="214,42"
-          Id="Package\Load Engagemang\Dynamics CRM Destination 2"
-          TopLeft="626,429" />
+          Size="305,42"
+          Id="Package\Load Engagemang\Union All Inserted"
+          TopLeft="162,620" />
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Union All Output 11]"
           TopLeft="313.535715516733,662">
@@ -19506,6 +20368,42 @@ WHERE rik_Namn = 'Engagemang'
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Lookup No Match Output]"
+          TopLeft="766,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="215,17"
+              Start="0,0"
+              End="207.5,17">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="103.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="103.5,0"
+                    Point2="107.5,0"
+                    Point3="107.5,4" />
+                  <mssgle:LineSegment
+                    End="107.5,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="107.5,13"
+                    Point2="107.5,17"
+                    Point3="111.5,17" />
+                  <mssgle:LineSegment
+                    End="207.5,17" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="51.69361328125,-17.609375,111.6127734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -19725,6 +20623,28 @@ WHERE rik_Namn = 'Engagemang'
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Derived Column Output1]"
+          TopLeft="1075.42857427986,191">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Load Engagemang.Paths[Derived Column Output]"
           TopLeft="448.75,229">
           <EdgeLayout.Curve>
@@ -19748,40 +20668,6 @@ WHERE rik_Namn = 'Engagemang'
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Default Output4]"
-          TopLeft="952.666666666667,470">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-588.666666666667,150"
-              Start="0,0"
-              End="-588.666666666667,142.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,71.2360531906523" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,71.2360531906523"
-                    Point2="0,75.2360531906523"
-                    Point3="-4,75.2360531906523" />
-                  <mssgle:LineSegment
-                    End="-584.666666666667,75.2360531906523" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-584.666666666667,75.2360531906523"
-                    Point2="-588.666666666667,75.2360531906523"
-                    Point3="-588.666666666667,79.2360531906523" />
-                  <mssgle:LineSegment
-                    End="-588.666666666667,142.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Default Output3]"
           TopLeft="1192.52381522639,471">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -19806,6 +20692,40 @@ WHERE rik_Namn = 'Engagemang'
                     Point3="-779.023815226394,102.247766196932" />
                   <mssgle:LineSegment
                     End="-779.023815226394,141.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Default Output3]"
+          TopLeft="952.666666666667,470">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-588.666666666667,150"
+              Start="0,0"
+              End="-588.666666666667,142.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.2360531906523" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,71.2360531906523"
+                    Point2="0,75.2360531906523"
+                    Point3="-4,75.2360531906523" />
+                  <mssgle:LineSegment
+                    End="-584.666666666667,75.2360531906523" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-584.666666666667,75.2360531906523"
+                    Point2="-588.666666666667,75.2360531906523"
+                    Point3="-588.666666666667,79.2360531906523" />
+                  <mssgle:LineSegment
+                    End="-588.666666666667,142.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -19908,6 +20828,28 @@ WHERE rik_Namn = 'Engagemang'
                     Point3="-109.666666666667,79.2058575134222" />
                   <mssgle:LineSegment
                     End="-109.666666666667,142.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Data Conversion Output2]"
+          TopLeft="1071.5,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -20175,23 +21117,10 @@ WHERE rik_Namn = 'Engagemang'
           FontInfo="{assembly:Null}"
           Size="190,40"
           Id="78feb642-a361-4b18-a3b9-1176b7518431"
-          TopLeft="772,43" />
+          TopLeft="631,87" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Engagemang\Engagemang_ERROR">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load Engagemang\Lookup">
     <Properties>
@@ -20212,6 +21141,32 @@ WHERE rik_Namn = 'Engagemang'
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Engagemang\Engagemang_ERROR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Engagemang\Engagemang_ERROR 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

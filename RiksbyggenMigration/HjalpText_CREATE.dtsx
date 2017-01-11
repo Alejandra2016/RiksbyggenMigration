@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="HjalpText_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="104"
-  DTS:VersionGUID="{C9741568-B7DA-4592-8B80-4865CA35EAE7}">
+  DTS:VersionBuild="105"
+  DTS:VersionGUID="{D66D7330-7959-4773-85A0-C136F702DD30}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -955,13 +955,6 @@
                   name="Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load HjalpText\Migrate HjalpText records.Inputs[Input].Columns[rik_AccountId]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="rik_AccountId"
-                      externalMetadataColumnId="Package\Load HjalpText\Migrate HjalpText records.Inputs[Input].ExternalColumns[rik_accountid]"
-                      lineageId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].Columns[rik_AccountId]" />
-                    <inputColumn
                       refId="Package\Load HjalpText\Migrate HjalpText records.Inputs[Input].Columns[rik_ContactId]"
                       cachedDataType="wstr"
                       cachedLength="255"
@@ -1043,6 +1036,13 @@
                       cachedName="rik_Varde"
                       externalMetadataColumnId="Package\Load HjalpText\Migrate HjalpText records.Inputs[Input].ExternalColumns[rik_varde]"
                       lineageId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].Columns[rik_Varde]" />
+                    <inputColumn
+                      refId="Package\Load HjalpText\Migrate HjalpText records.Inputs[Input].Columns[rik_AccountIdName]"
+                      cachedDataType="wstr"
+                      cachedLength="160"
+                      cachedName="rik_AccountIdName"
+                      externalMetadataColumnId="Package\Load HjalpText\Migrate HjalpText records.Inputs[Input].ExternalColumns[rik_accountid]"
+                      lineageId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].Columns[rik_AccountIdName]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3893,6 +3893,10 @@ FROM STG.dbo.rik_Hjalptext</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="130,42"
+          Id="Package\Load HjalpText from file\Row Count"
+          TopLeft="342,122" />
+        <NodeLayout
           Size="151,42"
           Id="Package\Load HjalpText from file\Flat File Source"
           TopLeft="333,45" />
@@ -3900,10 +3904,6 @@ FROM STG.dbo.rik_Hjalptext</property>
           Size="166,42"
           Id="Package\Load HjalpText from file\STG rik_HealpText"
           TopLeft="323,211" />
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Load HjalpText from file\Row Count"
-          TopLeft="342,122" />
         <EdgeLayout
           Id="Package\Load HjalpText from file.Paths[Row Count Output 1]"
           TopLeft="406.5,164">
