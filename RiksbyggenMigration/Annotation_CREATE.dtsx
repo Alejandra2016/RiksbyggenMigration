@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Annotation_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="98"
-  DTS:VersionGUID="{578257B6-341C-48D4-BF65-FE1BB07D17D8}">
+  DTS:VersionBuild="99"
+  DTS:VersionGUID="{7BDC22ED-5EF6-4417-B113-37615D00BACB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -758,6 +758,20 @@
                       cachedName="Subject"
                       externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[subject]"
                       lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[Subject]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[CreatedByName]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="CreatedByName"
+                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[createdby]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[CreatedByName]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[OwnerIdName]"
+                      cachedDataType="wstr"
+                      cachedLength="160"
+                      cachedName="OwnerIdName"
+                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[ownerid]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerIdName]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -785,6 +799,18 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">systemuser</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;domainname&lt;/TargetTextField&gt;
+      &lt;DefaultValue&gt;CRM MIG_SVC_MIG&lt;/DefaultValue&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1269,6 +1295,22 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">systemuser;team</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;domainname&lt;/TargetTextField&gt;
+      &lt;DefaultValue&gt;CRM MIG_SVC_MIG&lt;/DefaultValue&gt;
+    &lt;/LookupTarget&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
+      &lt;OptOut&gt;true&lt;/OptOut&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn

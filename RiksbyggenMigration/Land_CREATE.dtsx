@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Land_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="95"
-  DTS:VersionGUID="{7D8776DD-73BB-425B-9803-5B70D8A73EE9}">
+  DTS:VersionBuild="102"
+  DTS:VersionGUID="{99060083-C693-4FB1-9F37-3CC7451F2018}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -194,6 +194,637 @@
   </DTS:LoggingOptions>
   <DTS:Executables>
     <DTS:Executable
+      DTS:refId="Package\Delete country in target CRM"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{977739e1-3fb4-458c-be54-0a6f618546d4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete country in target CRM"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Delete country in target CRM\Delete rows in Target CRM"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Populate data into Microsoft Dynamics CRM."
+              name="Delete rows in Target CRM"
+              usesDispositions="true"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Destination entity to write data."
+                  expressionType="Notify"
+                  name="DestinationEntity">rik_land</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to CRM server."
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">4</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
+                  expressionType="Notify"
+                  name="RemoveUnresolvableReferences">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether duplicate detection should be enabled when creating or updating CRM records. Duplicate records are determined by the duplicate detection rules and settings defined in Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="EnableDuplicateDetection">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the matching criteria to be used when Upsert action is chosen."
+                  expressionType="Notify"
+                  name="UpsertMatchingCriteria"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
+                  expressionType="Notify"
+                  name="UpsertMatchingFields"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those fields that have no value changes in the target system. "
+                  expressionType="Notify"
+                  name="IgnoreUnchangedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to CRM."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the flag field(s) that are used to track the source of changes. The field(s) will not posted to CRM server unless there are changes to other fields if specified. &quot;Ignore Unchange Fields&quot; option is required in order for the specified flag field(s) to work. "
+                  expressionType="Notify"
+                  name="ChangeFlagFields"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify what action will be taken when multiple matches are found with Upsert action."
+                  expressionType="Notify"
+                  name="HandlingOfMultipleMatches"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
+                <property
+                  dataType="System.String"
+                  description="Workflow to be executed."
+                  expressionType="Notify"
+                  name="Workflow"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of records to be sent to Microsoft Dynamics CRM in each batch (CRM 2011 Update Rollup 12 or later is required if batch size is greater than 1)."
+                  expressionType="Notify"
+                  name="BatchSize">200</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether datetime values should be sent to CRM server in UTC format."
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Delete country in target CRM\Delete rows in Target CRM.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Delete country in target CRM\Delete rows in Target CRM.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Delete country in target CRM\Delete rows in Target CRM.Inputs[Input].Columns[rik_landid]"
+                      cachedDataType="guid"
+                      cachedName="rik_landid"
+                      externalMetadataColumnId="Package\Delete country in target CRM\Delete rows in Target CRM.Inputs[Input].ExternalColumns[rik_landid]"
+                      lineageId="Package\Delete country in target CRM\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_landid]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Delete rows in Target CRM.Inputs[Input].ExternalColumns[rik_landid]"
+                      dataType="guid"
+                      name="rik_landid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">rik_land</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Delete country in target CRM\Delete rows in Target CRM.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\Delete country in target CRM\Delete rows in Target CRM.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Delete country in target CRM\Delete rows in Target CRM.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Delete country in target CRM\Delete rows in Target CRM.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Delete country in target CRM\Delete rows in Target CRM.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Delete country in target CRM\Delete rows in Target CRM.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Delete country in target CRM\Delete rows in Target CRM.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Delete country in target CRM\Delete rows in Target CRM.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      name="CrmErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Delete country in target CRM\Delete rows in Target CRM.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\Delete country in target CRM\Delete rows in Target CRM.Inputs[Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Delete country in target CRM\Dynamics CRM Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Extract data from Microsoft Dynamics CRM."
+              name="Dynamics CRM Source"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">1</property>
+                <property
+                  dataType="System.String"
+                  description="Dynamics CRM entity to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceEntity"></property>
+                <property
+                  dataType="System.String"
+                  description="FetchXML statement."
+                  expressionType="Notify"
+                  name="FetchXML">&lt;fetch mapping='logical'&gt;
+    &lt;entity name='rik_land'&gt;
+        &lt;attribute name='rik_landid'/&gt;
+    &lt;/entity&gt;
+&lt;/fetch&gt;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">2000</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="ImpersonateAs" />
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for CRM datetime fields."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Delete country in target CRM\Dynamics CRM Source.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Delete country in target CRM\Dynamics CRM Source.Outputs[CRM Primary Output]"
+                  name="CRM Primary Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Delete country in target CRM\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_landid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Delete country in target CRM\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_landid]"
+                      lineageId="Package\Delete country in target CRM\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_landid]"
+                      name="rik_landid"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_landid]"
+                      dataType="guid"
+                      name="rik_landid" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Delete country in target CRM\Land_ERROR"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Land_ERROR"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[rik_Land_ERROR]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Delete country in target CRM\Land_ERROR.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].Columns[rik_landid]"
+                      cachedDataType="guid"
+                      cachedName="rik_landid"
+                      externalMetadataColumnId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_LandId]"
+                      lineageId="Package\Delete country in target CRM\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_landid]" />
+                    <inputColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Delete country in target CRM\Delete rows in Target CRM.Outputs[Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Delete country in target CRM\Delete rows in Target CRM.Outputs[Error Output].Columns[ErrorColumn]" />
+                    <inputColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].Columns[CrmErrorMessage]"
+                      cachedDataType="wstr"
+                      cachedLength="2048"
+                      cachedName="CrmErrorMessage"
+                      externalMetadataColumnId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      lineageId="Package\Delete country in target CRM\Delete rows in Target CRM.Outputs[Error Output].Columns[CrmErrorMessage]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdYomiName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdDsc]"
+                      dataType="i4"
+                      name="OwnerIdDsc" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
+                      dataType="i4"
+                      name="OwnerIdType" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningUser" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningTeam]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningTeam" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_LandId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_LandId" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="CreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningBusinessUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
+                      dataType="i4"
+                      name="ImportSequenceNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="OverriddenCreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TimeZoneRuleVersionNumber]"
+                      dataType="i4"
+                      name="TimeZoneRuleVersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[UTCConversionTimeZoneCode]"
+                      dataType="i4"
+                      name="UTCConversionTimeZoneCode" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_Namn" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kod]"
+                      dataType="wstr"
+                      length="2"
+                      name="rik_Kod" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      dataType="wstr"
+                      length="255"
+                      name="MigrationId" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="4000"
+                      name="CrmErrorMessage" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Delete country in target CRM\Land_ERROR.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Delete country in target CRM\Land_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Delete country in target CRM\Land_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Delete country in target CRM\Land_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Delete country in target CRM\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RowsDeleted</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Delete country in target CRM\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Delete country in target CRM\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Delete country in target CRM\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Delete country in target CRM.Paths[CRM Primary Output]"
+              endId="Package\Delete country in target CRM\Delete rows in Target CRM.Inputs[Input]"
+              name="CRM Primary Output"
+              startId="Package\Delete country in target CRM\Dynamics CRM Source.Outputs[CRM Primary Output]" />
+            <path
+              refId="Package\Delete country in target CRM.Paths[Default Output]"
+              endId="Package\Delete country in target CRM\Row Count.Inputs[Row Count Input 1]"
+              name="Default Output"
+              startId="Package\Delete country in target CRM\Delete rows in Target CRM.Outputs[Default Output]" />
+            <path
+              refId="Package\Delete country in target CRM.Paths[Error Output]"
+              endId="Package\Delete country in target CRM\Land_ERROR.Inputs[OLE DB Destination Input]"
+              name="Error Output"
+              startId="Package\Delete country in target CRM\Delete rows in Target CRM.Outputs[Error Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Load Land"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -232,6 +863,119 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Load Land\Dynamics CRM Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Extract data from Microsoft Dynamics CRM."
+              name="Dynamics CRM Source"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">1</property>
+                <property
+                  dataType="System.String"
+                  description="Dynamics CRM entity to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceEntity"></property>
+                <property
+                  dataType="System.String"
+                  description="FetchXML statement."
+                  expressionType="Notify"
+                  name="FetchXML">&lt;fetch mapping='logical'&gt;
+    &lt;entity name='rb_countrycode'&gt;
+        &lt;attribute name='rb_countrycode_iso'/&gt;
+        &lt;attribute name='rb_countrycodeid'/&gt;
+        &lt;attribute name='rb_name'/&gt;
+    &lt;/entity&gt;
+&lt;/fetch&gt;
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">2000</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="ImpersonateAs" />
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for CRM datetime fields."
+                  expressionType="Notify"
+                  name="OutputTimezone" />
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Land\Dynamics CRM Source.Connections[DynamicsCRM]"
+                  connectionManagerID="{EE43EB94-D1E1-4479-82FB-6C21A3361393}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[oldCRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output]"
+                  name="CRM Primary Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_countrycode_iso]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rb_countrycode_iso]"
+                      length="2"
+                      lineageId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_countrycode_iso]"
+                      name="rb_countrycode_iso"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_countrycodeid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rb_countrycodeid]"
+                      lineageId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_countrycodeid]"
+                      name="rb_countrycodeid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rb_name]"
+                      length="100"
+                      lineageId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_name]"
+                      name="rb_name"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rb_countrycode_iso]"
+                      dataType="wstr"
+                      length="2"
+                      name="rb_countrycode_iso" />
+                    <externalMetadataColumn
+                      refId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rb_countrycodeid]"
+                      dataType="guid"
+                      name="rb_countrycodeid" />
+                    <externalMetadataColumn
+                      refId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rb_name]"
+                      dataType="wstr"
+                      length="100"
+                      name="rb_name" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Load Land\Land_ERROR"
               componentClassID="Microsoft.OLEDBDestination"
@@ -305,20 +1049,6 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Land\Land_ERROR.Inputs[OLE DB Destination Input].Columns[rik_namn]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="rik_namn"
-                      externalMetadataColumnId="Package\Load Land\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
-                      lineageId="Package\Load Land\STG Land.Outputs[OLE DB Source Output].Columns[rik_namn]" />
-                    <inputColumn
-                      refId="Package\Load Land\Land_ERROR.Inputs[OLE DB Destination Input].Columns[rik_kod]"
-                      cachedDataType="wstr"
-                      cachedLength="2"
-                      cachedName="rik_kod"
-                      externalMetadataColumnId="Package\Load Land\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kod]"
-                      lineageId="Package\Load Land\STG Land.Outputs[OLE DB Source Output].Columns[rik_kod]" />
-                    <inputColumn
                       refId="Package\Load Land\Land_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
                       cachedDataType="i4"
                       cachedName="ErrorCode"
@@ -337,6 +1067,20 @@
                       cachedName="CrmErrorMessage"
                       externalMetadataColumnId="Package\Load Land\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
                       lineageId="Package\Load Land\Migrate Land records.Outputs[Error Output].Columns[CrmErrorMessage]" />
+                    <inputColumn
+                      refId="Package\Load Land\Land_ERROR.Inputs[OLE DB Destination Input].Columns[rb_countrycode_iso]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="rb_countrycode_iso"
+                      externalMetadataColumnId="Package\Load Land\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kod]"
+                      lineageId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_countrycode_iso]" />
+                    <inputColumn
+                      refId="Package\Load Land\Land_ERROR.Inputs[OLE DB Destination Input].Columns[rb_name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rb_name"
+                      externalMetadataColumnId="Package\Load Land\Land_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
+                      lineageId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_name]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -638,19 +1382,25 @@
                   name="Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Load Land\Migrate Land records.Inputs[Input].Columns[rik_kod]"
+                      refId="Package\Load Land\Migrate Land records.Inputs[Input].Columns[rb_countrycode_iso]"
                       cachedDataType="wstr"
                       cachedLength="2"
-                      cachedName="rik_kod"
+                      cachedName="rb_countrycode_iso"
                       externalMetadataColumnId="Package\Load Land\Migrate Land records.Inputs[Input].ExternalColumns[rik_kod]"
-                      lineageId="Package\Load Land\STG Land.Outputs[OLE DB Source Output].Columns[rik_kod]" />
+                      lineageId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_countrycode_iso]" />
                     <inputColumn
-                      refId="Package\Load Land\Migrate Land records.Inputs[Input].Columns[rik_namn]"
+                      refId="Package\Load Land\Migrate Land records.Inputs[Input].Columns[rb_countrycodeid]"
+                      cachedDataType="guid"
+                      cachedName="rb_countrycodeid"
+                      externalMetadataColumnId="Package\Load Land\Migrate Land records.Inputs[Input].ExternalColumns[rik_landid]"
+                      lineageId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_countrycodeid]" />
+                    <inputColumn
+                      refId="Package\Load Land\Migrate Land records.Inputs[Input].Columns[rb_name]"
                       cachedDataType="wstr"
                       cachedLength="100"
-                      cachedName="rik_namn"
+                      cachedName="rb_name"
                       externalMetadataColumnId="Package\Load Land\Migrate Land records.Inputs[Input].ExternalColumns[rik_namn]"
-                      lineageId="Package\Load Land\STG Land.Outputs[OLE DB Source Output].Columns[rik_namn]" />
+                      lineageId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rb_name]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -883,140 +1633,13 @@
                 </output>
               </outputs>
             </component>
-            <component
-              refId="Package\Load Land\STG Land"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="STG Land"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[rik_Land]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT rik_namn
-,rik_kod
-FROM rik_Land</property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">2</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Load Land\STG Land.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[STG]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Load Land\STG Land.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Land\STG Land.Outputs[OLE DB Source Output].Columns[rik_namn]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Land\STG Land.Outputs[OLE DB Source Output].ExternalColumns[rik_namn]"
-                      length="100"
-                      lineageId="Package\Load Land\STG Land.Outputs[OLE DB Source Output].Columns[rik_namn]"
-                      name="rik_namn"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Land\STG Land.Outputs[OLE DB Source Output].Columns[rik_kod]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Land\STG Land.Outputs[OLE DB Source Output].ExternalColumns[rik_kod]"
-                      length="2"
-                      lineageId="Package\Load Land\STG Land.Outputs[OLE DB Source Output].Columns[rik_kod]"
-                      name="rik_kod"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Load Land\STG Land.Outputs[OLE DB Source Output].ExternalColumns[rik_namn]"
-                      dataType="wstr"
-                      length="100"
-                      name="rik_namn" />
-                    <externalMetadataColumn
-                      refId="Package\Load Land\STG Land.Outputs[OLE DB Source Output].ExternalColumns[rik_kod]"
-                      dataType="wstr"
-                      length="2"
-                      name="rik_kod" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Load Land\STG Land.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Load Land\STG Land.Outputs[OLE DB Source Error Output].Columns[rik_namn]"
-                      dataType="wstr"
-                      length="100"
-                      lineageId="Package\Load Land\STG Land.Outputs[OLE DB Source Error Output].Columns[rik_namn]"
-                      name="rik_namn" />
-                    <outputColumn
-                      refId="Package\Load Land\STG Land.Outputs[OLE DB Source Error Output].Columns[rik_kod]"
-                      dataType="wstr"
-                      length="2"
-                      lineageId="Package\Load Land\STG Land.Outputs[OLE DB Source Error Output].Columns[rik_kod]"
-                      name="rik_kod" />
-                    <outputColumn
-                      refId="Package\Load Land\STG Land.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Load Land\STG Land.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Load Land\STG Land.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Load Land\STG Land.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
           </components>
           <paths>
+            <path
+              refId="Package\Load Land.Paths[CRM Primary Output]"
+              endId="Package\Load Land\Migrate Land records.Inputs[Input]"
+              name="CRM Primary Output"
+              startId="Package\Load Land\Dynamics CRM Source.Outputs[CRM Primary Output]" />
             <path
               refId="Package\Load Land.Paths[Default Output]"
               endId="Package\Load Land\Row Inserted.Inputs[Row Count Input 1]"
@@ -1027,30 +1650,8 @@ FROM rik_Land</property>
               endId="Package\Load Land\Land_ERROR.Inputs[OLE DB Destination Input]"
               name="Error Output"
               startId="Package\Load Land\Migrate Land records.Outputs[Error Output]" />
-            <path
-              refId="Package\Load Land.Paths[OLE DB Source Output]"
-              endId="Package\Load Land\Migrate Land records.Inputs[Input]"
-              name="OLE DB Source Output"
-              startId="Package\Load Land\STG Land.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Load STG Land"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{2EF04F9D-5BB3-49A1-834E-E4FDD64D4BB5}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Load STG Land"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
-          SQLTask:SqlStatementSource="INSERT INTO rik_land (rik_Namn, rik_kod)&#xA;VALUES&#xA;('Andorra','AD'),&#xA;('United Arab Emirates','AE'),&#xA;('Afghanistan','AF'),&#xA;('Antigua and Barbuda','AG'),&#xA;('Anguilla','AI'),&#xA;('Albania','AL'),&#xA;('Armenia','AM'),&#xA;('Angola','AO'),&#xA;('Antarctica','AQ'),&#xA;('Argentina','AR'),&#xA;('American Samoa','AS'),&#xA;('Austria','AT'),&#xA;('Australia','AU'),&#xA;('Aruba','AW'),&#xA;('Åland Islands','AX'),&#xA;('Azerbaijan','AZ'),&#xA;('Bosnia and Herzegovina','BA'),&#xA;('Barbados','BB'),&#xA;('Bangladesh','BD'),&#xA;('Belgium','BE'),&#xA;('Burkina Faso','BF'),&#xA;('Bulgaria','BG'),&#xA;('Bahrain','BH'),&#xA;('Burundi','BI'),&#xA;('Benin','BJ'),&#xA;('Saint Barthélemy','BL'),&#xA;('Bermuda','BM'),&#xA;('Brunei Darussalam','BN'),&#xA;('Bolivia, Plurinational State of','BO'),&#xA;('Bonaire, Sint Eustatius and Saba','BQ'),&#xA;('Brazil','BR'),&#xA;('Bahamas','BS'),&#xA;('Bhutan','BT'),&#xA;('Bouvet Island','BV'),&#xA;('Botswana','BW'),&#xA;('Belarus','BY'),&#xA;('Belize','BZ'),&#xA;('Canada','CA'),&#xA;('Cocos (Keeling) Islands','CC'),&#xA;('Congo, the Democratic Republic of the','CD'),&#xA;('Central African Republic','CF'),&#xA;('Congo','CG'),&#xA;('Switzerland','CH'),&#xA;('Côte d''Ivoire','CI'),&#xA;('Cook Islands','CK'),&#xA;('Chile','CL'),&#xA;('Cameroon','CM'),&#xA;('China','CN'),&#xA;('Colombia','CO'),&#xA;('Costa Rica','CR'),&#xA;('Cuba','CU'),&#xA;('Cabo Verde','CV'),&#xA;('Curaçao','CW'),&#xA;('Christmas Island','CX'),&#xA;('Cyprus','CY'),&#xA;('Czechia','CZ'),&#xA;('Germany','DE'),&#xA;('Djibouti','DJ'),&#xA;('Denmark','DK'),&#xA;('Dominica','DM'),&#xA;('Dominican Republic','DO'),&#xA;('Algeria','DZ'),&#xA;('Ecuador','EC'),&#xA;('Estonia','EE'),&#xA;('Egypt','EG'),&#xA;('Western Sahara','EH'),&#xA;('Eritrea','ER'),&#xA;('Spain','ES'),&#xA;('Ethiopia','ET'),&#xA;('Finland','FI'),&#xA;('Fiji','FJ'),&#xA;('Falkland Islands (Malvinas)','FK'),&#xA;('Micronesia, Federated States of','FM'),&#xA;('Faroe Islands','FO'),&#xA;('France','FR'),&#xA;('Gabon','GA'),&#xA;('United Kingdom of Great Britain and Northern Ireland','GB'),&#xA;('Grenada','GD'),&#xA;('Georgia','GE'),&#xA;('French Guiana','GF'),&#xA;('Guernsey','GG'),&#xA;('Ghana','GH'),&#xA;('Gibraltar','GI'),&#xA;('Greenland','GL'),&#xA;('Gambia','GM'),&#xA;('Guinea','GN'),&#xA;('Guadeloupe','GP'),&#xA;('Equatorial Guinea','GQ'),&#xA;('Greece','GR'),&#xA;('South Georgia and the South Sandwich Islands','GS'),&#xA;('Guatemala','GT'),&#xA;('Guam','GU'),&#xA;('Guinea-Bissau','GW'),&#xA;('Guyana','GY'),&#xA;('Hong Kong','HK'),&#xA;('Heard Island and McDonald Islands','HM'),&#xA;('Honduras','HN'),&#xA;('Croatia','HR'),&#xA;('Haiti','HT'),&#xA;('Hungary','HU'),&#xA;('Indonesia','ID'),&#xA;('Ireland','IE'),&#xA;('Israel','IL'),&#xA;('Isle of Man','IM'),&#xA;('India','IN'),&#xA;('British Indian Ocean Territory','IO'),&#xA;('Iraq','IQ'),&#xA;('Iran, Islamic Republic of','IR'),&#xA;('Iceland','IS'),&#xA;('Italy','IT'),&#xA;('Jersey','JE'),&#xA;('Jamaica','JM'),&#xA;('Jordan','JO'),&#xA;('Japan','JP'),&#xA;('Kenya','KE'),&#xA;('Kyrgyzstan','KG'),&#xA;('Cambodia','KH'),&#xA;('Kiribati','KI'),&#xA;('Comoros','KM'),&#xA;('Saint Kitts and Nevis','KN'),&#xA;('Korea, Democratic People''s Republic of','KP'),&#xA;('Korea, Republic of','KR'),&#xA;('Kuwait','KW'),&#xA;('Cayman Islands','KY'),&#xA;('Kazakhstan','KZ'),&#xA;('Lao People''s Democratic Republic','LA'),&#xA;('Lebanon','LB'),&#xA;('Saint Lucia','LC'),&#xA;('Liechtenstein','LI'),&#xA;('Sri Lanka','LK'),&#xA;('Liberia','LR'),&#xA;('Lesotho','LS'),&#xA;('Lithuania','LT'),&#xA;('Luxembourg','LU'),&#xA;('Latvia','LV'),&#xA;('Libya','LY'),&#xA;('Morocco','MA'),&#xA;('Monaco','MC'),&#xA;('Moldova, Republic of','MD'),&#xA;('Montenegro','ME'),&#xA;('Saint Martin (French part)','MF'),&#xA;('Madagascar','MG'),&#xA;('Marshall Islands','MH'),&#xA;('Macedonia, the former Yugoslav Republic of','MK'),&#xA;('Mali','ML'),&#xA;('Myanmar','MM'),&#xA;('Mongolia','MN'),&#xA;('Macao','MO'),&#xA;('Northern Mariana Islands','MP'),&#xA;('Martinique','MQ'),&#xA;('Mauritania','MR'),&#xA;('Montserrat','MS'),&#xA;('Malta','MT'),&#xA;('Mauritius','MU'),&#xA;('Maldives','MV'),&#xA;('Malawi','MW'),&#xA;('Mexico','MX'),&#xA;('Malaysia','MY'),&#xA;('Mozambique','MZ'),&#xA;('Namibia','NA'),&#xA;('New Caledonia','NC'),&#xA;('Niger','NE'),&#xA;('Norfolk Island','NF'),&#xA;('Nigeria','NG'),&#xA;('Nicaragua','NI'),&#xA;('Netherlands','NL'),&#xA;('Norway','NO'),&#xA;('Nepal','NP'),&#xA;('Nauru','NR'),&#xA;('Niue','NU'),&#xA;('New Zealand','NZ'),&#xA;('Oman','OM'),&#xA;('Panama','PA'),&#xA;('Peru','PE'),&#xA;('French Polynesia','PF'),&#xA;('Papua New Guinea','PG'),&#xA;('Philippines','PH'),&#xA;('Pakistan','PK'),&#xA;('Poland','PL'),&#xA;('Saint Pierre and Miquelon','PM'),&#xA;('Pitcairn','PN'),&#xA;('Puerto Rico','PR'),&#xA;('Palestine, State of','PS'),&#xA;('Portugal','PT'),&#xA;('Palau','PW'),&#xA;('Paraguay','PY'),&#xA;('Qatar','QA'),&#xA;('Réunion','RE'),&#xA;('Romania','RO'),&#xA;('Serbia','RS'),&#xA;('Russian Federation','RU'),&#xA;('Rwanda','RW'),&#xA;('Saudi Arabia','SA'),&#xA;('Solomon Islands','SB'),&#xA;('Seychelles','SC'),&#xA;('Sudan','SD'),&#xA;('Sweden','SE'),&#xA;('Singapore','SG'),&#xA;('Saint Helena, Ascension and Tristan da Cunha','SH'),&#xA;('Slovenia','SI'),&#xA;('Svalbard and Jan Mayen','SJ'),&#xA;('Slovakia','SK'),&#xA;('Sierra Leone','SL'),&#xA;('San Marino','SM'),&#xA;('Senegal','SN'),&#xA;('Somalia','SO'),&#xA;('Suriname','SR'),&#xA;('South Sudan','SS'),&#xA;('Sao Tome and Principe','ST'),&#xA;('El Salvador','SV'),&#xA;('Sint Maarten (Dutch part)','SX'),&#xA;('Syrian Arab Republic','SY'),&#xA;('Swaziland','SZ'),&#xA;('Turks and Caicos Islands','TC'),&#xA;('Chad','TD'),&#xA;('French Southern Territories','TF'),&#xA;('Togo','TG'),&#xA;('Thailand','TH'),&#xA;('Tajikistan','TJ'),&#xA;('Tokelau','TK'),&#xA;('Timor-Leste','TL'),&#xA;('Turkmenistan','TM'),&#xA;('Tunisia','TN'),&#xA;('Tonga','TO'),&#xA;('Turkey','TR'),&#xA;('Trinidad and Tobago','TT'),&#xA;('Tuvalu','TV'),&#xA;('Taiwan, Province of China','TW'),&#xA;('Tanzania, United Republic of','TZ'),&#xA;('Ukraine','UA'),&#xA;('Uganda','UG'),&#xA;('United States Minor Outlying Islands','UM'),&#xA;('United States of America','US'),&#xA;('Uruguay','UY'),&#xA;('Uzbekistan','UZ'),&#xA;('Holy See','VA'),&#xA;('Saint Vincent and the Grenadines','VC'),&#xA;('Venezuela, Bolivarian Republic of','VE'),&#xA;('Virgin Islands, British','VG'),&#xA;('Virgin Islands, U.S.','VI'),&#xA;('Viet Nam','VN'),&#xA;('Vanuatu','VU'),&#xA;('Wallis and Futuna','WF'),&#xA;('Samoa','WS'),&#xA;('Yemen','YE'),&#xA;('Mayotte','YT'),&#xA;('South Africa','ZA'),&#xA;('Zambia','ZM'),&#xA;('Zimbabwe','ZW')&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1775,11 +2376,11 @@ FROM rik_Land</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
-      DTS:DTSID="{C9974ED3-445A-4B81-82C5-D54230B36AAE}"
+      DTS:DTSID="{F33EEB39-671E-41E2-865D-8DF35A5098BF}"
       DTS:From="Package\Truncate rows in ERROR table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
-      DTS:To="Package\Load STG Land" />
+      DTS:To="Package\Delete country in target CRM" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
@@ -1791,11 +2392,19 @@ FROM rik_Land</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
       DTS:CreationName=""
-      DTS:DTSID="{70C9A2CC-41C1-44A6-9E9C-77352661D614}"
-      DTS:From="Package\Load STG Land"
+      DTS:DTSID="{753571A5-B1D0-44A9-B98E-2B8509DD52AF}"
+      DTS:From="Package\Delete country in target CRM"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 6"
       DTS:To="Package\Load Land" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{849D2960-0C6B-4A73-8796-97FD836F4138}"
+      DTS:From="Package\Delete country in target CRM"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1812,11 +2421,7 @@ FROM rik_Land</property>
         <NodeLayout
           Size="128,42"
           Id="Package\Load Land"
-          TopLeft="372.738101093695,401.715690702503" />
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Load STG Land"
-          TopLeft="357,279" />
+          TopLeft="413.738101093695,394.715690702503" />
         <NodeLayout
           Size="152,41"
           Id="Package\LogPackageEnd"
@@ -1857,25 +2462,25 @@ FROM rik_Land</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="372.738101093695,421.275819959978">
+          TopLeft="413.738101093695,417.775819959978">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-148.380956639239,0"
+              EndConnector="-189.380956639239,0"
               Start="0,0"
-              End="-140.880956639239,0">
+              End="-181.880956639239,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-140.880956639239,0" />
+                    End="-181.880956639239,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-95.7449314446195,5,50.60890625,11.609375"
+              BoundingBox="-116.244931444619,5,50.60890625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1938,40 +2543,6 @@ FROM rik_Land</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="400.809529074195,159.070589891189">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="31.1904709258047,119.929410108811"
-              Start="0,0"
-              End="31.1904709258047,112.429410108811">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.6712308339525" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,44.6712308339525"
-                    Point2="0,48.6712308339525"
-                    Point3="4,48.6712308339525" />
-                  <mssgle:LineSegment
-                    End="27.1904709258047,48.6712308339525" />
-                  <mssgle:CubicBezierSegment
-                    Point1="27.1904709258047,48.6712308339525"
-                    Point2="31.1904709258047,48.6712308339525"
-                    Point3="31.1904709258047,52.6712308339525" />
-                  <mssgle:LineSegment
-                    End="31.1904709258047,112.429410108811" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="349.142862407529,159.070589891189">
           <EdgeLayout.Curve>
@@ -2007,20 +2578,106 @@ FROM rik_Land</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="215,42"
+          Id="Package\Delete country in target CRM"
+          TopLeft="397,271" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="434.369050546847,321">
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="400.809529074195,159.070589891189">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,80.715690702503"
+              EndConnector="103.690470925805,111.929410108811"
               Start="0,0"
-              End="0,73.215690702503">
+              End="103.690470925805,104.429410108811">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,73.215690702503" />
+                    End="0,41.4245722677313" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.4245722677313"
+                    Point2="0,45.4245722677313"
+                    Point3="4,45.4245722677313" />
+                  <mssgle:LineSegment
+                    End="99.6904709258047,45.4245722677313" />
+                  <mssgle:CubicBezierSegment
+                    Point1="99.6904709258047,45.4245722677313"
+                    Point2="103.690470925805,45.4245722677313"
+                    Point3="103.690470925805,49.4245722677313" />
+                  <mssgle:LineSegment
+                    End="103.690470925805,104.429410108811" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="470,313">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-285.642855545544,86.335949217453"
+              Start="0,0"
+              End="-285.642855545544,78.835949217453">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.6384896688088" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.6384896688088"
+                    Point2="0,48.6384896688088"
+                    Point3="-4,48.6384896688088" />
+                  <mssgle:LineSegment
+                    End="-281.642855545544,48.6384896688088" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-281.642855545544,48.6384896688088"
+                    Point2="-285.642855545544,48.6384896688088"
+                    Point3="-285.642855545544,52.6384896688088" />
+                  <mssgle:LineSegment
+                    End="-285.642855545544,78.835949217453" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-158.062775429022,53.6384896688088,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="539,313">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-61.2618989063051,81.715690702503"
+              Start="0,0"
+              End="-61.2618989063051,74.215690702503">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.0484510874389" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.0484510874389"
+                    Point2="0,33.0484510874389"
+                    Point3="-4,33.0484510874389" />
+                  <mssgle:LineSegment
+                    End="-57.2618989063051,33.0484510874389" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57.2618989063051,33.0484510874389"
+                    Point2="-61.2618989063051,33.0484510874389"
+                    Point3="-61.2618989063051,37.0484510874389" />
+                  <mssgle:LineSegment
+                    End="-61.2618989063051,74.215690702503" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2038,10 +2695,6 @@ FROM rik_Land</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="124,42"
-          Id="Package\Load Land\STG Land"
-          TopLeft="280,38" />
-        <NodeLayout
           Size="178,42"
           Id="Package\Load Land\Migrate Land records"
           TopLeft="256.857147265455,131.117647290477" />
@@ -2054,19 +2707,57 @@ FROM rik_Land</property>
           Id="Package\Load Land\Row Inserted"
           TopLeft="123.857143246397,256.505888993683" />
         <EdgeLayout
-          Id="Package\Load Land.Paths[OLE DB Source Output]"
-          TopLeft="343.928573632728,80">
+          Id="Package\Load Land.Paths[Default Output]"
+          TopLeft="317.523813932122,173.117647290477">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,51.117647290477"
+              EndConnector="-122.666670685725,83.388241703206"
               Start="0,0"
-              End="0,43.617647290477">
+              End="-122.666670685725,75.888241703206">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.617647290477" />
+                    End="0,29.8010244765779" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.8010244765779"
+                    Point2="0,33.8010244765779"
+                    Point3="-4,33.8010244765779" />
+                  <mssgle:LineSegment
+                    End="-118.666670685725,33.8010244765779" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-118.666670685725,33.8010244765779"
+                    Point2="-122.666670685725,33.8010244765779"
+                    Point3="-122.666670685725,37.8010244765779" />
+                  <mssgle:LineSegment
+                    End="-122.666670685725,75.888241703206" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Load Land\Dynamics CRM Source"
+          TopLeft="251,27" />
+        <EdgeLayout
+          Id="Package\Load Land.Paths[CRM Primary Output]"
+          TopLeft="344.428573632728,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.117647290477"
+              Start="0,0"
+              End="0,54.617647290477">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.617647290477" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2111,45 +2802,11 @@ FROM rik_Land</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Land.Paths[Default Output]"
-          TopLeft="317.523813932122,173.117647290477">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-122.666670685725,83.388241703206"
-              Start="0,0"
-              End="-122.666670685725,75.888241703206">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.8010244765779" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.8010244765779"
-                    Point2="0,33.8010244765779"
-                    Point3="-4,33.8010244765779" />
-                  <mssgle:LineSegment
-                    End="-118.666670685725,33.8010244765779" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-118.666670685725,33.8010244765779"
-                    Point2="-122.666670685725,33.8010244765779"
-                    Point3="-122.666670685725,37.8010244765779" />
-                  <mssgle:LineSegment
-                    End="-122.666670685725,75.888241703206" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Land\STG Land">
+    design-time-name="Package\Load Land\Land_ERROR">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2161,8 +2818,124 @@ FROM rik_Land</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Delete country in target CRM">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Delete country in target CRM\Row Count"
+          TopLeft="187,223" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Delete country in target CRM\Delete rows in Target CRM"
+          TopLeft="237.5,103.5" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Delete country in target CRM\Dynamics CRM Source"
+          TopLeft="247,21" />
+        <EdgeLayout
+          Id="Package\Delete country in target CRM.Paths[Default Output]"
+          TopLeft="307.166666666667,145.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-55.1666666666666,77.5"
+              Start="0,0"
+              End="-55.1666666666666,70">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.3601161665053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.3601161665053"
+                    Point2="0,31.3601161665053"
+                    Point3="-4,31.3601161665053" />
+                  <mssgle:LineSegment
+                    End="-51.1666666666666,31.3601161665053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-51.1666666666666,31.3601161665053"
+                    Point2="-55.1666666666666,31.3601161665053"
+                    Point3="-55.1666666666666,35.3601161665053" />
+                  <mssgle:LineSegment
+                    End="-55.1666666666666,70" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Delete country in target CRM.Paths[CRM Primary Output]"
+          TopLeft="339.5,63">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.5"
+              Start="0,0"
+              End="0,33">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Delete country in target CRM\Land_ERROR"
+          TopLeft="383,220" />
+        <EdgeLayout
+          Id="Package\Delete country in target CRM.Paths[Error Output]"
+          TopLeft="372.833333333333,145.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="80.6666666666667,74.5"
+              Start="0,0"
+              End="80.6666666666667,67">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.1461761858664" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.1461761858664"
+                    Point2="0,30.1461761858664"
+                    Point3="4,30.1461761858664" />
+                  <mssgle:LineSegment
+                    End="76.6666666666667,30.1461761858664" />
+                  <mssgle:CubicBezierSegment
+                    Point1="76.6666666666667,30.1461761858664"
+                    Point2="80.6666666666667,30.1461761858664"
+                    Point3="80.6666666666667,34.1461761858664" />
+                  <mssgle:LineSegment
+                    End="80.6666666666667,67" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="11.9969466145833,35.1461761858664,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Land\Land_ERROR">
+    design-time-name="Package\Delete country in target CRM\Land_ERROR">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
