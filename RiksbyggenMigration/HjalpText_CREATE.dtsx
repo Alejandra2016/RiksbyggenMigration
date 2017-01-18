@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="HjalpText_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="105"
-  DTS:VersionGUID="{D66D7330-7959-4773-85A0-C136F702DD30}">
+  DTS:VersionBuild="111"
+  DTS:VersionGUID="{ED1AF490-54DE-4834-8543-C333B7B9DB5C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -40,7 +40,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="&quot;Konto&quot;"
-              DTS:DTSID="{2A574758-ACFB-4577-BF1C-4029E1BF5D83}"
+              DTS:DTSID="{8198E75F-0772-4EBB-9D58-F1F979D06368}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -49,7 +49,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="&quot;Typ&quot;"
-              DTS:DTSID="{5F9BE593-41F2-4CEB-B4CE-38B63B109B1C}"
+              DTS:DTSID="{9E201E12-3887-4222-B680-C3F821C71AA5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -58,7 +58,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="&quot;Namn&quot;"
-              DTS:DTSID="{7A18A9F1-94B7-4DE4-89CE-5DBCAD6970A2}"
+              DTS:DTSID="{D847170F-02FB-4633-AE12-5B59F99E6C13}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -67,7 +67,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="&quot;Text&quot;"
-              DTS:DTSID="{F5142AE1-3B85-4D21-94D0-941ECD3286E1}"
+              DTS:DTSID="{7018618D-FB07-4A2C-8222-5AAA41B3038A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -76,7 +76,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="&quot;tel1&quot;"
-              DTS:DTSID="{3825AC70-132C-4650-BA6B-2E42ECDF7653}"
+              DTS:DTSID="{8C421619-D6A8-4BBA-A718-A15EC4DC8098}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -85,7 +85,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="&quot;tel2&quot;"
-              DTS:DTSID="{6F2010ED-CBCB-44BC-B66C-02C482B22EF0}"
+              DTS:DTSID="{2E2F2A8A-B4EE-47DA-A7F2-95267EA6768D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -94,7 +94,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="&quot;epost&quot;"
-              DTS:DTSID="{380B7598-5037-4D5A-92B1-CC98E486AE24}"
+              DTS:DTSID="{60976F87-1937-4E3B-A589-9E4EB0338D38}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -1251,6 +1251,17 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes">rik_serviceobjekt</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_serviceobjekt&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_idnummer&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1454,29 +1465,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT rik_ServiceobjektIdName
-      ,rik_LeverantorAccountIdYomiName
-      ,rik_AccountIdYomiName
-      ,rik_LeverantorAccountIdName
-      ,rik_HjalptexttypIdName
-      ,rik_AccountIdName
-      ,rik_ContactIdName
-      ,rik_MarknadsomradeIdName
-      ,rik_ContactIdYomiName
-      ,rik_HjalptextId
-      ,LTRIM(RTRIM(rik_Namn)) AS rik_Namn
-      ,rik_Epost
-      ,rik_Telefonnummer1
-      ,rik_Telefonnummer2
-      ,LTRIM(RTRIM(rik_Text))AS rik_Text
-      ,rik_Varde
-      ,rik_AccountId
-      ,rik_LeverantorAccountId
-      ,rik_ContactId
-      ,rik_HjalptexttypId
-      ,rik_MarknadsomradeId
-      ,rik_ServiceobjektId
-FROM STG.dbo.rik_Hjalptext</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC GetHjalpText</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1730,6 +1719,16 @@ FROM STG.dbo.rik_Hjalptext</property>
                       lineageId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].Columns[rik_ServiceobjektId]"
                       name="rik_ServiceobjektId"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].Columns[MigrationId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].ExternalColumns[MigrationId]"
+                      length="255"
+                      lineageId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].Columns[MigrationId]"
+                      name="MigrationId"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1841,6 +1840,11 @@ FROM STG.dbo.rik_Hjalptext</property>
                       dataType="wstr"
                       length="255"
                       name="rik_ServiceobjektId" />
+                    <externalMetadataColumn
+                      refId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].ExternalColumns[MigrationId]"
+                      dataType="wstr"
+                      length="255"
+                      name="MigrationId" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1978,6 +1982,12 @@ FROM STG.dbo.rik_Hjalptext</property>
                       length="255"
                       lineageId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Error Output].Columns[rik_ServiceobjektId]"
                       name="rik_ServiceobjektId" />
+                    <outputColumn
+                      refId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Error Output].Columns[MigrationId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Error Output].Columns[MigrationId]"
+                      name="MigrationId" />
                     <outputColumn
                       refId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -3753,7 +3763,7 @@ FROM STG.dbo.rik_Hjalptext</property>
         <NodeLayout
           Size="146,42"
           Id="Package\Load HjalpText\STG HjalpText"
-          TopLeft="280,38" />
+          TopLeft="280,43" />
         <NodeLayout
           Size="163,42"
           Id="Package\Load HjalpText\HjalpText_ERROR"
@@ -3768,18 +3778,18 @@ FROM STG.dbo.rik_Hjalptext</property>
           TopLeft="180.857143246397,248.505888993683" />
         <EdgeLayout
           Id="Package\Load HjalpText.Paths[OLE DB Source Output]"
-          TopLeft="354.928573632728,80">
+          TopLeft="354.928573632728,85">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,51.117647290477"
+              EndConnector="0,46.117647290477"
               Start="0,0"
-              End="0,43.617647290477">
+              End="0,38.617647290477">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.617647290477" />
+                    End="0,38.617647290477" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
