@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Team_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="98"
-  DTS:VersionGUID="{14B331F9-68D5-40E9-8B59-BC3938D9BBC8}">
+  DTS:VersionBuild="99"
+  DTS:VersionGUID="{7F72EAB3-FE8B-4BC2-A180-142301763FCE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -908,6 +908,25 @@
                         <property
                           dataType="System.String"
                           name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Createable">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="Updateable">true</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Team\Migrate Team records.Inputs[Input].ExternalColumns[rik_licenstyp]"
+                      dataType="i4"
+                      name="rik_licenstyp">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Picklist</property>
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
@@ -2343,6 +2362,10 @@
                       refId="Package\Load Team\Team_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Behorighetsteam]"
                       dataType="bool"
                       name="rik_Behorighetsteam" />
+                    <externalMetadataColumn
+                      refId="Package\Load Team\Team_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Licenstyp]"
+                      dataType="i4"
+                      name="rik_Licenstyp" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3691,7 +3714,7 @@
         <NodeLayout
           Size="132,43"
           Id="Package\Load Team"
-          TopLeft="332.738101093695,281.715690702503" />
+          TopLeft="338.738101093695,277.715690702503" />
         <NodeLayout
           Size="152,41"
           Id="Package\LogPackageEnd"
@@ -3736,37 +3759,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="378.071434427028,324.715690702503">
+          TopLeft="384.071434427028,320.715690702503">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-193.714289972572,74.62025851495"
+              EndConnector="-199.714289972572,78.62025851495"
               Start="0,0"
-              End="-193.714289972572,67.12025851495">
+              End="-199.714289972572,71.12025851495">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.2477537253792" />
+                    End="0,40.5124338305501" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,38.2477537253792"
-                    Point2="0,42.2477537253792"
-                    Point3="-4,42.2477537253792" />
+                    Point1="0,40.5124338305501"
+                    Point2="0,44.5124338305501"
+                    Point3="-4,44.5124338305501" />
                   <mssgle:LineSegment
-                    End="-189.714289972572,42.2477537253792" />
+                    End="-195.714289972572,44.5124338305501" />
                   <mssgle:CubicBezierSegment
-                    Point1="-189.714289972572,42.2477537253792"
-                    Point2="-193.714289972572,42.2477537253792"
-                    Point3="-193.714289972572,46.2477537253792" />
+                    Point1="-195.714289972572,44.5124338305501"
+                    Point2="-199.714289972572,44.5124338305501"
+                    Point3="-199.714289972572,48.5124338305501" />
                   <mssgle:LineSegment
-                    End="-193.714289972572,67.12025851495" />
+                    End="-199.714289972572,71.12025851495" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-112.098492642536,47.2477537253792,30.4826953125,9.7490234375"
+              BoundingBox="-115.098492642536,49.5124338305501,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3830,18 +3853,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="399.273815083945,159.070589891189">
+          TopLeft="402.273815083945,159.070589891189">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,122.645100811314"
+              EndConnector="0,118.645100811314"
               Start="0,0"
-              End="0,115.145100811314">
+              End="0,111.145100811314">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,115.145100811314" />
+                    End="0,111.145100811314" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3888,18 +3911,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="417.878307333618,324.715690702503">
+          TopLeft="425.404767760362,320.715690702503">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,76.776894657198"
+              EndConnector="-9.05292085348765,80.776894657198"
               Start="0,0"
-              End="0,69.276894657198">
+              End="-9.05292085348765,73.276894657198">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,69.276894657198" />
+                    End="0,28.8911906388591" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.8911906388591"
+                    Point2="0,32.8911906388591"
+                    Point3="-4,32.8911906388591" />
+                  <mssgle:LineSegment
+                    End="-5.05292085348765,32.8911906388591" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.05292085348765,32.8911906388591"
+                    Point2="-9.05292085348765,32.8911906388591"
+                    Point3="-9.05292085348765,36.8911906388591" />
+                  <mssgle:LineSegment
+                    End="-9.05292085348765,73.276894657198" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3941,21 +3976,21 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="170,42"
-          Id="Package\Load Team\Read Team records"
-          TopLeft="258.916662599892,19.799999628067" />
+          Size="153,41"
+          Id="Package\Load Team\Team_ERROR"
+          TopLeft="415.428578503278,287.741179636523" />
         <NodeLayout
           Size="182,42"
           Id="Package\Load Team\Migrate Team records"
           TopLeft="250.857147265455,180.117647290477" />
         <NodeLayout
-          Size="153,41"
-          Id="Package\Load Team\Team_ERROR"
-          TopLeft="415.428578503278,287.741179636523" />
-        <NodeLayout
           Size="141,41"
           Id="Package\Load Team\Row Inserted"
           TopLeft="120.857143246397,291.505888993683" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Load Team\Read Team records"
+          TopLeft="258.916662599892,19.799999628067" />
         <NodeLayout
           Size="154,42"
           Id="Package\Load Team\Derived Column"
