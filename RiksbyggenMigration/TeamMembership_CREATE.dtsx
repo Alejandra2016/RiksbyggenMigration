@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="TeamMembership_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="119"
-  DTS:VersionGUID="{C693A9FC-9F12-4DB5-87D5-B112355940F7}">
+  DTS:VersionBuild="120"
+  DTS:VersionGUID="{CFE39A1B-FDDF-414E-B375-BB4DE2DB4A69}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -2559,6 +2559,10 @@ where [refTable].[teamid] = ?</property>
                       refId="Package\Read Team Id to a STG table\Team.Inputs[OLE DB Destination Input].ExternalColumns[rik_Behorighetsteam]"
                       dataType="bool"
                       name="rik_Behorighetsteam" />
+                    <externalMetadataColumn
+                      refId="Package\Read Team Id to a STG table\Team.Inputs[OLE DB Destination Input].ExternalColumns[rik_Licenstyp]"
+                      dataType="i4"
+                      name="rik_Licenstyp" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2897,6 +2901,10 @@ where [refTable].[teamid] = ?</property>
                       refId="Package\Read Team Id to a STG table\Team 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_Behorighetsteam]"
                       dataType="bool"
                       name="rik_Behorighetsteam" />
+                    <externalMetadataColumn
+                      refId="Package\Read Team Id to a STG table\Team 1.Inputs[OLE DB Destination Input].ExternalColumns[rik_Licenstyp]"
+                      dataType="i4"
+                      name="rik_Licenstyp" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3575,10 +3583,6 @@ where [refTable].[teamid] = ?</property>
           Id="Package\Read Team Id to a STG table\Data Conversion 1"
           TopLeft="587.083337400108,169.200000371933" />
         <NodeLayout
-          Size="141,41"
-          Id="Package\Read Team Id to a STG table\Row Inserted 1"
-          TopLeft="592.940480646505,92.705889365616" />
-        <NodeLayout
           Size="105,42"
           Id="Package\Read Team Id to a STG table\Team"
           TopLeft="282,329" />
@@ -3595,6 +3599,14 @@ where [refTable].[teamid] = ?</property>
           Id="Package\Read Team Id to a STG table\Derived Column"
           TopLeft="259,250" />
         <NodeLayout
+          Size="141,41"
+          Id="Package\Read Team Id to a STG table\Row Inserted 1"
+          TopLeft="592.940480646505,92.705889365616" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\Read Team Id to a STG table\Read Team records oldCRM"
+          TopLeft="242.916662599892,11.799999628067" />
+        <NodeLayout
           Size="156,42"
           Id="Package\Read Team Id to a STG table\Data Conversion"
           TopLeft="265,172" />
@@ -3602,54 +3614,6 @@ where [refTable].[teamid] = ?</property>
           Size="141,41"
           Id="Package\Read Team Id to a STG table\Row Inserted"
           TopLeft="270.857143246397,95.505888993683" />
-        <NodeLayout
-          Size="209,42"
-          Id="Package\Read Team Id to a STG table\Read Team records oldCRM"
-          TopLeft="242.916662599892,11.799999628067" />
-        <EdgeLayout
-          Id="Package\Read Team Id to a STG table.Paths[CRM Primary Output1]"
-          TopLeft="665.970240323252,56">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36.705889365616"
-              Start="0,0"
-              End="0,29.205889365616">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.205889365616" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Read Team Id to a STG table.Paths[CRM Primary Output]"
-          TopLeft="344.386902923144,53.799999628067">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41.705889365616"
-              Start="0,0"
-              End="0,34.205889365616">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.205889365616" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Read Team Id to a STG table.Paths[Row Count Output 11]"
           TopLeft="664.261909023307,133.705889365616">
@@ -3782,11 +3746,68 @@ where [refTable].[teamid] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Read Team Id to a STG table.Paths[CRM Primary Output1]"
+          TopLeft="665.970240323252,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.705889365616"
+              Start="0,0"
+              End="0,29.205889365616">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.205889365616" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Read Team Id to a STG table.Paths[CRM Primary Output]"
+          TopLeft="344.386902923144,53.799999628067">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.705889365616"
+              Start="0,0"
+              End="0,34.205889365616">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.205889365616" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Read Team Id to a STG table\Team">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Read Team Id to a STG table\Team 1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
