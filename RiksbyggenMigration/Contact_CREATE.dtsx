@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Contact_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="101"
-  DTS:VersionGUID="{116F647E-D075-44CF-B6D3-BDA42939D9A8}">
+  DTS:VersionBuild="102"
+  DTS:VersionGUID="{AEE30642-DD04-45AC-877F-BC9550122DFC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -20658,8 +20658,8 @@
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  CRMguid AS ContactId
-,CAST(Fornamn AS NVARCHAR(50))AS FirstName
-,CAST(Efternamn AS NVARCHAR(50))AS LastName
+,CAST(RTRIM(Fornamn) AS NVARCHAR(50))AS FirstName
+,CAST(RTRIM(Efternamn) AS NVARCHAR(50))AS LastName
 ,CAST(CASE WHEN PersnrChk = 1 AND Sekelsiffra IS NOT NULL THEN CONCAT(CAST(Sekelsiffra AS CHAR(2)), SUBSTRING(Personnummer,1,2), '-',SUBSTRING(Personnummer,3,2),'-',SUBSTRING(Personnummer,5,2) )END AS NVARCHAR(10)) AS BirthDate
 ,CAST(CASE WHEN resursID IS NOT NULL THEN NULL
 		   WHEN PersnrChk = 1 AND Sekelsiffra IS NOT NULL THEN CONCAT(CAST(Sekelsiffra AS CHAR(2)), REPLACE(Personnummer,'-','')) 
@@ -20667,24 +20667,24 @@
 	   END AS NVARCHAR(20))AS rik_Personnummer
 ,CAST(CASE WHEN UtlandsPersnr IS NOT NULL THEN UtlandsPersnr END AS NVARCHAR(20))AS rik_AnnanUnikIdentifierare
 ,CASE WHEN Personnummer IS NULL THEN 1 ELSE 0 END AS rik_SaknarPersonnummer
-,AnnanUnikIdentierare AS rik_IdNummer
-,Anstnummer AS rik_resursid
+,RTRIM(AnnanUnikIdentierare) AS rik_IdNummer
+,RTRIM(Anstnummer) AS rik_resursid
 ,CAST(Anstdatum AS DATE) AS rik_Startdatum 
 ,CASE WHEN Avgdatum != '' THEN CAST(Avgdatum AS DATE) END AS rik_Slutdatum
-,PrivatEpost AS EmailAddress1
-,PublikEpost AS EmailAddress2
+,RTRIM(PrivatEpost) AS EmailAddress1
+,RTRIM(PublikEpost) AS EmailAddress2
 --,Skyddadidentiet AS rik_SkyddadIdentiet
-,CAST(Telefon1 AS NVARCHAR(50))AS Telephone1
-,CAST(CASE WHEN Telefon1 = Telefon2 THEN '' ELSE CAST(Telefon2 AS NVARCHAR(50))END AS NVARCHAR(50)) AS Telephone2
-,CAST(Adress1  AS NVARCHAR(400))AS Address1_Line1
-,CAST(Adress2  AS NVARCHAR(400))AS Address1_Line2
-,CAST(Postnummer AS NVARCHAR(50))AS Address1_PostalCode
-,CAST(Ort AS NVARCHAR(400))AS Address1_City
-,ISNULL(CAST(Landskod as nvarchar(255)), cast(Landskod2 AS nvarchar(255)))AS rik_Address1_Land
+,CAST(RTRIM(Telefon1) AS NVARCHAR(50))AS Telephone1
+,CAST(CASE WHEN RTRIM(Telefon1) = RTRIM(Telefon2) THEN '' ELSE CAST(RTRIM(Telefon2) AS NVARCHAR(50))END AS NVARCHAR(50)) AS Telephone2
+,CAST(RTRIM(Adress1)  AS NVARCHAR(400))AS Address1_Line1
+,CAST(RTRIM(Adress2) AS NVARCHAR(400))AS Address1_Line2
+,CAST(RTRIM(Postnummer) AS NVARCHAR(50))AS Address1_PostalCode
+,CAST(RTRIM(Ort) AS NVARCHAR(400))AS Address1_City
+,ISNULL(CAST(RTRIM(Landskod) AS NVARCHAR(255)), CAST(RTRIM(Landskod2) AS NVARCHAR(255)))AS rik_Address1_Land
 ,CASE WHEN avliden IS NOT NULL THEN 1 ELSE 0 END AS rik_Avliden
 ,NULL AS rik_Epost1Hemlig
-,Telefon1Hemlig AS rik_Telefonnummer1Hemlig
-,Telefon2Hemlig AS rik_Telefonnummer2Hemlig
+,RTRIM(Telefon1Hemlig) AS rik_Telefonnummer1Hemlig
+,RTRIM(Telefon2Hemlig) AS rik_Telefonnummer2Hemlig
 ,CASE WHEN ResursId IS NOT NULL THEN 908400002		-- Anställd  
 	  ELSE 908400000						--Kontakt -------  908400001   Konsult
   END AS rik_Typ
@@ -21077,11 +21077,15 @@ FROM [STG].[dbo].[CrmKontakt]</property>
                       name="rik_Address1_Land" />
                     <externalMetadataColumn
                       refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Telefonnummer1Hemlig]"
-                      dataType="bool"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
                       name="rik_Telefonnummer1Hemlig" />
                     <externalMetadataColumn
                       refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Telefonnummer2Hemlig]"
-                      dataType="bool"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
                       name="rik_Telefonnummer2Hemlig" />
                     <externalMetadataColumn
                       refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Output].ExternalColumns[rik_Epost1Hemlig]"
@@ -21285,12 +21289,16 @@ FROM [STG].[dbo].[CrmKontakt]</property>
                       name="rik_Epost1Hemlig" />
                     <outputColumn
                       refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Telefonnummer1Hemlig]"
-                      dataType="bool"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Telefonnummer1Hemlig]"
                       name="rik_Telefonnummer1Hemlig" />
                     <outputColumn
                       refId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Telefonnummer2Hemlig]"
-                      dataType="bool"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
                       lineageId="Package\Load Contact\STG_Contact.Outputs[OLE DB Source Error Output].Columns[rik_Telefonnummer2Hemlig]"
                       name="rik_Telefonnummer2Hemlig" />
                     <outputColumn
@@ -23479,29 +23487,29 @@ FROM [STG].[dbo].[CrmKontakt]</property>
               startId="Package\Load Contact\Data Conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Load Contact.Paths[Default Output4]"
-              endId="Package\Load Contact\Union All Inserted.Inputs[Union All Input 2]"
+              endId="Package\Load Contact\Union All Inserted.Inputs[Union All Input 1]"
               name="Default Output"
-              startId="Package\Load Contact\Dynamics CRM Destination 2.Outputs[Default Output]" />
+              startId="Package\Load Contact\Dynamics CRM Destination 1.Outputs[Default Output]" />
             <path
               refId="Package\Load Contact.Paths[Default Output2]"
-              endId="Package\Load Contact\Union All Inserted.Inputs[Union All Input 3]"
-              name="Default Output"
-              startId="Package\Load Contact\Dynamics CRM Destination 3.Outputs[Default Output]" />
-            <path
-              refId="Package\Load Contact.Paths[Default Output3]"
               endId="Package\Load Contact\Union All Inserted.Inputs[Union All Input 4]"
               name="Default Output"
               startId="Package\Load Contact\Dynamics CRM Destination.Outputs[Default Output]" />
             <path
-              refId="Package\Load Contact.Paths[Default Output]"
+              refId="Package\Load Contact.Paths[Default Output3]"
               endId="Package\Load Contact\Union All Inserted.Inputs[Union All Input 5]"
               name="Default Output"
               startId="Package\Load Contact\Dynamics CRM Destination 4.Outputs[Default Output]" />
             <path
-              refId="Package\Load Contact.Paths[Default Output1]"
-              endId="Package\Load Contact\Union All Inserted.Inputs[Union All Input 1]"
+              refId="Package\Load Contact.Paths[Default Output]"
+              endId="Package\Load Contact\Union All Inserted.Inputs[Union All Input 2]"
               name="Default Output"
-              startId="Package\Load Contact\Dynamics CRM Destination 1.Outputs[Default Output]" />
+              startId="Package\Load Contact\Dynamics CRM Destination 2.Outputs[Default Output]" />
+            <path
+              refId="Package\Load Contact.Paths[Default Output1]"
+              endId="Package\Load Contact\Union All Inserted.Inputs[Union All Input 3]"
+              name="Default Output"
+              startId="Package\Load Contact\Dynamics CRM Destination 3.Outputs[Default Output]" />
             <path
               refId="Package\Load Contact.Paths[Error Output]"
               endId="Package\Load Contact\Union All ERROR.Inputs[Union All Input 2]"
@@ -25770,108 +25778,6 @@ where [refTable].[rik_namn] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Contact.Paths[Default Output4]"
-          TopLeft="742.523810934859,230.847064837949">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-380.988095315948,166"
-              Start="0,0"
-              End="-380.988095315948,158.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,90.7139914920297" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,90.7139914920297"
-                    Point2="0,94.7139914920297"
-                    Point3="-4,94.7139914920297" />
-                  <mssgle:LineSegment
-                    End="-376.988095315948,94.7139914920297" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-376.988095315948,94.7139914920297"
-                    Point2="-380.988095315948,94.7139914920297"
-                    Point3="-380.988095315948,98.7139914920297" />
-                  <mssgle:LineSegment
-                    End="-380.988095315948,158.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Contact.Paths[Default Output3]"
-          TopLeft="185.095240197214,230.964708336168">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-28.3095245783026,165.882356501781"
-              Start="0,0"
-              End="-28.3095245783026,158.382356501781">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,105.689641536507" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,105.689641536507"
-                    Point2="0,109.689641536507"
-                    Point3="-4,109.689641536507" />
-                  <mssgle:LineSegment
-                    End="-24.3095245783026,109.689641536507" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-24.3095245783026,109.689641536507"
-                    Point2="-28.3095245783026,109.689641536507"
-                    Point3="-28.3095245783026,113.689641536507" />
-                  <mssgle:LineSegment
-                    End="-28.3095245783026,158.382356501781" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Contact.Paths[Default Output2]"
-          TopLeft="999.952382285578,231">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-620.866666666667,165.847064837949"
-              Start="0,0"
-              End="-620.866666666667,158.347064837949">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,99.1266253551693" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,99.1266253551693"
-                    Point2="0,103.126625355169"
-                    Point3="-4,103.126625355169" />
-                  <mssgle:LineSegment
-                    End="-616.866666666667,103.126625355169" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-616.866666666667,103.126625355169"
-                    Point2="-620.866666666667,103.126625355169"
-                    Point3="-620.866666666667,107.126625355169" />
-                  <mssgle:LineSegment
-                    End="-620.866666666667,158.347064837949" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Contact.Paths[Default Output1]"
           TopLeft="457.666666666667,233">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -25905,7 +25811,7 @@ where [refTable].[rik_namn] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Contact.Paths[Default Output]"
+          Id="Package\Load Contact.Paths[Default Output3]"
           TopLeft="1232.95238228558,233">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -25930,6 +25836,108 @@ where [refTable].[rik_namn] = ?</property>
                     Point3="-842.166666666667,112.314248932295" />
                   <mssgle:LineSegment
                     End="-842.166666666667,156.347064837949" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Contact.Paths[Default Output2]"
+          TopLeft="185.095240197214,230.964708336168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28.3095245783026,165.882356501781"
+              Start="0,0"
+              End="-28.3095245783026,158.382356501781">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,105.689641536507" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,105.689641536507"
+                    Point2="0,109.689641536507"
+                    Point3="-4,109.689641536507" />
+                  <mssgle:LineSegment
+                    End="-24.3095245783026,109.689641536507" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24.3095245783026,109.689641536507"
+                    Point2="-28.3095245783026,109.689641536507"
+                    Point3="-28.3095245783026,113.689641536507" />
+                  <mssgle:LineSegment
+                    End="-28.3095245783026,158.382356501781" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Contact.Paths[Default Output1]"
+          TopLeft="999.952382285578,231">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-620.866666666667,165.847064837949"
+              Start="0,0"
+              End="-620.866666666667,158.347064837949">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,99.1266253551693" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,99.1266253551693"
+                    Point2="0,103.126625355169"
+                    Point3="-4,103.126625355169" />
+                  <mssgle:LineSegment
+                    End="-616.866666666667,103.126625355169" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-616.866666666667,103.126625355169"
+                    Point2="-620.866666666667,103.126625355169"
+                    Point3="-620.866666666667,107.126625355169" />
+                  <mssgle:LineSegment
+                    End="-620.866666666667,158.347064837949" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Contact.Paths[Default Output]"
+          TopLeft="742.523810934859,230.847064837949">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-380.988095315948,166"
+              Start="0,0"
+              End="-380.988095315948,158.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,90.7139914920297" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,90.7139914920297"
+                    Point2="0,94.7139914920297"
+                    Point3="-4,94.7139914920297" />
+                  <mssgle:LineSegment
+                    End="-376.988095315948,94.7139914920297" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-376.988095315948,94.7139914920297"
+                    Point2="-380.988095315948,94.7139914920297"
+                    Point3="-380.988095315948,98.7139914920297" />
+                  <mssgle:LineSegment
+                    End="-380.988095315948,158.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
