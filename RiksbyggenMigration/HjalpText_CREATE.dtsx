@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="HjalpText_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="118"
-  DTS:VersionGUID="{E8945E43-376F-43DA-98CC-CE7A87343852}">
+  DTS:VersionBuild="119"
+  DTS:VersionGUID="{EFAE9BB2-32E6-4D76-8E01-185E2F9DB68F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -735,6 +735,15 @@
                       refId="Package\Load HjalpText\HjalpText_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
                       dataType="i4"
                       name="ErrorColumn" />
+                    <externalMetadataColumn
+                      refId="Package\Load HjalpText\HjalpText_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_HjalptextuppgiftId]"
+                      dataType="guid"
+                      name="rik_HjalptextuppgiftId" />
+                    <externalMetadataColumn
+                      refId="Package\Load HjalpText\HjalpText_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_HjalptextuppgiftIdName]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_HjalptextuppgiftIdName" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1244,6 +1253,19 @@
                         <property
                           dataType="System.String"
                           name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load HjalpText\Migrate HjalpText records.Inputs[Input].ExternalColumns[rik_hjalptextuppgiftid]"
+                      dataType="guid"
+                      name="rik_hjalptextuppgiftid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">rik_hjalptextuppgift</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
