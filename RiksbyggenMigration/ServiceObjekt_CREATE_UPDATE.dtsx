@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="ServiceObjekt_CREATE_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="140"
-  DTS:VersionGUID="{F0CD1E42-6E6B-40C8-ADAA-CE785E2ABC71}">
+  DTS:VersionBuild="142"
+  DTS:VersionGUID="{36D40E0F-E3B3-4A0B-8960-32798F6CE885}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -5205,7 +5205,7 @@ SELECT rik_AccountIdYomiName
       ,rik_Idnummer
       ,rik_Inaktiverad
       ,rik_Marknadsomradekod
-      ,o.rik_Objektskod
+      ,s.rik_Objektskod
 	  ,o.rik_Objektskod AS rik_ObjektId
       ,UPPER(rik_Objektstypkod) AS rik_ObjektstypId
       ,UPPER(rik_Objektstypkod)AS rik_Objektstypkod
@@ -9783,29 +9783,29 @@ LEFT JOIN CTE o
               startId="Package\Load ServiceObjekt\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 5]" />
             <path
               refId="Package\Load ServiceObjekt.Paths[Default Output4]"
-              endId="Package\Load ServiceObjekt\Union All Inserted.Inputs[Union All Input 5]"
+              endId="Package\Load ServiceObjekt\Union All Inserted.Inputs[Union All Input 3]"
               name="Default Output"
-              startId="Package\Load ServiceObjekt\Migrate ServiceObjekt records 3.Outputs[Default Output]" />
+              startId="Package\Load ServiceObjekt\Migrate ServiceObjekt records 2.Outputs[Default Output]" />
             <path
               refId="Package\Load ServiceObjekt.Paths[Default Output2]"
-              endId="Package\Load ServiceObjekt\Union All Inserted.Inputs[Union All Input 2]"
-              name="Default Output"
-              startId="Package\Load ServiceObjekt\Migrate ServiceObjekt records 1.Outputs[Default Output]" />
-            <path
-              refId="Package\Load ServiceObjekt.Paths[Default Output3]"
               endId="Package\Load ServiceObjekt\Union All Inserted.Inputs[Union All Input 4]"
               name="Default Output"
               startId="Package\Load ServiceObjekt\Migrate ServiceObjekt records 4.Outputs[Default Output]" />
             <path
-              refId="Package\Load ServiceObjekt.Paths[Default Output]"
+              refId="Package\Load ServiceObjekt.Paths[Default Output3]"
               endId="Package\Load ServiceObjekt\Union All Inserted.Inputs[Union All Input 1]"
               name="Default Output"
               startId="Package\Load ServiceObjekt\Migrate ServiceObjekt records.Outputs[Default Output]" />
             <path
-              refId="Package\Load ServiceObjekt.Paths[Default Output1]"
-              endId="Package\Load ServiceObjekt\Union All Inserted.Inputs[Union All Input 3]"
+              refId="Package\Load ServiceObjekt.Paths[Default Output]"
+              endId="Package\Load ServiceObjekt\Union All Inserted.Inputs[Union All Input 5]"
               name="Default Output"
-              startId="Package\Load ServiceObjekt\Migrate ServiceObjekt records 2.Outputs[Default Output]" />
+              startId="Package\Load ServiceObjekt\Migrate ServiceObjekt records 3.Outputs[Default Output]" />
+            <path
+              refId="Package\Load ServiceObjekt.Paths[Default Output1]"
+              endId="Package\Load ServiceObjekt\Union All Inserted.Inputs[Union All Input 2]"
+              name="Default Output"
+              startId="Package\Load ServiceObjekt\Migrate ServiceObjekt records 1.Outputs[Default Output]" />
             <path
               refId="Package\Load ServiceObjekt.Paths[Error Output]"
               endId="Package\Load ServiceObjekt\Union All ERROR.Inputs[Union All Input 2]"
@@ -16778,29 +16778,29 @@ where [refTable].[rik_Idnummer] = ?</property>
               startId="Package\Update Parent ServiceObjekt\Dynamics CRM Source.Outputs[CRM Primary Output]" />
             <path
               refId="Package\Update Parent ServiceObjekt.Paths[Default Output4]"
-              endId="Package\Update Parent ServiceObjekt\Union All Inserted.Inputs[Union All Input 2]"
+              endId="Package\Update Parent ServiceObjekt\Union All Inserted.Inputs[Union All Input 1]"
               name="Default Output"
-              startId="Package\Update Parent ServiceObjekt\Migrate ServiceObjekt records 1.Outputs[Default Output]" />
+              startId="Package\Update Parent ServiceObjekt\Migrate ServiceObjekt records.Outputs[Default Output]" />
             <path
               refId="Package\Update Parent ServiceObjekt.Paths[Default Output2]"
-              endId="Package\Update Parent ServiceObjekt\Union All Inserted.Inputs[Union All Input 5]"
-              name="Default Output"
-              startId="Package\Update Parent ServiceObjekt\Migrate ServiceObjekt records 4.Outputs[Default Output]" />
-            <path
-              refId="Package\Update Parent ServiceObjekt.Paths[Default Output3]"
               endId="Package\Update Parent ServiceObjekt\Union All Inserted.Inputs[Union All Input 3]"
               name="Default Output"
               startId="Package\Update Parent ServiceObjekt\Migrate ServiceObjekt records 2.Outputs[Default Output]" />
             <path
-              refId="Package\Update Parent ServiceObjekt.Paths[Default Output]"
+              refId="Package\Update Parent ServiceObjekt.Paths[Default Output3]"
               endId="Package\Update Parent ServiceObjekt\Union All Inserted.Inputs[Union All Input 4]"
               name="Default Output"
               startId="Package\Update Parent ServiceObjekt\Migrate ServiceObjekt records 3.Outputs[Default Output]" />
             <path
-              refId="Package\Update Parent ServiceObjekt.Paths[Default Output1]"
-              endId="Package\Update Parent ServiceObjekt\Union All Inserted.Inputs[Union All Input 1]"
+              refId="Package\Update Parent ServiceObjekt.Paths[Default Output]"
+              endId="Package\Update Parent ServiceObjekt\Union All Inserted.Inputs[Union All Input 2]"
               name="Default Output"
-              startId="Package\Update Parent ServiceObjekt\Migrate ServiceObjekt records.Outputs[Default Output]" />
+              startId="Package\Update Parent ServiceObjekt\Migrate ServiceObjekt records 1.Outputs[Default Output]" />
+            <path
+              refId="Package\Update Parent ServiceObjekt.Paths[Default Output1]"
+              endId="Package\Update Parent ServiceObjekt\Union All Inserted.Inputs[Union All Input 5]"
+              name="Default Output"
+              startId="Package\Update Parent ServiceObjekt\Migrate ServiceObjekt records 4.Outputs[Default Output]" />
             <path
               refId="Package\Update Parent ServiceObjekt.Paths[Error Output]"
               endId="Package\Update Parent ServiceObjekt\Union All ERROR.Inputs[Union All Input 4]"
@@ -17766,108 +17766,6 @@ where [refTable].[rik_Idnummer] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load ServiceObjekt.Paths[Default Output4]"
-          TopLeft="851.380954624034,236.682361351496">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-494.333332720258,165.10587790862"
-              Start="0,0"
-              End="-494.333332720258,157.60587790862">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,78.8008590923995" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,78.8008590923995"
-                    Point2="0,82.8008590923995"
-                    Point3="-4,82.8008590923995" />
-                  <mssgle:LineSegment
-                    End="-490.333332720258,82.8008590923995" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-490.333332720258,82.8008590923995"
-                    Point2="-494.333332720258,82.8008590923995"
-                    Point3="-494.333332720258,86.8008590923995" />
-                  <mssgle:LineSegment
-                    End="-494.333332720258,157.60587790862" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load ServiceObjekt.Paths[Default Output3]"
-          TopLeft="1128.38095462403,238.682361351496">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-717.499999386925,163.10587790862"
-              Start="0,0"
-              End="-717.499999386925,155.60587790862">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,103.674218812051" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,103.674218812051"
-                    Point2="0,107.674218812051"
-                    Point3="-4,107.674218812051" />
-                  <mssgle:LineSegment
-                    End="-713.499999386925,107.674218812051" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-713.499999386925,107.674218812051"
-                    Point2="-717.499999386925,107.674218812051"
-                    Point3="-717.499999386925,111.674218812051" />
-                  <mssgle:LineSegment
-                    End="-717.499999386925,155.60587790862" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load ServiceObjekt.Paths[Default Output2]"
-          TopLeft="336.238102178996,234.635293304714">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-86.857146941886,167.152945955402"
-              Start="0,0"
-              End="-86.857146941886,159.652945955402">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,79.7981295318352" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,79.7981295318352"
-                    Point2="0,83.7981295318352"
-                    Point3="-4,83.7981295318352" />
-                  <mssgle:LineSegment
-                    End="-82.857146941886,83.7981295318352" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-82.857146941886,83.7981295318352"
-                    Point2="-86.857146941886,83.7981295318352"
-                    Point3="-86.857146941886,87.7981295318352" />
-                  <mssgle:LineSegment
-                    End="-86.857146941886,159.652945955402" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load ServiceObjekt.Paths[Default Output1]"
           TopLeft="589.066678451357,237.541175443161">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -17901,7 +17799,7 @@ where [refTable].[rik_Idnummer] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load ServiceObjekt.Paths[Default Output]"
+          Id="Package\Load ServiceObjekt.Paths[Default Output3]"
           TopLeft="79.3809546240344,236.35294176204">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -17926,6 +17824,108 @@ where [refTable].[rik_Idnummer] = ?</property>
                     Point3="116.166667279742,113.211983347555" />
                   <mssgle:LineSegment
                     End="116.166667279742,157.935297498076" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ServiceObjekt.Paths[Default Output2]"
+          TopLeft="1128.38095462403,238.682361351496">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-717.499999386925,163.10587790862"
+              Start="0,0"
+              End="-717.499999386925,155.60587790862">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,103.674218812051" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,103.674218812051"
+                    Point2="0,107.674218812051"
+                    Point3="-4,107.674218812051" />
+                  <mssgle:LineSegment
+                    End="-713.499999386925,107.674218812051" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-713.499999386925,107.674218812051"
+                    Point2="-717.499999386925,107.674218812051"
+                    Point3="-717.499999386925,111.674218812051" />
+                  <mssgle:LineSegment
+                    End="-717.499999386925,155.60587790862" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ServiceObjekt.Paths[Default Output1]"
+          TopLeft="336.238102178996,234.635293304714">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-86.857146941886,167.152945955402"
+              Start="0,0"
+              End="-86.857146941886,159.652945955402">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.7981295318352" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,79.7981295318352"
+                    Point2="0,83.7981295318352"
+                    Point3="-4,83.7981295318352" />
+                  <mssgle:LineSegment
+                    End="-82.857146941886,83.7981295318352" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-82.857146941886,83.7981295318352"
+                    Point2="-86.857146941886,83.7981295318352"
+                    Point3="-86.857146941886,87.7981295318352" />
+                  <mssgle:LineSegment
+                    End="-86.857146941886,159.652945955402" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load ServiceObjekt.Paths[Default Output]"
+          TopLeft="851.380954624034,236.682361351496">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-494.333332720258,165.10587790862"
+              Start="0,0"
+              End="-494.333332720258,157.60587790862">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.8008590923995" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,78.8008590923995"
+                    Point2="0,82.8008590923995"
+                    Point3="-4,82.8008590923995" />
+                  <mssgle:LineSegment
+                    End="-490.333332720258,82.8008590923995" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-490.333332720258,82.8008590923995"
+                    Point2="-494.333332720258,82.8008590923995"
+                    Point3="-494.333332720258,86.8008590923995" />
+                  <mssgle:LineSegment
+                    End="-494.333332720258,157.60587790862" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -18434,7 +18434,7 @@ where [refTable].[rik_Idnummer] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Update Parent ServiceObjekt.Paths[Default Output4]"
+          Id="Package\Update Parent ServiceObjekt.Paths[Default Output]"
           TopLeft="385.666666666667,340">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -18468,7 +18468,7 @@ where [refTable].[rik_Idnummer] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Update Parent ServiceObjekt.Paths[Default Output3]"
+          Id="Package\Update Parent ServiceObjekt.Paths[Default Output2]"
           TopLeft="661.523813932122,342">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -18502,7 +18502,7 @@ where [refTable].[rik_Idnummer] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Update Parent ServiceObjekt.Paths[Default Output2]"
+          Id="Package\Update Parent ServiceObjekt.Paths[Default Output1]"
           TopLeft="1191.52381393212,343">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -18536,7 +18536,7 @@ where [refTable].[rik_Idnummer] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Update Parent ServiceObjekt.Paths[Default Output1]"
+          Id="Package\Update Parent ServiceObjekt.Paths[Default Output4]"
           TopLeft="123.523813932122,340.117647290477">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -18570,7 +18570,7 @@ where [refTable].[rik_Idnummer] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Update Parent ServiceObjekt.Paths[Default Output]"
+          Id="Package\Update Parent ServiceObjekt.Paths[Default Output3]"
           TopLeft="922.523813932122,342">
           <EdgeLayout.Curve>
             <mssgle:Curve
