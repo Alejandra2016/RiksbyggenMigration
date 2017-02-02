@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="9/28/2016 3:43:43 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Overgripandetjanstekrav_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{CE132D66-C2F1-4CAD-BA3D-EBF573E99340}">
+  DTS:VersionBuild="67"
+  DTS:VersionGUID="{84D1FB7F-B847-416E-A836-A30A6EC92AE0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -295,8 +295,8 @@
               <connections>
                 <connection
                   refId="Package\Delete target Overgripandetjanstekrav table\Delete rows in Target CRM.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -426,8 +426,8 @@
               <connections>
                 <connection
                   refId="Package\Delete target Overgripandetjanstekrav table\Dynamics CRM Source.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -481,7 +481,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -515,8 +515,8 @@
               <connections>
                 <connection
                   refId="Package\Delete target Overgripandetjanstekrav table\rik_Overgripandetjanstekrav_ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -824,7 +824,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE rik_Overgripandetjanstekrav;&#xA;&#xA;INSERT INTO rik_Overgripandetjanstekrav (rik_kod, rik_Namn, rik_Radstext, rik_Exempeltext )&#xA;VALUES ('S1','Utförande','','Entreprenaden utförs på ett sätt som syftar till att målsättningarna med entreprenaden kan uppnås.'),&#xA;('S1.1','Generella utförandekrav','','Arbetsmetoder och hjälpmedel ska väljas med hänsyn till entreprenadens långsiktiga målsättningar och anpassas till slutanvändarnas pågående verksamheter med beaktande av kvalitets- och miljöaspekter.'),&#xA;('S1.1.2','Miljökrav','','Transporter som sker vid utförande av entreprenaden ska vara så effektiva och miljöanpassade som omständigheterna tillåter. Främst ska alternativ med minst miljöpåverkan prioriteras, dvs val av elbilar och gasbilar. Material ska återanvändas, materialåtervinnas, energiutvinnas och i sista hand deponeras.'),&#xA;('S1.2','Ledningssystem','','L har för utförande av entreprenaden ett certifierat (eller motsvarande) ledningssystem för kvalitet och miljö samt bedriva ett systematiskt arbetsmiljöarbete enligt arbetsmiljölagen och dess föreskrifter.'),&#xA;('S1.3','Underleverantör','','L äger rätt att anlita underentreprenörer för entreprenaden. B äger rätt att erhålla information om valda underentreprenörer.'),&#xA;('S1.4','Inköp ','','L säkerställer, via ramavtal, att varor, tjänster och entreprenader köps in till bästa resultat för B. B erbjuds att nyttja de riktade kundavtal som L har tecknat med olika leverantörer av varor och tjänster. Samtliga UL som L använder i sin leverans till kund följer Riksbyggens generella krav på leverantörer och har accepterat Riksbyggens uppförandekod.'),&#xA;('S2','Material och varor','',''),&#xA;('S2.1','Krav på material och varor','','Samtliga kemiska produkter ska miljöbedömas utifrån Sunda Hus. L prioriterar enligt följande vid val av produkter: 1. Produkter bedömda som A-B i Sunda Hus 2. Produkter som är miljömärkta (tex. Svanen, Bra Miljöval, EU-blomman) 3.  Övriga produkter L ska eftersträva att använda så få produkter som möjligt utan att resultatet av arbetet försämras'),&#xA;('S2.3','Ersättning för material och varor','','L tillhandahåller, på egen bekostnad, erforderliga hjälpmedel och förbrukningsmaterial för den egna entreprenaden där inte annat anges i denna handling.'),&#xA;('S3','Tillhandahållanden, hjälpmedel m.m.','Redovisa vilka lokaler och vilken utrustning som B tillhandahåller för fastighetsförvaltningen samt tillhandahållanden av information och dokument. Preciseringarna kan t ex avse: Lokaler för administration (platskontor, utrustning i platskontor, telefon). Listorna nedan är förslag, ta bort de som ej är aktuella.',''),&#xA;('S3.1','Handlingar och uppgifter','','B ska överlämna de handlingar och den information som erfordras för att L skall kunna utföra kontraktsarbetena såsom: • Kopior av hyresavtal • Löne- och arvodesavtal för personal anställd av B • Ritningar och beskrivningar över förvaltningsobjekten • Driftinstruktioner och underhållsinstruktioner • Befintliga underhållsplaner • Lägenhets- och lokalregister • Register över hyresgäster, bostadsrättshavare • Låsschema • Förteckning över mätare som skall avläsas • Äldre driftstatistik som underlag för redovisningen av driftstatistiken • Befintlig energideklaration • Gällande garantiförbindelser från leverantörer/entreprenörer • Gällande produktansvarsförbindelser från leverantörer/entreprenörer • Befintliga avtal med sidoentreprenörer och andra leverantörer • Föreningens stadgar • Föreningens ekonomiska plan • Protokoll från styrelsemöten och föreningens årsstämma • Försäkringsvillkor för heta arbeten '),&#xA;('S3.2','Utrymmen m.m.','','B tillhandahåller lokaler för genomförande av entreprenaden enligt nedan. L ansvarar för tillsyn och skötsel av de utrymmen som L disponerar. Personalutrymmen utrustade med omklädningsrum, WC, dusch, pentry och matplats för xxx. personer. Städutrymmen med tillgång till varmt och kallt vatten, utslagsback, avlopp och elström till tvättmaskin för mopptvätt samt förvaringsplats för städredskap och städmaterial. Utrymmena är inom förvaltningsobjektet.  Verkstadsutrymmen med tillgång till varmt och kallt vatten, elförsörjning med xx. A:s säkringar. Förrådsutrymmen med en storlek av xxx m2.'),&#xA;('S5','Kommunikation och dokumentation','',''),&#xA;('S5.2','Entreprenadrapportering','','B får via L:s Kundwebb åtkomst till information rörande utförandet av entreprenaden samt rapporter enligt överenskommelse. Villkoren för användning av L:s Kundwebb framgår av kontraktet. Behörighet till L:s Kundwebb är personlig och styrs av engagemang hos B. B ansvarar för att förse L med korrekt och uppdaterad information gällande behöriga personer och e-postadress till dessa.'),&#xA;('S6','Tider','','Kontraktsarbetena skall utföras under normal arbetstid varmed menas helgfria vardagar mellan klockan 07.00 – 16.00 för tekniska arbetsuppgifter och 8.00–16.30 för administrativa arbetsuppgifter om inte annat anges i kontraktshandlingarna eller särskilt överenskommes.')&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE rik_Overgripandetjanstekrav;&#xA;&#xA;INSERT INTO rik_Overgripandetjanstekrav (rik_kod, rik_Namn, rik_Radstext, rik_Exempeltext )&#xA;VALUES &#xA;('S1','Utförande','','Entreprenaden utförs på ett sätt som syftar till att målsättningarna med entreprenaden kan uppnås.'),&#xA;('S1.1','Generella utförandekrav','','Arbetsmetoder och hjälpmedel ska väljas med hänsyn till entreprenadens långsiktiga målsättningar och anpassas till slutanvändarnas pågående verksamheter med beaktande av kvalitets- och miljöaspekter.'),&#xA;('S1.1.2','Miljökrav','','Transporter som sker vid utförande av entreprenaden ska vara så effektiva och miljöanpassade som omständigheterna tillåter. Främst ska alternativ med minst miljöpåverkan prioriteras, dvs val av elbilar och gasbilar.Material ska återanvändas, materialåtervinnas, energiutvinnas och i sista hand deponeras.'),&#xA;('S1.2','Ledningssystem','','L har för utförande av entreprenaden ett certifierat (eller motsvarande) ledningssystem för kvalitet och miljö samt bedriva ett systematiskt arbetsmiljöarbete enligt arbetsmiljölagen och dess föreskrifter.'),&#xA;('S1.3','Underleverantör','','L äger rätt att anlita underentreprenörer för entreprenaden. B äger rätt att erhålla information om valda underentreprenörer.'),&#xA;('S1.4','Inköp ','','L säkerställer, via ramavtal, att varor, tjänster och entreprenader köps in till bästa resultat för B. B erbjuds att nyttja de riktade kundavtal som L har tecknat med olika leverantörer av varor och tjänster. Samtliga UL som L använder i sin leverans till kund följer Riksbyggens generella krav på leverantörer och har accepterat Riksbyggens uppförandekod.'),&#xA;('S2','Material och varor','',''),&#xA;('S2.1','Krav på material och varor','','Samtliga kemiska produkter ska miljöbedömas utifrån Sunda Hus. L prioriterar enligt följande vid val av produkter:1. Produkter bedömda som A-B i Sunda Hus 2. Produkter som är miljömärkta (tex. Svanen, Bra Miljöval, EU-blomman) 3.  Övriga produkter L ska eftersträva att använda så få produkter som möjligt utan att resultatet av arbetet försämras'),&#xA;('S2.3','Ersättning för material och varor','','Förbrukningsmaterial Inget förbrukningsmaterial för fastighetens drift ingår i fast arvode Inget förbrukningsmaterial (förbrukningsartiklar) för verksamheten ingår i fast arvode. Material för underhåll Inget material för underhåll ingår i fast arvode.'),&#xA;('S3','Tillhandahållanden, hjälpmedel m.m.','Redovisa vilka lokaler och vilken utrustning som B tillhandahåller för fastighetsförvaltningen samt tillhandahållanden av information och dokument. Preciseringarna kan t ex avse: Lokaler för administration (platskontor, utrustning i platskontor, telefon). Listorna nedan är förslag, ta bort de som ej är aktuella.',''),&#xA;('S3.1','Handlingar och uppgifter','','B ska överlämna de handlingar och den information som erfordras för att L skall kunna utföra kontraktsarbetena såsom: • Kopior av hyresavtal • Löne- och arvodesavtal för personal anställd av B • Ritningar och beskrivningar över förvaltningsobjekten • Driftinstruktioner och underhållsinstruktioner • Befintliga underhållsplaner • Lägenhets- och lokalregister • Register över hyresgäster, bostadsrättshavare • Låsschema • Förteckning över mätare som skall avläsas • Äldre driftstatistik som underlag för redovisningen av driftstatistiken • Befintlig energideklaration • Gällande garantiförbindelser från leverantörer/entreprenörer • Gällande produktansvarsförbindelser från leverantörer/entreprenörer • Befintliga avtal med sidoentreprenörer och andra leverantörer • Föreningens stadgar • Föreningens ekonomiska plan • Protokoll från styrelsemöten och föreningens årsstämma • Försäkringsvillkor för heta arbeten'),&#xA;('S3.1.1','Förvaring av handlingar','','Under kontraktstiden förvara handlingar, som rör ekonomiska och tekniska förhållanden avseende förvaltningsobjektet samt räkenskapsmaterial och andra handlingar, som omfattas av B:s arkiveringsskyldighet enligt bokföringslagen och som L mottagit eller upprättat särskilt för B:s räkning. Handlingarna skall förvaras på ett betryggande sätt och i enlighet med föreskrifter i Bokföringslagen. Gallring av handlingar sker enligt föreskrivna rutiner. Vid avtalets upphörande skall handlingarna snarast och senast tre månader efter avtalets upphörande överlämnas till B genom kvittering. B skall senast en månad före avtalets upphörande anvisa särskild mottagare av dokumenten. Säkerhetskopiering av uppgifter på datamedium genomförs varje arbetsdag. Säkerhetskopiorna förvaras avskilda från dataenheten.'),&#xA;('S3.2','Utrymmen m.m.','','B tillhandahåller lokaler för genomförande av entreprenaden enligt nedan. L ansvarar för tillsyn och skötsel av de utrymmen som L disponerar. Personalutrymmen utrustade med omklädningsrum, WC, dusch, pentry och matplats för xxx. personer. Städutrymmen med tillgång till varmt och kallt vatten, utslagsback, avlopp och elström till tvättmaskin för mopptvätt samt förvaringsplats för städredskap och städmaterial. Utrymmena är inom förvaltningsobjektet. Verkstadsutrymmen med tillgång till varmt och kallt vatten, elförsörjning med xx. A:s säkringar. Förrådsutrymmen med en storlek av xxx m2. '),&#xA;('S5','Kommunikation och dokumentation','',''),&#xA;('S5.2','Entreprenadrapportering','','B får via L:s Kundwebb åtkomst till information rörande utförandet av entreprenaden samt rapporter enligt överenskommelse. Villkoren för användning av L:s Kundwebb framgår av kontraktet. Behörighet till L:s Kundwebb är personlig och styrs av engagemang hos B. B ansvarar för att förse L med korrekt och uppdaterad information gällande behöriga personer och e-postadress till dessa.'),&#xA;('S6','Tider','','Kontraktsarbetena skall utföras under normal arbetstid varmed menas helgfria vardagar mellan klockan 07.00 – 16.00 för tekniska arbetsuppgifter och 8.00–16.30 för administrativa arbetsuppgifter om inte annat anges i kontraktshandlingarna eller särskilt överenskommes.')&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -954,8 +954,8 @@
               <connections>
                 <connection
                   refId="Package\Load Overgripandetjanstekrav\Dynamics CRM Destination.Connections[DynamicsCRM]"
-                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
-                  connectionManagerRefId="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:invalid"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
                   name="DynamicsCRM" />
               </connections>
@@ -1247,7 +1247,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1281,8 +1281,8 @@
               <connections>
                 <connection
                   refId="Package\Load Overgripandetjanstekrav\Overgripandetjänstekrav_ERROR.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1600,7 +1600,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  rik_kod
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  rik_kod
 ,rik_namn
 ,rik_Radstext
 ,rik_Exempeltext
@@ -1630,8 +1630,8 @@ FROM rik_Overgripandetjanstekrav</property>
               <connections>
                 <connection
                   refId="Package\Load Overgripandetjanstekrav\STG rik_Overgripandetjanstekrav.Connections[OleDbConnection]"
-                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
-                  connectionManagerRefId="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:invalid"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2993,14 +2993,6 @@ FROM rik_Overgripandetjanstekrav</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="234,42"
-          Id="Package\Load Overgripandetjanstekrav\Overgripandetjänstekrav_ERROR"
-          TopLeft="382,254" />
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Load Overgripandetjanstekrav\Row Inserted"
-          TopLeft="178.857145766822,254.000003646402" />
-        <NodeLayout
           Size="235,42"
           Id="Package\Load Overgripandetjanstekrav\STG rik_Overgripandetjanstekrav"
           TopLeft="217.000004019056,19.3529414338637" />
@@ -3008,6 +3000,14 @@ FROM rik_Overgripandetjanstekrav</property>
           Size="205,42"
           Id="Package\Load Overgripandetjanstekrav\Dynamics CRM Destination"
           TopLeft="233.142861249497,118.482354897364" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\Load Overgripandetjanstekrav\Overgripandetjänstekrav_ERROR"
+          TopLeft="382,254" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Load Overgripandetjanstekrav\Row Inserted"
+          TopLeft="178.857145766822,254.000003646402" />
         <EdgeLayout
           Id="Package\Load Overgripandetjanstekrav.Paths[OLE DB Source Output]"
           TopLeft="335.071432634277,61.3529414338637">
@@ -3104,6 +3104,14 @@ FROM rik_Overgripandetjanstekrav</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Load Overgripandetjanstekrav\STG rik_Overgripandetjanstekrav">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Load Overgripandetjanstekrav\Overgripandetjänstekrav_ERROR">
     <Properties>
       <Property>
@@ -3113,14 +3121,6 @@ FROM rik_Overgripandetjanstekrav</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Overgripandetjanstekrav\STG rik_Overgripandetjanstekrav">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
