@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Engagemang_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="137"
-  DTS:VersionGUID="{2CCF8160-643E-4FDE-B0DB-3F0D12ED85E7}">
+  DTS:VersionBuild="138"
+  DTS:VersionGUID="{EE1F1291-8C54-4C88-B936-37E3FF47AE24}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -1075,7 +1075,7 @@
                   dataType="System.Boolean"
                   description="Specifies whether datetime values should be sent to CRM server in UTC format."
                   expressionType="Notify"
-                  name="SendDateTimeInUtcFormat">false</property>
+                  name="SendDateTimeInUtcFormat">true</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
@@ -1933,7 +1933,7 @@
                   dataType="System.Boolean"
                   description="Specifies whether datetime values should be sent to CRM server in UTC format."
                   expressionType="Notify"
-                  name="SendDateTimeInUtcFormat">false</property>
+                  name="SendDateTimeInUtcFormat">true</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
@@ -2792,7 +2792,7 @@
                   dataType="System.Boolean"
                   description="Specifies whether datetime values should be sent to CRM server in UTC format."
                   expressionType="Notify"
-                  name="SendDateTimeInUtcFormat">false</property>
+                  name="SendDateTimeInUtcFormat">true</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
@@ -3651,7 +3651,7 @@
                   dataType="System.Boolean"
                   description="Specifies whether datetime values should be sent to CRM server in UTC format."
                   expressionType="Notify"
-                  name="SendDateTimeInUtcFormat">false</property>
+                  name="SendDateTimeInUtcFormat">true</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
@@ -4510,7 +4510,7 @@
                   dataType="System.Boolean"
                   description="Specifies whether datetime values should be sent to CRM server in UTC format."
                   expressionType="Notify"
-                  name="SendDateTimeInUtcFormat">false</property>
+                  name="SendDateTimeInUtcFormat">true</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
@@ -18883,29 +18883,29 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
               startId="Package\Load Engagemang\Data Conversion 1 1.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Default Output4]"
-              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 1]"
+              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 2]"
               name="Default Output"
-              startId="Package\Load Engagemang\Dynamics CRM Destination.Outputs[Default Output]" />
+              startId="Package\Load Engagemang\Dynamics CRM Destination 2.Outputs[Default Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Default Output2]"
-              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 5]"
-              name="Default Output"
-              startId="Package\Load Engagemang\Dynamics CRM Destination 3.Outputs[Default Output]" />
-            <path
-              refId="Package\Load Engagemang.Paths[Default Output3]"
               endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 4]"
               name="Default Output"
               startId="Package\Load Engagemang\Dynamics CRM Destination 1.Outputs[Default Output]" />
             <path
-              refId="Package\Load Engagemang.Paths[Default Output]"
+              refId="Package\Load Engagemang.Paths[Default Output3]"
               endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 3]"
               name="Default Output"
               startId="Package\Load Engagemang\Dynamics CRM Destination 4.Outputs[Default Output]" />
             <path
-              refId="Package\Load Engagemang.Paths[Default Output1]"
-              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 2]"
+              refId="Package\Load Engagemang.Paths[Default Output]"
+              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 1]"
               name="Default Output"
-              startId="Package\Load Engagemang\Dynamics CRM Destination 2.Outputs[Default Output]" />
+              startId="Package\Load Engagemang\Dynamics CRM Destination.Outputs[Default Output]" />
+            <path
+              refId="Package\Load Engagemang.Paths[Default Output1]"
+              endId="Package\Load Engagemang\Union All Inserted.Inputs[Union All Input 5]"
+              name="Default Output"
+              startId="Package\Load Engagemang\Dynamics CRM Destination 3.Outputs[Default Output]" />
             <path
               refId="Package\Load Engagemang.Paths[Derived Column Output]"
               endId="Package\Load Engagemang\Script Component.Inputs[Input 0]"
@@ -20676,108 +20676,6 @@ WHERE rik_Namn = 'Engagemang'
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Engagemang.Paths[Default Output4]"
-          TopLeft="78.5238152263936,468.811766610592">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="136.976184773606,151.188233389408"
-              Start="0,0"
-              End="136.976184773606,143.688233389408">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,95.7179848150011" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,95.7179848150011"
-                    Point2="0,99.7179848150011"
-                    Point3="4,99.7179848150011" />
-                  <mssgle:LineSegment
-                    End="132.976184773606,99.7179848150011" />
-                  <mssgle:CubicBezierSegment
-                    Point1="132.976184773606,99.7179848150011"
-                    Point2="136.976184773606,99.7179848150011"
-                    Point3="136.976184773606,103.717984815001" />
-                  <mssgle:LineSegment
-                    End="136.976184773606,143.688233389408" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Default Output3]"
-          TopLeft="374.666666666667,470">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-109.666666666667,150"
-              Start="0,0"
-              End="-109.666666666667,142.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,71.2058575134222" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,71.2058575134222"
-                    Point2="0,75.2058575134222"
-                    Point3="-4,75.2058575134222" />
-                  <mssgle:LineSegment
-                    End="-105.666666666667,75.2058575134222" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-105.666666666667,75.2058575134222"
-                    Point2="-109.666666666667,75.2058575134222"
-                    Point3="-109.666666666667,79.2058575134222" />
-                  <mssgle:LineSegment
-                    End="-109.666666666667,142.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Default Output2]"
-          TopLeft="952.666666666667,470">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-588.666666666667,150"
-              Start="0,0"
-              End="-588.666666666667,142.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,71.2360531906523" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,71.2360531906523"
-                    Point2="0,75.2360531906523"
-                    Point3="-4,75.2360531906523" />
-                  <mssgle:LineSegment
-                    End="-584.666666666667,75.2360531906523" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-584.666666666667,75.2360531906523"
-                    Point2="-588.666666666667,75.2360531906523"
-                    Point3="-588.666666666667,79.2360531906523" />
-                  <mssgle:LineSegment
-                    End="-588.666666666667,142.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Default Output1]"
           TopLeft="698.666666666667,471">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -20811,7 +20709,7 @@ WHERE rik_Namn = 'Engagemang'
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Engagemang.Paths[Default Output]"
+          Id="Package\Load Engagemang.Paths[Default Output3]"
           TopLeft="1192.52381522639,471">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -20836,6 +20734,108 @@ WHERE rik_Namn = 'Engagemang'
                     Point3="-779.023815226394,102.247766196932" />
                   <mssgle:LineSegment
                     End="-779.023815226394,141.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Default Output2]"
+          TopLeft="374.666666666667,470">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-109.666666666667,150"
+              Start="0,0"
+              End="-109.666666666667,142.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.2058575134222" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,71.2058575134222"
+                    Point2="0,75.2058575134222"
+                    Point3="-4,75.2058575134222" />
+                  <mssgle:LineSegment
+                    End="-105.666666666667,75.2058575134222" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-105.666666666667,75.2058575134222"
+                    Point2="-109.666666666667,75.2058575134222"
+                    Point3="-109.666666666667,79.2058575134222" />
+                  <mssgle:LineSegment
+                    End="-109.666666666667,142.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Default Output1]"
+          TopLeft="952.666666666667,470">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-588.666666666667,150"
+              Start="0,0"
+              End="-588.666666666667,142.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.2360531906523" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,71.2360531906523"
+                    Point2="0,75.2360531906523"
+                    Point3="-4,75.2360531906523" />
+                  <mssgle:LineSegment
+                    End="-584.666666666667,75.2360531906523" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-584.666666666667,75.2360531906523"
+                    Point2="-588.666666666667,75.2360531906523"
+                    Point3="-588.666666666667,79.2360531906523" />
+                  <mssgle:LineSegment
+                    End="-588.666666666667,142.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Engagemang.Paths[Default Output]"
+          TopLeft="78.5238152263936,468.811766610592">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="136.976184773606,151.188233389408"
+              Start="0,0"
+              End="136.976184773606,143.688233389408">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,95.7179848150011" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,95.7179848150011"
+                    Point2="0,99.7179848150011"
+                    Point3="4,99.7179848150011" />
+                  <mssgle:LineSegment
+                    End="132.976184773606,99.7179848150011" />
+                  <mssgle:CubicBezierSegment
+                    Point1="132.976184773606,99.7179848150011"
+                    Point2="136.976184773606,99.7179848150011"
+                    Point3="136.976184773606,103.717984815001" />
+                  <mssgle:LineSegment
+                    End="136.976184773606,143.688233389408" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -21135,7 +21135,7 @@ WHERE rik_Namn = 'Engagemang'
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -21145,7 +21145,7 @@ WHERE rik_Namn = 'Engagemang'
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
