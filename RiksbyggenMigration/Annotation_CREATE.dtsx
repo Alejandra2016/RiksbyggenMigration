@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Annotation_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="99"
-  DTS:VersionGUID="{7BDC22ED-5EF6-4417-B113-37615D00BACB}">
+  DTS:VersionBuild="101"
+  DTS:VersionGUID="{6525D67C-042F-4EE0-A17D-89DA2F9C12B9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -324,20 +324,6 @@
                       cachedName="Subject"
                       externalMetadataColumnId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[Subject]"
                       lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[Subject]" />
-                    <inputColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[CreatedByName]"
-                      cachedDataType="wstr"
-                      cachedLength="200"
-                      cachedName="CreatedByName"
-                      externalMetadataColumnId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[CreatedByName]" />
-                    <inputColumn
-                      refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[OwnerIdName]"
-                      cachedDataType="wstr"
-                      cachedLength="160"
-                      cachedName="OwnerIdName"
-                      externalMetadataColumnId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerIdName]" />
                     <inputColumn
                       refId="Package\Load Annotation\Annotation_ERROR.Inputs[OLE DB Destination Input].Columns[ObjectTypeCode]"
                       cachedDataType="i4"
@@ -759,19 +745,27 @@
                       externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[subject]"
                       lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[Subject]" />
                     <inputColumn
-                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[CreatedByName]"
-                      cachedDataType="wstr"
-                      cachedLength="200"
-                      cachedName="CreatedByName"
-                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[createdby]"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[CreatedByName]" />
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[OwnerIdType]"
+                      cachedDataType="i4"
+                      cachedName="OwnerIdType"
+                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[owneridtype]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerIdType]" />
                     <inputColumn
-                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[OwnerIdName]"
-                      cachedDataType="wstr"
-                      cachedLength="160"
-                      cachedName="OwnerIdName"
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[CreatedBy]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CreatedBy"
+                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[createdby]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[CreatedBy]" />
+                    <inputColumn
+                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[OwnerId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OwnerId"
                       externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[ownerid]"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerIdName]" />
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerId]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -801,16 +795,7 @@
                           name="LookupTypes">systemuser</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;domainname&lt;/TargetTextField&gt;
-      &lt;DefaultValue&gt;CRM MIG_SVC_MIG&lt;/DefaultValue&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1297,20 +1282,7 @@
                           name="LookupTypes">systemuser;team</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;domainname&lt;/TargetTextField&gt;
-      &lt;DefaultValue&gt;CRM MIG_SVC_MIG&lt;/DefaultValue&gt;
-    &lt;/LookupTarget&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;team&lt;/TargetEntity&gt;
-      &lt;OptOut&gt;true&lt;/OptOut&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -1453,13 +1425,16 @@
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT ObjectId
 	,OverriddenCreatedOn
 	,Subject
-	,CreatedByName
-	,OwnerIdName
+	,c.CRMguid AS CreatedBy
+	,c.CRMguid AS OwnerId
 	,ObjectTypeCode
 	,ObjectIdTypeCode
 	,IsDocument
 	,NoteText
-FROM Annotation</property>
+	,8 AS OwnerIdType   
+FROM Annotation a
+LEFT JOIN CrmKontakt c
+ON 'RIKSBYGGEN\' + c.AnnanUnikIdentierare = a.OwnerIdName</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1525,26 +1500,6 @@ FROM Annotation</property>
                       name="Subject"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[CreatedByName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[CreatedByName]"
-                      length="200"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[CreatedByName]"
-                      name="CreatedByName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerIdName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdName]"
-                      length="160"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerIdName]"
-                      name="OwnerIdName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[ObjectTypeCode]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
@@ -1580,6 +1535,37 @@ FROM Annotation</property>
                       lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[NoteText]"
                       name="NoteText"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerIdType]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdType]"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerIdType]"
+                      name="OwnerIdType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[CreatedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[CreatedBy]"
+                      length="50"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[CreatedBy]"
+                      name="CreatedBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerId]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[OwnerId]"
+                      length="50"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerId]"
+                      name="OwnerId"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1598,16 +1584,6 @@ FROM Annotation</property>
                       length="500"
                       name="Subject" />
                     <externalMetadataColumn
-                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[CreatedByName]"
-                      dataType="wstr"
-                      length="200"
-                      name="CreatedByName" />
-                    <externalMetadataColumn
-                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdName]"
-                      dataType="wstr"
-                      length="160"
-                      name="OwnerIdName" />
-                    <externalMetadataColumn
                       refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[ObjectTypeCode]"
                       dataType="i4"
                       name="ObjectTypeCode" />
@@ -1623,6 +1599,22 @@ FROM Annotation</property>
                       refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[NoteText]"
                       dataType="nText"
                       name="NoteText" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[OwnerIdType]"
+                      dataType="i4"
+                      name="OwnerIdType" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[CreatedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CreatedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].ExternalColumns[OwnerId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OwnerId" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1648,17 +1640,19 @@ FROM Annotation</property>
                       lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[Subject]"
                       name="Subject" />
                     <outputColumn
-                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[CreatedByName]"
-                      dataType="wstr"
-                      length="200"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[CreatedByName]"
-                      name="CreatedByName" />
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[CreatedBy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[CreatedBy]"
+                      name="CreatedBy" />
                     <outputColumn
-                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[OwnerIdName]"
-                      dataType="wstr"
-                      length="160"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[OwnerIdName]"
-                      name="OwnerIdName" />
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[OwnerId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[OwnerId]"
+                      name="OwnerId" />
                     <outputColumn
                       refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[ObjectTypeCode]"
                       dataType="i4"
@@ -1679,6 +1673,11 @@ FROM Annotation</property>
                       dataType="nText"
                       lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[NoteText]"
                       name="NoteText" />
+                    <outputColumn
+                      refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[OwnerIdType]"
+                      dataType="i4"
+                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[OwnerIdType]"
+                      name="OwnerIdType" />
                     <outputColumn
                       refId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -2719,21 +2718,79 @@ FROM Annotation</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="153,42"
-          Id="Package\Load Annotation\STG Annotation"
-          TopLeft="285,38" />
-        <NodeLayout
           Size="207,42"
           Id="Package\Load Annotation\Migrate Annotation records"
           TopLeft="256.857147265455,131.117647290477" />
         <NodeLayout
-          Size="142,42"
-          Id="Package\Load Annotation\Row Inserted"
-          TopLeft="123.857143246397,256.505888993683" />
-        <NodeLayout
           Size="169,42"
           Id="Package\Load Annotation\Annotation_ERROR"
           TopLeft="361,258" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Load Annotation\STG Annotation"
+          TopLeft="285,38" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Load Annotation\Row Inserted"
+          TopLeft="123.857143246397,256.505888993683" />
+        <EdgeLayout
+          Id="Package\Load Annotation.Paths[OLE DB Source Output]"
+          TopLeft="360.928573632728,80">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.117647290477"
+              Start="0,0"
+              End="0,43.617647290477">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.617647290477" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Annotation.Paths[Error Output]"
+          TopLeft="393.523813932122,173.117647290477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="50.9761860678783,84.882352709523"
+              Start="0,0"
+              End="50.9761860678783,77.382352709523">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.3435789486277" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.3435789486277"
+                    Point2="0,34.3435789486277"
+                    Point3="4,34.3435789486277" />
+                  <mssgle:LineSegment
+                    End="46.9761860678783,34.3435789486277" />
+                  <mssgle:CubicBezierSegment
+                    Point1="46.9761860678783,34.3435789486277"
+                    Point2="50.9761860678783,34.3435789486277"
+                    Point3="50.9761860678783,38.3435789486277" />
+                  <mssgle:LineSegment
+                    End="50.9761860678783,77.382352709523" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-2.84829368481085,39.3435789486277,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Annotation.Paths[Default Output]"
           TopLeft="327.190480598788,173.117647290477">
@@ -2768,69 +2825,11 @@ FROM Annotation</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Annotation.Paths[OLE DB Source Output]"
-          TopLeft="360.928573632728,80">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51.117647290477"
-              Start="0,0"
-              End="0,43.617647290477">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.617647290477" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Annotation.Paths[Error Output]"
-          TopLeft="393.523813932122,173.117647290477">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="51.9761860678783,84.882352709523"
-              Start="0,0"
-              End="51.9761860678783,77.382352709523">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.3435789486277" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.3435789486277"
-                    Point2="0,34.3435789486277"
-                    Point3="4,34.3435789486277" />
-                  <mssgle:LineSegment
-                    End="47.9761860678783,34.3435789486277" />
-                  <mssgle:CubicBezierSegment
-                    Point1="47.9761860678783,34.3435789486277"
-                    Point2="51.9761860678783,34.3435789486277"
-                    Point3="51.9761860678783,38.3435789486277" />
-                  <mssgle:LineSegment
-                    End="51.9761860678783,77.382352709523" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-2.34829368481085,39.3435789486277,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Annotation\STG Annotation">
+    design-time-name="Package\Load Annotation\Annotation_ERROR">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2843,7 +2842,7 @@ FROM Annotation</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Annotation\Annotation_ERROR">
+    design-time-name="Package\Load Annotation\STG Annotation">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
