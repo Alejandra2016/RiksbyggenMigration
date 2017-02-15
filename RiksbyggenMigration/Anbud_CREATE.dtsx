@@ -1,0 +1,2564 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/28/2016 3:43:43 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WIN-MDNURGQAKC3"
+  DTS:CreatorName="CORP\Administrator"
+  DTS:DTSID="{C84EF18A-BB24-4C42-ABE7-02770F416514}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="1053"
+  DTS:ObjectName="Anbud_CREATE"
+  DTS:PackageType="5"
+  DTS:VersionBuild="101"
+  DTS:VersionGUID="{3594256E-6E2E-460B-8FBB-AD814D76E8C6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="LogOLEDB"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{3B603E44-B702-427A-9F2E-79D0879BC642}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{1A0FAAF4-1755-4248-B702-966FC487E49A}"
+      DTS:ObjectName="ParentPackageExecutionID">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">{A82E5FBD-6395-4935-AB2F-C6EC847EC672}</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{4FF2B8BF-1779-43EA-8AF2-F0BD1E010A6B}"
+      DTS:ObjectName="Parentpackagename">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Saknas</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BF9ACF1A-E526-42E6-A7D4-54AF02491D37}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Event">
+      <DTS:VariableValue
+        DTS:DataType="8">Start</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{07BB8D70-C527-4A77-AA2F-EFE00C538057}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::ParentPackageExecutionID]== &quot;156C50F0-51B8-4EF2-BD8C-61FF52F5E722&quot; ? @[System::ExecutionInstanceGUID]  : @[$Package::ParentPackageExecutionID]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ParentPackageExecutionID">
+      <DTS:VariableValue
+        DTS:DataType="8">{A82E5FBD-6395-4935-AB2F-C6EC847EC672}</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{550CA40C-2B02-4A43-B372-877F363F33F9}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::Parentpackagename]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ParentPackageName">
+      <DTS:VariableValue
+        DTS:DataType="8">Saknas</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{685CA3F6-2499-4284-AC91-FE6B208E09A8}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsDeleted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{96A4B107-685B-4916-941C-2C13C6DB51D8}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsInserted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5BFCD619-1C55-42D7-A30E-F45F6E062D61}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsUpdated">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4B7A263E-B1C0-4494-B3EF-351AD3F6A88E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsUpdated2">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8AB6104A-AA1F-48C4-9852-0A15A6BA1DFD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Senastladdatum">
+      <DTS:VariableValue
+        DTS:DataType="7">10/2/2016 1:00:35 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4DA8BC18-8AB3-48C9-A243-30B3B09C45A1}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceSystemID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{77E61A15-2730-4DEC-B811-B9C1F17951EE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Sourcetable">
+      <DTS:VariableValue
+        DTS:DataType="8">Account</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A398F35E-183C-43BE-B8D9-003C365DE49C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQL_source_query">
+      <DTS:VariableValue
+        DTS:DataType="8">select * from dbo.Test</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3D889F59-FE29-470C-B0CC-933AD433AC31}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Dim.&quot;+@[System::PackageName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Target">
+      <DTS:VariableValue
+        DTS:DataType="8">Dim.Anbud_CREATE</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{3B603E44-B702-427A-9F2E-79D0879BC642}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Anbud"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{907BE835-65FC-4650-B791-BF0C703955B5}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Anbud"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Anbud\Anbud_ERROR"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Anbud_ERROR"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[rik_Anbud_ERROR]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Anbud\Anbud_ERROR.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].Columns[rik_Namn]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_Namn"
+                      externalMetadataColumnId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
+                      lineageId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].Columns[rik_Namn]" />
+                    <inputColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Load Anbud\Migrate Anbud records.Outputs[Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Load Anbud\Migrate Anbud records.Outputs[Error Output].Columns[ErrorColumn]" />
+                    <inputColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].Columns[CrmErrorMessage]"
+                      cachedDataType="wstr"
+                      cachedLength="2048"
+                      cachedName="CrmErrorMessage"
+                      externalMetadataColumnId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      lineageId="Package\Load Anbud\Migrate Anbud records.Outputs[Error Output].Columns[CrmErrorMessage]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="CreatedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfByYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="ModifiedOnBehalfByYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AccountIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="rik_AccountIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnsvarigSystemUserIdYomiName]"
+                      dataType="wstr"
+                      length="200"
+                      name="rik_AnsvarigSystemUserIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AccountIdYomiName]"
+                      dataType="wstr"
+                      length="160"
+                      name="rik_AccountIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TransactionCurrencyIdName]"
+                      dataType="wstr"
+                      length="100"
+                      name="TransactionCurrencyIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnsvarigSystemUserIdName]"
+                      dataType="wstr"
+                      length="200"
+                      name="rik_AnsvarigSystemUserIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdYomiName]"
+                      dataType="wstr"
+                      length="160"
+                      name="OwnerIdYomiName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdDsc]"
+                      dataType="i4"
+                      name="OwnerIdDsc" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwnerIdType]"
+                      dataType="i4"
+                      name="OwnerIdType" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningUser]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningUser" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningTeam]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningTeam" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnbudId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_AnbudId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="CreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CreatedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="CreatedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedOnBehalfBy]"
+                      dataType="wstr"
+                      length="255"
+                      name="ModifiedOnBehalfBy" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OwningBusinessUnit]"
+                      dataType="wstr"
+                      length="255"
+                      name="OwningBusinessUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ImportSequenceNumber]"
+                      dataType="i4"
+                      name="ImportSequenceNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[OverriddenCreatedOn]"
+                      dataType="dbTimeStamp"
+                      name="OverriddenCreatedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TimeZoneRuleVersionNumber]"
+                      dataType="i4"
+                      name="TimeZoneRuleVersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[UTCConversionTimeZoneCode]"
+                      dataType="i4"
+                      name="UTCConversionTimeZoneCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_Namn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AntagetDatum]"
+                      dataType="dbTimeStamp"
+                      name="rik_AntagetDatum" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AvslutatDatum]"
+                      dataType="dbTimeStamp"
+                      name="rik_AvslutatDatum" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Avtalstyp]"
+                      dataType="i4"
+                      name="rik_Avtalstyp" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Belopp]"
+                      dataType="cy"
+                      name="rik_Belopp" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[TransactionCurrencyId]"
+                      dataType="wstr"
+                      length="255"
+                      name="TransactionCurrencyId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ExchangeRate]"
+                      dataType="numeric"
+                      name="ExchangeRate"
+                      precision="23"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_belopp_Base]"
+                      dataType="cy"
+                      name="rik_belopp_Base" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ForvantatSvarsdatum]"
+                      dataType="dbTimeStamp"
+                      name="rik_ForvantatSvarsdatum" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Idnummer]"
+                      dataType="wstr"
+                      length="18"
+                      name="rik_Idnummer" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Inlamningsdatum]"
+                      dataType="dbTimeStamp"
+                      name="rik_Inlamningsdatum" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Konceptkategori]"
+                      dataType="i4"
+                      name="rik_Konceptkategori" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Kortbeskrivning]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_Kortbeskrivning" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_OverenskommelseAvtalstecknande]"
+                      dataType="nText"
+                      name="rik_OverenskommelseAvtalstecknande" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_Statusmotivering]"
+                      dataType="nText"
+                      name="rik_Statusmotivering" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_UppskattadFastVolym]"
+                      dataType="cy"
+                      name="rik_UppskattadFastVolym" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_uppskattadfastvolym_Base]"
+                      dataType="cy"
+                      name="rik_uppskattadfastvolym_Base" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_UppskattadRorligVolym]"
+                      dataType="cy"
+                      name="rik_UppskattadRorligVolym" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_uppskattadrorligvolym_Base]"
+                      dataType="cy"
+                      name="rik_uppskattadrorligvolym_Base" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_UtforsSenast]"
+                      dataType="dbTimeStamp"
+                      name="rik_UtforsSenast" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_VolymTecknatAvtal]"
+                      dataType="cy"
+                      name="rik_VolymTecknatAvtal" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_volymtecknatavtal_Base]"
+                      dataType="cy"
+                      name="rik_volymtecknatavtal_Base" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AccountId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_AccountId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnsvarigSystemUserId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_AnsvarigSystemUserId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      dataType="wstr"
+                      length="255"
+                      name="MigrationId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="4000"
+                      name="CrmErrorMessage" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnbudsmallId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_AnbudsmallId" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnbudsmallIdName]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_AnbudsmallIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_AnvandsSomMall]"
+                      dataType="bool"
+                      name="rik_AnvandsSomMall" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Anbud\Anbud_ERROR.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Anbud\Anbud_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Anbud\Anbud_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Anbud\Anbud_ERROR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Anbud\Migrate Anbud records"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Populate data into Microsoft Dynamics CRM."
+              name="Migrate Anbud records"
+              usesDispositions="true"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Destination entity to write data."
+                  expressionType="Notify"
+                  name="DestinationEntity">rik_anbud</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to CRM server."
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
+                  expressionType="Notify"
+                  name="RemoveUnresolvableReferences">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether duplicate detection should be enabled when creating or updating CRM records. Duplicate records are determined by the duplicate detection rules and settings defined in Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="EnableDuplicateDetection">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the matching criteria to be used when Upsert action is chosen."
+                  expressionType="Notify"
+                  name="UpsertMatchingCriteria"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
+                  expressionType="Notify"
+                  name="UpsertMatchingFields"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those fields that have no value changes in the target system. "
+                  expressionType="Notify"
+                  name="IgnoreUnchangedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to CRM."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the flag field(s) that are used to track the source of changes. The field(s) will not posted to CRM server unless there are changes to other fields if specified. &quot;Ignore Unchange Fields&quot; option is required in order for the specified flag field(s) to work. "
+                  expressionType="Notify"
+                  name="ChangeFlagFields"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify what action will be taken when multiple matches are found with Upsert action."
+                  expressionType="Notify"
+                  name="HandlingOfMultipleMatches"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
+                <property
+                  dataType="System.String"
+                  description="Workflow to be executed."
+                  expressionType="Notify"
+                  name="Workflow"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of records to be sent to Microsoft Dynamics CRM in each batch (CRM 2011 Update Rollup 12 or later is required if batch size is greater than 1)."
+                  expressionType="Notify"
+                  name="BatchSize">100</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether datetime values should be sent to CRM server in UTC format."
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Anbud\Migrate Anbud records.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].Columns[rik_Namn]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_Namn"
+                      externalMetadataColumnId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_namn]"
+                      lineageId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].Columns[rik_Namn]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[createdby]"
+                      dataType="guid"
+                      name="createdby">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[importsequencenumber]"
+                      dataType="i4"
+                      name="importsequencenumber">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[overriddencreatedon]"
+                      dataType="dbTimeStamp"
+                      name="overriddencreatedon">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">DateTime</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[ownerid]"
+                      dataType="guid"
+                      name="ownerid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Owner</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser;team</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[owneridtype]"
+                      dataType="wstr"
+                      length="64"
+                      name="owneridtype">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">EntityName</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_accountid]"
+                      dataType="guid"
+                      name="rik_accountid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">account</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_anbudid]"
+                      dataType="guid"
+                      name="rik_anbudid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_anbudsmallid]"
+                      dataType="guid"
+                      name="rik_anbudsmallid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">rik_anbud</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_ansvarigsystemuserid]"
+                      dataType="guid"
+                      name="rik_ansvarigsystemuserid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_antagetdatum]"
+                      dataType="dbTimeStamp"
+                      name="rik_antagetdatum">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">DateTime</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_anvandssommall]"
+                      dataType="bool"
+                      name="rik_anvandssommall">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Boolean</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_avslutatdatum]"
+                      dataType="dbTimeStamp"
+                      name="rik_avslutatdatum">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">DateTime</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_avtalstyp]"
+                      dataType="i4"
+                      name="rik_avtalstyp">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Picklist</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_belopp]"
+                      dataType="cy"
+                      name="rik_belopp">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Money</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_forvantatsvarsdatum]"
+                      dataType="dbTimeStamp"
+                      name="rik_forvantatsvarsdatum">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">DateTime</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_idnummer]"
+                      dataType="wstr"
+                      length="18"
+                      name="rik_idnummer">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_inlamningsdatum]"
+                      dataType="dbTimeStamp"
+                      name="rik_inlamningsdatum">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">DateTime</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_konceptkategori]"
+                      dataType="i4"
+                      name="rik_konceptkategori">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Picklist</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_kortbeskrivning]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_kortbeskrivning">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_namn">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_overenskommelseavtalstecknande]"
+                      dataType="nText"
+                      name="rik_overenskommelseavtalstecknande">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_statusmotivering]"
+                      dataType="nText"
+                      name="rik_statusmotivering">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Memo</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_uppskattadfastvolym]"
+                      dataType="cy"
+                      name="rik_uppskattadfastvolym">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Money</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_uppskattadrorligvolym]"
+                      dataType="cy"
+                      name="rik_uppskattadrorligvolym">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Money</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_utforssenast]"
+                      dataType="dbTimeStamp"
+                      name="rik_utforssenast">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">DateTime</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_volymtecknatavtal]"
+                      dataType="cy"
+                      name="rik_volymtecknatavtal">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Money</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">State</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Status</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[timezoneruleversionnumber]"
+                      dataType="i4"
+                      name="timezoneruleversionnumber">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[transactioncurrencyid]"
+                      dataType="guid"
+                      name="transactioncurrencyid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">transactioncurrency</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[utcconversiontimezonecode]"
+                      dataType="i4"
+                      name="utcconversiontimezonecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Anbud\Migrate Anbud records.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\Load Anbud\Migrate Anbud records.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Anbud\Migrate Anbud records.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Anbud\Migrate Anbud records.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Load Anbud\Migrate Anbud records.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Load Anbud\Migrate Anbud records.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      name="CrmErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Anbud\Migrate Anbud records.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\Load Anbud\Migrate Anbud records.Inputs[Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Anbud\Row Inserted"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Inserted">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RowsInserted</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load Anbud\Row Inserted.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Anbud\Row Inserted.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Load Anbud\Row Inserted.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Anbud\STG Anbud"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="STG Anbud"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[rik_Land]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT rik_Namn
+,rik_GallerFran
+,MigrationId AS IdNummer
+FROM rik_Andelsagare</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Anbud\STG Anbud.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].Columns[rik_Namn]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].ExternalColumns[rik_Namn]"
+                      length="100"
+                      lineageId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].Columns[rik_Namn]"
+                      name="rik_Namn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].Columns[rik_GallerFran]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].ExternalColumns[rik_GallerFran]"
+                      lineageId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].Columns[rik_GallerFran]"
+                      name="rik_GallerFran"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].Columns[IdNummer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].ExternalColumns[IdNummer]"
+                      length="255"
+                      lineageId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].Columns[IdNummer]"
+                      name="IdNummer"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].ExternalColumns[rik_Namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_Namn" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].ExternalColumns[rik_GallerFran]"
+                      dataType="dbTimeStamp"
+                      name="rik_GallerFran" />
+                    <externalMetadataColumn
+                      refId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].ExternalColumns[IdNummer]"
+                      dataType="wstr"
+                      length="255"
+                      name="IdNummer" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Error Output].Columns[rik_Namn]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Error Output].Columns[rik_Namn]"
+                      name="rik_Namn" />
+                    <outputColumn
+                      refId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Error Output].Columns[rik_GallerFran]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Error Output].Columns[rik_GallerFran]"
+                      name="rik_GallerFran" />
+                    <outputColumn
+                      refId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Error Output].Columns[IdNummer]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Error Output].Columns[IdNummer]"
+                      name="IdNummer" />
+                    <outputColumn
+                      refId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Anbud.Paths[Default Output]"
+              endId="Package\Load Anbud\Row Inserted.Inputs[Row Count Input 1]"
+              name="Default Output"
+              startId="Package\Load Anbud\Migrate Anbud records.Outputs[Default Output]" />
+            <path
+              refId="Package\Load Anbud.Paths[Error Output]"
+              endId="Package\Load Anbud\Anbud_ERROR.Inputs[OLE DB Destination Input]"
+              name="Error Output"
+              startId="Package\Load Anbud\Migrate Anbud records.Outputs[Error Output]" />
+            <path
+              refId="Package\Load Anbud.Paths[OLE DB Source Output]"
+              endId="Package\Load Anbud\Migrate Anbud records.Inputs[Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load STG Anbud"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{CAE4A746-6C61-41BC-BC37-0979FF1090E6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load STG Anbud"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="EXEC GetAnbud;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LogPackageEnd"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2182F279-BBEC-450E-9795-2B850488D7E0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LogPackageEnd"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="ExecuteSQLExecutingQuery"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnExecStatusChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnProgress"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnQueryCancel"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnTaskFailed"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnWarning"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A3324C0F-E9EB-404C-85EA-9F2680BB5C0A}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="InsertLogPackage" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Eventname"
+            SQLTask:DtsVariableName="User::Event"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packagename"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packageid"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Loggingtime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="135"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Mainpackagename"
+            SQLTask:DtsVariableName="User::ParentPackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsinserted"
+            SQLTask:DtsVariableName="User::RowsInserted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsupdated"
+            SQLTask:DtsVariableName="User::RowsUpdated"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsdeleted"
+            SQLTask:DtsVariableName="User::RowsDeleted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Username"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Executionid"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="User::ParentPackageExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LogPackageStart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{14BA97F3-97EF-483B-951E-40BE1953955D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LogPackageStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="ExecuteSQLExecutingQuery"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnExecStatusChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnProgress"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnQueryCancel"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnTaskFailed"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnVariableValueChanged"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnWarning"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A3324C0F-E9EB-404C-85EA-9F2680BB5C0A}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="InsertLogPackage" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Eventname"
+            SQLTask:DtsVariableName="User::Event"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packagename"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Packageid"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Loggingtime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="135"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Mainpackagename"
+            SQLTask:DtsVariableName="User::ParentPackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsinserted"
+            SQLTask:DtsVariableName="User::RowsInserted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsupdated"
+            SQLTask:DtsVariableName="User::RowsUpdated"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Rowsdeleted"
+            SQLTask:DtsVariableName="User::RowsDeleted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Username"
+            SQLTask:DtsVariableName="System::UserName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@Executionid"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="User::ParentPackageExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="202"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\New LoggStatus"
+      DTS:CreationName="Microsoft.ExpressionTask"
+      DTS:Description="Expression Task"
+      DTS:DTSID="{8CF8EFCD-D695-4A2B-A426-33A3722F3354}"
+      DTS:ExecutableType="Microsoft.ExpressionTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="New LoggStatus"
+      DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExpressionTask
+          Expression="@[User::Event] = &quot;End&quot;" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate rows in ERROR table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{51B3B902-20C0-4B0B-8721-60568DFDDFD5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate rows in ERROR table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE rik_anbud;&#xA;TRUNCATE TABLE rik_anbud_ERROR;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{B01B53BB-7D9F-486F-AA2C-D06554F774FB}"
+      DTS:From="Package\LogPackageStart"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\New LoggStatus" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{0FD49B5A-F3DF-4211-A56A-1268B9AD8F9E}"
+      DTS:From="Package\Load Anbud"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{901324FB-7E98-4BEE-BCDB-7B4B3E4D255E}"
+      DTS:From="Package\New LoggStatus"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Truncate rows in ERROR table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{95FE2C8A-C682-4676-84FF-AA752CC326D8}"
+      DTS:From="Package\New LoggStatus"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{E1D24DF1-CF16-4947-AA45-6BBCC85F16CC}"
+      DTS:From="Package\Truncate rows in ERROR table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Load STG Anbud" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{598C8ABF-3109-40D1-96DA-59C38321D514}"
+      DTS:From="Package\Truncate rows in ERROR table"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{16B2064D-74CD-480F-B62A-361D54754815}"
+      DTS:From="Package\Load STG Anbud"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Load Anbud" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Load Anbud"
+          TopLeft="372.738101093695,401.715690702503" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Load STG Anbud"
+          TopLeft="357,279" />
+        <NodeLayout
+          Size="152,41"
+          Id="Package\LogPackageEnd"
+          TopLeft="72.3571444544562,399.335949217453" />
+        <NodeLayout
+          Size="163,41"
+          Id="Package\LogPackageStart"
+          TopLeft="58.6428580478746,36.0882357231061" />
+        <NodeLayout
+          Size="143,41"
+          Id="Package\New LoggStatus"
+          TopLeft="64.5714296710736,119.294119320114" />
+        <NodeLayout
+          Size="163,41"
+          Id="Package\Truncate rows in ERROR table"
+          TopLeft="292.476195740862,118.070589891189" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="138.007143859474,77.6882357231061">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.6058835970077"
+              Start="0,0"
+              End="0,34.1058835970077">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.1058835970077" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="372.738101093695,421.275819959978">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-148.380956639239,0"
+              Start="0,0"
+              End="-140.880956639239,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-140.880956639239,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-95.7449314446194,5,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="207.771429671074,139.482354605652">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="84.7047660697889,0"
+              Start="0,0"
+              End="77.2047660697889,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="77.2047660697889,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="136.23809633774,160.627452653447">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-23.8809518832841,238.708496564005"
+              Start="0,0"
+              End="-23.8809518832841,231.208496564005">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,152.395221886762" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,152.395221886762"
+                    Point2="0,156.395221886762"
+                    Point3="-4,156.395221886762" />
+                  <mssgle:LineSegment
+                    End="-19.8809518832841,156.395221886762" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-19.8809518832841,156.395221886762"
+                    Point2="-23.8809518832841,156.395221886762"
+                    Point3="-23.8809518832841,160.395221886762" />
+                  <mssgle:LineSegment
+                    End="-23.8809518832841,231.208496564005" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-27.181823597892,161.395221886762,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="399.809529074195,159.070589891189">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="36.1904709258047,119.929410108811"
+              Start="0,0"
+              End="36.1904709258047,112.429410108811">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.6712308339525" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.6712308339525"
+                    Point2="0,48.6712308339525"
+                    Point3="4,48.6712308339525" />
+                  <mssgle:LineSegment
+                    End="32.1904709258047,48.6712308339525" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32.1904709258047,48.6712308339525"
+                    Point2="36.1904709258047,48.6712308339525"
+                    Point3="36.1904709258047,52.6712308339525" />
+                  <mssgle:LineSegment
+                    End="36.1904709258047,112.429410108811" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="348.031751296418,159.403923224522">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-199.674606841961,239.932025992931"
+              Start="0,0"
+              End="-199.674606841961,232.432025992931">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,93.375010549079" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,93.375010549079"
+                    Point2="0,97.375010549079"
+                    Point3="-4,97.375010549079" />
+                  <mssgle:LineSegment
+                    End="-195.674606841961,97.375010549079" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-195.674606841961,97.375010549079"
+                    Point2="-199.674606841961,97.375010549079"
+                    Point3="-199.674606841961,101.375010549079" />
+                  <mssgle:LineSegment
+                    End="-199.674606841961,232.432025992931" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-115.078651077231,102.375010549079,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="438.119050546847,321">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80.715690702503"
+              Start="0,0"
+              End="0,73.215690702503">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.215690702503" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Anbud">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Load Anbud\STG Anbud"
+          TopLeft="270,38" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Load Anbud\Migrate Anbud records"
+          TopLeft="243.857147265455,130.117647290477" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Load Anbud\Row Inserted"
+          TopLeft="123.857143246397,256.505888993683" />
+        <EdgeLayout
+          Id="Package\Load Anbud.Paths[OLE DB Source Output]"
+          TopLeft="336.428573632728,80">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.117647290477"
+              Start="0,0"
+              End="0,42.617647290477">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.617647290477" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Anbud.Paths[Default Output]"
+          TopLeft="336.857147265455,172.117647290477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-142.000004019058,84.388241703206"
+              Start="0,0"
+              End="-142.000004019058,76.888241703206">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.194120851603" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.194120851603"
+                    Point2="0,42.194120851603"
+                    Point3="-4,42.194120851603" />
+                  <mssgle:LineSegment
+                    End="-138.000004019058,42.194120851603" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-138.000004019058,42.194120851603"
+                    Point2="-142.000004019058,42.194120851603"
+                    Point3="-142.000004019058,46.194120851603" />
+                  <mssgle:LineSegment
+                    End="-142.000004019058,76.888241703206" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Load Anbud\Anbud_ERROR"
+          TopLeft="375,255" />
+        <EdgeLayout
+          Id="Package\Load Anbud.Paths[Error Output]"
+          TopLeft="366.523813932122,172.117647290477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="82.4761860678783,82.882352709523"
+              Start="0,0"
+              End="82.4761860678783,75.382352709523">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.577072526246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.577072526246"
+                    Point2="0,33.577072526246"
+                    Point3="4,33.577072526246" />
+                  <mssgle:LineSegment
+                    End="78.4761860678783,33.577072526246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="78.4761860678783,33.577072526246"
+                    Point2="82.4761860678783,33.577072526246"
+                    Point3="82.4761860678783,37.577072526246" />
+                  <mssgle:LineSegment
+                    End="82.4761860678783,75.382352709523" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="12.9017063151891,38.577072526246,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Anbud\STG Anbud">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Anbud\Anbud_ERROR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
