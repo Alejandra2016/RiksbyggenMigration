@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Account_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="140"
-  DTS:VersionGUID="{E190DE3A-78DC-46B1-AB05-C1896096045D}">
+  DTS:VersionBuild="144"
+  DTS:VersionGUID="{45E6C06A-F14C-420F-A032-FF63A8DBD794}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -193,6 +193,22 @@
     </DTS:SelectedLogProviders>
   </DTS:LoggingOptions>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Get MAX(Idnummer) from CrmKundKonto RIKSKunder"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{c745a72b-3610-4b38-8162-b36d9609e0c1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get MAX(Idnummer) from CrmKundKonto RIKSKunder"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="UPDATE rik_Nummerserie&#xA; SET rik_AktuelltNummer = (SELECT MAX(Kundnummer)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   FROM CrmKundkonto&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   WHERE Kundnummer like '30%'&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   AND LEN(Kundnummer) = 6 ) &#xA;WHERE rik_Namn = 'KontoExterna'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Load Account"
       DTS:CreationName="Microsoft.Pipeline"
@@ -19264,29 +19280,29 @@ LEFT JOIN ovMarknadsomrade m
               startId="Package\Load Account\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 5]" />
             <path
               refId="Package\Load Account.Paths[Default Output4]"
-              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 4]"
-              name="Default Output"
-              startId="Package\Load Account\Dynamics CRM Destination 2.Outputs[Default Output]" />
-            <path
-              refId="Package\Load Account.Paths[Default Output2]"
               endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 2]"
               name="Default Output"
               startId="Package\Load Account\Dynamics CRM Destination 4.Outputs[Default Output]" />
             <path
-              refId="Package\Load Account.Paths[Default Output3]"
-              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 1]"
-              name="Default Output"
-              startId="Package\Load Account\Dynamics CRM Destination.Outputs[Default Output]" />
-            <path
-              refId="Package\Load Account.Paths[Default Output]"
+              refId="Package\Load Account.Paths[Default Output2]"
               endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 5]"
               name="Default Output"
               startId="Package\Load Account\Dynamics CRM Destination 3.Outputs[Default Output]" />
             <path
-              refId="Package\Load Account.Paths[Default Output1]"
+              refId="Package\Load Account.Paths[Default Output3]"
+              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 4]"
+              name="Default Output"
+              startId="Package\Load Account\Dynamics CRM Destination 2.Outputs[Default Output]" />
+            <path
+              refId="Package\Load Account.Paths[Default Output]"
               endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 3]"
               name="Default Output"
               startId="Package\Load Account\Dynamics CRM Destination 1.Outputs[Default Output]" />
+            <path
+              refId="Package\Load Account.Paths[Default Output1]"
+              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 1]"
+              name="Default Output"
+              startId="Package\Load Account\Dynamics CRM Destination.Outputs[Default Output]" />
             <path
               refId="Package\Load Account.Paths[Error Output]"
               endId="Package\Load Account\Union All to ERROR.Inputs[Union All Input 2]"
@@ -20048,6 +20064,698 @@ LEFT JOIN ovMarknadsomrade m
           SQLTask:SqlStatementSource="TRUNCATE TABLE Account_Error;&#xA;&#xA;IF OBJECT_ID (N'dbo.CrmKundkonto', N'U') IS NOT NULL  &#xA;&#x9;DROP TABLE STG.dbo.CrmKundkonto;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Nummerserie med Konto-Idnummer"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1346a030-7d54-44ec-9689-4cd78f016433}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Nummerserie med Konto-Idnummer"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Extract data from Microsoft Dynamics CRM."
+              name="Dynamics CRM Source"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">1</property>
+                <property
+                  dataType="System.String"
+                  description="Dynamics CRM entity to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceEntity"></property>
+                <property
+                  dataType="System.String"
+                  description="FetchXML statement."
+                  expressionType="Notify"
+                  name="FetchXML">&lt;fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false"&gt;
+  &lt;entity name="rik_nummerserie"&gt;
+    &lt;attribute name="rik_nummerserieid" /&gt;
+    &lt;attribute name="rik_namn" /&gt;
+    &lt;order attribute="rik_namn" descending="false" /&gt;
+    &lt;filter type="and"&gt;
+      &lt;condition attribute="rik_namn" operator="eq" value="KontoExterna" /&gt;
+    &lt;/filter&gt;
+  &lt;/entity&gt;
+&lt;/fetch&gt;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">2000</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="ImpersonateAs" />
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for CRM datetime fields."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source.Outputs[CRM Primary Output]"
+                  name="CRM Primary Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_namn]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_namn]"
+                      length="100"
+                      lineageId="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_namn]"
+                      name="rik_namn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_nummerserieid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_nummerserieid]"
+                      lineageId="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_nummerserieid]"
+                      name="rik_nummerserieid"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_namn" />
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source.Outputs[CRM Primary Output].ExternalColumns[rik_nummerserieid]"
+                      dataType="guid"
+                      name="rik_nummerserieid" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update Nummerserie med Konto-Idnummer\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT rik_AktuelltNummer
+,rik_namn
+FROM STG.dbo.rik_Nummerserie
+WHERE rik_Namn = 'KontoExterna'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT rik_AktuelltNummer
+,rik_namn
+FROM STG.dbo.rik_Nummerserie
+WHERE rik_Namn = 'KontoExterna') [refTable]
+where [refTable].[rik_namn] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="rik_AktuelltNummer" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="rik_namn" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_namn]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Inputs[Lookup Input].Columns[rik_namn]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="rik_namn"
+                      lineageId="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_namn]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">rik_namn</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Outputs[Lookup Match Output].Columns[rik_AktuelltNummer]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Outputs[Lookup Match Output].Columns[rik_AktuelltNummer]"
+                      name="rik_AktuelltNummer"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">rik_AktuelltNummer</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Populate data into Microsoft Dynamics CRM."
+              name="Update rik_Nummerserie"
+              usesDispositions="true"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Destination entity to write data."
+                  expressionType="Notify"
+                  name="DestinationEntity">rik_nummerserie</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to CRM server."
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
+                  expressionType="Notify"
+                  name="RemoveUnresolvableReferences">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether duplicate detection should be enabled when creating or updating CRM records. Duplicate records are determined by the duplicate detection rules and settings defined in Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="EnableDuplicateDetection">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the matching criteria to be used when Upsert action is chosen."
+                  expressionType="Notify"
+                  name="UpsertMatchingCriteria"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">1</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
+                  expressionType="Notify"
+                  name="UpsertMatchingFields"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those fields that have no value changes in the target system. "
+                  expressionType="Notify"
+                  name="IgnoreUnchangedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to CRM."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the flag field(s) that are used to track the source of changes. The field(s) will not posted to CRM server unless there are changes to other fields if specified. &quot;Ignore Unchange Fields&quot; option is required in order for the specified flag field(s) to work. "
+                  expressionType="Notify"
+                  name="ChangeFlagFields"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify what action will be taken when multiple matches are found with Upsert action."
+                  expressionType="Notify"
+                  name="HandlingOfMultipleMatches"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
+                <property
+                  dataType="System.String"
+                  description="Workflow to be executed."
+                  expressionType="Notify"
+                  name="Workflow"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of records to be sent to Microsoft Dynamics CRM in each batch (CRM 2011 Update Rollup 12 or later is required if batch size is greater than 1)."
+                  expressionType="Notify"
+                  name="BatchSize">200</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether datetime values should be sent to CRM server in UTC format."
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].Columns[rik_AktuelltNummer]"
+                      cachedDataType="i4"
+                      cachedName="rik_AktuelltNummer"
+                      externalMetadataColumnId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_aktuelltnummer]"
+                      lineageId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Outputs[Lookup Match Output].Columns[rik_AktuelltNummer]" />
+                    <inputColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].Columns[rik_nummerserieid]"
+                      cachedDataType="guid"
+                      cachedName="rik_nummerserieid"
+                      externalMetadataColumnId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_nummerserieid]"
+                      lineageId="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source.Outputs[CRM Primary Output].Columns[rik_nummerserieid]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[modifiedby]"
+                      dataType="guid"
+                      name="modifiedby">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[ownerid]"
+                      dataType="guid"
+                      name="ownerid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Owner</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser;team</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[owneridtype]"
+                      dataType="wstr"
+                      length="64"
+                      name="owneridtype">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">EntityName</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_aktuelltnummer]"
+                      dataType="i4"
+                      name="rik_aktuelltnummer">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_antalsiffror]"
+                      dataType="i4"
+                      name="rik_antalsiffror">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_format]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_format">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_lastid]"
+                      dataType="dbTimeStamp"
+                      name="rik_lastid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">DateTime</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_lasvarde]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_lasvarde">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_namn]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_namn">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_nummer]"
+                      dataType="i4"
+                      name="rik_nummer">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_nummerserieid]"
+                      dataType="guid"
+                      name="rik_nummerserieid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">rik_nummerserie</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_prefix]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_prefix">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[rik_verifieringlas]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_verifieringlas">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">String</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[statecode]"
+                      dataType="i4"
+                      name="statecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">State</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[statuscode]"
+                      dataType="i4"
+                      name="statuscode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Status</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[timezoneruleversionnumber]"
+                      dataType="i4"
+                      name="timezoneruleversionnumber">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input].ExternalColumns[utcconversiontimezonecode]"
+                      dataType="i4"
+                      name="utcconversiontimezonecode">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Integer</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      name="CrmErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Outputs[Default Output].Columns[CrmRecordId]"
+                      dataType="guid"
+                      lineageId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Outputs[Default Output].Columns[CrmRecordId]"
+                      name="CrmRecordId" />
+                    <outputColumn
+                      refId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Outputs[Default Output].Columns[IsNew]"
+                      dataType="bool"
+                      lineageId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Outputs[Default Output].Columns[IsNew]"
+                      name="IsNew" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Update Nummerserie med Konto-Idnummer.Paths[CRM Primary Output]"
+              endId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Inputs[Lookup Input]"
+              name="CRM Primary Output"
+              startId="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source.Outputs[CRM Primary Output]" />
+            <path
+              refId="Package\Update Nummerserie med Konto-Idnummer.Paths[Lookup Match Output]"
+              endId="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie.Inputs[Input]"
+              name="Lookup Match Output"
+              startId="Package\Update Nummerserie med Konto-Idnummer\Lookup.Outputs[Lookup Match Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -20064,6 +20772,38 @@ LEFT JOIN ovMarknadsomrade m
       DTS:DTSID="{18B69AD6-8D72-4E18-BF4B-E7AC4C4C9035}"
       DTS:From="Package\Load Account"
       DTS:ObjectName="Constraint 1"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
+      DTS:CreationName=""
+      DTS:DTSID="{2391FB7E-6D33-448D-879D-1592405FDE36}"
+      DTS:From="Package\Load Account"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 10"
+      DTS:To="Package\Get MAX(Idnummer) from CrmKundKonto RIKSKunder" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 11]"
+      DTS:CreationName=""
+      DTS:DTSID="{3026AC53-D328-4A6E-A8E7-4C1F05983A90}"
+      DTS:From="Package\Get MAX(Idnummer) from CrmKundKonto RIKSKunder"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 11"
+      DTS:To="Package\Update Nummerserie med Konto-Idnummer" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 12]"
+      DTS:CreationName=""
+      DTS:DTSID="{E2283207-8314-44A2-BD6F-E76734B67018}"
+      DTS:From="Package\Get MAX(Idnummer) from CrmKundKonto RIKSKunder"
+      DTS:ObjectName="Constraint 12"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 13]"
+      DTS:CreationName=""
+      DTS:DTSID="{FE0F8947-5BBE-4682-89B2-5B8B1C3706F0}"
+      DTS:From="Package\Update Nummerserie med Konto-Idnummer"
+      DTS:ObjectName="Constraint 13"
       DTS:To="Package\LogPackageEnd"
       DTS:Value="2" />
     <DTS:PrecedenceConstraint
@@ -20144,21 +20884,25 @@ LEFT JOIN ovMarknadsomrade m
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="336,42"
+          Id="Package\Get MAX(Idnummer) from CrmKundKonto RIKSKunder"
+          TopLeft="540,502" />
+        <NodeLayout
           Size="142,42"
           Id="Package\Load Account"
-          TopLeft="391.000005790166,412.282356829956" />
+          TopLeft="550.000005790166,410.282356829956" />
         <NodeLayout
           Size="178,42"
           Id="Package\Load STG Kundkonto"
-          TopLeft="371,317" />
+          TopLeft="480,318" />
         <NodeLayout
           Size="143,42"
           Id="Package\Load STG MO"
           TopLeft="405,208" />
         <NodeLayout
-          Size="152,41"
+          Size="153,42"
           Id="Package\LogPackageEnd"
-          TopLeft="62.2857153464338,417.411768834897" />
+          TopLeft="51.2857153464338,599.411768834897" />
         <NodeLayout
           Size="163,41"
           Id="Package\LogPackageStart"
@@ -20171,6 +20915,10 @@ LEFT JOIN ovMarknadsomrade m
           Size="163,41"
           Id="Package\Truncate rows in ERROR table"
           TopLeft="287.428576323451,121.1294134635" />
+        <NodeLayout
+          Size="286,42"
+          Id="Package\Update Nummerserie med Konto-Idnummer"
+          TopLeft="541,602" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="137.721429568894,77.6882357231061">
@@ -20195,25 +20943,165 @@ LEFT JOIN ovMarknadsomrade m
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="391.000005790166,435.597062832426">
+          TopLeft="598.666672456833,452.282356829956">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-176.714290443732,0"
+              EndConnector="-439.80952853897,147.129412004941"
               Start="0,0"
-              End="-169.214290443732,0">
+              End="-439.80952853897,139.629412004941">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-169.214290443732,0" />
+                    End="0,74.8326159308531" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,74.8326159308531"
+                    Point2="0,78.8326159308531"
+                    Point3="-4,78.8326159308531" />
+                  <mssgle:LineSegment
+                    End="-435.80952853897,78.8326159308531" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-435.80952853897,78.8326159308531"
+                    Point2="-439.80952853897,78.8326159308531"
+                    Point3="-439.80952853897,82.8326159308531" />
+                  <mssgle:LineSegment
+                    End="-439.80952853897,139.629412004941" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-109.911598346866,5,50.60890625,11.609375"
+              BoundingBox="-235.146111925735,83.8326159308531,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="643.333339123499,452.282356829956">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64.6666608765006,49.717643170044"
+              Start="0,0"
+              End="64.6666608765006,42.217643170044">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.2194314841962" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.2194314841962"
+                    Point2="0,20.2194314841962"
+                    Point3="4,20.2194314841962" />
+                  <mssgle:LineSegment
+                    End="60.6666608765006,20.2194314841962" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60.6666608765006,20.2194314841962"
+                    Point2="64.6666608765006,20.2194314841962"
+                    Point3="64.6666608765006,24.2194314841962" />
+                  <mssgle:LineSegment
+                    End="64.6666608765006,42.217643170044" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 11]"
+          TopLeft="762.666666666667,544">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-78.6666666666666,58"
+              Start="0,0"
+              End="-78.6666666666666,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.3649289099526" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.3649289099526"
+                    Point2="0,23.3649289099526"
+                    Point3="-4,23.3649289099526" />
+                  <mssgle:LineSegment
+                    End="-74.6666666666666,23.3649289099526" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-74.6666666666666,23.3649289099526"
+                    Point2="-78.6666666666666,23.3649289099526"
+                    Point3="-78.6666666666666,27.3649289099526" />
+                  <mssgle:LineSegment
+                    End="-78.6666666666666,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 12]"
+          TopLeft="653.333333333333,544">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-473.761903701185,55.411768834897"
+              Start="0,0"
+              End="-473.761903701185,47.911768834897">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.4684164559785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.4684164559785"
+                    Point2="0,37.4684164559785"
+                    Point3="-4,37.4684164559785" />
+                  <mssgle:LineSegment
+                    End="-469.761903701185,37.4684164559785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-469.761903701185,37.4684164559785"
+                    Point2="-473.761903701185,37.4684164559785"
+                    Point3="-473.761903701185,41.4684164559785" />
+                  <mssgle:LineSegment
+                    End="-473.761903701185,47.911768834897" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-252.122299506843,42.4684164559785,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 13]"
+          TopLeft="541,621.705884417448">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-336.714284653566,0"
+              Start="0,0"
+              End="-329.214284653566,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-329.214284653566,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-189.911595451783,5,50.60890625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -20245,33 +21133,33 @@ LEFT JOIN ovMarknadsomrade m
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-40.4142857434799,256.505884800321"
+              EndConnector="-59.5000000291942,438.505884800321"
               Start="0,0"
-              End="-40.4142857434799,249.005884800321">
+              End="-59.5000000291942,431.005884800321">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,175.176904823754" />
+                    End="0,327.432464799678" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,175.176904823754"
-                    Point2="0,179.176904823754"
-                    Point3="-4,179.176904823754" />
+                    Point1="0,327.432464799678"
+                    Point2="0,331.432464799678"
+                    Point3="-4,331.432464799678" />
                   <mssgle:LineSegment
-                    End="-36.4142857434799,179.176904823754" />
+                    End="-55.5000000291942,331.432464799678" />
                   <mssgle:CubicBezierSegment
-                    Point1="-36.4142857434799,179.176904823754"
-                    Point2="-40.4142857434799,179.176904823754"
-                    Point3="-40.4142857434799,183.176904823754" />
+                    Point1="-55.5000000291942,331.432464799678"
+                    Point2="-59.5000000291942,331.432464799678"
+                    Point3="-59.5000000291942,335.432464799678" />
                   <mssgle:LineSegment
-                    End="-40.4142857434799,249.005884800321" />
+                    End="-59.5000000291942,431.005884800321" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-35.44849052799,184.176904823754,30.4826953125,9.7490234375"
+              BoundingBox="-44.9913476708471,336.432464799678,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -20311,66 +21199,66 @@ LEFT JOIN ovMarknadsomrade m
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="368.928576323451,162.1294134635">
+          TopLeft="343.095242990118,162.1294134635">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-245.042860977017,255.282355371397"
+              EndConnector="-246.380956215112,437.282355371397"
               Start="0,0"
-              End="-245.042860977017,247.782355371397">
+              End="-246.380956215112,429.782355371397">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,136.998975350481" />
+                    End="0,229.913279542833" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,136.998975350481"
-                    Point2="0,140.998975350481"
-                    Point3="-4,140.998975350481" />
+                    Point1="0,229.913279542833"
+                    Point2="0,233.913279542833"
+                    Point3="-4,233.913279542833" />
                   <mssgle:LineSegment
-                    End="-241.042860977017,140.998975350481" />
+                    End="-242.380956215112,233.913279542833" />
                   <mssgle:CubicBezierSegment
-                    Point1="-241.042860977017,140.998975350481"
-                    Point2="-245.042860977017,140.998975350481"
-                    Point3="-245.042860977017,144.998975350481" />
+                    Point1="-242.380956215112,233.913279542833"
+                    Point2="-246.380956215112,233.913279542833"
+                    Point3="-246.380956215112,237.913279542833" />
                   <mssgle:LineSegment
-                    End="-245.042860977017,247.782355371397" />
+                    End="-246.380956215112,429.782355371397" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-137.762778144759,145.998975350481,30.4826953125,9.7490234375"
+              BoundingBox="-138.431825763806,238.913279542833,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="488.333333333333,359">
+          TopLeft="597.333333333333,360">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-26.3333275431673,53.282356829956"
+              EndConnector="23.6666724568327,50.282356829956"
               Start="0,0"
-              End="-26.3333275431673,45.782356829956">
+              End="23.6666724568327,42.782356829956">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.5977482027884" />
+                    End="0,16.3817125680445" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.5977482027884"
-                    Point2="0,21.5977482027884"
-                    Point3="-4,21.5977482027884" />
+                    Point1="0,16.3817125680445"
+                    Point2="0,20.3817125680445"
+                    Point3="4,20.3817125680445" />
                   <mssgle:LineSegment
-                    End="-22.3333275431673,21.5977482027884" />
+                    End="19.6666724568327,20.3817125680445" />
                   <mssgle:CubicBezierSegment
-                    Point1="-22.3333275431673,21.5977482027884"
-                    Point2="-26.3333275431673,21.5977482027884"
-                    Point3="-26.3333275431673,25.5977482027884" />
+                    Point1="19.6666724568327,20.3817125680445"
+                    Point2="23.6666724568327,20.3817125680445"
+                    Point3="23.6666724568327,24.3817125680445" />
                   <mssgle:LineSegment
-                    End="-26.3333275431673,45.782356829956" />
+                    End="23.6666724568327,42.782356829956" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -20381,37 +21269,37 @@ LEFT JOIN ovMarknadsomrade m
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="431.666666666667,359">
+          TopLeft="540.666666666667,360">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-257.380951320233,58.411768834897"
+              EndConnector="-402.52380846309,239.411768834897"
               Start="0,0"
-              End="-257.380951320233,50.911768834897">
+              End="-402.52380846309,231.911768834897">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.9614713823554" />
+                    End="0,101.541429887634" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.9614713823554"
-                    Point2="0,32.9614713823554"
-                    Point3="-4,32.9614713823554" />
+                    Point1="0,101.541429887634"
+                    Point2="0,105.541429887634"
+                    Point3="-4,105.541429887634" />
                   <mssgle:LineSegment
-                    End="-253.380951320233,32.9614713823554" />
+                    End="-398.52380846309,105.541429887634" />
                   <mssgle:CubicBezierSegment
-                    Point1="-253.380951320233,32.9614713823554"
-                    Point2="-257.380951320233,32.9614713823554"
-                    Point3="-257.380951320233,36.9614713823554" />
+                    Point1="-398.52380846309,105.541429887634"
+                    Point2="-402.52380846309,105.541429887634"
+                    Point3="-402.52380846309,109.541429887634" />
                   <mssgle:LineSegment
-                    End="-257.380951320233,50.911768834897" />
+                    End="-402.52380846309,231.911768834897" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-143.931823316366,37.9614713823554,30.4826953125,9.7490234375"
+              BoundingBox="-216.503251887795,110.541429887634,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -20421,26 +21309,26 @@ LEFT JOIN ovMarknadsomrade m
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-39,67"
+              EndConnector="70,68"
               Start="0,0"
-              End="-39,59.5">
+              End="70,60.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.2448132780083" />
+                    End="0,23.6514522821577" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,23.2448132780083"
-                    Point2="0,27.2448132780083"
-                    Point3="-4,27.2448132780083" />
+                    Point1="0,23.6514522821577"
+                    Point2="0,27.6514522821577"
+                    Point3="4,27.6514522821577" />
                   <mssgle:LineSegment
-                    End="-35,27.2448132780083" />
+                    End="66,27.6514522821577" />
                   <mssgle:CubicBezierSegment
-                    Point1="-35,27.2448132780083"
-                    Point2="-39,27.2448132780083"
-                    Point3="-39,31.2448132780083" />
+                    Point1="66,27.6514522821577"
+                    Point2="70,27.6514522821577"
+                    Point3="70,31.6514522821577" />
                   <mssgle:LineSegment
-                    End="-39,59.5" />
+                    End="70,60.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -20455,33 +21343,33 @@ LEFT JOIN ovMarknadsomrade m
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-272.514284653566,167.411768834897"
+              EndConnector="-336.571427510709,349.411768834897"
               Start="0,0"
-              End="-272.514284653566,159.911768834897">
+              End="-336.571427510709,341.911768834897">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,98.722175433526" />
+                    End="0,150.495654292654" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,98.722175433526"
-                    Point2="0,102.722175433526"
-                    Point3="-4,102.722175433526" />
+                    Point1="0,150.495654292654"
+                    Point2="0,154.495654292654"
+                    Point3="-4,154.495654292654" />
                   <mssgle:LineSegment
-                    End="-268.514284653566,102.722175433526" />
+                    End="-332.571427510709,154.495654292654" />
                   <mssgle:CubicBezierSegment
-                    Point1="-268.514284653566,102.722175433526"
-                    Point2="-272.514284653566,102.722175433526"
-                    Point3="-272.514284653566,106.722175433526" />
+                    Point1="-332.571427510709,154.495654292654"
+                    Point2="-336.571427510709,154.495654292654"
+                    Point3="-336.571427510709,158.495654292654" />
                   <mssgle:LineSegment
-                    End="-272.514284653566,159.911768834897" />
+                    End="-336.571427510709,341.911768834897" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-151.498489983033,107.722175433526,30.4826953125,9.7490234375"
+              BoundingBox="-183.527061411605,159.495654292654,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -20563,7 +21451,9 @@ LEFT JOIN ovMarknadsomrade m
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20585,7 +21475,9 @@ LEFT JOIN ovMarknadsomrade m
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20607,7 +21499,9 @@ LEFT JOIN ovMarknadsomrade m
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -20792,74 +21686,6 @@ LEFT JOIN ovMarknadsomrade m
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Account.Paths[Default Output4]"
-          TopLeft="688.380954794333,235.593470435815">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-321.380954794333,148.406529564185"
-              Start="0,0"
-              End="-321.380954794333,140.906529564185">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.0234201205794" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,56.0234201205794"
-                    Point2="0,60.0234201205794"
-                    Point3="-4,60.0234201205794" />
-                  <mssgle:LineSegment
-                    End="-317.380954794333,60.0234201205794" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-317.380954794333,60.0234201205794"
-                    Point2="-321.380954794333,60.0234201205794"
-                    Point3="-321.380954794333,64.0234201205794" />
-                  <mssgle:LineSegment
-                    End="-321.380954794333,140.906529564185" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Account.Paths[Default Output3]"
-          TopLeft="70.3809547943327,234.593470435815">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="179.285711872334,149.406529564185"
-              Start="0,0"
-              End="179.285711872334,141.906529564185">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,94.7989741994136" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,94.7989741994136"
-                    Point2="0,98.7989741994136"
-                    Point3="4,98.7989741994136" />
-                  <mssgle:LineSegment
-                    End="175.285711872334,98.7989741994136" />
-                  <mssgle:CubicBezierSegment
-                    Point1="175.285711872334,98.7989741994136"
-                    Point2="179.285711872334,98.7989741994136"
-                    Point3="179.285711872334,102.798974199414" />
-                  <mssgle:LineSegment
-                    End="179.285711872334,141.906529564185" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Account.Paths[Default Output2]"
           TopLeft="1204.38095479433,235.593470435815">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -20889,45 +21715,49 @@ LEFT JOIN ovMarknadsomrade m
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Account.Paths[Default Output1]"
-          TopLeft="379.666666666667,234.593470435815">
+          Id="Package\Load Account.Paths[Default Output3]"
+          TopLeft="688.380954794333,235.593470435815">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-71.3333333333333,149.406529564185"
+              EndConnector="-321.380954794333,148.406529564185"
               Start="0,0"
-              End="-71.3333333333333,141.906529564185">
+              End="-321.380954794333,140.906529564185">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,70.9822507302734" />
+                    End="0,56.0234201205794" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,70.9822507302734"
-                    Point2="0,74.9822507302734"
-                    Point3="-4,74.9822507302734" />
+                    Point1="0,56.0234201205794"
+                    Point2="0,60.0234201205794"
+                    Point3="-4,60.0234201205794" />
                   <mssgle:LineSegment
-                    End="-67.3333333333333,74.9822507302734" />
+                    End="-317.380954794333,60.0234201205794" />
                   <mssgle:CubicBezierSegment
-                    Point1="-67.3333333333333,74.9822507302734"
-                    Point2="-71.3333333333333,74.9822507302734"
-                    Point3="-71.3333333333333,78.9822507302734" />
+                    Point1="-317.380954794333,60.0234201205794"
+                    Point2="-321.380954794333,60.0234201205794"
+                    Point3="-321.380954794333,64.0234201205794" />
                   <mssgle:LineSegment
-                    End="-71.3333333333333,141.906529564185" />
+                    End="-321.380954794333,140.906529564185" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Account.Paths[Default Output]"
+          Id="Package\Load Account.Paths[Default Output2]"
           TopLeft="959.666666666667,234">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -20957,7 +21787,81 @@ LEFT JOIN ovMarknadsomrade m
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Account.Paths[Default Output1]"
+          TopLeft="70.3809547943327,234.593470435815">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="179.285711872334,149.406529564185"
+              Start="0,0"
+              End="179.285711872334,141.906529564185">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,94.7989741994136" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,94.7989741994136"
+                    Point2="0,98.7989741994136"
+                    Point3="4,98.7989741994136" />
+                  <mssgle:LineSegment
+                    End="175.285711872334,98.7989741994136" />
+                  <mssgle:CubicBezierSegment
+                    Point1="175.285711872334,98.7989741994136"
+                    Point2="179.285711872334,98.7989741994136"
+                    Point3="179.285711872334,102.798974199414" />
+                  <mssgle:LineSegment
+                    End="179.285711872334,141.906529564185" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Account.Paths[Default Output]"
+          TopLeft="379.666666666667,234.593470435815">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-71.3333333333333,149.406529564185"
+              Start="0,0"
+              End="-71.3333333333333,141.906529564185">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.9822507302734" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,70.9822507302734"
+                    Point2="0,74.9822507302734"
+                    Point3="-4,74.9822507302734" />
+                  <mssgle:LineSegment
+                    End="-67.3333333333333,74.9822507302734" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-67.3333333333333,74.9822507302734"
+                    Point2="-71.3333333333333,74.9822507302734"
+                    Point3="-71.3333333333333,78.9822507302734" />
+                  <mssgle:LineSegment
+                    End="-71.3333333333333,141.906529564185" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -21166,6 +22070,95 @@ LEFT JOIN ovMarknadsomrade m
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Update Nummerserie med Konto-Idnummer">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Update Nummerserie med Konto-Idnummer\Update rik_Nummerserie"
+          TopLeft="230,202" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Update Nummerserie med Konto-Idnummer\Lookup"
+          TopLeft="269,115" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Update Nummerserie med Konto-Idnummer\Dynamics CRM Source"
+          TopLeft="239,31" />
+        <EdgeLayout
+          Id="Package\Update Nummerserie med Konto-Idnummer.Paths[Lookup Match Output]"
+          TopLeft="326.75,157">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,12.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Update Nummerserie med Konto-Idnummer.Paths[CRM Primary Output]"
+          TopLeft="328.25,73">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Update Nummerserie med Konto-Idnummer\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
