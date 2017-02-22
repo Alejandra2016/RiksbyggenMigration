@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Account_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="145"
-  DTS:VersionGUID="{99266F97-5BF9-4BE8-820A-A68A3530CEB2}">
+  DTS:VersionBuild="146"
+  DTS:VersionGUID="{AA003D32-100A-4155-B990-C49ED47C0991}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -15574,13 +15574,13 @@
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT  CRMguid AS AccountId
-	,CAST(Visningsnamn AS NVARCHAR(160))AS Name
-	,CAST(Organisationsnummer AS NVARCHAR(20))AS rik_Organisationsnummer
-	,CAST(Kundnummer AS NVARCHAR(18)) AS rik_Idnummer
+	,CAST(RTRIM(Visningsnamn) AS NVARCHAR(160))AS Name
+	,CAST(RTRIM(Organisationsnummer) AS NVARCHAR(20))AS rik_Organisationsnummer
+	,CAST(RTRIM(Kundnummer) AS NVARCHAR(18)) AS rik_Idnummer
 	,CASE WHEN KundansvarigAnvId IS NOT NULL THEN 8 ELSE NULL END AS owneridtype
-	,Epost AS emailaddress1
-	,Tel1 AS Telephone1
-	,Tel2 AS Telephone2
+	,RTRIM(Epost) AS emailaddress1
+	,RTRIM(Tel1) AS Telephone1
+	,RTRIM(Tel2) AS Telephone2
 	,CASE WHEN LEN([dbo].[fn_StripCharacters] (Tel1,'^0-9+')) &lt;= 4 THEN ''
 			WHEN SUBSTRING([dbo].[fn_StripCharacters](Tel1,'^0-9+'),1,2) = '00' THEN '+' + SUBSTRING([dbo].[fn_StripCharacters](Tel1,'^0-9+'),3,LEN(Tel1)) 
 			WHEN LEFT([dbo].[fn_StripCharacters] (Tel1,'^0-9+'),1) = '0' THEN '+46' + SUBSTRING([dbo].[fn_StripCharacters] (Tel1,'^0-9+'),2,LEN(Tel1))
@@ -15590,25 +15590,25 @@
 			WHEN LEFT([dbo].[fn_StripCharacters] (Tel2,'^0-9+'),1) = '0' THEN '+46' + SUBSTRING([dbo].[fn_StripCharacters] (Tel2,'^0-9+'),2,LEN(Tel2))
 			ELSE [dbo].[fn_StripCharacters](Tel2,'^0-9+') END AS rik_Telephone2Format
 	,COALESCE(m.rik_Kod,'999') AS rik_marknadsomrade
-	,CAST(LEFT(Delsegment_IdNytt,2)AS NVARCHAR(2)) AS rik_kundsegment
-	,CAST(Delsegment_IdNytt AS NVARCHAR(4)) AS rik_delsegment
-	,Adress2_Gata AS address1_line1 
-	,Adress2_Co AS address1_line2
-	,Adress2_Postnr AS address1_postalcode
-	,Adress2_Ort AS address1_city
-	,landskodAdr2 AS rik_address1_land
-	,Adress1_Gata AS address2_line1 
-	,Adress1_Co AS address2_line2
-	,Adress1_Postnr AS address2_postalcode
-	,Adress1_Ort AS address2_city
-	,landskodAdr1 AS rik_address2_land
+	,CAST(LEFT(RTRIM(Delsegment_IdNytt),2)AS NVARCHAR(2)) AS rik_kundsegment
+	,CAST(RTRIM(Delsegment_IdNytt) AS NVARCHAR(4)) AS rik_delsegment
+	,RTRIM(Adress2_Gata) AS address1_line1 
+	,RTRIM(Adress2_Co) AS address1_line2
+	,RTRIM(Adress2_Postnr) AS address1_postalcode
+	,RTRIM(Adress2_Ort) AS address1_city
+	,RTRIM(landskodAdr2) AS rik_address1_land
+	,RTRIM(Adress1_Gata) AS address2_line1 
+	,RTRIM(Adress1_Co) AS address2_line2
+	,RTRIM(Adress1_Postnr) AS address2_postalcode
+	,RTRIM(Adress1_Ort) AS address2_city
+	,RTRIM(landskodAdr1) AS rik_address2_land
 	,CASE WHEN avtalskund  = 1  THEN 908400001   -- om avtalskund = statuscode = kvalificerade för avtal  bolag i PM (20 st)
 		  WHEN kvalificerad = 1 THEN 908400000	 -- om kund i agresso = statuscode = kvalificerade för kund 
 	 END AS statuscode													
 	,0 AS statecode
 	,CRMguid AS rik_MigreringId
 FROM STG.dbo.CrmKundkonto k
-LEFT JOIN ovMarknadsomrade m
+LEFT JOIN STG.dbo.ovMarknadsomrade m
 	ON m.sourceKodCRM = Marknadsomrade</property>
                 <property
                   dataType="System.String"
@@ -19340,29 +19340,29 @@ LEFT JOIN ovMarknadsomrade m
               startId="Package\Load Account\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 5]" />
             <path
               refId="Package\Load Account.Paths[Default Output4]"
-              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 1]"
+              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 5]"
               name="Default Output"
-              startId="Package\Load Account\Dynamics CRM Destination.Outputs[Default Output]" />
+              startId="Package\Load Account\Dynamics CRM Destination 3.Outputs[Default Output]" />
             <path
               refId="Package\Load Account.Paths[Default Output2]"
-              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 4]"
-              name="Default Output"
-              startId="Package\Load Account\Dynamics CRM Destination 2.Outputs[Default Output]" />
-            <path
-              refId="Package\Load Account.Paths[Default Output3]"
               endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 3]"
               name="Default Output"
               startId="Package\Load Account\Dynamics CRM Destination 1.Outputs[Default Output]" />
             <path
-              refId="Package\Load Account.Paths[Default Output]"
+              refId="Package\Load Account.Paths[Default Output3]"
               endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 2]"
               name="Default Output"
               startId="Package\Load Account\Dynamics CRM Destination 4.Outputs[Default Output]" />
             <path
-              refId="Package\Load Account.Paths[Default Output1]"
-              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 5]"
+              refId="Package\Load Account.Paths[Default Output]"
+              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 1]"
               name="Default Output"
-              startId="Package\Load Account\Dynamics CRM Destination 3.Outputs[Default Output]" />
+              startId="Package\Load Account\Dynamics CRM Destination.Outputs[Default Output]" />
+            <path
+              refId="Package\Load Account.Paths[Default Output1]"
+              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 4]"
+              name="Default Output"
+              startId="Package\Load Account\Dynamics CRM Destination 2.Outputs[Default Output]" />
             <path
               refId="Package\Load Account.Paths[Error Output]"
               endId="Package\Load Account\Union All to ERROR.Inputs[Union All Input 2]"
@@ -21449,115 +21449,49 @@ where [refTable].[rik_namn] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="141,41"
-          Id="Package\Load Account\Row Inserted"
-          TopLeft="302.571428513041,458.917653270575" />
-        <NodeLayout
           Size="1111,41"
           Id="Package\Load Account\Balanced Data Distributor"
           TopLeft="34.00000340598,89.8823543139395" />
         <NodeLayout
           Size="214,42"
-          Id="Package\Load Account\Dynamics CRM Destination 4"
-          TopLeft="1131.71428812767,193.593470435815" />
-        <NodeLayout
-          Size="214,42"
-          Id="Package\Load Account\Dynamics CRM Destination 3"
-          TopLeft="887,192" />
-        <NodeLayout
-          Size="360,42"
-          Id="Package\Load Account\Union All Inserted"
-          TopLeft="187,384" />
-        <NodeLayout
-          Size="214,42"
           Id="Package\Load Account\Dynamics CRM Destination 2"
           TopLeft="615.714288127666,193.593470435815" />
-        <NodeLayout
-          Size="214,42"
-          Id="Package\Load Account\Dynamics CRM Destination 1"
-          TopLeft="307,192.593470435815" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Load Account\Dynamics CRM Destination"
-          TopLeft="0.714288127666009,192.593470435815" />
         <NodeLayout
           Size="142,42"
           Id="Package\Load Account\STG_Account"
           TopLeft="512.285719842328,10.6352944350985" />
         <NodeLayout
+          Size="170,42"
+          Id="Package\Load Account\Union All to ERROR"
+          TopLeft="753,417" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Load Account\Dynamics CRM Destination 1"
+          TopLeft="307,192.593470435815" />
+        <NodeLayout
+          Size="141,41"
+          Id="Package\Load Account\Row Inserted"
+          TopLeft="302.571428513041,458.917653270575" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Load Account\Dynamics CRM Destination"
+          TopLeft="0.714288127666009,192.593470435815" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Load Account\Dynamics CRM Destination 4"
+          TopLeft="1131.71428812767,193.593470435815" />
+        <NodeLayout
+          Size="360,42"
+          Id="Package\Load Account\Union All Inserted"
+          TopLeft="187,384" />
+        <NodeLayout
           Size="156,42"
           Id="Package\Load Account\Account_ERROR"
           TopLeft="767.314821728519,493.593470435815" />
         <NodeLayout
-          Size="170,42"
-          Id="Package\Load Account\Union All to ERROR"
-          TopLeft="753,417" />
-        <EdgeLayout
-          Id="Package\Load Account.Paths[Union All Output 11]"
-          TopLeft="841.657410864259,459">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34.593470435815"
-              Start="0,0"
-              End="0,27.093470435815">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.093470435815" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Account.Paths[Union All Output 1]"
-          TopLeft="370.035714256521,426">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32.917653270575"
-              Start="0,0"
-              End="0,25.417653270575">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.417653270575" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Account.Paths[OLE DB Source Output]"
-          TopLeft="586.392861624154,52.6352944350985">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37.247059878841"
-              Start="0,0"
-              End="0,29.747059878841">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.747059878841" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="214,42"
+          Id="Package\Load Account\Dynamics CRM Destination 3"
+          TopLeft="887,192" />
         <EdgeLayout
           Id="Package\Load Account.Paths[Error Output4]"
           TopLeft="757.047621460999,235.593470435815">
@@ -21740,108 +21674,6 @@ where [refTable].[rik_namn] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Account.Paths[Default Output4]"
-          TopLeft="70.3809547943327,234.593470435815">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="179.285711872334,149.406529564185"
-              Start="0,0"
-              End="179.285711872334,141.906529564185">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,94.7989741994136" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,94.7989741994136"
-                    Point2="0,98.7989741994136"
-                    Point3="4,98.7989741994136" />
-                  <mssgle:LineSegment
-                    End="175.285711872334,98.7989741994136" />
-                  <mssgle:CubicBezierSegment
-                    Point1="175.285711872334,98.7989741994136"
-                    Point2="179.285711872334,98.7989741994136"
-                    Point3="179.285711872334,102.798974199414" />
-                  <mssgle:LineSegment
-                    End="179.285711872334,141.906529564185" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Account.Paths[Default Output3]"
-          TopLeft="379.666666666667,234.593470435815">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-71.3333333333333,149.406529564185"
-              Start="0,0"
-              End="-71.3333333333333,141.906529564185">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,70.9822507302734" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,70.9822507302734"
-                    Point2="0,74.9822507302734"
-                    Point3="-4,74.9822507302734" />
-                  <mssgle:LineSegment
-                    End="-67.3333333333333,74.9822507302734" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-67.3333333333333,74.9822507302734"
-                    Point2="-71.3333333333333,74.9822507302734"
-                    Point3="-71.3333333333333,78.9822507302734" />
-                  <mssgle:LineSegment
-                    End="-71.3333333333333,141.906529564185" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Account.Paths[Default Output2]"
-          TopLeft="688.380954794333,235.593470435815">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-321.380954794333,148.406529564185"
-              Start="0,0"
-              End="-321.380954794333,140.906529564185">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.0234201205794" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,56.0234201205794"
-                    Point2="0,60.0234201205794"
-                    Point3="-4,60.0234201205794" />
-                  <mssgle:LineSegment
-                    End="-317.380954794333,60.0234201205794" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-317.380954794333,60.0234201205794"
-                    Point2="-321.380954794333,60.0234201205794"
-                    Point3="-321.380954794333,64.0234201205794" />
-                  <mssgle:LineSegment
-                    End="-321.380954794333,140.906529564185" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Account.Paths[Default Output1]"
           TopLeft="959.666666666667,234">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -21875,7 +21707,7 @@ where [refTable].[rik_namn] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Account.Paths[Default Output]"
+          Id="Package\Load Account.Paths[Default Output3]"
           TopLeft="1204.38095479433,235.593470435815">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -21900,6 +21732,108 @@ where [refTable].[rik_namn] = ?</property>
                     Point3="-720.047621460999,102.110927624817" />
                   <mssgle:LineSegment
                     End="-720.047621460999,140.906529564185" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Account.Paths[Default Output2]"
+          TopLeft="379.666666666667,234.593470435815">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-71.3333333333333,149.406529564185"
+              Start="0,0"
+              End="-71.3333333333333,141.906529564185">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.9822507302734" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,70.9822507302734"
+                    Point2="0,74.9822507302734"
+                    Point3="-4,74.9822507302734" />
+                  <mssgle:LineSegment
+                    End="-67.3333333333333,74.9822507302734" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-67.3333333333333,74.9822507302734"
+                    Point2="-71.3333333333333,74.9822507302734"
+                    Point3="-71.3333333333333,78.9822507302734" />
+                  <mssgle:LineSegment
+                    End="-71.3333333333333,141.906529564185" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Account.Paths[Default Output1]"
+          TopLeft="688.380954794333,235.593470435815">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-321.380954794333,148.406529564185"
+              Start="0,0"
+              End="-321.380954794333,140.906529564185">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.0234201205794" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.0234201205794"
+                    Point2="0,60.0234201205794"
+                    Point3="-4,60.0234201205794" />
+                  <mssgle:LineSegment
+                    End="-317.380954794333,60.0234201205794" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-317.380954794333,60.0234201205794"
+                    Point2="-321.380954794333,60.0234201205794"
+                    Point3="-321.380954794333,64.0234201205794" />
+                  <mssgle:LineSegment
+                    End="-321.380954794333,140.906529564185" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Account.Paths[Default Output]"
+          TopLeft="70.3809547943327,234.593470435815">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="179.285711872334,149.406529564185"
+              Start="0,0"
+              End="179.285711872334,141.906529564185">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,94.7989741994136" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,94.7989741994136"
+                    Point2="0,98.7989741994136"
+                    Point3="4,98.7989741994136" />
+                  <mssgle:LineSegment
+                    End="175.285711872334,98.7989741994136" />
+                  <mssgle:CubicBezierSegment
+                    Point1="175.285711872334,98.7989741994136"
+                    Point2="179.285711872334,98.7989741994136"
+                    Point3="179.285711872334,102.798974199414" />
+                  <mssgle:LineSegment
+                    End="179.285711872334,141.906529564185" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22086,6 +22020,72 @@ where [refTable].[rik_namn] = ?</property>
             <mssgm:EdgeLabel
               BoundingBox="-137.010090712074,20.5938179079268,155.4011328125,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Account.Paths[Union All Output 11]"
+          TopLeft="841.657410864259,459">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.593470435815"
+              Start="0,0"
+              End="0,27.093470435815">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.093470435815" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Account.Paths[Union All Output 1]"
+          TopLeft="370.035714256521,426">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.917653270575"
+              Start="0,0"
+              End="0,25.417653270575">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.417653270575" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Account.Paths[OLE DB Source Output]"
+          TopLeft="586.392861624154,52.6352944350985">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.247059878841"
+              Start="0,0"
+              End="0,29.747059878841">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.747059878841" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
