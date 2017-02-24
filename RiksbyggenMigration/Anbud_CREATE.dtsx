@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Anbud_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="107"
-  DTS:VersionGUID="{91FABB67-AFED-45DE-8F33-5A541B0D9933}">
+  DTS:VersionBuild="108"
+  DTS:VersionGUID="{D84F80CF-6B2F-4A6B-942C-EB2ED619985B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -785,13 +785,6 @@
                       externalMetadataColumnId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_anbudid]"
                       lineageId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].Columns[rik_AnbudId]" />
                     <inputColumn
-                      refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].Columns[rik_AnsvarigSystemUserIdName]"
-                      cachedDataType="wstr"
-                      cachedLength="200"
-                      cachedName="rik_AnsvarigSystemUserIdName"
-                      externalMetadataColumnId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].ExternalColumns[rik_ansvarigsystemuserid]"
-                      lineageId="Package\Load Anbud\STG Anbud.Outputs[OLE DB Source Output].Columns[rik_AnsvarigSystemUserIdName]" />
-                    <inputColumn
                       refId="Package\Load Anbud\Migrate Anbud records.Inputs[Input].Columns[rik_AntagetDatum]"
                       cachedDataType="dbTimeStamp"
                       cachedName="rik_AntagetDatum"
@@ -954,15 +947,7 @@
                           name="LookupTypes">systemuser</property>
                         <property
                           dataType="System.String"
-                          name="TextLookup">&lt;TextLookupSetting&gt;
-  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
-  &lt;LookupTargets&gt;
-    &lt;LookupTarget&gt;
-      &lt;TargetEntity&gt;systemuser&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;domainname&lt;/TargetTextField&gt;
-    &lt;/LookupTarget&gt;
-  &lt;/LookupTargets&gt;
-&lt;/TextLookupSetting&gt;</property>
+                          name="TextLookup"></property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -3580,6 +3565,10 @@ FROM STG.dbo.Annotation_Anbud</property>
           Id="Package\Load Anbud"
           TopLeft="393.738101093695,372.715690702503" />
         <NodeLayout
+          Size="156,42"
+          Id="Package\Load Annotation"
+          TopLeft="401,457" />
+        <NodeLayout
           Size="158,42"
           Id="Package\Load STG Anbud"
           TopLeft="356,237" />
@@ -3807,10 +3796,6 @@ FROM STG.dbo.Annotation_Anbud</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Load Annotation"
-          TopLeft="401,457" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
           TopLeft="410,279">
@@ -3902,21 +3887,21 @@ FROM STG.dbo.Annotation_Anbud</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="186,42"
-          Id="Package\Load Anbud\Migrate Anbud records"
-          TopLeft="243.857147265455,130.117647290477" />
-        <NodeLayout
           Size="142,42"
           Id="Package\Load Anbud\Row Inserted"
           TopLeft="123.857143246397,256.505888993683" />
         <NodeLayout
-          Size="148,42"
-          Id="Package\Load Anbud\Anbud_ERROR"
-          TopLeft="375,255" />
+          Size="186,42"
+          Id="Package\Load Anbud\Migrate Anbud records"
+          TopLeft="243.857147265455,130.117647290477" />
         <NodeLayout
           Size="132,42"
           Id="Package\Load Anbud\STG Anbud"
           TopLeft="270,38" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Load Anbud\Anbud_ERROR"
+          TopLeft="375,255" />
         <EdgeLayout
           Id="Package\Load Anbud.Paths[OLE DB Source Output]"
           TopLeft="336.428573632728,80">
@@ -4013,7 +3998,7 @@ FROM STG.dbo.Annotation_Anbud</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Anbud\Anbud_ERROR">
+    design-time-name="Package\Load Anbud\STG Anbud">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4026,7 +4011,7 @@ FROM STG.dbo.Annotation_Anbud</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Anbud\STG Anbud">
+    design-time-name="Package\Load Anbud\Anbud_ERROR">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
