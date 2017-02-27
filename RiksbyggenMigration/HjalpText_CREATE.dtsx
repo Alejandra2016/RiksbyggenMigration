@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="HjalpText_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="122"
-  DTS:VersionGUID="{E9D18309-3064-4D76-BA9A-926FF8F4F286}">
+  DTS:VersionBuild="124"
+  DTS:VersionGUID="{F92E3C39-8FFB-4F06-9899-6108A47D94EF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1088,7 +1088,7 @@
   &lt;LookupTargets&gt;
     &lt;LookupTarget&gt;
       &lt;TargetEntity&gt;rik_serviceobjekt&lt;/TargetEntity&gt;
-      &lt;TargetTextField&gt;rik_idnummer&lt;/TargetTextField&gt;
+      &lt;TargetTextField&gt;rik_objektskod&lt;/TargetTextField&gt;
     &lt;/LookupTarget&gt;
   &lt;/LookupTargets&gt;
 &lt;/TextLookupSetting&gt;</property>
@@ -3832,13 +3832,17 @@ FROM [STG].[dbo].[rik_Hjalptextuppgift]</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="180,42"
-          Id="Package\Load Hjalptextuppgift"
-          TopLeft="380.738101093695,323.715690702503" />
+          Size="150,42"
+          Id="Package\Load HjalpText"
+          TopLeft="411.642858047875,431.715690702503" />
         <NodeLayout
           Size="185,42"
           Id="Package\Load HjalpText to STG"
           TopLeft="363,225" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Load Hjalptextuppgift"
+          TopLeft="380.738101093695,323.715690702503" />
         <NodeLayout
           Size="152,41"
           Id="Package\LogPackageEnd"
@@ -4111,10 +4115,6 @@ FROM [STG].[dbo].[rik_Hjalptextuppgift]</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Load HjalpText"
-          TopLeft="411.642858047875,431.715690702503" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 8]"
           TopLeft="499.404767760362,365.715690702503">
@@ -4177,151 +4177,62 @@ FROM [STG].[dbo].[rik_Hjalptextuppgift]</property>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Load Hjalptextuppgift">
+    design-time-name="Package\Load HjalpText">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="142,42"
-          Id="Package\Load Hjalptextuppgift\Row Inserted"
-          TopLeft="180.857143246397,248.505888993683" />
-        <NodeLayout
-          Size="227,42"
-          Id="Package\Load Hjalptextuppgift\Migrate Hjalptextuppigt records"
+          Size="200,42"
+          Id="Package\Load HjalpText\Migrate HjalpText records"
           TopLeft="256.857147265455,131.117647290477" />
         <NodeLayout
-          Size="194,42"
-          Id="Package\Load Hjalptextuppgift\STG rik_Hjalptextuppgift"
-          TopLeft="267,28" />
-        <EdgeLayout
-          Id="Package\Load Hjalptextuppgift.Paths[Default Output]"
-          TopLeft="370.357147265455,173.117647290477">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-118.500004019058,75.388241703206"
-              Start="0,0"
-              End="-118.500004019058,67.888241703206">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.694120851603" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.694120851603"
-                    Point2="0,37.694120851603"
-                    Point3="-4,37.694120851603" />
-                  <mssgle:LineSegment
-                    End="-114.500004019058,37.694120851603" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-114.500004019058,37.694120851603"
-                    Point2="-118.500004019058,37.694120851603"
-                    Point3="-118.500004019058,41.694120851603" />
-                  <mssgle:LineSegment
-                    End="-118.500004019058,67.888241703206" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Hjalptextuppgift.Paths[OLE DB Source Output]"
-          TopLeft="367.178573632728,70">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.117647290477"
-              Start="0,0"
-              End="0,53.617647290477">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,53.617647290477" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="160,42"
+          Id="Package\Load HjalpText\Hjalptext_ERROR"
+          TopLeft="415,252" />
         <NodeLayout
-          Size="193,42"
-          Id="Package\Load Hjalptextuppgift\Hjalptextuppgift_ERROR"
-          TopLeft="429,249" />
+          Size="146,42"
+          Id="Package\Load HjalpText\STG HjalpText"
+          TopLeft="280,43" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Load HjalpText\Row Inserted"
+          TopLeft="180.857143246397,248.505888993683" />
         <EdgeLayout
-          Id="Package\Load Hjalptextuppgift.Paths[Error Output]"
-          TopLeft="406.857147265455,173.117647290477">
+          Id="Package\Load HjalpText.Paths[Error Output]"
+          TopLeft="388.857147265455,173.117647290477">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="118.642852734545,75.882352709523"
+              EndConnector="106.142852734545,78.882352709523"
               Start="0,0"
-              End="118.642852734545,68.382352709523">
+              End="106.142852734545,71.382352709523">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.6716071319332" />
+                    End="0,27.9285713348069" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.6716071319332"
-                    Point2="0,30.6716071319332"
-                    Point3="4,30.6716071319332" />
+                    Point1="0,27.9285713348069"
+                    Point2="0,31.9285713348069"
+                    Point3="4,31.9285713348069" />
                   <mssgle:LineSegment
-                    End="114.642852734545,30.6716071319332" />
+                    End="102.142852734545,31.9285713348069" />
                   <mssgle:CubicBezierSegment
-                    Point1="114.642852734545,30.6716071319332"
-                    Point2="118.642852734545,30.6716071319332"
-                    Point3="118.642852734545,34.6716071319332" />
+                    Point1="102.142852734545,31.9285713348069"
+                    Point2="106.142852734545,31.9285713348069"
+                    Point3="106.142852734545,35.9285713348069" />
                   <mssgle:LineSegment
-                    End="118.642852734545,68.382352709523" />
+                    End="106.142852734545,71.382352709523" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="30.9850396485225,35.6716071319332,56.6727734375,11.43359375"
+              BoundingBox="24.7350396485225,36.9285713348069,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Hjalptextuppgift\STG rik_Hjalptextuppgift">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Load HjalpText">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Load HjalpText\Row Inserted"
-          TopLeft="180.857143246397,248.505888993683" />
-        <NodeLayout
-          Size="200,42"
-          Id="Package\Load HjalpText\Migrate HjalpText records"
-          TopLeft="256.857147265455,131.117647290477" />
-        <NodeLayout
-          Size="146,42"
-          Id="Package\Load HjalpText\STG HjalpText"
-          TopLeft="280,43" />
         <EdgeLayout
           Id="Package\Load HjalpText.Paths[Default Output]"
           TopLeft="324.857147265455,173.117647290477">
@@ -4378,59 +4289,11 @@ FROM [STG].[dbo].[rik_Hjalptextuppgift]</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="160,42"
-          Id="Package\Load HjalpText\Hjalptext_ERROR"
-          TopLeft="415,252" />
-        <EdgeLayout
-          Id="Package\Load HjalpText.Paths[Error Output]"
-          TopLeft="388.857147265455,173.117647290477">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="106.142852734545,78.882352709523"
-              Start="0,0"
-              End="106.142852734545,71.382352709523">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.9285713348069" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27.9285713348069"
-                    Point2="0,31.9285713348069"
-                    Point3="4,31.9285713348069" />
-                  <mssgle:LineSegment
-                    End="102.142852734545,31.9285713348069" />
-                  <mssgle:CubicBezierSegment
-                    Point1="102.142852734545,31.9285713348069"
-                    Point2="106.142852734545,31.9285713348069"
-                    Point3="106.142852734545,35.9285713348069" />
-                  <mssgle:LineSegment
-                    End="106.142852734545,71.382352709523" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="24.7350396485225,36.9285713348069,56.6727734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load HjalpText\STG HjalpText">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Hjalptextuppgift\Hjalptextuppgift_ERROR">
+    design-time-name="Package\Load HjalpText\Hjalptext_ERROR">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4443,7 +4306,144 @@ FROM [STG].[dbo].[rik_Hjalptextuppgift]</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load HjalpText\Hjalptext_ERROR">
+    design-time-name="Package\Load HjalpText\STG HjalpText">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Hjalptextuppgift">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Load Hjalptextuppgift\Row Inserted"
+          TopLeft="180.857143246397,248.505888993683" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Load Hjalptextuppgift\STG rik_Hjalptextuppgift"
+          TopLeft="267,28" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Load Hjalptextuppgift\Hjalptextuppgift_ERROR"
+          TopLeft="429,249" />
+        <NodeLayout
+          Size="227,42"
+          Id="Package\Load Hjalptextuppgift\Migrate Hjalptextuppigt records"
+          TopLeft="256.857147265455,131.117647290477" />
+        <EdgeLayout
+          Id="Package\Load Hjalptextuppgift.Paths[OLE DB Source Output]"
+          TopLeft="367.178573632728,70">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.117647290477"
+              Start="0,0"
+              End="0,53.617647290477">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.617647290477" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Hjalptextuppgift.Paths[Error Output]"
+          TopLeft="406.857147265455,173.117647290477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="118.642852734545,75.882352709523"
+              Start="0,0"
+              End="118.642852734545,68.382352709523">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.6716071319332" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.6716071319332"
+                    Point2="0,30.6716071319332"
+                    Point3="4,30.6716071319332" />
+                  <mssgle:LineSegment
+                    End="114.642852734545,30.6716071319332" />
+                  <mssgle:CubicBezierSegment
+                    Point1="114.642852734545,30.6716071319332"
+                    Point2="118.642852734545,30.6716071319332"
+                    Point3="118.642852734545,34.6716071319332" />
+                  <mssgle:LineSegment
+                    End="118.642852734545,68.382352709523" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="30.9850396485225,35.6716071319332,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Hjalptextuppgift.Paths[Default Output]"
+          TopLeft="370.357147265455,173.117647290477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-118.500004019058,75.388241703206"
+              Start="0,0"
+              End="-118.500004019058,67.888241703206">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.694120851603" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.694120851603"
+                    Point2="0,37.694120851603"
+                    Point3="-4,37.694120851603" />
+                  <mssgle:LineSegment
+                    End="-114.500004019058,37.694120851603" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-114.500004019058,37.694120851603"
+                    Point2="-118.500004019058,37.694120851603"
+                    Point3="-118.500004019058,41.694120851603" />
+                  <mssgle:LineSegment
+                    End="-118.500004019058,67.888241703206" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Hjalptextuppgift\STG rik_Hjalptextuppgift">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Hjalptextuppgift\Hjalptextuppgift_ERROR">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
