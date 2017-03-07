@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="HjalpText_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="125"
-  DTS:VersionGUID="{EF862463-8AC4-4786-B76F-370BBECF7A41}">
+  DTS:VersionBuild="126"
+  DTS:VersionGUID="{D49E8478-FDCF-4CE4-94C6-F38E8680B479}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -940,6 +940,13 @@
                       cachedName="rik_ServiceobjektIdName"
                       externalMetadataColumnId="Package\Load HjalpText\Migrate HjalpText records.Inputs[Input].ExternalColumns[rik_serviceobjektid]"
                       lineageId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].Columns[rik_ServiceobjektIdName]" />
+                    <inputColumn
+                      refId="Package\Load HjalpText\Migrate HjalpText records.Inputs[Input].Columns[rik_OmradeAccountIdName]"
+                      cachedDataType="wstr"
+                      cachedLength="160"
+                      cachedName="rik_OmradeAccountIdName"
+                      externalMetadataColumnId="Package\Load HjalpText\Migrate HjalpText records.Inputs[Input].ExternalColumns[rik_omradeaccountid]"
+                      lineageId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].Columns[rik_OmradeAccountIdName]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1186,6 +1193,30 @@
                           name="LookupTypes">rik_hjalptextuppgift</property>
                       </properties>
                     </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load HjalpText\Migrate HjalpText records.Inputs[Input].ExternalColumns[rik_omradeaccountid]"
+                      dataType="guid"
+                      name="rik_omradeaccountid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">account</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;account&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_idnummer&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
+                      </properties>
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1292,6 +1323,7 @@
       ,[rik_ServiceobjektId]
       ,[rik_HjalptextuppgiftId]
       ,[rik_HjalptextuppgiftIdName]
+      ,[rik_OmradeAccountIdName]
   FROM [STG].[dbo].[rik_Hjalptext]</property>
                 <property
                   dataType="System.String"
@@ -1436,6 +1468,16 @@
                       lineageId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].Columns[rik_HjalptextuppgiftIdName]"
                       name="rik_HjalptextuppgiftIdName"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].Columns[rik_OmradeAccountIdName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].ExternalColumns[rik_OmradeAccountIdName]"
+                      length="160"
+                      lineageId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].Columns[rik_OmradeAccountIdName]"
+                      name="rik_OmradeAccountIdName"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1492,6 +1534,11 @@
                       dataType="wstr"
                       length="100"
                       name="rik_HjalptextuppgiftIdName" />
+                    <externalMetadataColumn
+                      refId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Output].ExternalColumns[rik_OmradeAccountIdName]"
+                      dataType="wstr"
+                      length="160"
+                      name="rik_OmradeAccountIdName" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1563,6 +1610,12 @@
                       length="100"
                       lineageId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Error Output].Columns[rik_HjalptextuppgiftIdName]"
                       name="rik_HjalptextuppgiftIdName" />
+                    <outputColumn
+                      refId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Error Output].Columns[rik_OmradeAccountIdName]"
+                      dataType="wstr"
+                      length="160"
+                      lineageId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Error Output].Columns[rik_OmradeAccountIdName]"
+                      name="rik_OmradeAccountIdName" />
                     <outputColumn
                       refId="Package\Load HjalpText\STG HjalpText.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -4196,14 +4249,6 @@ FROM [STG].[dbo].[rik_Hjalptextuppgift]</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="200,42"
-          Id="Package\Load HjalpText\Migrate HjalpText records"
-          TopLeft="256.857147265455,131.117647290477" />
-        <NodeLayout
-          Size="160,42"
-          Id="Package\Load HjalpText\Hjalptext_ERROR"
-          TopLeft="415,252" />
-        <NodeLayout
           Size="146,42"
           Id="Package\Load HjalpText\STG HjalpText"
           TopLeft="280,43" />
@@ -4211,6 +4256,36 @@ FROM [STG].[dbo].[rik_Hjalptextuppgift]</property>
           Size="142,42"
           Id="Package\Load HjalpText\Row Inserted"
           TopLeft="180.857143246397,248.505888993683" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Load HjalpText\Migrate HjalpText records"
+          TopLeft="256.857147265455,131.117647290477" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Load HjalpText\Hjalptext_ERROR"
+          TopLeft="415,252" />
+        <EdgeLayout
+          Id="Package\Load HjalpText.Paths[OLE DB Source Output]"
+          TopLeft="354.928573632728,85">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.117647290477"
+              Start="0,0"
+              End="0,38.617647290477">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.617647290477" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load HjalpText.Paths[Error Output]"
           TopLeft="388.857147265455,173.117647290477">
@@ -4281,31 +4356,17 @@ FROM [STG].[dbo].[rik_Hjalptextuppgift]</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load HjalpText.Paths[OLE DB Source Output]"
-          TopLeft="354.928573632728,85">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46.117647290477"
-              Start="0,0"
-              End="0,38.617647290477">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.617647290477" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load HjalpText\STG HjalpText">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load HjalpText\Hjalptext_ERROR">
     <Properties>
@@ -4316,14 +4377,6 @@ FROM [STG].[dbo].[rik_Hjalptextuppgift]</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load HjalpText\STG HjalpText">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
