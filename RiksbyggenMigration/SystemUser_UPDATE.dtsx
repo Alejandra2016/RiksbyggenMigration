@@ -12,8 +12,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="SystemUser_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="70"
-  DTS:VersionGUID="{6612A388-8CEB-40A5-846B-572CDA3CF34C}">
+  DTS:VersionBuild="89"
+  DTS:VersionGUID="{C0912FBF-B5B6-4285-99CE-96899F913B99}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -194,6 +194,1249 @@
     </DTS:SelectedLogProviders>
   </DTS:LoggingOptions>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{97F00644-EB2A-41E7-B754-A6BD8076B4D9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE SystemUserRoles_ERROR;&#xA;TRUNCATE TABLE SystemUserRoles;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Ladda ner SystemUser och säkerhetsroll"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{10a05b68-0b88-4737-914e-6a49b13c76e8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Ladda ner SystemUser och säkerhetsroll"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM RoleId"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Extract data from Microsoft Dynamics CRM."
+              name="Dynamics CRM RoleId"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">1</property>
+                <property
+                  dataType="System.String"
+                  description="Dynamics CRM entity to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceEntity"></property>
+                <property
+                  dataType="System.String"
+                  description="FetchXML statement."
+                  expressionType="Notify"
+                  name="FetchXML">&lt;fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false"&gt;
+  &lt;entity name="role"&gt;
+    &lt;attribute name="roleid" /&gt;
+    &lt;order attribute="name" descending="false" /&gt;
+    &lt;filter type="and"&gt;
+      &lt;condition attribute="name" operator="eq" value="Personliga behörigheter" /&gt;
+    &lt;/filter&gt;
+  &lt;/entity&gt;
+&lt;/fetch&gt;
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">2000</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="ImpersonateAs" />
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for CRM datetime fields."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM RoleId.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM RoleId.Outputs[CRM Primary Output]"
+                  name="CRM Primary Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM RoleId.Outputs[CRM Primary Output].Columns[roleid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM RoleId.Outputs[CRM Primary Output].ExternalColumns[roleid]"
+                      lineageId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM RoleId.Outputs[CRM Primary Output].Columns[roleid]"
+                      name="roleid"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM RoleId.Outputs[CRM Primary Output].ExternalColumns[roleid]"
+                      dataType="guid"
+                      name="roleid" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Extract data from Microsoft Dynamics CRM."
+              name="Dynamics CRM SystemUsers"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceType">1</property>
+                <property
+                  dataType="System.String"
+                  description="Dynamics CRM entity to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceEntity"></property>
+                <property
+                  dataType="System.String"
+                  description="FetchXML statement."
+                  expressionType="Notify"
+                  name="FetchXML">&lt;fetch mapping="logical" version="1.0"&gt;
+  &lt;entity name="systemuser"&gt;
+    &lt;all-attributes /&gt;
+    &lt;link-entity name="systemuserroles" from="systemuserid" to="systemuserid" alias="sr" link-type="outer"&gt;
+        &lt;attribute name="roleid" /&gt;
+    &lt;/link-entity&gt;
+  &lt;/entity&gt;
+&lt;/fetch&gt;
+
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">2000</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="ImpersonateAs" />
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for CRM datetime fields."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output]"
+                  name="CRM Primary Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].Columns[systemuserid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[systemuserid]"
+                      lineageId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].Columns[systemuserid]"
+                      name="systemuserid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].Columns[sr.roleid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[sr.roleid]"
+                      lineageId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].Columns[sr.roleid]"
+                      name="sr.roleid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].Columns[fullname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[fullname]"
+                      length="200"
+                      lineageId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].Columns[fullname]"
+                      name="fullname"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[sr.roleid]"
+                      dataType="guid"
+                      name="sr.roleid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[systemuserid]"
+                      dataType="guid"
+                      name="systemuserid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[accessmode]"
+                      dataType="i4"
+                      name="accessmode" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[accessmodename]"
+                      dataType="wstr"
+                      length="255"
+                      name="accessmodename" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_addressid]"
+                      dataType="guid"
+                      name="address1_addressid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_addresstypecode]"
+                      dataType="i4"
+                      name="address1_addresstypecode" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_addresstypecodename]"
+                      dataType="wstr"
+                      length="255"
+                      name="address1_addresstypecodename" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_city]"
+                      dataType="wstr"
+                      length="128"
+                      name="address1_city" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_composite]"
+                      dataType="nText"
+                      name="address1_composite" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_country]"
+                      dataType="wstr"
+                      length="128"
+                      name="address1_country" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_county]"
+                      dataType="wstr"
+                      length="128"
+                      name="address1_county" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_fax]"
+                      dataType="wstr"
+                      length="64"
+                      name="address1_fax" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_latitude]"
+                      dataType="r8"
+                      name="address1_latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_line1]"
+                      dataType="wstr"
+                      length="1024"
+                      name="address1_line1" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_line2]"
+                      dataType="wstr"
+                      length="1024"
+                      name="address1_line2" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_line3]"
+                      dataType="wstr"
+                      length="1024"
+                      name="address1_line3" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_longitude]"
+                      dataType="r8"
+                      name="address1_longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_name]"
+                      dataType="wstr"
+                      length="100"
+                      name="address1_name" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_postalcode]"
+                      dataType="wstr"
+                      length="40"
+                      name="address1_postalcode" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_postofficebox]"
+                      dataType="wstr"
+                      length="40"
+                      name="address1_postofficebox" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_shippingmethodcode]"
+                      dataType="i4"
+                      name="address1_shippingmethodcode" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_shippingmethodcodename]"
+                      dataType="wstr"
+                      length="255"
+                      name="address1_shippingmethodcodename" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_stateorprovince]"
+                      dataType="wstr"
+                      length="128"
+                      name="address1_stateorprovince" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_telephone1]"
+                      dataType="wstr"
+                      length="64"
+                      name="address1_telephone1" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_telephone2]"
+                      dataType="wstr"
+                      length="50"
+                      name="address1_telephone2" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_telephone3]"
+                      dataType="wstr"
+                      length="50"
+                      name="address1_telephone3" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_upszone]"
+                      dataType="wstr"
+                      length="4"
+                      name="address1_upszone" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address1_utcoffset]"
+                      dataType="i4"
+                      name="address1_utcoffset" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_addressid]"
+                      dataType="guid"
+                      name="address2_addressid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_addresstypecode]"
+                      dataType="i4"
+                      name="address2_addresstypecode" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_addresstypecodename]"
+                      dataType="wstr"
+                      length="255"
+                      name="address2_addresstypecodename" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_city]"
+                      dataType="wstr"
+                      length="128"
+                      name="address2_city" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_composite]"
+                      dataType="nText"
+                      name="address2_composite" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_country]"
+                      dataType="wstr"
+                      length="128"
+                      name="address2_country" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_county]"
+                      dataType="wstr"
+                      length="128"
+                      name="address2_county" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_fax]"
+                      dataType="wstr"
+                      length="50"
+                      name="address2_fax" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_latitude]"
+                      dataType="r8"
+                      name="address2_latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_line1]"
+                      dataType="wstr"
+                      length="1024"
+                      name="address2_line1" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_line2]"
+                      dataType="wstr"
+                      length="1024"
+                      name="address2_line2" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_line3]"
+                      dataType="wstr"
+                      length="1024"
+                      name="address2_line3" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_longitude]"
+                      dataType="r8"
+                      name="address2_longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_name]"
+                      dataType="wstr"
+                      length="100"
+                      name="address2_name" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_postalcode]"
+                      dataType="wstr"
+                      length="40"
+                      name="address2_postalcode" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_postofficebox]"
+                      dataType="wstr"
+                      length="40"
+                      name="address2_postofficebox" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_shippingmethodcode]"
+                      dataType="i4"
+                      name="address2_shippingmethodcode" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_shippingmethodcodename]"
+                      dataType="wstr"
+                      length="255"
+                      name="address2_shippingmethodcodename" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_stateorprovince]"
+                      dataType="wstr"
+                      length="128"
+                      name="address2_stateorprovince" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_telephone1]"
+                      dataType="wstr"
+                      length="50"
+                      name="address2_telephone1" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_telephone2]"
+                      dataType="wstr"
+                      length="50"
+                      name="address2_telephone2" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_telephone3]"
+                      dataType="wstr"
+                      length="50"
+                      name="address2_telephone3" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_upszone]"
+                      dataType="wstr"
+                      length="4"
+                      name="address2_upszone" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[address2_utcoffset]"
+                      dataType="i4"
+                      name="address2_utcoffset" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[businessunitid]"
+                      dataType="guid"
+                      name="businessunitid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[businessunitidname]"
+                      dataType="wstr"
+                      length="160"
+                      name="businessunitidname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[calendarid]"
+                      dataType="guid"
+                      name="calendarid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[caltype]"
+                      dataType="i4"
+                      name="caltype" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[caltypename]"
+                      dataType="wstr"
+                      length="255"
+                      name="caltypename" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[createdby]"
+                      dataType="guid"
+                      name="createdby" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[createdbyname]"
+                      dataType="wstr"
+                      length="200"
+                      name="createdbyname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[createdbyyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="createdbyyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[createdon]"
+                      dataType="dbTimeStamp"
+                      name="createdon" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[createdonbehalfby]"
+                      dataType="guid"
+                      name="createdonbehalfby" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[createdonbehalfbyname]"
+                      dataType="wstr"
+                      length="200"
+                      name="createdonbehalfbyname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[createdonbehalfbyyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="createdonbehalfbyyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[defaultfilterspopulated]"
+                      dataType="bool"
+                      name="defaultfilterspopulated" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[defaultmailbox]"
+                      dataType="guid"
+                      name="defaultmailbox" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[defaultmailboxname]"
+                      dataType="wstr"
+                      length="200"
+                      name="defaultmailboxname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[disabledreason]"
+                      dataType="wstr"
+                      length="500"
+                      name="disabledreason" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[displayinserviceviews]"
+                      dataType="bool"
+                      name="displayinserviceviews" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[displayinserviceviewsname]"
+                      dataType="wstr"
+                      length="255"
+                      name="displayinserviceviewsname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[domainname]"
+                      dataType="wstr"
+                      length="1024"
+                      name="domainname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[emailrouteraccessapproval]"
+                      dataType="i4"
+                      name="emailrouteraccessapproval" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[emailrouteraccessapprovalname]"
+                      dataType="wstr"
+                      length="255"
+                      name="emailrouteraccessapprovalname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[employeeid]"
+                      dataType="wstr"
+                      length="100"
+                      name="employeeid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[entityimage]"
+                      dataType="image"
+                      name="entityimage" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[entityimage_timestamp]"
+                      dataType="i8"
+                      name="entityimage_timestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[entityimage_url]"
+                      dataType="wstr"
+                      length="200"
+                      name="entityimage_url" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[entityimageid]"
+                      dataType="guid"
+                      name="entityimageid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[exchangerate]"
+                      dataType="decimal"
+                      name="exchangerate" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[firstname]"
+                      dataType="wstr"
+                      length="64"
+                      name="firstname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[fullname]"
+                      dataType="wstr"
+                      length="200"
+                      name="fullname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[governmentid]"
+                      dataType="wstr"
+                      length="100"
+                      name="governmentid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[homephone]"
+                      dataType="wstr"
+                      length="50"
+                      name="homephone" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[importsequencenumber]"
+                      dataType="i4"
+                      name="importsequencenumber" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[incomingemaildeliverymethod]"
+                      dataType="i4"
+                      name="incomingemaildeliverymethod" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[incomingemaildeliverymethodname]"
+                      dataType="wstr"
+                      length="255"
+                      name="incomingemaildeliverymethodname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[internalemailaddress]"
+                      dataType="wstr"
+                      length="100"
+                      name="internalemailaddress" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[invitestatuscode]"
+                      dataType="i4"
+                      name="invitestatuscode" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[invitestatuscodename]"
+                      dataType="wstr"
+                      length="255"
+                      name="invitestatuscodename" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[isdisabled]"
+                      dataType="bool"
+                      name="isdisabled" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[isdisabledname]"
+                      dataType="wstr"
+                      length="255"
+                      name="isdisabledname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[isemailaddressapprovedbyo365admin]"
+                      dataType="bool"
+                      name="isemailaddressapprovedbyo365admin" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[isintegrationuser]"
+                      dataType="bool"
+                      name="isintegrationuser" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[isintegrationusername]"
+                      dataType="wstr"
+                      length="255"
+                      name="isintegrationusername" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[islicensed]"
+                      dataType="bool"
+                      name="islicensed" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[issyncwithdirectory]"
+                      dataType="bool"
+                      name="issyncwithdirectory" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[jobtitle]"
+                      dataType="wstr"
+                      length="100"
+                      name="jobtitle" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[lastname]"
+                      dataType="wstr"
+                      length="64"
+                      name="lastname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[middlename]"
+                      dataType="wstr"
+                      length="50"
+                      name="middlename" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[mobilealertemail]"
+                      dataType="wstr"
+                      length="100"
+                      name="mobilealertemail" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[mobilephone]"
+                      dataType="wstr"
+                      length="64"
+                      name="mobilephone" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[modifiedby]"
+                      dataType="guid"
+                      name="modifiedby" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[modifiedbyname]"
+                      dataType="wstr"
+                      length="200"
+                      name="modifiedbyname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[modifiedbyyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="modifiedbyyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[modifiedon]"
+                      dataType="dbTimeStamp"
+                      name="modifiedon" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[modifiedonbehalfby]"
+                      dataType="guid"
+                      name="modifiedonbehalfby" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[modifiedonbehalfbyname]"
+                      dataType="wstr"
+                      length="200"
+                      name="modifiedonbehalfbyname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[modifiedonbehalfbyyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="modifiedonbehalfbyyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[msdyusd_usdconfigurationid]"
+                      dataType="guid"
+                      name="msdyusd_usdconfigurationid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[msdyusd_usdconfigurationidname]"
+                      dataType="wstr"
+                      length="100"
+                      name="msdyusd_usdconfigurationidname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[nickname]"
+                      dataType="wstr"
+                      length="50"
+                      name="nickname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[organizationid]"
+                      dataType="guid"
+                      name="organizationid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[organizationidname]"
+                      dataType="wstr"
+                      length="100"
+                      name="organizationidname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[outgoingemaildeliverymethod]"
+                      dataType="i4"
+                      name="outgoingemaildeliverymethod" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[outgoingemaildeliverymethodname]"
+                      dataType="wstr"
+                      length="255"
+                      name="outgoingemaildeliverymethodname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[overriddencreatedon]"
+                      dataType="dbTimeStamp"
+                      name="overriddencreatedon" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[parentsystemuserid]"
+                      dataType="guid"
+                      name="parentsystemuserid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[parentsystemuseridname]"
+                      dataType="wstr"
+                      length="200"
+                      name="parentsystemuseridname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[parentsystemuseridyominame]"
+                      dataType="wstr"
+                      length="200"
+                      name="parentsystemuseridyominame" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[passporthi]"
+                      dataType="i4"
+                      name="passporthi" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[passportlo]"
+                      dataType="i4"
+                      name="passportlo" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[personalemailaddress]"
+                      dataType="wstr"
+                      length="100"
+                      name="personalemailaddress" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[photourl]"
+                      dataType="wstr"
+                      length="200"
+                      name="photourl" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[positionid]"
+                      dataType="guid"
+                      name="positionid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[positionidname]"
+                      dataType="wstr"
+                      length="100"
+                      name="positionidname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[preferredaddresscode]"
+                      dataType="i4"
+                      name="preferredaddresscode" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[preferredaddresscodename]"
+                      dataType="wstr"
+                      length="255"
+                      name="preferredaddresscodename" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[preferredemailcode]"
+                      dataType="i4"
+                      name="preferredemailcode" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[preferredemailcodename]"
+                      dataType="wstr"
+                      length="255"
+                      name="preferredemailcodename" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[preferredphonecode]"
+                      dataType="i4"
+                      name="preferredphonecode" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[preferredphonecodename]"
+                      dataType="wstr"
+                      length="255"
+                      name="preferredphonecodename" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[processid]"
+                      dataType="guid"
+                      name="processid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[queueid]"
+                      dataType="guid"
+                      name="queueid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[queueidname]"
+                      dataType="wstr"
+                      length="400"
+                      name="queueidname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[rik_marknadsomradeid]"
+                      dataType="guid"
+                      name="rik_marknadsomradeid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[rik_marknadsomradeidname]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_marknadsomradeidname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[salutation]"
+                      dataType="wstr"
+                      length="20"
+                      name="salutation" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[setupuser]"
+                      dataType="bool"
+                      name="setupuser" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[setupusername]"
+                      dataType="wstr"
+                      length="255"
+                      name="setupusername" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[siteid]"
+                      dataType="guid"
+                      name="siteid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[siteidname]"
+                      dataType="wstr"
+                      length="160"
+                      name="siteidname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[skills]"
+                      dataType="wstr"
+                      length="100"
+                      name="skills" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[stageid]"
+                      dataType="guid"
+                      name="stageid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[territoryid]"
+                      dataType="guid"
+                      name="territoryid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[territoryidname]"
+                      dataType="wstr"
+                      length="200"
+                      name="territoryidname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[timezoneruleversionnumber]"
+                      dataType="i4"
+                      name="timezoneruleversionnumber" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="128"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[transactioncurrencyid]"
+                      dataType="guid"
+                      name="transactioncurrencyid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[transactioncurrencyidname]"
+                      dataType="wstr"
+                      length="100"
+                      name="transactioncurrencyidname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[traversedpath]"
+                      dataType="wstr"
+                      length="1250"
+                      name="traversedpath" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[userlicensetype]"
+                      dataType="i4"
+                      name="userlicensetype" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[utcconversiontimezonecode]"
+                      dataType="i4"
+                      name="utcconversiontimezonecode" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[versionnumber]"
+                      dataType="i8"
+                      name="versionnumber" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[windowsliveid]"
+                      dataType="wstr"
+                      length="1024"
+                      name="windowsliveid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[yammeremailaddress]"
+                      dataType="wstr"
+                      length="200"
+                      name="yammeremailaddress" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[yammeruserid]"
+                      dataType="wstr"
+                      length="128"
+                      name="yammeruserid" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[yomifirstname]"
+                      dataType="wstr"
+                      length="64"
+                      name="yomifirstname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[yomifullname]"
+                      dataType="wstr"
+                      length="200"
+                      name="yomifullname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[yomilastname]"
+                      dataType="wstr"
+                      length="64"
+                      name="yomilastname" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].ExternalColumns[yomimiddlename]"
+                      dataType="wstr"
+                      length="50"
+                      name="yomimiddlename" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Ladda ner SystemUser och säkerhetsroll\Role"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Role"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SystemUserRoles]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Inputs[OLE DB Destination Input].Columns[roleid]"
+                      cachedDataType="guid"
+                      cachedName="roleid"
+                      externalMetadataColumnId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      lineageId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM RoleId.Outputs[CRM Primary Output].Columns[roleid]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Inputs[OLE DB Destination Input].ExternalColumns[SystemUserId]"
+                      dataType="guid"
+                      name="SystemUserId" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="200"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Inputs[OLE DB Destination Input].ExternalColumns[RoleId]"
+                      dataType="guid"
+                      name="RoleId" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Inputs[OLE DB Destination Input].ExternalColumns[SystemUserRoleId]"
+                      dataType="guid"
+                      name="SystemUserRoleId" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      dataType="guid"
+                      name="MigrationId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Ladda ner SystemUser och säkerhetsroll\Users"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Users"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SystemUserRoles]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Inputs[OLE DB Destination Input].Columns[systemuserid]"
+                      cachedDataType="guid"
+                      cachedName="systemuserid"
+                      externalMetadataColumnId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Inputs[OLE DB Destination Input].ExternalColumns[SystemUserId]"
+                      lineageId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].Columns[systemuserid]" />
+                    <inputColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Inputs[OLE DB Destination Input].Columns[fullname]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="fullname"
+                      externalMetadataColumnId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      lineageId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].Columns[fullname]" />
+                    <inputColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Inputs[OLE DB Destination Input].Columns[sr.roleid]"
+                      cachedDataType="guid"
+                      cachedName="sr.roleid"
+                      externalMetadataColumnId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Inputs[OLE DB Destination Input].ExternalColumns[RoleId]"
+                      lineageId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output].Columns[sr.roleid]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Inputs[OLE DB Destination Input].ExternalColumns[SystemUserId]"
+                      dataType="guid"
+                      name="SystemUserId" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="200"
+                      name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Inputs[OLE DB Destination Input].ExternalColumns[RoleId]"
+                      dataType="guid"
+                      name="RoleId" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Inputs[OLE DB Destination Input].ExternalColumns[SystemUserRoleId]"
+                      dataType="guid"
+                      name="SystemUserRoleId" />
+                    <externalMetadataColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      dataType="guid"
+                      name="MigrationId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Ladda ner SystemUser och säkerhetsroll.Paths[CRM Primary Output]"
+              endId="Package\Ladda ner SystemUser och säkerhetsroll\Users.Inputs[OLE DB Destination Input]"
+              name="CRM Primary Output"
+              startId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers.Outputs[CRM Primary Output]" />
+            <path
+              refId="Package\Ladda ner SystemUser och säkerhetsroll.Paths[CRM Primary Output1]"
+              endId="Package\Ladda ner SystemUser och säkerhetsroll\Role.Inputs[OLE DB Destination Input]"
+              name="CRM Primary Output"
+              startId="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM RoleId.Outputs[CRM Primary Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\LogPackageEnd"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
@@ -4286,6 +5529,551 @@
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update SystemUser med säkerhetsroll"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8F58BC8D-7052-458E-A9A0-2A0068E7FDF1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update SystemUser med säkerhetsroll"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
+              description="Populate data into Microsoft Dynamics CRM."
+              name="Dynamics CRM Destination"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Destination entity to write data."
+                  expressionType="Notify"
+                  name="DestinationEntity">systemuserroles</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to CRM server."
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationActionType">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the values of CRM lookup fields should be removed if the reference records cannot be found. "
+                  expressionType="Notify"
+                  name="RemoveUnresolvableReferences">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether duplicate detection should be enabled when creating or updating CRM records. Duplicate records are determined by the duplicate detection rules and settings defined in Microsoft Dynamics CRM."
+                  expressionType="Notify"
+                  name="EnableDuplicateDetection">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the matching criteria to be used when Upsert action is chosen."
+                  expressionType="Notify"
+                  name="UpsertMatchingCriteria"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertMatchingCriteria">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the matching fields to be used to determine the matching records that exist in CRM when Manually Specify option is chosen for Upsert action."
+                  expressionType="Notify"
+                  name="UpsertMatchingFields"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to ignore those fields that have no value changes in the target system. "
+                  expressionType="Notify"
+                  name="IgnoreUnchangedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to CRM."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the flag field(s) that are used to track the source of changes. The field(s) will not posted to CRM server unless there are changes to other fields if specified. &quot;Ignore Unchange Fields&quot; option is required in order for the specified flag field(s) to work. "
+                  expressionType="Notify"
+                  name="ChangeFlagFields"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify what action will be taken when multiple matches are found with Upsert action."
+                  expressionType="Notify"
+                  name="HandlingOfMultipleMatches"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmUpsertHandlingOfMultipleMatches">0</property>
+                <property
+                  dataType="System.String"
+                  description="Workflow to be executed."
+                  expressionType="Notify"
+                  name="Workflow"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of records to be sent to Microsoft Dynamics CRM in each batch (CRM 2011 Update Rollup 12 or later is required if batch size is greater than 1)."
+                  expressionType="Notify"
+                  name="BatchSize">200</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether datetime values should be sent to CRM server in UTC format."
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.DynamicsCrm.CrmDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Connections[DynamicsCRM]"
+                  connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRM]"
+                  description="Dynamics CRM Connection Manager"
+                  name="DynamicsCRM" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Inputs[Input].Columns[SystemUserId]"
+                      cachedDataType="guid"
+                      cachedName="SystemUserId"
+                      externalMetadataColumnId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Inputs[Input].ExternalColumns[systemuserid]"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[SystemUserId]" />
+                    <inputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Inputs[Input].Columns[RoleId]"
+                      cachedDataType="guid"
+                      cachedName="RoleId"
+                      externalMetadataColumnId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Inputs[Input].ExternalColumns[roleid]"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[RoleId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Inputs[Input].ExternalColumns[roleid]"
+                      dataType="guid"
+                      name="roleid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">role</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Inputs[Input].ExternalColumns[systemuserid]"
+                      dataType="guid"
+                      name="systemuserid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Uniqueidentifier</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">systemuser</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Outputs[Error Output].Columns[CrmErrorMessage]"
+                      name="CrmErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Inputs[Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update SystemUser med säkerhetsroll\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT SystemUserId
+	  ,r.MigrationId AS RoleId
+FROM SystemUserRoles sr
+FULL JOIN (SELECT TOP 1 MigrationId
+			FROM SystemUserRoles sr
+			WHERE MigrationId IS NOT NULL
+			) r
+ON Fullname is not null
+WHERE Fullname NOT IN (
+'SYSTEM',
+'INTEGRATION'
+)
+AND sr.RoleId IS NULL</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[SystemUserId]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SystemUserId]"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[SystemUserId]"
+                      name="SystemUserId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[RoleId]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RoleId]"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[RoleId]"
+                      name="RoleId"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SystemUserId]"
+                      dataType="guid"
+                      name="SystemUserId" />
+                    <externalMetadataColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RoleId]"
+                      dataType="guid"
+                      name="RoleId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SystemUserId]"
+                      dataType="guid"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SystemUserId]"
+                      name="SystemUserId" />
+                    <outputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RoleId]"
+                      dataType="guid"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RoleId]"
+                      name="RoleId" />
+                    <outputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update SystemUser med säkerhetsroll\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RowsInserted</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Update SystemUser med säkerhetsroll\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update SystemUser med säkerhetsroll\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Update SystemUser med säkerhetsroll\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SystemUser_Error"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SystemUserRoles_ERROR]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Connections[OleDbConnection]"
+                  connectionManagerID="{68D9E5F8-BA63-4B16-A5EC-57708C0E20C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[STG]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].Columns[SystemUserId]"
+                      cachedDataType="guid"
+                      cachedName="SystemUserId"
+                      externalMetadataColumnId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[SystemUserId]"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Output].Columns[SystemUserId]" />
+                    <inputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Outputs[Error Output].Columns[ErrorColumn]" />
+                    <inputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].Columns[CrmErrorMessage]"
+                      cachedDataType="wstr"
+                      cachedLength="2048"
+                      cachedName="CrmErrorMessage"
+                      externalMetadataColumnId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Outputs[Error Output].Columns[CrmErrorMessage]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[VersionNumber]"
+                      dataType="bytes"
+                      length="8"
+                      name="VersionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
+                      dataType="wstr"
+                      length="4000"
+                      name="CrmErrorMessage" />
+                    <externalMetadataColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                    <externalMetadataColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[SystemUserId]"
+                      dataType="guid"
+                      name="SystemUserId" />
+                    <externalMetadataColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[MigrationId]"
+                      dataType="wstr"
+                      length="255"
+                      name="MigrationId" />
+                    <externalMetadataColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[RoleId]"
+                      dataType="guid"
+                      name="RoleId" />
+                    <externalMetadataColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input].ExternalColumns[SystemUserRoleId]"
+                      dataType="guid"
+                      name="SystemUserRoleId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Update SystemUser med säkerhetsroll.Paths[Default Output]"
+              endId="Package\Update SystemUser med säkerhetsroll\Row Count.Inputs[Row Count Input 1]"
+              name="Default Output"
+              startId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Outputs[Default Output]" />
+            <path
+              refId="Package\Update SystemUser med säkerhetsroll.Paths[Error Output]"
+              endId="Package\Update SystemUser med säkerhetsroll\SystemUser_Error.Inputs[OLE DB Destination Input]"
+              name="Error Output"
+              startId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Outputs[Error Output]" />
+            <path
+              refId="Package\Update SystemUser med säkerhetsroll.Paths[OLE DB Source Output]"
+              endId="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination.Inputs[Input]"
+              name="OLE DB Source Output"
+              startId="Package\Update SystemUser med säkerhetsroll\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -4307,17 +6095,65 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{4AE518A5-C024-448B-B23B-7C291666678A}"
+      DTS:DTSID="{9387B3FD-DE6B-4CBB-843A-B47255E74DB6}"
       DTS:From="Package\New LoggStatus"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Update SystemUser" />
+      DTS:To="Package\Execute SQL Task" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
       DTS:DTSID="{8297EDAF-C97D-4E50-A97A-4301EF4F8C6B}"
       DTS:From="Package\New LoggStatus"
       DTS:ObjectName="Constraint 3"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{FF1FB257-F451-40CE-8A02-FFC555941A43}"
+      DTS:From="Package\Update SystemUser med säkerhetsroll"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Update SystemUser" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{D376239F-D373-4474-BA2E-F3E3B3B8531E}"
+      DTS:From="Package\Update SystemUser med säkerhetsroll"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{DFD389B5-1461-4702-82DD-E646023464C3}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Ladda ner SystemUser och säkerhetsroll" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{27658A81-B891-4E6E-8606-06B8709C775A}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\LogPackageEnd"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{8B0586FD-B689-4BA2-9A62-A86F53161A93}"
+      DTS:From="Package\Ladda ner SystemUser och säkerhetsroll"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Update SystemUser med säkerhetsroll" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{2B9107FB-A103-4F9F-800B-0C2C742D3D50}"
+      DTS:From="Package\Ladda ner SystemUser och säkerhetsroll"
+      DTS:ObjectName="Constraint 9"
       DTS:To="Package\LogPackageEnd"
       DTS:Value="1" />
   </DTS:PrecedenceConstraints>
@@ -4332,15 +6168,11 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Update SystemUser"
-          TopLeft="325.000005858285,177.400003062977" />
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="152,42"
           Id="Package\LogPackageEnd"
-          TopLeft="69.4285725768733,297.035296768796" />
+          TopLeft="31.4285725768733,426.035296768796" />
         <NodeLayout
           Size="162,42"
           Id="Package\LogPackageStart"
@@ -4349,6 +6181,10 @@
           Size="143,42"
           Id="Package\New LoggStatus"
           TopLeft="64.0000010899137,119.905884034576" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Update SystemUser"
+          TopLeft="492.000005858285,421.400003062977" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="137.721429568894,77.6882357231061">
@@ -4373,102 +6209,101 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="410.500005858285,219.400003062977">
+          TopLeft="492.000005858285,444.717649915887">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-241.071433281412,77.635293705819"
+              EndConnector="-308.571433281412,0"
               Start="0,0"
-              End="-241.071433281412,70.135293705819">
+              End="-301.071433281412,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.09595563783" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,42.09595563783"
-                    Point2="0,46.09595563783"
-                    Point3="-4,46.09595563783" />
-                  <mssgle:LineSegment
-                    End="-237.071433281412,46.09595563783" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-237.071433281412,46.09595563783"
-                    Point2="-241.071433281412,46.09595563783"
-                    Point3="-241.071433281412,50.09595563783" />
-                  <mssgle:LineSegment
-                    End="-241.071433281412,70.135293705819" />
+                    End="-301.071433281412,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-145.840169765706,51.09595563783,50.60890625,11.609375"
+              BoundingBox="-175.840169765706,5,50.60890625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="135.600001089914,161.505884034576">
+          TopLeft="135.500001089914,161.905884034576">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-14.1714285130404,135.52941273422"
+              EndConnector="-71.2714285130404,264.12941273422"
               Start="0,0"
-              End="-14.1714285130404,128.02941273422">
+              End="-71.2714285130404,256.62941273422">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,76.4705888109431" />
+                    End="0,180.502163306992" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,76.4705888109431"
-                    Point2="0,80.4705888109431"
-                    Point3="-4,80.4705888109431" />
+                    Point1="0,180.502163306992"
+                    Point2="0,184.502163306992"
+                    Point3="-4,184.502163306992" />
                   <mssgle:LineSegment
-                    End="-10.1714285130404,80.4705888109431" />
+                    End="-67.2714285130404,184.502163306992" />
                   <mssgle:CubicBezierSegment
-                    Point1="-10.1714285130404,80.4705888109431"
-                    Point2="-14.1714285130404,80.4705888109431"
-                    Point3="-14.1714285130404,84.4705888109431" />
+                    Point1="-67.2714285130404,184.502163306992"
+                    Point2="-71.2714285130404,184.502163306992"
+                    Point3="-71.2714285130404,188.502163306992" />
                   <mssgle:LineSegment
-                    End="-14.1714285130404,128.02941273422" />
+                    End="-71.2714285130404,256.62941273422" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-22.3270619127702,85.4705888109431,30.4826953125,9.7490234375"
+              BoundingBox="-50.8770619127702,189.502163306992,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="Set Isdisabled som i PROD i CRM2016"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="229,40"
+          Id="174a18f6-9bf9-45e3-882b-d5a20ff52fd3"
+          TopLeft="653.642858047875,427.035296768796" />
+        <NodeLayout
+          Size="258,42"
+          Id="Package\Update SystemUser med säkerhetsroll"
+          TopLeft="487,305" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="207.000001089914,140.905884034576">
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="657.666666666667,347">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="118.000004768371,57.494119028401"
+              EndConnector="-80.1666608083816,74.400003062977"
               Start="0,0"
-              End="110.500004768371,57.494119028401">
+              End="-80.1666608083816,66.900003062977">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="55.0000023841857,0" />
+                    End="0,26.0351322072419" />
                   <mssgle:CubicBezierSegment
-                    Point1="55.0000023841857,0"
-                    Point2="59.0000023841857,0"
-                    Point3="59.0000023841857,4" />
+                    Point1="0,26.0351322072419"
+                    Point2="0,30.0351322072419"
+                    Point3="-4,30.0351322072419" />
                   <mssgle:LineSegment
-                    End="59.0000023841857,53.494119028401" />
+                    End="-76.1666608083816,30.0351322072419" />
                   <mssgle:CubicBezierSegment
-                    Point1="59.0000023841857,53.494119028401"
-                    Point2="59.0000023841857,57.494119028401"
-                    Point3="63.0000023841857,57.494119028401" />
+                    Point1="-76.1666608083816,30.0351322072419"
+                    Point2="-80.1666608083816,30.0351322072419"
+                    Point3="-80.1666608083816,34.0351322072419" />
                   <mssgle:LineSegment
-                    End="110.500004768371,57.494119028401" />
+                    End="-80.1666608083816,66.900003062977" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4477,6 +6312,219 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="574.333333333333,347">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-423.70476075646,79.035296768796"
+              Start="0,0"
+              End="-423.70476075646,71.535296768796">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.2662741756099" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.2662741756099"
+                    Point2="0,48.2662741756099"
+                    Point3="-4,48.2662741756099" />
+                  <mssgle:LineSegment
+                    End="-419.70476075646,48.2662741756099" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-419.70476075646,48.2662741756099"
+                    Point2="-423.70476075646,48.2662741756099"
+                    Point3="-423.70476075646,52.2662741756099" />
+                  <mssgle:LineSegment
+                    End="-423.70476075646,71.535296768796" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-227.09372803448,53.2662741756099,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="289,118" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="207.000001089914,139.952942017288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="81.9999989100863,0"
+              Start="0,0"
+              End="74.4999989100863,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="74.4999989100863,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="344.666666666667,160">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-251.638094089793,266.035296768796"
+              Start="0,0"
+              End="-251.638094089793,258.535296768796">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,117.662366378996" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,117.662366378996"
+                    Point2="0,121.662366378996"
+                    Point3="-4,121.662366378996" />
+                  <mssgle:LineSegment
+                    End="-247.638094089793,121.662366378996" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-247.638094089793,121.662366378996"
+                    Point2="-251.638094089793,121.662366378996"
+                    Point3="-251.638094089793,125.662366378996" />
+                  <mssgle:LineSegment
+                    End="-251.638094089793,258.535296768796" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-141.060394701147,126.662366378996,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="268,42"
+          Id="Package\Ladda ner SystemUser och säkerhetsroll"
+          TopLeft="388,201" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="396.333333333333,160">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="125.666666666667,41"
+              Start="0,0"
+              End="125.666666666667,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.6391251518834" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.6391251518834"
+                    Point2="0,16.6391251518834"
+                    Point3="4,16.6391251518834" />
+                  <mssgle:LineSegment
+                    End="121.666666666667,16.6391251518834" />
+                  <mssgle:CubicBezierSegment
+                    Point1="121.666666666667,16.6391251518834"
+                    Point2="125.666666666667,16.6391251518834"
+                    Point3="125.666666666667,20.6391251518834" />
+                  <mssgle:LineSegment
+                    End="125.666666666667,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="565.333333333333,243">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="50.6666666666667,62"
+              Start="0,0"
+              End="50.6666666666667,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.0207715133531" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.0207715133531"
+                    Point2="0,25.0207715133531"
+                    Point3="4,25.0207715133531" />
+                  <mssgle:LineSegment
+                    End="46.6666666666667,25.0207715133531" />
+                  <mssgle:CubicBezierSegment
+                    Point1="46.6666666666667,25.0207715133531"
+                    Point2="50.6666666666667,25.0207715133531"
+                    Point3="50.6666666666667,29.0207715133531" />
+                  <mssgle:LineSegment
+                    End="50.6666666666667,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="478.666666666667,243">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-356.838094089793,183.035296768796"
+              Start="0,0"
+              End="-356.838094089793,175.535296768796">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.2769670828906" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,79.2769670828906"
+                    Point2="0,83.2769670828906"
+                    Point3="-4,83.2769670828906" />
+                  <mssgle:LineSegment
+                    End="-352.838094089793,83.2769670828906" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-352.838094089793,83.2769670828906"
+                    Point2="-356.838094089793,83.2769670828906"
+                    Point3="-356.838094089793,87.2769670828906" />
+                  <mssgle:LineSegment
+                    End="-356.838094089793,175.535296768796" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-193.660394701147,88.2769670828906,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Tilldela &quot;Personliga Behörigheter&quot; som roll till alla användare"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="348,40"
+          Id="e8e3984a-164d-4781-8e0e-45e712048b3b"
+          TopLeft="748,306" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -4485,10 +6533,6 @@
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="136,42"
-          Id="Package\Update SystemUser\Row Update"
-          TopLeft="112.571430420389,282.482358397909" />
         <NodeLayout
           Size="211,42"
           Id="Package\Update SystemUser\Dynamics CRM 2016 Source"
@@ -4501,66 +6545,14 @@
           Size="163,42"
           Id="Package\Update SystemUser\SystemUser_Error"
           TopLeft="451.428576800289,316.588239369507" />
-        <EdgeLayout
-          Id="Package\Update SystemUser.Paths[Default Output]"
-          TopLeft="316.523813795882,176.823532783614">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-135.952383375493,105.658825614295"
-              Start="0,0"
-              End="-135.952383375493,98.158825614295">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.7544909068493" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.7544909068493"
-                    Point2="0,42.7544909068493"
-                    Point3="-4,42.7544909068493" />
-                  <mssgle:LineSegment
-                    End="-131.952383375493,42.7544909068493" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-131.952383375493,42.7544909068493"
-                    Point2="-135.952383375493,42.7544909068493"
-                    Point3="-135.952383375493,46.7544909068493" />
-                  <mssgle:LineSegment
-                    End="-135.952383375493,98.158825614295" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Update SystemUser.Paths[CRM Primary Output]"
-          TopLeft="350.928573564608,82">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,52.823532783614"
-              Start="0,0"
-              End="0,45.323532783614">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45.323532783614" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="154,42"
           Id="Package\Update SystemUser\Derived Column"
           TopLeft="452,234" />
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Update SystemUser\Row Update"
+          TopLeft="112.571430420389,282.482358397909" />
         <EdgeLayout
           Id="Package\Update SystemUser.Paths[Error Output]"
           TopLeft="382.190480462548,176.823532783614">
@@ -4619,6 +6611,62 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Update SystemUser.Paths[Default Output]"
+          TopLeft="316.523813795882,176.823532783614">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-135.952383375493,105.658825614295"
+              Start="0,0"
+              End="-135.952383375493,98.158825614295">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.7544909068493" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.7544909068493"
+                    Point2="0,42.7544909068493"
+                    Point3="-4,42.7544909068493" />
+                  <mssgle:LineSegment
+                    End="-131.952383375493,42.7544909068493" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-131.952383375493,42.7544909068493"
+                    Point2="-135.952383375493,42.7544909068493"
+                    Point3="-135.952383375493,46.7544909068493" />
+                  <mssgle:LineSegment
+                    End="-135.952383375493,98.158825614295" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Update SystemUser.Paths[CRM Primary Output]"
+          TopLeft="350.928573564608,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.823532783614"
+              Start="0,0"
+              End="0,45.323532783614">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.323532783614" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -4632,6 +6680,249 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Update SystemUser med säkerhetsroll">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Update SystemUser med säkerhetsroll\Dynamics CRM Destination"
+          TopLeft="293,128" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Update SystemUser med säkerhetsroll\Row Count"
+          TopLeft="141,220" />
+        <EdgeLayout
+          Id="Package\Update SystemUser med säkerhetsroll.Paths[Default Output]"
+          TopLeft="362.666666666667,170">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-156.666666666667,50"
+              Start="0,0"
+              End="-156.666666666667,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.2323330106486" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.2323330106486"
+                    Point2="0,20.2323330106486"
+                    Point3="-4,20.2323330106486" />
+                  <mssgle:LineSegment
+                    End="-152.666666666667,20.2323330106486" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-152.666666666667,20.2323330106486"
+                    Point2="-156.666666666667,20.2323330106486"
+                    Point3="-156.666666666667,24.2323330106486" />
+                  <mssgle:LineSegment
+                    End="-156.666666666667,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Update SystemUser med säkerhetsroll\SystemUser_Error"
+          TopLeft="416,219.588239369507" />
+        <EdgeLayout
+          Id="Package\Update SystemUser med säkerhetsroll.Paths[Error Output]"
+          TopLeft="428.333333333333,170">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="69.1666666666667,49.588239369507"
+              Start="0,0"
+              End="69.1666666666667,42.088239369507">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.0657154467124" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.0657154467124"
+                    Point2="0,20.0657154467124"
+                    Point3="4,20.0657154467124" />
+                  <mssgle:LineSegment
+                    End="65.1666666666667,20.0657154467124" />
+                  <mssgle:CubicBezierSegment
+                    Point1="65.1666666666667,20.0657154467124"
+                    Point2="69.1666666666667,20.0657154467124"
+                    Point3="69.1666666666667,24.0657154467124" />
+                  <mssgle:LineSegment
+                    End="69.1666666666667,42.088239369507" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="6.24694661458334,25.0657154467124,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Update SystemUser med säkerhetsroll\OLE DB Source"
+          TopLeft="307,30" />
+        <EdgeLayout
+          Id="Package\Update SystemUser med säkerhetsroll.Paths[OLE DB Source Output]"
+          TopLeft="382,72">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.5,56"
+              Start="0,0"
+              End="13.5,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24"
+                    Point2="0,28"
+                    Point3="4,28" />
+                  <mssgle:LineSegment
+                    End="9.5,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.5,28"
+                    Point2="13.5,28"
+                    Point3="13.5,32" />
+                  <mssgle:LineSegment
+                    End="13.5,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Update SystemUser med säkerhetsroll\SystemUser_Error">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Ladda ner SystemUser och säkerhetsroll">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM RoleId"
+          TopLeft="486,22" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Ladda ner SystemUser och säkerhetsroll\Dynamics CRM SystemUsers"
+          TopLeft="205,22" />
+        <NodeLayout
+          Size="105,42"
+          Id="Package\Ladda ner SystemUser och säkerhetsroll\Users"
+          TopLeft="251,147" />
+        <EdgeLayout
+          Id="Package\Ladda ner SystemUser och säkerhetsroll.Paths[CRM Primary Output]"
+          TopLeft="307.25,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,83"
+              Start="0,0"
+              End="0,75.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="99,42"
+          Id="Package\Ladda ner SystemUser och säkerhetsroll\Role"
+          TopLeft="531,150" />
+        <EdgeLayout
+          Id="Package\Ladda ner SystemUser och säkerhetsroll.Paths[CRM Primary Output1]"
+          TopLeft="578.75,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,86"
+              Start="0,0"
+              End="0,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ladda ner SystemUser och säkerhetsroll\Users">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ladda ner SystemUser och säkerhetsroll\Role">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Update SystemUser med säkerhetsroll\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
