@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Team_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="101"
-  DTS:VersionGUID="{FACFC328-7831-4374-850C-B3CABF7A07DB}">
+  DTS:VersionBuild="103"
+  DTS:VersionGUID="{6AACC761-1A16-49D4-B61A-535882E6FA6C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -3192,13 +3192,13 @@
                       cachedDataType="guid"
                       cachedName="roleid"
                       externalMetadataColumnId="Package\Migrate Teamroles\Migrate teamroles.Inputs[Input].ExternalColumns[roleid]"
-                      lineageId="Package\Migrate Teamroles\Read role Standardanvändare.Outputs[CRM Primary Output].Columns[roleid]" />
+                      lineageId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare).Outputs[CRM Primary Output].Columns[roleid]" />
                     <inputColumn
                       refId="Package\Migrate Teamroles\Migrate teamroles.Inputs[Input].Columns[t.teamid]"
                       cachedDataType="guid"
                       cachedName="t.teamid"
                       externalMetadataColumnId="Package\Migrate Teamroles\Migrate teamroles.Inputs[Input].ExternalColumns[teamid]"
-                      lineageId="Package\Migrate Teamroles\Read role Standardanvändare.Outputs[CRM Primary Output].Columns[t.teamid]" />
+                      lineageId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare).Outputs[CRM Primary Output].Columns[t.teamid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3282,11 +3282,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Migrate Teamroles\Read role Standardanvändare"
+              refId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare)"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright 2011-2016 KingswaySoft Inc."
               description="Extract data from Microsoft Dynamics CRM."
-              name="Read role Standardanvändare"
+              name="Read role Systemadministratör (Standardanvändare)"
               usesDispositions="true"
               version="2">
               <properties>
@@ -3310,7 +3310,7 @@
     &lt;attribute name="roleid" /&gt;
     &lt;order attribute="name" descending="false" /&gt;
     &lt;filter type="and"&gt;
-      &lt;condition attribute="name" operator="eq" value="Standardanvändare" /&gt;
+      &lt;condition attribute="name" operator="eq" value="Systemadministratör" /&gt;
     &lt;/filter&gt;
     &lt;link-entity name="team" from="businessunitid" to="businessunitid" visible="false" link-type="outer" alias="t"&gt;
     &lt;attribute name="teamid" /&gt;
@@ -3339,7 +3339,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Migrate Teamroles\Read role Standardanvändare.Connections[DynamicsCRM]"
+                  refId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare).Connections[DynamicsCRM]"
                   connectionManagerID="{FB3E9D0C-B052-4403-A158-6D59B60BC2A4}:external"
                   connectionManagerRefId="Project.ConnectionManagers[CRM]"
                   description="Dynamics CRM Connection Manager"
@@ -3347,36 +3347,36 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Migrate Teamroles\Read role Standardanvändare.Outputs[CRM Primary Output]"
+                  refId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare).Outputs[CRM Primary Output]"
                   name="CRM Primary Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Migrate Teamroles\Read role Standardanvändare.Outputs[CRM Primary Output].Columns[roleid]"
+                      refId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare).Outputs[CRM Primary Output].Columns[roleid]"
                       dataType="guid"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Migrate Teamroles\Read role Standardanvändare.Outputs[CRM Primary Output].ExternalColumns[roleid]"
-                      lineageId="Package\Migrate Teamroles\Read role Standardanvändare.Outputs[CRM Primary Output].Columns[roleid]"
+                      externalMetadataColumnId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare).Outputs[CRM Primary Output].ExternalColumns[roleid]"
+                      lineageId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare).Outputs[CRM Primary Output].Columns[roleid]"
                       name="roleid"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Migrate Teamroles\Read role Standardanvändare.Outputs[CRM Primary Output].Columns[t.teamid]"
+                      refId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare).Outputs[CRM Primary Output].Columns[t.teamid]"
                       dataType="guid"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Migrate Teamroles\Read role Standardanvändare.Outputs[CRM Primary Output].ExternalColumns[t.teamid]"
-                      lineageId="Package\Migrate Teamroles\Read role Standardanvändare.Outputs[CRM Primary Output].Columns[t.teamid]"
+                      externalMetadataColumnId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare).Outputs[CRM Primary Output].ExternalColumns[t.teamid]"
+                      lineageId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare).Outputs[CRM Primary Output].Columns[t.teamid]"
                       name="t.teamid"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Migrate Teamroles\Read role Standardanvändare.Outputs[CRM Primary Output].ExternalColumns[roleid]"
+                      refId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare).Outputs[CRM Primary Output].ExternalColumns[roleid]"
                       dataType="guid"
                       name="roleid" />
                     <externalMetadataColumn
-                      refId="Package\Migrate Teamroles\Read role Standardanvändare.Outputs[CRM Primary Output].ExternalColumns[t.teamid]"
+                      refId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare).Outputs[CRM Primary Output].ExternalColumns[t.teamid]"
                       dataType="guid"
                       name="t.teamid" />
                   </externalMetadataColumns>
@@ -3489,7 +3489,7 @@
                       cachedDataType="guid"
                       cachedName="roleid"
                       externalMetadataColumnId="Package\Migrate Teamroles\Teamroles_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[RoleId]"
-                      lineageId="Package\Migrate Teamroles\Read role Standardanvändare.Outputs[CRM Primary Output].Columns[roleid]" />
+                      lineageId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare).Outputs[CRM Primary Output].Columns[roleid]" />
                     <inputColumn
                       refId="Package\Migrate Teamroles\Teamroles_ERROR.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
                       cachedDataType="i4"
@@ -3584,7 +3584,7 @@
               refId="Package\Migrate Teamroles.Paths[CRM Primary Output]"
               endId="Package\Migrate Teamroles\Migrate teamroles.Inputs[Input]"
               name="CRM Primary Output"
-              startId="Package\Migrate Teamroles\Read role Standardanvändare.Outputs[CRM Primary Output]" />
+              startId="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare).Outputs[CRM Primary Output]" />
             <path
               refId="Package\Migrate Teamroles.Paths[Default Output]"
               endId="Package\Migrate Teamroles\Row Updated.Inputs[Row Count Input 1]"
@@ -4146,8 +4146,8 @@
           Id="Package\Migrate Teamroles\Teamroles_ERROR"
           TopLeft="328,239" />
         <NodeLayout
-          Size="219,42"
-          Id="Package\Migrate Teamroles\Read role Standardanvändare"
+          Size="327,42"
+          Id="Package\Migrate Teamroles\Read role Systemadministratör (Standardanvändare)"
           TopLeft="172.666666666667,25.3333333333333" />
         <NodeLayout
           Size="164,42"
@@ -4225,18 +4225,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Migrate Teamroles.Paths[CRM Primary Output]"
-          TopLeft="282.25,67.3333333333333">
+          TopLeft="336.166666666667,67.3333333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,49.3333333333337"
+              EndConnector="-53.8333333333339,49.3333333333337"
               Start="0,0"
-              End="0,41.8333333333337">
+              End="-53.8333333333339,41.8333333333337">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.8333333333337" />
+                    End="0,20.6666666666668" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.6666666666668"
+                    Point2="0,24.6666666666668"
+                    Point3="-4,24.6666666666668" />
+                  <mssgle:LineSegment
+                    End="-49.8333333333339,24.6666666666668" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-49.8333333333339,24.6666666666668"
+                    Point2="-53.8333333333339,24.6666666666668"
+                    Point3="-53.8333333333339,28.6666666666668" />
+                  <mssgle:LineSegment
+                    End="-53.8333333333339,41.8333333333337" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4245,6 +4257,13 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="OBS!!!! Det gick inte bra med Standardanvändare roll; bytter till Systemadministratör"
+          ParentId="Package\Migrate Teamroles"
+          FontInfo="{assembly:Null}"
+          Size="475,40"
+          Id="8c73d2e7-6f13-4fb5-8b58-5d586983a850"
+          TopLeft="535,26" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
