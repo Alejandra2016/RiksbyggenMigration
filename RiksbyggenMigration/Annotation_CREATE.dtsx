@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Annotation_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="101"
-  DTS:VersionGUID="{6525D67C-042F-4EE0-A17D-89DA2F9C12B9}">
+  DTS:VersionBuild="102"
+  DTS:VersionGUID="{27BB0064-09B8-4ED0-9839-DF68C7EACAA6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -744,28 +744,6 @@
                       cachedName="Subject"
                       externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[subject]"
                       lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[Subject]" />
-                    <inputColumn
-                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[OwnerIdType]"
-                      cachedDataType="i4"
-                      cachedName="OwnerIdType"
-                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[owneridtype]"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerIdType]" />
-                    <inputColumn
-                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[CreatedBy]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="CreatedBy"
-                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[createdby]"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[CreatedBy]" />
-                    <inputColumn
-                      refId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].Columns[OwnerId]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="OwnerId"
-                      externalMetadataColumnId="Package\Load Annotation\Migrate Annotation records.Inputs[Input].ExternalColumns[ownerid]"
-                      lineageId="Package\Load Annotation\STG Annotation.Outputs[OLE DB Source Output].Columns[OwnerId]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2718,43 +2696,21 @@ ON 'RIKSBYGGEN\' + c.AnnanUnikIdentierare = a.OwnerIdName</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="142,42"
+          Id="Package\Load Annotation\Row Inserted"
+          TopLeft="123.857143246397,256.505888993683" />
+        <NodeLayout
           Size="207,42"
           Id="Package\Load Annotation\Migrate Annotation records"
           TopLeft="256.857147265455,131.117647290477" />
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Load Annotation\Annotation_ERROR"
-          TopLeft="361,258" />
         <NodeLayout
           Size="153,42"
           Id="Package\Load Annotation\STG Annotation"
           TopLeft="285,38" />
         <NodeLayout
-          Size="142,42"
-          Id="Package\Load Annotation\Row Inserted"
-          TopLeft="123.857143246397,256.505888993683" />
-        <EdgeLayout
-          Id="Package\Load Annotation.Paths[OLE DB Source Output]"
-          TopLeft="360.928573632728,80">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51.117647290477"
-              Start="0,0"
-              End="0,43.617647290477">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.617647290477" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="169,42"
+          Id="Package\Load Annotation\Annotation_ERROR"
+          TopLeft="361,258" />
         <EdgeLayout
           Id="Package\Load Annotation.Paths[Error Output]"
           TopLeft="393.523813932122,173.117647290477">
@@ -2825,11 +2781,33 @@ ON 'RIKSBYGGEN\' + c.AnnanUnikIdentierare = a.OwnerIdName</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Annotation.Paths[OLE DB Source Output]"
+          TopLeft="360.928573632728,80">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.117647290477"
+              Start="0,0"
+              End="0,43.617647290477">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.617647290477" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Annotation\Annotation_ERROR">
+    design-time-name="Package\Load Annotation\STG Annotation">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2842,7 +2820,7 @@ ON 'RIKSBYGGEN\' + c.AnnanUnikIdentierare = a.OwnerIdName</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load Annotation\STG Annotation">
+    design-time-name="Package\Load Annotation\Annotation_ERROR">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
