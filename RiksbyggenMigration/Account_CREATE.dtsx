@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Account_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="154"
-  DTS:VersionGUID="{76487321-AB8F-423F-BCD8-0FB54C4D82B5}">
+  DTS:VersionBuild="157"
+  DTS:VersionGUID="{179B13F6-79A6-4647-8B19-9B4657EDB6D1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -15594,7 +15594,7 @@
 	,CAST(RTRIM(Delsegment_IdNytt) AS NVARCHAR(4)) AS rik_delsegment
 	,RTRIM(SUBSTRING(Adress2_Gata,1,40)) AS address1_line1 
 	,RTRIM(Adress2_Co) AS address1_line2
-	,RTRIM(SUBSTRING(Adress2_Postnr,1,40)) AS address1_postalcode
+	,RTRIM(SUBSTRING(Adress2_Postnr,1,8)) AS address1_postalcode
 	,RTRIM(Adress2_Ort) AS address1_city
 	,RTRIM(landskodAdr2) AS rik_address1_land
 	,RTRIM(Adress1_Gata) AS address2_line1 
@@ -15960,7 +15960,7 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
                       refId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output].ExternalColumns[address1_postalcode]"
                       codePage="1252"
                       dataType="str"
-                      length="40"
+                      length="8"
                       name="address1_postalcode" />
                     <externalMetadataColumn
                       refId="Package\Load Account\STG_Account.Outputs[OLE DB Source Output].ExternalColumns[address1_city]"
@@ -16162,7 +16162,7 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
                       refId="Package\Load Account\STG_Account.Outputs[OLE DB Source Error Output].Columns[address1_postalcode]"
                       codePage="1252"
                       dataType="str"
-                      length="40"
+                      length="8"
                       lineageId="Package\Load Account\STG_Account.Outputs[OLE DB Source Error Output].Columns[address1_postalcode]"
                       name="address1_postalcode" />
                     <outputColumn
@@ -19340,29 +19340,29 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
               startId="Package\Load Account\Balanced Data Distributor.Outputs[Balanced Data Distributor Output 5]" />
             <path
               refId="Package\Load Account.Paths[Default Output4]"
-              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 2]"
+              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 1]"
               name="Default Output"
-              startId="Package\Load Account\Dynamics CRM Destination 4.Outputs[Default Output]" />
+              startId="Package\Load Account\Dynamics CRM Destination.Outputs[Default Output]" />
             <path
               refId="Package\Load Account.Paths[Default Output2]"
-              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 5]"
-              name="Default Output"
-              startId="Package\Load Account\Dynamics CRM Destination 3.Outputs[Default Output]" />
-            <path
-              refId="Package\Load Account.Paths[Default Output3]"
               endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 4]"
               name="Default Output"
               startId="Package\Load Account\Dynamics CRM Destination 2.Outputs[Default Output]" />
             <path
-              refId="Package\Load Account.Paths[Default Output]"
+              refId="Package\Load Account.Paths[Default Output3]"
               endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 3]"
               name="Default Output"
               startId="Package\Load Account\Dynamics CRM Destination 1.Outputs[Default Output]" />
             <path
-              refId="Package\Load Account.Paths[Default Output1]"
-              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 1]"
+              refId="Package\Load Account.Paths[Default Output]"
+              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 2]"
               name="Default Output"
-              startId="Package\Load Account\Dynamics CRM Destination.Outputs[Default Output]" />
+              startId="Package\Load Account\Dynamics CRM Destination 4.Outputs[Default Output]" />
+            <path
+              refId="Package\Load Account.Paths[Default Output1]"
+              endId="Package\Load Account\Union All Inserted.Inputs[Union All Input 5]"
+              name="Default Output"
+              startId="Package\Load Account\Dynamics CRM Destination 3.Outputs[Default Output]" />
             <path
               refId="Package\Load Account.Paths[Error Output]"
               endId="Package\Load Account\Union All to ERROR.Inputs[Union All Input 2]"
@@ -20821,6 +20821,27 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
                       cachedName="Telephone2"
                       externalMetadataColumnId="Package\Load Område\Dynamics CRM Destination.Inputs[Input].ExternalColumns[telephone2]"
                       lineageId="Package\Load Område\Konton RB bolag.Outputs[OLE DB Source Output].Columns[Telephone2]" />
+                    <inputColumn
+                      refId="Package\Load Område\Dynamics CRM Destination.Inputs[Input].Columns[rik_delsegment]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="rik_delsegment"
+                      externalMetadataColumnId="Package\Load Område\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_delsegmentid]"
+                      lineageId="Package\Load Område\Konton RB bolag.Outputs[OLE DB Source Output].Columns[rik_delsegment]" />
+                    <inputColumn
+                      refId="Package\Load Område\Dynamics CRM Destination.Inputs[Input].Columns[rik_kundsegment]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="rik_kundsegment"
+                      externalMetadataColumnId="Package\Load Område\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_kundsegmentid]"
+                      lineageId="Package\Load Område\Konton RB bolag.Outputs[OLE DB Source Output].Columns[rik_kundsegment]" />
+                    <inputColumn
+                      refId="Package\Load Område\Dynamics CRM Destination.Inputs[Input].Columns[rik_marknadsomrade]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="rik_marknadsomrade"
+                      externalMetadataColumnId="Package\Load Område\Dynamics CRM Destination.Inputs[Input].ExternalColumns[rik_marknadsomradeid]"
+                      lineageId="Package\Load Område\Konton RB bolag.Outputs[OLE DB Source Output].Columns[rik_marknadsomrade]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -22667,6 +22688,17 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
                         <property
                           dataType="System.Boolean"
                           name="Updateable">true</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_land&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_kod&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -22686,6 +22718,17 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
                         <property
                           dataType="System.Boolean"
                           name="Updateable">true</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_land&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_kod&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -22705,6 +22748,17 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
                         <property
                           dataType="System.Boolean"
                           name="Updateable">true</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_delsegment&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_kod&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -22744,6 +22798,17 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
                         <property
                           dataType="System.Boolean"
                           name="Updateable">true</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_kundsegment&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_kod&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -22763,6 +22828,17 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
                         <property
                           dataType="System.Boolean"
                           name="Updateable">true</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_marknadsomrade&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_kod&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -23594,6 +23670,27 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
                       cachedName="Telephone2"
                       externalMetadataColumnId="Package\Load Område\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[telephone2]"
                       lineageId="Package\Load Område\Konton RB bolag.Outputs[OLE DB Source Output].Columns[Telephone2]" />
+                    <inputColumn
+                      refId="Package\Load Område\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_delsegment]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="rik_delsegment"
+                      externalMetadataColumnId="Package\Load Område\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_delsegmentid]"
+                      lineageId="Package\Load Område\Konton RB bolag.Outputs[OLE DB Source Output].Columns[rik_delsegment]" />
+                    <inputColumn
+                      refId="Package\Load Område\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_kundsegment]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="rik_kundsegment"
+                      externalMetadataColumnId="Package\Load Område\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_kundsegmentid]"
+                      lineageId="Package\Load Område\Konton RB bolag.Outputs[OLE DB Source Output].Columns[rik_kundsegment]" />
+                    <inputColumn
+                      refId="Package\Load Område\Dynamics CRM Destination 1.Inputs[Input].Columns[rik_marknadsomrade]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="rik_marknadsomrade"
+                      externalMetadataColumnId="Package\Load Område\Dynamics CRM Destination 1.Inputs[Input].ExternalColumns[rik_marknadsomradeid]"
+                      lineageId="Package\Load Område\Konton RB bolag.Outputs[OLE DB Source Output].Columns[rik_marknadsomrade]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -25440,6 +25537,17 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
                         <property
                           dataType="System.Boolean"
                           name="Updateable">true</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_land&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_kod&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -25459,6 +25567,17 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
                         <property
                           dataType="System.Boolean"
                           name="Updateable">true</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_land&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_kod&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -25478,6 +25597,17 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
                         <property
                           dataType="System.Boolean"
                           name="Updateable">true</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_delsegment&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_kod&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -25517,6 +25647,17 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
                         <property
                           dataType="System.Boolean"
                           name="Updateable">true</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_kundsegment&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_kod&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -25536,6 +25677,17 @@ LEFT JOIN STG.dbo.ovMarknadsomrade m
                         <property
                           dataType="System.Boolean"
                           name="Updateable">true</property>
+                        <property
+                          dataType="System.String"
+                          name="TextLookup">&lt;TextLookupSetting&gt;
+  &lt;CacheStrategy&gt;FullCache&lt;/CacheStrategy&gt;
+  &lt;LookupTargets&gt;
+    &lt;LookupTarget&gt;
+      &lt;TargetEntity&gt;rik_marknadsomrade&lt;/TargetEntity&gt;
+      &lt;TargetTextField&gt;rik_kod&lt;/TargetTextField&gt;
+    &lt;/LookupTarget&gt;
+  &lt;/LookupTargets&gt;
+&lt;/TextLookupSetting&gt;</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -31297,108 +31449,6 @@ where [refTable].[rik_namn] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Account.Paths[Default Output4]"
-          TopLeft="1204.38095479433,235.593470435815">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-720.047621460999,148.406529564185"
-              Start="0,0"
-              End="-720.047621460999,140.906529564185">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,94.1109276248167" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,94.1109276248167"
-                    Point2="0,98.1109276248167"
-                    Point3="-4,98.1109276248167" />
-                  <mssgle:LineSegment
-                    End="-716.047621460999,98.1109276248167" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-716.047621460999,98.1109276248167"
-                    Point2="-720.047621460999,98.1109276248167"
-                    Point3="-720.047621460999,102.110927624817" />
-                  <mssgle:LineSegment
-                    End="-720.047621460999,140.906529564185" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Account.Paths[Default Output3]"
-          TopLeft="688.380954794333,235.593470435815">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-321.380954794333,148.406529564185"
-              Start="0,0"
-              End="-321.380954794333,140.906529564185">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.0234201205794" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,56.0234201205794"
-                    Point2="0,60.0234201205794"
-                    Point3="-4,60.0234201205794" />
-                  <mssgle:LineSegment
-                    End="-317.380954794333,60.0234201205794" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-317.380954794333,60.0234201205794"
-                    Point2="-321.380954794333,60.0234201205794"
-                    Point3="-321.380954794333,64.0234201205794" />
-                  <mssgle:LineSegment
-                    End="-321.380954794333,140.906529564185" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Account.Paths[Default Output2]"
-          TopLeft="959.666666666667,234">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-534,150"
-              Start="0,0"
-              End="-534,142.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,71.2800941320918" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,71.2800941320918"
-                    Point2="0,75.2800941320918"
-                    Point3="-4,75.2800941320918" />
-                  <mssgle:LineSegment
-                    End="-530,75.2800941320918" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-530,75.2800941320918"
-                    Point2="-534,75.2800941320918"
-                    Point3="-534,79.2800941320918" />
-                  <mssgle:LineSegment
-                    End="-534,142.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Account.Paths[Default Output1]"
           TopLeft="70.3809547943327,234.593470435815">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -31432,7 +31482,7 @@ where [refTable].[rik_namn] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load Account.Paths[Default Output]"
+          Id="Package\Load Account.Paths[Default Output3]"
           TopLeft="379.666666666667,234.593470435815">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -31457,6 +31507,108 @@ where [refTable].[rik_namn] = ?</property>
                     Point3="-71.3333333333333,78.9822507302734" />
                   <mssgle:LineSegment
                     End="-71.3333333333333,141.906529564185" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Account.Paths[Default Output2]"
+          TopLeft="688.380954794333,235.593470435815">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-321.380954794333,148.406529564185"
+              Start="0,0"
+              End="-321.380954794333,140.906529564185">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.0234201205794" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.0234201205794"
+                    Point2="0,60.0234201205794"
+                    Point3="-4,60.0234201205794" />
+                  <mssgle:LineSegment
+                    End="-317.380954794333,60.0234201205794" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-317.380954794333,60.0234201205794"
+                    Point2="-321.380954794333,60.0234201205794"
+                    Point3="-321.380954794333,64.0234201205794" />
+                  <mssgle:LineSegment
+                    End="-321.380954794333,140.906529564185" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Account.Paths[Default Output1]"
+          TopLeft="959.666666666667,234">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-534,150"
+              Start="0,0"
+              End="-534,142.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.2800941320918" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,71.2800941320918"
+                    Point2="0,75.2800941320918"
+                    Point3="-4,75.2800941320918" />
+                  <mssgle:LineSegment
+                    End="-530,75.2800941320918" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-530,75.2800941320918"
+                    Point2="-534,75.2800941320918"
+                    Point3="-534,79.2800941320918" />
+                  <mssgle:LineSegment
+                    End="-534,142.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Account.Paths[Default Output]"
+          TopLeft="1204.38095479433,235.593470435815">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-720.047621460999,148.406529564185"
+              Start="0,0"
+              End="-720.047621460999,140.906529564185">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,94.1109276248167" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,94.1109276248167"
+                    Point2="0,98.1109276248167"
+                    Point3="-4,98.1109276248167" />
+                  <mssgle:LineSegment
+                    End="-716.047621460999,98.1109276248167" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-716.047621460999,98.1109276248167"
+                    Point2="-720.047621460999,98.1109276248167"
+                    Point3="-720.047621460999,102.110927624817" />
+                  <mssgle:LineSegment
+                    End="-720.047621460999,140.906529564185" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -31746,17 +31898,17 @@ where [refTable].[rik_namn] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="163,42"
-          Id="Package\Load Område\Union All Inserted"
-          TopLeft="229,306" />
+          Size="130,42"
+          Id="Package\Load Område\Row Count"
+          TopLeft="245,386" />
         <NodeLayout
           Size="463,42"
           Id="Package\Load Område\Balanced Data Distributor"
           TopLeft="233,100" />
         <NodeLayout
-          Size="130,42"
-          Id="Package\Load Område\Row Count"
-          TopLeft="245,386" />
+          Size="163,42"
+          Id="Package\Load Område\Union All Inserted"
+          TopLeft="229,306" />
         <NodeLayout
           Size="205,42"
           Id="Package\Load Område\Dynamics CRM Destination"
@@ -31770,13 +31922,17 @@ where [refTable].[rik_namn] = ?</property>
           Id="Package\Load Område\Union All to ERROR"
           TopLeft="514,323" />
         <NodeLayout
+          Size="158,42"
+          Id="Package\Load Område\Konton RB bolag"
+          TopLeft="379,22" />
+        <NodeLayout
           Size="156,42"
           Id="Package\Load Område\Account_ERROR"
           TopLeft="525,469" />
         <NodeLayout
-          Size="158,42"
-          Id="Package\Load Område\Konton RB bolag"
-          TopLeft="379,22" />
+          Size="154,42"
+          Id="Package\Load Område\Derived Column"
+          TopLeft="529,398" />
         <EdgeLayout
           Id="Package\Load Område.Paths[Union All Output 1]"
           TopLeft="310.25,348">
@@ -31891,6 +32047,28 @@ where [refTable].[rik_namn] = ?</property>
             <mssgm:EdgeLabel
               BoundingBox="87.4969466145835,41.9272471910112,56.6727734375,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Område.Paths[Derived Column Output]"
+          TopLeft="604.5,440">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -32033,10 +32211,6 @@ where [refTable].[rik_namn] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Load Område\Derived Column"
-          TopLeft="529,398" />
         <EdgeLayout
           Id="Package\Load Område.Paths[Union All Output 11]"
           TopLeft="602.5,365">
@@ -32051,28 +32225,6 @@ where [refTable].[rik_namn] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Område.Paths[Derived Column Output]"
-          TopLeft="604.5,440">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,29"
-              Start="0,0"
-              End="0,21.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
