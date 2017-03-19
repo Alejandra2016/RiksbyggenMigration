@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="HT_Engagemang_CREATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="115"
-  DTS:VersionGUID="{EA4AD495-ACED-4FB8-AD97-A9D61EDEA3D7}">
+  DTS:VersionBuild="117"
+  DTS:VersionGUID="{2B39D159-B703-4DAB-ACE7-8C2680CD9C2C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -854,6 +854,13 @@
                       cachedName="rik_Typ"
                       externalMetadataColumnId="Package\Load HT Engagemang\Migrate HT Engagemang records.Inputs[Input].ExternalColumns[rik_typ]"
                       lineageId="Package\Load HT Engagemang\STG HT Engagemang.Outputs[OLE DB Source Output].Columns[rik_Typ]" />
+                    <inputColumn
+                      refId="Package\Load HT Engagemang\Migrate HT Engagemang records.Inputs[Input].Columns[rik_OmradeAccountId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="rik_OmradeAccountId"
+                      externalMetadataColumnId="Package\Load HT Engagemang\Migrate HT Engagemang records.Inputs[Input].ExternalColumns[rik_omradeaccountid]"
+                      lineageId="Package\Load HT Engagemang\STG HT Engagemang.Outputs[OLE DB Source Output].Columns[rik_OmradeAccountId]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1251,6 +1258,19 @@
                           name="LookupTypes"></property>
                       </properties>
                     </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Load HT Engagemang\Migrate HT Engagemang records.Inputs[Input].ExternalColumns[rik_omradeaccountid]"
+                      dataType="guid"
+                      name="rik_omradeaccountid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CrmFieldType">Lookup</property>
+                        <property
+                          dataType="System.String"
+                          name="LookupTypes">account</property>
+                      </properties>
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1356,6 +1376,7 @@
       ,[rik_Idnummer]
       ,[rik_partContactId]
       ,[rik_Partidnummer]
+     ,[rik_OmradeAccountId]
 FROM [STG].[dbo].[rik_Engagemang_HT]</property>
                 <property
                   dataType="System.String"
@@ -1491,6 +1512,16 @@ FROM [STG].[dbo].[rik_Engagemang_HT]</property>
                       lineageId="Package\Load HT Engagemang\STG HT Engagemang.Outputs[OLE DB Source Output].Columns[rik_Partidnummer]"
                       name="rik_Partidnummer"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load HT Engagemang\STG HT Engagemang.Outputs[OLE DB Source Output].Columns[rik_OmradeAccountId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load HT Engagemang\STG HT Engagemang.Outputs[OLE DB Source Output].ExternalColumns[rik_OmradeAccountId]"
+                      length="255"
+                      lineageId="Package\Load HT Engagemang\STG HT Engagemang.Outputs[OLE DB Source Output].Columns[rik_OmradeAccountId]"
+                      name="rik_OmradeAccountId"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1543,6 +1574,11 @@ FROM [STG].[dbo].[rik_Engagemang_HT]</property>
                       dataType="wstr"
                       length="18"
                       name="rik_Partidnummer" />
+                    <externalMetadataColumn
+                      refId="Package\Load HT Engagemang\STG HT Engagemang.Outputs[OLE DB Source Output].ExternalColumns[rik_OmradeAccountId]"
+                      dataType="wstr"
+                      length="255"
+                      name="rik_OmradeAccountId" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1609,6 +1645,12 @@ FROM [STG].[dbo].[rik_Engagemang_HT]</property>
                       length="18"
                       lineageId="Package\Load HT Engagemang\STG HT Engagemang.Outputs[OLE DB Source Error Output].Columns[rik_Partidnummer]"
                       name="rik_Partidnummer" />
+                    <outputColumn
+                      refId="Package\Load HT Engagemang\STG HT Engagemang.Outputs[OLE DB Source Error Output].Columns[rik_OmradeAccountId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load HT Engagemang\STG HT Engagemang.Outputs[OLE DB Source Error Output].Columns[rik_OmradeAccountId]"
+                      name="rik_OmradeAccountId" />
                     <outputColumn
                       refId="Package\Load HT Engagemang\STG HT Engagemang.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -3379,35 +3421,35 @@ WHERE rik_Namn = 'Engagemang'
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="183,42"
+          Size="183.2,41.6"
           Id="Package\Load HT Engagemang"
           TopLeft="393.738101093695,372.715690702503" />
         <NodeLayout
-          Size="206,42"
+          Size="206.4,41.6"
           Id="Package\Load STG HT Engagemang"
           TopLeft="356,237" />
         <NodeLayout
-          Size="152,41"
+          Size="152,40.8"
           Id="Package\LogPackageEnd"
           TopLeft="50.3571444544562,565.335949217453" />
         <NodeLayout
-          Size="163,41"
+          Size="163.2,40.8"
           Id="Package\LogPackageStart"
           TopLeft="58.6428580478746,36.0882357231061" />
         <NodeLayout
-          Size="143,41"
+          Size="143.2,40.8"
           Id="Package\New LoggStatus"
           TopLeft="64.5714296710736,119.294119320114" />
         <NodeLayout
-          Size="163,41"
+          Size="163.2,40.8"
           Id="Package\Truncate rows in ERROR table"
           TopLeft="292.476195740862,118.070589891189" />
         <NodeLayout
-          Size="305,42"
+          Size="304.8,41.6"
           Id="Package\Update rik_Idnummer på CRM rik_Nummerserie"
           TopLeft="678.5,559.5" />
         <NodeLayout
-          Size="303,42"
+          Size="303.2,41.6"
           Id="Package\Update rik_Idnummer på STG rik_Nummerserie"
           TopLeft="537,467" />
         <EdgeLayout
@@ -3791,19 +3833,19 @@ WHERE rik_Namn = 'Engagemang'
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="234,42"
+          Size="233.6,41.6"
           Id="Package\Load HT Engagemang\Migrate HT Engagemang records"
           TopLeft="225.857147265455,125.117647290477" />
         <NodeLayout
-          Size="199,42"
+          Size="199.2,41.6"
           Id="Package\Load HT Engagemang\Engagemang_HT_ERROR"
           TopLeft="386,255" />
         <NodeLayout
-          Size="142,42"
+          Size="142.4,41.6"
           Id="Package\Load HT Engagemang\Row Inserted"
           TopLeft="123.857143246397,256.505888993683" />
         <NodeLayout
-          Size="180,42"
+          Size="180,41.6"
           Id="Package\Load HT Engagemang\STG HT Engagemang"
           TopLeft="251,20" />
         <EdgeLayout
