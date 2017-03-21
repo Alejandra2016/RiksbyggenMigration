@@ -11,8 +11,8 @@
   DTS:LocaleID="1053"
   DTS:ObjectName="Incident_CREATE_UPDATE"
   DTS:PackageType="5"
-  DTS:VersionBuild="129"
-  DTS:VersionGUID="{326EEAC9-E34E-484D-B686-54B495301B90}">
+  DTS:VersionBuild="132"
+  DTS:VersionGUID="{0BCF7B49-E9D9-4CF6-BC60-5C5F3BDC4531}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:LogProviders>
@@ -551,6 +551,75 @@
                       cachedDataType="guid"
                       cachedName="rb_x_propertyobject_id"
                       lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_x_propertyobject_id]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Derived Column.Inputs[Derived Column Input].Columns[rb_decision]"
+                      cachedDataType="i4"
+                      cachedName="rb_decision"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_decision]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_decision]} == 108540000 ? 908400000 : #{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[rb_decision]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">rb_decision == 108540000 ? 908400000 : rb_decision</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Incident\Derived Column.Inputs[Derived Column Input].Columns[statecode]"
+                      cachedDataType="i4"
+                      cachedName="statecode"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[statecode]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[statuscode]} == 200000 ? 1 : #{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[statecode]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">statuscode == 200000 ? 1 : statecode</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Incident\Derived Column.Inputs[Derived Column Input].Columns[statuscode]"
+                      cachedDataType="i4"
+                      cachedName="statuscode"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[statuscode]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[statuscode]} == 2 ? 1 : #{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[statuscode]} == 3 ? 908400002 : #{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[statuscode]} == 4 ? 3 : #{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[statuscode]} == 200000 ? 5 : #{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[statuscode]} == 108540005 ? 5 : #{Package\Load Incident\Read incident records.Outputs[CRM Primary Output].Columns[statuscode]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">statuscode == 2 ? 1 : statuscode == 3 ? 908400002 : statuscode == 4 ? 3 : statuscode == 200000 ? 5 : statuscode == 108540005 ? 5 : statuscode</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -12969,6 +13038,12 @@
                       cachedName="CrmErrorMessage"
                       externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[CrmErrorMessage]"
                       lineageId="Package\Load Incident\Union All ERROR.Outputs[Union All Output 1].Columns[CrmErrorMessage]" />
+                    <inputColumn
+                      refId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].Columns[incidentid]"
+                      cachedDataType="guid"
+                      cachedName="incidentid"
+                      externalMetadataColumnId="Package\Load Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[IncidentId]"
+                      lineageId="Package\Load Incident\Union All ERROR.Outputs[Union All Output 1].Columns[incidentid]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -52587,14 +52662,14 @@
               startId="Package\Load Incident\Data Conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Load Incident.Paths[Default Output4]"
-              endId="Package\Load Incident\Union All Inserted.Inputs[Union All Input 4]"
+              endId="Package\Load Incident\Union All Inserted.Inputs[Union All Input 1]"
               name="Default Output"
-              startId="Package\Load Incident\Dynamics CRM Destination 4.Outputs[Default Output]" />
+              startId="Package\Load Incident\Dynamics CRM Destination.Outputs[Default Output]" />
             <path
               refId="Package\Load Incident.Paths[Default Output3]"
-              endId="Package\Load Incident\Union All Inserted.Inputs[Union All Input 5]"
+              endId="Package\Load Incident\Union All Inserted.Inputs[Union All Input 3]"
               name="Default Output"
-              startId="Package\Load Incident\Dynamics CRM Destination 3.Outputs[Default Output]" />
+              startId="Package\Load Incident\Dynamics CRM Destination 1.Outputs[Default Output]" />
             <path
               refId="Package\Load Incident.Paths[Default Output2]"
               endId="Package\Load Incident\Union All Inserted.Inputs[Union All Input 2]"
@@ -52602,14 +52677,14 @@
               startId="Package\Load Incident\Dynamics CRM Destination 2.Outputs[Default Output]" />
             <path
               refId="Package\Load Incident.Paths[Default Output1]"
-              endId="Package\Load Incident\Union All Inserted.Inputs[Union All Input 3]"
+              endId="Package\Load Incident\Union All Inserted.Inputs[Union All Input 5]"
               name="Default Output"
-              startId="Package\Load Incident\Dynamics CRM Destination 1.Outputs[Default Output]" />
+              startId="Package\Load Incident\Dynamics CRM Destination 3.Outputs[Default Output]" />
             <path
               refId="Package\Load Incident.Paths[Default Output]"
-              endId="Package\Load Incident\Union All Inserted.Inputs[Union All Input 1]"
+              endId="Package\Load Incident\Union All Inserted.Inputs[Union All Input 4]"
               name="Default Output"
-              startId="Package\Load Incident\Dynamics CRM Destination.Outputs[Default Output]" />
+              startId="Package\Load Incident\Dynamics CRM Destination 4.Outputs[Default Output]" />
             <path
               refId="Package\Load Incident.Paths[Derived Column Output]"
               endId="Package\Load Incident\Balanced Data Distributor.Inputs[Balanced Data Distributor Input]"
@@ -54379,6 +54454,27 @@
                       refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_OverlatelseOver25Dagar]"
                       dataType="bool"
                       name="rik_OverlatelseOver25Dagar" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ModifiedBy]"
+                      dataType="wstr"
+                      length="100"
+                      name="rik_ModifiedBy" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_ModifiedOn]"
+                      dataType="dbTimeStamp"
+                      name="rik_ModifiedOn" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_OverlatelseOver30dagar]"
+                      dataType="bool"
+                      name="rik_OverlatelseOver30dagar" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_PaminnelseSkickad]"
+                      dataType="bool"
+                      name="rik_PaminnelseSkickad" />
+                    <externalMetadataColumn
+                      refId="Package\Update Incident\Incident_ERROR.Inputs[OLE DB Destination Input].ExternalColumns[rik_PaminnelseSkickadDen]"
+                      dataType="dbTimeStamp"
+                      name="rik_PaminnelseSkickadDen" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -56015,7 +56111,7 @@
           Id="Package\Truncate rows in ERROR table"
           TopLeft="292.476195740862,118.070589891189" />
         <NodeLayout
-          Size="155,43"
+          Size="154,42"
           Id="Package\Update Incident"
           TopLeft="346.666661575437,411.407400158158" />
         <EdgeLayout
@@ -56188,13 +56284,13 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-128.121640316517,105.812728823434,30.4826953125,9.7490234375"
+              BoundingBox="-128.121640316518,105.812728823434,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="425.743386613733,317.976911219157">
+          TopLeft="425.493386613733,317.976911219157">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -56216,7 +56312,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="346.666661575437,430.443898949354">
+          TopLeft="346.666661575437,430.193898949354">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -56255,21 +56351,17 @@
           Id="Package\Load Incident\Read incident records"
           TopLeft="371.166662506759,12.7583330873152" />
         <NodeLayout
-          Size="141,41"
-          Id="Package\Load Incident\Row Inserted"
-          TopLeft="198.857143246397,569.505888993683" />
-        <NodeLayout
           Size="154,42"
           Id="Package\Load Incident\Derived Column"
           TopLeft="375.354162250646,151.916665523748" />
         <NodeLayout
-          Size="214,42"
-          Id="Package\Load Incident\Dynamics CRM Destination 2"
-          TopLeft="600.354498420883,309.556814507426" />
-        <NodeLayout
           Size="243,43"
           Id="Package\Load Incident\Union All Inserted"
           TopLeft="152.444443409642,490.999994352129" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Load Incident\Dynamics CRM Destination 2"
+          TopLeft="600.354498420883,309.556814507426" />
         <NodeLayout
           Size="171,41"
           Id="Package\Load Incident\Incident_ERROR"
@@ -56290,6 +56382,10 @@
           Size="341,43"
           Id="Package\Load Incident\Union All ERROR"
           TopLeft="741.395826294087,484.013882579158" />
+        <NodeLayout
+          Size="141,41"
+          Id="Package\Load Incident\Row Inserted"
+          TopLeft="198.857143246397,569.505888993683" />
         <NodeLayout
           Size="1167,41"
           Id="Package\Load Incident\Balanced Data Distributor"
@@ -56558,30 +56654,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Incident.Paths[Default Output4]"
-          TopLeft="1180.02116508755,350.556814507426">
+          TopLeft="126.02116508755,348.562965133585">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-827.743388344574,140.443179844703"
+              EndConnector="69.589944988759,142.437029218544"
               Start="0,0"
-              End="-827.743388344574,132.943179844703">
+              End="69.589944988759,134.937029218544">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,88.2061423660975" />
+                    End="0,89.5410379962655" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,88.2061423660975"
-                    Point2="0,92.2061423660975"
-                    Point3="-4,92.2061423660975" />
+                    Point1="0,89.5410379962655"
+                    Point2="0,93.5410379962655"
+                    Point3="4,93.5410379962655" />
                   <mssgle:LineSegment
-                    End="-823.743388344574,92.2061423660975" />
+                    End="65.589944988759,93.5410379962655" />
                   <mssgle:CubicBezierSegment
-                    Point1="-823.743388344574,92.2061423660975"
-                    Point2="-827.743388344574,92.2061423660975"
-                    Point3="-827.743388344574,96.2061423660975" />
+                    Point1="65.589944988759,93.5410379962655"
+                    Point2="69.589944988759,93.5410379962655"
+                    Point3="69.589944988759,97.5410379962655" />
                   <mssgle:LineSegment
-                    End="-827.743388344574,132.943179844703" />
+                    End="69.589944988759,134.937029218544" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -56592,30 +56688,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Incident.Paths[Default Output3]"
-          TopLeft="934.02116508755,350.556814507426">
+          TopLeft="386.354498420883,350.556814507426">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-620.910055011241,140.443179844703"
+              EndConnector="-151.576721677908,140.443179844703"
               Start="0,0"
-              End="-620.910055011241,132.943179844703">
+              End="-151.576721677908,132.943179844703">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,66.3268302219729" />
+                    End="0,66.2955616127948" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,66.3268302219729"
-                    Point2="0,70.3268302219729"
-                    Point3="-4,70.3268302219729" />
+                    Point1="0,66.2955616127948"
+                    Point2="0,70.2955616127948"
+                    Point3="-4,70.2955616127948" />
                   <mssgle:LineSegment
-                    End="-616.910055011241,70.3268302219729" />
+                    End="-147.576721677908,70.2955616127948" />
                   <mssgle:CubicBezierSegment
-                    Point1="-616.910055011241,70.3268302219729"
-                    Point2="-620.910055011241,70.3268302219729"
-                    Point3="-620.910055011241,74.3268302219729" />
+                    Point1="-147.576721677908,70.2955616127948"
+                    Point2="-151.576721677908,70.2955616127948"
+                    Point3="-151.576721677908,74.2955616127948" />
                   <mssgle:LineSegment
-                    End="-620.910055011241,132.943179844703" />
+                    End="-151.576721677908,132.943179844703" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -56660,30 +56756,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Incident.Paths[Default Output1]"
-          TopLeft="386.354498420883,350.556814507426">
+          TopLeft="934.02116508755,350.556814507426">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-151.576721677908,140.443179844703"
+              EndConnector="-620.910055011241,140.443179844703"
               Start="0,0"
-              End="-151.576721677908,132.943179844703">
+              End="-620.910055011241,132.943179844703">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,66.2955616127948" />
+                    End="0,66.3268302219729" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,66.2955616127948"
-                    Point2="0,70.2955616127948"
-                    Point3="-4,70.2955616127948" />
+                    Point1="0,66.3268302219729"
+                    Point2="0,70.3268302219729"
+                    Point3="-4,70.3268302219729" />
                   <mssgle:LineSegment
-                    End="-147.576721677908,70.2955616127948" />
+                    End="-616.910055011241,70.3268302219729" />
                   <mssgle:CubicBezierSegment
-                    Point1="-147.576721677908,70.2955616127948"
-                    Point2="-151.576721677908,70.2955616127948"
-                    Point3="-151.576721677908,74.2955616127948" />
+                    Point1="-616.910055011241,70.3268302219729"
+                    Point2="-620.910055011241,70.3268302219729"
+                    Point3="-620.910055011241,74.3268302219729" />
                   <mssgle:LineSegment
-                    End="-151.576721677908,132.943179844703" />
+                    End="-620.910055011241,132.943179844703" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -56694,30 +56790,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Load Incident.Paths[Default Output]"
-          TopLeft="126.02116508755,348.562965133585">
+          TopLeft="1180.02116508755,350.556814507426">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="69.589944988759,142.437029218544"
+              EndConnector="-827.743388344574,140.443179844703"
               Start="0,0"
-              End="69.589944988759,134.937029218544">
+              End="-827.743388344574,132.943179844703">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,89.5410379962655" />
+                    End="0,88.2061423660975" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,89.5410379962655"
-                    Point2="0,93.5410379962655"
-                    Point3="4,93.5410379962655" />
+                    Point1="0,88.2061423660975"
+                    Point2="0,92.2061423660975"
+                    Point3="-4,92.2061423660975" />
                   <mssgle:LineSegment
-                    End="65.589944988759,93.5410379962655" />
+                    End="-823.743388344574,92.2061423660975" />
                   <mssgle:CubicBezierSegment
-                    Point1="65.589944988759,93.5410379962655"
-                    Point2="69.589944988759,93.5410379962655"
-                    Point3="69.589944988759,97.5410379962655" />
+                    Point1="-823.743388344574,92.2061423660975"
+                    Point2="-827.743388344574,92.2061423660975"
+                    Point3="-827.743388344574,96.2061423660975" />
                   <mssgle:LineSegment
-                    End="69.589944988759,134.937029218544" />
+                    End="-827.743388344574,132.943179844703" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -57027,7 +57123,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="41.2469466145832,31.9972451790631,56.6727734375,11.43359375"
+              BoundingBox="41.246946614583,31.9972451790631,56.6727734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
